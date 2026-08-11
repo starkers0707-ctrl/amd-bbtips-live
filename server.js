@@ -126,7 +126,10 @@ async function salvaCodigos() {
   } catch (e) { ghErro = e.message; }
 }
 carregaCodigos();
+const CODIGO_MESTRE = String(process.env.CODIGO_MESTRE || "").toUpperCase().trim();
 function codigoValido(c) {
+  // codigo mestre vindo do env: nao depende de persistencia, sobrevive a qualquer restart
+  if (CODIGO_MESTRE && c === CODIGO_MESTRE) return true;
   const d = codigos[c]; if (!d) return false;
   if (Date.now() > d.expira) return false;
   d.usos = (d.usos || 0) + 1; d.ultimoUso = Date.now(); return true;
