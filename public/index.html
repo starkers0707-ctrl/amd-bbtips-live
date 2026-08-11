@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AMD Live — Análise de Mercados ao Vivo</title>
+<style>
+  :root{--bg:#0d1117;--panel:#161b22;--panel2:#1c2330;--line:#2d3543;--txt:#e6edf3;--muted:#8b98a8;--green:#2ea043;--greenb:#3fb950;--red:#da3633;--amber:#d29922;--blue:#388bfd}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:14px;max-width:1100px;margin:0 auto}
+  h1{font-size:19px;color:var(--greenb)}
+  .sub{color:var(--muted);font-size:12px;margin-bottom:14px}
+  .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px;padding:10px;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+  select{background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-size:13px}
+  .live{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.5s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:13px}
+  .card h3{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:7px}
+  .big{font-size:24px;font-weight:700}
+  .note{font-size:11px;color:var(--muted);margin-top:3px}
+  .pos{color:var(--greenb)}.neg{color:var(--red)}.neu{color:var(--amber)}
+  .sec{font-size:14px;font-weight:700;margin:16px 0 8px}
+  table{width:100%;border-collapse:collapse;font-size:13px;background:var(--panel);border-radius:10px;overflow:hidden}
+  th{background:var(--panel2);text-align:left;padding:8px 10px;font-size:10px;text-transform:uppercase;color:var(--muted)}
+  td{padding:8px 10px;border-bottom:1px solid var(--line)}
+  tr:last-child td{border-bottom:none}
+  tr.ok{background:rgba(46,160,67,.10)}
+  .tag{padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
+  .tag.ok{background:rgba(46,160,67,.18);color:var(--greenb)}
+  .tag.no{background:rgba(218,54,51,.18);color:#f85149}
+  .therm{display:flex;gap:8px;align-items:flex-end;height:64px;margin:20px 0}
+  .therm .b{flex:1;border-radius:4px 4px 0 0;position:relative;min-height:4px}
+  .therm .b span{position:absolute;top:-15px;left:0;right:0;text-align:center;font-size:10px;color:var(--muted)}
+  .therm .b small{position:absolute;bottom:-15px;left:0;right:0;text-align:center;font-size:10px;color:var(--muted)}
+  .hint{font-size:11px;color:var(--muted);margin-top:6px}
+  .err{color:var(--amber);font-size:12px}
+</style>
+</head>
+<body>
+<h1 style="display:flex;align-items:center;gap:10px"><svg width="34" height="34" viewBox="0 0 34 34" style="flex-shrink:0"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#58a6ff"/><stop offset="1" stop-color="#1f6feb"/></linearGradient></defs><rect x="1" y="1" width="32" height="32" rx="8" fill="#0d1117" stroke="url(#lg)" stroke-width="2"/><path d="M7 24 L12 11 L17 20 L22 8 L27 24" fill="none" stroke="url(#lg)" stroke-width="2.4" stroke-linjoin="round" stroke-linecap="round"/><circle cx="22" cy="8" r="2.4" fill="#3fb950"/></svg>AMD Live</h1>
+<div class="sub">Over 3.5 / 5+ ao vivo — atualiza sozinho direto da API, sem travar.</div>
+
+<div class="bar">
+  <select id="liga"></select>
+  <select id="mkt"><option value="o35">Over 3.5</option><option value="ge5">5+ gols</option><option value="o25">Over 2.5</option><option value="ambas">Ambas Marcam</option><option value="u25">Under 2.5</option><option value="u15">Under 1.5</option><option value="u05">Under 0.5</option><option value="totft">Total Gols (FT)</option></select>
+  <label style="font-size:12px;color:var(--muted)">Qtd. Jogos</label>
+  <select id="qtd"><option>20</option><option>40</option><option>60</option><option>80</option><option>100</option><option>120</option><option>240</option></select>
+  <button id="somBtn" style="font-size:12px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:#1c2333;color:#e8edf4;cursor:pointer">🔔 Ativar som</button>
+  <button id="notifBtn" style="font-size:12px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:#1c2333;color:#e8edf4;cursor:pointer">�🖥️ Notificações</button>
+  <button onclick="document.getElementById('comoFunciona').style.display='flex'" style="font-size:12px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:#1c2333;color:#e8edf4;cursor:pointer">📖 Como funciona</button>
+  <span class="live"><span class="dot"></span><span id="liveinfo">conectando...</span></span>
+</div>
+
+
+<div id="comoFunciona" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:99;align-items:flex-start;justify-content:center;overflow:auto;padding:24px 12px" onclick="if(event.target===this)this.style.display='none'">
+<div style="max-width:680px;width:100%;background:#11151f;border:1px solid var(--line);border-radius:14px;padding:22px 24px;position:relative">
+<button onclick="document.getElementById('comoFunciona').style.display='none'" style="position:absolute;top:12px;right:14px;background:none;border:none;color:#8b98a8;font-size:20px;cursor:pointer">✕</button>
+<h2 style="margin:0 0 4px 0;font-size:19px">📖 Como funciona a AMD Live</h2>
+<div class="note" style="margin-bottom:16px">Onde mora cada número da tela e como ele é calculado.</div>
+
+<div style="display:grid;gap:12px;font-size:13px;line-height:1.55">
+<div style="background:#161c28;border:1px solid var(--line);border-radius:10px;padding:12px 14px">
+<b style="color:#58a6ff">1 · 🌡️ Selo de temperatura</b> (topo da tela)<br>
+<b>selo = pagando ÷ normal × 100</b>. Ex.: pagando 15 numa liga cujo normal é 26 → <b>57% do normal</b>.<br>
+🔵 <b>Abaixo de 60%</b> = seca fria, a ZONA DE OPERAÇÃO · ⚪ 60–115% = neutro, aguarde · 🔴 acima de 115% = quente, não opere.</div>
+
+<div style="background:#161c28;border:1px solid var(--line);border-radius:10px;padding:12px 14px">
+<b style="color:#58a6ff">2 · "Pagando"</b> (último ponto do gráfico)<br>
+A % de jogos que pagaram o mercado <b>nos últimos 20 jogos</b>. É o AGORA da liga. Cada bolinha da curva é essa conta numa janela que anda jogo a jogo.</div>
+
+<div style="background:#161c28;border:1px solid var(--line);border-radius:10px;padding:12px 14px">
+<b style="color:#58a6ff">3 · "Normal"</b> (cartão "% QUE PAGA")<br>
+A média do <b>histórico inteiro</b> da liga (centenas de jogos). É o DE SEMPRE — o contrato que a máquina mantém e para onde ela sempre volta.</div>
+
+<div style="background:#161c28;border:1px solid var(--line);border-radius:10px;padding:12px 14px">
+<b style="color:#58a6ff">4 · 🟢🔴 Fita</b> (no chip do radar)<br>
+Os últimos 6 jogos, um a um. Direita = mais recente. É a prova visual da seca ou da rajada.</div>
+
+<div style="background:#161c28;border:1px solid var(--line);border-radius:10px;padding:12px 14px">
+<b style="color:#58a6ff">5 · 💰 Odd justa e EV</b> (no card de cada jogo)<br>
+O servidor calcula a <b>chance real</b> do jogo (histórico dos times + faixa da odd + liga). Daí:<br>
+<b>justa = 100 ÷ chance</b> → ex.: chance 26.4% → justa 3.79.<br>
+<b>EV = chance × odd − 100</b> → odd 4.50: 26.4 × 4.50 − 100 = <b>+18.6%</b> (a casa pagando acima do que vale = valor a seu favor). EV negativo = a casa cobrando caro — não importa o resto do card.</div>
+
+<div style="background:#161c28;border:1px solid var(--line);border-radius:10px;padding:12px 14px">
+<b style="color:#58a6ff">6 · 📉 Chip de mínima</b> (radar + notificação)<br>
+Acende quando o selo cruza <b>abaixo de 60%</b> — é a única notificação que interrompe você, porque é a única zona com vantagem medida. <b>Apaga sozinho no primeiro green</b>: chip aceso = janela ainda aberta; apagou = acabou.</div>
+
+<div style="background:rgba(88,166,255,.08);border:1px solid #58a6ff;border-radius:10px;padding:12px 14px">
+<b style="color:#58a6ff">O método em 4 perguntas</b> (antes de qualquer entrada)<br>
+<b>1. Zona?</b> Selo azul (&lt;60%). <b>2. Preço?</b> EV positivo com odd acima da justa. <b>3. Qual?</b> Desempate por rank 🏆, âncora ⚓ e ciclo. <b>4. Chip aceso?</b> Confirma no segundo do clique.<br><br>
+<b>Saídas:</b> green em qualquer tiro = ciclo encerrado (não emende) · chip apagou = janela fechou · máximo 2 gales, nunca o 3º · unidade de 1% da banca.<br><br>
+<span class="note">Nada aqui é promessa de lucro: a zona azul historicamente elevou a chance do próximo jogo, mas a maioria dos tiros individuais ainda perde — a vantagem aparece na repetição disciplinada, e resultados passados não garantem futuros.</span></div>
+</div>
+</div></div>
+<div id="radar"></div>
+<div id="conteudo"></div>
+
+<details style="max-width:1100px;margin:26px auto 40px;background:#11161f;border:1px solid #223;border-radius:12px;padding:0 18px">
+<summary style="cursor:pointer;padding:14px 0;font-weight:800;font-size:15px;color:#58a6ff">❓ Como funciona — de onde vem cada número</summary>
+<div style="padding:4px 0 18px;font-size:13px;line-height:1.65;color:#c7d0da">
+
+<p style="color:#8b98a8">O site tem <b style="color:#e6edf3">duas máquinas independentes</b>: uma mede o <b style="color:#58a6ff">MOMENTO da liga</b> (quando vale a pena olhar) e outra mede o <b style="color:#3fb950">PREÇO de cada jogo</b> (se a odd oferecida vale a chance real). As duas precisam aprovar.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0">
+<div style="background:#0d1117;border:1px solid #1f6feb44;border-radius:10px;padding:14px">
+<div style="font-weight:800;color:#58a6ff;margin-bottom:8px">🌡️ Máquina do MOMENTO</div>
+<div><b>Pagando</b> = o último ponto do gráfico: de cada 100 dos últimos 20 jogos, quantos pagaram o mercado.</div>
+<div style="margin-top:6px"><b>Normal</b> = o cartão "% QUE PAGA": a média do histórico inteiro da liga (~1200 jogos).</div>
+<div style="margin-top:6px"><b>Selo 🌡️</b> = pagando ÷ normal × 100. Ex.: pagando 15, normal 26 → <b>57% do normal</b>.</div>
+<div style="margin-top:6px"><b>Chip 📉 + notificação</b> = acende quando o selo cruza <b>abaixo de 60%</b> (seca forte) e <b>apaga no primeiro green</b>. A fita 🟢🔴 mostra os últimos 6 jogos.</div>
+</div>
+<div style="background:#0d1117;border:1px solid #23863644;border-radius:10px;padding:14px">
+<div style="font-weight:800;color:#3fb950;margin-bottom:8px">💰 Máquina do PREÇO (piso de odd da zona)</div>
+<div>Dentro da zona azul, a chance real foi <b>medida</b>: O3.5 paga ~31% e O2.5 ~54% dos próximos jogos.</div>
+<div style="margin-top:6px">Logo, só vale entrar quando a odd cobre essa chance com folga: <b>O3.5 exige odd ≥ 3.60</b> · <b>O2.5 exige odd ≥ 2.00</b>. Abaixo do piso, mesmo a zona perfeita perde no longo prazo.</div>
+<div style="margin-top:6px"><b>EV do card = referência</b>, não critério: testes com 1.120 jogos mostraram que EV acima de +10 historicamente <b>paga MENOS</b> (quando o modelo discorda muito da casa, a casa costuma estar certa).</div>
+</div>
+</div>
+
+<div style="background:#0d1117;border:1px solid #223;border-radius:10px;padding:14px;margin:0 0 14px">
+<div style="font-weight:800;color:#e6edf3;margin-bottom:8px">📋 O ritual de leitura (4 perguntas, nessa ordem)</div>
+<div>1️⃣ <b>Zona?</b> Selo azul (&lt;60% do normal)? Se não, PARE aqui — número bonito em zona errada é armadilha.</div>
+<div>2️⃣ <b>Preço?</b> Odd no piso da zona (O3.5 ≥ 3.60 · O2.5 ≥ 2.00)? Se não, PARE — zona boa com odd curta perde no longo prazo. EV é só referência (e EV &gt; +10 é bandeira vermelha).</div>
+<div>3️⃣ <b>Qual?</b> Entre os aprovados: melhor rank 🏆 da rodada, âncora ⚓, ciclo cobrando.</div>
+<div>4️⃣ <b>Chip vivo?</b> Confira o 📉 no segundo do clique. Apagou = alguém pagou = janela consumida.</div>
+</div>
+
+<div style="background:#0d1117;border:1px solid #223;border-radius:10px;padding:14px">
+<div style="font-weight:800;color:#e6edf3;margin-bottom:8px">🚪 Regras de saída</div>
+<div>• <b>Green em qualquer tiro = ciclo encerrado.</b> O primeiro pagamento consome a janela — não se emenda.</div>
+<div>• Gale é sempre no <b>próximo jogo VÁLIDO</b> (EV+ com chip aceso), nunca no próximo jogo qualquer. Máximo 2 gales.</div>
+<div>• Unidade sugerida: 1% da banca (ciclo completo 1-2-4 = 7% no pior caso).</div>
+</div>
+
+<p style="color:#8b98a8;margin-top:14px;font-size:12px">⚠️ Transparência: os números acima são estatísticas do histórico — indicam probabilidade, nunca certeza. Mesmo a melhor entrada perde com frequência; a gestão de banca é o que mantém você no jogo. Isto não é promessa de lucro.</p>
+</div>
+</details>
+
+<script>
+const $=s=>document.querySelector(s);
+const ligaSel=$('#liga'), mktSel=$('#mkt'), qtdSel=$('#qtd');
+const nomeMkt={o35:'Over 3.5',ge5:'5+ gols',o25:'Over 2.5',ambas:'Ambas Marcam',u25:'Under 2.5',u15:'Under 1.5',u05:'Under 0.5',totft:'Total Gols (FT)'};
+
+let _lastHash = "";
+function _roboBox(mkt,b){
+  const NM={o35:'O3.5',o25:'O2.5',ambas:'AMBAS'};
+  const nomeM=NM[mkt]||mkt;
+  const piso=(b&&b.piso)||({o35:3.6,o25:2.0,ambas:2.0})[mkt];
+  const reg=(b&&b.registro)||{};
+  const saldoCor=reg.saldo>0?'var(--greenb)':reg.saldo<0?'var(--red)':'#9fb0c3';
+  const _cu=v=>`<b style="color:${v>0?'var(--greenb)':v<0?'var(--red)':'#9fb0c3'}">${v>0?'+':''}${v??0}u</b>`;
+  const saldoBase=reg.ciclos?`💰 hoje ${_cu(reg.hoje)} · 7d ${_cu(reg.semana7)} · mês ${_cu(reg.mes30)} · total ${_cu(reg.saldo)} <span class="note" style="font-size:11px">(${reg.ciclos} ciclos: ${reg.greens}🟢 ${reg.redsCiclo}🔴${reg.aborts?' '+reg.aborts+'⚠️':''}${reg.descartes?' '+reg.descartes+'🗑️':''})</span>`:`💰 <b style="color:#9fb0c3">0u</b> <span class="note" style="font-size:11px">(sem ciclos ainda)</span>`;
+  const emp=(b&&b.empate)||{};
+  const empTxt=(emp.precisa!=null&&emp.esta!=null)?(()=>{const d=Math.round((emp.esta-emp.precisa)*10)/10;const c=d>=0?'var(--greenb)':'var(--red)';return `<div style="font-size:11px;margin-top:2px" class="note">🎯 para empatar precisa <b>${emp.precisa}%</b> · está em <b style="color:${c}">${emp.esta}%</b> · <b style="color:${c}">${d>0?'+':''}${d}</b></div>`;})():'';
+  const saldoTxt=saldoBase+empTxt;
+  if(b&&b.cicloView){
+    const c=b.cicloView;
+    const un=[1,2,4];
+    const feitos=(c.tiros||[]).map((t,i)=>`<div style="display:inline-block;background:#2b1113;border:1px solid #f85149;border-radius:8px;padding:6px 10px;margin:4px 6px 4px 0;font-size:12px"><b style="color:#f85149">TIRO ${i+1} ✗ · ${t.unidades}u</b><br><b>${t.h?t.h+' · ':''}${t.jogo}</b><br>@${t.odd} — não pagou</div>`).join('<span style="font-size:16px;color:#8b98a8;vertical-align:middle">→</span>');
+    const lucroAtual=c.alvo?Math.round((c.alvo.unidades*c.alvo.odd-(c.apostado+c.alvo.unidades))*10)/10:null;
+    const atual=c.alvo?`<div style="display:inline-block;background:#0d2137;border:2px solid #58a6ff;border-radius:8px;padding:6px 10px;margin:4px 6px 4px 0;font-size:12px"><b style="color:#58a6ff">TIRO ${c.degrau+1} · ${c.alvo.unidades}u — AGORA</b><br><b>⏱️ ${c.alvo.h?c.alvo.h+' · ':''}${c.alvo.jogo}</b><br>@${c.alvo.odd} · <span style="color:#3fb950;font-weight:800">green = +${lucroAtual}u líquidas</span></div>`:`<div style="display:inline-block;border:2px dashed #58a6ff;border-radius:8px;padding:6px 10px;margin:4px 6px 4px 0;font-size:12px;color:#58a6ff"><b>TIRO ${c.degrau+1} · ${un[c.degrau]}u</b><br>🔎 aguardando o próximo jogo da fila</div>`;
+    const restantes=un.slice(c.degrau+1).map((u2,i)=>{const pl=(c.plano||[])[c.degrau+1+i];return `<div style="display:inline-block;border:1px dashed #4a5568;border-radius:8px;padding:6px 10px;margin:4px 6px 4px 0;font-size:12px;color:#8b98a8"><b>TIRO ${c.degrau+2+i} · ${u2}u</b><br>${pl?`<b style="color:#c7d0da">${pl.h?pl.h+' · ':''}${pl.jogo}</b><br>@${pl.odd} · já travado no plano`:'se o anterior não pagar'}</div>`;}).join('<span style="font-size:16px;color:#4a5568;vertical-align:middle">→</span>');
+    const seq=[feitos,atual,restantes].filter(Boolean).join('<span style="font-size:16px;color:#8b98a8;vertical-align:middle">→</span>');
+    return `<div class="card" style="border:2px solid #58a6ff;background:rgba(88,166,255,.05)"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;align-items:center"><b style="font-size:14px">🤖 ROBÔ ${nomeM} — ${nomeLiga[c.liga]||c.liga} · <span style="color:#58a6ff">CICLO EM ANDAMENTO</span></b>${c.rel!=null?`<span style="font-size:12px;color:#58a6ff;font-weight:700">🌡️ ${c.rel}% do normal</span>`:''}</div><div style="margin-top:4px;font-size:13px">${saldoTxt} <span class="note" style="font-size:11px">· ${c.apostado}u já apostadas neste ciclo</span></div><div style="margin-top:8px">${seq}</div><div class="note" style="font-size:11px;margin-top:6px">começou, termina: este ciclo vai até o green ou até o 3º tiro — a caixa acima é o ciclo REAL do caderno, não uma prévia</div></div>`;
+  }
+  if(!b||!b.liga){
+    const cons=b&&b.consumida?`janela da <b>${nomeLiga[b.consumida.liga]||b.consumida.liga}</b> (${b.consumida.rel}%) aguardando a próxima janela`:`vigiando as 4 ligas`;
+    return `<div class="card" style="border:1px dashed #4a5568;font-size:12px;color:#8b98a8;display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px"><span><b style="color:#c7d0da">🤖 ROBÔ ${nomeM}</b> · ${cons}</span><span>${saldoTxt}</span></div>`;
+  }
+  const andamento=b.cicloAndamento?`<span style="background:rgba(88,166,255,.15);border:1px solid #58a6ff;color:#58a6ff;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700">⏱️ ciclo: degrau ${b.cicloAndamento.degrau} · ${b.cicloAndamento.apostado}u apostadas · vigiando ${b.cicloAndamento.esperando}</span>`:'';
+  let _ac=0;
+  const deg=(b.degraus||[]).map(d=>{_ac+=d.unidades;const lucro=Math.round((d.unidades*d.odd-_ac)*10)/10;return `<div style="display:inline-block;background:#0f2417;border:1px solid #3fb950;border-radius:8px;padding:6px 10px;margin:4px 6px 4px 0;font-size:12px"><b style="color:#3fb950">${d.papel} · ${d.unidades}u</b><br><b>${d.h?d.h+' · ':''}${d.jogo}</b><br>@${d.odd} · <span style="color:${d.evAlto?'var(--red)':'#9fb0c3'};font-size:11px">${d.evAlto?'⚠️ EV +'+d.ev+'% (casa discorda)':'ref EV '+(d.ev>0?'+':'')+d.ev+'%'}</span>${d.nota!=null?` <span class="note" style="font-size:10px">· nota ${d.nota}</span>`:''}<br><span style="color:#3fb950;font-weight:800">green aqui = +${lucro}u líquidas</span> <span class="note" style="font-size:10px">(${_ac}u no ciclo)</span>${d.col?`<br><span style="font-size:10px;color:#9fb0c3">⏱️ col :${d.col.min} — 3h ${d.col.h3??'—'}% · 6h ${d.col.h6??'—'}% · 24h ${d.col.h24??'—'}%</span>`:''}</div>`;}).join('<span style="font-size:16px;color:#8b98a8;vertical-align:middle">→</span>');
+  const _falta=['ENTRADA · 1u','GALE 1 · 2u','GALE 2 · 4u'].slice((b.degraus||[]).length);
+  const degFalta=_falta.map(f=>`<div style="display:inline-block;border:1px dashed #4a5568;border-radius:8px;padding:6px 10px;margin:4px 6px 4px 0;font-size:12px;color:#8b98a8"><b>${f}</b><br>⏳ aguardando o próximo jogo entrar na fila<br><span style="font-size:10px">a rodada renova a cada ~3 min</span></div>`).join('<span style="font-size:16px;color:#4a5568;vertical-align:middle">→</span>');
+  const escada=deg?(degFalta?deg+'<span style="font-size:16px;color:#4a5568;vertical-align:middle">→</span>'+degFalta:deg):degFalta;
+  const pul=(b.pulados||[]).length?`<div class="note" style="font-size:11px;margin-top:4px">pulados (odd &lt; ${piso}): ${b.pulados.map(p=>`${p.h} ${p.jogo.split(' x ')[0]} (@${p.odd})`).join(' · ')}</div>`:'';
+  return `<div class="card" style="border:2px solid #3fb950;background:rgba(63,185,80,.06)">${b.previa?`<div style="font-size:10px;color:#8b98a8;margin-bottom:4px">PRÉVIA da escada — nada apostado ainda; vira CICLO oficial quando a 1ª entrada travar no alvo</div>`:''}${b.teste?`<div style="background:rgba(240,160,32,.15);border:1px solid #f0a020;color:#f0a020;border-radius:6px;padding:4px 8px;font-size:11px;font-weight:800;margin-bottom:6px">⚠️ MODO TESTE</div>`:''}<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;align-items:center"><b style="font-size:14px">🤖 ROBÔ ${nomeM} — ${nomeLiga[b.liga]||b.liga}</b><span style="font-size:12px;color:#58a6ff;font-weight:700">🌡️ ${b.rel}% do normal</span></div><div style="margin-top:4px;font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;align-items:center"><span>${saldoTxt}</span>${andamento}</div>${b.taxas?`<div style="margin-top:4px;font-size:12px;color:#9fb0c3">📊 coluna ${nomeM}: 3h ${b.taxas.h3??'—'}% · 6h ${b.taxas.h6??'—'}% · 12h ${b.taxas.h12??'—'}% · 24h ${b.taxas.h24??'—'}%</div>`:''}<div style="margin-top:8px">${escada}</div>${pul}<div class="note" style="font-size:11px;margin-top:6px">green em qualquer tiro encerra · máx 3 tiros · ciclo iniciado vai até o fim · unidade sugerida: 1% da banca</div></div>`;
+}
+async function carregaRobo(){
+  const el=document.getElementById('roboBox');
+  window.__botaoExportar=`<div style="display:flex;justify-content:flex-end;margin-bottom:6px"><button onclick="window.open('/api/robo/exportar?c='+encodeURIComponent(localStorage.getItem('cl_cod')||''),'_blank')" style="cursor:pointer;border:1px solid #30363d;background:#161b22;color:#8b98a8;border-radius:8px;padding:5px 12px;font-size:11px">📄 Exportar caderno (CSV)</button></div>`;
+  if(!el)return;
+  try{
+    const r=await fetch('/api/robo?c='+encodeURIComponent(localStorage.getItem('cl_cod')||''),{cache:'no-store'});
+    if(!r.ok)return;
+    const j=await r.json();
+    if(!j||(!j.o35&&!j.o25&&!j.ambas))return;
+    el.innerHTML=(window.__botaoExportar||'')+['o35','o25','ambas'].map(m=>_roboBox(m,j[m]||{})).join('');
+  }catch(e){}
+}
+async function carregaPadroes(liga,mkt){
+  const el=document.getElementById('padroesBox');
+  if(!el)return;
+  if(mkt==='totft'){el.innerHTML='';return;}
+  try{
+    const [r,rl]=await Promise.all([fetch(`/api/padroes/${liga}?mkt=${mkt}`,{cache:'no-store'}),fetch(`/api/leitor/${liga}?mkt=${mkt}`,{cache:'no-store'}).catch(()=>null)]);
+    if(!r.ok)return;
+    const j=await r.json();
+    const lt=rl&&rl.ok?await rl.json():null;
+    if(mkt!==mktSel.value)return;
+    window.__leitor=(lt&&!lt.erro)?lt:null;
+    try{const f=document.getElementById('leitorFaixa');if(f){f.outerHTML=leitorFaixaHtml();}}catch(e){}
+    const ps=(j&&j.padroes)||[];
+    const po=(j&&j.porOdd)||[], pt=(j&&j.porTime)||[];
+    const ppl=(j&&j.porPlacar)||[], pcol=(j&&j.porColuna)||[], pupl=(j&&j.pulosPorPlacar)||[];
+    if(!ps.length&&!po.length&&!pt.length&&!ppl.length&&!pcol.length&&!pupl.length){el.innerHTML='';return;}
+    el.innerHTML=`<div style="margin-top:14px"><b style="font-size:13px">🔍 Caçador de padrões <span class="note">(desfecho medido no CICLO de 3 tiros, como você opera — 🟢=pagou 🔴=não)</span></b><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">${ps.map(p=>{const seq=p.seq.split('').map(c=>c==='G'?'🟢':'🔴').join('');const prox=p.prox==='G'?'🟢':'🔴';return `<div style="background:#161b22;border:1px solid ${p.prox==='G'?'#3fb950':'#d29922'};border-radius:8px;padding:6px 10px;font-size:12px"><b>${seq} → ${p.prox==='G'?'🟢 em até 3 tiros':'💀 ciclo morre (3 tiros)'}</b> <b style="color:${p.prox==='G'?'var(--greenb)':'var(--red)'}">+${p.edge} pts vs régua</b><br><span class="note" style="font-size:10px">${p.taxa}% (${p.acertos}/${p.n}) · régua do ciclo ${p.regua}% · horas: ${p.horas.join(', ')}</span></div>`;}).join('')}</div>${po.length?`<div style="margin-top:8px;font-size:12px;font-weight:700">💰 por ODD <span class="note" style="font-size:10px">(janela: 1 antes · NELE · 1 depois — no mercado selecionado)</span></div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${po.map(p=>`<div style="background:#161b22;border:1px solid ${p.prox==='G'?'#3fb950':'#f85149'};border-radius:8px;padding:6px 10px;font-size:12px"><b>@${p.chave} → ${p.prox==='G'?'🟢 em até 3 tiros':'💀 ciclo morre'}</b> <b style="color:${p.prox==='G'?'var(--greenb)':'var(--red)'}">+${p.edge} pts</b><br><span class="note" style="font-size:10px">${p.taxa}% (${p.acertos}/${p.n}) · régua ${p.regua}%</span></div>`).join('')}</div>`:''}${pt.length?`<div style="margin-top:8px;font-size:12px;font-weight:700">👥 por TIME <span class="note" style="font-size:10px">(janela: 1 antes · NELE · 1 depois — no mercado selecionado)</span></div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${pt.map(p=>`<div style="background:#161b22;border:1px solid ${p.prox==='G'?'#3fb950':'#f85149'};border-radius:8px;padding:6px 10px;font-size:12px"><b>${p.chave} → ${p.prox==='G'?'🟢 em até 3 tiros':'💀 ciclo morre'}</b> <b style="color:${p.prox==='G'?'var(--greenb)':'var(--red)'}">+${p.edge} pts</b><br><span class="note" style="font-size:10px">${p.taxa}% (${p.acertos}/${p.n}) · régua ${p.regua}%</span></div>`).join('')}</div>`:''}${ppl.length?`<div style="margin-top:8px;font-size:12px;font-weight:700">🎯 por PLACAR <span class="note" style="font-size:10px">(o ciclo começou num jogo com esse placar)</span></div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${ppl.map(p=>`<div style="background:#161b22;border:1px solid ${p.prox==='G'?'#3fb950':'#f85149'};border-radius:8px;padding:6px 10px;font-size:12px"><b>${p.chave} → ${p.prox==='G'?'🟢 em até 3 tiros':'💀 ciclo morre'}</b> <b style="color:${p.prox==='G'?'var(--greenb)':'var(--red)'}">+${p.edge} pts</b><br><span class="note" style="font-size:10px">${p.taxa}% (${p.acertos}/${p.n}) · régua ${p.regua}%</span></div>`).join('')}</div>`:''}${pcol.length?`<div style="margin-top:8px;font-size:12px;font-weight:700">📊 por COLUNA (minuto) <span class="note" style="font-size:10px">(o ciclo começou num jogo desse minuto)</span></div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${pcol.map(p=>`<div style="background:#161b22;border:1px solid ${p.prox==='G'?'#3fb950':'#f85149'};border-radius:8px;padding:6px 10px;font-size:12px"><b>${p.chave} → ${p.prox==='G'?'🟢 em até 3 tiros':'💀 ciclo morre'}</b> <b style="color:${p.prox==='G'?'var(--greenb)':'var(--red)'}">+${p.edge} pts</b><br><span class="note" style="font-size:10px">${p.taxa}% (${p.acertos}/${p.n}) · régua ${p.regua}%</span></div>`).join('')}</div>`:''}${(pupl.length||true)?`<div style="margin-top:8px;font-size:12px;font-weight:700">🎰 PADRÕES AUTO-DETECTADOS <span class="note" style="font-size:10px">(varredura do dia — ordenados por quão "metrônomo" cada evento é; ◀ dourado = próximo cai AGORA)</span></div>${pupl.length?`<div style="display:flex;flex-direction:column;gap:5px;margin-top:4px">${pupl.map(p=>{const barra=Math.round(p.regular/10);const cor=p.regular>=70?'#3fb950':p.regular>=55?'#e3b341':'#8b98a8';return `<div style="background:#161b22;border:1px solid ${p.prontoAgora?'#e3b341':'#30363d'};border-radius:8px;padding:6px 10px;font-size:12px"><div style="display:flex;justify-content:space-between;align-items:center"><b>${p.nome}</b><span style="font-size:10px;color:${cor}">${'█'.repeat(barra)}${'░'.repeat(10-barra)} ${p.regular}%</span></div><span class="note" style="font-size:10px">volta a cada <b style="color:#58a6ff">~${p.puloMedio}</b> casas (comum ${p.puloComum} · saiu ${p.vezes}× · últimos ${p.ultimos.join(',')}) · há ${p.desde} desde o último${p.prontoAgora?' <span style="color:#e3b341;font-weight:700">◀ é AGORA</span>':p.quaseProximo===1?' <span style="color:#e3b341">◀ falta 1</span>':''}</span></div>`;}).join('')}</div>`:`<div class="note" style="font-size:11px;margin-top:4px;padding:6px 10px;background:#161b22;border-radius:8px">Nenhum evento em compasso regular nesta liga hoje (nada bateu 45% de regularidade). O dia ainda está "caótico" aqui — volte mais tarde ou veja outra liga.</div>`}`:''}${(lt&&!lt.erro)?`<div style="margin-top:8px;font-size:12px;font-weight:700">🔮 LEITOR DE GRÁFICO <span class="note" style="font-size:10px">(o desenho da curva já apareceu antes? o que veio depois?)</span></div><div style="margin-top:4px;background:#161b22;border:1px solid ${lt.sinalAgora?(lt.sinalAgora.prox==='G'?'#3fb950':'#f85149'):'#30363d'};border-radius:8px;padding:8px 10px;font-size:12px"><b>desenho agora:</b> <span style="font-family:monospace;font-size:15px;letter-spacing:2px;color:#58a6ff">${(lt.desenhoAtual||'').replace(/^F·/,'ᶠ ').replace(/^M·/,'ᵐ ').replace(/^T·/,'ᵗ ').replace(/U/g,'↑').replace(/D/g,'↓').replace(/F/g,'→')}</span>${lt.atualNaMemoria?` <span class="note" style="font-size:10px">(visto ${lt.atualNaMemoria.n}× · depois veio green ${lt.atualNaMemoria.taxa}% · régua ${lt.regua}%)</span>`:` <span class="note" style="font-size:10px">(desenho inédito hoje)</span>`}${lt.sinalAgora?`<br><b style="color:${lt.sinalAgora.prox==='G'?'var(--greenb)':'var(--red)'}">${lt.sinalAgora.prox==='G'?'🔮 esse desenho ANUNCIA GREEN em até 3':'🔮 esse desenho ANUNCIA MORTE do ciclo'} · +${lt.sinalAgora.edge} pts (${lt.sinalAgora.n}×)</b>`:''}</div>${(lt.topDesenhos||[]).length?`<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">${lt.topDesenhos.map(p=>`<div style="background:#161b22;border:1px solid ${p.prox==='G'?'#3fb950':'#f85149'};border-radius:8px;padding:5px 9px;font-size:11px"><span style="font-family:monospace;letter-spacing:1px">${(p.desenho||'').replace(/^F·/,'ᶠ ').replace(/^M·/,'ᵐ ').replace(/^T·/,'ᵗ ').replace(/U/g,'↑').replace(/D/g,'↓').replace(/F/g,'→')}</span> → ${p.prox==='G'?'🟢':'💀'} <b style="color:${p.prox==='G'?'var(--greenb)':'var(--red)'}">+${p.edge}</b> <span class="note" style="font-size:9px">${p.taxa}% (${p.n}×)</span></div>`).join('')}</div>`:''}`:''}<div class="note" style="font-size:10px;margin-top:4px">Desfecho = green em ATÉ 3 jogos após a sequência (teu ciclo). Contagem zera às 00h do relógio do jogo — só o dia atual conta. Só aparecem padrões que fogem da régua do ciclo em 15+ pontos (verde = ciclo paga mais; vermelho = ciclo morre mais — FUJA). ⚠️ Poucas ocorrências pode ser acaso — lupa, não sinal.</div></div>`;
+  }catch(e){}
+}
+async function carregaDicas(mkt){
+  const el=document.getElementById('dicasBox');
+  if(!el)return;
+  if(mkt==='totft'){el.innerHTML='';return;}
+  try{
+    const r=await fetch('/api/dicas?mkt='+mkt,{cache:'no-store'});
+    if(!r.ok)return;
+    const ds=await r.json();
+    if(mkt!==mktSel.value)return; // trocou de mercado no meio — descarta
+    if(!Array.isArray(ds)||!ds.length){el.innerHTML='';return;}
+    const B={entrada:['🟢 ENTRADA','#3fb950','seca + preço a favor'],observar:['🟡 OBSERVAR','#d29922','quase no padrão'],aguardar:['🔴 AGUARDAR','#f85149','fora do padrão']};
+    el.innerHTML=`<div class="sec">🎯 Dicas do quadro — 3 melhores das 4 ligas</div>`+ds.map(d=>{
+      const b=B[d.grade]||B.aguardar;
+      const mot=d.grade==='aguardar'?(d.rel>=75?`zona ${d.rel}%`:`EV ${d.ev>0?'+':''}${d.ev}%`):b[2];
+      const chk=(ok,txt)=>`<span style="display:inline-block;margin-right:8px;font-size:11px;color:${ok===true?'var(--greenb)':ok===false?'var(--red)':'#9fb0c3'}">${ok===true?'✓':ok===false?'✗':'•'} ${txt}</span>`;
+      const checklist=chk(d.rel<60,`🌡️ zona ${d.rel}%${d.rel<60?'':' (precisa <60%)'}`)+(d.piso?chk(d.oddOk,`💰 odd @${d.odd}${d.oddOk?' ≥ ':' < piso '}${d.piso}`):`<span style="display:inline-block;margin-right:8px;font-size:11px;color:#9fb0c3">• odd @${d.odd}</span>`)+(d.rank?chk(d.rank<=2,`🏆 ${d.rank}º da rodada`):'')+(d.anc?chk(true,`⚓ âncora`):'')+(d.veto?chk(false,'gráfico contra'):'')+`<span style="display:inline-block;margin-right:8px;font-size:11px;color:${d.evAlto?'var(--red)':'#9fb0c3'}">${d.evAlto?'⚠️ EV +'+d.ev+'% — modelo discorda da casa (historicamente a casa vence)':'ref: EV '+(d.ev>0?'+':'')+d.ev+'%'}</span>`;
+      return `<div class="card" style="border-left:3px solid ${b[1]}"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px"><div><b style="color:${b[1]};font-size:12px">${b[0]}</b> <span class="note" style="font-size:11px">(${mot})</span></div><span class="note" style="font-size:11px">${nomeLiga[d.liga]||d.liga} · pagando ${d.pagando}% (normal ${d.base}%)</span></div><div style="margin-top:4px;font-size:14px"><b>${d.h?d.h+' · ':''}${d.jogo}</b></div><div style="margin-top:5px;line-height:1.7">${checklist}</div>${d.col?`<div style="font-size:11px;color:#9fb0c3">⏱️ coluna :${d.col.min} — 3h <b>${d.col.h3??'—'}%</b> · 6h ${d.col.h6??'—'}% · 12h ${d.col.h12??'—'}% · 24h ${d.col.h24??'—'}%</div>`:''}</div>`;
+    }).join('')+`<div class="note" style="font-size:11px;margin:2px 0 10px">Ordem do modelo: 🌡️ zona (quando) → 💰 piso de odd (se: O3.5 ≥3.60 · O2.5 ≥2.00) → 🏆⚓ desempate (qual). EV é referência — acima de +10, historicamente decepciona. Estatística, não certeza — unidade de 1% da banca.</div>`;
+  }catch(e){}
+}
+window.__mosaicoClick||(window.__mosaicoClick=1,document.addEventListener('click',function(e){
+  const t=e.target.closest('[data-team]');const o=e.target.closest('[data-odd]');
+  if(!t&&!o)return;
+  const tog=(k,v)=>{let a=[];try{a=JSON.parse(localStorage.getItem(k)||'[]')}catch(_){}
+    const i=a.indexOf(v);i>=0?a.splice(i,1):a.push(v);localStorage.setItem(k,JSON.stringify(a.slice(-12)));};
+  if(t)tog('amdMarkTimes',t.dataset.team);else tog('amdMarkOdds',String(o.dataset.odd));
+  try{if(window.__lastD&&typeof render==='function')render(window.__lastD);}catch(_){}
+}));
+async function tick(){
+  // aba em segundo plano DORME: zero trabalho (nao trava o Chrome com varias abas);
+  // ao voltar, o visibilitychange ja dispara tick() e ela acorda atualizada na hora
+  if(document.hidden)return;
+  const liga=ligaSel.value, mkt=mktSel.value, qtd=qtdSel.value;
+  try{
+    const r=await fetch('/api/liga/'+liga+'?mkt='+mkt+'&qtd='+qtd,{cache:'no-store'});
+    // BUGFIX: se o usuario trocou liga/mercado enquanto essa resposta viajava, descarta
+    // (respostas fora de ordem desenhavam o grafico de outra liga na tela)
+    if(liga!==ligaSel.value||mkt!==mktSel.value||qtd!==qtdSel.value)return;
+    if(r.status===401){mostraPortao(window.__cod?'Seu acesso expirou.':'Digite seu código de acesso');$('#liveinfo').textContent='🔒 acesso necessário';return;}
+    const d=await r.json();
+    if(d.erro){ $('#liveinfo').textContent='aguardando dados...'; return; }
+    // so re-renderiza se os dados mudaram (evita travar reconstruindo tudo a cada 10s)
+    const hash=JSON.stringify({u:d.lastUpdated,n:(d.proximos||[]).length,s:d.analise&&d.analise.serie,cr:d.curvaReal,m:mkt,l:liga,q:qtd});
+    if(hash!==_lastHash){ _lastHash=hash; window.__lastD=d;window.__frescor=(d&&d.fetchedAt)?new Date(d.fetchedAt).getTime():window.__frescor;
+    render(d);
+    carregaDicas(mkt);
+    carregaPadroes(liga,mkt);
+    carregaRobo(); }
+    const upd=d.lastUpdated?new Date(d.lastUpdated):null;
+    $('#liveinfo').textContent='ao vivo • atualizado '+(upd?upd.toLocaleTimeString('pt-BR'):'agora');
+  }catch(e){ $('#liveinfo').textContent='erro de conexao'; }
+}
+
+// toca uma sequencia de bips. notas = [[freq, inicio_s, duracao_s], ...]
+function bipSeq(notas){
+  try{
+    const Ctx=window.AudioContext||window.webkitAudioContext; if(!Ctx)return;
+    window.__actx=window.__actx||new Ctx();
+    const ctx=window.__actx;
+    if(ctx.state==='suspended'){ ctx.resume(); }
+    // se ainda nao foi destravado por um gesto do usuario, nao toca (politica do navegador)
+    if(ctx.state!=='running'){ window.__somPendente=true; return; }
+    notas.forEach(([freq,start,dur])=>{
+      const o=ctx.createOscillator(),g=ctx.createGain();
+      o.connect(g);g.connect(ctx.destination);o.type='sine';o.frequency.value=freq;
+      const t=ctx.currentTime+start;
+      g.gain.setValueAtTime(0.0001,t);
+      g.gain.exponentialRampToValueAtTime(0.35,t+0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+      o.start(t);o.stop(t+dur+0.02);
+    });
+  }catch(e){}
+}
+// som de ancora (2 bips, +1 se FORTE)
+function tocaAlertaAncora(forte){
+  const seq=[[880,0,0.16],[1175,0.2,0.16]];
+  if(forte)seq.push([1568,0.42,0.22]);
+  bipSeq(seq);
+}
+
+
+// ===== RADAR GLOBAL (todas as ligas x mercados): painel + notificacao + som =====
+
+// ===== PORTAO DE ACESSO (codigo do assinante) =====
+window.__cod=localStorage.getItem('cl_cod')||'';
+const _f=window.fetch.bind(window);
+window.fetch=(u,o={})=>{const s=String(u);if(s.includes('/api/')){o.headers=Object.assign({},o.headers,{'x-acesso':window.__cod});}return _f(u,o);};
+function mostraPortao(msg){
+  if(document.getElementById('portao'))return;
+  const d=document.createElement('div');d.id='portao';
+  d.style.cssText='position:fixed;inset:0;background:#0d1117;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px';
+  d.innerHTML='<h2 style="color:#3fb950;margin:0">🔒 Acesso</h2><div style="color:#8b98a8">'+(msg||'Digite seu código de acesso')+'</div><input id="codIn" style="padding:10px 14px;border-radius:8px;border:1px solid #2d3646;background:#1c2333;color:#e8edf4;font-size:16px;text-transform:uppercase;text-align:center" placeholder="CL-XXXXXX"><button id="codBt" style="padding:10px 18px;border-radius:8px;border:1px solid #3fb950;background:rgba(46,160,67,.15);color:#3fb950;font-weight:700;cursor:pointer;font-size:15px">Entrar</button><div id="codErr" style="color:#f85149;font-size:13px"></div>';
+  document.body.appendChild(d);
+  const tenta=async()=>{
+    const c=document.getElementById('codIn').value.trim().toUpperCase();
+    if(!c)return;
+    try{
+      const r=await _f('/api/acesso/validar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({codigo:c})});
+      if(r.ok){localStorage.setItem('cl_cod',c);window.__cod=c;d.remove();_lastHash='';tick();carregaRadar();}
+      else document.getElementById('codErr').textContent='Código inválido ou expirado.';
+    }catch(e){document.getElementById('codErr').textContent='Erro de conexão — tente de novo.';}
+  };
+  document.getElementById('codBt').onclick=tenta;
+  document.getElementById('codIn').addEventListener('keydown',e=>{if(e.key==='Enter')tenta();});
+}
+
+const nomeLiga={euro:'Euro',copa:'Copa',super:'Super',premier:'Premier'};
+const fitaTxt=f=>(f&&f.length)?' · últimos: '+f.map(v=>{const p=(typeof v==='object')?v.p:v;const m=(typeof v==='object'&&v.m)?`<span style=\"font-size:9px;opacity:.75\">${v.m}</span>`:'';return (p?'🟢':'🔴')+m;}).join(' '):'';
+function radarHtml(lista){
+  if(!lista||!lista.length)return '';
+  const chips=lista.map(a=>a.tipo==='pull'?`<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 10px;border-radius:8px;border:1px solid #bc8cff;background:rgba(188,140,255,.12);font-size:12px;font-weight:700;color:#bc8cff">💠 ${nomeLiga[a.liga]||a.liga} · ${nomeMkt[a.mkt]||a.mkt} — PULLBACK: topo ${a.topo!=null?a.topo+'%':'—'} → ${a.pagando!=null?a.pagando+'%':'—'}, voltou a subir${fitaTxt(a.fita)}</span>`:a.tipo==='minjan'?`<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 10px;border-radius:8px;border:1px solid #58c6ff;background:rgba(88,198,255,.12);font-size:12px;font-weight:700;color:#58c6ff">🧊 ${nomeLiga[a.liga]||a.liga} · ${nomeMkt[a.mkt]||a.mkt} — MÍNIMA DAS ${a.nivel}H${a.pagando!=null?`, pagando ${a.pagando}%`:''}${a.rel!=null?` (${a.rel}% do normal)`:''}${fitaTxt(a.fita)}</span>`:a.tipo==='ltb'?`<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 10px;border-radius:8px;border:1px solid #f0a020;background:rgba(240,160,32,.12);font-size:12px;font-weight:700;color:#f0a020">💥 ${nomeLiga[a.liga]||a.liga} · ${nomeMkt[a.mkt]||a.mkt} — QUEBROU A LTB, pagando ${a.pagando!=null?a.pagando+'%':'—'}${fitaTxt(a.fita)}</span>`:a.tipo==='minima'
+    ?`<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 10px;border-radius:8px;border:1px solid #58a6ff;background:rgba(88,166,255,.1);font-size:12px;font-weight:700;color:#58a6ff">📉 ${nomeLiga[a.liga]||a.liga} · ${nomeMkt[a.mkt]||a.mkt} — ${a.rel!=null?`<b>${a.rel}% do normal</b>, `:''}pagando ${a.pagando!=null?a.pagando+'%':'—'}${a.base!=null?` <span style="opacity:.7">(normal ${a.base}%)</span>`:''}${fitaTxt(a.fita)}</span>`
+    :`<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 10px;border-radius:8px;border:1px solid var(--greenb);background:rgba(46,160,67,.1);font-size:12px;font-weight:700;color:var(--greenb)">📈 ${nomeLiga[a.liga]||a.liga} · ${nomeMkt[a.mkt]||a.mkt} — subindo: ${a.deOnde!=null?a.deOnde+'% → ':''}${a.pagando!=null?a.pagando+'%':'—'}${a.base!=null?` <span style="opacity:.7">(normal ${a.base}%)</span>`:''}${fitaTxt(a.fita)}</span>`).join('');
+  const _fr=(()=>{if(!window.__frescor)return '';const s=Math.round((Date.now()-window.__frescor)/1000);const cor=s<60?'#3fb950':s<180?'#f0a020':'#f85149';const txt=s<60?`sonda: há ${s}s ✓`:s<180?`sonda: há ${Math.round(s/60)}min`:`⚠️ dados parados há ${Math.round(s/60)}min — verifique a aba da fonte`;return ` · <span style="color:${cor};font-weight:700">${txt}</span> <span style="opacity:.75">(a fonte publica com ~9min de cortina — igual para todos)</span>`;})();
+  return `<div class="card" style="margin:0 0 12px 0"><div class="note" style="font-size:11px;margin-bottom:4px">🛰️ Radar — mínimas e subidas em todas as ligas/mercados${_fr}</div>${chips}</div>`;
+}
+async function carregaRadar(){
+  try{const r=await fetch('/api/radar',{cache:'no-store'});const l=await r.json();
+    const el=document.getElementById('radar');if(el)el.innerHTML=radarHtml(l);}catch(e){}
+}
+function notificaRadar(a){
+  // So a MINIMA (zona de operacao) interrompe com notificacao+som; subida/LTB ficam
+  // como contexto no painel (o estudo mediu: pagam igual a regua — nao merecem interromper)
+  if(a.tipo!=='minima'&&!a.teste)return;
+  // DEDUPE ENTRE ABAS: se outra aba do AMD ja notificou esse alerta ha <90s, esta fica quieta
+  try{
+    const ch='fight|'+(a.liga||'')+'|'+(a.mkt||'')+'|'+(a.teste?'t':'');
+    const ag=Date.now(), ant=+localStorage.getItem(ch)||0;
+    if(ag-ant<90000)return;
+    localStorage.setItem(ch,ag);
+  }catch(e){}
+  const nomeL=nomeLiga[a.liga]||a.liga, nomeM=nomeMkt[a.mkt]||a.mkt;
+  const titulo=a.tipo==='pull'?`💠 PULLBACK — ${nomeL} · ${nomeM}${a.pagando!=null?` — retomou em ${a.pagando}%`:''}`:a.tipo==='minjan'?`🧊 MÍNIMA DAS ${a.nivel}H — ${nomeL} · ${nomeM}${a.pagando!=null?` — pagando ${a.pagando}%`:''}`:(a.tipo==='minima'&&a.rel!=null&&a.rel<=60)?`🚨 ZONA DE OPERAÇÃO — ${nomeL} · ${nomeM} (${a.rel}% do normal)`:a.tipo==='minima'?`📉 MÍNIMA — ${nomeL} · ${nomeM}${a.pagando!=null?` — pagando ${a.pagando}%`:''}`:a.tipo==='ltb'?`💥 QUEBROU A LTB — ${nomeL} · ${nomeM}${a.pagando!=null?` — pagando ${a.pagando}%`:''}`:`📈 SUBINDO — ${nomeL} · ${nomeM}${a.deOnde!=null&&a.pagando!=null?` — ${a.deOnde}% → ${a.pagando}%`:''}`;
+  const corpo=(a.tipo==='minima'?'Mercado segurando — pagando abaixo do normal.':a.tipo==='ltb'?'Curva rompeu a linha de baixa pra cima — ciclo virando.':'Pagamento voltando agora.')+fitaTxt(a.fita);
+  try{if(localStorage.getItem('pushOn')!=='1'&&'Notification' in window&&Notification.permission==='granted')new Notification(titulo,{body:corpo,tag:a.liga+'|'+a.mkt+'|'+a.tipo});}catch(e){} // com WEB PUSH ativo, o banner vem do sistema (evita duplicar)
+  bipSeq(a.tipo==='minima'?[[600,0,0.14],[800,0.18,0.14],[1000,0.36,0.3]]:[[660,0,0.15],[990,0.18,0.2]]); // FIGHT = 3 bips crescentes
+}
+async function initPush(){
+  try{
+    if(!('serviceWorker' in navigator)||!('PushManager' in window))return;
+    const reg=await navigator.serviceWorker.register('/sw.js');
+    const k=await (await fetch('/api/push/key',{cache:'no-store'})).json();
+    if(!k||!k.key)return;
+    const conv=b64=>{const p='='.repeat((4-b64.length%4)%4);const s=(b64+p).replace(/-/g,'+').replace(/_/g,'/');const raw=atob(s);const a=new Uint8Array(raw.length);for(let i=0;i<raw.length;i++)a[i]=raw.charCodeAt(i);return a;};
+    let sub=await reg.pushManager.getSubscription();
+    if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:conv(k.key)});
+    const r=await fetch('/api/push/sub',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(sub)});
+    if(r.ok)localStorage.setItem('pushOn','1');
+  }catch(e){}
+}
+if('Notification' in window&&Notification.permission==='granted')initPush();
+document.getElementById('notifBtn').addEventListener('click',()=>{
+  if(!('Notification' in window)){alert('Este navegador não suporta notificações.');return;}
+  Notification.requestPermission().then(p=>{
+    const b=document.getElementById('notifBtn');
+    if(p==='granted'){b.textContent='🖥️ Notificações ativas';b.style.borderColor='var(--greenb)';b.style.color='var(--greenb)';b.style.background='rgba(46,160,67,.2)';
+      initPush();
+      try{new Notification('🛰️ Radar ativo',{body:'Zona de operação chega direto no sistema — mesmo com o site fechado.'});}catch(e){}}
+    else if(p==='denied'){b.textContent='🖥️ Bloqueadas no navegador';}
+  });
+});
+
+// ===== RELATORIO POR DATA (so tela; diagnostico do regime diario) =====
+async function carregaRelatorio(liga){
+  const el=document.getElementById('relSec'); if(!el)return;
+  window.__relC=window.__relC||{};
+  const c=window.__relC[liga];
+  if(c&&Date.now()-c.ts<120000){el.innerHTML=c.html;return;}
+  el.innerHTML='<div class="sec">📅 Relatório por data</div><div class="card note">calculando…</div>';
+  try{
+    const r=await fetch('/api/relatorio/'+liga,{cache:'no-store'});
+    const b=await r.json();
+    if(b.erro){el.innerHTML='';return;}
+    const seta=v=>v==null?'':v>2?` <span style="color:var(--greenb)">📈 +${v}</span>`:v<-2?` <span style="color:var(--red)">📉 ${v}</span>`:' <span class="note">≈</span>';
+    const cards=(b.dias||[]).map((d,i)=>{
+      const dl=d.delta||{};
+      const per=d.periodos||{};
+      const perTxt=[['madrugada','madrugada'],['manha','manhã'],['tarde','tarde'],['noite','noite']].map(([k,lbl])=>per[k]?`${lbl} <b>${per[k].o35}%</b> (${per[k].n}j)`:null).filter(Boolean).join(' · ');
+      return `<div class="card" style="margin-bottom:8px"><div style="font-weight:700;color:var(--blue)">📆 ${d.data}${i===0?' <span class="note">(em andamento)</span>':''} — ${d.jogos} jogos · média ${d.mediaGols} gols</div>
+      <div style="font-size:12px;margin-top:4px">Over 2.5 <b>${d.o25}%</b>${seta(dl.o25)} · Over 3.5 <b>${d.o35}%</b>${seta(dl.o35)} · 5+ <b>${d.ge5}%</b>${seta(dl.ge5)} · Ambas <b>${d.ambas}%</b>${seta(dl.ambas)}</div>
+      ${perTxt?`<div class="note" style="font-size:11px;margin-top:4px">Over 3.5 por período: ${perTxt}</div>`:''}</div>`;
+    }).join('');
+    const html=`<div class="sec">📅 Relatório por data — regime diário do algoritmo <span class="note" style="font-size:11px">(📈/📉 = comparado ao dia anterior)</span></div>${cards}<div class="note" style="font-size:11px;margin-bottom:10px">⚠️ ${b.aviso}</div>`;
+    window.__relC[liga]={ts:Date.now(),html};
+    el.innerHTML=html;
+  }catch(e){el.innerHTML='';}
+}
+
+// ===== HISTORICO DE INDICACOES (backtest) — so tela, nao altera analises =====
+async function carregaBacktest(liga,mkt){
+  const el=document.getElementById('btSec'); if(!el)return;
+  const k=liga+'|'+mkt;
+  window.__btC=window.__btC||{};
+  const c=window.__btC[k];
+  if(c&&Date.now()-c.ts<60000){el.innerHTML=c.html;return;}
+  el.innerHTML='<div class="sec">📋 Histórico de indicações (backtest)</div><div class="card note">calculando histórico…</div>';
+  try{
+    const r=await fetch('/api/backtest/'+liga+'?mkt='+mkt+'&n=150',{cache:'no-store'});
+    const b=await r.json();
+    if(b.erro){el.innerHTML='';return;}
+    const ind=b.indicados||{};
+    const lst=(b.ultimos10indicados||[]).slice().reverse(); // mais recente primeiro
+    const linhas=lst.map(u=>`<div style="display:flex;justify-content:space-between;gap:8px;padding:6px ${u.alerta?'8px':'0'};border-bottom:1px solid var(--line);font-size:12px;flex-wrap:wrap;${u.alerta?'background:#2b2313;border:1px solid #e3b341;border-radius:8px;margin:4px 0;':''}"><span>${u.alerta?'⚠️ ':''}${u.resultado==='GREEN'?'🟢':'🔴'} ${u.horario?`<span style="color:var(--blue)">🕐 ${u.horario}</span> `:''}<b>${u.nome}</b> ${u.placar?`<span class="note">(${u.placar})</span>`:''}${u.alerta?' <b style="color:#e3b341;font-size:10px">maior EV+ que deu RED (EV alto não é garantia)</b>':''}</span><span class="note">@${u.odd} · score ${u.score} · EV ${u.ev>0?'+':''}${u.ev}%</span></div>`).join('');
+    const html=`<div class="sec">📋 Histórico de indicações (backtest) — ${nomeMkt[mkt]}</div>
+      <div class="card" style="margin-bottom:10px">
+        <div style="font-size:13px;margin-bottom:8px">Regra <b>score ≥30 + EV positivo</b>, reavaliada jogo a jogo com o histórico daquele momento (últimos ${b.jogosAvaliados} jogos · lista = ÚLTIMAS 6H do relógio do jogo): indicados <b>${ind.n||0}</b> · GREEN <b class="pos">${ind.green||0}</b> (<b>${ind.pct!=null?ind.pct+'%':'—'}</b>) · base da liga ${b.baseGeral}%</div>
+        ${linhas||'<div class="note">nenhuma indicação na janela avaliada</div>'}
+        <div class="note" style="margin-top:8px;font-size:11px">⚠️ reconstrução retroativa com os mesmos critérios; amostras pequenas oscilam — use como acompanhamento, não como garantia.</div>
+      </div>`;
+    window.__btC[k]={ts:Date.now(),html};
+    el.innerHTML=html;
+  }catch(e){el.innerHTML='';}
+}
+
+function render(d){
+  if(!d||!d.analise){ // sem dados (sonda parou/reiniciando): mostra aviso claro em vez de tela branca
+    const el=document.getElementById('conteudo');
+    if(el&&el.innerHTML.length<500){el.innerHTML=`<div style="padding:24px;text-align:center;background:#161b22;border:1px solid #30363d;border-radius:12px;margin-top:16px"><div style="font-size:15px;font-weight:700;color:#e3b341">⏳ Aguardando dados ao vivo</div><div class="note" style="font-size:12px;margin-top:8px">A conexão de dados está reiniciando. Isso costuma se resolver em segundos.<br>Se persistir, recarregue a aba de captura de dados.</div></div>`;}
+    return;
+  }
+  const a=d.analise, mkt=d.mercado;
+  const aquece=a.aquecendo;
+  const sig=a.sinal||{};
+  const term=a.termometro;
+  const maxv=Math.max(...term.map(t=>t.v||0),1);
+  const termHtml=term.map((t,i)=>{
+    const h=t.v==null?4:Math.max(4,Math.round(t.v/maxv*100));
+    const col=t.v==null?'var(--panel2)':(i===0&&a.aquecendo?'var(--greenb)':'var(--blue)');
+    return `<div class="b" style="height:${h}%;background:${col}"><span>${t.v==null?'—':t.v+'%'}</span><small>${t.n}</small></div>`;
+  }).join('');
+
+  // GRAFICO DA LINHA (SVG) com numeros nos pontos + histograma MACD + LTA/LTB
+  const serie=a.serie||[];
+  window.__ultimoPayload=d;
+  const chart = abasGraficoHtml() + (modoGrafico==='acum'
+    ? (acumChartHtml(d.acum) || '<div class="note">acumulado indisponível (poucos jogos desde as 00h)</div>')
+    : lineChart(serie, a.macdHist||[], a.trend, a.ehTotalGols, a.serieHoras||[])+leitorFaixaHtml());
+
+  // AVISO DE ROMPIMENTO (o sinal de ouro: reversao de ciclo)
+  let rompHtml='';
+  if(a.trend&&a.trend.rompimento){
+    const r=a.trend.rompimento;
+    const cor=r.cor==='verde'?'var(--greenb)':'var(--red)';
+    rompHtml=`<div style="padding:12px 16px;border-radius:10px;background:${r.cor==='verde'?'rgba(46,160,67,.12)':'rgba(218,54,51,.12)'};border:1.5px solid ${cor};margin-bottom:10px;font-size:14px"><b style="color:${cor}">⚡ ${r.msg}</b></div>`;
+  }
+  // resumo das linhas de tendencia (sempre visivel)
+  let tendHtml='';
+  if(a.trend){
+    const t=a.trend;
+    const ltaTxt=t.lta?`<span style="color:var(--greenb)">LTA ${t.lta.inclinacao>0?'↗':'→'} (suporte)</span>`:'<span class="note">LTA: sem fundos ascendentes</span>';
+    const ltbTxt=t.ltb?`<span style="color:var(--red)">LTB ${t.ltb.inclinacao<0?'↘':'→'} (resistência)</span>`:'<span class="note">LTB: sem topos descendentes</span>';
+    tendHtml=`<div style="font-size:12px;color:var(--muted);margin-top:6px">Tendência: <b style="color:#e8edf4">${t.tendencia}</b> &nbsp;•&nbsp; ${ltaTxt} &nbsp;•&nbsp; ${ltbTxt}</div>`;
+  }
+
+  // PAINEL DE ALERTAS (no topo, em destaque)
+  const alertaHtml=(a.alertas||[]).map(al=>{
+    const cor=al.cls==='ok'?'var(--greenb)':al.cls==='bad'?'var(--red)':'var(--amber)';
+    return `<div style="padding:8px 12px;border-radius:8px;background:rgba(255,255,255,.03);border-left:3px solid ${cor};margin-bottom:6px;font-size:13px"><b style="color:${cor}">${al.tipo}</b> — ${al.txt}</div>`;
+  }).join('');
+
+  // cor do sinal
+  const sinalCor = /COMPRA|SUBINDO/.test(sig.sinal)?'var(--greenb)' : /TOPO|RISCO|RECUO/.test(sig.sinal)?'var(--red)' : /PROTEGER|FUNDO|MINIMA/.test(sig.sinal)?'var(--amber)':'var(--muted)';
+
+  // confluencia 3h/6h/12h
+  const conf=a.confluencia||{janelas:[]};
+  const confHtml=(conf.janelas||[]).map(j=>{
+    const cor=j.dir==='Subindo'?'var(--greenb)':j.dir==='Descendo'?'var(--red)':'var(--muted)';
+    return `<div class="card" style="flex:1;min-width:120px;text-align:center"><h3>${j.nome}</h3><div style="font-size:16px;font-weight:700;color:${cor}">${j.dir}</div><div class="note">${j.pct!=null?j.pct+'% • incl '+j.slope:'sem dados'}</div></div>`;
+  }).join('');
+
+  // PROXIMOS JOGOS (cards detalhados - cerebro real da extensao)
+  const statusCor=s=>/ENTRADA/.test(s)?'var(--greenb)':/OBSERVAR/.test(s)?'#7fd17f':/PASSAR|EVITAR|TOPO/.test(s)?'var(--red)':'var(--amber)';
+  const scoreCor=sc=>sc>=70?'var(--greenb)':sc>=55?'var(--amber)':'var(--red)';
+  const prox=(d.proximos||[]).map(p=>{
+    const nomePos=p=>{if(!p.nome||!p.nome.includes(' x ')||(!p.posCasa&&!p.posFora))return p.nome;const [c,f]=p.nome.split(' x ');const tag=n=>n?`<span style="color:${n<=3?'var(--greenb)':n>=(p.posTotal||99)-2?'var(--red)':'#8b98a8'};font-size:12px;font-weight:700"> (${n}º)</span>`:'';return `${c}${tag(p.posCasa)} x ${f}${tag(p.posFora)}`;};
+  if(p.erro)return `<div class="card" style="margin-bottom:10px"><b>${p.nome||'?'}</b> <span class="note">— ${p.erro}</span></div>`;
+    if(p.semEV)return `<div class="card" style="margin-bottom:10px;border-left:4px solid #58a6ff">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <b style="font-size:15px">${p.horario?`<span style="color:var(--blue);margin-right:8px">🕐 ${p.horario}</span>`:''}${nomePos(p)} <span style="color:var(--muted);font-size:11px;font-weight:400">[${d.liga.toUpperCase()}]</span>${p.ancora?`<span style="margin-left:8px;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;background:${p.ancora.nivel==='forte'?'#f0a020':'#1f6feb'};color:#0d1117">⚓ ÂNCORA${p.ancora.nivel==='forte'?' FORTE':''}</span>`:''}</b>
+        <span class="note" style="font-size:11px">Total Gols — use o gráfico</span>
+      </div>${p.ancora?`<div style="margin-top:8px;font-size:12px;color:${p.ancora.nivel==='forte'?'#f0a020':'#58a6ff'};font-weight:700">⚓ ${p.ancora.casa.hit?`🏠 ${p.ancora.casa.time} ${p.ancora.casa.o35}% O3.5/${p.ancora.casa.p5}% 5+`:''} ${p.ancora.fora.hit?`✈️ ${p.ancora.fora.time} ${p.ancora.fora.o35}% O3.5/${p.ancora.fora.p5}% 5+`:''}</div>`:''}</div>`;
+    return `<div class="card" style="margin-bottom:10px;border-left:4px solid ${scoreCor(p.score||0)}">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <b style="font-size:15px">${p.rankJogo?`<span style="margin-right:8px;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:800;background:${p.rankJogo===1?'#f0a020':'#26314a'};color:${p.rankJogo===1?'#0d1117':'#9fb0c3'}">🏆 ${p.rankJogo}º/${p.rankTotal}</span>`:''}${p.horario?`<span style="color:var(--blue);margin-right:8px">🕐 ${p.horario}</span>`:''}${nomePos(p)} <span style="color:var(--muted);font-size:11px;font-weight:400">[${d.liga.toUpperCase()}]</span>${p.ancora?`<span style="margin-left:8px;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;background:${p.ancora.nivel==='forte'?'#f0a020':'#1f6feb'};color:#0d1117">⚓ ÂNCORA${p.ancora.nivel==='forte'?' FORTE':''}</span>`:''}</b>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="text-align:center"><div style="font-size:26px;font-weight:800;color:${scoreCor(p.score||0)};line-height:1">${p.score??'—'}</div><div class="note" style="font-size:9px">SCORE</div></div>
+          <div style="text-align:right"><div>${p.odd?'@'+(typeof p.odd==='number'?p.odd.toFixed(2):p.odd):'—'}</div><div style="color:${statusCor(p.status)};font-weight:700;font-size:13px">${p.status}</div></div>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:var(--muted)">Motivo: <b style="color:${/FORTE/.test(p.motivo)?'var(--greenb)':/CONTRA|FRACA|FRIA|SEM/.test(p.motivo)?'var(--red)':'var(--txt)'}">${p.motivo}</b></div>
+      ${p.rankMercados&&p.rankMercados.length?`<div style="margin-top:6px;font-size:12px;color:var(--muted)">📊 Rank mercados (score+EV): ${p.rankMercados.map((r,i)=>`<span style="color:${i===0?'var(--greenb)':'#9fb0c3'};${i===0?'font-weight:700':''}">${i+1}º ${nomeMkt[r.mkt]} <b>${r.combo}</b></span>`).join(' › ')}</div>`:''}
+      ${p.placarProvavel&&(p.placarProvavel.over||p.placarProvavel.under)?`<div style="margin-top:6px;font-size:12px">🎯 ${p.placarProvavel.over?`No Over: <b style="color:var(--greenb)">${p.placarProvavel.over.placar}</b> (${p.placarProvavel.over.pct}%)`:''}${p.placarProvavel.under?` · no Under: <b style="color:#9fb0c3">${p.placarProvavel.under.placar}</b> (${p.placarProvavel.under.pct}%)`:''}${p.placarProvavel.puxa?` · <b style="color:var(--amber)">esse confronto puxa ${p.placarProvavel.puxa.placar}</b> (${p.placarProvavel.puxa.x}× o normal)`:''} <span class="note">placares anteriores + confronto</span></div>`:''}
+      ${p.coluna?`<div style="margin-top:4px;font-size:12px;color:#9fb0c3">⏱️ coluna :${p.coluna.min} pagou — 3h <b style="color:${p.coluna.h3>=50?'var(--greenb)':'#e6edf3'}">${p.coluna.h3??'—'}%</b> · 6h ${p.coluna.h6??'—'}% · 12h ${p.coluna.h12??'—'}% · 24h ${p.coluna.h24??'—'}%</div>`:''}
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:10px;font-size:12px">
+        <div><span class="note">Prob calibrada</span><br><b>${p.prob!=null?p.prob+'%':'—'}</b></div>
+        <div><span class="note">Odd justa</span><br><b>${p.justa??'—'}</b></div>
+        <div><span class="note">EV real</span><br><b class="${p.ev>0?'pos':'neg'}">${p.ev!=null?(p.ev>0?'+':'')+p.ev+'%':'—'}</b></div>
+        <div><span class="note">EV gale</span><br><b>${p.evGale!=null?(p.evGale>0?'+':'')+p.evGale+'%':'—'}</b></div>
+        <div><span class="note">Edge</span><br><b>${p.edge!=null?(p.edge>0?'+':'')+p.edge+'%':'—'}</b></div>
+        <div><span class="note">Base dessa odd</span><br><b>${p.oddBase}${p.coldOdd?' ❄️FRIA':''}</b></div>
+        <div><span class="note">Base dos times</span><br><b>${p.teamBase}</b></div>
+        <div style="grid-column:1/-1"><span class="note">Ciclo</span><br><b>${p.ciclo}</b></div>
+      </div>
+      <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:12px;line-height:1.7;color:#e8edf4">
+        ${p.ancora?`<div style="color:${p.ancora.nivel==='forte'?'#f0a020':'#58a6ff'};font-weight:700">⚓ Âncora ${p.ancora.nivel==='forte'?'FORTE (2 lados)':'(1 lado)'} — gatilho 2-1/3-0/2-0HT + big placar (janela: jogo anterior, ele e o seguinte):${p.ancora.casa.hit?`<br>🏠 ${p.ancora.casa.time} casa (${p.ancora.casa.jogos}j): ${p.ancora.casa.taxa!=null?p.ancora.casa.taxa+'% gatilho · ':''}${p.ancora.casa.o35!=null?p.ancora.casa.o35+'% Over 3.5 · '+p.ancora.casa.p5+'% 5+':''}`:''}${p.ancora.fora.hit?`<br>✈️ ${p.ancora.fora.time} fora (${p.ancora.fora.jogos}j): ${p.ancora.fora.taxa!=null?p.ancora.fora.taxa+'% gatilho · ':''}${p.ancora.fora.o35!=null?p.ancora.fora.o35+'% Over 3.5 · '+p.ancora.fora.p5+'% 5+':''}`:''}</div>`:''}
+        ${p.cicloTxt?`<div>${p.cicloTxt}</div>`:''}
+        ${p.placarCorreto?`<div>${p.placarCorreto}</div>`:''}
+        ${p.oddFixa&&!/sem base/.test(p.oddFixa)?`<div>${p.oddFixa}</div>`:''}
+        ${p.horarioStat&&!/sem base/.test(p.horarioStat)?`<div>${p.horarioStat}</div>`:''}
+        ${p.ligaStat?`<div>${p.ligaStat}</div>`:''}
+        ${p.teamGeral?`<div><b>Times geral:</b> ${p.teamGeral}</div>`:''}
+        ${p.oneXTwo&&!/sem odds/.test(p.oneXTwo)?`<div>${p.oneXTwo}</div>`:''}
+        ${p.teamDetail?`<div>${p.teamDetail}</div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+
+  // ===== RANK DE TIMES por janela de tempo (3h/6h/12h/24h) =====
+  const janelaNomes={h3:'3h',h6:'6h',h12:'12h',h24:'24h'};
+  const rtMkts=d.rankTimes?Object.keys(d.rankTimes):[];
+  let rankTimesHtml='';
+  if(rtMkts.length){
+    rankTimesHtml=`<div class="sec">🏅 Rank de times — quem mais paga por janela de tempo</div>`+
+    rtMkts.map(m=>`<div class="card" style="margin-bottom:10px">
+      <div style="font-weight:700;color:var(--blue);margin-bottom:6px">${nomeMkt[m]||m}</div>
+      ${Object.entries(janelaNomes).map(([k,lbl])=>{
+        const lista=(d.rankTimes[m][k]||[]);
+        const top=lista.map((t,i)=>`<span style="color:${i===0?'var(--greenb)':'#9fb0c3'};${i===0?'font-weight:700':''}">${i+1}º ${t.time} ${t.pct}% <span class="note">(${t.jogos}j)</span></span>`).join(' · ');
+        return `<div style="font-size:12px;margin:4px 0"><b style="color:var(--amber);display:inline-block;width:32px">${lbl}</b> ${top||'<span class="note">sem dados</span>'}</div>`;
+      }).join('')}
+    </div>`).join('');
+  }
+  const jogosAncora=(d.proximos||[]).filter(p=>p.ancora);
+  let ancoraAlertHtml='';
+  if(jogosAncora.length){
+    const itens=jogosAncora.map(p=>{
+      const lados=[];
+      if(p.ancora.casa.hit)lados.push(`🏠 ${p.ancora.casa.time} casa: ${p.ancora.casa.taxa!=null?p.ancora.casa.taxa+'% gatilho':''}${p.ancora.casa.o35!=null?` · ${p.ancora.casa.o35}% O3.5 · ${p.ancora.casa.p5}% 5+`:''}`);
+      if(p.ancora.fora.hit)lados.push(`✈️ ${p.ancora.fora.time} fora: ${p.ancora.fora.taxa!=null?p.ancora.fora.taxa+'% gatilho':''}${p.ancora.fora.o35!=null?` · ${p.ancora.fora.o35}% O3.5 · ${p.ancora.fora.p5}% 5+`:''}`);
+      return `<div style="margin:4px 0">${p.ancora.nivel==='forte'?'🔥':'⚓'} <b>${p.nome}</b> ${p.horario?`<span style="color:var(--blue)">${p.horario}</span>`:''} — ${lados.join(' • ')}${p.ancora.nivel==='forte'?' <b style="color:#f0a020">FORTE</b>':''}</div>`;
+    }).join('');
+    ancoraAlertHtml=`<div style="padding:12px 16px;border-radius:10px;background:rgba(240,160,32,.12);border:2px solid #f0a020;margin-bottom:10px"><div style="font-weight:800;color:#f0a020;font-size:15px;margin-bottom:4px">⚓ ÂNCORA — times chamando big placar (3.5 / 5+)</div><div style="font-size:13px;color:#e8edf4">${itens}</div></div>`;
+    // som: toca quando aparece ancora NOVA (nao repete a cada atualizacao)
+    window.__ancorasVistas=window.__ancorasVistas||new Set();
+    const novas=jogosAncora.filter(p=>!window.__ancorasVistas.has(d.liga+'|'+p.nome+'|'+p.horario));
+    if(novas.length){
+      novas.forEach(p=>window.__ancorasVistas.add(d.liga+'|'+p.nome+'|'+p.horario));
+      tocaAlertaAncora(novas.some(p=>p.ancora.nivel==='forte'));
+    }
+  }
+
+  // ===== ALERTA: subida de pagamento + minima da liga (lidos do grafico) =====
+  const chaveLM=d.liga+'|'+mkt;
+  window.__estadoLM=window.__estadoLM||{};
+  const prevLM=window.__estadoLM[chaveLM]||{};
+  const noFundo=sig.zona==='Fundo'||(sig.zonaPct!=null&&sig.zonaPct<=25);
+  const subindoPg=/SUBINDO|COMPRA/.test(sig.sinal||'')||sig.direcao==='Subindo';
+  let minimaHtml='',subidaHtml='';
+  if(noFundo){
+    minimaHtml=`<div style="padding:12px 16px;border-radius:10px;background:rgba(88,166,255,.12);border:2px solid #58a6ff;margin-bottom:10px"><div style="font-weight:800;color:#58a6ff;font-size:15px">📉 MÍNIMA DA LIGA — ${nomeMkt[mkt]}</div><div style="font-size:13px;color:#e8edf4;margin-top:3px">Curva no fundo (zona ${sig.zonaPct}%). Mercado descarregado — zona de virada pra Over. ${subindoPg?'<b style="color:var(--greenb)">já começando a subir!</b>':'aguardando a virada.'}</div></div>`;
+    if(!prevLM.fundo)bipSeq([[523,0,0.16],[392,0.2,0.24]]); // desce = fundo
+  }
+  if(subindoPg){
+    subidaHtml=`<div style="padding:12px 16px;border-radius:10px;background:rgba(46,160,67,.12);border:2px solid var(--greenb);margin-bottom:10px"><div style="font-weight:800;color:var(--greenb);font-size:15px">📈 SUBIU O PAGAMENTO — ${nomeMkt[mkt]}</div><div style="font-size:13px;color:#e8edf4;margin-top:3px">Mercado esquentando (MACD ${sig.macd}, ${sig.direcao}). Começou a pagar — ${sig.sinal}.</div></div>`;
+    if(!prevLM.sobe)bipSeq([[660,0,0.15],[990,0.18,0.2]]); // sobe = pagamento subindo
+  }
+  window.__estadoLM[chaveLM]={fundo:noFundo,sobe:subindoPg};
+  const ls=a.ligaStatus||{};
+  const lsCor=ls.cls==='ok'?'var(--greenb)':ls.cls==='bad'?'var(--red)':'var(--amber)';
+
+  const rankHtml=a.ranking.map(r=>{
+    const good=r.ev>0;
+    return `<tr class="${good?'ok':''}"><td>@${r.odd.toFixed(2)}</td><td>${r.hit}/${r.tot}</td><td>${r.p}%</td><td>${r.justa??'—'}</td><td class="${good?'pos':'neg'}">${r.ev>0?'+':''}${r.ev}%</td><td><span class="tag ${good?'ok':'no'}">${good?'vale':'cara'}</span></td></tr>`;
+  }).join('');
+
+  const sigHuman=s=>s.split('').map(c=>c==='1'?'✓':'·').join(' ');
+  const sigAtual=a.atual||{sig:'',n:0,p:0};
+  const sigHtml=a.signatures.map(s=>`<tr><td>${sigHuman(s.sig)}</td><td>${s.n}</td><td>${s.paid}</td><td class="${s.p>=a.base?'pos':''}">${s.p}%</td></tr>`).join('');
+  const _mx=d.maximas;
+  const _tdS='padding:4px 8px;border-bottom:1px solid #1c2430;text-align:center';
+  const maximasHtml=_mx?`<div style="margin-top:14px"><b style="font-size:13px">📏 Máxima de reds seguidos <span class="note">(maior pulo sem pagar por janela · dimensiona o gale)</span></b><table style="width:100%;margin-top:6px;font-size:12px;border-collapse:collapse"><tr style="color:#8b98a8"><td style="${_tdS};text-align:left">mercado</td><td style="${_tdS}">3h</td><td style="${_tdS}">6h</td><td style="${_tdS}">12h</td><td style="${_tdS}">24h</td><td style="${_tdS}">seca atual</td></tr>${['o25','o35','ambas','ge5'].map(m=>{const r=_mx[m];if(!r)return '';const on=m===mkt;return `<tr style="${on?'color:#58a6ff;font-weight:700':'color:#c7d0da'}"><td style="${_tdS};text-align:left">${nomeMkt[m]}${on?' ◀':''}</td><td style="${_tdS}">${r.h3}</td><td style="${_tdS}">${r.h6}</td><td style="${_tdS}">${r.h12}</td><td style="${_tdS}">${r.h24}</td><td style="${_tdS};font-weight:800;color:${r.agora>=r.h24?'var(--amber)':'inherit'}">${r.agora}</td></tr>`;}).join('')}</table></div><div id="padroesBox"></div>`:`<div id="padroesBox"></div>`;
+  const _mkTimes=(()=>{try{return JSON.parse(localStorage.getItem('amdMarkTimes')||'[]')}catch(e){return[]}})();
+  const _mkOdds=(()=>{try{return JSON.parse(localStorage.getItem('amdMarkOdds')||'[]')}catch(e){return[]}})();
+  const _pg=(total,placar)=>{const _p=(placar||'').split('-').map(Number);return mkt==='o25'?total>=3:mkt==='o35'?total>=4:mkt==='ge5'?total>=5:mkt==='ambas'?(_p[0]>0&&_p[1]>0):mkt==='u05'?total<=0:mkt==='u15'?total<=1:mkt==='u25'?total<=2:null;};
+  const _tm=nome=>`<span data-team="${nome}" style="cursor:pointer;${_mkTimes.includes(nome)?'color:#e3b341;font-weight:800':''}">${nome}</span>`;
+  const _od=v=>v==null?'—':`<b data-odd="${v}" style="cursor:pointer;${_mkOdds.includes(String(v))?'color:#bc8cff;text-decoration:underline':''}">${v}</b>`;
+  const _oddsLinha=o=>`<div style="color:#8b949e;font-size:9px;margin-top:2px">A ${_od(o.ambs)} · 2.5 ${_od(o.o25)} · 3.5 ${_od(o.o35)}</div>`;
+  const _marcado=(c,f)=>_mkTimes.includes(c)||_mkTimes.includes(f);
+  let ultimos='';
+  {
+    const M=d.mosaico||{passados:[],futuros:[]};
+    const horaDe=h=>(h||'').split(':')[0], minDe=h=>(h||'').split(':')[1];
+    const chipOdd=(rot,v,dest)=>v==null?'':`<span data-odd="${v}" style="background:${_mkOdds.includes(String(v))?'#2a1f3d':'#21262d'};border:${_mkOdds.includes(String(v))?'2px solid #bc8cff':'1px solid #30363d'};border-radius:6px;padding:3px 8px;font-size:12px;cursor:pointer;${_mkOdds.includes(String(v))?'color:#bc8cff;':''}${dest?'box-shadow:0 0 0 1px #388bfd;':''}">${rot} <b style="font-size:13px">${v}</b></span>`;
+    // ===== PAINEL DOS FUTUROS (topo, destacado) =====
+    const futs=(M.futuros||[]).slice(0,8);
+    const futHtml=futs.length?`<div style="background:#0a1d33;border:2px solid #1f6feb;border-radius:8px;padding:8px;margin-bottom:10px"><div style="font-size:12px;font-weight:800;color:#58a6ff;margin-bottom:6px">⚽ PRÓXIMA RODADA (${futs.length} jogos)</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px">${futs.map(g=>`<div style="background:#0d2137;border:1px solid #388bfd;border-radius:8px;padding:8px;${_marcado(g.casa,g.fora)?'outline:3px solid #e3b341;':''}"><div style="font-size:13px;font-weight:700">${g.h?`🕐 ${g.h} · `:''}${_tm(g.casa)} x ${_tm(g.fora)}</div><div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">${chipOdd('A',(g.odds||{}).ambs)}${chipOdd('2.5',(g.odds||{}).o25)}${chipOdd('3.5',(g.odds||{}).o35)}</div></div>`).join('')}</div></div>`:'';
+    // ===== HISTORICO TRANSPOSTO: horas nas COLUNAS (cabe na tela), minutos nas LINHAS =====
+    const mins=[...new Set(M.passados.map(g=>minDe(g.h)).filter(Boolean))].sort((a,b)=>+a-+b);
+    const horas=[...new Set(M.passados.map(g=>horaDe(g.h)).filter(Boolean))];
+    const horasShow=horas.slice(-4);
+    const idx={};M.passados.forEach(g=>{const hh=horaDe(g.h),mm=minDe(g.h);if(hh&&mm){(idx[hh]=idx[hh]||{})[mm]=g;}});
+    const celVazia=`<div style="background:#10151d;border-radius:6px;min-height:40px"></div>`;
+    const oddsMini=o=>{const _o=(rot,v)=>v==null?'':`${rot} <b data-odd="${v}" style="cursor:pointer;${_mkOdds.includes(String(v))?'color:#bc8cff;text-decoration:underline':''}">${v}</b>`;const ps=[_o('A',o.ambs),_o('2.5',o.o25),_o('3.5',o.o35)].filter(Boolean);return ps.length?`<div style="font-size:10px;color:#9fb0c3;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${ps.join(' · ')}</div>`:'';};
+    const cel=g=>{
+      if(!g)return celVazia;
+      const pg=_pg(g.total,g.placar);
+      return `<div style="background:#161b22;border-left:4px solid ${pg===true?'#3fb950':pg===false?'#f85149':'#30363d'};border-radius:6px;padding:4px 6px;min-width:0;${_marcado(g.casa,g.fora)?'outline:2px solid #e3b341;':''}"><div style="font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${_tm(g.casa)} <b style="font-size:12px;color:${pg===true?'#3fb950':'#e6edf3'}">${g.placar}</b> ${_tm(g.fora)}</div>${oddsMini(g.odds||{})}</div>`;
+    };
+    const linhas=mins.map(mm=>{
+      let g2=0,t2=0;
+      const cels=horasShow.map(hh=>{
+        const g=(idx[hh]||{})[mm];
+        if(g){const pg=_pg(g.total,g.placar);if(pg!=null){t2++;if(pg)g2++;}}
+        return cel(g);
+      }).join('');
+      const pctL=t2?Math.round(g2/t2*100):null;
+      return `<div style="color:#8b949e;font-weight:800;text-align:center;align-self:center;font-size:11px">:${mm}</div>${cels}<div style="background:${pctL>=50?'#0f2417':pctL===0?'#2b1113':'#161b22'};color:${pctL>=50?'#3fb950':pctL===0?'#f85149':'#c9d1d9'};font-weight:800;border-radius:6px;text-align:center;align-self:center;padding:6px 0;font-size:11px">${pctL==null?'—':pctL+'%'}</div>`;
+    }).join('');
+    const pctHora=horasShow.map(hh=>{
+      const js=Object.values(idx[hh]||{});let g3=0,t3=0;
+      js.forEach(g=>{const pg=_pg(g.total,g.placar);if(pg!=null){t3++;if(pg)g3++;}});
+      const p=t3?Math.round(g3/t3*100):null;
+      return `<div style="background:${p>=34?'#0f2417':p===0?'#2b1113':'#161b22'};color:${p>=34?'#3fb950':p===0?'#f85149':'#c9d1d9'};font-weight:800;border-radius:6px;text-align:center;padding:6px 0;font-size:12px">${p==null?'—':p+'%'}</div>`;
+    }).join('');
+    const cab=`<div style="color:#8b949e;text-align:center;font-size:10px;align-self:center">col</div>${horasShow.map(h=>`<div style="color:#58a6ff;text-align:center;font-size:12px;font-weight:800">${h}h</div>`).join('')}<div style="color:#8b949e;text-align:center;font-size:10px;align-self:center">%col</div>`;
+    const rodape=`<div style="color:#8b949e;text-align:center;font-size:10px;align-self:center">%hora</div>${pctHora}<div></div>`;
+    ultimos=`<details open style="margin:0"><summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:4px;user-select:none"><b style="font-size:13px">🧩 Mosaico — próxima rodada + últimas horas <span class="note">(${nomeMkt[mkt]||mkt})</span> <span style="font-size:10px;color:#8b949e">▾ clique para recolher</span></b><span class="note" style="font-size:10px">clique num <b style="color:#e3b341">time</b> ou numa <b style="color:#bc8cff">odd</b> para marcar</span></summary>${futHtml}</details>`;
+  }
+
+  const _cur=(a.pagandoTempoReal!=null)?a.pagandoTempoReal:((a.serie&&a.serie.length)?a.serie[a.serie.length-1]:null);
+  const _rel=(!a.ehTotalGols&&_cur!=null&&a.base)?Math.round(_cur/a.base*100):null;
+  const tempHtml=_rel==null?'':(_rel<60
+    ?`<div style="padding:10px 16px;border-radius:10px;background:rgba(88,166,255,.15);border:2px solid #58a6ff;margin-bottom:10px;font-weight:800;color:#58a6ff;font-size:15px">🌡️ ${_rel}% do normal — 🔵 ZONA DE OPERAÇÃO (seca fria: pagando ${_cur}%, normal ${a.base}%)</div>`
+    :_rel>115
+    ?`<div style="padding:8px 14px;border-radius:10px;background:rgba(248,81,73,.10);border:1px solid var(--red);margin-bottom:10px;font-weight:700;color:var(--red);font-size:13px">🌡️ ${_rel}% do normal — 🔴 QUENTE, NÃO OPERAR (pagando ${_cur}%, normal ${a.base}%)</div>`
+    :`<div style="padding:8px 14px;border-radius:10px;background:#161c28;border:1px solid var(--line);margin-bottom:10px;color:#8b98a8;font-size:13px">🌡️ ${_rel}% do normal — neutro (pagando ${_cur}%, normal ${a.base}%) · zona de operação: abaixo de 60% · <span style="opacity:.75">selo em tempo real; o gráfico atualiza com 2 jogos de atraso</span></div>`);
+  $('#conteudo').innerHTML=`
+    ${tempHtml}
+    ${subidaHtml}
+    ${minimaHtml}
+    ${ancoraAlertHtml}
+    ${alertaHtml?`<div class="sec">⚠️ Alertas</div><div class="card">${alertaHtml}</div>`:''}
+
+    <div class="sec">Gráfico — ${nomeMkt[mkt]} • Qtd. Jogos: ${d.qtd||a.qtdJogos||20}${a.ehTotalGols?` <span style="color:#58a6ff;font-size:12px">● média de gols ×10 (ex: 28 = 2.8 gols) — média atual ${a.mediaGols} gols</span>`:''} ${d.curvaReal?'<span style="color:var(--greenb);font-size:12px">● curva real</span>':'<span style="color:var(--amber);font-size:12px">○ aproximada (aguardando captura)</span>'}</div>
+    ${rompHtml}
+    <div class="card">${chart}
+    ${tendHtml}
+      <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:13px">
+        <div><span class="note">Sinal</span><br><b style="color:${sinalCor};font-size:16px">${sig.sinal||'—'}</b></div>
+        <div><span class="note">Zona</span><br><b>${sig.zona||'—'} ${sig.zonaPct!=null?sig.zonaPct+'%':''}</b></div>
+        <div><span class="note">Direção</span><br><b>${sig.direcao||'—'}</b></div>
+        <div><span class="note">MACD</span><br><b class="${sig.macd>0?'pos':'neg'}">${sig.macd??'—'}</b></div>
+        <div><span class="note">MM1 / MM2</span><br><b>${sig.mm1??'—'} / ${sig.mm2??'—'}</b></div>
+        <div><span class="note">Pagamento</span><br><b>${sig.pagamento||'—'}</b></div>
+      </div>
+    </div>
+
+    <div class="sec">Confluência por tempo — 3h / 6h / 12h</div>
+    <div class="card">
+      <div style="display:flex;gap:12px;flex-wrap:wrap">${confHtml}</div>
+      <div class="hint" style="margin-top:10px">Quando as três janelas apontam pro mesmo lado, o sinal é forte. <b style="color:${a.confluencia&&/forte/.test(a.confluencia.confluencia)?'var(--greenb)':'var(--muted)'}">${a.confluencia?a.confluencia.confluencia:'—'}</b></div>
+    </div>
+
+    <div id="roboBox"></div>
+    <div id="dicasBox"></div>
+    <div class="sec">Próximos jogos — ${nomeMkt[mkt]} <span style="color:${lsCor};font-size:13px">• Liga: ${ls.label||'—'}</span></div>
+    ${prox||'<div class="card">aguardando próximos jogos...</div>'}
+
+    ${rankTimesHtml}
+
+    ${!a.ehTotalGols?'<div id="btSec"></div>':''}
+
+    <div id="relSec"></div>
+
+    ${!a.ehTotalGols ? `
+    <div class="grid" style="margin-top:14px">
+      <div class="card"><h3>Jogos no histórico</h3><div class="big">${a.total}</div><div class="note">${d.liga.toUpperCase()}</div></div>
+      <div class="card"><h3>% que paga ${nomeMkt[mkt]}</h3><div class="big">${a.base}%</div><div class="note">taxa real</div></div>
+      <div class="card"><h3>Odd justa</h3><div class="big">${a.justa??'—'}</div><div class="note">só vale acima</div></div>
+      <div class="card"><h3>Formação</h3><div class="big ${a.aquecendo?'pos':'neu'}">${a.aquecendo?'Esquentando':'Estável'}</div><div class="note">120 vs longas</div></div>
+    </div>
+
+    <div class="sec">Termômetro 120 / 240 / 480 / 960</div>
+    <div class="card"><div class="therm">${termHtml}</div>
+      <div class="hint">120 verde e acima das longas = ${nomeMkt[mkt]} esquentando.</div></div>
+
+    <div class="sec">Últimos resultados</div>
+    <div class="card"><div style="font-size:13px">${ultimos}${maximasHtml}</div></div>
+
+    <div class="sec">Ranking de odds — onde a base paga mais que a odd embute</div>
+    <table><thead><tr><th>Odd</th><th>Acertos</th><th>% base</th><th>Odd justa</th><th>EV</th><th>Veredito</th></tr></thead><tbody>${rankHtml}</tbody></table>
+
+    <div class="sec">Assinatura atual (últimos 5): ${sigHuman(sigAtual.sig)}</div>
+    <div class="card"><div style="font-size:13px">Apareceu <b>${sigAtual.n}</b> vezes e pagou depois <b class="${sigAtual.p>=a.base?'pos':'neg'}">${sigAtual.p}%</b> ${sigAtual.p>=a.base?'(acima da média)':'(abaixo)'}.</div></div>
+
+    <div class="sec">Top assinaturas que mais pagam depois</div>
+    <table><thead><tr><th>Padrão (últimos 5)</th><th>Vezes</th><th>Pagou</th><th>%</th></tr></thead><tbody>${sigHtml}</tbody></table>
+    ` : `
+    <div class="grid" style="margin-top:14px">
+      <div class="card"><h3>Jogos no histórico</h3><div class="big">${a.total}</div><div class="note">${d.liga.toUpperCase()}</div></div>
+      <div class="card"><h3>Média de gols</h3><div class="big pos">${a.mediaGols}</div><div class="note">por jogo (FT)</div></div>
+    </div>
+    <div class="sec">Últimos resultados</div>
+    <div class="card"><div style="font-size:13px">${ultimos}${maximasHtml}</div></div>
+    `}
+  `;
+  if(!a.ehTotalGols)carregaBacktest(d.liga,mkt); // async: preenche #btSec sem travar a tela
+  carregaRelatorio(d.liga); // async: relatorio por data (independe do mercado)
+}
+
+
+
+
+// ===== SELETOR DE GRAFICO: janela movel (media movel) x curva acumulada (equity curve) =====
+let modoGrafico = (localStorage.getItem('cl_modograf')==='acum') ? 'acum' : 'janela';
+function trocaGrafico(m){
+  modoGrafico = m;
+  try{ localStorage.setItem('cl_modograf', m); }catch(e){}
+  if(window.__ultimoPayload) render(window.__ultimoPayload);
+}
+function abasGraficoHtml(){
+  const btn=(id,txt,dica)=>`<button onclick="trocaGrafico('${id}')" title="${dica}" style="cursor:pointer;border:1px solid ${modoGrafico===id?'#58a6ff':'#30363d'};background:${modoGrafico===id?'#132033':'#161b22'};color:${modoGrafico===id?'#58a6ff':'#8b98a8'};border-radius:8px;padding:5px 12px;font-size:12px;font-weight:${modoGrafico===id?'700':'400'}">${txt}</button>`;
+  return `<div style="display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap">
+    ${btn('janela','📉 Janela móvel','Media movel: mostra o pulso do momento. A Qtd. Jogos define o periodo (MM20, MM100...)')}
+    ${btn('acum','📐 Acumulado 00h','Curva acumulada desde as 00h do jogo: mostra o saldo real do dia contra o ponto de equilibrio')}
+  </div>`;
+}
+// ===== GRAFICO ACUMULADO DO DIA (zera as 00h do relogio do jogo) =====
+// Linha 1: BATALHA - sobe quando o mercado paga, desce quando o oposto paga (saldo linear).
+// Linha 2: ACUMULADO - % de pagamento do dia, com a base historica e o ponto de EQUILIBRIO
+//          (a % que empata com a odd media: acima disso o dia esta pagando mais do que custa).
+let faixaAcum = localStorage.getItem('cl_faixaacum') || 'dia';
+function trocaFaixaAcum(f){
+  faixaAcum=f;
+  try{ localStorage.setItem('cl_faixaacum',f); }catch(e){}
+  if(window.__ultimoPayload) render(window.__ultimoPayload);
+}
+function acumChartHtml(ac){
+  if(!ac||!ac.faixas)return '<div class="note">aguardando os primeiros jogos do dia</div>';
+  const fx=ac.faixas;
+  const ops=[['h3','3h'],['h6','6h'],['h12','12h'],['h18','18h'],['h24','24h'],['dia','desde 00h']].filter(([k])=>fx[k]&&fx[k].serie&&fx[k].serie.length>1);
+  if(!ops.length)return '<div class="note">aguardando os primeiros jogos do dia</div>';
+  if(!fx[faixaAcum])faixaAcum=ops[ops.length-1][0];
+  const f=fx[faixaAcum], s=f.serie;
+  const btns=ops.map(([k,t])=>`<button onclick="trocaFaixaAcum('${k}')" style="cursor:pointer;border:1px solid ${faixaAcum===k?'#58a6ff':'#30363d'};background:${faixaAcum===k?'#132033':'#161b22'};color:${faixaAcum===k?'#58a6ff':'#8b98a8'};border-radius:7px;padding:4px 10px;font-size:11px;font-weight:${faixaAcum===k?'700':'400'}">${t}</button>`).join('');
+  return `<div style="margin-top:2px">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px;font-size:12px">
+      <span style="display:flex;gap:5px;align-items:center;flex-wrap:wrap"><b>⏱️ Horas</b> ${btns}</span>
+      <span><b>${s[s.length-1]}%</b> <span class="note">· ${ac.jogos} jogos desde ${ac.desde} (relógio do jogo) · média de ${ac.janela}</span></span>
+    </div>
+    ${lineChart(s, f.macd||[], null, false, f.horas||[])}
+  </div>`;
+}
+
+function leitorFaixaHtml(){
+  const lt=window.__leitor;
+  const setas=s=>{s=String(s||'');const m=s.match(/^([FMT])·(.*)$/);const fx=m?m[1]:null;const mv=(m?m[2]:s).replace(/U/g,'↑').replace(/D/g,'↓').replace(/F/g,'→');const rot=fx==='F'?'<span style="color:#58c6ff;font-size:10px;font-weight:700">FUNDO</span> ':fx==='T'?'<span style="color:#e3b341;font-size:10px;font-weight:700">TOPO</span> ':fx==='M'?'<span style="color:#8b98a8;font-size:10px;font-weight:700">MEIO</span> ':'';return rot+mv;};
+  if(!lt)return `<div id="leitorFaixa"></div>`;
+  const sig=lt.sinalAgora;
+  const cor=sig?(sig.prox==='G'?'#3fb950':'#f85149'):'#30363d';
+  const corTxt=sig?(sig.prox==='G'?'var(--greenb)':'var(--red)'):'#8b98a8';
+  const mem=lt.atualNaMemoria;
+  return `<div id="leitorFaixa" style="margin-top:6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#10151c;border:1px solid ${cor};border-radius:8px;padding:6px 10px;font-size:12px">
+    <b>🔮 leitor:</b>
+    <span style="font-family:monospace;font-size:16px;letter-spacing:3px;color:#58a6ff">${setas(lt.desenhoAtual)}</span>
+    ${mem?`<span class="note" style="font-size:10px">visto ${mem.n}× · green depois ${mem.taxa}% · régua ${lt.regua}%</span>`:`<span class="note" style="font-size:10px">desenho inédito no dia</span>`}
+    ${sig?`<b style="color:${corTxt}">${sig.prox==='G'?'ANUNCIA GREEN em até 3':'ANUNCIA MORTE do ciclo'} +${sig.edge} pts (${sig.n}×)</b>`:`<span class="note" style="font-size:10px">sem sinal (desenho neutro ou memória rasa)</span>`}
+  </div>`;
+}
+function lineChart(serie, macdHist, trend, ehGols, horas, escala, refLinha){const uni=ehGols?"":"%";
+  if(!serie.length)return '<div class="note">sem dados para o gráfico</div>';
+  const W=680,H=200,pad=28, hH=70, gap=14; // H=linha, hH=histograma
+  const totalH=H+gap+hH;
+  // ESCALA: por padrao auto-ajusta (grafico de janela). Se vier `escala` [min,max], fica FIXA -
+  // como num grafico de trader: um movimento pequeno parece pequeno, nao vira montanha.
+  const min=escala?escala[0]:Math.min(...serie),max=escala?escala[1]:Math.max(...serie);
+  const rng=Math.max(1,max-min);
+  const x=i=>pad+i*((W-2*pad)/(serie.length-1||1));
+  const y=v=>pad+(1-(v-min)/rng)*(H-2*pad);
+  // LINHAS DE TENDENCIA LTA (verde, suporte) e LTB (vermelho, resistencia)
+  let trendSvg='';
+  if(trend){
+    const buildLine=(s,cor,nome)=>{
+      if(!s)return '';
+      const pontos=s.map((v,i)=>v==null?null:x(i)+','+y(v)).filter(Boolean).join(' ');
+      if(!pontos)return '';
+      // acha o ultimo ponto pra rotular
+      let lastI=s.length-1; while(lastI>=0&&s[lastI]==null)lastI--;
+      const lab=lastI>=0?`<text x="${x(lastI)+4}" y="${y(s[lastI])}" fill="${cor}" font-size="10" font-weight="700">${nome}</text>`:'';
+      return `<polyline points="${pontos}" fill="none" stroke="${cor}" stroke-width="1.6" stroke-dasharray="5 3" opacity="0.9"/>${lab}`;
+    };
+    trendSvg += buildLine(trend.lta&&trend.lta.serie,'#3fb950','LTA');
+    trendSvg += buildLine(trend.ltb&&trend.ltb.serie,'#da3633','LTB');
+  }
+  // ===== 📐 FIBONACCI AUTOMÁTICA: acha o balanço mais recente (fundo↔topo) e desenha os níveis =====
+  let fibSvg='';
+  try{
+  if(serie.length>=8){
+    let iMin=0,iMax=0;
+    serie.forEach((v,i)=>{if(v<serie[iMin])iMin=i;if(v>=serie[iMax])iMax=i;});
+    const lo=serie[iMin],hi=serie[iMax],amp=hi-lo;
+    if(amp>=8){
+      const subida=iMin<iMax; // fundo antes do topo = balanço de ALTA (retrações descem do topo)
+      const x0=x(Math.min(iMin,iMax));
+      const cur=serie[serie.length-1];
+      const niveis=[[0,subida?hi:lo],[23.6,null],[38.2,null],[50,null],[61.8,null],[78.6,null],[100,subida?lo:hi]];
+      for(const nv of niveis){if(nv[1]==null)nv[1]=Math.round((subida?hi-amp*nv[0]/100:lo+amp*nv[0]/100)*10)/10;}
+      let maisPerto=niveis[0];for(const nv of niveis){if(Math.abs(cur-nv[1])<Math.abs(cur-maisPerto[1]))maisPerto=nv;}
+      for(const [pct,val] of niveis){
+        const forte=(pct===61.8||pct===50);
+        const ehPerto=(pct===maisPerto[0]);
+        fibSvg+=`<line x1="${x0}" y1="${y(val)}" x2="${W-pad}" y2="${y(val)}" stroke="${ehPerto?'#e3b341':'#bc8cff'}" stroke-width="${ehPerto?1.6:forte?1.1:0.7}" stroke-dasharray="2 4" opacity="${ehPerto?0.95:0.55}"/>`;
+        fibSvg+=`<text x="${W-pad+2}" y="${y(val)+3}" fill="${ehPerto?'#e3b341':'#bc8cff'}" font-size="8.5" font-weight="${ehPerto?'800':'600'}">${pct}${pct?'%':''} ${val}</text>`;
+      }
+      fibSvg+=`<text x="${x0}" y="${pad-6}" fill="#bc8cff" font-size="9" font-weight="700">📐 Fib ${subida?'alta':'baixa'} ${lo}→${hi} · linha no ${maisPerto[0]}%</text>`;
+    }
+  }
+  }catch(e){fibSvg='';}
+  // linha com cor por direcao geral
+  const last=serie[serie.length-1], first=serie[0];
+  const cor=last>first?'#3fb950':last<first?'#da3633':'#8b98a8';
+  const pts=serie.map((v,i)=>x(i)+','+y(v)).join(' ');
+  // bolinhas + numeros nos pontos - ADAPTATIVO pra nao poluir com muitos pontos
+  let dots='', labels='';
+  const N=serie.length;
+  const mostraNumeros = N<=24;   // numeros so com poucos jogos
+  const mostraBolinhas = N<=60;  // bolinhas so ate 60 jogos
+  serie.forEach((v,i)=>{
+    if(mostraBolinhas){
+      const r = N<=24?3:2;
+      dots+=`<circle cx="${x(i)}" cy="${y(v)}" r="${r}" fill="${i===N-1?cor:'#8b98a8'}"/>`;
+    }
+    if(mostraNumeros && (i===0||v!==serie[i-1])){
+      labels+=`<text x="${x(i)}" y="${y(v)-8}" fill="#e6edf3" font-size="11" font-weight="600" text-anchor="middle">${v}</text>`;
+    }
+  });
+  // 🕐 EIXO DO TEMPO: horario do jogo por baixo dos pontos (espacado pra nao poluir)
+  try{
+    if(horas&&horas.length===N){
+      const passo=Math.max(1,Math.ceil(N/8));
+      for(let i=N-1;i>=0;i-=passo){
+        if(horas[i])labels+=`<text x="${x(i)}" y="${H-3}" fill="#8b98a8" font-size="8.5" text-anchor="middle">${horas[i]}</text>`;
+      }
+    }
+  }catch(e){}
+  // sempre marca o ultimo ponto (atual) com numero, mesmo com muitos jogos
+  if(!mostraNumeros){
+    const lv=serie[N-1];
+    labels+=`<circle cx="${x(N-1)}" cy="${y(lv)}" r="3.5" fill="${cor}"/>`+
+            `<text x="${x(N-1)-6}" y="${y(lv)-8}" fill="${cor}" font-size="12" font-weight="700" text-anchor="end">${lv}${uni}</text>`;
+  }
+  // linha mais fina quando ha muitos pontos
+  const larguraLinha = N<=24?2: N<=80?1.6:1.2;
+  // histograma MACD embaixo
+  let macdSvg='';
+  if(macdHist&&macdHist.length){
+    const hm=Math.max(...macdHist.map(Math.abs),0.5);
+    const baseY=H+gap+hH/2;
+    const hx=i=>pad+i*((W-2*pad)/(macdHist.length-1||1));
+    macdSvg=`<line x1="${pad}" y1="${baseY}" x2="${W-pad}" y2="${baseY}" stroke="#2d3543"/>`;
+    macdHist.forEach((m,i)=>{
+      const bh=Math.abs(m)/hm*(hH/2-2);
+      const col=m>=0?'#2ea043':'#da3633';
+      macdSvg+=`<rect x="${hx(i)-2}" y="${m>=0?baseY-bh:baseY}" width="4" height="${bh}" fill="${col}"/>`;
+    });
+    macdSvg+=`<text x="${pad}" y="${H+gap+10}" fill="#8b98a8" font-size="10">Histograma MACD (MM1 vs MM2)</text>`;
+  }
+  return `<svg viewBox="0 0 ${W} ${totalH}" style="width:100%;height:auto">
+    <line x1="${pad}" y1="${pad}" x2="${W-pad}" y2="${pad}" stroke="#2d3543" stroke-dasharray="3 3"/>
+    <line x1="${pad}" y1="${H-pad}" x2="${W-pad}" y2="${H-pad}" stroke="#2d3543" stroke-dasharray="3 3"/>
+    <polyline points="${pts}" fill="none" stroke="${cor}" stroke-width="${larguraLinha}"/>
+    ${fibSvg}${trendSvg}${refLinha!=null&&refLinha>=min&&refLinha<=max?`<line x1="${pad}" y1="${y(refLinha).toFixed(1)}" x2="${W-pad}" y2="${y(refLinha).toFixed(1)}" stroke="#e3b341" stroke-width="1.3" stroke-dasharray="6 4"/><text x="${pad+4}" y="${(y(refLinha)-5).toFixed(1)}" fill="#e3b341" font-size="11" font-weight="700">${refLinha===0?"empate (0)":"equilíbrio "+refLinha+uni}</text>`:''}
+    ${dots}${labels}
+    <text x="${W-pad}" y="${pad-8}" fill="#8b98a8" font-size="11" text-anchor="end">Topo ${max}${uni}</text>
+    <text x="${W-pad}" y="${H-pad+16}" fill="#8b98a8" font-size="11" text-anchor="end">Fundo ${min}${uni}</text>
+    ${macdSvg}
+  </svg>`;
+}
+
+ligaSel.onchange=tick;
+mktSel.onchange=tick;
+qtdSel.onchange=tick;
+
+// ===== DESTRAVA O SOM (politica de autoplay exige um gesto do usuario) =====
+function destravaSom(){
+  try{
+    const Ctx=window.AudioContext||window.webkitAudioContext; if(!Ctx)return;
+    window.__actx=window.__actx||new Ctx();
+    window.__actx.resume().then(()=>{
+      const b=document.getElementById('somBtn');
+      if(window.__actx.state==='running'){
+        if(b){b.textContent='🔔 Som ativado';b.style.background='rgba(46,160,67,.2)';b.style.borderColor='var(--greenb)';b.style.color='var(--greenb)';}
+        bipSeq([[880,0,0.12],[1175,0.14,0.14]]); // bip de confirmacao
+      }
+    });
+  }catch(e){}
+}
+document.getElementById('somBtn').addEventListener('click',destravaSom);
+// qualquer primeiro clique/tecla na pagina ja destrava
+['click','keydown','touchstart'].forEach(ev=>window.addEventListener(ev,function once(){
+  destravaSom(); ['click','keydown','touchstart'].forEach(e=>window.removeEventListener(e,once));
+},{once:true}));
+
+tick();
+carregaRadar();
+setInterval(tick,10000); // reserva
+setInterval(carregaRadar,15000); // radar: painel some quando a condicao acaba
+
+// ===== TEMPO REAL (SSE): servidor avisa quando a liga atualiza -> busca na hora =====
+// Nao altera nenhuma analise; so elimina a espera do ciclo de 10s.
+function ligaSSE(){
+  try{
+    const es=new EventSource('/api/eventos');
+    es.onmessage=ev=>{
+      try{
+        const m=JSON.parse(ev.data);
+        if(m.tipo==='liga'&&m.liga===ligaSel.value){ _lastHash=''; tick(); }
+        else if(m.tipo==='radar'){ notificaRadar(m.alerta||m); carregaRadar(); }
+      }catch(e){}
+    };
+    es.onerror=()=>{ /* EventSource reconecta sozinho; o ciclo de 10s cobre o intervalo */ };
+  }catch(e){}
+}
+ligaSSE();
+// ao voltar pra aba, atualiza imediatamente (sem esperar ciclo)
+document.addEventListener('visibilitychange',()=>{ if(!document.hidden){ _lastHash=''; tick(); } });
+</script>
+<script>
+(async function montaLigas(){
+  var rotulo=function(s){var p=String(s).split("-");var casa=p.shift();var liga=p.join("-");var cap=function(t){return t?t[0].toUpperCase()+t.slice(1):t;};var casas={bet365:"bet365",betano:"Betano",playpix:"Kiron"};return (casas[casa]||cap(casa))+" \u00b7 "+cap(liga);};
+  var sel=document.getElementById("liga"); if(!sel) return;
+  try{ var lista=await fetch("/api/status"+location.search).then(function(r){return r.json();});
+    var comDados=lista.filter(function(x){return (x.jogos||0)>0;});
+    var usar=(comDados.length?comDados:lista).map(function(x){return x.liga;});
+    sel.innerHTML=usar.map(function(l){return "<option value=\""+l+"\">"+rotulo(l)+"</option>";}).join("");
+    if(usar.length) sel.dispatchEvent(new Event("change"));
+  }catch(e){ console.warn("[AMD] nao consegui listar ligas",e); }
+})();
+</script>
+</body>
+</html>
