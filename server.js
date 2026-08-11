@@ -83,7 +83,7 @@ app.use((req, res, next) => {
   res.header("X-Robots-Tag", "noindex, nofollow");        // fora dos buscadores
   if (req.method === "OPTIONS") return res.sendStatus(204);
   // API de dados: exige vir do PROPRIO site (referer/origin), fecha para curl/bots/outros sites.
-  const ehApiDado = p.startsWith("/api/") && !p.startsWith("/api/snapshot") && !p.startsWith("/api/admin") && !p.startsWith("/api/acesso") && !p.startsWith("/api/eventos");
+  const ehApiDado = p.startsWith("/api/") && !p.startsWith("/api/snapshot") && !p.startsWith("/api/dados") && !p.startsWith("/api/admin") && !p.startsWith("/api/acesso") && !p.startsWith("/api/eventos");
   if (ehApiDado) {
     const ref = (req.headers.referer || req.headers.origin || "");
     // bloqueia SO quando o referer aponta claramente para OUTRO site (scraping via browser de terceiro).
