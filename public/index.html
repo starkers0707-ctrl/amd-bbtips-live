@@ -939,23 +939,31 @@ document.addEventListener('visibilitychange',()=>{ if(!document.hidden){ _lastHa
 </script>
 <script>
 (async function montaLigas(){
-  var rotulo=function(s){var p=String(s).split("-");var casa=p.shift();var liga=p.join("-");var cap=function(t){return t?t[0].toUpperCase()+t.slice(1):t;};var casas={bet365:"bet365",betano:"Betano",playpix:"Kiron"};return (casas[casa]||cap(casa))+" \u00b7 "+cap(liga);};
-  var sel=document.getElementById("liga"); if(!sel) return;
-  var alvo=null;
+  var CASAS={bet365:'bet365',betano:'Betano',playpix:'Kiron'};
+  var ORDEM=['playpix','betano','bet365'];
+  var rotulo=function(s){var p=String(s).split('-');var casa=p.shift();var liga=p.join('-');var cap=function(t){return t?t[0].toUpperCase()+t.slice(1):t;};return (CASAS[casa]||cap(casa))+' \u00b7 '+cap(liga);};
+  var sel=document.getElementById('liga'); if(!sel) return;
   try{
-    var lista=await fetch("/api/status"+location.search).then(function(r){return r.json();});
-    var comDados=lista.filter(function(x){return (x.jogos||0)>0;});
-    var usar=(comDados.length?comDados:lista).map(function(x){return x.liga;});
-    if(!usar.length) return;
-    sel.innerHTML=usar.map(function(l){return "<option value=\""+l+"\">"+rotulo(l)+"</option>";}).join("");
-    alvo=usar[0]; sel.value=alvo;
-  }catch(e){ console.warn("[AMD] ligas",e); return; }
-  // o app registra o listener depois deste script: dispara varias vezes ate a tela responder
+    var lista=await fetch('/api/status'+location.search).then(function(r){return r.json();});
+    var usar=lista.filter(function(x){return (x.jogos||0)>0 && !/^(teste|diag)-/.test(x.liga);}).map(function(x){return x.liga;});
+    if(!usar.length) usar=lista.map(function(x){return x.liga;});
+    usar.sort(function(a,b){
+      var ca=ORDEM.indexOf(a.split('-')[0]), cb=ORDEM.indexOf(b.split('-')[0]);
+      if(ca<0) ca=99; if(cb<0) cb=99;
+      return ca-cb || a.localeCompare(b);
+    });
+    var casas={};
+    usar.forEach(function(l){ var c=l.split('-')[0]; (casas[c]=casas[c]||[]).push(l); });
+    sel.innerHTML=Object.keys(casas).map(function(c){
+      return '<optgroup label="'+(CASAS[c]||c)+'">'+casas[c].map(function(l){return '<option value="'+l+'">'+rotulo(l)+'</option>';}).join('')+'</optgroup>';
+    }).join('');
+    sel.value=usar[0];
+  }catch(e){ console.warn('[AMD] ligas',e); return; }
   var n=0;
   var t=setInterval(function(){
     n++;
-    try{ sel.dispatchEvent(new Event("change",{bubbles:true})); }catch(e){}
-    var pronto=document.body.innerText.indexOf("aguardando dados")<0 && document.body.innerText.indexOf("conectando")<0;
+    try{ sel.dispatchEvent(new Event('change',{bubbles:true})); }catch(e){}
+    var pronto=document.body.innerText.indexOf('aguardando dados')<0 && document.body.innerText.indexOf('conectando')<0;
     if(pronto || n>25) clearInterval(t);
   }, 600);
 })();
