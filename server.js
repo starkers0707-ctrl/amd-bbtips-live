@@ -1430,6 +1430,8 @@ app.post("/api/dados", (req, res) => {
     }
     store[liga] = s;
     registraLiga(liga);
+    atualizaRadar(liga, s);
+    atualizaRoboLedger();
     avisaClientes(liga);
     res.json({ ok: true, placares: placares.length, upcoming: upc.length, mercados: Object.keys(s.computed) });
   } catch (e) {
@@ -1669,8 +1671,9 @@ async function rodaAutoColeta() {
       }));
       const st = buildStore(liga, games, upcoming || [], new Date().toISOString());
       st.sondaTs = Date.now();
-      store[liga] = st; registraLiga(liga); avisaClientes(liga);
+      store[liga] = st; registraLiga(liga); atualizaRadar(liga, st); avisaClientes(liga);
     }, console.log);
+    try { atualizaRoboLedger(); } catch (e) {}
     bbUltima = { ts: Date.now(), ligas: r.ligas || 0, erro: r.ok ? null : r.erro, rodando: false };
   } catch (e) { bbUltima = { ts: Date.now(), ligas: 0, erro: String(e.message || e), rodando: false }; }
 }
