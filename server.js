@@ -83,7 +83,7 @@ app.use((req, res, next) => {
   res.header("X-Robots-Tag", "noindex, nofollow");        // fora dos buscadores
   if (req.method === "OPTIONS") return res.sendStatus(204);
   // API de dados: exige vir do PROPRIO site (referer/origin), fecha para curl/bots/outros sites.
-  const ehApiDado = p.startsWith("/api/") && !p.startsWith("/api/snapshot") && !p.startsWith("/api/dados") && !p.startsWith("/api/admin") && !p.startsWith("/api/acesso") && !p.startsWith("/api/eventos");
+  const ehApiDado = p.startsWith("/api/") && !p.startsWith("/api/snapshot") && !p.startsWith("/api/dados") && !p.startsWith("/api/bbtips") && !p.startsWith("/api/admin") && !p.startsWith("/api/acesso") && !p.startsWith("/api/eventos");
   if (ehApiDado) {
     const ref = (req.headers.referer || req.headers.origin || "");
     // bloqueia SO quando o referer aponta claramente para OUTRO site (scraping via browser de terceiro).
@@ -127,6 +127,12 @@ async function salvaCodigos() {
 }
 carregaCodigos();
 const CODIGO_MESTRE = String(process.env.CODIGO_MESTRE || "").toUpperCase().trim();
+
+// ===== AUTO-COLETA BBTIPS =====
+let bbtipsAuto = null;
+import("./bbtips-auto.mjs").then(m => { bbtipsAuto = m; console.log("[bbtips] auto-coleta carregada"); }).catch(e => console.log("[bbtips] modulo nao carregado:", e.message));
+let BB_TOKEN = process.env.BBTIPS_TOKEN || "";
+let bbUltima = { ts: 0, ligas: 0, erro: null, rodando: false };
 function codigoValido(c) {
   if (CODIGO_MESTRE && c === CODIGO_MESTRE) return true;
   const d = codigos[c]; if (!d) return false;
@@ -136,7 +142,7 @@ function codigoValido(c) {
 // PORTAO: protege os dados; deixa livre snapshot (sonda), eventos (SSE), acesso/admin e arquivos estaticos
 app.use((req, res, next) => {
   const p = req.path;
-  const livre = p === "/api/snapshot" || p === "/api/snapshot2" || p === "/api/dados" || p === "/api/eventos" || p.startsWith("/api/acesso") || p.startsWith("/api/admin") || !p.startsWith("/api/");
+  const livre = p === "/api/snapshot" || p === "/api/snapshot2" || p === "/api/dados" || p.startsWith("/api/bbtips") || p === "/api/eventos" || p.startsWith("/api/acesso") || p.startsWith("/api/admin") || !p.startsWith("/api/");
   if (livre) return next();
   const c = String(req.headers["x-acesso"] || req.query.c || "").toUpperCase().trim();
   if (codigoValido(c)) return next();
@@ -1637,6 +1643,40 @@ app.get("/api/liga/:liga", (req, res) => {
     fonte: d.fonte || "json"
   });
 });
+
+app.post("/api/bbtips/token", (req, res) => {
+  const t = String((req.body && req.body.token) || "").trim();
+  if (!t || t.length < 40) return res.status(400).json({ ok: false, erro: "token invalido" });
+  const novo = t !== BB_TOKEN; BB_TOKEN = t;
+  res.json({ ok: true, novo });
+  if (novo) rodaAutoColeta();
+});
+
+app.get("/api/bbtips/estado", (req, res) => res.json({ temToken: !!BB_TOKEN, ...bbUltima }));
+
+const BB_INTERVALO = Number(process.env.BBTIPS_INTERVALO || 180000);
+
+async function rodaAutoColeta() {
+  if (!bbtipsAuto || !BB_TOKEN || bbUltima.rodando) return;
+  bbUltima.rodando = true;
+  try {
+    const r = await bbtipsAuto.coletaTudo(BB_TOKEN, async (liga, placares, upcoming) => {
+      const games = placares.map((p, i) => ({
+        nome: p.nome || "Jogo " + (i + 1), a: p.a, b: p.b, total: p.total,
+        odds: p.odds || {}, hora: p.hora || null,
+        casa: p.nome && p.nome.includes(" x ") ? p.nome.split(" x ")[0].trim() : null,
+        fora: p.nome && p.nome.includes(" x ") ? (p.nome.split(" x ")[1] || "").trim() : null
+      }));
+      const st = buildStore(liga, games, upcoming || [], new Date().toISOString());
+      st.sondaTs = Date.now();
+      store[liga] = st; registraLiga(liga); avisaClientes(liga);
+    }, console.log);
+    bbUltima = { ts: Date.now(), ligas: r.ligas || 0, erro: r.ok ? null : r.erro, rodando: false };
+  } catch (e) { bbUltima = { ts: Date.now(), ligas: 0, erro: String(e.message || e), rodando: false }; }
+}
+
+setInterval(rodaAutoColeta, BB_INTERVALO);
+setTimeout(rodaAutoColeta, 8000);
 
 app.get("/api/status", (req, res) => {
   res.json(LIGAS.map(l => ({
