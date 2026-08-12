@@ -2296,10 +2296,24 @@ app.get("/api/relatorio/:liga", (req, res) => {
 // ===== CADERNO DOS ROBOS (O3.5 + O2.5): dois robos fixos, cada um com saldo persistente =====
 const ROBO_FILE = "robo.json";
 let roboSha = null;
-const ROBO_MKTS = ["o35", "o25", "ambas"];
-const ROBO_PISO = { o35: 3.6, o25: 2.0, ambas: 2.0 };
+const ROBO_MKTS = ["o35", "o25", "o25b", "ambas"];
+
+function minutosAgoraSP() {
+  const d = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Sao_Paulo" }));
+  return d.getHours() * 60 + d.getMinutes();
+}
+function jaPassou(horario, margemMin = 1) {
+  const m = String(horario || "").match(/^(\d{1,2}):(\d{2})$/);
+  if (!m) return false;
+  const t = Number(m[1]) * 60 + Number(m[2]);
+  const agora = minutosAgoraSP();
+  if (agora - t > 720) return false;
+  if (t - agora > 720) return true;
+  return t < agora - margemMin;
+}
+const ROBO_PISO = { o35: 3.6, o25: 2.0, o25b: 2.3, ambas: 2.0 };
 function roboVazio() { return { saldo: 0, ciclos: 0, greens: 0, redsCiclo: 0, aborts: 0, descartes: 0, historico: [], consumidas: {}, ciclo: null }; }
-let roboState = { o35: roboVazio(), o25: roboVazio(), ambas: roboVazio() };
+let roboState = { o35: roboVazio(), o25: roboVazio(), o25b: roboVazio(), ambas: roboVazio() };
 const fibPrev = {}; // (legado)
 let roboTrace = {}; // caixa-preta: por que cada liga entrou/nao entrou (debug)
 let entradasLog = []; // foto de cada entrada real (auditoria: subindo ou caindo?)
@@ -2370,9 +2384,9 @@ async function carregaRobo() {
 carregaRobo();
 
 // ===== ROBO 2-GALE (por mercado): zona azul + piso de odd + maior EV- + 1 ciclo por janela =====
-function montaRobo(mkt) {
-  const piso = ROBO_PISO[mkt];
-  const L = roboState[mkt];
+function montaRobo(mkt, rotulo) {
+  const piso = ROBO_PISO[rotulo || mkt] || ROBO_PISO[mkt];
+  const L = roboState[rotulo || mkt];
   let melhor = null;
   for (const liga of Object.keys(store)) {
     const d = store[liga];
@@ -2517,18 +2531,22 @@ function montaRobo(mkt) {
   }
   return melhor;
 }
-const NMR = { o35: "O3.5", o25: "O2.5", ambas: "AMBAS" };
+const NMR = { o35: "O3.5", o25: "O2.5 A", o25b: "O2.5 B", ambas: "AMBAS" };
+function mktReal(m) { return m === "o25b" ? "o25" : m; }
+
 function atualizaRoboMkt(mkt) {
   try {
     const L = roboState[mkt];
-    const melhor = montaRobo(mkt);
+    const MK = mktReal(mkt);
+    const melhor = montaRobo(MK, mkt);
     const pertenceALiga = (liga, jogo) => {
       const d2 = store[liga]; const g2 = listaCheia(d2);
       const casa = (jogo || "").split(" x ")[0];
       return !!casa && g2.slice(-480).some(x => x.casa === casa);
     };
     if (!L.ciclo) {
-      if (melhor && melhor.degraus && melhor.degraus.length === 3 && pertenceALiga(melhor.liga, melhor.degraus[0].jogo)) {
+      const planoValido = melhor && melhor.degraus && melhor.degraus.length === 3 && !melhor.degraus.some(dg => jaPassou(dg.h));
+      if (planoValido && pertenceALiga(melhor.liga, melhor.degraus[0].jogo)) {
         // PLANO SELADO (regra do usuario): os 3 tiros sao travados JUNTOS na abertura - ex copa :10 :13 :16
         const plano = melhor.degraus.map(dg => ({ h: dg.h, jogo: dg.jogo, odd: dg.odd }));
         const d0 = plano[0];
@@ -2558,8 +2576,8 @@ function atualizaRoboMkt(mkt) {
           registraCiclo(mkt, "DESCARTADO", 0, `${L.ciclo.liga} · alvo sem fechamento em 15min antes da 1a aposta`);
           L.ciclo = null;
         } else {
-          // NO MEIO DA ENTRADA NAO ABORTA (regra do usuario): troca de alvo e o ciclo segue
-          L.ciclo.alvo = null;
+          const plA = (L.ciclo.plano || [])[L.ciclo.degrau];
+          L.ciclo.alvo = (plA && !jaPassou(plA.h)) ? { h: plA.h, jogo: plA.jogo, odd: plA.odd, unidades: [1,2,4][L.ciclo.degrau] || 4, desde: Date.now() } : null;
           salvaRoboLedger();
         }
         return;
@@ -2568,7 +2586,7 @@ function atualizaRoboMkt(mkt) {
       let g = cauda.find(x => x.nome === L.ciclo.alvo.jogo && L.ciclo.alvo.h && x.horario === L.ciclo.alvo.h);
       if (!g) { const soNome = cauda.filter(x => x.nome === L.ciclo.alvo.jogo); if (soNome.length === 1) g = soNome[0]; }
       if (g) {
-        if (pays(g, mkt)) {
+        if (pays(g, MK)) {
           const lucro = Math.round((L.ciclo.alvo.unidades * L.ciclo.alvo.odd - (L.ciclo.apostado + L.ciclo.alvo.unidades)) * 10) / 10;
           L.consumidas = L.consumidas || {}; L.consumidas[L.ciclo.liga] = Date.now();
           L.cooldown = L.cooldown || {}; L.cooldown[L.ciclo.liga] = Date.now();
@@ -2606,12 +2624,13 @@ function atualizaRoboMkt(mkt) {
       }
       // COMECOU, TERMINA (regra do usuario): o ciclo cumpre os 3 tiros mesmo se a janela fechar.
       // O proximo degrau vem da PROPRIA liga do ciclo: primeiro jogo futuro com odd no piso.
-      const evs2 = (d.upcoming && d.upcoming[mkt]) || [];
+      const evs2 = (d.upcoming && d.upcoming[MK]) || [];
       // pula o jogo iminente (indice 0): alvo novo sempre com folga de ~3min para dar tempo de acompanhar
-      const cand = evs2.find((p, i2) => i2 >= 1 && p.odd != null && pertenceALiga(L.ciclo.liga, p.nome)); // proximo da fila, sem pular
+      const doPlano = (L.ciclo.plano || [])[L.ciclo.degrau];
+      const cand = (doPlano && !jaPassou(doPlano.h)) ? { horario: doPlano.h, nome: doPlano.jogo, odd: doPlano.odd } : evs2.find((p, i2) => i2 >= 1 && p.odd != null && !jaPassou(p.horario) && pertenceALiga(L.ciclo.liga, p.nome));
       if (cand) {
         L.ciclo.alvo = { h: cand.horario || "", jogo: cand.nome, odd: cand.odd, unidades: [1, 2, 4][L.ciclo.degrau] || 4, desde: Date.now() };
-        if (L.ciclo.plano && L.ciclo.plano[L.ciclo.degrau]) L.ciclo.plano[L.ciclo.degrau] = { h: L.ciclo.alvo.h, jogo: L.ciclo.alvo.jogo, odd: L.ciclo.alvo.odd };
+        // PLANO SELADO: nao reescreve tiro planejado
         L.ciclo.semAlvoDesde = null;
         salvaRoboLedger();
         if (L.ciclo.degrau > 0) try { enviaPushRobo(`🤖 ${NMR[mkt]} GALE ${L.ciclo.degrau} — ${L.ciclo.liga.toUpperCase()}`, `TIRO ${L.ciclo.degrau + 1} · ${[1, 2, 4][L.ciclo.degrau]}u · ${cand.horario ? cand.horario + " · " : ""}${cand.nome} @${cand.odd}`, "robo-" + mkt); } catch (e) {}
