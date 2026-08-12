@@ -1410,7 +1410,7 @@ app.post("/api/dados", (req, res) => {
       return res.status(400).json({ ok: false, erro: "sem placares" });
     }
     const games = placares.map((p, i) => ({
-      nome: "Jogo " + (i + 1), a: p.a, b: p.b, total: p.total, odds: {}
+      nome: p.nome || "Jogo " + (i + 1), a: p.a, b: p.b, total: p.total, odds: p.odds || {}, hora: p.hora || null
     }));
     // jogos futuros vindos da sonda (teams + odds lidos da grade)
     const upc = Array.isArray(upcoming) ? upcoming.filter(u => u && u.nome) : [];
