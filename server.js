@@ -131,7 +131,8 @@ const CODIGO_MESTRE = String(process.env.CODIGO_MESTRE || "").toUpperCase().trim
 // ===== AUTO-COLETA BBTIPS =====
 let bbtipsAuto = null;
 import("./bbtips-auto.mjs").then(m => { bbtipsAuto = m; console.log("[bbtips] auto-coleta carregada"); }).catch(e => console.log("[bbtips] modulo nao carregado:", e.message));
-let BB_TOKEN = process.env.BBTIPS_TOKEN || "";
+function limpaToken(v) { const m = String(v || "").match(/ey[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_.-]+/); return m ? m[0] : ""; }
+let BB_TOKEN = limpaToken(process.env.BBTIPS_TOKEN);
 let bbUltima = { ts: 0, ligas: 0, erro: null, rodando: false };
 function codigoValido(c) {
   if (CODIGO_MESTRE && c === CODIGO_MESTRE) return true;
@@ -1647,14 +1648,14 @@ app.get("/api/liga/:liga", (req, res) => {
 });
 
 app.post("/api/bbtips/token", (req, res) => {
-  const t = String((req.body && req.body.token) || "").trim();
+  const t = limpaToken((req.body && req.body.token) || "");
   if (!t || t.length < 40) return res.status(400).json({ ok: false, erro: "token invalido" });
   const novo = t !== BB_TOKEN; BB_TOKEN = t;
   res.json({ ok: true, novo });
   if (novo) rodaAutoColeta();
 });
 
-app.get("/api/bbtips/estado", (req, res) => res.json({ temToken: !!BB_TOKEN, ...bbUltima }));
+app.get("/api/bbtips/estado", (req, res) => res.json({ temToken: !!BB_TOKEN, tamToken: BB_TOKEN.length, fim: BB_TOKEN.slice(-4), ...bbUltima }));
 
 const BB_INTERVALO = Number(process.env.BBTIPS_INTERVALO || 180000);
 
