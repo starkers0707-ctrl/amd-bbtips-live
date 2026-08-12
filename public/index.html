@@ -146,9 +146,9 @@ const nomeMkt={o35:'Over 3.5',ge5:'5+ gols',o25:'Over 2.5',ambas:'Ambas Marcam',
 
 let _lastHash = "";
 function _roboBox(mkt,b){
-  const NM={o35:'O3.5',o25:'O2.5',ambas:'AMBAS'};
+  const NM={o35:'O3.5',o25:'O2.5 A',o25b:'O2.5 B',ambas:'AMBAS'};
   const nomeM=NM[mkt]||mkt;
-  const piso=(b&&b.piso)||({o35:3.6,o25:2.0,ambas:2.0})[mkt];
+  const piso=(b&&b.piso)||({o35:3.6,o25:2.0,o25b:2.3,ambas:2.0})[mkt];
   const reg=(b&&b.registro)||{};
   const saldoCor=reg.saldo>0?'var(--greenb)':reg.saldo<0?'var(--red)':'#9fb0c3';
   const _cu=v=>`<b style="color:${v>0?'var(--greenb)':v<0?'var(--red)':'#9fb0c3'}">${v>0?'+':''}${v??0}u</b>`;
@@ -187,8 +187,8 @@ async function carregaRobo(){
     const r=await fetch('/api/robo?c='+encodeURIComponent(localStorage.getItem('cl_cod')||''),{cache:'no-store'});
     if(!r.ok)return;
     const j=await r.json();
-    if(!j||(!j.o35&&!j.o25&&!j.ambas))return;
-    el.innerHTML=(window.__botaoExportar||'')+['o35','o25','ambas'].map(m=>_roboBox(m,j[m]||{})).join('');
+    if(!j||(!j.o35&&!j.o25&&!j.o25b&&!j.ambas))return;
+    el.innerHTML=(window.__botaoExportar||'')+['o35','o25','o25b','ambas'].map(m=>_roboBox(m,j[m]||{})).join('');
   }catch(e){}
 }
 async function carregaPadroes(liga,mkt){
