@@ -6,6 +6,10 @@ const CASAS = [
   { casa: "playpix", path: "PlayPixFutebolVirtual", param: "Liga", max: 8  }
 ];
 const API = "https://api.thtips.com.br/api/";
+// nomes reais das ligas por casa (a rota entradasAnalisadas so existe no bet365/playpix)
+const NOMES = {
+  betano: { 1:"brasileirao", 2:"classicos", 3:"copa", 4:"euro", 5:"america", 6:"british", 7:"espanhola", 8:"scudetto", 9:"italiano", 11:"estrelas", 12:"campeoes" }
+};
 function parseOdds(txt) {
   if (!txt || typeof txt !== "string") return null;
   const out = {}; let n = 0;
@@ -67,7 +71,7 @@ async function coletaTudo(token, onLiga, log = () => {}) {
       if (r.erro) { falhas++; if (/401|403/.test(r.erro)) { log("[bbtips] token invalido/expirado"); return { ok: false, erro: "token" }; } continue; }
       const { placares, upcoming } = converte(r.json);
       if (placares.length < 20) continue;
-      const nome = (await nomeDaLiga(base, c.param, id, token)) || ("liga" + id);
+      const nome = (NOMES[c.casa] && NOMES[c.casa][id]) || (await nomeDaLiga(base, c.param, id, token)) || ("liga" + id);
       try { await onLiga(c.casa + "-" + nome, placares, upcoming); ok++; } catch (e) { falhas++; }
       await new Promise(res => setTimeout(res, 250));
     }
