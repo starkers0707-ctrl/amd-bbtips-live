@@ -60,10 +60,13 @@ async function nomeDaLiga(base, param, id, token) {
   const n = r.json && r.json.liga;
   return n ? String(n).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "") : null;
 }
+const ATIVAS = String(process.env.CASAS_ATIVAS || "betano,playpix").split(",").map(x => x.trim()).filter(Boolean);
+const cacheNome = new Map();
+
 async function coletaTudo(token, onLiga, log = () => {}) {
   if (!token) return { ok: false, erro: "sem token" };
   let ok = 0, falhas = 0;
-  for (const c of CASAS) {
+  for (const c of CASAS.filter(x => ATIVAS.includes(x.casa))) {
     const base = API + c.path;
     for (let id = 0; id <= c.max; id++) {
       const url = base + "?" + c.param + "=" + id + "&Horas=Horas12&filtros=" + encodeURIComponent(MERCADOS);
@@ -71,9 +74,11 @@ async function coletaTudo(token, onLiga, log = () => {}) {
       if (r.erro) { falhas++; if (/401|403/.test(r.erro)) { log("[bbtips] token invalido/expirado"); return { ok: false, erro: "token" }; } continue; }
       const { placares, upcoming } = converte(r.json);
       if (placares.length < 20) continue;
-      const nome = (NOMES[c.casa] && NOMES[c.casa][id]) || (await nomeDaLiga(base, c.param, id, token)) || ("liga" + id);
+      const ck = c.casa + "|" + id;
+      let nome = (NOMES[c.casa] && NOMES[c.casa][id]) || cacheNome.get(ck);
+      if (!nome) { nome = (await nomeDaLiga(base, c.param, id, token)) || ("liga" + id); cacheNome.set(ck, nome); }
       try { await onLiga(c.casa + "-" + nome, placares, upcoming); ok++; } catch (e) { falhas++; }
-      await new Promise(res => setTimeout(res, 250));
+      await new Promise(res => setTimeout(res, 120));
     }
   }
   log("[bbtips] auto-coleta: " + ok + " ligas ok, " + falhas + " falhas");
