@@ -1657,7 +1657,7 @@ app.post("/api/bbtips/token", (req, res) => {
 
 app.get("/api/bbtips/estado", (req, res) => res.json({ temToken: !!BB_TOKEN, tamToken: BB_TOKEN.length, fim: BB_TOKEN.slice(-4), ...bbUltima }));
 
-const BB_INTERVALO = Number(process.env.BBTIPS_INTERVALO || 180000);
+const BB_INTERVALO = Number(process.env.BBTIPS_INTERVALO || 60000);
 
 async function rodaAutoColeta() {
   if (!bbtipsAuto || !BB_TOKEN || bbUltima.rodando) return;
@@ -1680,7 +1680,7 @@ async function rodaAutoColeta() {
 }
 
 setInterval(rodaAutoColeta, BB_INTERVALO);
-setTimeout(rodaAutoColeta, 8000);
+setTimeout(rodaAutoColeta, 4000);
 
 app.get("/api/status", (req, res) => {
   res.json(LIGAS.map(l => ({
