@@ -685,17 +685,6 @@ function render(d){
     <div id="relSec"></div>
 
     ${!a.ehTotalGols ? `
-    <div class="grid" style="margin-top:14px">
-      <div class="card"><h3>Jogos no histórico</h3><div class="big">${a.total}</div><div class="note">${d.liga.toUpperCase()}</div></div>
-      <div class="card"><h3>% que paga ${nomeMkt[mkt]}</h3><div class="big">${a.base}%</div><div class="note">taxa real</div></div>
-      <div class="card"><h3>Odd justa</h3><div class="big">${a.justa??'—'}</div><div class="note">só vale acima</div></div>
-      <div class="card"><h3>Formação</h3><div class="big ${a.aquecendo?'pos':'neu'}">${a.aquecendo?'Esquentando':'Estável'}</div><div class="note">120 vs longas</div></div>
-    </div>
-
-    <div class="sec">Termômetro 120 / 240 / 480 / 960</div>
-    <div class="card"><div class="therm">${termHtml}</div>
-      <div class="hint">120 verde e acima das longas = ${nomeMkt[mkt]} esquentando.</div></div>
-
     <div class="sec">Últimos resultados</div>
     <div class="card"><div style="font-size:13px">${ultimos}${maximasHtml}</div></div>
 
