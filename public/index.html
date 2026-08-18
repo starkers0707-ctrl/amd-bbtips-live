@@ -378,7 +378,7 @@ async function carregaRelatorio(liga){
   window.__relC=window.__relC||{};
   const c=window.__relC[liga];
   if(c&&Date.now()-c.ts<120000){el.innerHTML=c.html;return;}
-  el.innerHTML='<div class="sec">📅 Relatório por data</div><div class="card note">calculando…</div>';
+  el.innerHTML=''; return;
   try{
     const r=await fetch('/api/relatorio/'+liga,{cache:'no-store'});
     const b=await r.json();
@@ -636,7 +636,7 @@ function render(d){
     }).join('');
     const cab=`<div style="color:#8b949e;text-align:center;font-size:10px;align-self:center">col</div>${horasShow.map(h=>`<div style="color:#58a6ff;text-align:center;font-size:12px;font-weight:800">${h}h</div>`).join('')}<div style="color:#8b949e;text-align:center;font-size:10px;align-self:center">%col</div>`;
     const rodape=`<div style="color:#8b949e;text-align:center;font-size:10px;align-self:center">%hora</div>${pctHora}<div></div>`;
-    ultimos=`<details open style="margin:0"><summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:4px;user-select:none"><b style="font-size:13px">🧩 Mosaico — próxima rodada + últimas horas <span class="note">(${nomeMkt[mkt]||mkt})</span> <span style="font-size:10px;color:#8b949e">▾ clique para recolher</span></b><span class="note" style="font-size:10px">clique num <b style="color:#e3b341">time</b> ou numa <b style="color:#bc8cff">odd</b> para marcar</span></summary>${futHtml}</details>`;
+    ultimos=``; if(false) ultimos=`<details open style="margin:0"><summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:4px;user-select:none"><b style="font-size:13px">🧩 Mosaico — próxima rodada + últimas horas <span class="note">(${nomeMkt[mkt]||mkt})</span> <span style="font-size:10px;color:#8b949e">▾ clique para recolher</span></b><span class="note" style="font-size:10px">clique num <b style="color:#e3b341">time</b> ou numa <b style="color:#bc8cff">odd</b> para marcar</span></summary>${futHtml}</details>`;
   }
 
   const _cur=(a.pagandoTempoReal!=null)?a.pagandoTempoReal:((a.serie&&a.serie.length)?a.serie[a.serie.length-1]:null);
