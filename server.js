@@ -133,7 +133,7 @@ let bbtipsAuto = null;
 import("./bbtips-auto.mjs").then(m => { bbtipsAuto = m; console.log("[bbtips] auto-coleta carregada"); }).catch(e => console.log("[bbtips] modulo nao carregado:", e.message));
 function limpaToken(v) { const m = String(v || "").match(/ey[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_.-]+/); return m ? m[0] : ""; }
 let BB_TOKEN = limpaToken(process.env.BBTIPS_TOKEN);
-let bbUltima = { ts: 0, ligas: 0, erro: null, rodando: false };
+let bbUltima = { ts: 0, ligas: 0, nomes: 0, porCasa: {}, erro: null, rodando: false };
 function codigoValido(c) {
   if (CODIGO_MESTRE && c === CODIGO_MESTRE) return true;
   const d = codigos[c]; if (!d) return false;
@@ -211,6 +211,22 @@ async function revogar(c){if(!confirm('Revogar '+c+'?'))return;await api('/api/a
 
 const LIGAS = (process.env.LIGAS || "bet365-copa,bet365-euro,bet365-super,bet365-premier").split(",").map(x => x.trim()).filter(Boolean);
 function registraLiga(l) { if (l && !LIGAS.includes(l)) LIGAS.push(l); }
+function slugLiga(v) {
+  return String(v == null ? "" : v).trim().toLowerCase().normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+function ligaRecebida(body) {
+  const casas = new Set(["betano", "playpix", "bet365"]);
+  const casa = slugLiga(body && (body.casaFonte || body.bookmaker || body.casa));
+  const enviada = slugLiga(body && body.liga);
+  const nome = slugLiga(body && (body.nomeLiga || body.ligaNome || body.leagueName || body.nome_liga));
+  if (enviada && casas.has(enviada.split("-")[0])) return enviada;
+  if (casa && casas.has(casa)) {
+    const parte = nome || (enviada && !/^\d+$/.test(enviada) ? enviada : "liga-" + (enviada || "0"));
+    return casa + "-" + parte;
+  }
+  return nome || enviada;
+}
 const BASE = "https://www.caramelotips.com.br/final/";
 const REFRESH_MS = 15000;
 
@@ -446,8 +462,28 @@ function macdData(series) {
   return { mm1, mm2, hist };
 }
 
+function goldenCrossData(series) {
+  const { mm1, mm2, hist } = macdData(series);
+  const last = hist.length - 1;
+  if (last < 0) return { active: false, crossedNow: false, index: null, barsAgo: null, fast: null, slow: null, spread: 0 };
+  let index = null;
+  for (let i = 1; i <= last; i++) {
+    if (hist[i] > 0 && hist[i - 1] <= 0) index = i;
+  }
+  const active = hist[last] > 0;
+  return {
+    active,
+    crossedNow: last > 0 && hist[last] > 0 && hist[last - 1] <= 0,
+    index,
+    barsAgo: index == null ? null : last - index,
+    fast: +mm1[last].toFixed(1),
+    slow: +mm2[last].toFixed(1),
+    spread: +hist[last].toFixed(2)
+  };
+}
+
 function zoneSignal(series){
-  if(!series.length)return{zona:"—",zonaPct:0,direcao:"—",pagamento:"—",sinal:"AGUARDAR",macd:0,mm1:0,mm2:0};
+  if(!series.length)return{zona:"—",zonaPct:0,direcao:"—",pagamento:"—",sinal:"AGUARDAR",macd:0,mm1:0,mm2:0,goldenCross:goldenCrossData(series)};
   const sorted=series.slice().sort((a,b)=>a-b);
   const p=(q)=>sorted[Math.min(sorted.length-1,Math.max(0,Math.round((sorted.length-1)*q)))];
   const min=p(0.05),max=p(0.95),cur=series[series.length-1];
@@ -479,7 +515,8 @@ function zoneSignal(series){
     pagamento,sinal,
     macd:+macd.toFixed(2),
     mm1:+mm1[mm1.length-1].toFixed(1),
-    mm2:+mm2[mm2.length-1].toFixed(1)
+    mm2:+mm2[mm2.length-1].toFixed(1),
+    goldenCross:goldenCrossData(series)
   };
 }
 
@@ -689,6 +726,12 @@ function buildAlerts(games, serie, sinal, mkt, base) {
   if (!serie.length) return alertas;
   const cur = serie[serie.length - 1];
   const min = Math.min(...serie), max = Math.max(...serie);
+
+  // GOLDEN CROSS: EMA10 cruza a EMA20 de baixo para cima neste ultimo ponto.
+  const golden = sinal.goldenCross || goldenCrossData(serie);
+  if (golden.crossedNow) {
+    alertas.push({ tipo: "GOLDEN CROSS", cls: "ok", txt: `${mktNome(mkt)}: EMA10 cruzou acima da EMA20 (${golden.fast} x ${golden.slow}, abertura +${golden.spread}).` });
+  }
 
   // 1) ALERTA DE MINIMA: mercado no fundo historico (oportunidade de formacao)
   if (cur <= min + 2 && sinal.zonaPct <= 20) {
@@ -1411,7 +1454,8 @@ app.post("/api/snapshot", (req, res) => {
 let lastDebug = {};
 app.post("/api/dados", (req, res) => {
   try {
-    const { liga, mkt, placares, upcoming, curva, mm1, mm2, topo, fundo, debug } = req.body || {};
+    const { mkt, placares, upcoming, curva, mm1, mm2, topo, fundo, debug } = req.body || {};
+    const liga = ligaRecebida(req.body || {});
     if (debug) lastDebug[liga || "?"] = { debug, ts: Date.now() };
     if (!liga || !Array.isArray(placares) || !placares.length) {
       return res.status(400).json({ ok: false, erro: "sem placares" });
@@ -1675,8 +1719,13 @@ async function rodaAutoColeta() {
       store[liga] = st; registraLiga(liga); atualizaRadar(liga, st); avisaClientes(liga);
     }, console.log);
     try { atualizaRoboLedger(); } catch (e) {}
-    bbUltima = { ts: Date.now(), ligas: r.ligas || 0, erro: r.ok ? null : r.erro, rodando: false };
-  } catch (e) { bbUltima = { ts: Date.now(), ligas: 0, erro: String(e.message || e), rodando: false }; }
+    bbUltima = {
+      ts: Date.now(), ligas: r.ligas || 0, nomes: r.nomes || 0, porCasa: r.porCasa || {},
+      erro: r.ok ? null : r.erro, rodando: false
+    };
+  } catch (e) {
+    bbUltima = { ts: Date.now(), ligas: 0, nomes: 0, porCasa: {}, erro: String(e.message || e), rodando: false };
+  }
 }
 
 setInterval(rodaAutoColeta, BB_INTERVALO);
@@ -3748,7 +3797,7 @@ app.get("/api/ltbtest/:liga", (req, res) => {
 // Le o sinal ja calculado em s.computed (zero recalculo). Na TRANSICAO (entrou no fundo /
 // virou subida) manda aviso via SSE com liga+mercado; quando a condicao acaba, sai do painel.
 const RADAR_MKTS = ["o25", "o35", "ge5", "ambas"]; // unders FORA do radar/FIGHT por decisao do usuario (so consulta)
-const radarEstado = {}; // liga|mkt -> {fundo, sobe}
+const radarEstado = {}; // liga|mkt -> {fundo, sobe, golden}
 const radarAtivos = {}; // liga|mkt|tipo -> info (painel do momento)
 const radarUltimoAviso = {}; // liga|mkt|tipo -> ts (nao repete o mesmo aviso em <30min)
 function podeAvisar(chave) {
@@ -3856,7 +3905,14 @@ function atualizaRadar(liga, s) {
         radarAtivos[k + "|pull"] = { liga, mkt, tipo: "pull", pagando: cur, topo: topoRec, base: c.base, fita, ts: Date.now() };
         if (!primeira && podeAvisar(k + "|pull")) avisaRadar(radarAtivos[k + "|pull"]);
       } else if (!pull) delete radarAtivos[k + "|pull"];
-      radarEstado[k] = { fundo, sobe, ltb: quebrouLTB, nivelMin, pull };
+      // GOLDEN CROSS: EMA10 acima da EMA20. O alerta dispara apenas no cruzamento;
+      // o chip permanece no radar enquanto a media curta continuar acima da longa.
+      const golden = goldenCrossData(serie);
+      if (golden.active) {
+        radarAtivos[k + "|golden"] = { liga, mkt, tipo: "golden", pagando: cur, base: c.base, fita, mm10: golden.fast, mm20: golden.slow, spread: golden.spread, barsAgo: golden.barsAgo, ts: Date.now() };
+        if (golden.crossedNow && !prev.golden && !primeira && podeAvisar(k + "|golden")) avisaRadar(radarAtivos[k + "|golden"]);
+      } else delete radarAtivos[k + "|golden"];
+      radarEstado[k] = { fundo, sobe, ltb: quebrouLTB, nivelMin, pull, golden: golden.active };
     }
   } catch (e) {}
 }
@@ -3902,12 +3958,18 @@ function enviaPushRobo(titulo, corpo, tag) {
   }
 }
 
-function enviaPushMinima(info) {
+function enviaPushRadar(info) {
   if (!webpush || !pushData.vapid || !pushData.subs.length) return;
-  if (!info || info.tipo !== "minima") return;
-  const titulo = `🚨 ZONA DE OPERAÇÃO — ${NOMES_L[info.liga] || info.liga} · ${NOMES_M[info.mkt] || info.mkt}${info.rel != null ? ` (${info.rel}% do normal)` : ""}`;
-  const corpo = `pagando ${info.pagando ?? "—"}% (normal ${info.base ?? "—"}%) — janela aberta AGORA`;
-  const payload = JSON.stringify({ t: titulo, b: corpo, tag: info.liga + "|" + info.mkt });
+  if (!info || (info.tipo !== "minima" && info.tipo !== "golden")) return;
+  const liga = NOMES_L[info.liga] || info.liga;
+  const mercado = NOMES_M[info.mkt] || info.mkt;
+  const titulo = info.tipo === "golden"
+    ? `✨ GOLDEN CROSS — ${liga} · ${mercado}`
+    : `🚨 ZONA DE OPERAÇÃO — ${liga} · ${mercado}${info.rel != null ? ` (${info.rel}% do normal)` : ""}`;
+  const corpo = info.tipo === "golden"
+    ? `EMA10 ${info.mm10 ?? "—"} cruzou acima da EMA20 ${info.mm20 ?? "—"} — pagando ${info.pagando ?? "—"}%`
+    : `pagando ${info.pagando ?? "—"}% (normal ${info.base ?? "—"}%) — janela aberta AGORA`;
+  const payload = JSON.stringify({ t: titulo, b: corpo, tag: info.liga + "|" + info.mkt + "|" + info.tipo });
   for (const s of [...pushData.subs]) {
     webpush.sendNotification(s, payload).catch(err => {
       if (err && (err.statusCode === 410 || err.statusCode === 404)) {
@@ -3921,7 +3983,7 @@ function enviaPushMinima(info) {
 function avisaRadar(info) {
   const msg = `data: ${JSON.stringify({ tipo: "radar", alerta: info })}\n\n`; // BUGFIX: info.tipo sobrescrevia o rotulo "radar"
   for (const res of sseClientes) { try { res.write(msg); } catch (e) { sseClientes.delete(res); } }
-  enviaPushMinima(info); // WEB PUSH: chega no sistema mesmo com aba congelada/fechada
+  enviaPushRadar(info); // WEB PUSH: minima e Golden Cross chegam mesmo com aba congelada/fechada
 }
 app.get("/api/push/key", (req, res) => res.json({ key: (pushData.vapid && pushData.vapid.publicKey) || null, pronto: !!(webpush && pushData.vapid), inscritos: pushData.subs.length }));
 app.post("/api/push/sub", (req, res) => {
@@ -3939,7 +4001,7 @@ app.post("/api/push/sub", (req, res) => {
 // RADAR ENXUTO (pedido do usuario): so o que ele opera - movimento de SUBIDA,
 // QUEBRA DE LTB e MINIMA do dia. Os avisos de minima de janela curta e de repique
 // (minjan / pull) sao ruido para essa leitura e ficam de fora.
-const RADAR_TIPOS = ["subida", "ltb", "minima", "pull"]; // pullback, subida, minima e quebra de LTB
+const RADAR_TIPOS = ["golden", "subida", "ltb", "minima", "pull"]; // inclui Golden Cross EMA10 x EMA20
 app.get("/api/radar", (req, res) => res.json(
   Object.values(radarAtivos).filter(r => RADAR_TIPOS.includes(r.tipo)).sort((a, b) => b.ts - a.ts)
 ));

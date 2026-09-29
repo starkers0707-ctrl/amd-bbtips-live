@@ -86,8 +86,25 @@ function macdData(series) {
   return { mm1, mm2, hist };
 }
 
+function goldenCrossData(series) {
+  const { mm1, mm2, hist } = macdData(series);
+  const last = hist.length - 1;
+  if (last < 0) return { active: false, crossedNow: false, index: null, barsAgo: null, fast: null, slow: null, spread: 0 };
+  let index = null;
+  for (let i = 1; i <= last; i++) if (hist[i] > 0 && hist[i - 1] <= 0) index = i;
+  return {
+    active: hist[last] > 0,
+    crossedNow: last > 0 && hist[last] > 0 && hist[last - 1] <= 0,
+    index,
+    barsAgo: index == null ? null : last - index,
+    fast: +mm1[last].toFixed(1),
+    slow: +mm2[last].toFixed(1),
+    spread: +hist[last].toFixed(2)
+  };
+}
+
 function zoneSignal(series){
-  if(!series.length)return{zona:"—",zonaPct:0,direcao:"—",pagamento:"—",sinal:"AGUARDAR",macd:0,mm1:0,mm2:0};
+  if(!series.length)return{zona:"—",zonaPct:0,direcao:"—",pagamento:"—",sinal:"AGUARDAR",macd:0,mm1:0,mm2:0,goldenCross:goldenCrossData(series)};
   const sorted=series.slice().sort((a,b)=>a-b);
   const p=(q)=>sorted[Math.min(sorted.length-1,Math.max(0,Math.round((sorted.length-1)*q)))];
   const min=p(0.05),max=p(0.95),cur=series[series.length-1];
@@ -119,7 +136,8 @@ function zoneSignal(series){
     pagamento,sinal,
     macd:+macd.toFixed(2),
     mm1:+mm1[mm1.length-1].toFixed(1),
-    mm2:+mm2[mm2.length-1].toFixed(1)
+    mm2:+mm2[mm2.length-1].toFixed(1),
+    goldenCross:goldenCrossData(series)
   };
 }
 
@@ -630,7 +648,7 @@ var AMD_MOTOR = {
   acumulado: acumulado,
   // peças soltas, se você quiser montar outra coisa
   pays: pays, oddKey: oddKey, chartSeries: chartSeries, serieDoDia: serieDoDia,
-  ema: ema, macdData: macdData, zoneSignal: zoneSignal, trendLines: trendLines,
+  ema: ema, macdData: macdData, goldenCrossData: goldenCrossData, zoneSignal: zoneSignal, trendLines: trendLines,
   teamPayPct: teamPayPct, oddPayPct: oddPayPct, scoreDistribution: scoreDistribution,
   cycleStats: cycleStats, comboScore: comboScore, fullEvalUpcoming: fullEvalUpcoming
 };

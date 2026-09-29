@@ -1,6 +1,6 @@
 # AMD BBTips Live
 
-AMD Live alimentado pelo BBTips (bet365 / betano / Kiron), nas tres casas.
+AMD Live alimentado pelo BBTips (Bet365 / Betano / PlayPix), nas tres casas.
 
 ## Mudancas em relacao ao caramelo-live
 
@@ -17,6 +17,8 @@ AMD Live alimentado pelo BBTips (bet365 / betano / Kiron), nas tres casas.
 |---|---|
 | `ADMIN_KEY` | sua chave do painel /admin |
 | `LIGAS` | opcional, ex: `bet365-copa,bet365-euro` |
+| `BBTIPS_TOKEN` | token atual do BBTips usado pela coleta automatica |
+| `CASAS_ATIVAS` | casas separadas por virgula; padrao `betano,playpix` |
 | `FONTE_WS` | deixe vazio |
 | `GH_TOKEN` / `GH_REPO` | opcionais, so para persistir os codigos de acesso |
 
@@ -27,6 +29,8 @@ Build `npm install` · Start `npm start` · Node 18+
 ## Coletor
 
 Userscript `amd-coletor-bbtips.user.js` com `FORMATO: 'apidados'` e `COLETOR_URL` apontando para `/api/dados` deste app.
+
+O endpoint tambem aceita `casa: "playpix"` junto de `nomeLiga`, `ligaNome` ou `leagueName`; o servidor normaliza o identificador para `playpix-nome-da-liga`. O estado da coleta automatica pode ser conferido em `/api/bbtips/estado`, incluindo contagem por casa e quantas ligas chegaram com nome.
 
 ## Odds
 

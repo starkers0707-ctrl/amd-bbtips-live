@@ -10,6 +10,38 @@ const API = "https://api.thtips.com.br/api/";
 const NOMES = {
   betano: { 1:"brasileirao", 2:"classicos", 3:"copa", 4:"euro", 5:"america", 6:"british", 7:"espanhola", 8:"scudetto", 9:"italiano", 11:"estrelas", 12:"campeoes" }
 };
+function normalizaNomeLiga(valor) {
+  if (valor == null || typeof valor === "object") return null;
+  const bruto = String(valor).replace(/\u0000/g, "").trim();
+  if (!bruto || /^\d+$/.test(bruto)) return null;
+  const nome = bruto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  return nome && !/^liga-?\d+$/.test(nome) ? nome : null;
+}
+function extraiNomeLiga(json) {
+  const chaves = /^(liga|nomeliga|nome_liga|league|leagueName|league_name|campeonato|torneio)$/i;
+  const fila = [{ valor: json, nivel: 0 }];
+  const vistos = new Set();
+  while (fila.length) {
+    const { valor, nivel } = fila.shift();
+    if (!valor || typeof valor !== "object" || vistos.has(valor) || nivel > 4) continue;
+    vistos.add(valor);
+    for (const [chave, item] of Object.entries(valor)) {
+      if (chaves.test(chave)) {
+        const nome = normalizaNomeLiga(item);
+        if (nome) return nome;
+        if (item && typeof item === "object") {
+          const interno = normalizaNomeLiga(item.nome || item.Nome || item.name || item.Name || item.descricao || item.Descricao);
+          if (interno) return interno;
+        }
+      }
+    }
+    for (const item of Object.values(valor)) {
+      if (item && typeof item === "object") fila.push({ valor: item, nivel: nivel + 1 });
+    }
+  }
+  return null;
+}
 function parseOdds(txt) {
   if (!txt || typeof txt !== "string") return null;
   const out = {}; let n = 0;
@@ -55,33 +87,52 @@ function converte(json) {
   }
   return { placares, upcoming };
 }
-async function nomeDaLiga(base, param, id, token) {
+async function nomeDaLiga(base, param, id, token, jsonPrincipal) {
+  const direto = extraiNomeLiga(jsonPrincipal);
+  if (direto) return direto;
   const r = await pega(base + "/entradasAnalisadas?" + param + "=" + id + "&top=1", token, 12000);
-  const n = r.json && r.json.liga;
-  return n ? String(n).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "") : null;
+  return extraiNomeLiga(r.json);
 }
 const ATIVAS = String(process.env.CASAS_ATIVAS || "betano,playpix").split(",").map(x => x.trim()).filter(Boolean);
 const cacheNome = new Map();
 
 async function coletaTudo(token, onLiga, log = () => {}) {
   if (!token) return { ok: false, erro: "sem token" };
-  let ok = 0, falhas = 0;
+  let ok = 0, falhas = 0, nomes = 0;
+  const porCasa = {};
   for (const c of CASAS.filter(x => ATIVAS.includes(x.casa))) {
+    porCasa[c.casa] = { ligas: 0, nomeadas: 0, falhas: 0 };
     const base = API + c.path;
     for (let id = 0; id <= c.max; id++) {
       const url = base + "?" + c.param + "=" + id + "&Horas=Horas12&filtros=" + encodeURIComponent(MERCADOS);
       const r = await pega(url, token);
-      if (r.erro) { falhas++; if (/401|403/.test(r.erro)) { log("[bbtips] token invalido/expirado"); return { ok: false, erro: "token" }; } continue; }
+      if (r.erro) {
+        falhas++; porCasa[c.casa].falhas++;
+        if (/401|403/.test(r.erro)) {
+          log("[bbtips] token invalido/expirado");
+          return { ok: false, erro: "token", ligas: ok, falhas, nomes, porCasa };
+        }
+        continue;
+      }
       const { placares, upcoming } = converte(r.json);
       if (placares.length < 20) continue;
       const ck = c.casa + "|" + id;
       let nome = (NOMES[c.casa] && NOMES[c.casa][id]) || cacheNome.get(ck);
-      if (!nome) { nome = (await nomeDaLiga(base, c.param, id, token)) || ("liga" + id); cacheNome.set(ck, nome); }
-      try { await onLiga(c.casa + "-" + nome, placares, upcoming); ok++; } catch (e) { falhas++; }
+      if (!nome) {
+        nome = (await nomeDaLiga(base, c.param, id, token, r.json)) || ("liga-" + id);
+        cacheNome.set(ck, nome);
+      }
+      const nomeado = !/^liga-?\d+$/.test(nome);
+      try {
+        await onLiga(c.casa + "-" + nome, placares, upcoming, { casa: c.casa, id, nome, nomeado });
+        ok++; porCasa[c.casa].ligas++;
+        if (nomeado) { nomes++; porCasa[c.casa].nomeadas++; }
+      } catch (e) { falhas++; porCasa[c.casa].falhas++; }
       await new Promise(res => setTimeout(res, 120));
     }
+    log("[bbtips] " + c.casa + ": " + porCasa[c.casa].ligas + " ligas (" + porCasa[c.casa].nomeadas + " com nome), " + porCasa[c.casa].falhas + " falhas");
   }
   log("[bbtips] auto-coleta: " + ok + " ligas ok, " + falhas + " falhas");
-  return { ok: true, ligas: ok, falhas };
+  return { ok: true, ligas: ok, falhas, nomes, porCasa };
 }
-export { coletaTudo, converte, parseOdds, CASAS, MERCADOS };
+export { coletaTudo, converte, parseOdds, normalizaNomeLiga, extraiNomeLiga, CASAS, MERCADOS };
