@@ -36,6 +36,14 @@
   .therm .b small{position:absolute;bottom:-15px;left:0;right:0;text-align:center;font-size:10px;color:var(--muted)}
   .hint{font-size:11px;color:var(--muted);margin-top:6px}
   .err{color:var(--amber);font-size:12px}
+  .chart-shell{position:relative;overflow:hidden;border-radius:10px;background:linear-gradient(180deg,rgba(56,139,253,.055),transparent 52%);touch-action:none}
+  .chart-shell svg{display:block;width:100%;height:auto;min-height:260px;cursor:crosshair}
+  .chart-tip{display:none;position:absolute;z-index:4;min-width:158px;pointer-events:none;padding:8px 10px;border:1px solid #58a6ff;background:rgba(13,17,23,.96);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.35);font-size:11px;line-height:1.5;color:var(--txt);transform:translate(-50%,-112%)}
+  .chart-legend{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:4px 0 8px;font-size:11px;color:var(--muted)}
+  .chart-legend i{display:inline-block;width:18px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
+  .chart-pulse{animation:chartPulse 1.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+  @keyframes chartPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(1.65)}}
+  @media(max-width:600px){.chart-shell svg{min-height:220px}.chart-tip{font-size:10px;min-width:144px}}
 </style>
 </head>
 <body>
@@ -86,7 +94,11 @@ O servidor calcula a <b>chance real</b> do jogo (histórico dos times + faixa da
 
 <div style="background:#161c28;border:1px solid var(--line);border-radius:10px;padding:12px 14px">
 <b style="color:#58a6ff">6 · 📉 Chip de mínima</b> (radar + notificação)<br>
-Acende quando o selo cruza <b>abaixo de 60%</b> — é a única notificação que interrompe você, porque é a única zona com vantagem medida. <b>Apaga sozinho no primeiro green</b>: chip aceso = janela ainda aberta; apagou = acabou.</div>
+Acende quando o selo cruza <b>abaixo de 60%</b>. Junto com o Golden Cross, é um dos alertas que interrompem você. <b>Apaga sozinho no primeiro green</b>: chip aceso = janela ainda aberta; apagou = acabou.</div>
+
+<div style="background:#161c28;border:1px solid #f2cc60;border-radius:10px;padding:12px 14px">
+<b style="color:#f2cc60">7 · ✨ Golden Cross</b> (EMA10 × EMA20)<br>
+Dispara quando a média rápida <b>EMA10 cruza de baixo para cima</b> a média lenta EMA20. O alerta toca uma vez no cruzamento; o chip permanece enquanto a EMA10 continuar acima. Use como confirmação de tendência, não como entrada isolada.</div>
 
 <div style="background:rgba(88,166,255,.08);border:1px solid #58a6ff;border-radius:10px;padding:12px 14px">
 <b style="color:#58a6ff">O método em 4 perguntas</b> (antes de qualquer entrada)<br>
@@ -320,7 +332,7 @@ const nomeLiga={euro:'Euro',copa:'Copa',super:'Super',premier:'Premier'};
 const fitaTxt=f=>(f&&f.length)?' · últimos: '+f.map(v=>{const p=(typeof v==='object')?v.p:v;const m=(typeof v==='object'&&v.m)?`<span style=\"font-size:9px;opacity:.75\">${v.m}</span>`:'';return (p?'🟢':'🔴')+m;}).join(' '):'';
 function radarHtml(lista){
   if(!lista||!lista.length)return '';
-  const chips=lista.map(a=>a.tipo==='pull'?`<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 10px;border-radius:8px;border:1px solid #bc8cff;background:rgba(188,140,255,.12);font-size:12px;font-weight:700;color:#bc8cff">💠 ${nomeLiga[a.liga]||a.liga} · ${nomeMkt[a.mkt]||a.mkt} — PULLBACK: topo ${a.topo!=null?a.topo+'%':'—'} → ${a.pagando!=null?a.pagando+'%':'—'}, voltou a subir${fitaTxt(a.fita)}</span>`:a.tipo==='minjan'?`<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 10px;border-radius:8px;border:1px solid #58c6ff;background:rgba(88,198,255,.12);font-size:12px;font-weight:700;color:#58c6ff">🧊 ${nomeLiga[a.liga]||a.liga} · ${nomeMkt[a.mkt]||a.mkt} — MÍNIMA DAS ${a.nivel}H${a.pagando!=null?`, pagando ${a.pagando}%`:''}${a.rel!=null?` (${a.rel}% do normal)`:''}${fitaTxt(a.fita)}</span>`:a.tipo==='ltb'?`<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 10px;border-radius:8px;border:1px solid #f0a020;background:rgba(240,160,32,.12);font-size:12px;font-weight:700;color:#f0a020">💥 ${nomeLiga[a.liga]||a.liga} · ${nomeMkt[a.mkt]||a.mkt} — QUEBROU A LTB, pagando ${a.pagando!=null?a.pagando+'%':'—'}${fitaTxt(a.fita)}</span>`:a.tipo==='minima'
+  const chips=lista.map(a=>a.tipo==='golden'?`<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 10px;border-radius:8px;border:1px solid #f2cc60;background:rgba(242,204,96,.13);font-size:12px;font-weight:800;color:#f2cc60">&#10024; ${nomeLiga[a.liga]||a.liga} · ${nomeMkt[a.mkt]||a.mkt} — GOLDEN CROSS: EMA10 ${a.mm10??'—'} &gt; EMA20 ${a.mm20??'—'}${a.barsAgo!=null?` · há ${a.barsAgo} ponto${a.barsAgo===1?'':'s'}`:''}</span>`:a.tipo==='pull'?`<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 10px;border-radius:8px;border:1px solid #bc8cff;background:rgba(188,140,255,.12);font-size:12px;font-weight:700;color:#bc8cff">💠 ${nomeLiga[a.liga]||a.liga} · ${nomeMkt[a.mkt]||a.mkt} — PULLBACK: topo ${a.topo!=null?a.topo+'%':'—'} → ${a.pagando!=null?a.pagando+'%':'—'}, voltou a subir${fitaTxt(a.fita)}</span>`:a.tipo==='minjan'?`<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 10px;border-radius:8px;border:1px solid #58c6ff;background:rgba(88,198,255,.12);font-size:12px;font-weight:700;color:#58c6ff">🧊 ${nomeLiga[a.liga]||a.liga} · ${nomeMkt[a.mkt]||a.mkt} — MÍNIMA DAS ${a.nivel}H${a.pagando!=null?`, pagando ${a.pagando}%`:''}${a.rel!=null?` (${a.rel}% do normal)`:''}${fitaTxt(a.fita)}</span>`:a.tipo==='ltb'?`<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 10px;border-radius:8px;border:1px solid #f0a020;background:rgba(240,160,32,.12);font-size:12px;font-weight:700;color:#f0a020">💥 ${nomeLiga[a.liga]||a.liga} · ${nomeMkt[a.mkt]||a.mkt} — QUEBROU A LTB, pagando ${a.pagando!=null?a.pagando+'%':'—'}${fitaTxt(a.fita)}</span>`:a.tipo==='minima'
     ?`<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 10px;border-radius:8px;border:1px solid #58a6ff;background:rgba(88,166,255,.1);font-size:12px;font-weight:700;color:#58a6ff">📉 ${nomeLiga[a.liga]||a.liga} · ${nomeMkt[a.mkt]||a.mkt} — ${a.rel!=null?`<b>${a.rel}% do normal</b>, `:''}pagando ${a.pagando!=null?a.pagando+'%':'—'}${a.base!=null?` <span style="opacity:.7">(normal ${a.base}%)</span>`:''}${fitaTxt(a.fita)}</span>`
     :`<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 10px;border-radius:8px;border:1px solid var(--greenb);background:rgba(46,160,67,.1);font-size:12px;font-weight:700;color:var(--greenb)">📈 ${nomeLiga[a.liga]||a.liga} · ${nomeMkt[a.mkt]||a.mkt} — subindo: ${a.deOnde!=null?a.deOnde+'% → ':''}${a.pagando!=null?a.pagando+'%':'—'}${a.base!=null?` <span style="opacity:.7">(normal ${a.base}%)</span>`:''}${fitaTxt(a.fita)}</span>`).join('');
   const _fr=(()=>{if(!window.__frescor)return '';const s=Math.round((Date.now()-window.__frescor)/1000);const cor=s<60?'#3fb950':s<180?'#f0a020':'#f85149';const txt=s<60?`sonda: há ${s}s ✓`:s<180?`sonda: há ${Math.round(s/60)}min`:`⚠️ dados parados há ${Math.round(s/60)}min — verifique a aba da fonte`;return ` · <span style="color:${cor};font-weight:700">${txt}</span> <span style="opacity:.75">(a fonte publica com ~9min de cortina — igual para todos)</span>`;})();
@@ -331,21 +343,20 @@ async function carregaRadar(){
     const el=document.getElementById('radar');if(el)el.innerHTML=radarHtml(l);}catch(e){}
 }
 function notificaRadar(a){
-  // So a MINIMA (zona de operacao) interrompe com notificacao+som; subida/LTB ficam
-  // como contexto no painel (o estudo mediu: pagam igual a regua — nao merecem interromper)
-  if(a.tipo!=='minima'&&!a.teste)return;
+  // Minima e Golden Cross interrompem com notificacao+som. Os demais ficam no painel.
+  if(a.tipo!=='minima'&&a.tipo!=='golden'&&!a.teste)return;
   // DEDUPE ENTRE ABAS: se outra aba do AMD ja notificou esse alerta ha <90s, esta fica quieta
   try{
-    const ch='fight|'+(a.liga||'')+'|'+(a.mkt||'')+'|'+(a.teste?'t':'');
+    const ch='fight|'+(a.liga||'')+'|'+(a.mkt||'')+'|'+(a.tipo||'')+'|'+(a.teste?'t':'');
     const ag=Date.now(), ant=+localStorage.getItem(ch)||0;
     if(ag-ant<90000)return;
     localStorage.setItem(ch,ag);
   }catch(e){}
   const nomeL=nomeLiga[a.liga]||a.liga, nomeM=nomeMkt[a.mkt]||a.mkt;
-  const titulo=a.tipo==='pull'?`💠 PULLBACK — ${nomeL} · ${nomeM}${a.pagando!=null?` — retomou em ${a.pagando}%`:''}`:a.tipo==='minjan'?`🧊 MÍNIMA DAS ${a.nivel}H — ${nomeL} · ${nomeM}${a.pagando!=null?` — pagando ${a.pagando}%`:''}`:(a.tipo==='minima'&&a.rel!=null&&a.rel<=60)?`🚨 ZONA DE OPERAÇÃO — ${nomeL} · ${nomeM} (${a.rel}% do normal)`:a.tipo==='minima'?`📉 MÍNIMA — ${nomeL} · ${nomeM}${a.pagando!=null?` — pagando ${a.pagando}%`:''}`:a.tipo==='ltb'?`💥 QUEBROU A LTB — ${nomeL} · ${nomeM}${a.pagando!=null?` — pagando ${a.pagando}%`:''}`:`📈 SUBINDO — ${nomeL} · ${nomeM}${a.deOnde!=null&&a.pagando!=null?` — ${a.deOnde}% → ${a.pagando}%`:''}`;
-  const corpo=(a.tipo==='minima'?'Mercado segurando — pagando abaixo do normal.':a.tipo==='ltb'?'Curva rompeu a linha de baixa pra cima — ciclo virando.':'Pagamento voltando agora.')+fitaTxt(a.fita);
+  const titulo=a.tipo==='golden'?`✨ GOLDEN CROSS — ${nomeL} · ${nomeM}`:a.tipo==='pull'?`💠 PULLBACK — ${nomeL} · ${nomeM}${a.pagando!=null?` — retomou em ${a.pagando}%`:''}`:a.tipo==='minjan'?`🧊 MÍNIMA DAS ${a.nivel}H — ${nomeL} · ${nomeM}${a.pagando!=null?` — pagando ${a.pagando}%`:''}`:(a.tipo==='minima'&&a.rel!=null&&a.rel<=60)?`🚨 ZONA DE OPERAÇÃO — ${nomeL} · ${nomeM} (${a.rel}% do normal)`:a.tipo==='minima'?`📉 MÍNIMA — ${nomeL} · ${nomeM}${a.pagando!=null?` — pagando ${a.pagando}%`:''}`:a.tipo==='ltb'?`💥 QUEBROU A LTB — ${nomeL} · ${nomeM}${a.pagando!=null?` — pagando ${a.pagando}%`:''}`:`📈 SUBINDO — ${nomeL} · ${nomeM}${a.deOnde!=null&&a.pagando!=null?` — ${a.deOnde}% → ${a.pagando}%`:''}`;
+  const corpo=(a.tipo==='golden'?`EMA10 ${a.mm10??'—'} cruzou acima da EMA20 ${a.mm20??'—'} — tendencia virou para cima.`:a.tipo==='minima'?'Mercado segurando — pagando abaixo do normal.':a.tipo==='ltb'?'Curva rompeu a linha de baixa pra cima — ciclo virando.':'Pagamento voltando agora.')+fitaTxt(a.fita);
   try{if(localStorage.getItem('pushOn')!=='1'&&'Notification' in window&&Notification.permission==='granted')new Notification(titulo,{body:corpo,tag:a.liga+'|'+a.mkt+'|'+a.tipo});}catch(e){} // com WEB PUSH ativo, o banner vem do sistema (evita duplicar)
-  bipSeq(a.tipo==='minima'?[[600,0,0.14],[800,0.18,0.14],[1000,0.36,0.3]]:[[660,0,0.15],[990,0.18,0.2]]); // FIGHT = 3 bips crescentes
+  bipSeq(a.tipo==='minima'?[[600,0,0.14],[800,0.18,0.14],[1000,0.36,0.3]]:a.tipo==='golden'?[[740,0,0.12],[988,0.15,0.14],[1318,0.32,0.28]]:[[660,0,0.15],[990,0.18,0.2]]); // Golden = acorde ascendente
 }
 async function initPush(){
   try{
@@ -367,7 +378,7 @@ document.getElementById('notifBtn').addEventListener('click',()=>{
     const b=document.getElementById('notifBtn');
     if(p==='granted'){b.textContent='🖥️ Notificações ativas';b.style.borderColor='var(--greenb)';b.style.color='var(--greenb)';b.style.background='rgba(46,160,67,.2)';
       initPush();
-      try{new Notification('🛰️ Radar ativo',{body:'Zona de operação chega direto no sistema — mesmo com o site fechado.'});}catch(e){}}
+      try{new Notification('🛰️ Radar ativo',{body:'Zona de operação e Golden Cross chegam direto no sistema — mesmo com o site fechado.'});}catch(e){}}
     else if(p==='denied'){b.textContent='🖥️ Bloqueadas no navegador';}
   });
 });
@@ -567,7 +578,11 @@ function render(d){
   const prevLM=window.__estadoLM[chaveLM]||{};
   const noFundo=sig.zona==='Fundo'||(sig.zonaPct!=null&&sig.zonaPct<=25);
   const subindoPg=/SUBINDO|COMPRA/.test(sig.sinal||'')||sig.direcao==='Subindo';
-  let minimaHtml='',subidaHtml='';
+  let minimaHtml='',subidaHtml='',goldenHtml='';
+  const gc=sig.goldenCross||{};
+  if(gc.active){
+    goldenHtml=`<div style="padding:12px 16px;border-radius:10px;background:linear-gradient(90deg,rgba(242,204,96,.16),rgba(188,140,255,.08));border:2px solid #f2cc60;margin-bottom:10px"><div style="font-weight:900;color:#f2cc60;font-size:15px">✨ GOLDEN CROSS ${gc.crossedNow?'AGORA':'ATIVO'} — ${nomeMkt[mkt]}</div><div style="font-size:13px;color:#e8edf4;margin-top:3px">EMA10 <b style="color:#f2cc60">${gc.fast}</b> acima da EMA20 <b style="color:#bc8cff">${gc.slow}</b> · abertura ${gc.spread>0?'+':''}${gc.spread}${gc.barsAgo!=null?` · cruzou há ${gc.barsAgo} ponto${gc.barsAgo===1?'':'s'}`:''}.</div></div>`;
+  }
   if(noFundo){
     minimaHtml=`<div style="padding:12px 16px;border-radius:10px;background:rgba(88,166,255,.12);border:2px solid #58a6ff;margin-bottom:10px"><div style="font-weight:800;color:#58a6ff;font-size:15px">📉 MÍNIMA DA LIGA — ${nomeMkt[mkt]}</div><div style="font-size:13px;color:#e8edf4;margin-top:3px">Curva no fundo (zona ${sig.zonaPct}%). Mercado descarregado — zona de virada pra Over. ${subindoPg?'<b style="color:var(--greenb)">já começando a subir!</b>':'aguardando a virada.'}</div></div>`;
     if(!prevLM.fundo)bipSeq([[523,0,0.16],[392,0.2,0.24]]); // desce = fundo
@@ -648,6 +663,7 @@ function render(d){
     :`<div style="padding:8px 14px;border-radius:10px;background:#161c28;border:1px solid var(--line);margin-bottom:10px;color:#8b98a8;font-size:13px">🌡️ ${_rel}% do normal — neutro (pagando ${_cur}%, normal ${a.base}%) · zona de operação: abaixo de 60% · <span style="opacity:.75">selo em tempo real; o gráfico atualiza com 2 jogos de atraso</span></div>`);
   $('#conteudo').innerHTML=`
     ${tempHtml}
+    ${goldenHtml}
     ${subidaHtml}
     ${minimaHtml}
     ${ancoraAlertHtml}
@@ -768,114 +784,98 @@ function leitorFaixaHtml(){
     ${sig?`<b style="color:${corTxt}">${sig.prox==='G'?'ANUNCIA GREEN em até 3':'ANUNCIA MORTE do ciclo'} +${sig.edge} pts (${sig.n}×)</b>`:`<span class="note" style="font-size:10px">sem sinal (desenho neutro ou memória rasa)</span>`}
   </div>`;
 }
-function lineChart(serie, macdHist, trend, ehGols, horas, escala, refLinha){const uni=ehGols?"":"%";
-  if(!serie.length)return '<div class="note">sem dados para o gráfico</div>';
-  const W=680,H=200,pad=28, hH=70, gap=14; // H=linha, hH=histograma
-  const totalH=H+gap+hH;
-  // ESCALA: por padrao auto-ajusta (grafico de janela). Se vier `escala` [min,max], fica FIXA -
-  // como num grafico de trader: um movimento pequeno parece pequeno, nao vira montanha.
-  const min=escala?escala[0]:Math.min(...serie),max=escala?escala[1]:Math.max(...serie);
-  const rng=Math.max(1,max-min);
-  const x=i=>pad+i*((W-2*pad)/(serie.length-1||1));
-  const y=v=>pad+(1-(v-min)/rng)*(H-2*pad);
-  // LINHAS DE TENDENCIA LTA (verde, suporte) e LTB (vermelho, resistencia)
-  let trendSvg='';
-  if(trend){
-    const buildLine=(s,cor,nome)=>{
-      if(!s)return '';
-      const pontos=s.map((v,i)=>v==null?null:x(i)+','+y(v)).filter(Boolean).join(' ');
-      if(!pontos)return '';
-      // acha o ultimo ponto pra rotular
-      let lastI=s.length-1; while(lastI>=0&&s[lastI]==null)lastI--;
-      const lab=lastI>=0?`<text x="${x(lastI)+4}" y="${y(s[lastI])}" fill="${cor}" font-size="10" font-weight="700">${nome}</text>`:'';
-      return `<polyline points="${pontos}" fill="none" stroke="${cor}" stroke-width="1.6" stroke-dasharray="5 3" opacity="0.9"/>${lab}`;
-    };
-    trendSvg += buildLine(trend.lta&&trend.lta.serie,'#3fb950','LTA');
-    trendSvg += buildLine(trend.ltb&&trend.ltb.serie,'#da3633','LTB');
-  }
-  // ===== 📐 FIBONACCI AUTOMÁTICA: acha o balanço mais recente (fundo↔topo) e desenha os níveis =====
-  let fibSvg='';
+function chartEma(serie,periodo){
+  if(!serie.length)return [];
+  const k=2/(periodo+1),out=[serie[0]];
+  for(let i=1;i<serie.length;i++)out.push(serie[i]*k+out[i-1]*(1-k));
+  return out;
+}
+function chartPointer(ev,svg){
   try{
-  if(serie.length>=8){
-    let iMin=0,iMax=0;
-    serie.forEach((v,i)=>{if(v<serie[iMin])iMin=i;if(v>=serie[iMax])iMax=i;});
-    const lo=serie[iMin],hi=serie[iMax],amp=hi-lo;
-    if(amp>=8){
-      const subida=iMin<iMax; // fundo antes do topo = balanço de ALTA (retrações descem do topo)
-      const x0=x(Math.min(iMin,iMax));
-      const cur=serie[serie.length-1];
-      const niveis=[[0,subida?hi:lo],[23.6,null],[38.2,null],[50,null],[61.8,null],[78.6,null],[100,subida?lo:hi]];
-      for(const nv of niveis){if(nv[1]==null)nv[1]=Math.round((subida?hi-amp*nv[0]/100:lo+amp*nv[0]/100)*10)/10;}
-      let maisPerto=niveis[0];for(const nv of niveis){if(Math.abs(cur-nv[1])<Math.abs(cur-maisPerto[1]))maisPerto=nv;}
-      for(const [pct,val] of niveis){
-        const forte=(pct===61.8||pct===50);
-        const ehPerto=(pct===maisPerto[0]);
-        fibSvg+=`<line x1="${x0}" y1="${y(val)}" x2="${W-pad}" y2="${y(val)}" stroke="${ehPerto?'#e3b341':'#bc8cff'}" stroke-width="${ehPerto?1.6:forte?1.1:0.7}" stroke-dasharray="2 4" opacity="${ehPerto?0.95:0.55}"/>`;
-        fibSvg+=`<text x="${W-pad+2}" y="${y(val)+3}" fill="${ehPerto?'#e3b341':'#bc8cff'}" font-size="8.5" font-weight="${ehPerto?'800':'600'}">${pct}${pct?'%':''} ${val}</text>`;
-      }
-      fibSvg+=`<text x="${x0}" y="${pad-6}" fill="#bc8cff" font-size="9" font-weight="700">📐 Fib ${subida?'alta':'baixa'} ${lo}→${hi} · linha no ${maisPerto[0]}%</text>`;
-    }
-  }
-  }catch(e){fibSvg='';}
-  // linha com cor por direcao geral
-  const last=serie[serie.length-1], first=serie[0];
-  const cor=last>first?'#3fb950':last<first?'#da3633':'#8b98a8';
-  const pts=serie.map((v,i)=>x(i)+','+y(v)).join(' ');
-  // bolinhas + numeros nos pontos - ADAPTATIVO pra nao poluir com muitos pontos
-  let dots='', labels='';
-  const N=serie.length;
-  const mostraNumeros = N<=24;   // numeros so com poucos jogos
-  const mostraBolinhas = N<=60;  // bolinhas so ate 60 jogos
-  serie.forEach((v,i)=>{
-    if(mostraBolinhas){
-      const r = N<=24?3:2;
-      dots+=`<circle cx="${x(i)}" cy="${y(v)}" r="${r}" fill="${i===N-1?cor:'#8b98a8'}"/>`;
-    }
-    if(mostraNumeros && (i===0||v!==serie[i-1])){
-      labels+=`<text x="${x(i)}" y="${y(v)-8}" fill="#e6edf3" font-size="11" font-weight="600" text-anchor="middle">${v}</text>`;
-    }
-  });
-  // 🕐 EIXO DO TEMPO: horario do jogo por baixo dos pontos (espacado pra nao poluir)
-  try{
-    if(horas&&horas.length===N){
-      const passo=Math.max(1,Math.ceil(N/8));
-      for(let i=N-1;i>=0;i-=passo){
-        if(horas[i])labels+=`<text x="${x(i)}" y="${H-3}" fill="#8b98a8" font-size="8.5" text-anchor="middle">${horas[i]}</text>`;
-      }
+    const d=JSON.parse(decodeURIComponent(svg.dataset.chart||'')),r=svg.getBoundingClientRect();
+    const px=(ev.clientX-r.left)*d.W/r.width;
+    const i=Math.max(0,Math.min(d.serie.length-1,Math.round((px-d.pad)/(d.W-2*d.pad)*(d.serie.length-1||1))));
+    const sx=d.pad+i*((d.W-2*d.pad)/(d.serie.length-1||1)),sy=d.ys[i];
+    const tip=svg.parentElement.querySelector('.chart-tip'),linha=svg.querySelector('.chart-crosshair'),ponto=svg.querySelector('.chart-hover');
+    if(linha){linha.setAttribute('x1',sx);linha.setAttribute('x2',sx);linha.style.display='block';}
+    if(ponto){ponto.setAttribute('cx',sx);ponto.setAttribute('cy',sy);ponto.style.display='block';}
+    if(tip){
+      const hora=String((d.horas||[])[i]||'').replace(/[^0-9:.-]/g,'')||`ponto ${i+1}`;
+      const macd=(d.macd||[])[i];
+      tip.innerHTML=`<b style="color:#58a6ff">${hora}</b><br>Pagamento: <b>${d.serie[i]}${d.uni}</b><br><span style="color:#f2cc60">EMA10: ${d.mm10[i].toFixed(1)}</span> · <span style="color:#bc8cff">EMA20: ${d.mm20[i].toFixed(1)}</span>${macd!=null?`<br>MACD: <b style="color:${macd>=0?'#3fb950':'#f85149'}">${macd>0?'+':''}${macd}</b>`:''}`;
+      tip.style.left=(sx/d.W*100)+'%';tip.style.top=(sy/d.totalH*100)+'%';tip.style.display='block';
     }
   }catch(e){}
-  // sempre marca o ultimo ponto (atual) com numero, mesmo com muitos jogos
-  if(!mostraNumeros){
-    const lv=serie[N-1];
-    labels+=`<circle cx="${x(N-1)}" cy="${y(lv)}" r="3.5" fill="${cor}"/>`+
-            `<text x="${x(N-1)-6}" y="${y(lv)-8}" fill="${cor}" font-size="12" font-weight="700" text-anchor="end">${lv}${uni}</text>`;
+}
+function chartLeave(svg){
+  const tip=svg.parentElement.querySelector('.chart-tip'),linha=svg.querySelector('.chart-crosshair'),ponto=svg.querySelector('.chart-hover');
+  if(tip)tip.style.display='none';if(linha)linha.style.display='none';if(ponto)ponto.style.display='none';
+}
+function lineChart(serie, macdHist, trend, ehGols, horas, escala, refLinha){const uni=ehGols?"":"%";
+  if(!serie.length)return '<div class="note">sem dados para o gráfico</div>';
+  const W=680,H=214,pad=34,hH=70,gap=14,totalH=H+gap+hH,N=serie.length;
+  const mm10=chartEma(serie,10),mm20=chartEma(serie,20),todos=serie.concat(mm10,mm20).filter(Number.isFinite);
+  const rawMin=Math.min(...todos),rawMax=Math.max(...todos),margem=Math.max(2,(rawMax-rawMin)*.1);
+  const min=escala?escala[0]:Math.max(0,Math.floor((rawMin-margem)*10)/10),max=escala?escala[1]:Math.ceil((rawMax+margem)*10)/10;
+  const rng=Math.max(1,max-min),x=i=>pad+i*((W-2*pad)/(N-1||1)),y=v=>pad+(1-(v-min)/rng)*(H-2*pad);
+  const pontos=s=>s.map((v,i)=>x(i)+','+y(v)).join(' ');
+  const pts=pontos(serie),pts10=pontos(mm10),pts20=pontos(mm20),last=serie[N-1],first=serie[0];
+  const cor=last>first?'#3fb950':last<first?'#da3633':'#8b98a8',larguraLinha=N<=24?2.4:N<=80?1.9:1.4;
+  const area=`${x(0)},${H-pad} ${pts} ${x(N-1)},${H-pad}`;
+
+  let grid='';
+  for(let g=0;g<=4;g++){
+    const val=max-(rng*g/4),gy=y(val);
+    grid+=`<line x1="${pad}" y1="${gy}" x2="${W-pad}" y2="${gy}" stroke="#2d3543" stroke-width=".7" stroke-dasharray="3 5"/><text x="${pad-5}" y="${gy+3}" fill="#8b98a8" font-size="9" text-anchor="end">${Math.round(val*10)/10}${uni}</text>`;
   }
-  // linha mais fina quando ha muitos pontos
-  const larguraLinha = N<=24?2: N<=80?1.6:1.2;
-  // histograma MACD embaixo
+
+  let trendSvg='';
+  if(trend){
+    const buildLine=(s,c,n)=>{if(!s)return '';const p=s.map((v,i)=>v==null?null:x(i)+','+y(v)).filter(Boolean).join(' ');if(!p)return '';let li=s.length-1;while(li>=0&&s[li]==null)li--;return `<polyline points="${p}" fill="none" stroke="${c}" stroke-width="1.4" stroke-dasharray="5 3" opacity=".8"/>${li>=0?`<text x="${x(li)+4}" y="${y(s[li])}" fill="${c}" font-size="9" font-weight="700">${n}</text>`:''}`;};
+    trendSvg=buildLine(trend.lta&&trend.lta.serie,'#3fb950','LTA')+buildLine(trend.ltb&&trend.ltb.serie,'#da3633','LTB');
+  }
+
+  // Fibonacci automatico preservado, agora sob as medias moveis.
+  let fibSvg='';
+  if(N>=8){
+    let iMin=0,iMax=0;serie.forEach((v,i)=>{if(v<serie[iMin])iMin=i;if(v>=serie[iMax])iMax=i;});
+    const lo=serie[iMin],hi=serie[iMax],amp=hi-lo;
+    if(amp>=8){
+      const subida=iMin<iMax,x0=x(Math.min(iMin,iMax)),cur=serie[N-1];
+      const niveis=[0,23.6,38.2,50,61.8,78.6,100].map(p=>[p,Math.round((subida?hi-amp*p/100:lo+amp*p/100)*10)/10]);
+      let perto=niveis[0];for(const nv of niveis)if(Math.abs(cur-nv[1])<Math.abs(cur-perto[1]))perto=nv;
+      for(const [pct,val] of niveis){const forte=pct===50||pct===61.8,sel=pct===perto[0];fibSvg+=`<line x1="${x0}" y1="${y(val)}" x2="${W-pad}" y2="${y(val)}" stroke="${sel?'#e3b341':'#bc8cff'}" stroke-width="${sel?1.4:forte?1:.6}" stroke-dasharray="2 4" opacity="${sel ? .8 : .4}"/>`;}
+    }
+  }
+
+  let crossIndex=null;
+  for(let i=1;i<N;i++)if(mm10[i]>mm20[i]&&mm10[i-1]<=mm20[i-1])crossIndex=i;
+  const goldenAtivo=mm10[N-1]>mm20[N-1],barsAgo=crossIndex==null?null:N-1-crossIndex;
+  const crossSvg=crossIndex==null?'':`<circle cx="${x(crossIndex)}" cy="${y(serie[crossIndex])}" r="8" fill="rgba(242,204,96,.2)" stroke="#f2cc60" stroke-width="2"/><text x="${x(crossIndex)}" y="${y(serie[crossIndex])-12}" fill="#f2cc60" font-size="11" font-weight="800" text-anchor="middle">GOLDEN</text>`;
+
+  let dots='',labels='';
+  const mostraNumeros=N<=24,mostraBolinhas=N<=60;
+  serie.forEach((v,i)=>{if(mostraBolinhas)dots+=`<circle cx="${x(i)}" cy="${y(v)}" r="${N<=24?3:2}" fill="${i===N-1?cor:'#8b98a8'}"/>`;if(mostraNumeros&&(i===0||v!==serie[i-1]))labels+=`<text x="${x(i)}" y="${y(v)-8}" fill="#e6edf3" font-size="10" font-weight="600" text-anchor="middle">${v}</text>`;});
+  if(horas&&horas.length===N){const passo=Math.max(1,Math.ceil(N/8));for(let i=N-1;i>=0;i-=passo)if(horas[i])labels+=`<text x="${x(i)}" y="${H-3}" fill="#8b98a8" font-size="8.5" text-anchor="middle">${horas[i]}</text>`;}
+  labels+=`<circle class="chart-pulse" cx="${x(N-1)}" cy="${y(last)}" r="4" fill="${cor}"/><text x="${x(N-1)-6}" y="${y(last)-9}" fill="${cor}" font-size="12" font-weight="800" text-anchor="end">${last}${uni}</text>`;
+
   let macdSvg='';
   if(macdHist&&macdHist.length){
-    const hm=Math.max(...macdHist.map(Math.abs),0.5);
-    const baseY=H+gap+hH/2;
-    const hx=i=>pad+i*((W-2*pad)/(macdHist.length-1||1));
+    const hm=Math.max(...macdHist.map(Math.abs),.5),baseY=H+gap+hH/2,hx=i=>pad+i*((W-2*pad)/(macdHist.length-1||1)),bw=Math.max(2,Math.min(7,(W-2*pad)/Math.max(1,macdHist.length)*.55));
     macdSvg=`<line x1="${pad}" y1="${baseY}" x2="${W-pad}" y2="${baseY}" stroke="#2d3543"/>`;
-    macdHist.forEach((m,i)=>{
-      const bh=Math.abs(m)/hm*(hH/2-2);
-      const col=m>=0?'#2ea043':'#da3633';
-      macdSvg+=`<rect x="${hx(i)-2}" y="${m>=0?baseY-bh:baseY}" width="4" height="${bh}" fill="${col}"/>`;
-    });
-    macdSvg+=`<text x="${pad}" y="${H+gap+10}" fill="#8b98a8" font-size="10">Histograma MACD (MM1 vs MM2)</text>`;
+    macdHist.forEach((m,i)=>{const bh=Math.abs(m)/hm*(hH/2-2);macdSvg+=`<rect x="${hx(i)-bw/2}" y="${m>=0?baseY-bh:baseY}" width="${bw}" height="${bh}" rx="1" fill="${m>=0?'#2ea043':'#da3633'}" opacity=".85"/>`;});
+    macdSvg+=`<text x="${pad}" y="${H+gap+10}" fill="#8b98a8" font-size="10">MACD · EMA10 − EMA20</text>`;
   }
-  return `<svg viewBox="0 0 ${W} ${totalH}" style="width:100%;height:auto">
-    <line x1="${pad}" y1="${pad}" x2="${W-pad}" y2="${pad}" stroke="#2d3543" stroke-dasharray="3 3"/>
-    <line x1="${pad}" y1="${H-pad}" x2="${W-pad}" y2="${H-pad}" stroke="#2d3543" stroke-dasharray="3 3"/>
-    <polyline points="${pts}" fill="none" stroke="${cor}" stroke-width="${larguraLinha}"/>
+  const payload=encodeURIComponent(JSON.stringify({serie,mm10,mm20,macd:macdHist||[],horas:horas||[],ys:serie.map(y),uni,W,H,pad,totalH}));
+  const goldenBadge=goldenAtivo&&barsAgo!=null?`<b style="color:#f2cc60">✨ Golden Cross ativo · há ${barsAgo} ponto${barsAgo===1?'':'s'}</b>`:`<span>EMA10 ${mm10[N-1].toFixed(1)} · EMA20 ${mm20[N-1].toFixed(1)}</span>`;
+  return `<div class="chart-legend"><span><i style="background:${cor}"></i>Pagamento</span><span><i style="background:#f2cc60"></i>EMA10</span><span><i style="background:#bc8cff"></i>EMA20</span>${goldenBadge}<span style="margin-left:auto">mova o mouse ou toque no gráfico</span></div><div class="chart-shell"><div class="chart-tip"></div><svg viewBox="0 0 ${W} ${totalH}" data-chart="${payload}" onpointermove="chartPointer(event,this)" onpointerleave="chartLeave(this)" aria-label="Gráfico interativo de pagamento, EMA10 e EMA20">
+    <defs><linearGradient id="chartArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${cor}" stop-opacity=".24"/><stop offset="1" stop-color="${cor}" stop-opacity="0"/></linearGradient></defs>
+    ${grid}<polygon points="${area}" fill="url(#chartArea)"/>
     ${fibSvg}${trendSvg}${refLinha!=null&&refLinha>=min&&refLinha<=max?`<line x1="${pad}" y1="${y(refLinha).toFixed(1)}" x2="${W-pad}" y2="${y(refLinha).toFixed(1)}" stroke="#e3b341" stroke-width="1.3" stroke-dasharray="6 4"/><text x="${pad+4}" y="${(y(refLinha)-5).toFixed(1)}" fill="#e3b341" font-size="11" font-weight="700">${refLinha===0?"empate (0)":"equilíbrio "+refLinha+uni}</text>`:''}
-    ${dots}${labels}
-    <text x="${W-pad}" y="${pad-8}" fill="#8b98a8" font-size="11" text-anchor="end">Topo ${max}${uni}</text>
-    <text x="${W-pad}" y="${H-pad+16}" fill="#8b98a8" font-size="11" text-anchor="end">Fundo ${min}${uni}</text>
+    <polyline points="${pts20}" fill="none" stroke="#bc8cff" stroke-width="1.5" opacity=".9"/><polyline points="${pts10}" fill="none" stroke="#f2cc60" stroke-width="1.8" opacity=".95"/><polyline points="${pts}" fill="none" stroke="${cor}" stroke-width="${larguraLinha}"/>
+    ${crossSvg}${dots}${labels}<line class="chart-crosshair" x1="0" y1="${pad}" x2="0" y2="${H-pad}" stroke="#58a6ff" stroke-width="1" stroke-dasharray="3 3" style="display:none"/><circle class="chart-hover" cx="0" cy="0" r="5" fill="#0d1117" stroke="#58a6ff" stroke-width="2" style="display:none"/>
     ${macdSvg}
-  </svg>`;
+  </svg></div>`;
 }
 
 ligaSel.onchange=tick;
@@ -928,9 +928,9 @@ document.addEventListener('visibilitychange',()=>{ if(!document.hidden){ _lastHa
 </script>
 <script>
 (async function montaLigas(){
-  var CASAS={bet365:'bet365',betano:'Betano',playpix:'Kiron'};
+  var CASAS={bet365:'Bet365',betano:'Betano',playpix:'PlayPix'};
   var ORDEM=['playpix','betano','bet365'];
-  var rotulo=function(s){var p=String(s).split('-');var casa=p.shift();var liga=p.join('-');var cap=function(t){return t?t[0].toUpperCase()+t.slice(1):t;};return (CASAS[casa]||cap(casa))+' \u00b7 '+cap(liga);};
+  var rotulo=function(s){var p=String(s).split('-');var casa=p.shift();var liga=p.join('-');var cap=function(t){return String(t||'').split('-').filter(Boolean).map(function(x){return x[0].toUpperCase()+x.slice(1);}).join(' ');};return (CASAS[casa]||cap(casa))+' \u00b7 '+cap(liga);};
   var sel=document.getElementById('liga'); if(!sel) return;
   try{
     var lista=await fetch('/api/status'+location.search).then(function(r){return r.json();});
