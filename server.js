@@ -730,7 +730,8 @@ function buildAlerts(games, serie, sinal, mkt, base) {
   // GOLDEN CROSS: EMA10 cruza a EMA20 de baixo para cima neste ultimo ponto.
   const golden = sinal.goldenCross || goldenCrossData(serie);
   if (golden.crossedNow) {
-    alertas.push({ tipo: "GOLDEN CROSS", cls: "ok", txt: `${mktNome(mkt)}: EMA10 cruzou acima da EMA20 (${golden.fast} x ${golden.slow}, abertura +${golden.spread}).` });
+    const hora = horaBR();
+    alertas.push({ tipo: "GOLDEN CROSS", cls: "ok", hora, txt: `${mktNome(mkt)}: EMA10 cruzou acima da EMA20 às ${hora} (Brasília) — ${golden.fast} x ${golden.slow}, abertura +${golden.spread}.` });
   }
 
   // 1) ALERTA DE MINIMA: mercado no fundo historico (oportunidade de formacao)
@@ -766,6 +767,26 @@ function buildAlerts(games, serie, sinal, mkt, base) {
 }
 
 function mktNome(m) { return { o35: "Over 3.5", ge5: "5+ gols", o25: "Over 2.5", ambas: "Ambas" }[m] || m; }
+function horaBR(ts = Date.now()) {
+  try {
+    return new Date(ts).toLocaleTimeString("pt-BR", {
+      timeZone: "America/Sao_Paulo", hour: "2-digit", minute: "2-digit", hour12: false
+    });
+  } catch (e) { return new Date(ts).toISOString().slice(11, 16); }
+}
+function horaCurta(v) {
+  const m = String(v || "").match(/(?:^|\s)(\d{1,2}):(\d{2})(?:\s|$)/);
+  return m ? String(Number(m[1])).padStart(2, "0") + ":" + m[2] : null;
+}
+function atrasoMinutos(horaFonte, horaDetectada) {
+  if (!horaFonte || !horaDetectada) return null;
+  const a = horaFonte.split(":").map(Number), b = horaDetectada.split(":").map(Number);
+  if (a.some(Number.isNaN) || b.some(Number.isNaN)) return null;
+  let d = (b[0] * 60 + b[1]) - (a[0] * 60 + a[1]);
+  if (d < -720) d += 1440;
+  if (d > 720) d -= 1440;
+  return d >= 0 ? d : null;
+}
 
 function computeMarket(games, mkt, qtdJogos = 20) {
   // Total Gols (FT): mercado de MEDIA de gols (nao e taxa de acerto). O grafico mostra
@@ -3909,8 +3930,16 @@ function atualizaRadar(liga, s) {
       // o chip permanece no radar enquanto a media curta continuar acima da longa.
       const golden = goldenCrossData(serie);
       if (golden.active) {
-        radarAtivos[k + "|golden"] = { liga, mkt, tipo: "golden", pagando: cur, base: c.base, fita, mm10: golden.fast, mm20: golden.slow, spread: golden.spread, barsAgo: golden.barsAgo, ts: Date.now() };
-        if (golden.crossedNow && !prev.golden && !primeira && podeAvisar(k + "|golden")) avisaRadar(radarAtivos[k + "|golden"]);
+        const chaveGolden = k + "|golden";
+        const goldenAnterior = radarAtivos[chaveGolden];
+        const cruzouEm = golden.crossedNow ? Date.now() : (goldenAnterior && goldenAnterior.cruzouEm) || null;
+        const hora = cruzouEm ? horaBR(cruzouEm) : (goldenAnterior && goldenAnterior.hora) || null;
+        const horaFonte = golden.crossedNow
+          ? horaCurta(gAll.length && gAll[gAll.length - 1].horario)
+          : (goldenAnterior && goldenAnterior.horaFonte) || null;
+        const atrasoMin = atrasoMinutos(horaFonte, hora);
+        radarAtivos[chaveGolden] = { liga, mkt, tipo: "golden", pagando: cur, base: c.base, fita, mm10: golden.fast, mm20: golden.slow, spread: golden.spread, barsAgo: golden.barsAgo, hora, horaFonte, atrasoMin, cruzouEm, ts: Date.now() };
+        if (golden.crossedNow && !prev.golden && !primeira && podeAvisar(chaveGolden)) avisaRadar(radarAtivos[chaveGolden]);
       } else delete radarAtivos[k + "|golden"];
       radarEstado[k] = { fundo, sobe, ltb: quebrouLTB, nivelMin, pull, golden: golden.active };
     }
@@ -3964,10 +3993,10 @@ function enviaPushRadar(info) {
   const liga = NOMES_L[info.liga] || info.liga;
   const mercado = NOMES_M[info.mkt] || info.mkt;
   const titulo = info.tipo === "golden"
-    ? `✨ GOLDEN CROSS — ${liga} · ${mercado}`
+    ? `✨ GOLDEN CROSS${info.hora ? ` ${info.hora}` : ""} — ${liga} · ${mercado}`
     : `🚨 ZONA DE OPERAÇÃO — ${liga} · ${mercado}${info.rel != null ? ` (${info.rel}% do normal)` : ""}`;
   const corpo = info.tipo === "golden"
-    ? `EMA10 ${info.mm10 ?? "—"} cruzou acima da EMA20 ${info.mm20 ?? "—"} — pagando ${info.pagando ?? "—"}%`
+    ? `${info.horaFonte ? `Ponto do cruzamento ${info.horaFonte}` : "Golden Cross"}${info.hora ? ` · alerta tocou ${info.hora}` : ""}${info.atrasoMin != null ? ` · atraso ${info.atrasoMin}min` : ""} — EMA10 ${info.mm10 ?? "—"} acima da EMA20 ${info.mm20 ?? "—"}`
     : `pagando ${info.pagando ?? "—"}% (normal ${info.base ?? "—"}%) — janela aberta AGORA`;
   const payload = JSON.stringify({ t: titulo, b: corpo, tag: info.liga + "|" + info.mkt + "|" + info.tipo });
   for (const s of [...pushData.subs]) {
