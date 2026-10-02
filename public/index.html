@@ -494,15 +494,15 @@ function gradeResultadosHtml(d){
   };
   const abrev=s=>String(s||'—').trim().slice(0,3).toUpperCase();
   const odd=(o,k)=>o&&o[k]!=null?Number(o[k]).toFixed(2):'—';
-  const pct=v=>v==null?'—':v+'%';
+  const fmtPct=v=>v==null?'—':v+'%';
   const itens=passados.map(g=>({...g,tipo:paga(g,d.mercado)?'pay':'nopay'})).concat(futuros.map(g=>({...g,tipo:'pending',placar:'—'})));
   if(!itens.length)return '<section class="amd-results-panel"><div class="amd-panel-head"><span class="amd-panel-title">Grade de resultados</span></div><div class="amd-ribbon-empty">Aguardando os jogos enviados pela extensão.</div></section>';
   const grupos={};itens.forEach(g=>{const h=String(g.h||'--:--').split(':')[0]||'—';(grupos[h]=grupos[h]||[]).push(g);});
   const horas=Object.keys(grupos).sort((a,b)=>(parseInt(b)||-1)-(parseInt(a)||-1));
   const rows=horas.map(h=>{
-    const jogos=grupos[h].map(g=>`<div class="amd-result-col"><div class="amd-column-stat"><b>:${String(g.h||'').split(':')[1]||'—'}</b><span>3h ${pct(g.coluna&&g.coluna.h3)}</span><span>6h ${pct(g.coluna&&g.coluna.h6)}</span><span>24h ${pct(g.coluna&&g.coluna.h24)}</span></div><div class="amd-game-card ${g.tipo}"><div class="amd-game-time">${g.h||'—'}</div><div class="amd-game-teams">${abrev(g.casa)}${g.posCasa?'('+g.posCasa+')':''} x ${abrev(g.fora)}${g.posFora?'('+g.posFora+')':''}</div><div class="amd-game-score">${g.placar||'—'}</div><div class="amd-game-odds">AS ${odd(g.odds,'ambs')}<br>O2.5 ${odd(g.odds,'o25')}<br>O3.5 ${odd(g.odds,'o35')}</div></div></div>`).join('');
-    const fim=grupos[h].filter(g=>g.tipo!=='pending'),greens=fim.filter(g=>g.tipo==='pay').length,pct=fim.length?Math.round(greens/fim.length*100):0;
-    return `<div class="amd-results-hour"><div class="amd-results-label"><b>${h}h</b><span>${fim.length?pct+'%':'em curso'}</span><small>${greens} GREEN</small></div><div class="amd-results-track">${jogos}</div></div>`;
+    const jogos=grupos[h].map(g=>`<div class="amd-result-col"><div class="amd-column-stat"><b>:${String(g.h||'').split(':')[1]||'—'}</b><span>3h ${fmtPct(g.coluna&&g.coluna.h3)}</span><span>6h ${fmtPct(g.coluna&&g.coluna.h6)}</span><span>24h ${fmtPct(g.coluna&&g.coluna.h24)}</span></div><div class="amd-game-card ${g.tipo}"><div class="amd-game-time">${g.h||'—'}</div><div class="amd-game-teams">${abrev(g.casa)}${g.posCasa?'('+g.posCasa+')':''} x ${abrev(g.fora)}${g.posFora?'('+g.posFora+')':''}</div><div class="amd-game-score">${g.placar||'—'}</div><div class="amd-game-odds">AS ${odd(g.odds,'ambs')}<br>O2.5 ${odd(g.odds,'o25')}<br>O3.5 ${odd(g.odds,'o35')}</div></div></div>`).join('');
+    const fim=grupos[h].filter(g=>g.tipo!=='pending'),greens=fim.filter(g=>g.tipo==='pay').length,horaPct=fim.length?Math.round(greens/fim.length*100):0;
+    return `<div class="amd-results-hour"><div class="amd-results-label"><b>${h}h</b><span>${fim.length?horaPct+'%':'em curso'}</span><small>${greens} GREEN</small></div><div class="amd-results-track">${jogos}</div></div>`;
   }).join('');
   const upd=d.lastUpdated?new Date(d.lastUpdated):null,carimbo=upd&&!isNaN(upd.getTime())?upd.toLocaleTimeString('pt-BR'):'agora';
   return `<section class="amd-results-panel" id="gradeResultados"><div class="amd-panel-head"><span class="amd-panel-title">Grade de resultados · ${nomeMkt[d.mercado]||d.mercado}</span><span class="amd-panel-meta">Extensão ao vivo · ${carimbo}<i class="amd-legend green"></i>green <i class="amd-legend red"></i>red <i class="amd-legend blue"></i>próximos</span></div><div class="amd-grid-scroll">${rows}</div></section>`;
