@@ -1541,19 +1541,28 @@ function acumuladoDia(liga, mkt, qtd) {
   }
   const dia = games.slice(idxDia);
   const JAN = Math.max(2, parseInt(qtd) || 20);
-  // media movel NORMAL com aquecimento: no 1o jogo ja existe ponto (janela = o que houver),
-  // e a janela cresce ate JAN. Assim o grafico nasce cedo e ja aponta a direcao dos resultados.
+  // CURVA DE SALDO: cada jogo obrigatoriamente move a linha.
+  // Pagou o mercado = +1; não pagou = -1. Diferente da porcentagem móvel,
+  // esta curva nunca lateraliza por arredondamento e representa a batalha do dia.
   const monta = arr => {
     if (!arr || arr.length < 2) return null;
     const serie = [], hrs = [];
+    let saldo = 0, greens = 0;
     for (let k = 0; k < arr.length; k++) {
-      const ini2 = Math.max(0, k - JAN + 1);
-      const jan = arr.slice(ini2, k + 1);
-      const pg = jan.filter(g => pays(g, mkt)).length;
-      serie.push(Math.round(pg / jan.length * 1000) / 10);
+      const green = pays(arr[k], mkt);
+      if (green) greens++;
+      saldo += green ? 1 : -1;
+      serie.push(saldo);
       hrs.push(arr[k].horario || "");
     }
-    return { serie, horas: hrs, macd: serie.length > 3 ? (macdData(serie).hist || []) : [] };
+    return {
+      serie,
+      horas: hrs,
+      macd: serie.length > 3 ? (macdData(serie).hist || []) : [],
+      saldoAtual: saldo,
+      pctAtual: Math.round(greens / arr.length * 1000) / 10,
+      jogos: arr.length
+    };
   };
   const JOGOS_HORA = 20; // 1 jogo a cada 3 min
   const faixasAcum = {};
