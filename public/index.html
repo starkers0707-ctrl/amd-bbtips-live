@@ -304,11 +304,17 @@ async function tick(){
       f:(d.mosaico.futuros||[]).map(g=>[g.h,g.casa,g.fora,g.odds,g.posCasa,g.posFora,g.coluna])
     }:null;
     const hash=JSON.stringify({u:d.lastUpdated,n:(d.proximos||[]).length,s:d.analise&&d.analise.serie,cr:d.curvaReal,gr:gradeHash,m:mkt,l:liga,q:qtd});
-    if(hash!==_lastHash){ _lastHash=hash; window.__lastD=d;window.__frescor=(d&&d.fetchedAt)?new Date(d.fetchedAt).getTime():window.__frescor;
-    render(d);
-    carregaDicas(mkt);
-    carregaPadroes(liga,mkt);
-    carregaRobo(); }
+    const conteudo=document.getElementById('conteudo');
+    if(hash!==_lastHash||!conteudo||!conteudo.innerHTML.trim()){
+      window.__lastD=d;window.__frescor=(d&&d.fetchedAt)?new Date(d.fetchedAt).getTime():window.__frescor;
+      render(d);
+      // Só confirma o hash depois que a tela foi montada. Se render falhar,
+      // o próximo envio da extensão tenta novamente em vez de congelar vazio.
+      _lastHash=hash;
+      carregaDicas(mkt);
+      carregaPadroes(liga,mkt);
+      carregaRobo();
+    }
     const upd=d.lastUpdated?new Date(d.lastUpdated):null;
     $('#liveinfo').textContent='ao vivo • atualizado '+(upd?upd.toLocaleTimeString('pt-BR'):'agora');
   }catch(e){ $('#liveinfo').textContent='erro de conexao'; }
