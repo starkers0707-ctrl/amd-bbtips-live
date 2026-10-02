@@ -1523,11 +1523,9 @@ app.post("/api/curve", (req, res) => {
   }
 });
 
-// ===== ACUMULADO DO DIA (pedido do usuario): a janela rolante esquece o passado e so oscila.
-// Estas duas linhas ZERAM as 00h do relogio do jogo e acumulam o dia inteiro:
-//  - pct   = % de pagamento acumulada desde as 00h (comeca instavel, estabiliza; comparar com a base)
-//  - saldo = batalha OVER x UNDER: +1 quando o mercado paga, -1 quando o oposto paga.
-//            Sobe DE VERDADE quando o mercado esta vencendo o lado contrario no dia.
+// ===== PAGAMENTO ACUMULADO DO DIA =====
+// Zera na virada do relógio do jogo e mostra a taxa real desde o primeiro jogo:
+// GREEN aumenta a porcentagem; RED diminui a porcentagem.
 function acumuladoDia(liga, mkt, qtd) {
   const d = store[liga]; if (!d) return null;
   const games = listaCheia(d);
@@ -1541,38 +1539,35 @@ function acumuladoDia(liga, mkt, qtd) {
   }
   const dia = games.slice(idxDia);
   const JAN = Math.max(2, parseInt(qtd) || 20);
-  // CURVA DE SALDO: cada jogo obrigatoriamente move a linha.
-  // Pagou o mercado = +1; não pagou = -1. Diferente da porcentagem móvel,
-  // esta curva nunca lateraliza por arredondamento e representa a batalha do dia.
-  const monta = arr => {
-    if (!arr || arr.length < 2) return null;
-    const serie = [], hrs = [];
-    let saldo = 0, greens = 0;
-    for (let k = 0; k < arr.length; k++) {
-      const green = pays(arr[k], mkt);
-      if (green) greens++;
-      saldo += green ? 1 : -1;
-      serie.push(saldo);
-      hrs.push(arr[k].horario || "");
-    }
+  // Taxa de pagamento acumulada: GREEN sobe e RED desce. A precisão interna
+  // evita patamares falsos criados apenas pelo arredondamento da porcentagem.
+  let greens = 0;
+  const serieDia = [], horasDia = [];
+  for (let k = 0; k < dia.length; k++) {
+    if (pays(dia[k], mkt)) greens++;
+    serieDia.push(Math.round((greens / (k + 1)) * 100000) / 1000);
+    horasDia.push(dia[k].horario || "");
+  }
+  const monta = n => {
+    const ini = Math.max(0, serieDia.length - n);
+    const serie = serieDia.slice(ini), hrs = horasDia.slice(ini);
+    if (serie.length < 2) return null;
     return {
       serie,
       horas: hrs,
       macd: serie.length > 3 ? (macdData(serie).hist || []) : [],
-      saldoAtual: saldo,
-      pctAtual: Math.round(greens / arr.length * 1000) / 10,
-      jogos: arr.length
+      pctAtual: Math.round((greens / dia.length) * 1000) / 10,
+      jogos: serie.length
     };
   };
   const JOGOS_HORA = 20; // 1 jogo a cada 3 min
   const faixasAcum = {};
   for (const h of [3, 6, 12, 18, 24]) {
     const n = h * JOGOS_HORA;
-    const fatia = dia.length > n ? dia.slice(-n) : dia;   // dentro do dia, ultimas h horas
-    const f = monta(fatia);
+    const f = monta(n); // apenas recorta a mesma curva; não reinicia o pagamento
     if (f) faixasAcum["h" + h] = f;
   }
-  const fDia = monta(dia);
+  const fDia = monta(dia.length);
   if (fDia) faixasAcum.dia = fDia;
   if (!Object.keys(faixasAcum).length) return null;
   const base = Math.round(dia.filter(g => pays(g, mkt)).length / dia.length * 1000) / 10;
