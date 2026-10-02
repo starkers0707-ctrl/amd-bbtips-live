@@ -1668,6 +1668,16 @@ app.get("/api/liga/:liga", (req, res) => {
       rkFull.forEach((t, i) => posTimes[t.time] = i + 1);
     } catch (e) {}
   }
+  // Expõe na grade os cálculos que já existem: rank atual dos times e
+  // acerto da coluna/minuto para o mercado selecionado. Não recalcula sinal.
+  if (mkt !== "totft") {
+    for (const g of [...mosaico.passados, ...mosaico.futuros]) {
+      g.posCasa = posTimes ? (posTimes[g.casa] || null) : null;
+      g.posFora = posTimes ? (posTimes[g.fora] || null) : null;
+      g.posTotal = posTotal;
+      g.coluna = colunaPct(_gM, g.h, mkt);
+    }
+  }
 
   const proximos = ((d.upcoming && d.upcoming[mkt]) || []).map(p => {
     const anc = ancoras[p.nome];
@@ -3991,15 +4001,11 @@ function enviaPushRobo(titulo, corpo, tag) {
 
 function enviaPushRadar(info) {
   if (!webpush || !pushData.vapid || !pushData.subs.length) return;
-  if (!info || (info.tipo !== "minima" && info.tipo !== "golden")) return;
+  if (!info || info.tipo !== "golden") return;
   const liga = NOMES_L[info.liga] || info.liga;
   const mercado = NOMES_M[info.mkt] || info.mkt;
-  const titulo = info.tipo === "golden"
-    ? `✨ GOLDEN CROSS ${info.horaFonte || info.hora || "AGORA"} — ${liga} · ${mercado}`
-    : `🚨 ZONA DE OPERAÇÃO — ${liga} · ${mercado}${info.rel != null ? ` (${info.rel}% do normal)` : ""}`;
-  const corpo = info.tipo === "golden"
-    ? `Bateu ${info.horaFonte || info.hora || "agora"}${info.hora ? ` · alerta tocou ${info.hora}` : ""}${info.atrasoMin != null ? ` · atraso ${info.atrasoMin}min` : ""} — EMA10 ${info.mm10 ?? "—"} acima da EMA20 ${info.mm20 ?? "—"}`
-    : `pagando ${info.pagando ?? "—"}% (normal ${info.base ?? "—"}%) — janela aberta AGORA`;
+  const titulo = `✨ GOLDEN CROSS ${info.horaFonte || info.hora || "AGORA"} — ${liga} · ${mercado}`;
+  const corpo = `Bateu ${info.horaFonte || info.hora || "agora"}${info.hora ? ` · alerta tocou ${info.hora}` : ""}${info.atrasoMin != null ? ` · atraso ${info.atrasoMin}min` : ""} — EMA10 ${info.mm10 ?? "—"} acima da EMA20 ${info.mm20 ?? "—"}`;
   const payload = JSON.stringify({ t: titulo, b: corpo, tag: info.liga + "|" + info.mkt + "|" + info.tipo });
   for (const s of [...pushData.subs]) {
     webpush.sendNotification(s, payload).catch(err => {
@@ -4014,7 +4020,7 @@ function enviaPushRadar(info) {
 function avisaRadar(info) {
   const msg = `data: ${JSON.stringify({ tipo: "radar", alerta: info })}\n\n`; // BUGFIX: info.tipo sobrescrevia o rotulo "radar"
   for (const res of sseClientes) { try { res.write(msg); } catch (e) { sseClientes.delete(res); } }
-  enviaPushRadar(info); // WEB PUSH: minima e Golden Cross chegam mesmo com aba congelada/fechada
+  enviaPushRadar(info); // WEB PUSH: somente Golden Cross, mesmo com aba congelada/fechada
 }
 app.get("/api/push/key", (req, res) => res.json({ key: (pushData.vapid && pushData.vapid.publicKey) || null, pronto: !!(webpush && pushData.vapid), inscritos: pushData.subs.length }));
 app.post("/api/push/sub", (req, res) => {
