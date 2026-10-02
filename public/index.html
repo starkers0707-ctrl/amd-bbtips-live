@@ -58,18 +58,18 @@
 </header>
 <div class="amd-shell">
 <aside class="amd-sidebar" aria-label="Navegação principal">
-  <a class="amd-nav-item active" href="#compact-dashboard"><span class="amd-nav-ico">▦</span><span>Dashboard</span></a>
-  <a class="amd-nav-item" href="#grade-jogos"><span class="amd-nav-ico">♟</span><span>Ao Vivo</span></a>
-  <a class="amd-nav-item" href="#oportunidades"><span class="amd-nav-ico">◆</span><span>Mercados</span></a>
-  <a class="amd-nav-item" href="#backtest-compact"><span class="amd-nav-ico">◫</span><span>Relatórios</span></a>
-  <a class="amd-nav-item" href="#analise-avancada"><span class="amd-nav-ico">⌁</span><span>Análise</span></a>
-  <a class="amd-nav-item" href="#grade-jogos"><span class="amd-nav-ico">♙</span><span>Times</span></a>
-  <a class="amd-nav-item" href="#ultimos-resultados"><span class="amd-nav-ico">⌗</span><span>Placar Correto</span></a>
+  <a class="amd-nav-item active" href="#conteudo"><span class="amd-nav-ico">▦</span><span>Dashboard</span></a>
+  <a class="amd-nav-item" href="#conteudo"><span class="amd-nav-ico">♟</span><span>Ao Vivo</span></a>
+  <a class="amd-nav-item" href="#conteudo"><span class="amd-nav-ico">◆</span><span>Mercados</span></a>
+  <a class="amd-nav-item" href="#btSec"><span class="amd-nav-ico">◫</span><span>Backtest</span></a>
+  <a class="amd-nav-item" href="#padroesBox"><span class="amd-nav-ico">⌁</span><span>Caçador de Padrão</span></a>
+  <a class="amd-nav-item" href="#conteudo"><span class="amd-nav-ico">♙</span><span>Times</span></a>
+  <a class="amd-nav-item" href="#conteudo"><span class="amd-nav-ico">⌗</span><span>Placar Correto</span></a>
   <a class="amd-nav-item" href="#radar"><span class="amd-nav-ico">⚠</span><span>Alertas</span><b class="amd-nav-badge" id="sideAlertCount">0</b></a>
   <a class="amd-nav-item" href="#roboBox"><span class="amd-nav-ico">▣</span><span>Robôs</span></a>
   <div class="amd-nav-sep"></div>
-  <a class="amd-nav-item" href="#analise-avancada"><span class="amd-nav-ico">▽</span><span>Filtro Odd</span></a>
-  <a class="amd-nav-item" href="#analise-avancada"><span class="amd-nav-ico">⌘</span><span>Convergência</span></a>
+  <a class="amd-nav-item" href="#conteudo"><span class="amd-nav-ico">▽</span><span>Filtro Odd</span></a>
+  <a class="amd-nav-item" href="#conteudo"><span class="amd-nav-ico">⌘</span><span>Convergência</span></a>
   <div class="amd-nav-sep"></div>
   <div class="amd-side-rank" id="sideRank"><div class="amd-side-rank-title">Ranking real</div></div>
   <div class="amd-side-server">Servidor em tempo real<div><span>Jogos analisados</span><b id="sideServerGames">—</b></div><div><span>Status</span><b>ONLINE</b></div></div>
@@ -182,7 +182,6 @@ Dispara quando a média rápida <b>EMA10 cruza de baixo para cima</b> a média l
 </main>
 </div>
 
-<script src="/reference-ui.js"></script>
 <script>
 const $=s=>document.querySelector(s);
 const ligaSel=$('#liga'), mktSel=$('#mkt'), qtdSel=$('#qtd');
@@ -447,11 +446,7 @@ async function carregaBacktest(liga,mkt){
   const k=liga+'|'+mkt;
   window.__btC=window.__btC||{};
   const c=window.__btC[k];
-  if(c&&Date.now()-c.ts<60000){
-    el.innerHTML=c.html;
-    if(window.AMDReferenceUI&&c.data)window.AMDReferenceUI.renderBacktest(c.data);
-    return;
-  }
+  if(c&&Date.now()-c.ts<60000){el.innerHTML=c.html;return;}
   el.innerHTML='<div class="sec">📋 Histórico de indicações (backtest)</div><div class="card note">calculando histórico…</div>';
   try{
     const r=await fetch('/api/backtest/'+liga+'?mkt='+mkt+'&n=150',{cache:'no-store'});
@@ -466,9 +461,8 @@ async function carregaBacktest(liga,mkt){
         ${linhas||'<div class="note">nenhuma indicação na janela avaliada</div>'}
         <div class="note" style="margin-top:8px;font-size:11px">⚠️ reconstrução retroativa com os mesmos critérios; amostras pequenas oscilam — use como acompanhamento, não como garantia.</div>
       </div>`;
-    window.__btC[k]={ts:Date.now(),html,data:b};
+    window.__btC[k]={ts:Date.now(),html};
     el.innerHTML=html;
-    if(window.AMDReferenceUI)window.AMDReferenceUI.renderBacktest(b);
   }catch(e){el.innerHTML='';}
 }
 
@@ -699,9 +693,7 @@ function render(d){
     :_rel>115
     ?`<div style="padding:8px 14px;border-radius:10px;background:rgba(248,81,73,.10);border:1px solid var(--red);margin-bottom:10px;font-weight:700;color:var(--red);font-size:13px">🌡️ ${_rel}% do normal — 🔴 QUENTE, NÃO OPERAR (pagando ${_cur}%, normal ${a.base}%)</div>`
     :`<div style="padding:8px 14px;border-radius:10px;background:#161c28;border:1px solid var(--line);margin-bottom:10px;color:#8b98a8;font-size:13px">🌡️ ${_rel}% do normal — neutro (pagando ${_cur}%, normal ${a.base}%) · zona de operação: abaixo de 60% · <span style="opacity:.75">selo em tempo real; o gráfico atualiza com 2 jogos de atraso</span></div>`);
-  const compactHtml=window.AMDReferenceUI?window.AMDReferenceUI.render(d):'';
   $('#conteudo').innerHTML=`
-    ${compactHtml}
     ${tempHtml}
     ${goldenHtml}
     ${subidaHtml}

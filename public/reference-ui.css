@@ -26,5 +26,32 @@ body{max-width:none!important;min-height:100vh;margin:0!important;padding:0!impo
 .amd-hour-label{display:flex;align-items:center;gap:6px;margin:7px 0 2px;color:var(--ref-muted);font-size:9px}.amd-hour-label b{color:var(--ref-text);font-family:var(--ref-mono)}.amd-hour-label .amd-hour-summary{margin-left:6px;color:var(--ref-muted)}.amd-hour-label .amd-hour-summary .g{color:var(--ref-green)}.amd-hour-label .amd-hour-summary .r{color:var(--ref-red)}
 .amd-game-card{position:relative;min-width:68px;height:82px;overflow:hidden;padding:4px;border:1px solid #2a2f35;border-radius:4px;color:#fff;font-family:var(--ref-mono)}.amd-game-card.pay{background:linear-gradient(180deg,#0c6b2a,#085521)}.amd-game-card.nopay{background:linear-gradient(180deg,#bc2525,#a91414)}.amd-game-card.pending{background:linear-gradient(180deg,#184fac,#123c86)}.amd-game-card.empty{background:#111820;border-color:#17232d}.amd-game-time{color:#d7e5ff;font-size:7.5px;text-align:center}.amd-game-teams{margin-top:2px;font-size:8px;font-weight:900;line-height:1.15;text-align:center}.amd-game-score{margin:2px 0;text-align:center;font-size:13px;font-weight:900;line-height:1}.amd-game-odds{color:#d7dce0;font-size:7.2px;line-height:1.25;text-align:center;white-space:nowrap}.amd-grid-foot{padding:6px 10px 9px;color:var(--ref-muted);font-size:9px;border-top:1px solid var(--ref-line)}
 .amd-analysis-divider{display:flex;align-items:center;gap:8px;margin:15px 0 8px;color:var(--ref-muted);font-size:9px;text-transform:uppercase;letter-spacing:.65px}.amd-analysis-divider:before,.amd-analysis-divider:after{content:"";height:1px;flex:1;background:var(--ref-line)}
+
+/* O tema abaixo atua somente na apresentação dos módulos originais.
+   A grade, o backtest e os padrões continuam sendo montados pelo index.html. */
+#conteudo{display:block;min-width:0}
+#conteudo>.card,#conteudo>#roboBox>.card,#conteudo>#dicasBox>.card{
+  margin-bottom:8px!important;padding:10px!important;border-color:var(--ref-line)!important;
+  border-radius:8px!important;background:var(--ref-panel)!important;box-shadow:none!important
+}
+#conteudo>.grid{gap:7px!important;margin-bottom:9px!important;grid-template-columns:repeat(auto-fit,minmax(175px,1fr))!important}
+#conteudo>.grid>.card{min-width:0;padding:9px!important;border-color:var(--ref-line)!important;border-radius:7px!important;background:var(--ref-panel)!important}
+#conteudo>.grid>.card h3{margin-bottom:4px!important;font-size:8px!important;letter-spacing:.65px!important}
+#conteudo>.grid>.card .big{font:800 19px/1.15 var(--ref-mono)!important}
+#conteudo .sec{margin:11px 0 5px!important;padding:7px 9px;border:1px solid var(--ref-line);border-radius:7px 7px 0 0;background:var(--ref-panel-2);font-size:10px!important;letter-spacing:.4px;text-transform:uppercase}
+#conteudo table{border:1px solid var(--ref-line)!important;border-radius:0 0 7px 7px!important;background:var(--ref-panel)!important;font-size:10px!important}
+#conteudo th{position:sticky;top:var(--ref-topbar);z-index:2;padding:5px 7px!important;background:var(--ref-panel-2)!important;font-size:8px!important}
+#conteudo td{padding:5px 7px!important;border-color:var(--ref-line)!important}
+#conteudo tr.ok{background:rgba(24,227,77,.075)!important}
+#btSec{margin:10px 0;padding:0;border:1px solid var(--ref-line);border-radius:8px;background:var(--ref-panel);overflow:auto}
+#btSec:empty{display:none}
+#btSec .sec{margin:0!important;border:0!important;border-bottom:1px solid var(--ref-line)!important;border-radius:0!important}
+#btSec>.card{margin:0!important;border:0!important;border-radius:0!important;background:var(--ref-panel)!important}
+#padroesBox{margin-top:10px;border:1px solid var(--ref-line);border-radius:8px;background:var(--ref-panel);overflow:hidden}
+#padroesBox:empty{display:none}
+#padroesBox>div{margin-top:0!important;padding:9px!important}
+#padroesBox>div>b:first-child{display:block;margin:-9px -9px 8px;padding:7px 9px;border-bottom:1px solid var(--ref-line);background:var(--ref-panel-2);font-size:10px!important;text-transform:uppercase;letter-spacing:.45px}
+#roboBox,#dicasBox{display:flex;flex-direction:column;gap:7px}
+.chart-shell{border:1px solid var(--ref-line);background:linear-gradient(180deg,rgba(50,164,255,.06),transparent 58%)!important}
 @media(max-width:1150px){.amd-opportunities{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:760px){:root{--ref-sidebar:48px}.amd-topbar{padding:0 8px;gap:6px}.amd-live-pill,.amd-api-pill,.amd-user-pill{display:none}.amd-top-status{font-size:8px;max-width:150px;overflow:hidden}.amd-sidebar{padding:6px 4px;align-items:stretch}.amd-nav-item{justify-content:center;padding:8px 4px;position:relative}.amd-nav-item span:not(.amd-nav-ico):not(.amd-nav-badge),.amd-side-rank,.amd-side-server{display:none}.amd-nav-ico{width:auto;font-size:13px}.amd-nav-badge{position:absolute;transform:translate(11px,-9px);padding:0 4px}.amd-main{padding:8px 7px 28px}.amd-page-title svg{width:27px;height:27px}.amd-main>.bar{padding:8px}.amd-opportunities{grid-template-columns:1fr}.amd-panel-meta{display:none}}
+@media(max-width:760px){:root{--ref-sidebar:48px}.amd-topbar{padding:0 8px;gap:6px}.amd-live-pill,.amd-api-pill,.amd-user-pill{display:none}.amd-top-status{font-size:8px;max-width:150px;overflow:hidden}.amd-sidebar{padding:6px 4px;align-items:stretch}.amd-nav-item{justify-content:center;padding:8px 4px;position:relative}.amd-nav-item span:not(.amd-nav-ico):not(.amd-nav-badge),.amd-side-rank,.amd-side-server{display:none}.amd-nav-ico{width:auto;font-size:13px}.amd-nav-badge{position:absolute;transform:translate(11px,-9px);padding:0 4px}.amd-main{padding:8px 7px 28px}.amd-page-title svg{width:27px;height:27px}.amd-main>.bar{padding:8px}.amd-opportunities{grid-template-columns:1fr}.amd-panel-meta{display:none}#conteudo>.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}#conteudo table{min-width:620px}#btSec{overflow-x:auto}}
