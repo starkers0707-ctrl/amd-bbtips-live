@@ -1005,7 +1005,19 @@ function ligaSSE(){
     es.onmessage=ev=>{
       try{
         const m=JSON.parse(ev.data);
-        if(m.tipo==='liga'&&m.liga===ligaSel.value){ _lastHash=''; tick(); }
+        if(m.tipo==='liga'){
+          // A extensão pode descobrir ligas depois que a página já abriu (principalmente
+          // após reinício do Render). Inclui a liga imediatamente no seletor.
+          if(m.liga&&!Array.from(ligaSel.options).some(o=>o.value===m.liga)){
+            const p=String(m.liga).split('-'),c=p.shift();
+            const casas={playpix:'PlayPix',betano:'Betano',bet365:'Bet365'};
+            const cap=s=>String(s||'').split('-').filter(Boolean).map(x=>x[0].toUpperCase()+x.slice(1)).join(' ');
+            const o=document.createElement('option');o.value=m.liga;o.textContent=(casas[c]||cap(c))+' · '+cap(p.join('-'));ligaSel.appendChild(o);
+          }
+          const vazio=!document.getElementById('conteudo')?.innerHTML.trim()||/aguardando dados/i.test(document.getElementById('liveinfo')?.textContent||'');
+          if(vazio&&m.liga&&ligaSel.value!==m.liga)ligaSel.value=m.liga;
+          if(m.liga===ligaSel.value){ _lastHash=''; tick(); }
+        }
         else if(m.tipo==='radar'){ notificaRadar(m.alerta||m); carregaRadar(); }
       }catch(e){}
     };
