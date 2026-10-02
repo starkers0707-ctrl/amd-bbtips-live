@@ -851,9 +851,9 @@ function acumChartHtml(ac){
   return `<div style="margin-top:2px">
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px;font-size:12px">
       <span style="display:flex;gap:5px;align-items:center;flex-wrap:wrap"><b>⏱️ Horas</b> ${btns}</span>
-       <span><b style="color:${s[s.length-1]>=0?'var(--greenb)':'var(--red)'}">${s[s.length-1]>0?'+':''}${s[s.length-1]}u</b> <span class="note">· acerto ${f.pctAtual??'—'}% · ${f.jogos||s.length} jogos no período</span></span>
+       <span><b style="color:var(--greenb)">${f.pctAtual??Math.round(s[s.length-1]*10)/10}%</b> <span class="note">· pagamento acumulado · ${ac.jogos||s.length} jogos desde ${ac.desde||'00h'}</span></span>
     </div>
-    ${lineChart(s, f.macd||[], null, 'saldo', f.horas||[], null, 0, nomes[faixaAcum]||faixaAcum)}
+     ${lineChart(s, f.macd||[], null, 'acumPct', f.horas||[], null, null, nomes[faixaAcum]||faixaAcum)}
   </div>`;
 }
 
@@ -899,12 +899,12 @@ function chartLeave(svg){
   const tip=svg.parentElement.querySelector('.chart-tip'),linha=svg.querySelector('.chart-crosshair'),ponto=svg.querySelector('.chart-hover');
   if(tip)tip.style.display='none';if(linha)linha.style.display='none';if(ponto)ponto.style.display='none';
 }
-function lineChart(serie, macdHist, trend, ehGols, horas, escala, refLinha, periodoLabel){const saldoMode=ehGols==='saldo',uni=saldoMode?'u':ehGols?"":"%";
+function lineChart(serie, macdHist, trend, ehGols, horas, escala, refLinha, periodoLabel){const saldoMode=ehGols==='saldo',acumPctMode=ehGols==='acumPct',uni=saldoMode?'u':ehGols&&!acumPctMode?"":"%";
   if(!serie.length)return '<div class="note">sem dados para o gráfico</div>';
   const W=920,H=300,pad=44,hH=66,gap=16,totalH=H+gap+hH,N=serie.length;
   const mm10=chartEma(serie,10),mm20=chartEma(serie,20),todos=serie.concat(mm10,mm20).filter(Number.isFinite);
   const rawMin=Math.min(...todos),rawMax=Math.max(...todos),margem=Math.max(2,(rawMax-rawMin)*.1);
-  const min=escala?escala[0]:(saldoMode?Math.floor((rawMin-margem)*10)/10:Math.max(0,Math.floor((rawMin-margem)*10)/10)),max=escala?escala[1]:Math.ceil((rawMax+margem)*10)/10;
+  const min=escala?escala[0]:Math.floor((rawMin-margem)*10)/10,max=escala?escala[1]:Math.ceil((rawMax+margem)*10)/10;
   const rng=Math.max(1,max-min),x=i=>pad+i*((W-2*pad)/(N-1||1)),y=v=>pad+(1-(v-min)/rng)*(H-2*pad);
   const pontos=s=>s.map((v,i)=>x(i)+','+y(v)).join(' ');
   const degraus=s=>s.length?s.slice(1).reduce((p,v,i)=>p+` H ${x(i+1)} V ${y(v)}`,`M ${x(0)} ${y(s[0])}`):'';
@@ -958,14 +958,14 @@ function lineChart(serie, macdHist, trend, ehGols, horas, escala, refLinha, peri
     macdHist.forEach((m,i)=>{const bh=Math.abs(m)/hm*(hH/2-2);macdSvg+=`<rect x="${hx(i)-bw/2}" y="${m>=0?baseY-bh:baseY}" width="${bw}" height="${bh}" rx="1" fill="${m>=0?'#2ea043':'#da3633'}" opacity=".85"/>`;});
     macdSvg+=`<text x="${pad}" y="${H+gap+10}" fill="#8b98a8" font-size="10">MACD · EMA10 − EMA20</text>`;
   }
-  const payload=encodeURIComponent(JSON.stringify({serie,mm10,mm20,macd:macdHist||[],horas:horas||[],ys:serie.map(y),uni,saldoMode,W,H,pad,totalH}));
+  const payload=encodeURIComponent(JSON.stringify({serie,mm10,mm20,macd:macdHist||[],horas:horas||[],ys:serie.map(y),uni,saldoMode,acumPctMode,W,H,pad,totalH}));
   const goldenBadge=goldenAtivo&&barsAgo!=null?`<b style="color:#f2cc60">✨ Golden Cross ativo${crossHora?' · cruzou '+crossHora:''} · há ${barsAgo} ponto${barsAgo===1?'':'s'}</b>`:`<span>EMA10 ${mm10[N-1].toFixed(1)} · EMA20 ${mm20[N-1].toFixed(1)}</span>`;
   const ferramentas=`<div class="chart-tools"><span class="on">Linha atual</span><span class="on">Médias</span><span class="on">MACD</span><span class="gold">GDCROSS</span><span class="on">Topo/Fundo</span><span class="on">Fibonacci</span><span class="on">LTA/LTB</span></div>`;
-  return `${periodoLabel?`<div class="chart-period"><b>${periodoLabel}</b><span>${N} pontos no período · ${horas&&horas.length?(horas[0]||'—')+' → '+(horas[N-1]||'—'):''}</span></div>`:''}${ferramentas}<div class="chart-legend"><span><i style="background:${cor};box-shadow:0 0 7px ${cor}"></i>${saldoMode?'Saldo (+1 / −1)':'Pagamento em degraus'}</span><span><i style="background:#00aaf5"></i>EMA10</span><span><i style="background:#f0a000"></i>EMA20</span>${goldenBadge}<span style="margin-left:auto">mova o mouse ou toque no gráfico</span></div><div class="chart-shell"><div class="chart-tip"></div><svg viewBox="0 0 ${W} ${totalH}" data-chart="${payload}" onpointermove="chartPointer(event,this)" onpointerleave="chartLeave(this)" aria-label="Gráfico interativo de pagamento, EMA10 e EMA20">
+  return `${periodoLabel?`<div class="chart-period"><b>${periodoLabel}</b><span>${N} pontos no período · ${horas&&horas.length?(horas[0]||'—')+' → '+(horas[N-1]||'—'):''}</span></div>`:''}${ferramentas}<div class="chart-legend"><span><i style="background:${cor};box-shadow:0 0 7px ${cor}"></i>${saldoMode?'Saldo (+1 / −1)':acumPctMode?'Pagamento acumulado':'Pagamento em degraus'}</span><span><i style="background:#00aaf5"></i>EMA10</span><span><i style="background:#f0a000"></i>EMA20</span>${goldenBadge}<span style="margin-left:auto">mova o mouse ou toque no gráfico</span></div><div class="chart-shell"><div class="chart-tip"></div><svg viewBox="0 0 ${W} ${totalH}" data-chart="${payload}" onpointermove="chartPointer(event,this)" onpointerleave="chartLeave(this)" aria-label="Gráfico interativo de pagamento, EMA10 e EMA20">
     <defs><linearGradient id="chartArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${cor}" stop-opacity=".16"/><stop offset="1" stop-color="${cor}" stop-opacity="0"/></linearGradient><filter id="chartGlow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
     ${grid}<polygon points="${area}" fill="url(#chartArea)"/>
     ${fibSvg}${trendSvg}${refLinha!=null&&refLinha>=min&&refLinha<=max?`<line x1="${pad}" y1="${y(refLinha).toFixed(1)}" x2="${W-pad}" y2="${y(refLinha).toFixed(1)}" stroke="#e3b341" stroke-width="1.3" stroke-dasharray="6 4"/><text x="${pad+4}" y="${(y(refLinha)-5).toFixed(1)}" fill="#e3b341" font-size="11" font-weight="700">${refLinha===0?"empate (0)":"equilíbrio "+refLinha+uni}</text>`:''}
-    <polyline points="${pts20}" fill="none" stroke="#f0a000" stroke-width="1.8" opacity=".95"/><polyline points="${pts10}" fill="none" stroke="#00aaf5" stroke-width="1.9" opacity=".98"/><path d="${degraus(serie)}" fill="none" stroke="${cor}" stroke-width="${larguraLinha}" stroke-linejoin="round" filter="url(#chartGlow)"/>
+    <polyline points="${pts20}" fill="none" stroke="#f0a000" stroke-width="1.8" opacity=".95"/><polyline points="${pts10}" fill="none" stroke="#00aaf5" stroke-width="1.9" opacity=".98"/>${acumPctMode?`<polyline points="${pts}" fill="none" stroke="${cor}" stroke-width="${larguraLinha}" stroke-linejoin="round" filter="url(#chartGlow)"/>`:`<path d="${degraus(serie)}" fill="none" stroke="${cor}" stroke-width="${larguraLinha}" stroke-linejoin="round" filter="url(#chartGlow)"/>`}
     ${crossSvg}${dots}${labels}<line class="chart-crosshair" x1="0" y1="${pad}" x2="0" y2="${H-pad}" stroke="#58a6ff" stroke-width="1" stroke-dasharray="3 3" style="display:none"/><circle class="chart-hover" cx="0" cy="0" r="5" fill="#0d1117" stroke="#58a6ff" stroke-width="2" style="display:none"/>
     ${macdSvg}
   </svg></div>`;
