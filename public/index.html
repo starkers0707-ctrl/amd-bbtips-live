@@ -45,9 +45,39 @@
   @keyframes chartPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(1.65)}}
   @media(max-width:600px){.chart-shell svg{min-height:220px}.chart-tip{font-size:10px;min-width:144px}}
 </style>
+<link rel="stylesheet" href="/reference-ui.css">
 </head>
 <body>
+<header class="amd-topbar">
+  <div class="amd-topbar-brand"><span class="amd-brand-dot"></span>AMD LIVE</div>
+  <span class="amd-live-pill"><span class="dot"></span>Ao Vivo</span>
+  <span class="amd-api-pill">● API Conectada</span>
+  <span class="amd-top-spacer"></span>
+  <span class="amd-top-status"><span class="dot"></span><span id="liveinfo">conectando...</span></span>
+  <span class="amd-user-pill">● Painel AMD</span>
+</header>
+<div class="amd-shell">
+<aside class="amd-sidebar" aria-label="Navegação principal">
+  <a class="amd-nav-item active" href="#compact-dashboard"><span class="amd-nav-ico">▦</span><span>Dashboard</span></a>
+  <a class="amd-nav-item" href="#grade-jogos"><span class="amd-nav-ico">♟</span><span>Ao Vivo</span></a>
+  <a class="amd-nav-item" href="#oportunidades"><span class="amd-nav-ico">◆</span><span>Mercados</span></a>
+  <a class="amd-nav-item" href="#backtest-compact"><span class="amd-nav-ico">◫</span><span>Relatórios</span></a>
+  <a class="amd-nav-item" href="#analise-avancada"><span class="amd-nav-ico">⌁</span><span>Análise</span></a>
+  <a class="amd-nav-item" href="#grade-jogos"><span class="amd-nav-ico">♙</span><span>Times</span></a>
+  <a class="amd-nav-item" href="#ultimos-resultados"><span class="amd-nav-ico">⌗</span><span>Placar Correto</span></a>
+  <a class="amd-nav-item" href="#radar"><span class="amd-nav-ico">⚠</span><span>Alertas</span><b class="amd-nav-badge" id="sideAlertCount">0</b></a>
+  <a class="amd-nav-item" href="#roboBox"><span class="amd-nav-ico">▣</span><span>Robôs</span></a>
+  <div class="amd-nav-sep"></div>
+  <a class="amd-nav-item" href="#analise-avancada"><span class="amd-nav-ico">▽</span><span>Filtro Odd</span></a>
+  <a class="amd-nav-item" href="#analise-avancada"><span class="amd-nav-ico">⌘</span><span>Convergência</span></a>
+  <div class="amd-nav-sep"></div>
+  <div class="amd-side-rank" id="sideRank"><div class="amd-side-rank-title">Ranking real</div></div>
+  <div class="amd-side-server">Servidor em tempo real<div><span>Jogos analisados</span><b id="sideServerGames">—</b></div><div><span>Status</span><b>ONLINE</b></div></div>
+</aside>
+<main class="amd-main">
+<div class="amd-page-title">
 <h1 style="display:flex;align-items:center;gap:10px"><svg width="34" height="34" viewBox="0 0 34 34" style="flex-shrink:0"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#58a6ff"/><stop offset="1" stop-color="#1f6feb"/></linearGradient></defs><rect x="1" y="1" width="32" height="32" rx="8" fill="#0d1117" stroke="url(#lg)" stroke-width="2"/><path d="M7 24 L12 11 L17 20 L22 8 L27 24" fill="none" stroke="url(#lg)" stroke-width="2.4" stroke-linjoin="round" stroke-linecap="round"/><circle cx="22" cy="8" r="2.4" fill="#3fb950"/></svg>AMD Live</h1>
+</div>
 <div class="sub">Over 3.5 / 5+ ao vivo — atualiza sozinho direto da API, sem travar.</div>
 
 <div class="bar">
@@ -58,7 +88,6 @@
   <button id="somBtn" style="font-size:12px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:#1c2333;color:#e8edf4;cursor:pointer">🔔 Ativar som</button>
   <button id="notifBtn" style="font-size:12px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:#1c2333;color:#e8edf4;cursor:pointer">�🖥️ Notificações</button>
   <button onclick="document.getElementById('comoFunciona').style.display='flex'" style="font-size:12px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:#1c2333;color:#e8edf4;cursor:pointer">📖 Como funciona</button>
-  <span class="live"><span class="dot"></span><span id="liveinfo">conectando...</span></span>
 </div>
 
 
@@ -150,7 +179,10 @@ Dispara quando a média rápida <b>EMA10 cruza de baixo para cima</b> a média l
 <p style="color:#8b98a8;margin-top:14px;font-size:12px">⚠️ Transparência: os números acima são estatísticas do histórico — indicam probabilidade, nunca certeza. Mesmo a melhor entrada perde com frequência; a gestão de banca é o que mantém você no jogo. Isto não é promessa de lucro.</p>
 </div>
 </details>
+</main>
+</div>
 
+<script src="/reference-ui.js"></script>
 <script>
 const $=s=>document.querySelector(s);
 const ligaSel=$('#liga'), mktSel=$('#mkt'), qtdSel=$('#qtd');
@@ -415,7 +447,11 @@ async function carregaBacktest(liga,mkt){
   const k=liga+'|'+mkt;
   window.__btC=window.__btC||{};
   const c=window.__btC[k];
-  if(c&&Date.now()-c.ts<60000){el.innerHTML=c.html;return;}
+  if(c&&Date.now()-c.ts<60000){
+    el.innerHTML=c.html;
+    if(window.AMDReferenceUI&&c.data)window.AMDReferenceUI.renderBacktest(c.data);
+    return;
+  }
   el.innerHTML='<div class="sec">📋 Histórico de indicações (backtest)</div><div class="card note">calculando histórico…</div>';
   try{
     const r=await fetch('/api/backtest/'+liga+'?mkt='+mkt+'&n=150',{cache:'no-store'});
@@ -430,8 +466,9 @@ async function carregaBacktest(liga,mkt){
         ${linhas||'<div class="note">nenhuma indicação na janela avaliada</div>'}
         <div class="note" style="margin-top:8px;font-size:11px">⚠️ reconstrução retroativa com os mesmos critérios; amostras pequenas oscilam — use como acompanhamento, não como garantia.</div>
       </div>`;
-    window.__btC[k]={ts:Date.now(),html};
+    window.__btC[k]={ts:Date.now(),html,data:b};
     el.innerHTML=html;
+    if(window.AMDReferenceUI)window.AMDReferenceUI.renderBacktest(b);
   }catch(e){el.innerHTML='';}
 }
 
@@ -662,7 +699,9 @@ function render(d){
     :_rel>115
     ?`<div style="padding:8px 14px;border-radius:10px;background:rgba(248,81,73,.10);border:1px solid var(--red);margin-bottom:10px;font-weight:700;color:var(--red);font-size:13px">🌡️ ${_rel}% do normal — 🔴 QUENTE, NÃO OPERAR (pagando ${_cur}%, normal ${a.base}%)</div>`
     :`<div style="padding:8px 14px;border-radius:10px;background:#161c28;border:1px solid var(--line);margin-bottom:10px;color:#8b98a8;font-size:13px">🌡️ ${_rel}% do normal — neutro (pagando ${_cur}%, normal ${a.base}%) · zona de operação: abaixo de 60% · <span style="opacity:.75">selo em tempo real; o gráfico atualiza com 2 jogos de atraso</span></div>`);
+  const compactHtml=window.AMDReferenceUI?window.AMDReferenceUI.render(d):'';
   $('#conteudo').innerHTML=`
+    ${compactHtml}
     ${tempHtml}
     ${goldenHtml}
     ${subidaHtml}
