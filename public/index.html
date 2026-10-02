@@ -731,7 +731,7 @@ function render(d){
 
     ${rankTimesHtml}
 
-    ${!a.ehTotalGols?'<div id="btSec"></div>':''}
+    ${!a.ehTotalGols?'<div id="btSec"><div class="sec">📋 Histórico de indicações (backtest)</div><div class="card note">calculando histórico…</div></div>':''}
 
     <div id="relSec"></div>
 
@@ -756,7 +756,7 @@ function render(d){
     <div class="card"><div style="font-size:13px">${ultimos}${maximasHtml}</div></div>
     `}
   `;
-  if(!a.ehTotalGols)carregaBacktest(d.liga,mkt); // async: preenche #btSec sem travar a tela
+  if(mkt!=='totft')carregaBacktest(d.liga,mkt); // async: preenche #btSec sem travar a tela
   carregaRelatorio(d.liga); // async: relatorio por data (independe do mercado)
 }
 
