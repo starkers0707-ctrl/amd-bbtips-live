@@ -63,8 +63,8 @@
   <a class="amd-nav-item active" href="#conteudo"><span class="amd-nav-ico">▦</span><span>Dashboard</span></a>
   <a class="amd-nav-item" href="#conteudo"><span class="amd-nav-ico">♟</span><span>Ao Vivo</span></a>
   <a class="amd-nav-item" href="#conteudo"><span class="amd-nav-ico">◆</span><span>Mercados</span></a>
-  <a class="amd-nav-item" href="#btSec"><span class="amd-nav-ico">◫</span><span>Backtest</span></a>
-  <a class="amd-nav-item" href="#padroesBox"><span class="amd-nav-ico">⌁</span><span>Caçador de Padrão</span></a>
+  <a class="amd-nav-item" href="#btSecTop"><span class="amd-nav-ico">◫</span><span>Backtest</span></a>
+  <a class="amd-nav-item" href="#padroesTop"><span class="amd-nav-ico">⌁</span><span>Caçador de Padrão</span></a>
   <a class="amd-nav-item" href="#conteudo"><span class="amd-nav-ico">♙</span><span>Times</span></a>
   <a class="amd-nav-item" href="#conteudo"><span class="amd-nav-ico">⌗</span><span>Placar Correto</span></a>
   <a class="amd-nav-item" href="#radar"><span class="amd-nav-ico">⚠</span><span>Alertas</span><b class="amd-nav-badge" id="sideAlertCount">0</b></a>
@@ -237,12 +237,12 @@ async function carregaRobo(){
   }catch(e){}
 }
 async function carregaPadroes(liga,mkt){
-  const el=document.getElementById('padroesBox');
+  const el=document.getElementById('padroesTop');
   if(!el)return;
   if(mkt==='totft'){el.innerHTML='';return;}
   try{
     const [r,rl]=await Promise.all([fetch(`/api/padroes/${liga}?mkt=${mkt}`,{cache:'no-store'}),fetch(`/api/leitor/${liga}?mkt=${mkt}`,{cache:'no-store'}).catch(()=>null)]);
-    if(!r.ok)return;
+    if(!r.ok){el.innerHTML='<div class="sec">⌁ Caçador de Padrão</div><div class="card note">Aguardando a próxima atualização dos jogos.</div>';return;}
     const j=await r.json();
     const lt=rl&&rl.ok?await rl.json():null;
     if(mkt!==mktSel.value)return;
@@ -256,7 +256,7 @@ async function carregaPadroes(liga,mkt){
       return;
     }
     el.innerHTML=`<div style="margin-top:14px"><b style="font-size:13px">🔍 Caçador de padrões <span class="note">(desfecho medido no CICLO de 3 tiros, como você opera — 🟢=pagou 🔴=não)</span></b><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">${ps.map(p=>{const seq=p.seq.split('').map(c=>c==='G'?'🟢':'🔴').join('');const prox=p.prox==='G'?'🟢':'🔴';return `<div style="background:#161b22;border:1px solid ${p.prox==='G'?'#3fb950':'#d29922'};border-radius:8px;padding:6px 10px;font-size:12px"><b>${seq} → ${p.prox==='G'?'🟢 em até 3 tiros':'💀 ciclo morre (3 tiros)'}</b> <b style="color:${p.prox==='G'?'var(--greenb)':'var(--red)'}">+${p.edge} pts vs régua</b><br><span class="note" style="font-size:10px">${p.taxa}% (${p.acertos}/${p.n}) · régua do ciclo ${p.regua}% · horas: ${p.horas.join(', ')}</span></div>`;}).join('')}</div>${po.length?`<div style="margin-top:8px;font-size:12px;font-weight:700">💰 por ODD <span class="note" style="font-size:10px">(janela: 1 antes · NELE · 1 depois — no mercado selecionado)</span></div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${po.map(p=>`<div style="background:#161b22;border:1px solid ${p.prox==='G'?'#3fb950':'#f85149'};border-radius:8px;padding:6px 10px;font-size:12px"><b>@${p.chave} → ${p.prox==='G'?'🟢 em até 3 tiros':'💀 ciclo morre'}</b> <b style="color:${p.prox==='G'?'var(--greenb)':'var(--red)'}">+${p.edge} pts</b><br><span class="note" style="font-size:10px">${p.taxa}% (${p.acertos}/${p.n}) · régua ${p.regua}%</span></div>`).join('')}</div>`:''}${pt.length?`<div style="margin-top:8px;font-size:12px;font-weight:700">👥 por TIME <span class="note" style="font-size:10px">(janela: 1 antes · NELE · 1 depois — no mercado selecionado)</span></div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${pt.map(p=>`<div style="background:#161b22;border:1px solid ${p.prox==='G'?'#3fb950':'#f85149'};border-radius:8px;padding:6px 10px;font-size:12px"><b>${p.chave} → ${p.prox==='G'?'🟢 em até 3 tiros':'💀 ciclo morre'}</b> <b style="color:${p.prox==='G'?'var(--greenb)':'var(--red)'}">+${p.edge} pts</b><br><span class="note" style="font-size:10px">${p.taxa}% (${p.acertos}/${p.n}) · régua ${p.regua}%</span></div>`).join('')}</div>`:''}${ppl.length?`<div style="margin-top:8px;font-size:12px;font-weight:700">🎯 por PLACAR <span class="note" style="font-size:10px">(o ciclo começou num jogo com esse placar)</span></div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${ppl.map(p=>`<div style="background:#161b22;border:1px solid ${p.prox==='G'?'#3fb950':'#f85149'};border-radius:8px;padding:6px 10px;font-size:12px"><b>${p.chave} → ${p.prox==='G'?'🟢 em até 3 tiros':'💀 ciclo morre'}</b> <b style="color:${p.prox==='G'?'var(--greenb)':'var(--red)'}">+${p.edge} pts</b><br><span class="note" style="font-size:10px">${p.taxa}% (${p.acertos}/${p.n}) · régua ${p.regua}%</span></div>`).join('')}</div>`:''}${pcol.length?`<div style="margin-top:8px;font-size:12px;font-weight:700">📊 por COLUNA (minuto) <span class="note" style="font-size:10px">(o ciclo começou num jogo desse minuto)</span></div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">${pcol.map(p=>`<div style="background:#161b22;border:1px solid ${p.prox==='G'?'#3fb950':'#f85149'};border-radius:8px;padding:6px 10px;font-size:12px"><b>${p.chave} → ${p.prox==='G'?'🟢 em até 3 tiros':'💀 ciclo morre'}</b> <b style="color:${p.prox==='G'?'var(--greenb)':'var(--red)'}">+${p.edge} pts</b><br><span class="note" style="font-size:10px">${p.taxa}% (${p.acertos}/${p.n}) · régua ${p.regua}%</span></div>`).join('')}</div>`:''}${(pupl.length||true)?`<div style="margin-top:8px;font-size:12px;font-weight:700">🎰 PADRÕES AUTO-DETECTADOS <span class="note" style="font-size:10px">(varredura do dia — ordenados por quão "metrônomo" cada evento é; ◀ dourado = próximo cai AGORA)</span></div>${pupl.length?`<div style="display:flex;flex-direction:column;gap:5px;margin-top:4px">${pupl.map(p=>{const barra=Math.round(p.regular/10);const cor=p.regular>=70?'#3fb950':p.regular>=55?'#e3b341':'#8b98a8';return `<div style="background:#161b22;border:1px solid ${p.prontoAgora?'#e3b341':'#30363d'};border-radius:8px;padding:6px 10px;font-size:12px"><div style="display:flex;justify-content:space-between;align-items:center"><b>${p.nome}</b><span style="font-size:10px;color:${cor}">${'█'.repeat(barra)}${'░'.repeat(10-barra)} ${p.regular}%</span></div><span class="note" style="font-size:10px">volta a cada <b style="color:#58a6ff">~${p.puloMedio}</b> casas (comum ${p.puloComum} · saiu ${p.vezes}× · últimos ${p.ultimos.join(',')}) · há ${p.desde} desde o último${p.prontoAgora?' <span style="color:#e3b341;font-weight:700">◀ é AGORA</span>':p.quaseProximo===1?' <span style="color:#e3b341">◀ falta 1</span>':''}</span></div>`;}).join('')}</div>`:`<div class="note" style="font-size:11px;margin-top:4px;padding:6px 10px;background:#161b22;border-radius:8px">Nenhum evento em compasso regular nesta liga hoje (nada bateu 45% de regularidade). O dia ainda está "caótico" aqui — volte mais tarde ou veja outra liga.</div>`}`:''}${(lt&&!lt.erro)?`<div style="margin-top:8px;font-size:12px;font-weight:700">🔮 LEITOR DE GRÁFICO <span class="note" style="font-size:10px">(o desenho da curva já apareceu antes? o que veio depois?)</span></div><div style="margin-top:4px;background:#161b22;border:1px solid ${lt.sinalAgora?(lt.sinalAgora.prox==='G'?'#3fb950':'#f85149'):'#30363d'};border-radius:8px;padding:8px 10px;font-size:12px"><b>desenho agora:</b> <span style="font-family:monospace;font-size:15px;letter-spacing:2px;color:#58a6ff">${(lt.desenhoAtual||'').replace(/^F·/,'ᶠ ').replace(/^M·/,'ᵐ ').replace(/^T·/,'ᵗ ').replace(/U/g,'↑').replace(/D/g,'↓').replace(/F/g,'→')}</span>${lt.atualNaMemoria?` <span class="note" style="font-size:10px">(visto ${lt.atualNaMemoria.n}× · depois veio green ${lt.atualNaMemoria.taxa}% · régua ${lt.regua}%)</span>`:` <span class="note" style="font-size:10px">(desenho inédito hoje)</span>`}${lt.sinalAgora?`<br><b style="color:${lt.sinalAgora.prox==='G'?'var(--greenb)':'var(--red)'}">${lt.sinalAgora.prox==='G'?'🔮 esse desenho ANUNCIA GREEN em até 3':'🔮 esse desenho ANUNCIA MORTE do ciclo'} · +${lt.sinalAgora.edge} pts (${lt.sinalAgora.n}×)</b>`:''}</div>${(lt.topDesenhos||[]).length?`<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">${lt.topDesenhos.map(p=>`<div style="background:#161b22;border:1px solid ${p.prox==='G'?'#3fb950':'#f85149'};border-radius:8px;padding:5px 9px;font-size:11px"><span style="font-family:monospace;letter-spacing:1px">${(p.desenho||'').replace(/^F·/,'ᶠ ').replace(/^M·/,'ᵐ ').replace(/^T·/,'ᵗ ').replace(/U/g,'↑').replace(/D/g,'↓').replace(/F/g,'→')}</span> → ${p.prox==='G'?'🟢':'💀'} <b style="color:${p.prox==='G'?'var(--greenb)':'var(--red)'}">+${p.edge}</b> <span class="note" style="font-size:9px">${p.taxa}% (${p.n}×)</span></div>`).join('')}</div>`:''}`:''}<div class="note" style="font-size:10px;margin-top:4px">Desfecho = green em ATÉ 3 jogos após a sequência (teu ciclo). Contagem zera às 00h do relógio do jogo — só o dia atual conta. Só aparecem padrões que fogem da régua do ciclo em 15+ pontos (verde = ciclo paga mais; vermelho = ciclo morre mais — FUJA). ⚠️ Poucas ocorrências pode ser acaso — lupa, não sinal.</div></div>`;
-  }catch(e){}
+  }catch(e){el.innerHTML='<div class="sec">⌁ Caçador de Padrão</div><div class="card note">Aguardando a próxima atualização dos jogos.</div>';}
 }
 async function carregaDicas(mkt){
   const el=document.getElementById('dicasBox');
@@ -458,7 +458,7 @@ async function carregaRelatorio(liga){
 
 // ===== HISTORICO DE INDICACOES (backtest) — so tela, nao altera analises =====
 async function carregaBacktest(liga,mkt){
-  const el=document.getElementById('btSec'); if(!el)return;
+  const el=document.getElementById('btSecTop'); if(!el)return;
   const k=liga+'|'+mkt;
   window.__btC=window.__btC||{};
   const c=window.__btC[k];
@@ -774,6 +774,9 @@ function render(d){
       <div class="hint" style="margin-top:10px">Quando as três janelas apontam pro mesmo lado, o sinal é forte. <b style="color:${a.confluencia&&/forte/.test(a.confluencia.confluencia)?'var(--greenb)':'var(--muted)'}">${a.confluencia?a.confluencia.confluencia:'—'}</b></div>
     </div>
 
+    ${!a.ehTotalGols?'<div id="btSecTop"><div class="sec">📋 Histórico de indicações (backtest)</div><div class="card note">calculando histórico…</div></div>':''}
+    <div id="padroesTop"><div class="sec">⌁ Caçador de Padrão</div><div class="card note">analisando os jogos desta liga…</div></div>
+
     <div id="roboBox"></div>
     <div id="dicasBox"></div>
     ${gradeResultadosHtml(d)}
@@ -781,8 +784,6 @@ function render(d){
     ${prox||'<div class="card">aguardando próximos jogos...</div>'}
 
     ${rankTimesHtml}
-
-    ${!a.ehTotalGols?'<div id="btSec"><div class="sec">📋 Histórico de indicações (backtest)</div><div class="card note">calculando histórico…</div></div>':''}
 
     <div id="relSec"></div>
 
