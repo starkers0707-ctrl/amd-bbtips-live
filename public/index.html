@@ -42,6 +42,7 @@
   .chart-legend{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:4px 0 8px;font-size:11px;color:var(--muted)}
   .chart-legend i{display:inline-block;width:18px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
   .chart-tools{display:flex;gap:5px;align-items:center;overflow-x:auto;margin-bottom:7px;padding-bottom:2px;scrollbar-width:thin}.chart-tools span{white-space:nowrap;padding:4px 9px;border:1px solid #163541;border-radius:4px;background:#07151c;color:#77909a;font:700 9px ui-monospace,SFMono-Regular,Consolas,monospace}.chart-tools .on{border-color:#087b42;background:rgba(0,210,105,.08);color:#00db74}.chart-tools .gold{border-color:#75631d;color:#f2cc60}
+  .chart-period{display:flex;justify-content:space-between;gap:8px;align-items:center;margin:0 0 6px;color:#7f98a2;font-size:10px}.chart-period b{color:#00db74;font-size:12px}.chart-shell{animation:chartSwap .28s ease-out}@keyframes chartSwap{from{opacity:.35;transform:translateY(3px)}to{opacity:1;transform:none}}
   .chart-pulse{animation:chartPulse 1.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
   @keyframes chartPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(1.65)}}
   @media(max-width:600px){.chart-shell svg{min-height:220px}.chart-tip{font-size:10px;min-width:144px}}
@@ -833,6 +834,7 @@ function abasGraficoHtml(){
 //          (a % que empata com a odd media: acima disso o dia esta pagando mais do que custa).
 let faixaAcum = localStorage.getItem('cl_faixaacum') || 'dia';
 function trocaFaixaAcum(f){
+  if(!f||f===faixaAcum)return;
   faixaAcum=f;
   try{ localStorage.setItem('cl_faixaacum',f); }catch(e){}
   if(window.__ultimoPayload) render(window.__ultimoPayload);
@@ -844,13 +846,14 @@ function acumChartHtml(ac){
   if(!ops.length)return '<div class="note">aguardando os primeiros jogos do dia</div>';
   if(!fx[faixaAcum])faixaAcum=ops[ops.length-1][0];
   const f=fx[faixaAcum], s=f.serie;
+  const nomes={h3:'Últimas 3 horas',h6:'Últimas 6 horas',h12:'Últimas 12 horas',h18:'Últimas 18 horas',h24:'Últimas 24 horas',dia:'Desde 00h'};
   const btns=ops.map(([k,t])=>`<button onclick="trocaFaixaAcum('${k}')" style="cursor:pointer;border:1px solid ${faixaAcum===k?'#58a6ff':'#30363d'};background:${faixaAcum===k?'#132033':'#161b22'};color:${faixaAcum===k?'#58a6ff':'#8b98a8'};border-radius:7px;padding:4px 10px;font-size:11px;font-weight:${faixaAcum===k?'700':'400'}">${t}</button>`).join('');
   return `<div style="margin-top:2px">
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px;font-size:12px">
       <span style="display:flex;gap:5px;align-items:center;flex-wrap:wrap"><b>⏱️ Horas</b> ${btns}</span>
       <span><b>${s[s.length-1]}%</b> <span class="note">· ${ac.jogos} jogos desde ${ac.desde} (relógio do jogo) · média de ${ac.janela}</span></span>
     </div>
-    ${lineChart(s, f.macd||[], null, false, f.horas||[])}
+    ${lineChart(s, f.macd||[], null, false, f.horas||[], null, null, nomes[faixaAcum]||faixaAcum)}
   </div>`;
 }
 
@@ -896,7 +899,7 @@ function chartLeave(svg){
   const tip=svg.parentElement.querySelector('.chart-tip'),linha=svg.querySelector('.chart-crosshair'),ponto=svg.querySelector('.chart-hover');
   if(tip)tip.style.display='none';if(linha)linha.style.display='none';if(ponto)ponto.style.display='none';
 }
-function lineChart(serie, macdHist, trend, ehGols, horas, escala, refLinha){const uni=ehGols?"":"%";
+function lineChart(serie, macdHist, trend, ehGols, horas, escala, refLinha, periodoLabel){const uni=ehGols?"":"%";
   if(!serie.length)return '<div class="note">sem dados para o gráfico</div>';
   const W=920,H=300,pad=44,hH=66,gap=16,totalH=H+gap+hH,N=serie.length;
   const mm10=chartEma(serie,10),mm20=chartEma(serie,20),todos=serie.concat(mm10,mm20).filter(Number.isFinite);
@@ -958,7 +961,7 @@ function lineChart(serie, macdHist, trend, ehGols, horas, escala, refLinha){cons
   const payload=encodeURIComponent(JSON.stringify({serie,mm10,mm20,macd:macdHist||[],horas:horas||[],ys:serie.map(y),uni,W,H,pad,totalH}));
   const goldenBadge=goldenAtivo&&barsAgo!=null?`<b style="color:#f2cc60">✨ Golden Cross ativo${crossHora?' · cruzou '+crossHora:''} · há ${barsAgo} ponto${barsAgo===1?'':'s'}</b>`:`<span>EMA10 ${mm10[N-1].toFixed(1)} · EMA20 ${mm20[N-1].toFixed(1)}</span>`;
   const ferramentas=`<div class="chart-tools"><span class="on">Linha atual</span><span class="on">Médias</span><span class="on">MACD</span><span class="gold">GDCROSS</span><span class="on">Topo/Fundo</span><span class="on">Fibonacci</span><span class="on">LTA/LTB</span></div>`;
-  return `${ferramentas}<div class="chart-legend"><span><i style="background:${cor};box-shadow:0 0 7px ${cor}"></i>Pagamento em degraus</span><span><i style="background:#00aaf5"></i>EMA10</span><span><i style="background:#f0a000"></i>EMA20</span>${goldenBadge}<span style="margin-left:auto">mova o mouse ou toque no gráfico</span></div><div class="chart-shell"><div class="chart-tip"></div><svg viewBox="0 0 ${W} ${totalH}" data-chart="${payload}" onpointermove="chartPointer(event,this)" onpointerleave="chartLeave(this)" aria-label="Gráfico interativo de pagamento, EMA10 e EMA20">
+  return `${periodoLabel?`<div class="chart-period"><b>${periodoLabel}</b><span>${N} pontos no período · ${horas&&horas.length?(horas[0]||'—')+' → '+(horas[N-1]||'—'):''}</span></div>`:''}${ferramentas}<div class="chart-legend"><span><i style="background:${cor};box-shadow:0 0 7px ${cor}"></i>Pagamento em degraus</span><span><i style="background:#00aaf5"></i>EMA10</span><span><i style="background:#f0a000"></i>EMA20</span>${goldenBadge}<span style="margin-left:auto">mova o mouse ou toque no gráfico</span></div><div class="chart-shell"><div class="chart-tip"></div><svg viewBox="0 0 ${W} ${totalH}" data-chart="${payload}" onpointermove="chartPointer(event,this)" onpointerleave="chartLeave(this)" aria-label="Gráfico interativo de pagamento, EMA10 e EMA20">
     <defs><linearGradient id="chartArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${cor}" stop-opacity=".16"/><stop offset="1" stop-color="${cor}" stop-opacity="0"/></linearGradient><filter id="chartGlow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
     ${grid}<polygon points="${area}" fill="url(#chartArea)"/>
     ${fibSvg}${trendSvg}${refLinha!=null&&refLinha>=min&&refLinha<=max?`<line x1="${pad}" y1="${y(refLinha).toFixed(1)}" x2="${W-pad}" y2="${y(refLinha).toFixed(1)}" stroke="#e3b341" stroke-width="1.3" stroke-dasharray="6 4"/><text x="${pad+4}" y="${(y(refLinha)-5).toFixed(1)}" fill="#e3b341" font-size="11" font-weight="700">${refLinha===0?"empate (0)":"equilíbrio "+refLinha+uni}</text>`:''}
