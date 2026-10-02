@@ -469,6 +469,29 @@ async function carregaBacktest(liga,mkt){
   }catch(e){el.innerHTML='';}
 }
 
+function gradeResultadosHtml(d){
+  const mos=d&&d.mosaico||{};
+  const passados=Array.isArray(mos.passados)?mos.passados:[];
+  const futuros=Array.isArray(mos.futuros)?mos.futuros:[];
+  const paga=(g,m)=>{
+    const ab=String(g.placar||'0-0').split('-').map(Number),a=ab[0]||0,b=ab[1]||0,t=g.total!=null?Number(g.total):a+b;
+    if(m==='o25')return t>=3;if(m==='o35')return t>=4;if(m==='ge5')return t>=5;if(m==='ambas')return a>0&&b>0;
+    if(m==='u25')return t<3;if(m==='u15')return t<2;if(m==='u05')return t<1;return false;
+  };
+  const abrev=s=>String(s||'—').trim().slice(0,3).toUpperCase();
+  const odd=(o,k)=>o&&o[k]!=null?Number(o[k]).toFixed(2):'—';
+  const itens=passados.map(g=>({...g,tipo:paga(g,d.mercado)?'pay':'nopay'})).concat(futuros.map(g=>({...g,tipo:'pending',placar:'—'})));
+  if(!itens.length)return '<section class="amd-results-panel"><div class="amd-panel-head"><span class="amd-panel-title">Grade de resultados</span></div><div class="amd-ribbon-empty">Aguardando os jogos enviados pela extensão.</div></section>';
+  const grupos={};itens.forEach(g=>{const h=String(g.h||'--:--').split(':')[0]||'—';(grupos[h]=grupos[h]||[]).push(g);});
+  const horas=Object.keys(grupos).sort((a,b)=>(parseInt(b)||-1)-(parseInt(a)||-1));
+  const rows=horas.map(h=>{
+    const jogos=grupos[h].map(g=>`<div class="amd-game-card ${g.tipo}"><div class="amd-game-time">${g.h||'—'}</div><div class="amd-game-teams">${abrev(g.casa)} x ${abrev(g.fora)}</div><div class="amd-game-score">${g.placar||'—'}</div><div class="amd-game-odds">AS ${odd(g.odds,'ambs')}<br>O2.5 ${odd(g.odds,'o25')}<br>O3.5 ${odd(g.odds,'o35')}</div></div>`).join('');
+    const fim=grupos[h].filter(g=>g.tipo!=='pending'),greens=fim.filter(g=>g.tipo==='pay').length,pct=fim.length?Math.round(greens/fim.length*100):0;
+    return `<div class="amd-results-hour"><div class="amd-results-label"><b>${h}h</b><span>${fim.length?pct+'%':'em curso'}</span><small>${greens} GREEN</small></div><div class="amd-results-track">${jogos}</div></div>`;
+  }).join('');
+  return `<section class="amd-results-panel" id="gradeResultados"><div class="amd-panel-head"><span class="amd-panel-title">Grade de resultados · ${nomeMkt[d.mercado]||d.mercado}</span><span class="amd-panel-meta"><i class="amd-legend green"></i>green <i class="amd-legend red"></i>red <i class="amd-legend blue"></i>próximos</span></div><div class="amd-grid-scroll">${rows}</div></section>`;
+}
+
 function render(d){
   if(!d||!d.analise){ // sem dados (sonda parou/reiniciando): mostra aviso claro em vez de tela branca
     const el=document.getElementById('conteudo');
@@ -726,6 +749,7 @@ function render(d){
 
     <div id="roboBox"></div>
     <div id="dicasBox"></div>
+    ${gradeResultadosHtml(d)}
     <div class="sec">Grade de jogos · Próximos jogos — ${nomeMkt[mkt]} <span style="color:${lsCor};font-size:13px">• Liga: ${ls.label||'—'}</span></div>
     ${prox||'<div class="card">aguardando próximos jogos...</div>'}
 
