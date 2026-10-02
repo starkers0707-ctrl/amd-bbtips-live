@@ -1545,7 +1545,9 @@ function acumuladoDia(liga, mkt, qtd) {
   const serieDia = [], horasDia = [];
   for (let k = 0; k < dia.length; k++) {
     if (pays(dia[k], mkt)) greens++;
-    serieDia.push(Math.round((greens / (k + 1)) * 100000) / 1000);
+    // Jeffreys (0,5 GREEN / 0,5 RED) evita 0%/100% travados na abertura.
+    // Depois de cada jogo, GREEN sempre sobe e RED sempre desce.
+    serieDia.push(Math.round(((greens + 0.5) / (k + 2)) * 100000) / 1000);
     horasDia.push(dia[k].horario || "");
   }
   const monta = n => {
