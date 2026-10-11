@@ -1362,7 +1362,12 @@ app.post("/api/snapshot2", (req, res) => {
         if (cauda.some(x => x.horario === g.horario && x.casa === g.casa)) delete rapidos[liga][k];
       }
     }
-    if (casados) { atualizaRoboLedger(); for (const liga of Object.keys(store)) atualizaRadar(liga); }
+    if (casados) {
+      atualizaRoboLedger();
+      // A sonda 2 existe para antecipar o feed oficial. Passe o store e force o
+      // radar a recalcular com o overlay rapido assim que um resultado casar.
+      for (const liga of Object.keys(store)) atualizaRadar(liga, store[liga]);
+    }
     res.json({ ok: true, recebidos: jogos.length, casados });
   } catch (e) { res.status(500).json({ ok: false, erro: e.message }); }
 });
@@ -3867,11 +3872,17 @@ function serieDoDia(gAll, mkt, JAN) {
 
 function atualizaRadar(liga, s) {
   try {
+    // snapshot2 chamava esta funcao sem `s`; alem disso, listaCheia(s) ignora o
+    // overlay da sonda rapida. Os dois casos faziam o Golden esperar o feed
+    // oficial (~9min). O store continua fornecendo base/computed e a serie usa
+    // os resultados fundidos, incluindo os que acabaram de chegar pela sonda 2.
+    s = s || store[liga];
+    if (!s) return;
     for (const mkt of RADAR_MKTS) {
       const c = s.computed && s.computed[mkt]; if (!c || !c.sinal) continue;
       // RADAR SEM DROP-2: usa gamesAll (inclui os 2 jogos mais recentes) — alerta no
       // fechamento real do jogo. Grafico/analises continuam com drop-2 (fieis ao caramelo).
-      const gAll = listaCheia(s);
+      const gAll = gamesFundidos(liga);
       const JANR = Math.max(2, Math.min(20, gAll.length));
       // RADAR BASEADO NO GRAFICO ACUMULADO 00H (pedido do usuario): so jogos do dia atual
       const serieDia = gAll.length ? serieDoDia(gAll, mkt, JANR) : null;
@@ -3957,11 +3968,15 @@ function atualizaRadar(liga, s) {
         const horaFonte = horaCross || (goldenAnterior && goldenAnterior.horaFonte) || hora;
         const atrasoMin = atrasoMinutos(horaFonte, hora);
         radarAtivos[chaveGolden] = { liga, mkt, tipo: "golden", pagando: cur, base: c.base, fita, mm10: golden.fast, mm20: golden.slow, spread: golden.spread, barsAgo: golden.barsAgo, hora, horaFonte, atrasoMin, cruzouEm, ts: Date.now() };
-        if (golden.crossedNow && !prev.golden && !primeira && podeAvisar(chaveGolden)) avisaRadar(radarAtivos[chaveGolden]);
+        // A sonda pode mandar um pequeno lote de resultados. Nesse caso o
+        // cruzamento pode estar 1-2 pontos antes do ultimo e crossedNow=false,
+        // embora tenha acabado de chegar. Avise a transicao se ela for recente.
+        const cruzamentoRecente = golden.crossedNow || (golden.barsAgo != null && golden.barsAgo <= 2);
+        if (cruzamentoRecente && !prev.golden && !primeira && podeAvisar(chaveGolden)) avisaRadar(radarAtivos[chaveGolden]);
       } else delete radarAtivos[k + "|golden"];
       radarEstado[k] = { fundo, sobe, ltb: quebrouLTB, nivelMin, pull, golden: golden.active };
     }
-  } catch (e) {}
+  } catch (e) { console.error("erro atualizaRadar " + liga + ":", e.message); }
 }
 
 // ===== WEB PUSH: alerta de ZONA DE OPERACAO direto no sistema (funciona com aba congelada/fechada) =====
@@ -4010,8 +4025,8 @@ function enviaPushRadar(info) {
   if (!info || info.tipo !== "golden") return;
   const liga = NOMES_L[info.liga] || info.liga;
   const mercado = NOMES_M[info.mkt] || info.mkt;
-  const titulo = `✨ GOLDEN CROSS ${info.horaFonte || info.hora || "AGORA"} — ${liga} · ${mercado}`;
-  const corpo = `Bateu ${info.horaFonte || info.hora || "agora"}${info.hora ? ` · alerta tocou ${info.hora}` : ""}${info.atrasoMin != null ? ` · atraso ${info.atrasoMin}min` : ""} — EMA10 ${info.mm10 ?? "—"} acima da EMA20 ${info.mm20 ?? "—"}`;
+  const titulo = `✨ GOLDEN CROSS AGORA${info.hora ? ` ${info.hora}` : ""} — ${liga} · ${mercado}`;
+  const corpo = `Confirmado assim que o resultado chegou${info.horaFonte ? ` · jogo ${info.horaFonte}` : ""} — EMA10 ${info.mm10 ?? "—"} acima da EMA20 ${info.mm20 ?? "—"}`;
   const payload = JSON.stringify({ t: titulo, b: corpo, tag: info.liga + "|" + info.mkt + "|" + info.tipo });
   for (const s of [...pushData.subs]) {
     webpush.sendNotification(s, payload).catch(err => {
