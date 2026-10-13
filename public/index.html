@@ -61,7 +61,7 @@
 <div class="amd-shell">
 <aside class="amd-sidebar" aria-label="Navegação principal">
   <a class="amd-nav-item active" href="#conteudo"><span class="amd-nav-ico">▦</span><span>Dashboard</span></a>
-  <a class="amd-nav-item" href="#conteudo"><span class="amd-nav-ico">♟</span><span>Ao Vivo</span></a>
+  <a class="amd-nav-item" href="#gradeResultados"><span class="amd-nav-ico">♟</span><span>Ao Vivo</span></a>
   <a class="amd-nav-item" href="#conteudo"><span class="amd-nav-ico">◆</span><span>Mercados</span></a>
   <a class="amd-nav-item" href="#btSecTop"><span class="amd-nav-ico">◫</span><span>Backtest</span></a>
   <a class="amd-nav-item" href="#padroesTop"><span class="amd-nav-ico">⌁</span><span>Caçador de Padrão</span></a>
@@ -791,12 +791,13 @@ function render(d){
       <div class="hint" style="margin-top:10px">Quando as três janelas apontam pro mesmo lado, o sinal é forte. <b style="color:${a.confluencia&&/forte/.test(a.confluencia.confluencia)?'var(--greenb)':'var(--muted)'}">${a.confluencia?a.confluencia.confluencia:'—'}</b></div>
     </div>
 
+    ${gradeResultadosHtml(d)}
+
     ${!a.ehTotalGols?'<div id="btSecTop"><div class="sec">📋 Histórico de indicações (backtest)</div><div class="card note">calculando histórico…</div></div>':''}
     <div id="padroesTop"><div class="sec">⌁ Caçador de Padrão</div><div class="card note">analisando os jogos desta liga…</div></div>
 
     <div id="roboBox"></div>
     <div id="dicasBox"></div>
-    ${gradeResultadosHtml(d)}
     <div class="sec">Grade de jogos · Próximos jogos — ${nomeMkt[mkt]} <span style="color:${lsCor};font-size:13px">• Liga: ${ls.label||'—'}</span></div>
     ${prox||'<div class="card">aguardando próximos jogos...</div>'}
 
