@@ -190,6 +190,7 @@ const ligaSel=$('#liga'), mktSel=$('#mkt'), qtdSel=$('#qtd');
 const nomeMkt={o35:'Over 3.5',ge5:'5+ gols',o25:'Over 2.5',ambas:'Ambas Marcam',u25:'Under 2.5',u15:'Under 1.5',u05:'Under 0.5',totft:'Total Gols (FT)'};
 
 let _lastHash = "";
+let _tickSeq = 0;
 function _roboBox(mkt,b){
   const NM={o35:'O3.5',o25:'O2.5 A',o25b:'O2.5 B',ambas:'AMBAS'};
   const nomeM=NM[mkt]||mkt;
@@ -242,10 +243,11 @@ async function carregaPadroes(liga,mkt){
   if(mkt==='totft'){el.innerHTML='';return;}
   try{
     const [r,rl]=await Promise.all([fetch(`/api/padroes/${liga}?mkt=${mkt}`,{cache:'no-store'}),fetch(`/api/leitor/${liga}?mkt=${mkt}`,{cache:'no-store'}).catch(()=>null)]);
+    if(!el.isConnected||liga!==ligaSel.value||mkt!==mktSel.value)return;
     if(!r.ok){el.innerHTML='<div class="sec">⌁ Caçador de Padrão</div><div class="card note">Aguardando a próxima atualização dos jogos.</div>';return;}
     const j=await r.json();
     const lt=rl&&rl.ok?await rl.json():null;
-    if(mkt!==mktSel.value)return;
+    if(!el.isConnected||liga!==ligaSel.value||mkt!==mktSel.value)return;
     window.__leitor=(lt&&!lt.erro)?lt:null;
     try{const f=document.getElementById('leitorFaixa');if(f){f.outerHTML=leitorFaixaHtml();}}catch(e){}
     const ps=(j&&j.padroes)||[];
@@ -291,20 +293,24 @@ async function tick(){
   // ao voltar, o visibilitychange ja dispara tick() e ela acorda atualizada na hora
   if(document.hidden)return;
   const liga=ligaSel.value, mkt=mktSel.value, qtd=qtdSel.value;
+  const tickSeq=++_tickSeq;
   try{
     const r=await fetch('/api/liga/'+liga+'?mkt='+mkt+'&qtd='+qtd,{cache:'no-store'});
     // BUGFIX: se o usuario trocou liga/mercado enquanto essa resposta viajava, descarta
     // (respostas fora de ordem desenhavam o grafico de outra liga na tela)
-    if(liga!==ligaSel.value||mkt!==mktSel.value||qtd!==qtdSel.value)return;
+    if(tickSeq!==_tickSeq||liga!==ligaSel.value||mkt!==mktSel.value||qtd!==qtdSel.value)return;
     if(r.status===401){mostraPortao(window.__cod?'Seu acesso expirou.':'Digite seu código de acesso');$('#liveinfo').textContent='🔒 acesso necessário';return;}
     const d=await r.json();
+    if(tickSeq!==_tickSeq)return;
     if(d.erro){ $('#liveinfo').textContent='aguardando dados...'; return; }
     // so re-renderiza se os dados mudaram (evita travar reconstruindo tudo a cada 10s)
     const gradeHash=d.mosaico?{
       p:(d.mosaico.passados||[]).map(g=>[g.h,g.casa,g.fora,g.placar,g.total,g.posCasa,g.posFora,g.coluna]),
       f:(d.mosaico.futuros||[]).map(g=>[g.h,g.casa,g.fora,g.odds,g.posCasa,g.posFora,g.coluna])
     }:null;
-    const hash=JSON.stringify({u:d.lastUpdated,n:(d.proximos||[]).length,s:d.analise&&d.analise.serie,cr:d.curvaReal,gr:gradeHash,m:mkt,l:liga,q:qtd});
+    // lastUpdated muda em todo envio, mesmo sem jogo novo. A serie e a grade
+    // abaixo ja representam as mudancas visiveis e evitam redesenho inutil.
+    const hash=JSON.stringify({n:(d.proximos||[]).length,s:d.analise&&d.analise.serie,cr:d.curvaReal,gr:gradeHash,m:mkt,l:liga,q:qtd});
     const conteudo=document.getElementById('conteudo');
     if(hash!==_lastHash||!conteudo||!conteudo.innerHTML.trim()){
       window.__lastD=d;window.__frescor=(d&&d.fetchedAt)?new Date(d.fetchedAt).getTime():window.__frescor;
@@ -463,10 +469,13 @@ async function carregaBacktest(liga,mkt){
   window.__btC=window.__btC||{};
   const c=window.__btC[k];
   if(c&&Date.now()-c.ts<60000){el.innerHTML=c.html;return;}
-  el.innerHTML='<div class="sec">📋 Histórico de indicações (backtest)</div><div class="card note">calculando histórico…</div>';
+  // Mantem o ultimo resultado visivel enquanto a nova consulta acontece. Apagar
+  // o bloco aqui fazia o backtest piscar a cada atualizacao da extensao.
+  if(!el.innerHTML.trim()||/calculando histórico/i.test(el.textContent||''))el.innerHTML='<div class="sec">📋 Histórico de indicações (backtest)</div><div class="card note">calculando histórico…</div>';
   try{
     const r=await fetch('/api/backtest/'+liga+'?mkt='+mkt+'&n=150',{cache:'no-store'});
     const b=await r.json();
+    if(!el.isConnected||liga!==ligaSel.value||mkt!==mktSel.value)return;
     if(b.erro){el.innerHTML='<div class="sec">📋 Histórico de indicações (backtest)</div><div class="card note">Backtest aguardando histórico suficiente desta liga.</div>';return;}
     const ind=b.indicados||{};
     const lst=(b.ultimos10indicados||[]).slice().reverse(); // mais recente primeiro
@@ -519,6 +528,10 @@ function render(d){
   // Durante reinícios, exibe e atualiza os jogos mesmo se a análise ainda estiver aquecendo.
   if(!d.analise){
     const el=document.getElementById('conteudo');
+    // Uma atualizacao transitória pode chegar enquanto o servidor recalcula.
+    // Se esta mesma liga/mercado ja esta completa na tela, nao apague tudo.
+    const anterior=window.__ultimoPayload;
+    if(el&&el.innerHTML.length>500&&anterior&&anterior.analise&&anterior.liga===d.liga&&anterior.mercado===d.mercado)return;
     const temGrade=d.mosaico&&((d.mosaico.passados||[]).length||(d.mosaico.futuros||[]).length);
     if(el)el.innerHTML=temGrade
       ? gradeResultadosHtml(d)+`<div class="card note" style="margin-top:10px">⏳ Gráfico e análises recalculando; a grade continua ao vivo.</div>`
@@ -526,6 +539,10 @@ function render(d){
     return;
   }
   const a=d.analise, mkt=d.mercado;
+  const stableKey=d.liga+'|'+mkt;
+  const podePreservar=window.__stableRenderKey===stableKey;
+  const htmlBacktest=podePreservar?(document.getElementById('btSecTop')?.innerHTML||''):'';
+  const htmlPadroes=podePreservar?(document.getElementById('padroesTop')?.innerHTML||''):'';
   const aquece=a.aquecendo;
   const sig=a.sinal||{};
   const term=a.termometro;
@@ -808,6 +825,11 @@ function render(d){
     <div class="card"><div style="font-size:13px">${ultimos}${maximasHtml}</div></div>
     `}
   `;
+  // Backtest e cacador carregam em paralelo. Mantem o conteudo pronto na tela
+  // e so o troca quando a resposta nova chegar, sem o pisca dos placeholders.
+  if(htmlBacktest&&document.getElementById('btSecTop'))document.getElementById('btSecTop').innerHTML=htmlBacktest;
+  if(htmlPadroes&&document.getElementById('padroesTop'))document.getElementById('padroesTop').innerHTML=htmlPadroes;
+  window.__stableRenderKey=stableKey;
   if(mkt!=='totft')carregaBacktest(d.liga,mkt); // async: preenche #btSec sem travar a tela
   carregaRelatorio(d.liga); // async: relatorio por data (independe do mercado)
 }
@@ -1020,7 +1042,7 @@ function ligaSSE(){
           }
           const vazio=!document.getElementById('conteudo')?.innerHTML.trim()||/aguardando dados/i.test(document.getElementById('liveinfo')?.textContent||'');
           if(vazio&&m.liga&&ligaSel.value!==m.liga)ligaSel.value=m.liga;
-          if(m.liga===ligaSel.value){ _lastHash=''; tick(); }
+          if(m.liga===ligaSel.value)tick();
         }
         else if(m.tipo==='radar'){ notificaRadar(m.alerta||m); carregaRadar(); }
       }catch(e){}
@@ -1030,7 +1052,7 @@ function ligaSSE(){
 }
 ligaSSE();
 // ao voltar pra aba, atualiza imediatamente (sem esperar ciclo)
-document.addEventListener('visibilitychange',()=>{ if(!document.hidden){ _lastHash=''; tick(); } });
+document.addEventListener('visibilitychange',()=>{ if(!document.hidden)tick(); });
 </script>
 <script>
 (async function montaLigas(){
