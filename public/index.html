@@ -37,17 +37,17 @@
   .hint{font-size:11px;color:var(--muted);margin-top:6px}
   .err{color:var(--amber);font-size:12px}
   .chart-shell{position:relative;overflow:hidden;border:1px solid #12313a;border-radius:8px;background:radial-gradient(circle at 72% 18%,rgba(0,255,153,.055),transparent 35%),linear-gradient(180deg,#061820 0%,#071319 100%);box-shadow:inset 0 0 30px rgba(0,0,0,.28);touch-action:none}
-  .chart-shell svg{display:block;width:100%;height:auto;min-height:260px;cursor:crosshair}
+  .chart-shell svg{display:block;width:100%;height:auto;min-height:0;cursor:crosshair}
   .chart-tip{display:none;position:absolute;z-index:4;min-width:158px;pointer-events:none;padding:8px 10px;border:1px solid #58a6ff;background:rgba(13,17,23,.96);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.35);font-size:11px;line-height:1.5;color:var(--txt);transform:translate(-50%,-112%)}
-  .chart-legend{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:4px 0 8px;font-size:11px;color:var(--muted)}
+  .chart-legend{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:6px 0 9px;font-size:12px;color:var(--muted)}
   .chart-legend i{display:inline-block;width:18px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
-  .chart-tools{display:flex;gap:5px;align-items:center;overflow-x:auto;margin-bottom:7px;padding-bottom:2px;scrollbar-width:thin}.chart-tools span{white-space:nowrap;padding:4px 9px;border:1px solid #163541;border-radius:4px;background:#07151c;color:#77909a;font:700 9px ui-monospace,SFMono-Regular,Consolas,monospace}.chart-tools .on{border-color:#087b42;background:rgba(0,210,105,.08);color:#00db74}.chart-tools .gold{border-color:#75631d;color:#f2cc60}
-  .chart-period{display:flex;justify-content:space-between;gap:8px;align-items:center;margin:0 0 6px;color:#7f98a2;font-size:10px}.chart-period b{color:#00db74;font-size:12px}.chart-shell{animation:chartSwap .28s ease-out}@keyframes chartSwap{from{opacity:.35;transform:translateY(3px)}to{opacity:1;transform:none}}
+  .chart-tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap;overflow:visible;margin-bottom:8px}.chart-tools span{white-space:nowrap;padding:5px 10px;border:1px solid #163541;border-radius:5px;background:#07151c;color:#77909a;font:700 10px ui-monospace,SFMono-Regular,Consolas,monospace}.chart-tools .on{border-color:#087b42;background:rgba(0,210,105,.08);color:#00db74}.chart-tools .gold{border-color:#75631d;color:#f2cc60}
+  .chart-period{display:flex;justify-content:space-between;gap:8px;align-items:center;margin:0 0 7px;color:#7f98a2;font-size:11px}.chart-period b{color:#00db74;font-size:13px}.chart-shell{animation:chartSwap .28s ease-out}@keyframes chartSwap{from{opacity:.35;transform:translateY(3px)}to{opacity:1;transform:none}}
   .chart-pulse{animation:chartPulse 1.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
   @keyframes chartPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(1.65)}}
   .amd-live-alerts{max-height:230px;overflow:auto;margin-bottom:10px;padding-right:3px;scrollbar-width:thin}
   #btSecTop,#padroesTop{max-height:430px;overflow:auto;scrollbar-width:thin;border-bottom:1px solid var(--line)}
-  @media(max-width:600px){.chart-shell svg{min-height:290px}.chart-tip{font-size:10px;min-width:144px}.amd-live-alerts{max-height:155px}#btSecTop,#padroesTop{max-height:330px}}
+  @media(max-width:600px){.chart-shell{margin:0 -2px}.chart-tip{font-size:10px;min-width:144px}.chart-period{align-items:flex-start;flex-direction:column;gap:2px}.chart-legend{gap:7px;font-size:10px}.chart-legend>span:last-child{width:100%;margin-left:0!important}.chart-tools span{padding:4px 7px}.amd-live-alerts{max-height:155px}#btSecTop,#padroesTop{max-height:330px}}
 </style>
 <link rel="stylesheet" href="/reference-ui.css">
 </head>
@@ -1006,7 +1006,10 @@ function lineChart(serie, macdHist, trend, ehGols, horas, escala, refLinha, peri
   const autoTrend=chartTrendAuto(serie);
   trend=trend?{...autoTrend,...trend,lta:trend.lta||(autoTrend&&autoTrend.lta),ltb:trend.ltb||(autoTrend&&autoTrend.ltb)}:autoTrend;
   if(trend)trend.rompimento=chartTrendBreak(serie,trend.lta,trend.ltb)||(trend.rompimento||null);
-  const W=920,H=390,pad=44,hH=72,gap=18,totalH=H+gap+hH,N=serie.length;
+  const hostW=document.getElementById('conteudo')?.clientWidth||window.innerWidth||920;
+  const W=Math.max(340,Math.min(1280,Math.round(hostW-22)));
+  const estreito=W<700;
+  const H=estreito?Math.max(470,Math.min(560,Math.round(W*.96))):Math.max(400,Math.min(540,Math.round(W*.42))),pad=W<520?36:44,hH=estreito?84:72,gap=18,totalH=H+gap+hH,N=serie.length;
   const mm10=chartEma(serie,10),mm20=chartEma(serie,20),todos=serie.concat(mm10,mm20).filter(Number.isFinite);
   const rawMin=Math.min(...todos),rawMax=Math.max(...todos),margem=Math.max(2,(rawMax-rawMin)*.1);
   const min=escala?escala[0]:(acumPctMode?Math.max(0,Math.floor((rawMin-margem)*10)/10):Math.floor((rawMin-margem)*10)/10),max=escala?escala[1]:Math.ceil((rawMax+margem)*10)/10;
@@ -1014,7 +1017,7 @@ function lineChart(serie, macdHist, trend, ehGols, horas, escala, refLinha, peri
   const pontos=s=>s.map((v,i)=>x(i)+','+y(v)).join(' ');
   const degraus=s=>s.length?s.slice(1).reduce((p,v,i)=>p+` H ${x(i+1)} V ${y(v)}`,`M ${x(0)} ${y(s[0])}`):'';
   const pts=pontos(serie),pts10=pontos(mm10),pts20=pontos(mm20),last=serie[N-1],first=serie[0];
-  const cor='#00f06f',larguraLinha=N<=24?3.2:N<=80?2.6:2.1;
+  const cor=last>=first?'#00f06f':'#ff3345',larguraLinha=N<=24?3.4:N<=80?2.8:2.2;
   const area=`${x(0)},${H-pad} ${pts} ${x(N-1)},${H-pad}`;
 
   let grid='';
@@ -1055,8 +1058,8 @@ function lineChart(serie, macdHist, trend, ehGols, horas, escala, refLinha, peri
   const crossSvg=crossIndex==null?'':`<line x1="${x(crossIndex)}" y1="${pad}" x2="${x(crossIndex)}" y2="${H-pad}" stroke="#77909a" stroke-width=".8" opacity=".55"/><circle cx="${x(crossIndex)}" cy="${y(serie[crossIndex])}" r="8" fill="rgba(242,204,96,.2)" stroke="#f2cc60" stroke-width="2"/><text x="${x(crossIndex)}" y="${y(serie[crossIndex])-12}" fill="#f2cc60" font-size="11" font-weight="800" text-anchor="middle">GOLDEN${crossHora?' '+crossHora:''}</text>`;
 
   let dots='',labels='';
-  const mostraNumeros=N<=24,mostraBolinhas=N<=60;
-  serie.forEach((v,i)=>{if(mostraBolinhas)dots+=`<circle cx="${x(i)}" cy="${y(v)}" r="${N<=24?3:2}" fill="${i===N-1?cor:'#8b98a8'}"/>`;if(mostraNumeros&&(i===0||v!==serie[i-1]))labels+=`<text x="${x(i)}" y="${y(v)-8}" fill="#e6edf3" font-size="10" font-weight="600" text-anchor="middle">${v}</text>`;});
+  const mostraNumeros=N<=90,mostraBolinhas=N<=100;
+  serie.forEach((v,i)=>{const extremo=i===0||i===N-1||(i>0&&i<N-1&&((v>=serie[i-1]&&v>serie[i+1])||(v<=serie[i-1]&&v<serie[i+1])));if(mostraBolinhas)dots+=`<circle cx="${x(i)}" cy="${y(v)}" r="${N<=24?3.2:2.2}" fill="${i===N-1?cor:'#a9bdc5'}"/>`;if(mostraNumeros&&extremo)labels+=`<text x="${x(i)}" y="${y(v)-9}" fill="#e6edf3" font-size="10.5" font-weight="700" text-anchor="middle">${v}</text>`;});
   if(horas&&horas.length===N){const passo=Math.max(1,Math.ceil(N/8));for(let i=N-1;i>=0;i-=passo)if(horas[i])labels+=`<text x="${x(i)}" y="${H-3}" fill="#8b98a8" font-size="8.5" text-anchor="middle">${horas[i]}</text>`;}
   const topo=Math.max(...serie),fundo=Math.min(...serie);
   labels+=`<text x="${W-pad-3}" y="${y(topo)-6}" fill="#a9bdc5" font-size="9" text-anchor="end">Topo ${topo}${uni}</text><text x="${W-pad-3}" y="${y(fundo)+13}" fill="#a9bdc5" font-size="9" text-anchor="end">Fundo ${fundo}${uni}</text>`;
@@ -1088,6 +1091,8 @@ function lineChart(serie, macdHist, trend, ehGols, horas, escala, refLinha, peri
 ligaSel.onchange=tick;
 mktSel.onchange=tick;
 qtdSel.onchange=tick;
+let CHART_RESIZE_TIMER=null;
+window.addEventListener('resize',()=>{clearTimeout(CHART_RESIZE_TIMER);CHART_RESIZE_TIMER=setTimeout(tick,180);});
 
 // ===== DESTRAVA O SOM (politica de autoplay exige um gesto do usuario) =====
 function destravaSom(){
