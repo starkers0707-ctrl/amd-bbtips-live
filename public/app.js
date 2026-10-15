@@ -46,7 +46,7 @@ window.atualizarSeletorLigaGrafico = function () {
     typeof window.GraficoReal.modo === 'function' &&
     window.GraficoReal.modo() === 'ligas';
   const botao = document.getElementById('cligaBtn');
-  const nomes = { copa: 'Copa', euro: 'Euro', super: 'Super', premier: 'Premier' };
+  const nomes = { ita:'ITA',eng:'ENG',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT',cam:'CAM',cop:'COP',ame:'AME',split:'Split' };
   const chave = String(state.liga || 'Copa').toLowerCase();
   if (botao) {
     botao.textContent = comparar
@@ -63,7 +63,7 @@ window.atualizarSeletorLigaGrafico = function () {
 };
 window.definirLigaApp = function (novaLiga) {
   const chave = String(novaLiga || '').trim().toLowerCase();
-  const nomes = { copa: 'Copa', euro: 'Euro', super: 'Super', premier: 'Premier' };
+  const nomes = { ita:'ITA',eng:'ENG',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT',cam:'CAM',cop:'COP',ame:'AME',split:'Split' };
   if (!nomes[chave]) return false;
     /* Este e o caminho real da troca de liga: a barra lateral e o
        dados-reais.js chamam definirLigaApp, nao o bindTabs.

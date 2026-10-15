@@ -19,13 +19,13 @@
   var API  = '';
   var LS_LIGA = 'amd_liga';
   // express saiu: 60 jogos/hora estourava a cota e nao cabe em 20 colunas
-  var LIGAS = ['copa', 'euro', 'super', 'premier'];
+  var LIGAS = ['ita','eng','spa','mnd','bra','lat','cam','cop','ame','split'];
 
   var ligaParametro = '';
   try { ligaParametro = new URLSearchParams(location.search).get('liga') || ''; }
   catch (_) { ligaParametro = ''; }
-  var liga = String(ligaParametro || localStorage.getItem(LS_LIGA) || 'copa').toLowerCase();
-  if (LIGAS.indexOf(liga) < 0) liga = 'copa';
+  var liga = String(ligaParametro || localStorage.getItem(LS_LIGA) || 'ita').toLowerCase();
+  if (LIGAS.indexOf(liga) < 0) liga = 'ita';
   // A API pode mapear a aba classica para uma liga descoberta pela extensao
   // (por exemplo, playpix-spa). Nesse caso a cadencia deve vir dos jogos reais,
   // e nao da tabela fixa da antiga copa/euro/super/premier.
