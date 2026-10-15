@@ -1809,11 +1809,12 @@ app.get("/api/status", (req, res) => {
 // contrato antigo usado pela grade, backtest e cacadores do backup.
 app.get("/api/grade", (req, res) => {
   const liga = String(req.query.liga || "copa").toLowerCase();
+  const aliases = { ita:'ita', eng:'eng', spa:'spa', mnd:'mnd', bra:'bra', lat:'lat', cam:'cam', cop:'cop', ame:'ame', split:'split' };
   // A extensao atual usa identificadores dinamicos (ex.: spa, eng, ita),
   // enquanto o backup classico possui abas fixas (copa/euro/super/premier).
   // Se a aba antiga ainda nao tiver um store homonimo, usa a liga real mais
   // recentemente recebida para a grade nao ficar artificialmente vazia.
-  const ligaReal = store[liga] ? liga : Object.keys(store)
+  const ligaReal = store[liga] ? liga : (aliases[liga] && Object.keys(store).find(k => k.toLowerCase().includes(aliases[liga]))) || Object.keys(store)
     .filter(k => store[k] && gamesFundidos(k).length)
     .sort((a, b) => Date.parse(store[b].lastUpdated || 0) - Date.parse(store[a].lastUpdated || 0))[0];
   const d = ligaReal ? store[ligaReal] : null;
