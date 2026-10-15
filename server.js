@@ -4180,6 +4180,10 @@ app.get("/api/admin/limpar-erro", (req, res) => {
 });
 app.get("/robots.txt", (req, res) => { res.type("text/plain").send("User-agent: *\nDisallow: /\n"); });
 
-app.use(express.static(join(__dirname, "public")));
+  app.use(express.static(join(__dirname, "public")));
+  // Render deve abrir o painel diretamente na raiz; manter fallback explícito
+  // evita 404 quando o middleware está atrás de alguma configuração de rota.
+  app.get("/", (req, res) => res.sendFile(join(__dirname, "public", "index.html")));
+  app.get("/index.html", (req, res) => res.sendFile(join(__dirname, "public", "index.html")));
 
-app.listen(PORT, () => console.log("AMD Live rodando na porta " + PORT));
+  app.listen(PORT, () => console.log("AMD Live rodando na porta " + PORT));
