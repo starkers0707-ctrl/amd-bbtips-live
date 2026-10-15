@@ -1,0 +1,198 @@
+/* ============================================================
+   AMD LIVE — camada responsiva
+   Carregar DEPOIS de styles.css.
+   Só layout: não mexe em cor, fonte nem identidade visual.
+
+   Corrige 4 coisas que quebram em tela estreita:
+   1. .gridrow/.grid-headrow (21 colunas) espremem em vez de rolar
+   2. .bt-rolagem (tabela do backtest) é cortada pelo .panel
+   3. SVG do gráfico escala até virar borrão
+   4. .panel-head e barras de chip transbordam
+   ============================================================ */
+
+/* 1. GRADE DE JOGOS — conserto principal.
+   .grid-scroll já tem overflow-x:auto, mas .gridrow usa colunas
+   flexíveis (1fr): elas encolhem infinitamente e nunca estouram,
+   então a rolagem nunca é acionada. Forçando largura mínima, a
+   linha estoura de propósito e o scroll passa a funcionar. */
+@media (max-width: 900px) {
+  .grid-scroll {
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .grid-headrow,
+  .gridrow {
+    min-width: 760px;
+  }
+  .grid-headrow > *:first-child,
+  .gridrow > *:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 4;
+    background: var(--panel);
+    box-shadow: 1px 0 0 var(--line);
+  }
+}
+@media (max-width: 560px) {
+  .grid-headrow,
+  .gridrow {
+    min-width: 680px;
+  }
+}
+
+/* 2. TABELA DO BACKTEST.
+   .panel tem overflow:hidden, e overflow-x numa <table> só
+   funciona com display:block. Sem isso a tabela é cortada e
+   as colunas EV / RESULTADO / LIGA ficam inalcançáveis. */
+@media (max-width: 900px) {
+  .bt-rolagem {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .bt-rolagem > thead,
+  .bt-rolagem > tbody {
+    display: table;
+    width: 100%;
+    min-width: 620px;
+    table-layout: fixed;
+  }
+  .bt-rolagem th,
+  .bt-rolagem td {
+    white-space: nowrap;
+  }
+}
+@media (max-width: 560px) {
+  .bt-rolagem > thead,
+  .bt-rolagem > tbody {
+    min-width: 540px;
+  }
+}
+
+/* 3. GRÁFICO TÉCNICO.
+   O SVG tem viewBox 1118x372. Escalado para 390px de largura,
+   rótulos de eixo e linhas de Fibonacci ficam ilegíveis.
+   Melhor rolar horizontalmente mantendo a escala. */
+@media (max-width: 900px) {
+  .chart-wrap {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chart-main {
+    width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  .chart-main > svg {
+    min-width: 680px;
+    height: auto;
+    display: block;
+  }
+  /* o "clique para mover" grava left/top em px; no celular isso
+     joga o painel para fora da tela e ele não volta */
+  .grafico-travado {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+  }
+  .chart-lock {
+    pointer-events: none;
+    opacity: .55;
+  }
+}
+@media (max-width: 560px) {
+  .chart-main > svg {
+    min-width: 600px;
+  }
+  .chart-quick-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+  }
+}
+
+/* 4. CABEÇALHOS E BARRAS DE CHIP.
+   .panel-head é flex sem wrap: os controles saem do painel. */
+@media (max-width: 900px) {
+  .panel-head {
+    flex-wrap: wrap;
+    gap: 8px;
+    height: auto;
+  }
+  .panel-title {
+    max-width: 100%;
+  }
+  .sinais {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  .filtros,
+  .mktbar,
+  .chips {
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    scrollbar-width: thin;
+  }
+  .filtros > *,
+  .mktbar > *,
+  .chips > * {
+    flex: 0 0 auto;
+  }
+}
+
+/* 5. DRAWER DA SIDEBAR.
+   O drawer (#navToggle) já existe. Aqui só garantimos que ele
+   role internamente e não passe da largura da tela. */
+@media (max-width: 860px) {
+  .sidebar {
+    width: min(var(--sidebar), 78vw);
+    max-width: 78vw;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    box-shadow: 2px 0 18px rgba(0, 0, 0, .55);
+  }
+}
+
+/* 6. GUARDAS GERAIS */
+@media (max-width: 900px) {
+  .main {
+    padding: 8px 8px 24px;
+  }
+  .panel > * {
+    min-width: 0;
+  }
+  /* iOS dá zoom automático em campo com fonte < 16px */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+  button,
+  .chip,
+  .mktsel {
+    min-height: 34px;
+  }
+}
+
+body {
+  overflow-x: clip; /* clip, não hidden: não quebra position:sticky */
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+:where(button, a, input, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}

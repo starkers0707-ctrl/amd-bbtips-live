@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <script>
+  if(window.location.hostname==="amd-live-dashboard.onrender.com")window.location.replace("https://amd-coletor.onrender.com"+window.location.pathname+window.location.search+window.location.hash);
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AMD LIVE — Central de Convergência</title>
+  <meta name="theme-color" content="#030a0f">
+  <link rel="stylesheet" href="styles.css?v=20260812b">
+  <link rel="stylesheet" href="convergencia.css?v=20260818a">
+</head>
+<body>
+  <header class="topbar cv-topbar"><div class="brand"><span class="dotlogo"></span>AMD LIVE</div><span class="pill">CONVERGÊNCIA</span><div class="spacer"></div></header>
+  <div class="cv-shell">
+    <nav class="cv-side">
+      <div class="brand cv-side-brand"><span class="dotlogo"></span>AMD LIVE</div>
+      <a class="nav-item" href="index.html"><span class="ico">▥</span>Dashboard</a>
+      <a class="nav-item" href="ciclos.html"><span class="ico">▣</span>Mercados</a>
+      <a class="nav-item" href="analise.html"><span class="ico">⌁</span>Análise</a>
+      <a class="nav-item" href="times.html"><span class="ico">♢</span>Times</a>
+      <a class="nav-item" href="placar.html"><span class="ico">▦</span>Placar Correto</a>
+      <a class="nav-item" href="alertas.html"><span class="ico">♧</span>Alertas</a>
+      <a class="nav-item" href="filtro-odd.html"><span class="ico">▽</span>Filtro Odd</a>
+      <a class="nav-item active" href="convergencia.html"><span class="ico">◎</span>Convergência</a>
+      <div class="cv-side-bottom">FACILITADOR<b id="cvLigaNome">Copa</b><span>Uma leitura · todas as provas</span></div>
+    </nav>
+
+    <main class="cv-main">
+      <header class="cv-head">
+        <div><div class="cv-eyebrow">AMD LIVE · CENTRAL DE DECISÃO</div><h1>Central de Convergência</h1><p>Organiza os sinais existentes e mostra claramente o que confirmou, o que falta e o que bloqueou cada leitura.</p></div>
+        <div class="cv-mode" role="group" aria-label="Nível de detalhe"><button class="on" data-mode="cliente">Modo Cliente</button><button data-mode="profissional">Profissional</button></div>
+      </header>
+
+      <section class="cv-controls">
+        <div class="cv-control"><small>Liga</small><div class="cv-buttons" id="cvLigas"></div></div>
+        <label class="cv-control">Mercado<select id="cvMercado"></select></label>
+        <div class="cv-control"><small>Janela</small><div class="cv-buttons" id="cvHoras"></div></div>
+        <div class="cv-refresh"><button id="cvRefresh">↻ Atualizar</button><span id="cvAtualizacao">Carregando…</span></div>
+      </section>
+
+      <section class="cv-banner" id="cvBanner" aria-live="polite"><div class="cv-banner-icon">◎</div><div><small>LEITURA DO MOMENTO</small><strong>Aguardando os próximos jogos</strong><span>A página não libera indicação sem todas as confirmações essenciais.</span></div></section>
+
+      <section class="cv-kpis">
+        <article><small>Próximos analisados</small><b id="cvTotal">—</b></article>
+        <article><small>Confirmados</small><b class="ok" id="cvConfirmados">—</b></article>
+        <article><small>Observando</small><b class="wait" id="cvObservando">—</b></article>
+        <article><small>Média da liga</small><b id="cvBase">—</b></article>
+      </section>
+
+      <section class="cv-section">
+        <div class="cv-section-head"><div><h2>Fila inteligente</h2><p>Até seis jogos futuros, ordenados pela qualidade da convergência — não pelo horário.</p></div><span id="cvResumo">—</span></div>
+        <div class="cv-cards" id="cvCards"><div class="cv-empty">Carregando oportunidades…</div></div>
+      </section>
+
+      <section class="cv-section cv-proof" id="cvProof">
+        <div class="cv-section-head"><div><h2>Replay do Sinal</h2><p>Reconstitui a ordem das confirmações da leitura selecionada. Nenhum passo é escondido.</p></div><span id="cvProofStatus">SELECIONE UM JOGO</span></div>
+        <div id="cvProofBody" class="cv-proof-empty">Clique em “Ver provas” para conferir os critérios.</div>
+      </section>
+
+      <section class="cv-note"><b>Como funciona:</b> Convergência não cria um cálculo concorrente. Ela combina o histórico dos dois times, a coluna/minuto, a tendência recente e o valor conservador da odd. Sequência de Reds, isoladamente, nunca libera uma leitura.</section>
+    </main>
+  </div>
+  <script src="auth.js?v=20260920-login-gate"></script>
+  <script src="filtro-odd-model.js?v=20260814d"></script>
+  <script src="motor.js?v=20260818a"></script>
+  <script src="convergencia-model.js?v=20260818a"></script>
+  <script src="convergencia.js?v=20260818a"></script>
+</body>
+</html>

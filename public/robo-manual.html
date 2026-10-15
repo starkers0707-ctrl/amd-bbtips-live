@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AMD LIVE — Montar robô manual</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="robos.css">
+  <link rel="stylesheet" href="robo-manual.css?v=20260909-multiliga-tiros">
+</head>
+<body class="manual-page">
+  <header class="manual-topbar">
+    <a class="back-link" href="robos.html">← Voltar aos robôs</a>
+    <div class="top-status"><i></i><span>Dados reais do AMD Live</span></div>
+  </header>
+
+  <main class="manual-shell">
+    <section class="manual-hero">
+      <div>
+        <p class="eyebrow">AMD LIVE · CONSTRUTOR MANUAL</p>
+        <h1>Monte o padrão do seu robô.</h1>
+        <p>Escolha as mesmas métricas do primeiro robô e combine mercado, times, minuto, placar e uma odd que exista de verdade na grade.</p>
+      </div>
+      <div class="hero-actions">
+        <button id="rbNew" class="btn ghost" type="button">Novo</button>
+        <button id="rbSave" class="btn primary" type="button">Salvar robô</button>
+      </div>
+    </section>
+
+    <section class="build-guide" aria-labelledby="buildGuideTitle">
+      <header class="guide-heading">
+        <div>
+          <span>COMO MONTAR O ROBÔ</span>
+          <h2 id="buildGuideTitle">Faça o padrão em 4 passos</h2>
+        </div>
+        <p>Este é o construtor manual. Ele não altera o R3 nem os outros robôs.</p>
+      </header>
+      <div class="guide-steps">
+        <article><b>1</b><div><strong>Identifique</strong><p>Dê um nome, marque uma ou mais ligas, escolha o perfil e o limite de pontos.</p></div></article>
+        <article><b>2</b><div><strong>Marque as métricas</strong><p>Ative somente as métricas desejadas e defina se cada uma exige SIM ou NÃO.</p></div></article>
+        <article><b>3</b><div><strong>Monte o quadro</strong><p>Clique nas posições da grade de 8 linhas por 20 jogos.</p></div></article>
+        <article><b>4</b><div><strong>Defina a entrada</strong><p>Escolha mercado, placar, tiros e ative o envio para o próximo jogo.</p></div></article>
+      </div>
+      <div class="guide-example"><strong>Exemplo:</strong> Mandante vence + 2 gols do mandante + 1 gol do visitante = placar fixo 2–1.</div>
+    </section>
+
+    <section class="builder-grid">
+      <article class="panel identity-panel">
+        <header class="panel-heading">
+          <div><span>ETAPA 1</span><h2>Identidade e entrada</h2></div>
+        </header>
+        <div class="field-grid">
+          <label class="field wide"><span>Nome do robô</span><input id="rbName" maxlength="60" placeholder="Ex.: Golden Copa manual"></label>
+          <fieldset class="field league-field wide">
+            <legend>Ligas do robô</legend>
+            <div id="rbLigas" class="league-options">
+              <label><input type="checkbox" name="rbLiga" value="copa" checked><span>Copa</span></label>
+              <label><input type="checkbox" name="rbLiga" value="euro"><span>Euro</span></label>
+              <label><input type="checkbox" name="rbLiga" value="super"><span>Super</span></label>
+              <label><input type="checkbox" name="rbLiga" value="premier"><span>Premier</span></label>
+            </div>
+            <small>Marque uma ou mais. O mesmo padrão será monitorado separadamente em cada liga.</small>
+          </fieldset>
+          <label class="field"><span>Combinação</span>
+            <select id="rbJoin"><option value="all">Todas (E)</option><option value="any">Qualquer (OU)</option></select>
+          </label>
+          <label class="field"><span>Perfil</span>
+            <select id="rbProfile"><option value="agressivo">Agressivo · 50 pts</option><option value="equilibrado" selected>Equilibrado · 65 pts</option><option value="cauteloso">Cauteloso · 80 pts</option></select>
+          </label>
+          <label class="field"><span>Limiar de entrada</span>
+            <select id="rbThreshold"><option>50</option><option>55</option><option>60</option><option selected>65</option><option>70</option><option>75</option><option>80</option><option>85</option><option>90</option></select>
+          </label>
+        </div>
+      </article>
+
+      <aside class="panel preview-panel">
+        <header class="panel-heading"><div><span>PRÉVIA</span><h2 id="previewName">Robô sem nome</h2></div></header>
+        <div id="previewCard" class="preview-card" data-status="aguardar">
+          <small>SINAL MANUAL</small>
+          <strong id="previewStatus">AGUARDAR</strong>
+          <div class="score-line"><b id="previewScore">0/100</b><span id="previewTarget">alvo 65</span></div>
+          <p id="previewSummary">Defina o padrão abaixo.</p>
+        </div>
+      </aside>
+
+      <article class="panel metrics-panel">
+        <header class="panel-heading split">
+          <div><span>ETAPA 2</span><h2>Métricas que somam pontos</h2></div>
+          <p>Marque a métrica e escolha manualmente se o padrão exige SIM ou NÃO.</p>
+        </header>
+        <div id="metricsGrid" class="metrics-grid">
+          <article class="metric-card" data-key="subida" data-weight="30">
+            <label class="metric-switch" title="Usar esta métrica"><input class="metric-use" type="checkbox" checked><i></i></label>
+            <div><b>Gráfico em subida</b><small>Inclinação positiva na janela recente · obrigatória</small></div>
+            <strong>+30</strong><button class="metric-now on" type="button" aria-pressed="true">Exigir: SIM</button>
+          </article>
+          <article class="metric-card" data-key="media" data-weight="20">
+            <label class="metric-switch"><input class="metric-use" type="checkbox" checked><i></i></label>
+            <div><b>Acima da média</b><small>Linha atual acima do normal histórico</small></div>
+            <strong>+20</strong><button class="metric-now on" type="button" aria-pressed="true">Exigir: SIM</button>
+          </article>
+          <article class="metric-card" data-key="macd" data-weight="15">
+            <label class="metric-switch"><input class="metric-use" type="checkbox" checked><i></i></label>
+            <div><b>MACD positivo</b><small>Momento comprador no sinal</small></div>
+            <strong>+15</strong><button class="metric-now on" type="button" aria-pressed="true">Exigir: SIM</button>
+          </article>
+          <article class="metric-card" data-key="rsi" data-weight="10">
+            <label class="metric-switch"><input class="metric-use" type="checkbox" checked><i></i></label>
+            <div><b>RSI favorável</b><small>Força saudável, sem extremo estatístico</small></div>
+            <strong>+10</strong><button class="metric-now" type="button" aria-pressed="false">Exigir: NÃO</button>
+          </article>
+          <article class="metric-card" data-key="ligas" data-weight="15">
+            <label class="metric-switch"><input class="metric-use" type="checkbox" checked><i></i></label>
+            <div><b>Movimento entre ligas</b><small>Outra liga perde força enquanto a escolhida acelera</small></div>
+            <strong>+15</strong><button class="metric-now" type="button" aria-pressed="false">Exigir: NÃO</button>
+          </article>
+          <article class="metric-card" data-key="confirmacao" data-weight="10">
+            <label class="metric-switch"><input class="metric-use" type="checkbox" checked><i></i></label>
+            <div><b>Confirmação em outro mercado</b><small>Concordância com outro mercado da grade</small></div>
+            <strong>+10</strong><button class="metric-now" type="button" aria-pressed="false">Exigir: NÃO</button>
+          </article>
+        </div>
+      </article>
+
+      <article class="panel pattern-panel">
+        <header class="panel-heading split">
+          <div><span>ETAPA 3</span><h2>Quadro para montar o padrão</h2></div>
+          <p>Cada coluna é uma posição entre os últimos 20 jogos. Clique nas células que formam o padrão.</p>
+        </header>
+        <div class="pattern-instructions">
+          <b>1. Escolha a função e o mercado</b><span>2. Clique na célula que representa o jogo</span><span>3. Termine cada linha com um DISPARO DE ENTRADA</span>
+        </div>
+        <div class="pattern-toolbar">
+          <div id="rbPrimaryRules" class="pattern-primary-rules">
+            <label class="field"><span>Função da célula</span>
+              <select id="rbMarkType"><option value="pattern">Condição do padrão</option><option value="entry">Disparo da entrada</option></select>
+            </label>
+            <div id="rbQuickMarketSlot"></div>
+            <div id="rbQuickEntrySlot"></div>
+          </div>
+          <div class="pattern-actions">
+            <button id="rbPatternRemove" class="btn danger" type="button">Apagar célula</button>
+            <button id="rbPatternClear" class="btn danger" type="button">Limpar quadro</button>
+            <button id="rbPatternSearch" class="btn pattern-search" type="button">Localizar sequência AMD 🤖</button>
+          </div>
+        </div>
+        <div class="pattern-legend"><span><i class="rule"></i> CONDIÇÃO: resultado que precisa acontecer</span><span><i class="entry"></i> ENTRADA: próximo jogo que recebe o sinal</span></div>
+        <div class="pattern-caption"><span>LINHA</span><span>POSIÇÕES 1 A 20 →</span></div>
+        <div class="pattern-scroll"><div id="rbPatternGrid" class="pattern-grid" aria-label="Grade de padrões"></div></div>
+        <div id="rbPatternSummary" class="pattern-summary">Clique em uma posição para começar a configurar.</div>
+      </article>
+
+      <article class="panel conditions-panel">
+        <header class="panel-heading split">
+          <div><span>ETAPA 4</span><h2>Configurar a posição selecionada</h2></div>
+          <button id="rbRefresh" class="btn ghost small" type="button">Atualizar dados</button>
+        </header>
+        <div id="dataStatus" class="data-status loading"><i></i><span>Carregando times e odds reais…</span></div>
+        <div id="selectedPosition" class="selected-position empty"><b>NENHUMA POSIÇÃO</b><span>Clique em uma célula do quadro acima.</span></div>
+
+        <div class="field-grid conditions-grid">
+          <label class="field"><span>Combinação de mercados</span><select id="rbCellJoin"><option value="all">Usar “E”</option><option value="any">Usar “OU”</option></select></label>
+          <label class="field"><span>Ordem dos times</span><select id="rbTeamOrder"><option value="random">Aleatória (AxB ou BxA)</option><option value="fixed">Fixa</option></select></label>
+          <label class="field"><span>Time monitorado</span><select id="rbTeamA"><option value="">Carregando times…</option></select></label>
+          <label class="field"><span>Adversário</span><select id="rbTeamB"><option value="">Qualquer adversário</option></select></label>
+
+          <label class="field wide"><span>Mercado completo</span>
+            <select id="rbMarket">
+              <optgroup label="Over">
+                <option>Over 0.5</option><option>Over 1.5</option><option selected>Over 2.5</option><option>Over 3.5</option>
+              </optgroup>
+              <optgroup label="Primeiro tempo"><option>OUT HT</option></optgroup>
+              <optgroup label="Under">
+                <option>Under 0.5</option><option>Under 1.5</option><option>Under 2.5</option><option>Under 3.5</option>
+              </optgroup>
+              <optgroup label="Indicadores">
+                <option>Total Gols (FT)</option><option>Gols Casa (FT)</option><option>Gols Fora (FT)</option>
+              </optgroup>
+              <optgroup label="Ambas marcam">
+                <option>Ambas Marcam (Sim)</option><option>Ambas Marcam (Não)</option>
+              </optgroup>
+              <optgroup label="Gols exatos — 2º tempo">
+                <option>0 gol / 2º tempo</option><option>1 gol / 2º tempo</option><option>2 gols / 2º tempo</option><option>3 gols / 2º tempo</option><option>4 gols / 2º tempo</option>
+              </optgroup>
+              <optgroup label="Gols exatos">
+                <option>0 Gol</option><option>1 Gol</option><option>2 Gols</option><option>3 Gols</option><option>4 Gols</option><option>5+ Gols</option>
+              </optgroup>
+              <optgroup label="Resultado FT">
+                <option>Casa FT</option><option>Empate FT</option><option>Fora FT</option>
+              </optgroup>
+              <optgroup label="Resultado / Ambos marcam">
+                <option>Casa/Fora e Sim</option><option>Casa e Sim</option><option>Casa e Não</option><option>Fora e Sim</option><option>Fora e Não</option><option>Empate e Sim</option><option>Empate e Não</option>
+              </optgroup>
+              <optgroup label="Total de gols — Casa">
+                <option>Casa 0 Gols</option><option>Casa 1 Gol</option><option>Casa 2 Gols</option><option>Casa 3 Gols</option><option>Casa 4 Gols</option>
+              </optgroup>
+              <optgroup label="Total de gols — Fora">
+                <option>Fora 0 Gols</option><option>Fora 1 Gol</option><option>Fora 2 Gols</option><option>Fora 3 Gols</option><option>Fora 4 Gols</option>
+              </optgroup>
+              <optgroup label="Placar — Casa">
+                <option>Casa 1-0</option><option>Casa 2-0</option><option>Casa 2-1</option><option>Casa 3-0</option><option>Casa 3-1</option><option>Casa 3-2</option><option>Casa 4-0</option>
+              </optgroup>
+              <optgroup label="Placar — Empate">
+                <option>Empate 0-0</option><option>Empate 1-1</option><option>Empate 2-2</option><option>Empate 3-3</option>
+              </optgroup>
+              <optgroup label="Placar — Visitante">
+                <option>Visitante 0-1</option><option>Visitante 0-2</option><option>Visitante 1-2</option><option>Visitante 0-3</option><option>Visitante 1-3</option><option>Visitante 2-3</option><option>Visitante 0-4</option>
+              </optgroup>
+              <optgroup label="Placar — Qualquer">
+                <option>Qualquer 1-0</option><option>Qualquer 2-0</option><option>Qualquer 2-1</option><option>Qualquer 3-0</option><option>Qualquer 3-1</option><option>Qualquer 3-2</option><option>Qualquer 4-0</option>
+              </optgroup>
+            </select>
+          </label>
+
+          <label class="field wide"><span>Partida real de referência</span><select id="rbGame"><option value="">Todas as partidas disponíveis</option></select></label>
+
+          <label class="field"><span>Regra do minuto</span>
+            <select id="rbMinuteOp"><option value="any">Qualquer minuto</option><option value="equal">Minuto igual a</option><option value="from">A partir do minuto</option><option value="until">Até o minuto</option><option value="between">Entre minutos</option></select>
+          </label>
+          <label id="minuteFromField" class="field hidden"><span>Minuto</span><select id="rbMinuteFrom"></select></label>
+          <label id="minuteToField" class="field hidden"><span>Até o minuto</span><select id="rbMinuteTo"></select></label>
+
+          <label class="field score-result-field"><span>Resultado do placar</span>
+            <select id="rbScoreResult">
+              <option value="">Qualquer resultado</option>
+              <option value="home">Mandante vence</option>
+              <option value="draw">Empate</option>
+              <option value="away">Visitante vence</option>
+            </select>
+          </label>
+          <label class="field"><span>Gols do mandante (0 a 8)</span><select id="rbScoreA"></select></label>
+          <label class="field"><span>Gols do visitante (0 a 8)</span><select id="rbScoreB"></select></label>
+          <div id="scoreHelp" class="score-help wide" data-state="ok">
+            Para usar placar fixo, escolha os dois números. Ex.: 2 e 1 cria o placar 2–1.
+          </div>
+
+          <label class="field wide odd-field"><span>Odd exata disponível</span>
+            <select id="rbOdd"><option value="">Aguardando os dados reais…</option></select>
+            <small id="oddHelp">A lista usa somente as cotações devolvidas pela grade. Não existe faixa de odd.</small>
+          </label>
+        </div>
+      </article>
+
+      <article class="panel delivery-panel">
+        <header class="panel-heading split">
+          <div><span>ETAPA 5</span><h2>Entrada e envio do robô</h2></div>
+          <p>Quando o gatilho confirmar, o aviso sai para o próximo jogo de cada liga marcada.</p>
+        </header>
+        <div class="flow-strip" aria-label="Fluxo da automação">
+          <b>GATILHO CONFIRMADO</b><i>→</i><b>PRÓXIMO JOGO</b><i>→</i><b>NOTIFICAÇÃO IMEDIATA</b>
+        </div>
+        <div class="field-grid delivery-grid">
+          <label class="field"><span>Mercado da entrada</span>
+            <select id="rbEntryMarket">
+              <option>Over 0.5</option><option>Over 1.5</option><option selected>Over 2.5</option><option>Over 3.5</option>
+              <option>Under 0.5</option><option>Under 1.5</option><option>Under 2.5</option><option>Under 3.5</option>
+              <option>Ambas Marcam (Sim)</option><option>Ambas Marcam (Não)</option>
+              <option>Casa FT</option><option>Empate FT</option><option>Fora FT</option>
+            </select>
+          </label>
+          <label class="field"><span>Quantidade de tiros</span>
+            <select id="rbShots"><option value="1">1 tiro</option><option value="2">2 tiros</option><option value="3" selected>3 tiros</option><option value="4">4 tiros</option><option value="5">5 tiros</option></select>
+          </label>
+          <label class="activation-card">
+            <input id="rbActive" type="checkbox">
+            <span><b>Ativar envio ao salvar</b><small>O robô passa a vigiar novos resultados.</small></span>
+          </label>
+          <div class="notification-card">
+            <div><b>Painel + notificação do navegador</b><small id="notificationStatus">Permissão ainda não ativada.</small></div>
+            <button id="rbEnableNotifications" class="btn ghost small" type="button">Ativar notificações</button>
+          </div>
+        </div>
+        <div class="delivery-note"><b>Importante:</b> o placar escolhido acima é o gatilho. A entrada será no próximo jogo — nunca no jogo que já terminou.</div>
+        <details class="signal-feed" open>
+          <summary>Entradas enviadas nesta página <b id="signalCount">0</b></summary>
+          <div id="signalList" class="bounded-list empty">Nenhuma entrada enviada ainda.</div>
+        </details>
+      </article>
+
+      <article class="panel action-panel">
+        <div>
+          <span class="eyebrow">ETAPA 6</span>
+          <h2>Salve e ative o robô</h2>
+          <p>O teste é opcional. Para o robô funcionar de verdade neste navegador, use o botão verde.</p>
+        </div>
+        <div class="action-buttons">
+          <button id="rbTest" class="btn ghost" type="button">Somente testar</button>
+          <button id="rbSaveActivate" class="btn primary activate" type="button">Salvar e ativar robô</button>
+        </div>
+      </article>
+
+      <details class="panel accordion-panel" open>
+        <summary><span>Robôs manuais salvos · editar ou excluir</span><b id="savedCount">0</b></summary>
+        <div id="savedList" class="bounded-list empty">Nenhum robô salvo.</div>
+      </details>
+
+      <details class="panel accordion-panel">
+        <summary><span>Histórico de testes</span><b id="historyCount">0</b></summary>
+        <div class="history-toolbar">
+          <span>Os testes ficam somente neste navegador.</span>
+          <button id="rbClearHistory" class="btn danger" type="button">Limpar histórico</button>
+        </div>
+        <div id="historyList" class="bounded-list empty">Nenhum teste realizado.</div>
+      </details>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="robos-model.js?v=20260905-2245"></script>
+  <script src="grade-tab-coordinator.js?v=20260924-grade-unfreeze"></script>
+  <script src="robo-manual-monitor.js?v=20260912-result-hours"></script>
+  <script src="robo-manual.js?v=20260912-result-hours"></script>
+</body>
+</html>

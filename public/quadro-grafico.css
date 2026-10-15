@@ -1,0 +1,21 @@
+body.quadro-grafico{overflow:auto;background:#031018}
+body.quadro-grafico .topbar,body.quadro-grafico .sidebar{display:none!important}
+body.quadro-grafico .shell{display:block;min-height:0}
+body.quadro-grafico .main{padding:3px;gap:5px}
+body.quadro-grafico .main>#leagues,
+body.quadro-grafico .main>#markets,
+body.quadro-grafico .main>.kpis,
+body.quadro-grafico .main>.panel:not(#graficoPanel),
+body.quadro-grafico .main>.section-title,
+body.quadro-grafico .main>.auto-box{display:none!important}
+body.quadro-grafico .ctrlbar{display:block;padding:0;border:0;background:transparent}
+body.quadro-grafico .ctrlbar .radar-panel{display:none!important}
+body.quadro-grafico .ctrl-left{width:100%}
+body.quadro-grafico .ctrl-line{padding:3px 5px;min-height:0}
+body.quadro-grafico #graficoPanel{margin:0}
+body.quadro-grafico #graficoPanel .panel-head{padding:5px;gap:4px}
+body.quadro-grafico #graficoPanel .chart-wrap{min-height:410px}
+body.quadro-grafico #chart{height:315px}
+body.quadro-grafico #macd{height:105px}
+body.quadro-grafico .metricbar{width:150px}
+body.quadro-grafico .foot,body.quadro-grafico #realBar{display:none!important}

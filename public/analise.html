@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="pt-BR"><head><script>
+if (window.location.hostname === "amd-live-dashboard.onrender.com") {
+  window.location.replace("https://amd-coletor.onrender.com" + window.location.pathname + window.location.search + window.location.hash);
+}
+</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AMD LIVE — Análise</title><link rel="stylesheet" href="styles.css"><style>
+html{scroll-behavior:smooth}
+.an-shell{display:flex;min-height:100vh}
+.an-side .nav-item.active{background:rgba(24,227,77,.1)}
+.an-side{width:206px;flex:none;background:var(--panel);border-right:1px solid var(--line);padding:12px 10px;display:flex;flex-direction:column;gap:3px;position:sticky;top:0;height:100vh}
+.an-marca{font-size:15px;font-weight:700;letter-spacing:.5px}.an-sub{font-size:9.5px;color:var(--muted);margin-bottom:12px}
+.an-volta{display:block;padding:7px 9px;border-radius:7px;border:1px solid var(--line);background:var(--panel2);color:var(--blue);font-size:10.5px;text-decoration:none;margin-bottom:12px;text-align:center}
+.an-side .nav-item{text-decoration:none}
+.an-liga{margin-top:auto;border:1px solid var(--line);border-radius:9px;background:var(--panel2);padding:9px}
+.an-liga .k{font-size:8.5px;letter-spacing:.8px;color:var(--muted)}.an-liga .opts .opt{padding:2px 6px;font-size:9px}
+.an-liga .v{font-size:15px;font-weight:700;color:var(--green);margin:2px 0}.an-liga .d{font-size:9px;color:var(--muted)}
+.an-main{flex:1;min-width:0;padding:16px 18px 40px;display:flex;flex-direction:column;gap:14px}
+.an-eyebrow{font-size:9.5px;letter-spacing:1.6px;color:var(--green);font-weight:700}
+.an-h1{font-size:26px;font-weight:700;margin:3px 0 4px}.an-lead{font-size:12px;color:var(--muted);max-width:640px}
+.an-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;max-width:560px;margin-top:12px}
+.an-kpi{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:11px 13px}
+.an-kpi .v{font-size:24px;font-weight:700;font-family:var(--mono)}.an-kpi .k{font-size:9.5px;color:var(--muted);margin-top:2px}
+.an-sec{border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden}
+.an-sechead{padding:12px 14px;border-bottom:1px solid var(--line);background:var(--panel2)}
+.an-sechead h2{font-size:13.5px;letter-spacing:.6px}.an-sechead p{font-size:10.5px;color:var(--muted);margin-top:3px}
+.an-badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:9px;font-weight:700;background:rgba(24,227,77,.14);color:var(--green);border:1px solid rgba(24,227,77,.4)}
+.quads{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:12px}
+.quad{border:1px solid var(--line);border-radius:10px;background:var(--panel2);padding:11px}
+.quad h3{font-size:10px;letter-spacing:1.2px;color:var(--muted)}
+.quad .nome{font-size:12.5px;font-weight:700;margin:2px 0 8px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.grp{margin-bottom:7px}.grp .lbl{font-size:9px;letter-spacing:.7px;color:var(--muted);text-transform:uppercase;margin-bottom:3px}
+.opts{display:flex;flex-wrap:wrap;gap:4px}
+.opt{padding:3px 8px;border-radius:6px;border:1px solid var(--line);background:var(--bg);font-size:9.5px;color:var(--muted);cursor:pointer}
+.opt:hover{color:var(--text);border-color:#28495c}
+.opt.on{background:rgba(24,227,77,.14);border-color:rgba(24,227,77,.5);color:var(--green);font-weight:700}
+.btn-an{width:100%;margin-top:7px;padding:7px;border-radius:7px;border:1px solid rgba(24,227,77,.5);background:rgba(24,227,77,.12);color:var(--green);font-size:11px;font-weight:700;cursor:pointer}
+.selo{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0 7px}
+.selo div{border:1px solid var(--line);border-radius:7px;background:var(--bg);padding:4px 8px;text-align:center}
+.selo b{display:block;font-size:12px;font-family:var(--mono)}.selo span{font-size:8.5px;color:var(--muted)}
+.res{display:flex;gap:8px;padding:7px 0;border-top:1px solid var(--line);font-size:10.5px}
+.res .pos{width:16px;font-family:var(--mono);color:var(--muted);font-weight:700}.res .txt{flex:1;min-width:0}
+.res .txt small{display:block;color:var(--muted);font-size:9px;margin-top:2px}
+.res .num{text-align:right;font-family:var(--mono);font-size:10px}.res .num b{display:block;color:var(--green);font-size:11.5px}.res .num span{color:var(--blue)}
+#rankTimes{padding:12px;display:flex;flex-direction:column;gap:10px}
+.rkcard{border:1px solid var(--line);border-radius:10px;background:var(--panel2);padding:11px 13px}
+.rkcard h4{color:var(--blue);font-size:13px;margin-bottom:7px}
+.rklin{display:flex;gap:9px;font-size:11px;margin-bottom:5px;align-items:baseline}
+.rklin .jan{color:var(--orange);font-weight:700;font-family:var(--mono);width:30px;flex:none}
+.rklin .lista{color:var(--muted)}
+.rklin .lista b{color:var(--green);font-weight:700}
+.rklin .lista i{font-style:normal;color:#5c6b75;font-size:9.5px}
+.rklin .lista i.fraca{color:#3f4b54}
+.rk .marc{color:var(--blue);font-weight:700}
+.rk{width:100%;border-collapse:collapse;font-size:11px}
+.rk th{padding:7px 10px;font-size:9px;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);background:var(--panel2);border-bottom:1px solid var(--line);text-align:left}
+.rk td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.rk .pc{font-family:var(--mono);font-weight:700;font-size:13px;color:var(--green)}.rk small{display:block;color:var(--muted);font-size:9px}
+.confr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:12px}
+.cf{border:1px solid var(--line);border-radius:10px;background:var(--panel2);padding:11px}
+.cf .hora{font-family:var(--mono);color:var(--blue);font-size:11px}.cf .times{font-size:13px;font-weight:700;margin:2px 0 3px}
+.cf .meta{font-size:9px;color:var(--muted)}
+.anc{display:inline-block;margin:7px 0;padding:2px 8px;border-radius:20px;font-size:9px;font-weight:700;border:1px solid rgba(255,157,0,.45);background:rgba(255,157,0,.12);color:var(--orange)}
+.lados{display:grid;grid-template-columns:1fr 14px 1fr;gap:6px;align-items:center;margin:6px 0}
+.lado{border:1px solid var(--line);border-radius:8px;background:var(--bg);padding:7px}
+.lado .t{font-size:10px;font-weight:700;margin-bottom:4px}
+.lado .r{display:flex;justify-content:space-between;font-size:9px;color:var(--muted);margin-top:2px}.lado .r b{font-family:var(--mono);color:var(--text)}
+.vs{text-align:center;color:var(--muted)}.conf{font-size:9.5px;color:var(--muted);margin-top:5px}
+.status{display:block;margin-top:6px;padding:5px;border-radius:7px;text-align:center;font-size:9.5px;font-weight:700}
+.status.vig{background:rgba(24,227,77,.13);color:var(--green);border:1px solid rgba(24,227,77,.4)}
+.status.obs{background:rgba(150,165,173,.1);color:var(--muted);border:1px solid var(--line)}
+.abrir{display:block;width:100%;margin-top:6px;padding:5px;border-radius:6px;border:1px solid var(--line);background:transparent;color:var(--blue);font-size:9.5px;cursor:pointer}
+.leitura{padding:12px 14px}.leitura .linha{font-size:11px;margin-bottom:6px}.leitura .linha b{color:var(--orange)}
+.metr{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:10px 0}
+.metr div{border:1px solid var(--line);border-radius:9px;background:var(--panel2);padding:9px}
+.metr .k{font-size:8.5px;letter-spacing:.6px;text-transform:uppercase;color:var(--muted)}.metr .v{font-size:16px;font-weight:700;font-family:var(--mono);margin-top:2px}
+.base{display:flex;gap:16px;flex-wrap:wrap;font-size:10px;color:var(--muted);border-top:1px solid var(--line);padding-top:9px}.base b{color:var(--text);font-family:var(--mono)}
+.cac-market-bar{display:flex;flex-wrap:wrap;gap:7px;padding:12px 14px;border-bottom:1px solid var(--line);background:rgba(4,16,24,.55)}
+.cac-market-bar .opt{padding:6px 12px;font-size:10.5px}
+#cacadores-real{display:block;padding:14px;background:linear-gradient(180deg,rgba(6,21,30,.45),rgba(3,13,20,.12))}
+.cac-topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.cac-contexto{font-size:10px;color:var(--muted)}.cac-contexto b{color:var(--text)}
+.cac-live{display:inline-flex;align-items:center;gap:7px;padding:5px 9px;border:1px solid rgba(24,227,77,.28);border-radius:20px;background:rgba(24,227,77,.08);color:var(--green);font-size:9.5px;font-weight:700;white-space:nowrap}
+.cac-live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(24,227,77,.8)}
+.cac-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-bottom:12px}
+.cac-kpi{min-width:0;border:1px solid var(--line);border-radius:10px;background:var(--panel2);padding:11px 12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.015)}
+.cac-kpi .v{font:700 22px var(--mono);color:var(--green);line-height:1}.cac-kpi .k{font-size:9px;color:var(--muted);margin-top:5px;text-transform:uppercase;letter-spacing:.45px}
+.cac-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start}
+.cac-family{min-width:0;border:1px solid var(--line);border-radius:11px;background:var(--panel2);overflow:hidden}
+.cac-family-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:11px 12px;border-bottom:1px solid var(--line);background:rgba(3,14,21,.45)}
+.cac-family-title{font-size:11.5px;font-weight:800;letter-spacing:.25px}.cac-family-meta{font-size:8.5px;color:var(--muted);margin-top:3px}
+.cac-family-count{flex:none;min-width:24px;padding:3px 6px;border-radius:12px;background:rgba(24,227,77,.1);border:1px solid rgba(24,227,77,.25);color:var(--green);font:700 9px var(--mono);text-align:center}
+.cac-list{display:flex;flex-direction:column;gap:7px;padding:9px}
+.cac-pattern{border:1px solid var(--line);border-radius:8px;background:var(--bg);padding:8px 9px}
+.cac-pattern-top{display:flex;align-items:center;gap:6px;min-width:0}.cac-dot{width:7px;height:7px;border-radius:50%;flex:none}.cac-pattern.green .cac-dot{background:var(--green);box-shadow:0 0 6px rgba(24,227,77,.45)}.cac-pattern.red .cac-dot{background:var(--red)}
+.cac-key{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10.5px;font-weight:700}.cac-pattern.green .cac-key,.cac-pattern.green .cac-call{color:var(--green)}.cac-pattern.red .cac-key,.cac-pattern.red .cac-call{color:var(--red)}
+.cac-call{margin-left:auto;flex:none;font:800 9px var(--mono)}
+.cac-stats{display:grid;grid-template-columns:1fr auto auto;gap:7px;align-items:center;margin-top:6px;color:var(--muted);font-size:8.5px}.cac-stats b{font-family:var(--mono);color:var(--text)}
+.cac-edge{padding:2px 5px;border-radius:5px;font-weight:800}.cac-pattern.green .cac-edge{background:rgba(24,227,77,.12);color:var(--green)}.cac-pattern.red .cac-edge{background:rgba(255,74,87,.13);color:var(--red)}
+.cac-sample{height:4px;margin-top:7px;background:#26343b;border-radius:4px;overflow:hidden}.cac-sample span{display:block;height:100%;border-radius:4px}.cac-pattern.green .cac-sample span{background:var(--green)}.cac-pattern.red .cac-sample span{background:var(--red)}
+.cac-empty{padding:18px 12px;color:var(--muted);font-size:9.5px;text-align:center}
+.cac-how{display:grid;grid-template-columns:auto 1fr;gap:11px;align-items:start;margin-top:11px;padding:11px 12px;border:1px solid rgba(24,227,77,.25);border-radius:10px;background:rgba(24,227,77,.045)}
+.cac-how-title{color:var(--green);font-size:10px;font-weight:800;white-space:nowrap}.cac-how-text{color:var(--muted);font-size:9px;line-height:1.55}.cac-how-text b{color:var(--text)}
+@media(max-width:1250px){.cac-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1050px){.quads,.confr{grid-template-columns:1fr}.an-kpis{grid-template-columns:1fr}.metr{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.cac-kpis,.cac-grid{grid-template-columns:1fr 1fr}.cac-topline{align-items:flex-start}.cac-how{grid-template-columns:1fr}}
+@media(max-width:520px){.cac-kpis,.cac-grid{grid-template-columns:1fr}.cac-live{display:none}}
+</style></head><body><div class="an-shell"><nav class="an-side">
+<div class="an-marca">AMD LIVE</div><div class="an-sub">Central de inteligência conectada</div>
+<a class="an-volta" href="index.html">← Voltar ao Dashboard</a>
+<a class="nav-item" href="index.html"><span class="ico">▥</span>Dashboard</a>
+<a class="nav-item active" href="#secTopo"><span class="ico">⌁</span>Análise</a>
+<a class="nav-item" href="times.html"><span class="ico">♢</span>Times</a>
+<a class="nav-item" href="convergencia.html"><span class="ico">◎</span>Convergência</a>
+<a class="nav-item" href="#secQuad"><span class="ico">✦</span>Quad Premium</a>
+<a class="nav-item" href="#secRank"><span class="ico">🏅</span>Rank Mercados</a>
+<a class="nav-item" href="#secOdds"><span class="ico">💰</span>Odds EV+</a>
+<a class="nav-item" href="#secAncoras"><span class="ico">⚓</span>Âncoras</a>
+<a class="nav-item" href="#secConfr"><span class="ico">◈</span>Confrontos</a>
+<a class="nav-item" href="#secCacadores"><span class="ico">⌾</span>Caçadores</a>
+<div class="an-liga"><div class="k">LIGA ATIVA</div><div class="v" id="ligaNome">Super</div><div class="opts" id="ligaOpts" style="margin-top:6px"></div><div class="d" style="margin-top:6px">Dados em tempo real</div></div>
+</nav><main class="an-main"><header id="secTopo"><div class="an-eyebrow">AMD LIVE · INTELIGÊNCIA</div>
+<h1 class="an-h1">Análise</h1><p class="an-lead">Compare confrontos e encontre padrões antes que o mercado reaja.</p>
+<div class="an-kpis"><div class="an-kpi"><div class="v" id="kSinais">24</div><div class="k">Sinais ativos</div></div>
+<div class="an-kpi"><div class="v" style="color:var(--green)" id="kConf">81%</div><div class="k">Confiança média</div></div>
+<div class="an-kpi"><div class="v" style="color:var(--blue)" id="kEv">+16.8%</div><div class="k">EV projetado</div></div></div></header>
+<section class="an-sec" id="secQuad"><div class="an-sechead"><h2>AMD QUAD PREMIUM <span class="an-badge">Ferramenta própria · <span class="ligaTxt">Super</span></span></h2>
+<p>Quatro análises simultâneas. Combine padrões, odds, confrontos e extremos em quatro quadrantes independentes — cada um mantém seus próprios filtros e ranking.</p>
+</div><div class="quads" id="quads"></div></section>
+<section class="an-sec" id="secRank"><div class="an-sechead"><h2>🏅 RANK DE TIMES — QUEM MAIS PAGA POR JANELA</h2><p>Top 5 por janela de tempo · <span class="ligaTxt">Super</span></p><div class="opts" id="rkOpts" style="margin-top:8px"></div></div><div id="rankTimes"></div></section><section class="an-sec" id="secReds"><div class="an-sechead"><h2>✎ MÁXIMA DE REDS SEGUIDOS</h2><p>Maior pulo sem pagar por janela · dimensiona o gale</p></div><table class="rk"><thead><tr><th>mercado</th><th>3h</th><th>6h</th><th>12h</th><th>24h</th><th>seca atual</th></tr></thead><tbody id="redsBody"></tbody></table></section>
+<section class="an-sec" id="secConfr"><div class="an-sechead"><h2>CONFRONTOS</h2><p>Janela: anterior, atual e próximo jogo</p></div><div class="confr" id="confr"></div></section>
+<section class="an-sec" id="secLeitura"><div class="an-sechead"><h2>ANÁLISE DE CONFRONTO</h2><p>Leitura automática do confronto</p></div><div class="leitura" id="leitura"></div></section>
+<section class="an-sec" id="secOdds"><div class="an-sechead"><h2>RANKING DE ODDS — ONDE A BASE PAGA MAIS QUE A ODD EMBUTE</h2><p>Do maior EV ao menor · odd exata na janela escolhida · <span class="ligaTxt">Super</span></p><div class="opts" id="evOpts" style="margin-top:8px"></div><div class="opts" id="evJan" style="margin-top:6px"></div><div id="evStatus" style="margin-top:6px;font-size:9px;color:var(--muted)">Lendo histórico do banco...</div></div><table class="rk"><thead><tr><th>Odd</th><th>Acertos</th><th>% base</th><th>Odd justa</th><th>EV</th><th>Veredito</th></tr></thead><tbody id="evBody"></tbody></table></section><section class="an-sec" id="secAncoras"><div class="an-sechead"><h2>ÂNCORAS</h2><p>Colunas e horários que sustentam o padrão</p></div><div class="confr" id="ancoras"></div></section><section class="an-sec" id="secCacadores"><div class="an-sechead"><h2>CAÇADORES</h2><p>Gatilhos monitorados em tempo real</p></div><div class="confr" id="cacadores"></div></section></main></div><script src="auth.js?v=20260920-login-gate"></script><script src="analise.js?v=2"></script><script src="motor.js?v=1"></script>
+<script src="rank-amd.js?v=2"></script>
+<script src="quad-amd.js?v=2"></script>
+<script src="motor-adaptador.js?v=1"></script>
+<script src="analise-real.js?v=2"></script>
+<script src="ancoras.js?v=4"></script>
+<script src="cacadores.js?v=2"></script>
+</body></html>

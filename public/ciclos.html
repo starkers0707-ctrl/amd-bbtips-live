@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AMD LIVE - Detector de Ciclos O/U</title>
+<meta name="theme-color" content="#030a0f">
+<link rel="stylesheet" href="styles.css?v=20260802e">
+<link rel="stylesheet" href="mobile.css?v=20260803a">
+<link rel="stylesheet" href="analise-shared.css?v=20260920a">
+<style>
+  .cic-wrap{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+  .cic-lado{flex:0 0 210px;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:12px}
+  .cic-main{flex:1;min-width:0}
+  .cic-nota{margin:14px 0 40px;padding:10px 12px;border-radius:8px;border:1px solid var(--line);
+    background:var(--panel2);color:var(--muted);font-size:11.5px;line-height:1.6}
+  table.bt-rolagem th{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);color:var(--green);font-size:11px}
+  table.bt-rolagem td{padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+</style>
+</head>
+<body>
+
+<div class="an-shell">
+  <nav class="an-side">
+    <div class="an-marca">AMD LIVE</div>
+    <div class="an-sub">Central de inteligencia conectada</div>
+    <a class="an-volta" href="index.html">&larr; Voltar ao Dashboard</a>
+    <a class="nav-item" href="index.html"><span class="ico">&#9638;</span>Dashboard</a>
+    <a class="nav-item" href="analise.html"><span class="ico">&#8764;</span>Analise</a>
+    <a class="nav-item" href="times.html"><span class="ico">&#9826;</span>Times</a>
+    <a class="nav-item" href="convergencia.html"><span class="ico">&#9678;</span>Convergência</a>
+    <a class="nav-item active" href="ciclos.html"><span class="ico">&#9678;</span>Detector de Ciclos</a>
+  </nav>
+
+  <main class="an-main">
+    <header>
+      <div class="an-eyebrow">AMD LIVE &middot; MERCADOS</div>
+      <h1 class="an-h1">Detector de Ciclos O/U</h1>
+      <p class="an-lead">Padroes alternados de positivo e negativo, com o alvo projetado a partir do primeiro jogo do padrao: 20 jogos por passo, que equivalem a 1 hora.</p>
+    </header>
+
+    <div class="cic-wrap">
+      <aside class="cic-lado" id="ciclos-ctrl"></aside>
+      <section class="cic-main" id="ciclos-corpo"></section>
+    </div>
+
+    <div class="cic-nota">
+      <b>Como ler</b><br>
+      Taxa alta sozinha nao significa nada. Em uma janela de 3 tiros, acertar pelo menos um green ja e o estado normal do mercado &mdash; por isso a <b>regua do ciclo</b> aparece no topo. O que importa e o <b>edge</b>: quantos pontos o padrao bate acima ou abaixo dela.<br>
+      Um padrao com 91% de taxa contra uma regua de 86% tem apenas 5 pontos de vantagem, o que com poucas ocorrencias e ruido. Prefira sempre o padrao com mais ocorrencias resolvidas, nao o de maior taxa.<br>
+      Futebol virtual e RNG: estes numeros descrevem o passado da janela, nao preveem o proximo jogo.
+    </div>
+  </main>
+</div>
+
+<script src="auth.js?v=20260920-login-gate"></script>
+<script src="motor.js?v=1"></script>
+<script src="motor-adaptador.js?v=1"></script>
+<script src="ciclos-v2.js?v=1"></script>
+</body>
+</html>

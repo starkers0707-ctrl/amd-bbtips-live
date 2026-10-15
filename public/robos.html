@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <script>if(window.location.hostname==="amd-live-dashboard.onrender.com")window.location.replace("https://amd-coletor.onrender.com"+window.location.pathname+window.location.search+window.location.hash);</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AMD LIVE — Laboratório de Robôs</title>
+  <meta name="theme-color" content="#030a0f">
+  <link rel="stylesheet" href="styles.css?v=20260828b">
+  <link rel="stylesheet" href="robos.css?v=20260908-status">
+</head>
+<body>
+  <header class="topbar rb-topbar">
+    <a class="brand rb-brand" href="index.html"><span class="dotlogo"></span>AMD LIVE</a>
+    <span class="pill rb-pill">ROBÔS · TESTE</span>
+    <div class="spacer"></div>
+    <span class="rb-online"><i></i>Simulação local</span>
+    <a class="rb-back" href="index.html">← Dashboard</a>
+  </header>
+
+  <div class="rb-shell">
+    <nav class="rb-side">
+      <div class="brand rb-side-brand"><span class="dotlogo"></span>AMD LIVE</div>
+      <a class="nav-item" href="index.html"><span class="ico">▥</span>Dashboard</a>
+      <a class="nav-item" href="ciclos.html"><span class="ico">▣</span>Mercados</a>
+      <a class="nav-item" href="analise.html"><span class="ico">⌁</span>Análise</a>
+      <a class="nav-item" href="alertas.html"><span class="ico">♧</span>Alertas</a>
+      <a class="nav-item active" href="robos.html"><span class="ico">🤖</span>Robôs<span class="count">BETA</span></a>
+      <a class="nav-item" href="robo-manual.html"><span class="ico">+</span>Criar Robo<span class="count">MANUAL</span></a>
+<a class="nav-item" href="convergencia.html"><span class="ico">◎</span>Convergência</a>
+      <div class="rb-cost"><b>CUSTO DO TESTE</b><strong>R$ 0 adicional</strong><span>Configuração salva somente neste navegador.</span></div>
+    </nav>
+
+    <main class="rb-main">
+      <section class="rb-hero">
+        <div>
+          <span class="rb-kicker">LABORATÓRIO INDIVIDUAL</span>
+          <h1>Monte seu padrão sem travar as entradas</h1>
+          <p>Escolha as métricas que somam confiança. Apenas a subida do gráfico é obrigatória; as demais aumentam a pontuação.</p>
+        </div>
+        <div class="rb-beta"><b>BETA</b><span>Não envia Telegram</span></div>
+      </section>
+
+      <section class="rb-card rb-manual-live" aria-labelledby="rbManualLiveTitle">
+        <div class="rb-card-head">
+          <div><small>ACOMPANHAMENTO REAL</small><h2 id="rbManualLiveTitle">Robôs manuais ativos e resultados</h2></div>
+          <a class="rb-primary rb-create-manual" href="robo-manual.html">+ Criar ou editar robô</a>
+        </div>
+        <div class="rb-live-stats">
+          <div><span>ATIVOS</span><strong id="rbManualActiveCount">0</strong></div>
+          <div><span>PENDENTES</span><strong id="rbManualPendingCount">0</strong></div>
+          <div><span>GREENS</span><strong id="rbManualGreenCount">0</strong></div>
+          <div><span>REDS</span><strong id="rbManualRedCount">0</strong></div>
+        </div>
+        <div id="rbManualRobotList" class="rb-manual-list"></div>
+        <details class="rb-signal-history" open>
+          <summary>Entradas dos robôs <b id="rbManualSignalCount">0</b></summary>
+          <div id="rbManualSignalList" class="rb-signal-list"></div>
+        </details>
+      </section>
+
+      <div class="rb-grid">
+        <section class="rb-card rb-builder">
+          <div class="rb-card-head"><div><small>ETAPA 1</small><h2>Identificação do robô</h2></div><span id="rbSlots">0/3 salvos</span></div>
+          <label class="rb-field">Nome do padrão<input id="rbNome" maxlength="40" value="Meu padrão 01" placeholder="Ex.: Over 3.5 em subida"></label>
+
+          <div class="rb-label">Perfil de envio</div>
+          <div class="rb-profiles" role="group" aria-label="Perfil de envio">
+            <button type="button" data-profile="agressivo"><b>Agressivo</b><span>50 pontos</span></button>
+            <button type="button" class="active" data-profile="equilibrado"><b>Equilibrado</b><span>65 pontos</span></button>
+            <button type="button" data-profile="cauteloso"><b>Cauteloso</b><span>80 pontos</span></button>
+          </div>
+
+          <div class="rb-two">
+            <fieldset><legend>Ligas</legend>
+              <label><input type="checkbox" name="liga" value="Copa" checked>Copa</label>
+              <label><input type="checkbox" name="liga" value="Euro" checked>Euro</label>
+              <label><input type="checkbox" name="liga" value="Super" checked>Super</label>
+              <label><input type="checkbox" name="liga" value="Premier" checked>Premier</label>
+            </fieldset>
+            <label class="rb-field">Mercado<select id="rbMercado"><option>Over 2.5</option><option>Over 3.5</option><option>5+ Gols</option><option>OUT HT</option><option>Ambas Marcam (Sim)</option><option>Ambas Marcam (Não)</option></select></label>
+          </div>
+
+          <div class="rb-threshold">
+            <div><span>Limiar personalizado</span><b><output id="rbLimiarOut">65</output>/100</b></div>
+            <input id="rbLimiar" type="range" min="40" max="90" step="5" value="65">
+            <div class="rb-range-labels"><span>Mais entradas</span><span>Mais cautela</span></div>
+          </div>
+        </section>
+
+        <aside class="rb-score-card" id="rbScoreCard" data-status="aguardar">
+          <small>SINAL DE TESTE AGORA</small>
+          <div class="rb-score"><strong id="rbScore">...</strong><span>/100</span></div>
+          <div class="rb-meter"><i id="rbMeter"></i><em id="rbMarker"></em></div>
+          <div class="rb-result"><span id="rbStatusIcon">⏳</span><div><b id="rbStatus">CALCULANDO</b><small id="rbStatusText">Lendo os resultados reais das ligas selecionadas</small></div></div>
+          <dl><div><dt>Confirmadas</dt><dd id="rbConfirmed">calculando</dd></div><div><dt>Perfil</dt><dd id="rbProfileName">Equilibrado</dd></div><div><dt>Destino</dt><dd>Painel (teste)</dd></div></dl>
+          <button type="button" class="rb-primary" id="rbSimular">▶ Recalcular cenário</button>
+          <p>O resultado é uma demonstração da regra, não previsão ou garantia.</p>
+        </aside>
+      </div>
+
+      <section class="rb-card rb-rules">
+        <div class="rb-card-head"><div><small>ETAPA 2</small><h2>Métricas que somam pontos</h2></div><span>Clique em “Agora” para testar</span></div>
+        <div class="rb-rule-list" id="rbRules">
+          <article class="rb-rule" data-key="subida" data-weight="30">
+            <label class="rb-use"><input type="checkbox" checked disabled><span></span></label>
+            <div class="rb-rule-copy"><b>Gráfico em subida</b><small>Inclinação positiva na janela recente · obrigatória</small></div>
+            <strong>+30</strong><button type="button" class="rb-now on" aria-pressed="true">Agora: SIM</button>
+          </article>
+          <article class="rb-rule" data-key="media" data-weight="20">
+            <label class="rb-use"><input type="checkbox" checked><span></span></label>
+            <div class="rb-rule-copy"><b>Acima da média</b><small>Linha atual acima do normal histórico</small></div>
+            <strong>+20</strong><button type="button" class="rb-now on" aria-pressed="true">Agora: SIM</button>
+          </article>
+          <article class="rb-rule" data-key="macd" data-weight="15">
+            <label class="rb-use"><input type="checkbox" checked><span></span></label>
+            <div class="rb-rule-copy"><b>MACD positivo</b><small>Momento comprador sem virar trava obrigatória</small></div>
+            <strong>+15</strong><button type="button" class="rb-now on" aria-pressed="true">Agora: SIM</button>
+          </article>
+          <article class="rb-rule" data-key="rsi" data-weight="10">
+            <label class="rb-use"><input type="checkbox" checked><span></span></label>
+            <div class="rb-rule-copy"><b>RSI favorável</b><small>Força saudável, sem extremo estatístico</small></div>
+            <strong>+10</strong><button type="button" class="rb-now" aria-pressed="false">Agora: NÃO</button>
+          </article>
+          <article class="rb-rule" data-key="ligas" data-weight="15">
+            <label class="rb-use"><input type="checkbox" checked><span></span></label>
+            <div class="rb-rule-copy"><b>Movimento entre ligas</b><small>Outra liga perde força enquanto a escolhida acelera</small></div>
+            <strong>+15</strong><button type="button" class="rb-now" aria-pressed="false">Agora: NÃO</button>
+          </article>
+          <article class="rb-rule" data-key="mercados" data-weight="10">
+            <label class="rb-use"><input type="checkbox" checked><span></span></label>
+            <div class="rb-rule-copy"><b>Confirmação em outro mercado</b><small>Concordância sem exigir todos os indicadores</small></div>
+            <strong>+10</strong><button type="button" class="rb-now" aria-pressed="false">Agora: NÃO</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="rb-card rb-real-scenarios" aria-labelledby="rbRealTitle">
+        <div class="rb-card-head">
+          <div><small>DADOS REAIS</small><h2 id="rbRealTitle">Cenários calculados por liga</h2></div>
+          <span id="rbEntriesUpdated" aria-live="polite">Lendo resultados reais...</span>
+        </div>
+        <div id="rbEntriesList" class="rb-entry-list">
+          <div class="rb-entry-empty">Calculando as ligas selecionadas...</div>
+        </div>
+      </section>
+
+      <section class="rb-card rb-save">
+        <div><small>ETAPA 3</small><h2>Salvar configuração de teste</h2><p>O padrão fica somente neste aparelho. Nenhuma mensagem será enviada.</p></div>
+        <button type="button" class="rb-secondary" id="rbReset">Limpar cenário</button>
+        <button type="button" class="rb-primary" id="rbSave">Salvar robô teste</button>
+      </section>
+
+      <section class="rb-card rb-saved">
+        <div class="rb-card-head"><div><small>MEUS TESTES</small><h2>Robôs salvos neste navegador</h2></div><span>Máximo 3</span></div>
+        <div id="rbSavedList" class="rb-saved-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="rb-toast" id="rbToast" role="status" aria-live="polite"></div>
+  <script>
+    if (location.hostname !== '127.0.0.1' && location.hostname !== 'localhost') {
+      var authScript = document.createElement('script');
+      authScript.src = 'auth.js?v=20260920-login-gate';
+      document.head.appendChild(authScript);
+    }
+  </script>
+  <script src="robos-model.js?v=20260902a"></script>
+  <script src="grade-tab-coordinator.js?v=20260924-grade-unfreeze"></script>
+  <script src="robo-manual-monitor.js?v=20260909-multiliga-tiros"></script>
+  <script src="robo-manual-status.js?v=20260909-multiliga-tiros"></script>
+  <script src="robos.js?v=20260908-no-late-alerts"></script>
+</body>
+</html>

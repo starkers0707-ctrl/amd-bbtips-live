@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AMD LIVE - Analise (TESTE)</title>
+<meta name="theme-color" content="#030a0f">
+<link rel="stylesheet" href="styles.css?v=20260802e">
+<link rel="stylesheet" href="mobile.css?v=20260803a">
+<script>
+/* Puxa o <style> da analise.html original em tempo de execucao.
+   Assim esta pagina fica identica a oficial sem copiar CSS,
+   e continua igual mesmo se voce mexer no original. */
+(function () {
+  fetch("analise.html", { cache: "no-store" })
+    .then(function (r) { return r.text(); })
+    .then(function (h) {
+      var m = h.match(/<style[^>]*>([\s\S]*?)<\/style>/i);
+      if (!m) return;
+      var s = document.createElement("style");
+      s.textContent = m[1];
+      document.head.appendChild(s);
+    })
+    .catch(function () {});
+})();
+</script>
+<style>
+  .aviso-teste{margin:10px 0;padding:10px 12px;border-radius:9px;border:1px solid #b45309;background:rgba(180,83,9,.12);color:#fbbf24;font-size:12px;line-height:1.5}
+  .aviso-demo{margin:8px 0;padding:9px 11px;border-radius:8px;border:1px dashed #6b7280;background:rgba(107,114,128,.08);color:#9ca3af;font-size:12px}
+  .nota-rodape{margin:14px 0 40px;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--muted);font-size:11.5px;line-height:1.6}
+  .amostra{opacity:.6;font-weight:400;font-size:.85em;margin-left:3px}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand"><span class="dotlogo"></span>AMD LIVE - ANALISE (TESTE)</div>
+</header>
+
+<div class="shell">
+  <main class="main">
+
+    <div class="aviso-teste">
+      <b>Pagina de teste.</b> Os blocos CONFRONTOS e ANALISE DE CONFRONTO abaixo
+      usam o calculo real do <code>motor.js</code> via <code>motor-adaptador.js</code>.
+      A pagina oficial (<code>analise.html</code>) continua como estava.
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><div class="panel-title">Liga / mercado</div></div>
+      <div style="padding:10px 12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <select id="selLiga" class="chip">
+          <option value="copa">Copa</option>
+          <option value="euro">Euro</option>
+          <option value="super" selected>Super</option>
+          <option value="premier">Premier</option>
+        </select>
+        <select id="selMkt" class="chip">
+          <option value="o25">Over 2.5</option>
+          <option value="o35" selected>Over 3.5</option>
+          <option value="ge5">5+ Gols</option>
+          <option value="ambs">Ambas marcam</option>
+        </select>
+        <select id="selHoras" class="chip">
+          <option value="12">12h</option>
+          <option value="24" selected>24h</option>
+          <option value="48">48h</option>
+        </select>
+        <button id="btnRecarregar" class="chip">Recarregar</button>
+        <span id="estado" style="color:var(--muted);font-size:12px"></span>
+      </div>
+    </div>
+
+    <div class="panel" id="secConfr">
+      <div class="an-sechead">
+        <div class="panel-title">CONFRONTOS</div>
+        <div class="meta">Janela: anterior, atual e proximo jogo</div>
+      </div>
+      <div class="confr" id="confr"></div>
+    </div>
+
+    <div class="panel" id="secLeitura">
+      <div class="an-sechead">
+        <div class="panel-title">ANALISE DE CONFRONTO</div>
+        <div class="meta">Leitura automatica do confronto</div>
+      </div>
+      <div class="leitura" id="leitura"></div>
+    </div>
+
+    <div class="aviso-demo">
+      AMD QUAD PREMIUM, RANK DE TIMES e MAXIMA DE REDS SEGUIDOS nao foram
+      portados ainda. Na pagina oficial esses tres blocos ainda mostram
+      <b>dados de demonstracao</b> - numeros gerados, nao medidos.
+    </div>
+
+    <div class="nota-rodape" id="notas"></div>
+
+  </main>
+</div>
+
+<script src="auth.js?v=20260920-login-gate"></script>
+<script src="motor.js?v=1"></script>
+<script src="motor-adaptador.js?v=1"></script>
+<script src="analise-teste.js?v=1"></script>
+</body>
+</html>
