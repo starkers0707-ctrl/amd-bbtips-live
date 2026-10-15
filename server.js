@@ -1809,12 +1809,19 @@ app.get("/api/status", (req, res) => {
 // contrato antigo usado pela grade, backtest e cacadores do backup.
 app.get("/api/grade", (req, res) => {
   const liga = String(req.query.liga || "copa").toLowerCase();
-  const d = store[liga];
+  // A extensao atual usa identificadores dinamicos (ex.: spa, eng, ita),
+  // enquanto o backup classico possui abas fixas (copa/euro/super/premier).
+  // Se a aba antiga ainda nao tiver um store homonimo, usa a liga real mais
+  // recentemente recebida para a grade nao ficar artificialmente vazia.
+  const ligaReal = store[liga] ? liga : Object.keys(store)
+    .filter(k => store[k] && gamesFundidos(k).length)
+    .sort((a, b) => Date.parse(store[b].lastUpdated || 0) - Date.parse(store[a].lastUpdated || 0))[0];
+  const d = ligaReal ? store[ligaReal] : null;
   if (!d) return res.json({ liga, partidas: [], cursor: null, atualizado_em: null });
 
   const horas = Math.max(1, Math.min(168, parseInt(req.query.horas || "48", 10) || 48));
   const limite = horas * 20 + 20;
-  const resolvidos = gamesFundidos(liga).slice(-limite);
+  const resolvidos = gamesFundidos(ligaReal).slice(-limite);
   const futuros = (d.upcomingRaw || []).slice(0, 20);
   const todos = resolvidos.concat(futuros);
   const agora = Date.now();
@@ -1839,8 +1846,8 @@ app.get("/api/grade", (req, res) => {
     const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
     const ts = new Date(agora - (todos.length - 1 - i) * 3 * 60000).toISOString();
     return {
-      id: `${liga}-${i}-${g.horario || ""}-${g.casa || ""}`,
-      liga,
+      id: `${ligaReal}-${i}-${g.horario || ""}-${g.casa || ""}`,
+      liga: ligaReal,
       time_a: g.casa || String(g.nome || "").split(" x ")[0] || "",
       time_b: g.fora || String(g.nome || "").split(" x ")[1] || "",
       gols_a: resolvido ? Number(g.a) : null,
@@ -1854,7 +1861,7 @@ app.get("/api/grade", (req, res) => {
       odds: oddsAntigas(g.odds)
     };
   });
-  res.json({ liga, partidas, cursor: String(d.lastUpdated || Date.now()), atualizado_em: d.lastUpdated || null });
+  res.json({ liga: ligaReal, liga_solicitada: liga, partidas, cursor: String(d.lastUpdated || Date.now()), atualizado_em: d.lastUpdated || null });
 });
 
 // ===== BACKTEST (somente leitura, nao altera nenhuma analise) =====
