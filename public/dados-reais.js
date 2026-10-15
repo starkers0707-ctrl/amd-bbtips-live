@@ -26,6 +26,10 @@
   catch (_) { ligaParametro = ''; }
   var liga = String(ligaParametro || localStorage.getItem(LS_LIGA) || 'copa').toLowerCase();
   if (LIGAS.indexOf(liga) < 0) liga = 'copa';
+  // A API pode mapear a aba classica para uma liga descoberta pela extensao
+  // (por exemplo, playpix-spa). Nesse caso a cadencia deve vir dos jogos reais,
+  // e nao da tabela fixa da antiga copa/euro/super/premier.
+  var ligaFonteAtual = liga;
   var jogos = [];          // ordem cronológica pelo relógio absoluto do jogo
   var jogosDaGrade = [];   // somente os jogos realmente posicionados na grade
   var pintando = false;
@@ -237,6 +241,7 @@
       })
       .then(function (d) {
         if (alvo !== liga || escopo !== liga + '|' + horasDaBusca()) return false;
+        ligaFonteAtual = String((d && d.liga) || alvo).toLowerCase();
         var novos = normalizarPartidas(d.partidas || []);
         jogos = precisaCompleta ? novos : mesclarPartidas(jogos, novos);
         escopoDosJogos = escopo;
@@ -433,7 +438,7 @@
   };
 
   function configDaLiga() {
-    return CADENCIA[liga] || null;
+    return ligaFonteAtual === liga ? (CADENCIA[liga] || null) : null;
   }
 
   /**
@@ -1240,6 +1245,7 @@
       return Promise.resolve(true);
     }
     liga = nova;
+    ligaFonteAtual = nova;
     localStorage.setItem(LS_LIGA, liga);
     jogos = [];
     jogosDaGrade = [];
