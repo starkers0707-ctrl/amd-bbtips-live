@@ -1786,6 +1786,59 @@ app.get("/api/status", (req, res) => {
   })));
 });
 
+// Compatibilidade com o frontend classico do AMD. A extensao continua
+// alimentando o store atual; esta rota apenas traduz o mesmo dado para o
+// contrato antigo usado pela grade, backtest e cacadores do backup.
+app.get("/api/grade", (req, res) => {
+  const liga = String(req.query.liga || "copa").toLowerCase();
+  const d = store[liga];
+  if (!d) return res.json({ liga, partidas: [], cursor: null, atualizado_em: null });
+
+  const horas = Math.max(1, Math.min(168, parseInt(req.query.horas || "48", 10) || 48));
+  const limite = horas * 20 + 20;
+  const resolvidos = gamesFundidos(liga).slice(-limite);
+  const futuros = (d.upcomingRaw || []).slice(0, 20);
+  const todos = resolvidos.concat(futuros);
+  const agora = Date.now();
+
+  const oddsAntigas = odds => {
+    const o = odds || {};
+    return {
+      ...o,
+      "odd_over_1.5": o.o15 ?? null,
+      "odd_over_2.5": o.o25 ?? null,
+      "odd_over_3.5": o.o35 ?? null,
+      "odd_total_gols_extatos_5": o.ge5 ?? null,
+      "odd_ambas_sim": o.ambs ?? null,
+      "odd_under_0.5": o.u05 ?? null,
+      "odd_under_1.5": o.u15 ?? null,
+      "odd_under_2.5": o.u25 ?? null
+    };
+  };
+
+  const partidas = todos.map((g, i) => {
+    const hm = String(g.horario || "").match(/(\d{1,2}):(\d{2})/);
+    const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
+    const ts = new Date(agora - (todos.length - 1 - i) * 3 * 60000).toISOString();
+    return {
+      id: `${liga}-${i}-${g.horario || ""}-${g.casa || ""}`,
+      liga,
+      time_a: g.casa || String(g.nome || "").split(" x ")[0] || "",
+      time_b: g.fora || String(g.nome || "").split(" x ")[1] || "",
+      gols_a: resolvido ? Number(g.a) : null,
+      gols_b: resolvido ? Number(g.b) : null,
+      resultado_ft: resolvido ? `${g.a}-${g.b}` : null,
+      resultado_ht: g.ht || null,
+      hora: hm ? Number(hm[1]) : null,
+      minuto: hm ? Number(hm[2]) : null,
+      slot_em: ts,
+      criado_em: ts,
+      odds: oddsAntigas(g.odds)
+    };
+  });
+  res.json({ liga, partidas, cursor: String(d.lastUpdated || Date.now()), atualizado_em: d.lastUpdated || null });
+});
+
 // ===== BACKTEST (somente leitura, nao altera nenhuma analise) =====
 // Reconstroi, jogo a jogo, o que a avaliacao teria indicado usando SO os jogos
 // anteriores (sem olhar o futuro), e confere GREEN/RED contra o placar real.
