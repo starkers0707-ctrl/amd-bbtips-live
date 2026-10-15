@@ -1427,7 +1427,25 @@ async function carregaJogos() {
       const j = await r.json();
       jogosSha = j.sha;
       const dados = JSON.parse(Buffer.from(j.content, "base64").toString());
-      if (dados && typeof dados === "object") { jogosSemente = dados; console.log("memoria de jogos carregada:", Object.keys(dados).map(l => l + ":" + dados[l].length).join(" ")); }
+      if (dados && typeof dados === "object") {
+        jogosSemente = dados;
+        // O dashboard classico consulta /api/grade assim que abre. Antes, o
+        // historico persistido ficava parado em jogosSemente ate a extensao
+        // enviar o primeiro snapshot depois de cada deploy; nesse intervalo a
+        // grade, o grafico e o backtest apareciam vazios. Hidratamos o store
+        // imediatamente e ainda preservamos a semente para a emenda do proximo
+        // snapshot ao vivo.
+        for (const [liga, gamesSalvos] of Object.entries(dados)) {
+          if (!Array.isArray(gamesSalvos) || !gamesSalvos.length) continue;
+          const st = buildStore(liga, gamesSalvos, [], new Date().toISOString());
+          st.gamesAll = gamesSalvos;
+          st.fonte = "memoria";
+          store[liga] = st;
+          registraLiga(liga);
+          atualizaRadar(liga, st);
+        }
+        console.log("memoria de jogos carregada:", Object.keys(dados).map(l => l + ":" + dados[l].length).join(" "));
+      }
     }
   } catch (e) {}
 }
