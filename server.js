@@ -99,7 +99,7 @@ app.use(express.json({ limit: "25mb" }));
 const ADMIN_KEY = process.env.ADMIN_KEY || "";
 const GH_T = process.env.GH_TOKEN || "";
 const GH_REPO = process.env.GH_REPO || "starkers0707-ctrl/amd-bbtips-live";
-const GH_BRANCH = "dados";
+const GH_BRANCH = process.env.GH_BRANCH || "main";
 let webpush = null;
 try { webpush = require("web-push"); } catch (e) { console.log("web-push indisponivel:", e.message); }
 
