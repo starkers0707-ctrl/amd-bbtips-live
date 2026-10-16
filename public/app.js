@@ -721,7 +721,7 @@ function renderTopLigas(svg, W, H) {
   }
 
   const melhores = new Set((pacote.completo ? pacote.melhores || [] : []).map(liga => liga.id));
-  const tracos = { copa: '', euro: '8 4', super: '3 3', premier: '12 4 2 4' };
+  const tracos = { ita: '', eng: '8 4', spa: '3 3', mnd: '12 4 2 4', bra: '2 3', lat: '4 3', cam: '10 3', cop: '6 3', ame: '1 3' };
   const ordenadas = ligas.slice().sort((a, b) =>
     Number(melhores.has(a.id)) - Number(melhores.has(b.id)));
   ordenadas.forEach(liga => {
@@ -2376,9 +2376,14 @@ function renderGrade() {
   const linhasMarcadasAntes = [...document.querySelectorAll(
     '#grade .hour-label input[type="checkbox"]'
   )].map(input => input.checked);
-  const LIGACFG = { Copa:{ini:1,passo:3,cols:20}, Super:{ini:1,passo:3,cols:20},
-    Euro:{ini:2,passo:3,cols:20}, Premier:{ini:0,passo:3,cols:20}, Express:{ini:0,passo:1,cols:60} };
-  const LG = LIGACFG[state.liga] || LIGACFG.Super;
+  // As nove ligas virtuais ocupam 30 colunas reais por hora: 00, 02, ... 58.
+  const LIGACFG = {
+    ita:{ini:0,passo:2,cols:30}, eng:{ini:0,passo:2,cols:30}, spa:{ini:0,passo:2,cols:30},
+    mnd:{ini:0,passo:2,cols:30}, bra:{ini:0,passo:2,cols:30}, lat:{ini:0,passo:2,cols:30},
+    cam:{ini:0,passo:2,cols:30}, cop:{ini:0,passo:2,cols:30}, ame:{ini:0,passo:2,cols:30},
+    split:{ini:0,passo:2,cols:30}
+  };
+  const LG = LIGACFG[String(state.liga || '').toLowerCase()] || LIGACFG.ita;
   const COLS = LG.cols;
   const mkt = state.gradeMercado;
   /* Lente HT: avalia e mostra o placar do intervalo. */
@@ -3427,7 +3432,7 @@ const botaoGoldenInicial = [...document.querySelectorAll('#overlays .chip')]
 if (botaoGoldenInicial) {
   configurarGDCross(botaoGoldenInicial.classList.contains('on'), botaoGoldenInicial);
 }
-if (modoQuadro && ['copa', 'euro', 'super', 'premier'].includes(ligaDoQuadro)) {
+if (modoQuadro && ['ita', 'eng', 'spa', 'mnd', 'bra', 'lat', 'cam', 'cop', 'ame', 'split'].includes(ligaDoQuadro)) {
   window.definirLigaApp(ligaDoQuadro);
 }
 montarMira();

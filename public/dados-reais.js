@@ -435,11 +435,12 @@
    * porque o LIGACFG de la e um const dentro de uma funcao — nao existe em
    * window nem como identificador global, entao nenhum outro script o alcanca.
    */
+  // Cada liga virtual roda em 30 colunas por hora, sempre a cada 2 minutos.
   var CADENCIA = {
-    copa:    { ini: 1, passo: 3 },
-    super:   { ini: 1, passo: 3 },
-    euro:    { ini: 2, passo: 3 },
-    premier: { ini: 0, passo: 3 }
+    ita:{ini:0,passo:2}, eng:{ini:0,passo:2}, spa:{ini:0,passo:2},
+    mnd:{ini:0,passo:2}, bra:{ini:0,passo:2}, lat:{ini:0,passo:2},
+    cam:{ini:0,passo:2}, cop:{ini:0,passo:2}, ame:{ini:0,passo:2},
+    split:{ini:0,passo:2}
   };
 
   function configDaLiga() {
@@ -459,7 +460,7 @@
       var d = js[i].minuto - js[i - 1].minuto;
       if (d > 0) difs[d] = (difs[d] || 0) + 1;
     }
-    var passo = 3, max = 0;
+    var passo = 2, max = 0;
     for (var k in difs) if (difs[k] > max) { max = difs[k]; passo = parseInt(k, 10); }
     return passo;
   }
