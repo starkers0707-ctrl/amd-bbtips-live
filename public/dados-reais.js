@@ -243,7 +243,12 @@
         if (alvo !== liga || escopo !== liga + '|' + horasDaBusca()) return false;
         ligaFonteAtual = String((d && d.liga) || alvo).toLowerCase();
         var novos = normalizarPartidas(d.partidas || []);
-        jogos = precisaCompleta ? novos : mesclarPartidas(jogos, novos);
+        /* A grade e remontada no servidor a cada leitura para acompanhar o
+           relogio da extensao. Logo, a resposta ja e o snapshot completo da
+           janela, inclusive quando vem com `desde`. Mesclar esses snapshots
+           fazia o mesmo jogo entrar de novo com outro slot a cada ciclo,
+           abrindo buracos azuis e pulando colunas. */
+        jogos = novos;
         escopoDosJogos = escopo;
         if (d.cursor) cursoresPorEscopo[escopo] = String(d.cursor);
         if (precisaCompleta) ultimaCompletaPorEscopo[escopo] = Date.now();
