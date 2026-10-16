@@ -1810,13 +1810,51 @@ app.get("/api/status", (req, res) => {
 app.get("/api/grade", (req, res) => {
   const liga = String(req.query.liga || "copa").toLowerCase();
   const aliases = { ita:'ita', eng:'eng', spa:'spa', mnd:'mnd', bra:'bra', lat:'lat', cam:'cam', cop:'cop', ame:'ame', split:'split' };
+  const ligasReais = Object.keys(aliases).filter(k => k !== 'split');
   // A extensao atual usa identificadores dinamicos (ex.: spa, eng, ita),
   // enquanto o backup classico possui abas fixas (copa/euro/super/premier).
   // Se a aba antiga ainda nao tiver um store homonimo, usa a liga real mais
   // recentemente recebida para a grade nao ficar artificialmente vazia.
-  const ligaReal = store[liga] ? liga : (aliases[liga] && Object.keys(store).find(k => k.toLowerCase().includes(aliases[liga]))) || Object.keys(store)
+  const encontradaPorAlias = aliases[liga] && Object.keys(store).find(k => k.toLowerCase().includes(aliases[liga]));
+  // Para uma liga real escolhida pelo usuário, nunca devolvemos os jogos de
+  // outra liga como "substituto". Isso fazia, por exemplo, MND/Split exibirem
+  // a grade da Itália enquanto a extensão ainda estava varrendo essas abas.
+  // As abas clássicas continuam com o fallback abaixo para compatibilidade.
+  const eLigaReal = Object.prototype.hasOwnProperty.call(aliases, liga);
+  const fallbackClassico = !eLigaReal && Object.keys(store)
     .filter(k => store[k] && gamesFundidos(k).length)
     .sort((a, b) => Date.parse(store[b].lastUpdated || 0) - Date.parse(store[a].lastUpdated || 0))[0];
+  const ligaReal = store[liga] ? liga : encontradaPorAlias || fallbackClassico;
+  /* Split e a visao consolidada: junta somente as nove ligas que a extensao
+     envia. Nao pode cair no fallback da ITA, pois isso faz a grade parecer
+     picotada e repete uma liga como se fosse o conjunto todo. */
+  if (liga === 'split') {
+    const fontes = ligasReais.map(id => {
+      const chave = store[id] ? id : Object.keys(store).find(k => k.toLowerCase().includes(id));
+      return chave ? { chave, dado: store[chave] } : null;
+    }).filter(Boolean);
+    const resolvidos = fontes.flatMap(({ chave }) => gamesFundidos(chave));
+    const futuros = fontes.flatMap(({ dado }) => (dado.upcomingRaw || []).slice(0, 20));
+    const atualizado = fontes.map(x => x.dado.lastUpdated).filter(Boolean)
+      .sort().slice(-1)[0] || null;
+    const todos = resolvidos.concat(futuros).slice(-(Math.max(1, Math.min(168,
+      parseInt(req.query.horas || '48', 10) || 48)) * 20 + 20));
+    const agora = Date.now();
+    const partidas = todos.map((g, i) => {
+      const hm = String(g.horario || '').match(/(\d{1,2}):(\d{2})/);
+      const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
+      const ts = new Date(agora - (todos.length - 1 - i) * 3 * 60000).toISOString();
+      return { id: `split-${i}-${g.horario || ''}-${g.casa || ''}`, liga: 'split',
+        time_a: g.casa || String(g.nome || '').split(' x ')[0] || '',
+        time_b: g.fora || String(g.nome || '').split(' x ')[1] || '',
+        gols_a: resolvido ? Number(g.a) : null, gols_b: resolvido ? Number(g.b) : null,
+        resultado_ft: resolvido ? `${g.a}-${g.b}` : null, resultado_ht: g.ht || null,
+        hora: hm ? Number(hm[1]) : null, minuto: hm ? Number(hm[2]) : null,
+        slot_em: ts, criado_em: ts, odds: g.odds || {} };
+    });
+    return res.json({ liga: 'split', liga_solicitada: liga, partidas,
+      cursor: String(atualizado || Date.now()), atualizado_em: atualizado });
+  }
   const d = ligaReal ? store[ligaReal] : null;
   if (!d) return res.json({ liga, partidas: [], cursor: null, atualizado_em: null });
 
