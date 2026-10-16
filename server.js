@@ -1810,6 +1810,15 @@ app.get("/api/status", (req, res) => {
 // contrato antigo usado pela grade, backtest e cacadores do backup.
 app.get("/api/grade", (req, res) => {
   const liga = String(req.query.liga || "ita").toLowerCase();
+  // Relógio real de cada liga virtual: não misturar grades de 30 e 20 jogos.
+  const cadenciaDaLiga = chave => ({
+    ita: { cols: 30, passo: 2 }, eng: { cols: 30, passo: 2 },
+    spa: { cols: 30, passo: 2 }, mnd: { cols: 30, passo: 2 },
+    lat: { cols: 30, passo: 2 }, split: { cols: 30, passo: 2 },
+    bra: { cols: 20, passo: 3 }, cam: { cols: 20, passo: 3 },
+    cop: { cols: 20, passo: 3 }, ame: { cols: 20, passo: 3 }
+  }[String(chave || '').toLowerCase()] || { cols: 30, passo: 2 });
+  const gradeCfg = cadenciaDaLiga(liga);
   const aliases = { ita:'ita', eng:'eng', spa:'spa', mnd:'mnd', bra:'bra', lat:'lat', cam:'cam', cop:'cop', ame:'ame', split:'split' };
   const ligasReais = Object.keys(aliases).filter(k => k !== 'split');
   // A extensao atual usa identificadores dinamicos (ex.: spa, eng, ita),
@@ -1844,8 +1853,8 @@ app.get("/api/grade", (req, res) => {
     const atualizado = fontes.map(x => x.dado.lastUpdated).filter(Boolean)
       .sort().slice(-1)[0] || null;
     const todos = resolvidos.concat(futuros).slice(-(Math.max(1, Math.min(168,
-      parseInt(req.query.horas || '48', 10) || 48)) * 30 + 30));
-    const passoGradeMs = 2 * 60000;
+      parseInt(req.query.horas || '48', 10) || 48)) * gradeCfg.cols + gradeCfg.cols));
+    const passoGradeMs = gradeCfg.passo * 60000;
     const agora = Date.now() - (Date.now() % passoGradeMs);
     const partidas = todos.map((g, i) => {
       const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
@@ -1872,9 +1881,8 @@ app.get("/api/grade", (req, res) => {
   const resolvidos = gamesFundidos(ligaReal);
   const futuros = d.upcomingRaw || [];
   const todos = resolvidos.concat(futuros);
-  // Cada liga virtual entrega até 30 partidas por hora: uma a cada 2 minutos.
-  // A âncora fixa em minuto par impede que os resultados mudem de coluna no poll.
-  const passoGradeMs = 2 * 60000;
+  // A âncora fixa impede que os resultados mudem de coluna no poll.
+  const passoGradeMs = gradeCfg.passo * 60000;
   const agora = Date.now() - (Date.now() % passoGradeMs);
 
   const oddsAntigas = odds => {
@@ -4115,7 +4123,7 @@ function atualizaRadar(liga, s) {
 const PUSH_FILE = "push.json";
 let pushSha = null;
 let pushData = { vapid: null, subs: [] };
-const NOMES_L = { copa: "Copa do Mundo", euro: "Euro Cup", super: "Super Léague", premier: "Premiership" };
+const NOMES_L = { ita: "ITA", eng: "ENG", spa: "SPA", mnd: "MND", bra: "BRA", lat: "LAT", cam: "CAM", cop: "COP", ame: "AME", split: "Split" };
 const NOMES_M = { o25: "Over 2.5", o35: "Over 3.5", ambas: "Ambas Marcam", ge5: "5+ gols" };
 async function salvaPush() {
   if (!GH_T) return;
