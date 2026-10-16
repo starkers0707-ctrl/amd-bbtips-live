@@ -935,11 +935,13 @@ function processarAlertaGDCross(analise, pontos, metas, escopo, mercado, liga) {
   gdCrossAlerta.ultimoAlerta = chaveAlerta;
 
   const golden = cruzamento.tipo === 'golden';
-  const nome = golden ? 'GOLDEN CROSS' : 'DEATH CROSS';
+  // Death continua desenhado no grafico como referencia, mas nao gera aviso.
+  if (!golden) return;
+  const nome = 'GOLDEN CROSS';
   const direcao = golden ? 'acima' : 'abaixo';
   const horario = meta.rotulo ||
     (meta.hora != null && meta.minuto != null ? pad(meta.hora) + ':' + pad(meta.minuto) : '');
-  mostrarAviso(`${golden ? '\ud83c\udfc6' : '\ud83d\udc80'} ${nome} \u00b7 ${mercado} \u00b7 ` +
+  mostrarAviso(`\ud83c\udfc6 ${nome} \u00b7 ${mercado} \u00b7 ` +
     `MM${analise.periodoRapido} cruzou ${direcao} da MM${analise.periodoLento}` +
     (horario ? ` \u00b7 ${horario}` : ''));
   falarAlertaGDCross(cruzamento.tipo, liga || state.liga, horario);
@@ -2752,7 +2754,9 @@ function habilitarAlertasDeFundo() {
 
 function notificarGDCross(tipo, liga, horario) {
   if (!alertaPodeDispararAgora()) return;
-  if (!document.hidden || !('Notification' in window) || Notification.permission !== 'granted') return;
+  // O Golden precisa avisar na hora, inclusive com o painel aberto. Antes o
+  // aviso era cancelado justamente quando o usuario estava olhando a tela.
+  if (tipo !== 'golden' || !('Notification' in window) || Notification.permission !== 'granted') return;
   const golden = tipo === 'golden';
   const titulo = golden ? '🏆 GOLDEN CROSS' : '💀 DEATH CROSS';
   const texto = textoAlertaGDCross(tipo, liga, horario).replace(/\.\s*$/, '');
@@ -2974,6 +2978,7 @@ function salvarPrefs() {
       modo00: modoGradeDesde00(), qtd: state.qtd, visual: state.visual,
       hackerIA: ligado('Hacker IA'),
       mmAlerta: ligado('MM ALERTA'),
+      gdCross: ligado('GDCROSS'),
       overlays: [...document.querySelectorAll('#overlays .chip')]
         .filter(c => c.classList.contains('on') && c.textContent.trim() !== 'GDCROSS')
         .map(c => c.textContent.trim()),
@@ -3022,8 +3027,10 @@ function carregarPrefs() {
     document.querySelectorAll('#overlays .chip').forEach(c => {
       const nome = c.textContent.trim();
       if (nome === 'GDCROSS') {
-        c.classList.remove('on');
-        c.setAttribute('aria-pressed', 'false');
+        // Golden vem ligado por padrao e guarda a escolha manual do usuario.
+        const ativoGolden = p.gdCross == null ? true : !!p.gdCross;
+        c.classList.toggle('on', ativoGolden);
+        c.setAttribute('aria-pressed', ativoGolden ? 'true' : 'false');
         return;
       }
       if (nome === 'MM ALERTA') {
@@ -3415,6 +3422,11 @@ let rt;
 window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(renderChart, 160); });
 
 carregarPrefs();
+const botaoGoldenInicial = [...document.querySelectorAll('#overlays .chip')]
+  .find(c => c.textContent.trim() === 'GDCROSS');
+if (botaoGoldenInicial) {
+  configurarGDCross(botaoGoldenInicial.classList.contains('on'), botaoGoldenInicial);
+}
 if (modoQuadro && ['copa', 'euro', 'super', 'premier'].includes(ligaDoQuadro)) {
   window.definirLigaApp(ligaDoQuadro);
 }
