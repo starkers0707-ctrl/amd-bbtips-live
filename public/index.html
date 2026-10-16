@@ -64,11 +64,17 @@ if (window.location.hostname === "amd-live-dashboard.onrender.com") {
 
     <!-- LIGAS -->
     <div class="tabrow" id="leagues">
-      <button class="tab active" data-v="Copa">🏆 Copa</button>
-      <button class="tab" data-v="Euro">🛡️ Euro</button>
-      <button class="tab" data-v="Super">⚽ Super</button>
-      <button class="tab" data-v="Premier">♞ Premier</button>
-      <span class="tag-active">Liga ativa: <b id="ligaAtiva">Copa</b></span>
+      <button class="tab active" data-v="ita">🇮🇹 ITA</button>
+      <button class="tab" data-v="eng">🏴 ENG</button>
+      <button class="tab" data-v="spa">🇪🇸 SPA</button>
+      <button class="tab" data-v="mnd">🌐 MND</button>
+      <button class="tab" data-v="bra">🇧🇷 BRA</button>
+      <button class="tab" data-v="lat">🌎 LAT</button>
+      <button class="tab" data-v="cam">🏆 CAM</button>
+      <button class="tab" data-v="cop">🏆 COP</button>
+      <button class="tab" data-v="ame">🌎 AME</button>
+      <button class="tab" data-v="split">🏆 Split</button>
+      <span class="tag-active">Liga ativa: <b id="ligaAtiva">ITA</b></span>
     </div>
 
     <!-- MERCADOS -->
@@ -195,7 +201,7 @@ if (window.location.hostname === "amd-live-dashboard.onrender.com") {
           <button class="chip on">Hacker IA</button>
         </div>
         <div class="mktsel chart-liga" style="margin-left:auto">
-          <button class="chip on" id="cligaBtn">Liga: Copa ⌄</button>
+          <button class="chip on" id="cligaBtn">Liga: ITA ⌄</button>
           <div class="mktmenu" id="cligaMenu" hidden>
             <button class="on" data-liga="ita">ITA</button>
             <button data-liga="eng">ENG</button>
@@ -324,7 +330,7 @@ if (window.location.hostname === "amd-live-dashboard.onrender.com") {
     <!-- BACKTEST -->
     <section class="panel">
       <div class="panel-head">
-        <span class="panel-title" id="btTitle">Backtest · Super — 5+ gols</span>
+        <span class="panel-title" id="btTitle">Backtest · ITA — 5+ gols</span>
         <a href="#" class="link">Ver todos ›</a>
       </div>
       <table>
@@ -339,7 +345,7 @@ if (window.location.hostname === "amd-live-dashboard.onrender.com") {
         <span class="panel-title" id="gradeTitle">Grade de jogos — Over 2.5</span>
       </div>
       <div class="grid-meta">
-        <span>Liga <b id="gLiga">Super</b></span>
+        <span>Liga <b id="gLiga">ITA</b></span>
         <span>Cobertura <b>100.00%</b></span>
         <span>Gols <b id="gGols">149</b></span>
         <span>Média gols/jogo <b id="gMedia">2.48</b></span>

@@ -20,10 +20,11 @@
   var LS_FAIXA = 'amd_faixaacum';
   var LS_REPLAY_DIA = 'amd_replay_dia';
   var LIGAS_COMPARATIVO = [
-    { id: 'copa', nome: 'Copa', cor: '#ff343d' },
-    { id: 'euro', nome: 'Euro', cor: '#32a4ff' },
-    { id: 'super', nome: 'Super', cor: '#ffd400' },
-    { id: 'premier', nome: 'Premier', cor: '#18e34d' }
+    { id: 'ita', nome: 'ITA', cor: '#ff343d' }, { id: 'eng', nome: 'ENG', cor: '#32a4ff' },
+    { id: 'spa', nome: 'SPA', cor: '#ffd400' }, { id: 'mnd', nome: 'MND', cor: '#18e34d' },
+    { id: 'bra', nome: 'BRA', cor: '#b466ff' }, { id: 'lat', nome: 'LAT', cor: '#15c9d8' },
+    { id: 'cam', nome: 'CAM', cor: '#ff9d00' }, { id: 'cop', nome: 'COP', cor: '#ff6b9a' },
+    { id: 'ame', nome: 'AME', cor: '#e7edf1' }
   ];
   var FAIXAS = [
     ['h3', '3h', 3],
@@ -1245,7 +1246,7 @@
       ['replay', '⏪ Replay 00h',
         'Veja como terminou qualquer um dos sete dias anteriores.'],
       ['ligas', '🏆 Top Ligas',
-        'Compara Copa, Euro, Super e Premier no mesmo mercado e janela.']
+        'Compara as ligas recebidas pela extensão no mesmo mercado e janela.']
     ].forEach(function (opcao) {
       var botao = document.createElement('button');
       botao.type = 'button';

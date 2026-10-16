@@ -22,7 +22,7 @@ function poisson(rng, lambda = 1.24) {
 }
 
 /* ---------- ESTADO ---------- */
-const state = { liga: 'Copa', mercado: 'Over 2.5', mercadosGrafico: ['Over 2.5'], modoMercadosGrafico: 'fixo', qtd: 240, horas: 6, metrica: '% pagamento', visual: 'Clássico', gradeMercado: 'Over 2.5', zoom: 1, ht: false, mostrarTime: true,
+const state = { liga: 'ita', mercado: 'Over 2.5', mercadosGrafico: ['Over 2.5'], modoMercadosGrafico: 'fixo', qtd: 240, horas: 6, metrica: '% pagamento', visual: 'Clássico', gradeMercado: 'Over 2.5', zoom: 1, ht: false, mostrarTime: true,
   graficoTravado: true, panGrafico: 0, ancoraGrafico: null,
   totalFonteGrafico: 0, ultimoJogoViewport: null, odds: ['AS','O2.5','O3.5'] };
 const parametrosQuadro = new URLSearchParams(window.location.search);
@@ -47,15 +47,15 @@ window.atualizarSeletorLigaGrafico = function () {
     window.GraficoReal.modo() === 'ligas';
   const botao = document.getElementById('cligaBtn');
   const nomes = { ita:'ITA',eng:'ENG',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT',cam:'CAM',cop:'COP',ame:'AME',split:'Split' };
-  const chave = String(state.liga || 'Copa').toLowerCase();
+  const chave = String(state.liga || 'ita').toLowerCase();
   if (botao) {
     botao.textContent = comparar
-      ? 'Ligas: Todas (4)'
+      ? 'Ligas: Todas (9)'
       : 'Liga: ' + (nomes[chave] || state.liga) + ' ⌄';
     botao.disabled = !!comparar;
     botao.classList.toggle('compare', !!comparar);
     botao.setAttribute('aria-label', comparar
-      ? 'Comparando Copa, Euro, Super e Premier'
+      ? 'Comparando as 9 ligas da extensão'
       : 'Selecionar liga do gráfico');
   }
   const caixa = document.querySelector('.chart-liga');
@@ -493,8 +493,8 @@ function escaparHover(valor) {
 
 function nomeLigaComparativo(liga) {
   const id = String(liga && (liga.id || liga.liga) || '').toLowerCase();
-  const nomes = { copa: 'Copa', euro: 'Euro', super: 'Super', premier: 'Premier' };
-  return nomes[id] || String(liga && liga.nome || 'Liga');
+  const nomes = { ita:'ITA', eng:'ENG', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT', cam:'CAM', cop:'COP', ame:'AME', split:'Split' };
+  return nomes[id] || String(liga && liga.nome || id || 'Liga').toUpperCase();
 }
 
 function cartaoJogoComparativo(item) {
@@ -579,8 +579,8 @@ function renderLeituraComparativo(pacote) {
   if (!prontas.length) {
     if (lzona) lzona.textContent = 'TOP LIGAS';
     if (lsetas) lsetas.textContent = '';
-    if (ldesc) ldesc.textContent = 'Carregando o histórico real das quatro ligas…';
-    if (tendencia) tendencia.innerHTML = 'Comparativo: <b>aguardando Copa, Euro, Super e Premier</b>';
+    if (ldesc) ldesc.textContent = 'Carregando o histórico real das ligas da extensão…';
+    if (tendencia) tendencia.innerHTML = 'Comparativo: <b>aguardando as ligas da extensão</b>';
     if (sinais) sinais.innerHTML = '';
     return;
   }
@@ -590,7 +590,7 @@ function renderLeituraComparativo(pacote) {
   if (lsetas) lsetas.textContent = '→';
   if (ldesc) ldesc.textContent = completo
     ? `${nomeMelhor} · ${valor.toFixed(1)}% em ${pacote.mercado}`
-    : `${prontas.length}/4 ligas carregadas · sem declarar vencedora ainda`;
+    : `${prontas.length}/9 ligas carregadas · sem declarar vencedora ainda`;
   if (tendencia) tendencia.innerHTML = `Top Ligas: <b>${pacote.janela} jogos por ponto</b> · ` +
     `${pacote.pontos} pontos alinhados por jogos atrás`;
   if (sinais) {
@@ -656,15 +656,15 @@ function renderTopLigas(svg, W, H) {
   atualizarResumoPeriodoGrafico(viewportTop, 'ligas', {});
   if (ligas.length < 2 || n < 2) {
     geo = null;
-    svg.setAttribute('aria-label', 'Top Ligas carregando dados reais das quatro ligas');
+    svg.setAttribute('aria-label', 'Top Ligas carregando dados reais da extensão');
     svg.appendChild(txt({
       x: W / 2, y: H / 2 - 8, fill: '#e7edf1', 'font-size': 14,
       'font-weight': 700, 'text-anchor': 'middle'
-    }, 'Carregando Copa, Euro, Super e Premier…'));
+    }, 'Carregando as ligas da extensão…'));
     svg.appendChild(txt({
       x: W / 2, y: H / 2 + 16, fill: '#8fa3ad', 'font-size': 10.5,
       'text-anchor': 'middle'
-    }, 'As quatro ligas usam o mesmo mercado e a mesma janela.'));
+    }, 'As ligas usam o mesmo mercado e a mesma janela.'));
     return;
   }
 
@@ -685,12 +685,12 @@ function renderTopLigas(svg, W, H) {
   titulo.textContent = `Top Ligas — ${pacote.mercado}, janela de ${pacote.janela} jogos`;
   svg.appendChild(titulo);
   const descricao = document.createElementNS(NS, 'desc');
-  descricao.textContent = 'Quatro linhas alinhadas por jogos anteriores. ' +
+  descricao.textContent = 'Linhas alinhadas por jogos anteriores. ' +
     (!pacote.completo ? 'Comparação parcial; ainda não há vencedora.' :
       pacote.empate ? 'Há empate na liderança.' :
         `A melhor liga agora é ${pacote.melhor ? pacote.melhor.nome : 'indefinida'}.`);
   svg.appendChild(descricao);
-  svg.setAttribute('aria-label', `Comparativo de Copa, Euro, Super e Premier em ${pacote.mercado}`);
+  svg.setAttribute('aria-label', `Comparativo das ligas da extensão em ${pacote.mercado}`);
   svg.appendChild(txt({ x: padL, y: 15, fill: '#e7edf1', 'font-size': 11,
     'font-weight': 700 }, `TOP LIGAS · ${pacote.mercado} · janela ${pacote.janela} jogos`));
   svg.appendChild(txt({ x: W - padR, y: 15,
@@ -970,7 +970,7 @@ function analisarAlertaMedias(pontos) {
 }
 
 function nomeLigaAlerta(liga) {
-  const nomes = { copa: 'Copa', euro: 'Euro', super: 'Super', premier: 'Premier' };
+  const nomes = { ita:'ITA', eng:'ENG', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT', cam:'CAM', cop:'COP', ame:'AME', split:'Split' };
   const chave = String(liga || '').trim().toLowerCase();
   return nomes[chave] || String(liga || 'Liga');
 }
