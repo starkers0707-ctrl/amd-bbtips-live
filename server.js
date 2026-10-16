@@ -209,7 +209,8 @@ async function revogar(c){if(!confirm('Revogar '+c+'?'))return;await api('/api/a
 </script></body></html>`);
 });
 
-const LIGAS = (process.env.LIGAS || "bet365-copa,bet365-euro,bet365-super,bet365-premier").split(",").map(x => x.trim()).filter(Boolean);
+// As ligas sao definidas pela extensao. A base antiga nao participa da grade.
+const LIGAS = (process.env.LIGAS || "ita,eng,spa,mnd,bra,lat,cam,cop,ame").split(",").map(x => x.trim()).filter(Boolean);
 function registraLiga(l) { if (l && !LIGAS.includes(l)) LIGAS.push(l); }
 function slugLiga(v) {
   return String(v == null ? "" : v).trim().toLowerCase().normalize("NFD")
@@ -1808,7 +1809,7 @@ app.get("/api/status", (req, res) => {
 // alimentando o store atual; esta rota apenas traduz o mesmo dado para o
 // contrato antigo usado pela grade, backtest e cacadores do backup.
 app.get("/api/grade", (req, res) => {
-  const liga = String(req.query.liga || "copa").toLowerCase();
+  const liga = String(req.query.liga || "ita").toLowerCase();
   const aliases = { ita:'ita', eng:'eng', spa:'spa', mnd:'mnd', bra:'bra', lat:'lat', cam:'cam', cop:'cop', ame:'ame', split:'split' };
   const ligasReais = Object.keys(aliases).filter(k => k !== 'split');
   // A extensao atual usa identificadores dinamicos (ex.: spa, eng, ita),
@@ -1820,11 +1821,8 @@ app.get("/api/grade", (req, res) => {
   // outra liga como "substituto". Isso fazia, por exemplo, MND/Split exibirem
   // a grade da Itália enquanto a extensão ainda estava varrendo essas abas.
   // As abas clássicas continuam com o fallback abaixo para compatibilidade.
-  const eLigaReal = Object.prototype.hasOwnProperty.call(aliases, liga);
-  const fallbackClassico = !eLigaReal && Object.keys(store)
-    .filter(k => store[k] && gamesFundidos(k).length)
-    .sort((a, b) => Date.parse(store[b].lastUpdated || 0) - Date.parse(store[a].lastUpdated || 0))[0];
-  const ligaReal = store[liga] ? liga : encontradaPorAlias || fallbackClassico;
+  // Cada aba usa apenas o lote recebido para a propria liga.
+  const ligaReal = store[liga] ? liga : encontradaPorAlias;
   /* Split e a visao consolidada: junta somente as nove ligas que a extensao
      envia. Nao pode cair no fallback da ITA, pois isso faz a grade parecer
      picotada e repete uma liga como se fosse o conjunto todo. */
@@ -1869,10 +1867,9 @@ app.get("/api/grade", (req, res) => {
   const d = ligaReal ? store[ligaReal] : null;
   if (!d) return res.json({ liga, partidas: [], cursor: null, atualizado_em: null });
 
-  const horas = Math.max(1, Math.min(168, parseInt(req.query.horas || "48", 10) || 48));
-  const limite = horas * 20 + 20;
-  const resolvidos = gamesFundidos(ligaReal).slice(-limite);
-  const futuros = (d.upcomingRaw || []).slice(0, 20);
+  // Sem limite de 20/h: a extensao e a fonte da contagem de cada liga.
+  const resolvidos = gamesFundidos(ligaReal);
+  const futuros = d.upcomingRaw || [];
   const todos = resolvidos.concat(futuros);
   const agora = Date.now();
 
@@ -1892,9 +1889,9 @@ app.get("/api/grade", (req, res) => {
   };
 
   const partidas = todos.map((g, i) => {
-    const hm = String(g.horario || "").match(/(\d{1,2}):(\d{2})/);
     const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
     const ts = new Date(agora - (todos.length - 1 - i) * 3 * 60000).toISOString();
+    const encaixe = new Date(ts);
     return {
       id: `${ligaReal}-${i}-${g.horario || ""}-${g.casa || ""}`,
       liga: ligaReal,
@@ -1904,8 +1901,11 @@ app.get("/api/grade", (req, res) => {
       gols_b: resolvido ? Number(g.b) : null,
       resultado_ft: resolvido ? `${g.a}-${g.b}` : null,
       resultado_ht: g.ht || null,
-      hora: hm ? Number(hm[1]) : null,
-      minuto: hm ? Number(hm[2]) : null,
+      // hora/minuto e slot_em precisam apontar para a mesma coluna. A fonte
+      // pode vir em 2 minutos, mas a grade usa uma celula a cada 3 minutos;
+      // misturar os dois ritmos deixava lacunas azuis entre jogos reais.
+      hora: encaixe.getUTCHours(),
+      minuto: encaixe.getUTCMinutes(),
       slot_em: ts,
       criado_em: ts,
       odds: oddsAntigas(g.odds)
