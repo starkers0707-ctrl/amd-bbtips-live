@@ -1155,7 +1155,7 @@ function decodeSnapshot(data) {
     if (status === "futuro" || cell.futuro === true) {
       const o = cell.odds || {};
       futuros.push({
-        ordem,
+        ordem, linha_visual: lv, coluna_visual: cv,
         nome,
         horario: horaJogo,
         casa: times.casa || "", fora: times.fora || "",
@@ -1166,7 +1166,7 @@ function decodeSnapshot(data) {
       const o = cell.odds || {};
       const ht = (cell.placar && cell.placar.ht) ? String(cell.placar.ht).trim() : "";
       passados.push({
-        ordem, nome, a: +m[1], b: +m[2], total: +m[1] + +m[2],
+        ordem, linha_visual: lv, coluna_visual: cv, nome, a: +m[1], b: +m[2], total: +m[1] + +m[2],
         casa: times.casa || "", fora: times.fora || "", ht, horario: horaJogo,
         odds: { o25: o.o25, o35: o.o35, ge5: o.ge5, ambs: o.ambs, u05: o.u05, u15: o.u15, u25: o.u25, o15: o.o15 }
       });
@@ -1180,7 +1180,9 @@ function decodeSnapshot(data) {
   // e o historico cru pode passar de 4000 jogos (deixa o servidor lento sem necessidade).
   const mapa = g => ({
     nome: g.nome, a: g.a, b: g.b, total: g.total,
-    casa: g.casa, fora: g.fora, ht: g.ht, horario: g.horario || "", odds: completaOdds(g.odds)
+    casa: g.casa, fora: g.fora, ht: g.ht, horario: g.horario || "",
+    linha_visual: g.linha_visual, coluna_visual: g.coluna_visual,
+    odds: completaOdds(g.odds)
   });
   // DROP-2 ABOLIDO (o usuario estava certo): os 2 resultados mais frescos que a fonte ja
   // entrega NAO sao mais descartados - grafico, zonas, estudos e robo rodam na linha cheia.
@@ -1190,7 +1192,8 @@ function decodeSnapshot(data) {
   // pra alertar no fechamento real (~6 min mais cedo). Grafico/analises seguem com drop-2.
   const gamesAll = passados.slice(-1200).map(mapa);
   const upcoming = futuros.slice(0, 6).map(u => ({
-    nome: u.nome, horario: u.horario, casa: u.casa, fora: u.fora, odds: completaOdds(u.odds)
+    nome: u.nome, horario: u.horario, casa: u.casa, fora: u.fora,
+    linha_visual: u.linha_visual, coluna_visual: u.coluna_visual, odds: completaOdds(u.odds)
   }));
   console.log(`decodeSnapshot: ${passados.length} passados → ${games.length} games, ${futuros.length} futuros → ${upcoming.length} upcoming`);
   return { games, upcoming, gamesAll };
@@ -1507,13 +1510,20 @@ app.post("/api/dados", (req, res) => {
     if (!liga || !Array.isArray(placares) || !placares.length) {
       return res.status(400).json({ ok: false, erro: "sem placares" });
     }
+    // A sonda ja conhece a casa exata da grade. Preserve essas coordenadas;
+    // recalcular a coluna pela ordem do array deslocava, por exemplo, a 48 para a 26.
+    const coord = p => ({
+      linha_visual: p.linha_visual ?? p.linha ?? p.row ?? null,
+      coluna_visual: p.coluna_visual ?? p.coluna ?? p.col ?? p.column ?? null
+    });
     const games = placares.map((p, i) => ({
       nome: p.nome || "Jogo " + (i + 1), a: p.a, b: p.b, total: p.total, odds: p.odds || {}, hora: p.hora || null, horario: p.hora || p.horario || "",
       casa: p.casa || (p.nome && p.nome.includes(" x ") ? p.nome.split(" x ")[0].trim() : null),
-      fora: p.fora || (p.nome && p.nome.includes(" x ") ? (p.nome.split(" x ")[1] || "").trim() : null)
+      fora: p.fora || (p.nome && p.nome.includes(" x ") ? (p.nome.split(" x ")[1] || "").trim() : null),
+      ...coord(p)
     }));
     // jogos futuros vindos da sonda (teams + odds lidos da grade)
-    const upc = Array.isArray(upcoming) ? upcoming.filter(u => u && u.nome) : [];
+    const upc = Array.isArray(upcoming) ? upcoming.filter(u => u && u.nome).map(u => ({ ...u, ...coord(u) })) : [];
     const s = buildStore(liga, games, upc, new Date().toISOString());
     s.fonte = "sonda";
     s.sondaTs = Date.now();
@@ -1913,6 +1923,10 @@ app.get("/api/grade", (req, res) => {
       gols_b: resolvido ? Number(g.b) : null,
       resultado_ft: resolvido ? `${g.a}-${g.b}` : null,
       resultado_ht: g.ht || null,
+      // Coordenada original da extensao: e a fonte de verdade da grade.
+      // `slot_em` fica apenas como compatibilidade com os modulos antigos.
+      linha_visual: g.linha_visual ?? null,
+      coluna_visual: g.coluna_visual ?? null,
       // hora/minuto e slot_em precisam apontar para a mesma coluna. A fonte
       // pode vir em 2 minutos, mas a grade usa uma celula a cada 3 minutos;
       // misturar os dois ritmos deixava lacunas azuis entre jogos reais.
@@ -1923,7 +1937,11 @@ app.get("/api/grade", (req, res) => {
       odds: oddsAntigas(g.odds)
     };
   });
-  res.json({ liga: ligaReal, liga_solicitada: liga, partidas, cursor: String(d.lastUpdated || Date.now()), atualizado_em: d.lastUpdated || null });
+  const colunasVisuais = partidas.filter(p => p.coluna_visual != null)
+    .map(p => Number(p.coluna_visual)).filter(Number.isFinite);
+  res.json({ liga: ligaReal, liga_solicitada: liga, partidas,
+    colunas_grade: colunasVisuais.length ? Math.max.apply(null, colunasVisuais) : gradeCfg.cols,
+    cursor: String(d.lastUpdated || Date.now()), atualizado_em: d.lastUpdated || null });
 });
 
 // ===== BACKTEST (somente leitura, nao altera nenhuma analise) =====
