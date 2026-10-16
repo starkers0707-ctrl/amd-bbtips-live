@@ -1,5 +1,5 @@
-var LIGAS=['Copa','Euro','Super','Premier'];
-var liga='Super';
+var LIGAS=['ITA','ENG','SPA','MND','BRA','LAT','CAM','COP','AME'];
+var liga='ITA';
 
 // Uma unica leitura do banco alimenta o ranking EV+ e os quatro quadrantes.
 // /api/grade consulta o PostgreSQL do coletor; nunca chama o provedor de odds.
@@ -9,8 +9,8 @@ var AMD_ANALISE_DADOS=window.AMD_ANALISE_DADOS||(function(){
   var API='/api/grade';
   var CACHE_MS=90000,cache={},buscando={};
   function idLiga(nome){
-    var n=String(nome||'copa').toLowerCase();
-    return /euro/.test(n)?'euro':/super/.test(n)?'super':/premier/.test(n)?'premier':'copa';
+    var n=String(nome||'ita').toLowerCase();
+    return ['ita','eng','spa','mnd','bra','lat','cam','cop','ame'].indexOf(n)>=0?n:'ita';
   }
   function horasValidas(h){h=parseInt(h,10)||24;return Math.max(1,Math.min(168,h));}
   function melhorCache(id,horas){

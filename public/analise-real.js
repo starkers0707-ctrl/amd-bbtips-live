@@ -61,7 +61,7 @@
 
   /* ---------- liga vem do seletor global da pagina ---------- */
 
-  var LIGAS = { 'copa': 1, 'euro': 1, 'super': 1, 'premier': 1 };
+  var LIGAS = { ita:1, eng:1, spa:1, mnd:1, bra:1, lat:1, cam:1, cop:1, ame:1 };
 
   function ligaAtual() {
     var chips = document.querySelectorAll('.opts .opt');
@@ -69,7 +69,7 @@
       var txt = (chips[i].textContent || '').trim().toLowerCase();
       if (LIGAS[txt] && /\bon\b/.test(chips[i].className)) return txt;
     }
-    return 'super';
+    return 'ita';
   }
 
   function vigiarLiga() {

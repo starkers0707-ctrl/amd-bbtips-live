@@ -1,7 +1,7 @@
 (function () {
   'use strict';
-  var LIGAS=['copa','euro','super','premier'],NOMES={copa:'Copa',euro:'Euro',super:'Super',premier:'Premier'};
-  var liga=localStorage.getItem('amd_liga')||'copa';if(LIGAS.indexOf(liga)<0)liga='copa';
+  var LIGAS=['ita','eng','spa','mnd','bra','lat','cam','cop','ame'],NOMES={ita:'ITA',eng:'ENG',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT',cam:'CAM',cop:'COP',ame:'AME'};
+  var liga=localStorage.getItem('amd_liga')||'ita';if(LIGAS.indexOf(liga)<0)liga='ita';
   var mercado=localStorage.getItem('amd_times_mercado')||'over25';
   if(!TimesModel.MERCADOS.some(function(m){return m.id===mercado;}))mercado='over25';
   var horas=Number(localStorage.getItem('amd_times_horas')||6);if([3,6,12,24].indexOf(horas)<0)horas=6;

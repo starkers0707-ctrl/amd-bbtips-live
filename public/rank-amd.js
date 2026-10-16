@@ -58,9 +58,9 @@
     var raiz = document.getElementById("ligaOpts");
     var el = raiz ? raiz.querySelector(".on,.active,[aria-pressed=true]") : null;
     var t = (el ? el.textContent : "").trim().toLowerCase();
-    var nomes = ["copa", "euro", "super", "premier"];
+    var nomes = ["ita", "eng", "spa", "mnd", "bra", "lat", "cam", "cop", "ame"];
     for (var i = 0; i < nomes.length; i++) if (t.indexOf(nomes[i]) >= 0) return nomes[i];
-    return "copa";
+    return "ita";
   }
 
   // top 5 times da janela: % de jogos do time que pagaram o mercado

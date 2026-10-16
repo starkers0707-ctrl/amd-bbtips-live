@@ -36,7 +36,7 @@
   var HORAS = 48;
   var RECARGA_MS = 90000;
 
-  var LIGAS = { copa: 1, euro: 1, super: 1, premier: 1 };
+  var LIGAS = { ita:1, eng:1, spa:1, mnd:1, bra:1, lat:1, cam:1, cop:1, ame:1 };
   var estado = { liga: null, carregando: false };
 
   function $(id) { return document.getElementById(id); }
@@ -57,7 +57,7 @@
       var t = (chips[i].textContent || '').trim().toLowerCase();
       if (LIGAS[t] && /\bon\b/.test(chips[i].className)) return t;
     }
-    return 'super';
+    return 'ita';
   }
 
   /* ---------- placar-ancora: HT 2-0 ou 0-2 ---------- */
