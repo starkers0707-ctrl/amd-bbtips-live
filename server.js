@@ -1516,14 +1516,21 @@ app.post("/api/dados", (req, res) => {
       linha_visual: p.linha_visual ?? p.linha ?? p.row ?? null,
       coluna_visual: p.coluna_visual ?? p.coluna ?? p.col ?? p.column ?? null
     });
+    const horarioFonte = p => {
+      // Alguns coletores mandam `hora: 20` e `horario: "20:17"`.
+      // A grade precisa sempre do relógio completo; priorizar só `hora`
+      // apagava os minutos e deslocava a linha inteira.
+      const completo = String(p && p.horario || "");
+      return /\d{1,2}:\d{2}/.test(completo) ? completo : (p && (p.hora || p.horario) || "");
+    };
     const games = placares.map((p, i) => ({
-      nome: p.nome || "Jogo " + (i + 1), a: p.a, b: p.b, total: p.total, odds: p.odds || {}, hora: p.hora || null, horario: p.hora || p.horario || "",
+      nome: p.nome || "Jogo " + (i + 1), a: p.a, b: p.b, total: p.total, odds: p.odds || {}, hora: p.hora || null, horario: horarioFonte(p),
       casa: p.casa || (p.nome && p.nome.includes(" x ") ? p.nome.split(" x ")[0].trim() : null),
       fora: p.fora || (p.nome && p.nome.includes(" x ") ? (p.nome.split(" x ")[1] || "").trim() : null),
       ...coord(p)
     }));
     // jogos futuros vindos da sonda (teams + odds lidos da grade)
-    const upc = Array.isArray(upcoming) ? upcoming.filter(u => u && u.nome).map(u => ({ ...u, ...coord(u) })) : [];
+    const upc = Array.isArray(upcoming) ? upcoming.filter(u => u && u.nome).map(u => ({ ...u, horario: horarioFonte(u), ...coord(u) })) : [];
     const s = buildStore(liga, games, upc, new Date().toISOString());
     // Diagnostico leve do contrato da extensao. Nao muda coleta nem calculos;
     // permite confirmar quais campos de posicao ela esta enviando.
@@ -1838,25 +1845,34 @@ app.get("/api/grade", (req, res) => {
     cop: { cols: 20, passo: 3 }, ame: { cols: 20, passo: 3 }
   }[String(chave || '').toLowerCase()] || { cols: 30, passo: 2 });
   const gradeCfg = cadenciaDaLiga(liga);
-  const aliases = { ita:'ita', eng:'eng', spa:'spa', mnd:'mnd', bra:'bra', lat:'lat', cam:'cam', cop:'cop', ame:'ame', split:'split' };
+  const aliases = {
+    ita:['ita'], eng:['eng'], spa:['spa'],
+    // A extensão chama Mundo de MUN (playpix-mun), enquanto a interface usa MND.
+    mnd:['mnd','mun','mundo'], bra:['bra'], lat:['lat'], cam:['cam'],
+    cop:['cop'], ame:['ame'], split:['split']
+  };
   const ligasReais = Object.keys(aliases).filter(k => k !== 'split');
   // A extensao atual usa identificadores dinamicos (ex.: spa, eng, ita),
   // enquanto o backup classico possui abas fixas (copa/euro/super/premier).
   // Se a aba antiga ainda nao tiver um store homonimo, usa a liga real mais
   // recentemente recebida para a grade nao ficar artificialmente vazia.
-  const encontradaPorAlias = aliases[liga] && Object.keys(store).find(k => k.toLowerCase().includes(aliases[liga]));
+  const temJogosNaLiga = chave => !!(store[chave] && gamesFundidos(chave).length);
+  const encontradaPorAlias = aliases[liga] && Object.keys(store).find(k =>
+    aliases[liga].some(alias => k.toLowerCase().includes(alias)) && temJogosNaLiga(k));
   // Para uma liga real escolhida pelo usuário, nunca devolvemos os jogos de
   // outra liga como "substituto". Isso fazia, por exemplo, MND/Split exibirem
   // a grade da Itália enquanto a extensão ainda estava varrendo essas abas.
   // As abas clássicas continuam com o fallback abaixo para compatibilidade.
   // Cada aba usa apenas o lote recebido para a propria liga.
-  const ligaReal = store[liga] ? liga : encontradaPorAlias;
+  const ligaReal = temJogosNaLiga(liga) ? liga : encontradaPorAlias;
   /* Split e a visao consolidada: junta somente as nove ligas que a extensao
      envia. Nao pode cair no fallback da ITA, pois isso faz a grade parecer
      picotada e repete uma liga como se fosse o conjunto todo. */
   if (liga === 'split') {
     const fontes = ligasReais.map(id => {
-      const chave = store[id] ? id : Object.keys(store).find(k => k.toLowerCase().includes(id));
+      const apelidos = aliases[id] || [id];
+      const chave = temJogosNaLiga(id) ? id : Object.keys(store).find(k =>
+        apelidos.some(alias => k.toLowerCase().includes(alias)) && temJogosNaLiga(k));
       return chave ? { chave, dado: store[chave] } : null;
     }).filter(Boolean);
     const minutoDoJogo = g => {
