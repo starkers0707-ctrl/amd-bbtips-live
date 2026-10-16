@@ -1525,6 +1525,15 @@ app.post("/api/dados", (req, res) => {
     // jogos futuros vindos da sonda (teams + odds lidos da grade)
     const upc = Array.isArray(upcoming) ? upcoming.filter(u => u && u.nome).map(u => ({ ...u, ...coord(u) })) : [];
     const s = buildStore(liga, games, upc, new Date().toISOString());
+    // Diagnostico leve do contrato da extensao. Nao muda coleta nem calculos;
+    // permite confirmar quais campos de posicao ela esta enviando.
+    s.gradeMeta = {
+      campos: Object.keys((placares && placares[0]) || {}).sort(),
+      amostraPosicao: (placares || []).slice(0, 3).map(p => ({
+        linha_visual: p.linha_visual ?? p.linha ?? p.row ?? null,
+        coluna_visual: p.coluna_visual ?? p.coluna ?? p.col ?? p.column ?? null
+      }))
+    };
     s.fonte = "sonda";
     s.sondaTs = Date.now();
     if (Array.isArray(curva)) {
@@ -1910,9 +1919,32 @@ app.get("/api/grade", (req, res) => {
     };
   };
 
+  // O coletor manda o relogio virtual original (ex.: 04:01, 04:03). Ele e a
+  // referencia de coluna: 04:01 ocupa a primeira casa da hora, 04:03 a
+  // segunda, e assim por diante. Nunca reencaixe pelo indice do array, pois
+  // uma casa vazia deslocaria todos os jogos seguintes.
+  const instanteDaGrade = horario => {
+    const m = String(horario || '').match(/(\d{1,2}):(\d{2})/);
+    if (!m) return null;
+    let h = Number(m[1]), min = Number(m[2]);
+    if (!Number.isFinite(h) || !Number.isFinite(min)) return null;
+    // A fonte nomeia a primeira casa como xx:01; a grade a exibe em xx:00.
+    min -= 1;
+    if (min < 0) { min += 60; h = (h + 23) % 24; }
+    const agoraReal = new Date();
+    let ts = Date.UTC(agoraReal.getUTCFullYear(), agoraReal.getUTCMonth(), agoraReal.getUTCDate(), h, min, 0, 0);
+    const meioDia = 12 * 60 * 60 * 1000;
+    if (ts - Date.now() > meioDia) ts -= 24 * 60 * 60 * 1000;
+    if (Date.now() - ts > meioDia) ts += 24 * 60 * 60 * 1000;
+    return ts;
+  };
+
   const partidas = todos.map((g, i) => {
     const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
-    const ts = new Date(agora - (todos.length - 1 - i) * passoGradeMs).toISOString();
+    const tsDireto = instanteDaGrade(g.horario);
+    const ts = new Date(tsDireto == null
+      ? agora - (todos.length - 1 - i) * passoGradeMs
+      : tsDireto).toISOString();
     const encaixe = new Date(ts);
     return {
       id: `${ligaReal}-${i}-${g.horario || ""}-${g.casa || ""}`,
@@ -1941,6 +1973,7 @@ app.get("/api/grade", (req, res) => {
     .map(p => Number(p.coluna_visual)).filter(Number.isFinite);
   res.json({ liga: ligaReal, liga_solicitada: liga, partidas,
     colunas_grade: colunasVisuais.length ? Math.max.apply(null, colunasVisuais) : gradeCfg.cols,
+    coleta_campos: d.gradeMeta || null,
     cursor: String(d.lastUpdated || Date.now()), atualizado_em: d.lastUpdated || null });
 });
 
