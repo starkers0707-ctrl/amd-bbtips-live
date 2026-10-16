@@ -1833,7 +1833,15 @@ app.get("/api/grade", (req, res) => {
       const chave = store[id] ? id : Object.keys(store).find(k => k.toLowerCase().includes(id));
       return chave ? { chave, dado: store[chave] } : null;
     }).filter(Boolean);
-    const resolvidos = fontes.flatMap(({ chave }) => gamesFundidos(chave));
+    const minutoDoJogo = g => {
+      const m = String(g.horario || '').match(/(\d{1,2}):(\d{2})/);
+      return m ? Number(m[1]) * 60 + Number(m[2]) : 0;
+    };
+    // Ordena o lote pelo relógio que veio da extensão antes de encaixá-lo na
+    // grade única. Cada liga pode ter um jogo no mesmo minuto; nesse caso a
+    // grade antiga sobrescrevia um pelo outro e deixava faixas azuis vazias.
+    const resolvidos = fontes.flatMap(({ chave }) => gamesFundidos(chave))
+      .sort((a, b) => minutoDoJogo(a) - minutoDoJogo(b));
     const futuros = fontes.flatMap(({ dado }) => (dado.upcomingRaw || []).slice(0, 20));
     const atualizado = fontes.map(x => x.dado.lastUpdated).filter(Boolean)
       .sort().slice(-1)[0] || null;
@@ -1841,15 +1849,18 @@ app.get("/api/grade", (req, res) => {
       parseInt(req.query.horas || '48', 10) || 48)) * 20 + 20));
     const agora = Date.now();
     const partidas = todos.map((g, i) => {
-      const hm = String(g.horario || '').match(/(\d{1,2}):(\d{2})/);
       const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
       const ts = new Date(agora - (todos.length - 1 - i) * 3 * 60000).toISOString();
+      const encaixe = new Date(ts);
       return { id: `split-${i}-${g.horario || ''}-${g.casa || ''}`, liga: 'split',
         time_a: g.casa || String(g.nome || '').split(' x ')[0] || '',
         time_b: g.fora || String(g.nome || '').split(' x ')[1] || '',
         gols_a: resolvido ? Number(g.a) : null, gols_b: resolvido ? Number(g.b) : null,
         resultado_ft: resolvido ? `${g.a}-${g.b}` : null, resultado_ht: g.ht || null,
-        hora: hm ? Number(hm[1]) : null, minuto: hm ? Number(hm[2]) : null,
+        // A grade Split é uma fila única: usa uma coluna a cada 3 minutos para
+        // caber todos os jogos, sem colisão entre ligas no mesmo horário.
+        hora: encaixe.getUTCHours(), minuto: encaixe.getUTCMinutes(),
+        horario_real: g.horario || null,
         slot_em: ts, criado_em: ts, odds: g.odds || {} };
     });
     return res.json({ liga: 'split', liga_solicitada: liga, partidas,
