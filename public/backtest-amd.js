@@ -185,10 +185,16 @@
     return el ? (el.textContent || "").trim() : null;
   }
   function ligaAtual() {
+    try {
+      if (window.Real && typeof window.Real.liga === "function") {
+        var real = String(window.Real.liga() || "").toLowerCase();
+        if (/^(ita|eng|spa|mnd|bra|lat|cam|cop|ame|split)$/.test(real)) return real;
+      }
+    } catch (e) {}
     var t = (ativoEm(".tabrow") || ativoEm("#cligaMenu") || "").toLowerCase();
-    var nomes = ["copa", "euro", "super", "premier"];
+    var nomes = ["ita", "eng", "spa", "mnd", "bra", "lat", "cam", "cop", "ame", "split"];
     for (var i = 0; i < nomes.length; i++) if (t.indexOf(nomes[i]) >= 0) return nomes[i];
-    return "copa";
+    return "ita";
   }
   function mercadoAtual() {
     return mktEscolhido || "o25";     // independente da grade
