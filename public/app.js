@@ -2376,11 +2376,12 @@ function renderGrade() {
   const linhasMarcadasAntes = [...document.querySelectorAll(
     '#grade .hour-label input[type="checkbox"]'
   )].map(input => input.checked);
-  // As nove ligas virtuais ocupam 30 colunas reais por hora: 00, 02, ... 58.
+  // Cada liga usa sua própria cadência recebida do coletor.
   const LIGACFG = {
     ita:{ini:0,passo:2,cols:30}, eng:{ini:0,passo:2,cols:30}, spa:{ini:0,passo:2,cols:30},
-    mnd:{ini:0,passo:2,cols:30}, bra:{ini:0,passo:2,cols:30}, lat:{ini:0,passo:2,cols:30},
-    cam:{ini:0,passo:2,cols:30}, cop:{ini:0,passo:2,cols:30}, ame:{ini:0,passo:2,cols:30},
+    mnd:{ini:0,passo:2,cols:30}, lat:{ini:0,passo:2,cols:30},
+    bra:{ini:0,passo:3,cols:20}, cam:{ini:0,passo:3,cols:20},
+    cop:{ini:0,passo:3,cols:20}, ame:{ini:0,passo:3,cols:20},
     split:{ini:0,passo:2,cols:30}
   };
   const LG = LIGACFG[String(state.liga || '').toLowerCase()] || LIGACFG.ita;

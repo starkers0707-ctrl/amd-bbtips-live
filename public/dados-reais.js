@@ -435,16 +435,17 @@
    * porque o LIGACFG de la e um const dentro de uma funcao — nao existe em
    * window nem como identificador global, entao nenhum outro script o alcanca.
    */
-  // Cada liga virtual roda em 30 colunas por hora, sempre a cada 2 minutos.
+  // ITA/ENG/SPA/MND/LAT têm 30 jogos/h; BRA/CAM/COP/AME têm 20 jogos/h.
   var CADENCIA = {
     ita:{ini:0,passo:2}, eng:{ini:0,passo:2}, spa:{ini:0,passo:2},
-    mnd:{ini:0,passo:2}, bra:{ini:0,passo:2}, lat:{ini:0,passo:2},
-    cam:{ini:0,passo:2}, cop:{ini:0,passo:2}, ame:{ini:0,passo:2},
+    mnd:{ini:0,passo:2}, lat:{ini:0,passo:2},
+    bra:{ini:0,passo:3}, cam:{ini:0,passo:3}, cop:{ini:0,passo:3}, ame:{ini:0,passo:3},
     split:{ini:0,passo:2}
   };
 
   function configDaLiga() {
-    return ligaFonteAtual === liga ? (CADENCIA[liga] || null) : null;
+    // A fonte pode ser "playpix-ita"; a cadência é a da aba selecionada.
+    return CADENCIA[String(liga || '').toLowerCase()] || null;
   }
 
   /**
