@@ -1844,11 +1844,12 @@ app.get("/api/grade", (req, res) => {
     const atualizado = fontes.map(x => x.dado.lastUpdated).filter(Boolean)
       .sort().slice(-1)[0] || null;
     const todos = resolvidos.concat(futuros).slice(-(Math.max(1, Math.min(168,
-      parseInt(req.query.horas || '48', 10) || 48)) * 20 + 20));
-    const agora = Date.now();
+      parseInt(req.query.horas || '48', 10) || 48)) * 30 + 30));
+    const passoGradeMs = 2 * 60000;
+    const agora = Date.now() - (Date.now() % passoGradeMs);
     const partidas = todos.map((g, i) => {
       const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
-      const ts = new Date(agora - (todos.length - 1 - i) * 3 * 60000).toISOString();
+      const ts = new Date(agora - (todos.length - 1 - i) * passoGradeMs).toISOString();
       const encaixe = new Date(ts);
       return { id: `split-${i}-${g.horario || ''}-${g.casa || ''}`, liga: 'split',
         time_a: g.casa || String(g.nome || '').split(' x ')[0] || '',
@@ -1871,7 +1872,10 @@ app.get("/api/grade", (req, res) => {
   const resolvidos = gamesFundidos(ligaReal);
   const futuros = d.upcomingRaw || [];
   const todos = resolvidos.concat(futuros);
-  const agora = Date.now();
+  // Cada liga virtual entrega até 30 partidas por hora: uma a cada 2 minutos.
+  // A âncora fixa em minuto par impede que os resultados mudem de coluna no poll.
+  const passoGradeMs = 2 * 60000;
+  const agora = Date.now() - (Date.now() % passoGradeMs);
 
   const oddsAntigas = odds => {
     const o = odds || {};
@@ -1890,7 +1894,7 @@ app.get("/api/grade", (req, res) => {
 
   const partidas = todos.map((g, i) => {
     const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
-    const ts = new Date(agora - (todos.length - 1 - i) * 3 * 60000).toISOString();
+    const ts = new Date(agora - (todos.length - 1 - i) * passoGradeMs).toISOString();
     const encaixe = new Date(ts);
     return {
       id: `${ligaReal}-${i}-${g.horario || ""}-${g.casa || ""}`,
