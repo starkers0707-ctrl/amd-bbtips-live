@@ -137,6 +137,8 @@
       placarHT: p.resultado_ht || '',
       odds: p.odds || {},
       hora: p.hora, minuto: p.minuto,
+      linhaVisual: numeroSeguro(p.linha_visual),
+      colunaVisual: numeroSeguro(p.coluna_visual),
       id: String(p.id || ''),
       criado: p.criado_em,
       criadoTs: criadoTs,
@@ -242,6 +244,7 @@
       .then(function (d) {
         if (alvo !== liga || escopo !== liga + '|' + horasDaBusca()) return false;
         ligaFonteAtual = String((d && d.liga) || alvo).toLowerCase();
+        ajustarLarguraDaGrade(d, alvo);
         var novos = normalizarPartidas(d.partidas || []);
         /* A grade e remontada no servidor a cada leitura para acompanhar o
            relogio da extensao. Logo, a resposta ja e o snapshot completo da
@@ -297,8 +300,27 @@
     return op;
   }
 
+  function numeroSeguro(v) {
+    if (v == null || v === '') return null;
+    var n = Number(v);
+    return isFinite(n) ? n : null;
+  }
+
+  function ajustarLarguraDaGrade(dados, alvo) {
+    var recebida = numeroSeguro(dados && dados.colunas_grade);
+    if (recebida == null || recebida < 1) return;
+    var atuais = window.__amdGradeCols || (window.__amdGradeCols = {});
+    var chave = String(alvo || liga || '').toLowerCase();
+    // A fonte usa colunas humanas (1, 2, ...), portanto o maior numero ja
+    // representa a quantidade necessaria de casas na grade.
+    if (atuais[chave] === recebida) return;
+    atuais[chave] = recebida;
+    if (typeof window.renderGrade === 'function') window.renderGrade();
+  }
+
   function publicarAtualizacao(dados, alvo, horas, escopo) {
     if (alvo !== liga || escopo !== liga + '|' + horasDaBusca()) return false;
+    ajustarLarguraDaGrade(dados, alvo);
     jogos = normalizarPartidas((dados && dados.partidas) || []);
     escopoDosJogos = escopo;
     if (dados && dados.cursor) cursoresPorEscopo[escopo] = String(dados.cursor);
@@ -435,11 +457,13 @@
    * porque o LIGACFG de la e um const dentro de uma funcao — nao existe em
    * window nem como identificador global, entao nenhum outro script o alcanca.
    */
-  // ITA/ENG/SPA/MND/LAT têm 30 jogos/h; BRA/CAM/COP/AME têm 20 jogos/h.
+  // Minuto inicial e intervalo observados no relógio que a extensão envia.
+  // ITA/ENG/SPA/MND usam 30 jogos/h. As demais usam 20 jogos/h.
   var CADENCIA = {
-    ita:{ini:0,passo:2}, eng:{ini:0,passo:2}, spa:{ini:0,passo:2},
-    mnd:{ini:0,passo:2}, lat:{ini:0,passo:2},
-    bra:{ini:0,passo:3}, cam:{ini:0,passo:3}, cop:{ini:0,passo:3}, ame:{ini:0,passo:3},
+    ita:{ini:0,passo:2}, eng:{ini:1,passo:2}, spa:{ini:0,passo:2},
+    mnd:{ini:1,passo:2},
+    bra:{ini:1,passo:3}, lat:{ini:1,passo:3},
+    cam:{ini:2,passo:3}, cop:{ini:2,passo:3}, ame:{ini:0,passo:3},
     split:{ini:0,passo:2}
   };
 
@@ -942,18 +966,45 @@
       var mkt = mercadoAtual();
       var cfg = configDaLiga();
       var passo = cfg ? cfg.passo : cadencia(jogos);
-      var base  = cfg ? cfg.ini   : minutoBase(jogos, passo);
+      // O relógio recebido é a fonte de verdade. Detectar o resto mais comum
+      // evita que uma mudança de minuto inicial deixe uma liga inteira vazia.
+      var base  = minutoBase(jogos, passo);
 
       // Índice pelo instante absoluto do relógio do jogo. Usar só hora/minuto
       // colidia quando a grade atravessava a virada do dia.
       var mapa = {};
+      var mapaVisual = {};
+      var temCoordenadaVisual = false;
+      var colunasVisuais = [];
+      var linhasVisuais = [];
       jogos.forEach(function (j) {
+        if (j.colunaVisual != null && j.linhaVisual != null) {
+          temCoordenadaVisual = true;
+          colunasVisuais.push(j.colunaVisual);
+          linhasVisuais.push(j.linhaVisual);
+        }
         if (j.slot == null) return;
         var anterior = mapa[j.slot];
         if (!anterior || (j.resolvido && !anterior.resolvido) ||
             (j.resolvido === anterior.resolvido &&
              j.criadoTs >= anterior.criadoTs)) {
           mapa[j.slot] = j;
+        }
+      });
+      // A extensao envia a posicao ja resolvida na propria grade. Nunca a
+      // converta novamente pelo horario: isso era o que deslocava 48 -> 26.
+      var baseColunaVisual = colunasVisuais.some(function (v) { return v === 0; }) ? 0 : 1;
+      var baseLinhaVisual = linhasVisuais.some(function (v) { return v === 0; }) ? 0 : 1;
+      if (temCoordenadaVisual) jogos.forEach(function (j) {
+        if (j.colunaVisual == null || j.linhaVisual == null) return;
+        var cv = j.colunaVisual - baseColunaVisual;
+        var lv = j.linhaVisual - baseLinhaVisual;
+        if (cv < 0 || lv < 0) return;
+        var chaveVisual = lv + '|' + cv;
+        var anteriorVisual = mapaVisual[chaveVisual];
+        if (!anteriorVisual || (j.resolvido && !anteriorVisual.resolvido) ||
+            (j.resolvido === anteriorVisual.resolvido && j.criadoTs >= anteriorVisual.criadoTs)) {
+          mapaVisual[chaveVisual] = j;
         }
       });
 
@@ -980,7 +1031,7 @@
         porLinha[r] = [];
         matches(row).forEach(function (el, c) {
           var slot = inicioLinha + (base + c * passo) * 60000;
-          var j = mapa[slot];
+          var j = temCoordenadaVisual ? mapaVisual[r + '|' + c] : mapa[slot];
           if (!j) { esvaziar(el); return; }
           preencher(el, j, mkt);
           porLinha[r][c] = j;

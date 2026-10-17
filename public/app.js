@@ -2378,14 +2378,21 @@ function renderGrade() {
   )].map(input => input.checked);
   // Cada liga usa sua própria cadência recebida do coletor.
   const LIGACFG = {
-    ita:{ini:0,passo:2,cols:30}, eng:{ini:0,passo:2,cols:30}, spa:{ini:0,passo:2,cols:30},
-    mnd:{ini:0,passo:2,cols:30}, lat:{ini:0,passo:2,cols:30},
-    bra:{ini:0,passo:3,cols:20}, cam:{ini:0,passo:3,cols:20},
-    cop:{ini:0,passo:3,cols:20}, ame:{ini:0,passo:3,cols:20},
+    ita:{ini:0,passo:2,cols:30}, eng:{ini:1,passo:2,cols:30}, spa:{ini:0,passo:2,cols:30},
+    mnd:{ini:1,passo:2,cols:30},
+    bra:{ini:1,passo:3,cols:20}, lat:{ini:1,passo:3,cols:20},
+    cam:{ini:2,passo:3,cols:20}, cop:{ini:2,passo:3,cols:20},
+    ame:{ini:0,passo:3,cols:20},
     split:{ini:0,passo:2,cols:30}
   };
-  const LG = LIGACFG[String(state.liga || '').toLowerCase()] || LIGACFG.ita;
-  const COLS = LG.cols;
+  const ligaGrade = String(state.liga || '').toLowerCase();
+  const LG = LIGACFG[ligaGrade] || LIGACFG.ita;
+  // A largura nao e inventada: quando o coletor informar uma coluna maior
+  // (ex.: 48), a grade abre todas as casas ate ela.
+  const colsRecebidas = window.__amdGradeCols || {};
+  const colunasDaFonte = Number(colsRecebidas[ligaGrade]);
+  const COLS = Number.isFinite(colunasDaFonte) && colunasDaFonte > LG.cols
+    ? Math.ceil(colunasDaFonte) : LG.cols;
   const mkt = state.gradeMercado;
   /* Lente HT: avalia e mostra o placar do intervalo. */
   const lente = function (j) { return j; };
