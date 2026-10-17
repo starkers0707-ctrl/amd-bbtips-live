@@ -1857,22 +1857,39 @@ app.get("/api/grade", (req, res) => {
   // Se a aba antiga ainda nao tiver um store homonimo, usa a liga real mais
   // recentemente recebida para a grade nao ficar artificialmente vazia.
   const temJogosNaLiga = chave => !!(store[chave] && gamesFundidos(chave).length);
-  const encontradaPorAlias = aliases[liga] && Object.keys(store).find(k =>
-    aliases[liga].some(alias => k.toLowerCase().includes(alias)) && temJogosNaLiga(k));
+  const chavePorAlias = id => {
+    const apelidos = aliases[id] || [id];
+    return Object.keys(store).find(k =>
+      apelidos.some(alias => k.toLowerCase().includes(alias)) && temJogosNaLiga(k));
+  };
+  const encontradaPorAlias = aliases[liga] && chavePorAlias(liga);
+  /* Algumas versoes do coletor enviam a liga brasileira com um identificador
+     numerico/dinamico, sem a palavra "bra". Se as outras oito fontes ja foram
+     reconhecidas, a unica fonte real restante e necessariamente a BRA. Isso
+     preserva o contrato da extensao e evita deixar resultados e futuros vazios. */
+  const fontesReconhecidas = new Set(ligasReais
+    .filter(id => id !== liga)
+    .map(chavePorAlias).filter(Boolean));
+  const fonteRestante = liga === 'bra' && !encontradaPorAlias
+    ? Object.keys(store).find(k => temJogosNaLiga(k) && store[k].fonte === 'sonda' &&
+      !fontesReconhecidas.has(k))
+    : null;
   // Para uma liga real escolhida pelo usuário, nunca devolvemos os jogos de
   // outra liga como "substituto". Isso fazia, por exemplo, MND/Split exibirem
   // a grade da Itália enquanto a extensão ainda estava varrendo essas abas.
   // As abas clássicas continuam com o fallback abaixo para compatibilidade.
   // Cada aba usa apenas o lote recebido para a propria liga.
-  const ligaReal = temJogosNaLiga(liga) ? liga : encontradaPorAlias;
+  const ligaReal = temJogosNaLiga(liga) ? liga : (encontradaPorAlias || fonteRestante);
   /* Split e a visao consolidada: junta somente as nove ligas que a extensao
      envia. Nao pode cair no fallback da ITA, pois isso faz a grade parecer
      picotada e repete uma liga como se fosse o conjunto todo. */
   if (liga === 'split') {
     const fontes = ligasReais.map(id => {
-      const apelidos = aliases[id] || [id];
-      const chave = temJogosNaLiga(id) ? id : Object.keys(store).find(k =>
-        apelidos.some(alias => k.toLowerCase().includes(alias)) && temJogosNaLiga(k));
+      const chave = temJogosNaLiga(id) ? id : (chavePorAlias(id) ||
+        (id === 'bra' ? Object.keys(store).find(k =>
+          temJogosNaLiga(k) && store[k].fonte === 'sonda' &&
+          !ligasReais.filter(x => x !== 'bra')
+            .map(chavePorAlias).filter(Boolean).includes(k)) : null));
       return chave ? { chave, dado: store[chave] } : null;
     }).filter(Boolean);
     const minutoDoJogo = g => {
