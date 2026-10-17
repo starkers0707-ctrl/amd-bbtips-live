@@ -1979,8 +1979,11 @@ app.get("/api/grade", (req, res) => {
     if (!m) return null;
     let h = Number(m[1]), min = Number(m[2]);
     if (!Number.isFinite(h) || !Number.isFinite(min)) return null;
-    // A fonte nomeia a primeira casa como xx:01; a grade a exibe em xx:00.
-    min -= 1;
+    // AME usa a sequencia 01,04,07... e COP usa 00,03,06... no relogio
+    // original. Nessas duas ligas o minuto recebido ja e a referencia da
+    // coluna; deslocar -1 misturava as ancoras. As demais mantem o contrato
+    // legado da extensao, que nomeia a primeira casa um minuto adiante.
+    if (liga !== 'ame' && liga !== 'cop') min -= 1;
     if (min < 0) { min += 60; h = (h + 23) % 24; }
     const agoraReal = new Date();
     let ts = Date.UTC(agoraReal.getUTCFullYear(), agoraReal.getUTCMonth(), agoraReal.getUTCDate(), h, min, 0, 0);
