@@ -1840,8 +1840,8 @@ app.get("/api/grade", (req, res) => {
   const cadenciaDaLiga = chave => ({
     ita: { cols: 30, passo: 2 }, eng: { cols: 30, passo: 2 },
     spa: { cols: 30, passo: 2 }, mnd: { cols: 30, passo: 2 },
-    lat: { cols: 30, passo: 2 }, split: { cols: 30, passo: 2 },
-    bra: { cols: 20, passo: 3 }, cam: { cols: 20, passo: 3 },
+    split: { cols: 30, passo: 2 },
+    bra: { cols: 20, passo: 3 }, lat: { cols: 20, passo: 3 }, cam: { cols: 20, passo: 3 },
     cop: { cols: 20, passo: 3 }, ame: { cols: 20, passo: 3 }
   }[String(chave || '').toLowerCase()] || { cols: 30, passo: 2 });
   const gradeCfg = cadenciaDaLiga(liga);
