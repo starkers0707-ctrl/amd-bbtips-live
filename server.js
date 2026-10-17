@@ -221,9 +221,20 @@ function ligaRecebida(body) {
   const casa = slugLiga(body && (body.casaFonte || body.bookmaker || body.casa));
   const enviada = slugLiga(body && body.liga);
   const nome = slugLiga(body && (body.nomeLiga || body.ligaNome || body.leagueName || body.nome_liga));
+  const playpixPorId = {
+    "1": "ita", "2": "eng", "3": "spa", "4": "bra", "5": "lat",
+    "6": "cam", "7": "cop", "8": "ame", "9": "mun"
+  };
+  // Tambem aceita o identificador composto que o relatorio mostra: playpix|9.
+  const composta = enviada.match(/^playpix-(?:liga-)?([1-9])$/);
+  if (composta) return "playpix-" + playpixPorId[composta[1]];
   if (enviada && casas.has(enviada.split("-")[0])) return enviada;
   if (casa && casas.has(casa)) {
-    const parte = nome || (enviada && !/^\d+$/.test(enviada) ? enviada : "liga-" + (enviada || "0"));
+    /* O coletor PlayPix identifica as nove abas pelo parametro numerico da
+       rota. Traduza para o mesmo nome que a interface usa. */
+    const parteNumerica = casa === "playpix" ? playpixPorId[enviada] : null;
+    const parte = nome || parteNumerica ||
+      (enviada && !/^\d+$/.test(enviada) ? enviada : "liga-" + (enviada || "0"));
     return casa + "-" + parte;
   }
   return nome || enviada;
@@ -1846,10 +1857,11 @@ app.get("/api/grade", (req, res) => {
   }[String(chave || '').toLowerCase()] || { cols: 30, passo: 2 });
   const gradeCfg = cadenciaDaLiga(liga);
   const aliases = {
-    ita:['ita'], eng:['eng'], spa:['spa'],
+    ita:['ita','liga-1'], eng:['eng','liga-2'], spa:['spa','liga-3'],
     // A extensão chama Mundo de MUN (playpix-mun), enquanto a interface usa MND.
-    mnd:['mnd','mun','mundo'], bra:['bra'], lat:['lat'], cam:['cam'],
-    cop:['cop'], ame:['ame'], split:['split']
+    mnd:['mnd','mun','mundo','liga-9'], bra:['bra','liga-4'],
+    lat:['lat','liga-5'], cam:['cam','liga-6'], cop:['cop','liga-7'],
+    ame:['ame','liga-8'], split:['split']
   };
   const ligasReais = Object.keys(aliases).filter(k => k !== 'split');
   // A extensao atual usa identificadores dinamicos (ex.: spa, eng, ita),
