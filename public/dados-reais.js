@@ -1518,7 +1518,7 @@
   function ancoraDoRelogio() {
     if (!jogos || !jogos.length) return null;
     var ultimoResolvido = null;
-    var proximo = null;
+    var ultimoFuturo = null;
     for (var i = 0; i < jogos.length; i++) {
       var jogo = jogos[i];
       if (!jogo || !isFinite(Number(jogo.slot))) continue;
@@ -1528,8 +1528,21 @@
     for (var p = 0; p < jogos.length; p++) {
       var futuro = jogos[p];
       if (!futuro || futuro.resolvido || !ultimoResolvido) continue;
-      if (Number(futuro.slot) > Number(ultimoResolvido.slot) &&
-          (!proximo || Number(futuro.slot) < Number(proximo.slot))) proximo = futuro;
+      var distancia = Number(futuro.slot) - Number(ultimoResolvido.slot);
+      /*
+       * A extensao envia um bloco curto de partidas futuras. A grade precisa
+       * ancorar no ULTIMO jogo desse bloco: assim, quando os futuros atravessam
+       * a virada da hora (23:59 -> 00:01, por exemplo), as duas linhas ficam
+       * visiveis. Ancorar no primeiro futuro deixava toda a hora seguinte fora
+       * da grade e dava a impressao de que os jogos futuros nao chegaram.
+       *
+       * O limite de tres horas ignora somente algum registro antigo ou solto;
+       * ele nao altera nem inventa dados recebidos pelo coletor.
+       */
+      if (distancia > 0 && distancia <= 3 * 60 * 60 * 1000 &&
+          (!ultimoFuturo || Number(futuro.slot) > Number(ultimoFuturo.slot))) {
+        ultimoFuturo = futuro;
+      }
     }
     /*
      * A lista de futuros vem do fornecedor em um ciclo mais espaçado que os
@@ -1542,7 +1555,7 @@
      * time ou odd. As células continuam azuis até o dado real entrar no banco
      * e, portanto, não participam de percentual, ranking ou gráfico.
      */
-    if (proximo) return proximo;
+    if (ultimoFuturo) return ultimoFuturo;
     if (ultimoResolvido && isFinite(Number(ultimoResolvido.slot))) {
       var cfg = configDaLiga();
       var passo = cfg && isFinite(Number(cfg.passo))
@@ -1574,7 +1587,17 @@
     var cru = topoHoraCruDoJogo();
     var anterior = Number(topoHoraEstavelPorLiga[liga]);
     if (!isFinite(cru)) return isFinite(anterior) ? anterior : null;
-    if (!isFinite(anterior) || cru > anterior) {
+    /*
+     * O relogio virtual pode reiniciar longe do valor anterior. Guardar para
+     * sempre o maior topo fazia a tela continuar, por exemplo, em 16h quando
+     * a extensao ja estava enviando 00h/01h; os futuros existiam na resposta,
+     * mas nenhuma celula procurava seus horarios. Dentro de tres horas ainda
+     * seguramos pequenas oscilacoes entre snapshots; acima disso aceitamos o
+     * novo relogio da extensao imediatamente.
+     */
+    var reiniciouRelogio = isFinite(anterior) &&
+      anterior - cru > 3 * 60 * 60 * 1000;
+    if (!isFinite(anterior) || cru > anterior || reiniciouRelogio) {
       topoHoraEstavelPorLiga[liga] = cru;
       return cru;
     }
