@@ -2035,12 +2035,27 @@ app.get("/api/grade", (req, res) => {
     return ts;
   };
 
+  const ultimoResolvidoEm = todos.reduce((maior, g) => {
+    const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
+    if (!resolvido) return maior;
+    const instante = instanteDaGrade(g.horario);
+    return Number.isFinite(instante) ? Math.max(maior, instante) : maior;
+  }, Number.NEGATIVE_INFINITY);
+  let ultimoSlotEm = ultimoResolvidoEm;
+  const toleranciaFuturoMs = passoGradeMs * 3;
   const partidas = todos.map((g, i) => {
     const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
     const tsDireto = instanteDaGrade(g.horario);
-    const ts = new Date(tsDireto == null
+    let tsNormalizado = tsDireto;
+    if (!resolvido && Number.isFinite(ultimoSlotEm)) {
+      const foraDaSequencia = tsDireto == null || tsDireto <= ultimoSlotEm ||
+        tsDireto - ultimoSlotEm > toleranciaFuturoMs;
+      tsNormalizado = foraDaSequencia ? ultimoSlotEm + passoGradeMs : tsDireto;
+      ultimoSlotEm = tsNormalizado;
+    }
+    const ts = new Date(tsNormalizado == null
       ? agora - (todos.length - 1 - i) * passoGradeMs
-      : tsDireto).toISOString();
+      : tsNormalizado).toISOString();
     const encaixe = new Date(ts);
     return {
       id: `${ligaReal}-${i}-${g.horario || ""}-${g.casa || ""}`,
