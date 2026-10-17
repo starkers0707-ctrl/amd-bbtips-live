@@ -463,7 +463,7 @@
     ita:{ini:0,passo:2}, eng:{ini:1,passo:2}, spa:{ini:0,passo:2},
     mnd:{ini:1,passo:2},
     bra:{ini:1,passo:3}, lat:{ini:1,passo:3},
-    cam:{ini:2,passo:3}, cop:{ini:2,passo:3}, ame:{ini:0,passo:3},
+    cam:{ini:2,passo:3}, cop:{ini:0,passo:3}, ame:{ini:1,passo:3},
     split:{ini:0,passo:2}
   };
 
@@ -795,6 +795,8 @@
     if (!alvo) return;
     var resolvidos = jogosDaGrade.filter(function (j) {
       return j && j.resolvido;
+    }).slice().sort(function (a, b) {
+      return Number(a.slot || 0) - Number(b.slot || 0);
     });
     if (!resolvidos.length) {
       alvo.textContent = 'Máxima negativa —';

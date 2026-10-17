@@ -1,6 +1,6 @@
 /* ========================================================================== */
 /* AMD LIVE - Squad 3/5                                                       */
-/* Divide as 20 colunas em quatro blocos e encontra os tres melhores tiros.   */
+/* Divide as colunas em blocos de cinco e encontra os tres melhores tiros.    */
 /* ========================================================================== */
 (function (root, factory) {
   'use strict';
@@ -409,7 +409,7 @@
     var faixa = ENV.document.createElement('div');
     faixa.className = 'squad-row';
     faixa.style.gridTemplateColumns = referencia.style.gridTemplateColumns ||
-      '46px repeat(20,minmax(0,1fr))';
+      '46px repeat(' + totalColunas() + ',minmax(0,1fr))';
 
     var rotulo = ENV.document.createElement('div');
     rotulo.className = 'squad-label';
@@ -489,7 +489,7 @@
     botao.classList.toggle('on', ativo);
     botao.setAttribute('aria-pressed', ativo ? 'true' : 'false');
     botao.textContent = ativo ? '👥 Squad 3/5' : '👥 Squad';
-    botao.title = 'Separar os 20 jogos em quatro blocos e marcar os melhores 3 tiros';
+    botao.title = 'Separar a grade em blocos de 5 e marcar os melhores 3 tiros';
   }
 
   function renderizar() {
@@ -523,11 +523,11 @@
       }
 
       var colunas = colunasAntes;
-      if (colunas !== 20) {
+      if (colunas < TAMANHO || colunas % TAMANHO !== 0) {
         resultadoAtual = null;
         ultimaAssinaturaRender = assinaturaRender;
         var botao = ENV.document.getElementById('btnSquad');
-        if (botao) botao.title = 'O Squad fica disponivel nas ligas com 20 jogos por hora.';
+        if (botao) botao.title = 'A grade precisa ter blocos completos de 5 jogos.';
         return null;
       }
 
