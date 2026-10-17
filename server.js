@@ -324,7 +324,7 @@ function decodeRows(json) {
       if (g) games.push(g);
     }
   }
-  return { games, upcoming: upcoming.slice(0, 6) };
+  return { games, upcoming };
 }
 
 function pays(g, mkt) {
@@ -1022,7 +1022,48 @@ function avaliaAncora(u, stats, big) {
   };
 }
 
+/*
+ * A extensao varre a grade em etapas. Entre uma etapa e outra ela pode enviar
+ * temporariamente zero (ou apenas parte dos) jogos futuros. Se substituirmos o
+ * store por esse lote intermediario, os cartoes azuis somem e reaparecem a
+ * cada varredura. Mantemos por poucos minutos os futuros ja vistos e os
+ * removemos assim que o respectivo resultado chega.
+ */
+const FUTURO_RETENCAO_MS = 15 * 60 * 1000;
+const futurosEstaveis = Object.create(null);
+let futuroOrdem = 0;
+function chaveFuturo(g) {
+  return [String(g && g.horario || ""), normNome(g && (g.casa || "")),
+    normNome(g && (g.fora || ""))].join("|");
+}
+function estabilizaFuturos(liga, incoming, games) {
+  const agora = Date.now();
+  const mapa = futurosEstaveis[liga] || (futurosEstaveis[liga] = new Map());
+  const resolvidos = new Set((games || []).slice(-120).map(chaveFuturo));
+
+  for (const chave of resolvidos) if (chave !== "||") mapa.delete(chave);
+  for (const u of (Array.isArray(incoming) ? incoming : [])) {
+    if (!u || (!u.nome && !u.casa && !u.fora)) continue;
+    const chave = chaveFuturo(u);
+    if (chave === "||" || resolvidos.has(chave)) continue;
+    const anterior = mapa.get(chave);
+    mapa.set(chave, {
+      jogo: anterior ? { ...anterior.jogo, ...u,
+        odds: { ...(anterior.jogo.odds || {}), ...(u.odds || {}) } } : u,
+      vistoEm: agora,
+      ordem: anterior ? anterior.ordem : futuroOrdem++
+    });
+  }
+
+  for (const [chave, item] of mapa) {
+    if (!item || agora - item.vistoEm > FUTURO_RETENCAO_MS) mapa.delete(chave);
+  }
+  return Array.from(mapa.values()).sort((a, b) => a.ordem - b.ordem)
+    .map(item => item.jogo);
+}
+
 function buildStore(liga, games, upcoming, lastUpdated) {
+  upcoming = estabilizaFuturos(liga, upcoming, games);
   const stats = anchorStats(games);
   const big = bigPlacarStats(games);
   // mapa de ancora por nome de jogo futuro (so os que disparam)
@@ -1202,7 +1243,7 @@ function decodeSnapshot(data) {
   // gamesAll: SEM o drop-2 (inclui os 2 jogos mais recentes) — usado SO pelo radar,
   // pra alertar no fechamento real (~6 min mais cedo). Grafico/analises seguem com drop-2.
   const gamesAll = passados.slice(-1200).map(mapa);
-  const upcoming = futuros.slice(0, 6).map(u => ({
+  const upcoming = futuros.map(u => ({
     nome: u.nome, horario: u.horario, casa: u.casa, fora: u.fora,
     linha_visual: u.linha_visual, coluna_visual: u.coluna_visual, odds: completaOdds(u.odds)
   }));
@@ -1857,7 +1898,8 @@ app.get("/api/grade", (req, res) => {
     ita: { cols: 30, passo: 2 }, eng: { cols: 30, passo: 2 },
     spa: { cols: 30, passo: 2 }, mnd: { cols: 30, passo: 2 },
     split: { cols: 30, passo: 2 },
-    bra: { cols: 20, passo: 3 }, lat: { cols: 20, passo: 3 }, cam: { cols: 20, passo: 3 },
+    lat: { cols: 30, passo: 2 },
+    bra: { cols: 20, passo: 3 }, cam: { cols: 20, passo: 3 },
     cop: { cols: 20, passo: 3 }, ame: { cols: 20, passo: 3 }
   }[String(chave || '').toLowerCase()] || { cols: 30, passo: 2 });
   const gradeCfg = cadenciaDaLiga(liga);
