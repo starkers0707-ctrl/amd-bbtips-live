@@ -1517,9 +1517,13 @@ app.post("/api/dados", (req, res) => {
   try {
     const { mkt, placares, upcoming, curva, mm1, mm2, topo, fundo, debug } = req.body || {};
     const liga = ligaRecebida(req.body || {});
+    const placaresLista = Array.isArray(placares) ? placares : [];
+    const futurosLista = Array.isArray(upcoming) ? upcoming : [];
     if (debug) lastDebug[liga || "?"] = { debug, ts: Date.now() };
-    if (!liga || !Array.isArray(placares) || !placares.length) {
-      return res.status(400).json({ ok: false, erro: "sem placares" });
+    /* Uma liga pode abrir o ciclo apenas com partidas futuras. Rejeitar esse
+       lote deixava a BRA vazia ate sair o primeiro FT. */
+    if (!liga || (!placaresLista.length && !futurosLista.length)) {
+      return res.status(400).json({ ok: false, erro: "sem jogos" });
     }
     // A sonda ja conhece a casa exata da grade. Preserve essas coordenadas;
     // recalcular a coluna pela ordem do array deslocava, por exemplo, a 48 para a 26.
@@ -1534,20 +1538,21 @@ app.post("/api/dados", (req, res) => {
       const completo = String(p && p.horario || "");
       return /\d{1,2}:\d{2}/.test(completo) ? completo : (p && (p.hora || p.horario) || "");
     };
-    const games = placares.map((p, i) => ({
+    const games = placaresLista.map((p, i) => ({
       nome: p.nome || "Jogo " + (i + 1), a: p.a, b: p.b, total: p.total, odds: p.odds || {}, hora: p.hora || null, horario: horarioFonte(p),
       casa: p.casa || (p.nome && p.nome.includes(" x ") ? p.nome.split(" x ")[0].trim() : null),
       fora: p.fora || (p.nome && p.nome.includes(" x ") ? (p.nome.split(" x ")[1] || "").trim() : null),
       ...coord(p)
     }));
     // jogos futuros vindos da sonda (teams + odds lidos da grade)
-    const upc = Array.isArray(upcoming) ? upcoming.filter(u => u && u.nome).map(u => ({ ...u, horario: horarioFonte(u), ...coord(u) })) : [];
+    const upc = futurosLista.filter(u => u && u.nome)
+      .map(u => ({ ...u, horario: horarioFonte(u), ...coord(u) }));
     const s = buildStore(liga, games, upc, new Date().toISOString());
     // Diagnostico leve do contrato da extensao. Nao muda coleta nem calculos;
     // permite confirmar quais campos de posicao ela esta enviando.
     s.gradeMeta = {
-      campos: Object.keys((placares && placares[0]) || {}).sort(),
-      amostraPosicao: (placares || []).slice(0, 3).map(p => ({
+      campos: Object.keys(placaresLista[0] || futurosLista[0] || {}).sort(),
+      amostraPosicao: placaresLista.concat(futurosLista).slice(0, 3).map(p => ({
         linha_visual: p.linha_visual ?? p.linha ?? p.row ?? null,
         coluna_visual: p.coluna_visual ?? p.coluna ?? p.col ?? p.column ?? null
       }))
@@ -1562,7 +1567,7 @@ app.post("/api/dados", (req, res) => {
     atualizaRadar(liga, s);
     atualizaRoboLedger();
     avisaClientes(liga);
-    res.json({ ok: true, placares: placares.length, upcoming: upc.length, mercados: Object.keys(s.computed) });
+    res.json({ ok: true, placares: placaresLista.length, upcoming: upc.length, mercados: Object.keys(s.computed) });
   } catch (e) {
     res.status(500).json({ ok: false, erro: e.message });
   }
@@ -1868,7 +1873,8 @@ app.get("/api/grade", (req, res) => {
   // enquanto o backup classico possui abas fixas (copa/euro/super/premier).
   // Se a aba antiga ainda nao tiver um store homonimo, usa a liga real mais
   // recentemente recebida para a grade nao ficar artificialmente vazia.
-  const temJogosNaLiga = chave => !!(store[chave] && gamesFundidos(chave).length);
+  const temJogosNaLiga = chave => !!(store[chave] &&
+    (gamesFundidos(chave).length || (store[chave].upcomingRaw || []).length));
   const chavePorAlias = id => {
     const apelidos = aliases[id] || [id];
     return Object.keys(store).find(k =>
