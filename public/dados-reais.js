@@ -462,7 +462,7 @@
   var CADENCIA = {
     ita:{ini:0,passo:2}, eng:{ini:1,passo:2}, spa:{ini:0,passo:2},
     mnd:{ini:1,passo:2},
-    bra:{ini:1,passo:3}, lat:{ini:1,passo:3},
+    bra:{ini:1,passo:3}, lat:{ini:1,passo:2},
     cam:{ini:2,passo:3}, cop:{ini:0,passo:3}, ame:{ini:1,passo:3},
     split:{ini:0,passo:2}
   };

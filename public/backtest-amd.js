@@ -203,7 +203,7 @@
     // A extensao entrega ligas de 30 jogos/h (passo de 2 minutos) e de
     // 20 jogos/h (passo de 3 minutos). O bloqueio continua representando
     // 12 horas de jogos, sem alterar a matematica do backtest.
-    return /^(ita|eng|spa|mnd|split)$/.test(liga) ? 360 : 240;
+    return /^(ita|eng|spa|mnd|lat|split)$/.test(liga) ? 360 : 240;
   }
   function nomeDoMercado(id) {
     for (var i = 0; i < MERCADOS_BT.length; i++) if (MERCADOS_BT[i].id === id) return MERCADOS_BT[i].nome;
