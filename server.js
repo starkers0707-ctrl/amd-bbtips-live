@@ -272,6 +272,47 @@ function ligaRecebida(body) {
   }
   return "";
 }
+/*
+ * O coletor atual troca ENG/SPA em alguns ciclos: o rotulo chega como ENG,
+ * mas o proprio lote contem BAR, RMA, BET, OSA etc. Corrigimos somente esse
+ * par pela identidade dos times; as demais ligas continuam usando o rotulo
+ * original enviado pela extensao.
+ */
+const TIMES_SPA = new Set(["BAR", "RMA", "BET", "OSA", "LEV", "VAL", "GET", "RAY", "MLG", "VIL", "SEV", "ALV", "ELC", "ATH", "DLC", "ESP", "RST"]);
+const TIMES_ENG = new Set(["ARS", "CHE", "LIV", "MCI", "MUN", "NEW", "TOT", "EVE", "WHU", "WOL", "LEE", "SOU", "BRI", "CRY", "BRE", "FOR", "BOU", "BUR", "AVL"]);
+function ligaPeloConteudo(liga, games, upcoming) {
+  if (liga !== "eng" && liga !== "spa") return liga;
+  const nomes = (games || []).concat(upcoming || []).slice(-120)
+    .flatMap(g => [g && g.casa, g && g.fora]);
+  const conta = conjunto => nomes.reduce((n, nome) => n + (conjunto.has(String(nome || "").trim().toUpperCase()) ? 1 : 0), 0);
+  const spa = conta(TIMES_SPA), eng = conta(TIMES_ENG);
+  if (spa >= 2 && spa > eng) return "spa";
+  if (eng >= 2 && eng > spa) return "eng";
+  return liga;
+}
+
+// A classificacao tambem precisa valer para o lote que ja estava em memoria
+// quando o servidor foi atualizado. Sem isto a aba ENG ficava exibindo a
+// Espanha ate o proximo ciclo completo da extensao.
+function reclassificaEngSpaEmMemoria() {
+  for (const origem of ["eng", "spa"]) {
+    const dado = store[origem];
+    if (!dado) continue;
+    const destino = ligaPeloConteudo(origem, dado.games, dado.upcomingRaw);
+    if (destino === origem) continue;
+    const jaExiste = store[destino];
+    // Nunca sobrescreve um lote correto e mais recente da outra liga.
+    if (jaExiste && ligaPeloConteudo(destino, jaExiste.games, jaExiste.upcomingRaw) === destino) continue;
+    store[destino] = dado;
+    delete store[origem];
+    for (const chave of Object.keys(liveCurves)) {
+      if (!chave.startsWith(origem + "|")) continue;
+      const mercado = chave.slice(origem.length);
+      liveCurves[destino + mercado] = liveCurves[chave];
+      delete liveCurves[chave];
+    }
+  }
+}
 const BASE = "https://www.caramelotips.com.br/final/";
 const REFRESH_MS = 15000;
 
@@ -1544,12 +1585,13 @@ setInterval(salvaJogos, 3 * 60000); // salva a cada 3min (se mudou)
 app.post("/api/snapshot", (req, res) => {
   try {
     const { data, mkt, curva, mm1, mm2, topo, fundo } = req.body || {};
-    const liga = ligaRecebida(req.body || {});
+    let liga = ligaRecebida(req.body || {});
     if (!liga || !data || !Array.isArray(data.cells)) {
       return res.status(400).json({ ok: false, erro: "snapshot invalido" });
     }
     ultimoSnapshotCru[liga] = { cells: (data && data.cells) ? data.cells.length : 0, temData: !!data, hora: new Date().toLocaleTimeString("pt-BR", { timeZone: "America/Sao_Paulo" }), amostraCell: (data && data.cells && data.cells[0]) ? JSON.stringify(data.cells[0]).slice(0, 200) : null };
     let { games, upcoming, gamesAll } = decodeSnapshot(data);
+    liga = ligaPeloConteudo(liga, games, upcoming);
     if (!games.length) return res.status(400).json({ ok: false, erro: "zero jogos no snapshot", cellsRecebidas: (data && data.cells) ? data.cells.length : 0 });
     // semeadura pos-boot: emenda a memoria persistida ANTES do quadro novo (dedupe horario|casa)
     try {
@@ -1591,7 +1633,7 @@ let lastDebug = {};
 app.post("/api/dados", (req, res) => {
   try {
     const { mkt, placares, upcoming, curva, mm1, mm2, topo, fundo, debug } = req.body || {};
-    const liga = ligaRecebida(req.body || {});
+    let liga = ligaRecebida(req.body || {});
     const placaresLista = Array.isArray(placares) ? placares : [];
     const futurosLista = Array.isArray(upcoming) ? upcoming : [];
     if (debug) lastDebug[liga || "?"] = { debug, ts: Date.now() };
@@ -1622,6 +1664,7 @@ app.post("/api/dados", (req, res) => {
     // jogos futuros vindos da sonda (teams + odds lidos da grade)
     const upc = futurosLista.filter(u => u && u.nome)
       .map(u => ({ ...u, horario: horarioFonte(u), ...coord(u) }));
+    liga = ligaPeloConteudo(liga, games, upc);
     const s = buildStore(liga, games, upc, new Date().toISOString());
     // Diagnostico leve do contrato da extensao. Nao muda coleta nem calculos;
     // permite confirmar quais campos de posicao ela esta enviando.
@@ -1926,6 +1969,9 @@ app.get("/api/status", (req, res) => {
 // alimentando o store atual; esta rota apenas traduz o mesmo dado para o
 // contrato antigo usado pela grade, backtest e cacadores do backup.
 app.get("/api/grade", (req, res) => {
+  // Corrige, uma unica vez, eventual lote ENG/SPA recebido antes da
+  // identificacao por times. Nao altera resultados, odds ou matematica.
+  reclassificaEngSpaEmMemoria();
   const liga = String(req.query.liga || "ita").toLowerCase();
   // Relógio real de cada liga virtual: não misturar grades de 30 e 20 jogos.
   const cadenciaDaLiga = chave => ({
