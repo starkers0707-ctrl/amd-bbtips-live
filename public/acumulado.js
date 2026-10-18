@@ -9,7 +9,10 @@
 (function (root) {
   'use strict';
 
-  var API = 'https://amd-coletor.onrender.com';
+  /* A extensão envia os dados para este próprio painel. O gráfico precisa
+     consultar a mesma grade já recebida aqui; o coletor remoto antigo deixava
+     ligas como ENG sem pontos mesmo com a grade preenchida. */
+  var API = '';
   var JOGOS_HORA = 20; // ligas deste painel: um jogo a cada três minutos
   /* O histórico já vem do PostgreSQL do coletor. Jogos recém-finalizados entram
      por Real.jogos(), então não precisamos baixar 24â€“73h novamente a cada 15s. */
