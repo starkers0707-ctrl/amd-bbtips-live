@@ -216,28 +216,61 @@ function slugLiga(v) {
   return String(v == null ? "" : v).trim().toLowerCase().normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 }
+/*
+ * A extensao pode mandar tanto o codigo tecnico (playpix-eng, liga-2, ...)
+ * quanto o nome mostrado na aba. A grade, porem, trabalha sempre com UMA
+ * chave por campeonato. Nunca use a ordem da varredura para adivinhar uma
+ * liga: isso era o que fazia ENG abrir os jogos da SPA quando o lote chegava.
+ */
+const CODIGO_PLAYPIX = Object.freeze({
+  "1": "ita", "2": "eng", "3": "spa", "4": "bra", "5": "lat",
+  "6": "cam", "7": "cop", "8": "ame", "9": "mnd"
+});
+const APELIDOS_LIGA = Object.freeze({
+  ita: "ita", italia: "ita", italy: "ita",
+  eng: "eng", inglaterra: "eng", england: "eng",
+  spa: "spa", espanha: "spa", spain: "spa",
+  mnd: "mnd", mun: "mnd", mundo: "mnd", world: "mnd",
+  bra: "bra", brasil: "bra", brazil: "bra",
+  lat: "lat", latino: "lat", latin: "lat",
+  cam: "cam", champions: "cam",
+  cop: "cop", copa: "cop",
+  ame: "ame", america: "ame"
+});
+function codigoLiga(v) {
+  const s = slugLiga(v);
+  if (!s) return "";
+  if (APELIDOS_LIGA[s]) return APELIDOS_LIGA[s];
+  const direto = s.match(/^(?:playpix|betano|bet365)-(?:liga-)?([1-9])$/);
+  if (direto) return CODIGO_PLAYPIX[direto[1]] || "";
+  const partes = s.split("-");
+  const semCasa = /^(?:playpix|betano|bet365)$/.test(partes[0]) ? partes.slice(1).join("-") : s;
+  if (APELIDOS_LIGA[semCasa]) return APELIDOS_LIGA[semCasa];
+  if (CODIGO_PLAYPIX[semCasa]) return CODIGO_PLAYPIX[semCasa];
+  const porLiga = semCasa.match(/^liga-([1-9])$/);
+  return porLiga ? (CODIGO_PLAYPIX[porLiga[1]] || "") : "";
+}
 function ligaRecebida(body) {
-  const casas = new Set(["betano", "playpix", "bet365"]);
-  const casa = slugLiga(body && (body.casaFonte || body.bookmaker || body.casa));
-  const enviada = slugLiga(body && body.liga);
-  const nome = slugLiga(body && (body.nomeLiga || body.ligaNome || body.leagueName || body.nome_liga));
-  const playpixPorId = {
-    "1": "ita", "2": "eng", "3": "spa", "4": "bra", "5": "lat",
-    "6": "cam", "7": "cop", "8": "ame", "9": "mun"
-  };
-  // Tambem aceita o identificador composto que o relatorio mostra: playpix|9.
-  const composta = enviada.match(/^playpix-(?:liga-)?([1-9])$/);
-  if (composta) return "playpix-" + playpixPorId[composta[1]];
-  if (enviada && casas.has(enviada.split("-")[0])) return enviada;
-  if (casa && casas.has(casa)) {
-    /* O coletor PlayPix identifica as nove abas pelo parametro numerico da
-       rota. Traduza para o mesmo nome que a interface usa. */
-    const parteNumerica = casa === "playpix" ? playpixPorId[enviada] : null;
-    const parte = nome || parteNumerica ||
-      (enviada && !/^\d+$/.test(enviada) ? enviada : "liga-" + (enviada || "0"));
-    return casa + "-" + parte;
+  const data = (body && body.data && typeof body.data === "object") ? body.data : {};
+  // O nome da aba e a fonte de verdade. Alguns coletores mantem `liga` da aba
+  // anterior durante a troca, mas ja enviam o nome atual dentro do payload.
+  const nomes = [
+    body && body.nomeLiga, body && body.ligaNome, body && body.leagueName, body && body.nome_liga,
+    data.nomeLiga, data.ligaNome, data.leagueName, data.nome_liga, data.nome
+  ];
+  for (const nome of nomes) {
+    const codigo = codigoLiga(nome);
+    if (codigo) return codigo;
   }
-  return nome || enviada;
+  const brutos = [
+    body && body.liga, data.liga, data.codigoLiga,
+    body && body.casaFonte, body && body.bookmaker, body && body.casa
+  ];
+  for (const bruto of brutos) {
+    const codigo = codigoLiga(bruto);
+    if (codigo) return codigo;
+  }
+  return "";
 }
 const BASE = "https://www.caramelotips.com.br/final/";
 const REFRESH_MS = 15000;
@@ -1510,7 +1543,8 @@ setInterval(salvaJogos, 3 * 60000); // salva a cada 3min (se mudou)
 
 app.post("/api/snapshot", (req, res) => {
   try {
-    const { liga, data, mkt, curva, mm1, mm2, topo, fundo } = req.body || {};
+    const { data, mkt, curva, mm1, mm2, topo, fundo } = req.body || {};
+    const liga = ligaRecebida(req.body || {});
     if (!liga || !data || !Array.isArray(data.cells)) {
       return res.status(400).json({ ok: false, erro: "snapshot invalido" });
     }
@@ -1904,11 +1938,10 @@ app.get("/api/grade", (req, res) => {
   }[String(chave || '').toLowerCase()] || { cols: 30, passo: 2 });
   const gradeCfg = cadenciaDaLiga(liga);
   const aliases = {
-    ita:['ita','liga-1'], eng:['eng','liga-2'], spa:['spa','liga-3'],
+    ita:['ita'], eng:['eng'], spa:['spa'],
     // A extensão chama Mundo de MUN (playpix-mun), enquanto a interface usa MND.
-    mnd:['mnd','mun','mundo','liga-9'], bra:['bra','liga-4'],
-    lat:['lat','liga-5'], cam:['cam','liga-6'], cop:['cop','liga-7'],
-    ame:['ame','liga-8'], split:['split']
+    mnd:['mnd'], bra:['bra'],
+    lat:['lat'], cam:['cam'], cop:['cop'], ame:['ame'], split:['split']
   };
   const ligasReais = Object.keys(aliases).filter(k => k !== 'split');
   // A extensao atual usa identificadores dinamicos (ex.: spa, eng, ita),
@@ -1918,38 +1951,24 @@ app.get("/api/grade", (req, res) => {
   const temJogosNaLiga = chave => !!(store[chave] &&
     (gamesFundidos(chave).length || (store[chave].upcomingRaw || []).length));
   const chavePorAlias = id => {
-    const apelidos = aliases[id] || [id];
-    return Object.keys(store).find(k =>
-      apelidos.some(alias => k.toLowerCase().includes(alias)) && temJogosNaLiga(k));
+    const codigo = codigoLiga(id) || String(id || '').toLowerCase();
+    // Correspondencia exata: ENG jamais pode receber SPA por semelhanca de
+    // texto, pela ordem de chegada ou pelo ultimo lote disponivel.
+    return Object.keys(store).find(k => codigoLiga(k) === codigo && temJogosNaLiga(k));
   };
   const encontradaPorAlias = aliases[liga] && chavePorAlias(liga);
-  /* Algumas versoes do coletor enviam a liga brasileira com um identificador
-     numerico/dinamico, sem a palavra "bra". Se as outras oito fontes ja foram
-     reconhecidas, a unica fonte real restante e necessariamente a BRA. Isso
-     preserva o contrato da extensao e evita deixar resultados e futuros vazios. */
-  const fontesReconhecidas = new Set(ligasReais
-    .filter(id => id !== liga)
-    .map(chavePorAlias).filter(Boolean));
-  const fonteRestante = liga === 'bra' && !encontradaPorAlias
-    ? Object.keys(store).find(k => temJogosNaLiga(k) && store[k].fonte === 'sonda' &&
-      !fontesReconhecidas.has(k))
-    : null;
   // Para uma liga real escolhida pelo usuário, nunca devolvemos os jogos de
   // outra liga como "substituto". Isso fazia, por exemplo, MND/Split exibirem
   // a grade da Itália enquanto a extensão ainda estava varrendo essas abas.
   // As abas clássicas continuam com o fallback abaixo para compatibilidade.
   // Cada aba usa apenas o lote recebido para a propria liga.
-  const ligaReal = temJogosNaLiga(liga) ? liga : (encontradaPorAlias || fonteRestante);
+  const ligaReal = temJogosNaLiga(liga) ? liga : encontradaPorAlias;
   /* Split e a visao consolidada: junta somente as nove ligas que a extensao
      envia. Nao pode cair no fallback da ITA, pois isso faz a grade parecer
      picotada e repete uma liga como se fosse o conjunto todo. */
   if (liga === 'split') {
     const fontes = ligasReais.map(id => {
-      const chave = temJogosNaLiga(id) ? id : (chavePorAlias(id) ||
-        (id === 'bra' ? Object.keys(store).find(k =>
-          temJogosNaLiga(k) && store[k].fonte === 'sonda' &&
-          !ligasReais.filter(x => x !== 'bra')
-            .map(chavePorAlias).filter(Boolean).includes(k)) : null));
+      const chave = temJogosNaLiga(id) ? id : chavePorAlias(id);
       return chave ? { chave, dado: store[chave] } : null;
     }).filter(Boolean);
     const minutoDoJogo = g => {
