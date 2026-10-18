@@ -708,9 +708,16 @@
 
   function montarJanela(mercadoForcado) {
     var mercado = mercadoForcado || mercadoDaGrade();
-    var janela = janelaSelecionada();
+    var janelaPedida = janelaSelecionada();
     var historico = cacheDaLiga(ligaAtual()).jogos;
     var fonte = deduplicarResolvidos(historico.concat(jogosAtuais()));
+    /* Depois de um reinicio o coletor pode ter menos historico que a janela
+       escolhida. Em vez de apagar o grafico inteiro, usamos a maior janela
+       completa disponivel e continuamos sinalizando que a janela pedida ainda
+       esta carregando. Assim ENG/LAT voltam a desenhar com os resultados que a
+       extensao ja enviou, sem fabricar ponto nem alterar resultados. */
+    var janela = Math.min(janelaPedida,
+      Math.max(2, Math.floor(fonte.length / 2)));
     var completo = mediaMovel(fonte, janela, mercado);
 
     /*
@@ -728,8 +735,9 @@
     pacote.modo = 'janela';
     pacote.mercado = mercado;
     pacote.janela = janela;
-    pacote.quantidadePadrao = janela;
-    pacote.completo = periodoAtual.quantidade === janela;
+    pacote.janelaSolicitada = janelaPedida;
+    pacote.quantidadePadrao = janelaPedida;
+    pacote.completo = janela === janelaPedida && periodoAtual.quantidade === janela;
     pacote.horasCarregadas = cacheDaLiga(ligaAtual()).horas;
     pacote.base = referenciaMercado(
       mercado,
