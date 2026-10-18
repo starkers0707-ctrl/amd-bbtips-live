@@ -935,9 +935,7 @@ function processarAlertaGDCross(analise, pontos, metas, escopo, mercado, liga) {
   gdCrossAlerta.ultimoAlerta = chaveAlerta;
 
   const golden = cruzamento.tipo === 'golden';
-  // Death continua desenhado no grafico como referencia, mas nao gera aviso.
-  if (!golden) return;
-  const nome = 'GOLDEN CROSS';
+  const nome = golden ? 'GOLDEN CROSS' : 'DEATH CROSS';
   const direcao = golden ? 'acima' : 'abaixo';
   const horario = meta.rotulo ||
     (meta.hora != null && meta.minuto != null ? pad(meta.hora) + ':' + pad(meta.minuto) : '');
@@ -2769,7 +2767,7 @@ function notificarGDCross(tipo, liga, horario) {
   if (!alertaPodeDispararAgora()) return;
   // O Golden precisa avisar na hora, inclusive com o painel aberto. Antes o
   // aviso era cancelado justamente quando o usuario estava olhando a tela.
-  if (tipo !== 'golden' || !('Notification' in window) || Notification.permission !== 'granted') return;
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
   const golden = tipo === 'golden';
   const titulo = golden ? '🏆 GOLDEN CROSS' : '💀 DEATH CROSS';
   const texto = textoAlertaGDCross(tipo, liga, horario).replace(/\.\s*$/, '');
