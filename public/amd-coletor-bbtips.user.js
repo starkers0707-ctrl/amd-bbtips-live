@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMD Coletor BBTips
 // @namespace    amd.live
-// @version      4.8.0
+// @version      4.9.0
 // @description  Coleta a grade de jogos do BB Tips em todas as casas e ligas (bet365 / betano / playpix) e envia para o coletor AMD
 // @author       AMD
 // @match        https://thtips.com.br/*
@@ -48,6 +48,16 @@
     set: (k, v) => { try { GM_setValue(k, v); } catch (e) {} }
   };
 
+  const ROTAS_STORE = 'amd_rotas_v1';
+  function temAutorizacao(headers) {
+    if (!headers) return false;
+    try {
+      return Object.keys(headers).some(k =>
+        /^authorization$/i.test(k) && String(headers[k] || '').trim()
+      );
+    } catch (e) { return false; }
+  }
+
   const S = {
     ativo: store.get('amd_ativo', true),
     endpoints: new Map(),   // path -> {n, amostra}
@@ -59,6 +69,22 @@
     jogos: 0, entradas: 0, enviados: 0, erros: 0,
     varrendo: 0, ultimoErro: '', ultimoEnvio: 0
   };
+
+  function salvarRotas() {
+    const out = {};
+    for (const [k, r] of S.rotas) {
+      if (!r || !r.url || !temAutorizacao(r.headers)) continue;
+      out[k] = { url: r.url, headers: r.headers, casa: r.casa, liga: r.liga };
+    }
+    store.set(ROTAS_STORE, out);
+  }
+
+  try {
+    const antigas = store.get(ROTAS_STORE, {}) || {};
+    for (const [k, r] of Object.entries(antigas)) {
+      if (r && r.url && temAutorizacao(r.headers)) S.rotas.set(k, r);
+    }
+  } catch (e) {}
   let tokenCapturado = null;
 
   function tokenDosHeaders(headers) {
@@ -272,6 +298,7 @@
     const antiga = S.rotas.get(rk);
     const h = (headers && Object.keys(headers).length) ? headers : (antiga && antiga.headers) || {};
     S.rotas.set(rk, { url: comOdds(String(url)), headers: h, casa, liga });
+    if (temAutorizacao(h)) salvarRotas();
 
     let json = null;
     try { json = JSON.parse(texto); } catch (e) { return 0; }
@@ -434,9 +461,9 @@
     const bases = new Map();
     for (const [k, r] of S.rotas) {
       if (/entradasAnalisadas/i.test(k)) continue;
-      if (!bases.has(r.casa) && r.headers && r.headers.Authorization) bases.set(r.casa, r);
+      if (!bases.has(r.casa) && temAutorizacao(r.headers)) bases.set(r.casa, r);
     }
-    if (!bases.size) { S.ultimoErro = 'abra 1 liga antes de varrer'; return; }
+    if (!bases.size) { S.ultimoErro = 'recarregue o BBTips uma vez para autorizar'; return; }
 
     const porCasa = [];
     for (const [, r] of bases) {
@@ -826,5 +853,5 @@
       (S.ultimoErro ? '<br><span style="color:#f85149">' + S.ultimoErro + '</span>' : '');
   }, 1000);
 
-  console.log('[AMD] coletor bbtips v4.8 carregado (mapa fixo das nove ligas)');
+  console.log('[AMD] coletor bbtips v4.9 carregado (rotas autorizadas persistentes)');
 })();
