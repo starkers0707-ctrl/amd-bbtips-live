@@ -549,7 +549,10 @@ function macdData(series) {
 }
 
 function goldenCrossData(series) {
-  const { mm1, mm2, hist } = macdData(series);
+  // O grafico operacional usa MM9/MM21. O radar precisa observar exatamente
+  // as mesmas linhas para o aviso coincidir com o desenho exibido.
+  const mm1 = ema(series, 9), mm2 = ema(series, 21);
+  const hist = series.map((_, i) => +(mm1[i] - mm2[i]).toFixed(2));
   const last = hist.length - 1;
   if (last < 0) return { active: false, crossedNow: false, index: null, barsAgo: null, fast: null, slow: null, spread: 0 };
   let index = null;
@@ -4272,6 +4275,26 @@ function serieDoDia(gAll, mkt, JAN) {
   return out;
 }
 
+function jogosRadarEmOrdem(games) {
+  const lista = Array.isArray(games) ? games.slice() : [];
+  const agoraBR = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Sao_Paulo', hour: '2-digit', minute: '2-digit',
+    hourCycle: 'h23'
+  }).formatToParts(new Date()).reduce((acc, p) => {
+    if (p.type !== 'literal') acc[p.type] = Number(p.value);
+    return acc;
+  }, {});
+  const minutoAtual = (agoraBR.hour || 0) * 60 + (agoraBR.minute || 0);
+  return lista.map((g, i) => {
+    const partes = String(g.horario || g.hora || '').match(/(\d{1,2}):(\d{2})/);
+    const minuto = partes ? Number(partes[1]) * 60 + Number(partes[2]) : i;
+    // Em um lote de 24h, horarios bem a frente do relogio atual pertencem a
+    // ontem. Assim 23h de ontem fica antes de 00h/16h de hoje no radar.
+    const dia = minuto > minutoAtual + 10 ? -1 : 0;
+    return { g, ordem: dia * 1440 + minuto, i };
+  }).sort((a, b) => a.ordem - b.ordem || a.i - b.i).map(x => x.g);
+}
+
 function atualizaRadar(liga, s) {
   try {
     // snapshot2 chamava esta funcao sem `s`; alem disso, listaCheia(s) ignora o
@@ -4284,7 +4307,7 @@ function atualizaRadar(liga, s) {
       const c = s.computed && s.computed[mkt]; if (!c || !c.sinal) continue;
       // RADAR SEM DROP-2: usa gamesAll (inclui os 2 jogos mais recentes) — alerta no
       // fechamento real do jogo. Grafico/analises continuam com drop-2 (fieis ao caramelo).
-      const gAll = gamesFundidos(liga);
+      const gAll = jogosRadarEmOrdem(gamesFundidos(liga));
       const JANR = Math.max(2, Math.min(20, gAll.length));
       // RADAR BASEADO NO GRAFICO ACUMULADO 00H (pedido do usuario): so jogos do dia atual
       const serieDia = gAll.length ? serieDoDia(gAll, mkt, JANR) : null;
@@ -4371,9 +4394,9 @@ function atualizaRadar(liga, s) {
         const atrasoMin = atrasoMinutos(horaFonte, hora);
         radarAtivos[chaveGolden] = { liga, mkt, tipo: "golden", pagando: cur, base: c.base, fita, mm10: golden.fast, mm20: golden.slow, spread: golden.spread, barsAgo: golden.barsAgo, hora, horaFonte, atrasoMin, cruzouEm, ts: Date.now() };
         // A sonda pode mandar um pequeno lote de resultados. Nesse caso o
-        // cruzamento pode estar 1-2 pontos antes do ultimo e crossedNow=false,
+        // cruzamento pode estar ate 5 pontos antes do ultimo e crossedNow=false,
         // embora tenha acabado de chegar. Avise a transicao se ela for recente.
-        const cruzamentoRecente = golden.crossedNow || (golden.barsAgo != null && golden.barsAgo <= 2);
+        const cruzamentoRecente = golden.crossedNow || (golden.barsAgo != null && golden.barsAgo <= 5);
         if (cruzamentoRecente && !prev.golden && !primeira && podeAvisar(chaveGolden)) avisaRadar(radarAtivos[chaveGolden]);
       } else delete radarAtivos[k + "|golden"];
       radarEstado[k] = { fundo, sobe, ltb: quebrouLTB, nivelMin, pull, golden: golden.active };
