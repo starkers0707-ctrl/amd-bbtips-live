@@ -3,7 +3,7 @@ const MERCADOS = "o25,o35,ge5,ambas,u25,u15,u05";
 const CASAS = [
   { casa: "betano",  path: "betanoFutebolVirtual",  param: "liga", max: 12 },
   { casa: "bet365",  path: "futebolvirtual",        param: "liga", max: 6  },
-  { casa: "playpix", path: "PlayPixFutebolVirtual", param: "Liga", max: 9  }
+  { casa: "playpix", path: "PlayPixFutebolVirtual", param: "Liga", ids: [6, 7, 8] }
 ];
 const API = "https://api.thtips.com.br/api/";
 // nomes reais das ligas por casa (a rota entradasAnalisadas so existe no bet365/playpix)
@@ -123,7 +123,7 @@ async function coletaTudo(token, onLiga, log = () => {}) {
     // Todas as ligas sao independentes. Consultar uma por vez fazia a ultima
     // receber o resultado varios segundos depois da primeira.
     const tarefas = [];
-    for (let id = 0; id <= c.max; id++) tarefas.push((async () => {
+    for (const id of (c.ids || [])) tarefas.push((async () => {
       const url = base + "?" + c.param + "=" + id + "&Horas=Horas12&filtros=" + encodeURIComponent(MERCADOS);
       const r = await pega(url, token);
       if (r.erro) {

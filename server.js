@@ -2110,11 +2110,13 @@ app.get("/api/grade", (req, res) => {
     if (!m) return null;
     let h = Number(m[1]), min = Number(m[2]);
     if (!Number.isFinite(h) || !Number.isFinite(min)) return null;
-    // AME usa a sequencia 01,04,07... e COP usa 00,03,06... no relogio
-    // original. Nessas duas ligas o minuto recebido ja e a referencia da
-    // coluna; deslocar -1 misturava as ancoras. As demais mantem o contrato
-    // legado da extensao, que nomeia a primeira casa um minuto adiante.
-    if (liga !== 'ame' && liga !== 'cop') min -= 1;
+    // CAM e COP usam 00,03,06...; AME usa 01,04,07... no relogio original.
+    // Nessas tres ligas o minuto recebido ja e a referencia exata da coluna.
+    // Subtrair 1 da CAM transformava 17:00 em 16:59, removia a primeira casa
+    // da linha e fazia o cabecalho aparecer incorretamente como 02,05,08....
+    // As demais ligas mantem o contrato legado da extensao, que nomeia a
+    // primeira casa um minuto adiante.
+    if (liga !== 'ame' && liga !== 'cop' && liga !== 'cam') min -= 1;
     if (min < 0) { min += 60; h = (h + 23) % 24; }
     const agoraReal = new Date(agoraGrade);
     let ts = Date.UTC(agoraReal.getUTCFullYear(), agoraReal.getUTCMonth(), agoraReal.getUTCDate(), h, min, 0, 0);
