@@ -209,9 +209,13 @@ async function revogar(c){if(!confirm('Revogar '+c+'?'))return;await api('/api/a
 </script></body></html>`);
 });
 
-// As ligas sao definidas pela extensao. A base antiga nao participa da grade.
-const LIGAS = (process.env.LIGAS || "ita,eng,spa,mnd,bra,lat,cam,cop,ame").split(",").map(x => x.trim()).filter(Boolean);
-function registraLiga(l) { if (l && !LIGAS.includes(l)) LIGAS.push(l); }
+// Esta instalacao trabalha exclusivamente com as tres ligas Kiron solicitadas.
+// A trava tambem protege o servidor caso uma versao antiga do userscript ainda
+// tente reenviar as demais ligas que ficaram salvas no Tampermonkey.
+const KIRON_LIGAS = new Set(["cam", "cop", "ame"]);
+const LIGAS = (process.env.LIGAS || "cam,cop,ame").split(",").map(x => x.trim())
+  .filter(x => KIRON_LIGAS.has(x));
+function registraLiga(l) { if (KIRON_LIGAS.has(l) && !LIGAS.includes(l)) LIGAS.push(l); }
 function slugLiga(v) {
   return String(v == null ? "" : v).trim().toLowerCase().normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
@@ -1569,6 +1573,7 @@ async function carregaJogos() {
         // imediatamente e ainda preservamos a semente para a emenda do proximo
         // snapshot ao vivo.
         for (const [liga, gamesSalvos] of Object.entries(dados)) {
+          if (!KIRON_LIGAS.has(liga)) continue;
           if (!Array.isArray(gamesSalvos) || !gamesSalvos.length) continue;
           const st = buildStore(liga, gamesSalvos, [], new Date().toISOString());
           st.gamesAll = gamesSalvos;
@@ -1591,6 +1596,9 @@ app.post("/api/snapshot", (req, res) => {
     let liga = ligaRecebida(req.body || {});
     if (!liga || !data || !Array.isArray(data.cells)) {
       return res.status(400).json({ ok: false, erro: "snapshot invalido" });
+    }
+    if (!KIRON_LIGAS.has(liga)) {
+      return res.status(422).json({ ok: false, erro: "liga desativada; somente CAM, COP e AME", liga });
     }
     ultimoSnapshotCru[liga] = { cells: (data && data.cells) ? data.cells.length : 0, temData: !!data, hora: new Date().toLocaleTimeString("pt-BR", { timeZone: "America/Sao_Paulo" }), amostraCell: (data && data.cells && data.cells[0]) ? JSON.stringify(data.cells[0]).slice(0, 200) : null };
     let { games, upcoming, gamesAll } = decodeSnapshot(data);
@@ -1644,6 +1652,9 @@ app.post("/api/dados", (req, res) => {
        lote deixava a BRA vazia ate sair o primeiro FT. */
     if (!liga || (!placaresLista.length && !futurosLista.length)) {
       return res.status(400).json({ ok: false, erro: "sem jogos" });
+    }
+    if (!KIRON_LIGAS.has(liga)) {
+      return res.status(422).json({ ok: false, erro: "liga desativada; somente CAM, COP e AME", liga });
     }
     // A sonda ja conhece a casa exata da grade. Preserve essas coordenadas;
     // recalcular a coluna pela ordem do array deslocava, por exemplo, a 48 para a 26.
