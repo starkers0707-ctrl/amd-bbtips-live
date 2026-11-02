@@ -2151,21 +2151,20 @@ app.get("/api/grade", (req, res) => {
     const instante = instanteDaGrade(g.horario, false);
     return Number.isFinite(instante) ? Math.max(maior, instante) : maior;
   }, Number.NEGATIVE_INFINITY);
-  let ultimoSlotEm = ultimoResolvidoEm;
-  const toleranciaFuturoMs = passoGradeMs * 3;
   const partidas = todos.map((g, i) => {
     const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
     const tsDireto = instanteDaGrade(g.horario, !resolvido);
-    let tsNormalizado = tsDireto;
-    if (!resolvido && Number.isFinite(ultimoSlotEm)) {
-      const foraDaSequencia = tsDireto == null || tsDireto <= ultimoSlotEm ||
-        tsDireto - ultimoSlotEm > toleranciaFuturoMs;
-      tsNormalizado = foraDaSequencia ? ultimoSlotEm + passoGradeMs : tsDireto;
-      ultimoSlotEm = tsNormalizado;
-    }
-    const ts = new Date(tsNormalizado == null
+    // Um pendente antigo pode continuar no HTML da fonte mesmo depois que a
+    // grade ja recebeu resultados mais recentes. A regra anterior empurrava
+    // esse pendente para o proximo slot livre, fazendo um jogo da linha 17
+    // aparecer na linha 18. A hora original e a fonte de verdade: pendente
+    // anterior ao ultimo resultado e obsoleto e deve ser ignorado, nunca
+    // deslocado. Assim cada linha conserva exatamente suas 20 colunas.
+    if (!resolvido && Number.isFinite(ultimoResolvidoEm) &&
+        Number.isFinite(tsDireto) && tsDireto <= ultimoResolvidoEm) return null;
+    const ts = new Date(tsDireto == null
       ? agora - (todos.length - 1 - i) * passoGradeMs
-      : tsNormalizado).toISOString();
+      : tsDireto).toISOString();
     const encaixe = new Date(ts);
     return {
       id: `${ligaReal}-${i}-${g.horario || ""}-${g.casa || ""}`,
@@ -2189,7 +2188,7 @@ app.get("/api/grade", (req, res) => {
       criado_em: ts,
       odds: oddsAntigas(g.odds)
     };
-  });
+  }).filter(Boolean);
   // O coletor pode enviar 24h ordenadas apenas pelo relogio (00..23). Nesse
   // formato, 23h de ontem fica depois de 16h de hoje e o backtest interpreta
   // ontem como o trecho mais recente. `slot_em` ja contem o dia correto; por
