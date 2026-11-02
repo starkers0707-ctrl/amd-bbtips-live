@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         AMD Coletor BBTips
 // @namespace    amd.live
-// @version      4.9.0
-// @description  Coleta a grade de jogos do BB Tips em todas as casas e ligas (bet365 / betano / playpix) e envia para o coletor AMD
+// @version      5.0.0
+// @description  Coleta somente as ligas Kiron CAM, COP e AME e envia para o AMD
 // @author       AMD
 // @match        https://thtips.com.br/*
 // @match        https://*.thtips.com.br/*
@@ -41,6 +41,8 @@
     HORAS: '',             // '' mantem o capturado. Ex: 'Horas24' para puxar mais historico
     MAX_AMOSTRA: 4000
   };
+  const KIRON_IDS = new Set(['6', '7', '8']); // CAM, COP e AME
+  const ehRotaKiron = r => !!r && r.casa === 'playpix' && KIRON_IDS.has(String(r.liga));
 
   const W = (typeof unsafeWindow !== 'undefined' && unsafeWindow) ? unsafeWindow : window;
   const store = {
@@ -82,7 +84,7 @@
   try {
     const antigas = store.get(ROTAS_STORE, {}) || {};
     for (const [k, r] of Object.entries(antigas)) {
-      if (r && r.url && temAutorizacao(r.headers)) S.rotas.set(k, r);
+      if (r && r.url && temAutorizacao(r.headers) && ehRotaKiron(r)) S.rotas.set(k, r);
     }
   } catch (e) {}
   let tokenCapturado = null;
@@ -284,6 +286,8 @@
     const { path } = partes(url);
     const casa = casaDaUrl(url);
     const liga = ligaDaUrl(url);
+    // Este coletor e exclusivo do Kiron: ignora as demais casas e ligas.
+    if (!ehRotaKiron({ casa, liga })) return 0;
 
     const reg = S.endpoints.get(path) || { n: 0, amostra: '' };
     reg.n++;
@@ -460,7 +464,7 @@
   function varrerLigas() {
     const bases = new Map();
     for (const [k, r] of S.rotas) {
-      if (/entradasAnalisadas/i.test(k)) continue;
+      if (/entradasAnalisadas/i.test(k) || !ehRotaKiron(r)) continue;
       if (!bases.has(r.casa) && temAutorizacao(r.headers)) bases.set(r.casa, r);
     }
     if (!bases.size) { S.ultimoErro = 'recarregue o BBTips uma vez para autorizar'; return; }
@@ -468,7 +472,7 @@
     const porCasa = [];
     for (const [, r] of bases) {
       const lista = [];
-      for (let i = 1; i <= CFG.LIGA_MAX; i++) {
+      for (const i of [6, 7, 8]) {
         const e = urlEntradas(r.url, i);
         const g = trocaLiga(r.url, i);
         if (e) lista.push({ url: e, headers: r.headers });
@@ -509,6 +513,7 @@
     if (S.varrendo > 0 && !somenteGrades) return;
     let i = 0;
     for (const r of S.rotas.values()) {
+      if (!ehRotaKiron(r)) continue;
       if (somenteGrades && /entradasAnalisadas/i.test(r.url)) continue;
       const atraso = (i++) * CFG.PAUSA_REFETCH;
       setTimeout(() => {
@@ -578,6 +583,7 @@
     const out = [];
     for (const g of paraAmdLive()) {
       const nomeLg = slug(g.ligaNome || ('liga' + g.liga));
+      if (g.casa !== 'playpix' || !['cam', 'cop', 'ame'].includes(nomeLg)) continue;
       const placares = g.mosaico.passados
         .filter(j => j.placar)
         .map(j => {
@@ -770,7 +776,7 @@
     p.style.cssText = 'position:fixed;right:14px;bottom:14px;z-index:2147483647;width:252px;background:#0d1117;color:#e6edf3;border:1px solid #30363d;border-radius:10px;padding:10px;font:12px/1.45 ui-monospace,Menlo,Consolas,monospace;box-shadow:0 8px 28px rgba(0,0,0,.55);user-select:none';
     p.innerHTML =
       '<div id="amd-cab" style="display:flex;justify-content:space-between;align-items:center;cursor:move;margin-bottom:8px">' +
-      '<b style="letter-spacing:.5px">AMD COLETOR <small style="color:#58a6ff">v4.8</small></b><span id="amd-led" style="width:9px;height:9px;border-radius:50%;background:#3fb950"></span></div>' +
+      '<b style="letter-spacing:.5px">AMD COLETOR <small style="color:#58a6ff">v5.0</small></b><span id="amd-led" style="width:9px;height:9px;border-radius:50%;background:#3fb950"></span></div>' +
       '<div id="amd-info" style="color:#9198a1"></div>' +
       '<button id="amd-var" style="' + btn() + ';width:100%;margin-top:9px;padding:7px 0;background:#1f6feb;border-color:#1f6feb">Varrer todas as ligas</button>' +
       '<div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:5px">' +
@@ -853,5 +859,5 @@
       (S.ultimoErro ? '<br><span style="color:#f85149">' + S.ultimoErro + '</span>' : '');
   }, 1000);
 
-  console.log('[AMD] coletor bbtips v4.9 carregado (rotas autorizadas persistentes)');
+  console.log('[AMD] coletor bbtips v5.0 carregado (Kiron CAM/COP/AME)');
 })();

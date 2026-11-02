@@ -64,17 +64,10 @@ if (window.location.hostname === "amd-live-dashboard.onrender.com") {
 
     <!-- LIGAS -->
     <div class="tabrow" id="leagues">
-      <button class="tab active" data-v="ita">🇮🇹 ITA</button>
-      <button class="tab" data-v="eng">🏴 ENG</button>
-      <button class="tab" data-v="spa">🇪🇸 SPA</button>
-      <button class="tab" data-v="mnd">🌐 MND</button>
-      <button class="tab" data-v="bra">🇧🇷 BRA</button>
-      <button class="tab" data-v="lat">🌎 LAT</button>
-      <button class="tab" data-v="cam">🏆 CAM</button>
+      <button class="tab active" data-v="cam">🏆 CAM</button>
       <button class="tab" data-v="cop">🏆 COP</button>
       <button class="tab" data-v="ame">🌎 AME</button>
-      <button class="tab" data-v="split">🏆 Split</button>
-      <span class="tag-active">Liga ativa: <b id="ligaAtiva">ITA</b></span>
+      <span class="tag-active">Liga ativa: <b id="ligaAtiva">CAM</b></span>
     </div>
 
     <!-- MERCADOS -->
@@ -201,18 +194,11 @@ if (window.location.hostname === "amd-live-dashboard.onrender.com") {
           <button class="chip on">Hacker IA</button>
         </div>
         <div class="mktsel chart-liga" style="margin-left:auto">
-          <button class="chip on" id="cligaBtn">Liga: ITA ⌄</button>
+          <button class="chip on" id="cligaBtn">Liga: CAM ⌄</button>
           <div class="mktmenu" id="cligaMenu" hidden>
-            <button class="on" data-liga="ita">ITA</button>
-            <button data-liga="eng">ENG</button>
-            <button data-liga="spa">SPA</button>
-            <button data-liga="mnd">MND</button>
-            <button data-liga="bra">BRA</button>
-            <button data-liga="lat">LAT</button>
-            <button data-liga="cam">CAM</button>
+            <button class="on" data-liga="cam">CAM</button>
             <button data-liga="cop">COP</button>
             <button data-liga="ame">AME</button>
-            <button data-liga="split">Split</button>
           </div>
         </div>
         <div class="mktsel">
@@ -330,7 +316,7 @@ if (window.location.hostname === "amd-live-dashboard.onrender.com") {
     <!-- BACKTEST -->
     <section class="panel">
       <div class="panel-head">
-        <span class="panel-title" id="btTitle">Backtest · ITA — 5+ gols</span>
+        <span class="panel-title" id="btTitle">Backtest · CAM — 5+ gols</span>
         <a href="#" class="link">Ver todos ›</a>
       </div>
       <table>
@@ -345,7 +331,7 @@ if (window.location.hostname === "amd-live-dashboard.onrender.com") {
         <span class="panel-title" id="gradeTitle">Grade de jogos — Over 2.5</span>
       </div>
       <div class="grid-meta">
-        <span>Liga <b id="gLiga">ITA</b></span>
+        <span>Liga <b id="gLiga">CAM</b></span>
         <span>Cobertura <b>100.00%</b></span>
         <span>Gols <b id="gGols">149</b></span>
         <span>Média gols/jogo <b id="gMedia">2.48</b></span>
@@ -392,14 +378,14 @@ if (window.location.hostname === "amd-live-dashboard.onrender.com") {
 <script src="media-alert-model.js?v=20260824a"></script>
 <script src="candle-trend-model.js?v=20260827a"></script>
 <script src="direcao-ligas-model.js?v=20260829a"></script>
-<script src="acumulado.js?v=20261018-janela-disponivel"></script>
+<script src="acumulado.js?v=20261102-kiron3"></script>
 <script src="fib50-alert.js?v=20260908a"></script>
-<script src="app.js?v=20261102-gdcross-live"></script>
+<script src="app.js?v=20261102-kiron3"></script>
 <script src="robo-manual-monitor.js?v=20260909-multiliga-tiros"></script>
 <script src="npro.js?v=20260827a"></script>
 <script src="robo-padroes-model.js?v=20260827h"></script>
 <script src="robo-padroes.js?v=20260827j"></script>
-<script src="dados-reais.js?v=20261017-lat30"></script>
+<script src="dados-reais.js?v=20261102-kiron3"></script>
 <script src="maxima.js?v=20260817b"></script>
 <script src="squad.js?v=20261017-20e30"></script>
 <script src="motor.js?v=2"></script>

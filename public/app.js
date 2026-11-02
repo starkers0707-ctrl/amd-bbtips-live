@@ -22,7 +22,7 @@ function poisson(rng, lambda = 1.24) {
 }
 
 /* ---------- ESTADO ---------- */
-const state = { liga: 'ita', mercado: 'Over 2.5', mercadosGrafico: ['Over 2.5'], modoMercadosGrafico: 'fixo', qtd: 240, horas: 6, metrica: '% pagamento', visual: 'Clássico', gradeMercado: 'Over 2.5', zoom: 1, ht: false, mostrarTime: true,
+const state = { liga: 'cam', mercado: 'Over 2.5', mercadosGrafico: ['Over 2.5'], modoMercadosGrafico: 'fixo', qtd: 240, horas: 6, metrica: '% pagamento', visual: 'Clássico', gradeMercado: 'Over 2.5', zoom: 1, ht: false, mostrarTime: true,
   graficoTravado: true, panGrafico: 0, ancoraGrafico: null,
   totalFonteGrafico: 0, ultimoJogoViewport: null, odds: ['AS','O2.5','O3.5'] };
 const parametrosQuadro = new URLSearchParams(window.location.search);
@@ -47,7 +47,7 @@ window.atualizarSeletorLigaGrafico = function () {
     window.GraficoReal.modo() === 'ligas';
   const botao = document.getElementById('cligaBtn');
   const nomes = { ita:'ITA',eng:'ENG',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT',cam:'CAM',cop:'COP',ame:'AME',split:'Split' };
-  const chave = String(state.liga || 'ita').toLowerCase();
+  const chave = String(state.liga || 'cam').toLowerCase();
   if (botao) {
     botao.textContent = comparar
       ? 'Ligas: Todas (9)'
