@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMD Coletor BBTips
 // @namespace    amd.live
-// @version      4.4.0
+// @version      4.5.0
 // @description  Coleta a grade de jogos do BB Tips em todas as casas e ligas (bet365 / betano / playpix) e envia para o coletor AMD
 // @author       AMD
 // @match        https://thtips.com.br/*
@@ -436,7 +436,12 @@
   // 6. AUTO-REFETCH
   // ============================================================
   function refetch(somenteGrades) {
-    if (!CFG.AUTO_REFETCH || !S.ativo || S.varrendo > 0) return;
+    if (!CFG.AUTO_REFETCH || !S.ativo) return;
+    // A varredura completa pode levar dezenas de segundos. Bloquear tambem o
+    // ciclo rapido nesse periodo fazia o resultado ficar 3 a 10 jogos atrasado
+    // e depois chegar todo de uma vez. Durante a varredura pausamos somente o
+    // refetch completo; as grades ao vivo continuam sendo consultadas.
+    if (S.varrendo > 0 && !somenteGrades) return;
     let i = 0;
     for (const r of S.rotas.values()) {
       if (somenteGrades && /entradasAnalisadas/i.test(r.url)) continue;
@@ -697,7 +702,7 @@
     p.style.cssText = 'position:fixed;right:14px;bottom:14px;z-index:2147483647;width:252px;background:#0d1117;color:#e6edf3;border:1px solid #30363d;border-radius:10px;padding:10px;font:12px/1.45 ui-monospace,Menlo,Consolas,monospace;box-shadow:0 8px 28px rgba(0,0,0,.55);user-select:none';
     p.innerHTML =
       '<div id="amd-cab" style="display:flex;justify-content:space-between;align-items:center;cursor:move;margin-bottom:8px">' +
-      '<b style="letter-spacing:.5px">AMD COLETOR <small style="color:#58a6ff">v4.4</small></b><span id="amd-led" style="width:9px;height:9px;border-radius:50%;background:#3fb950"></span></div>' +
+      '<b style="letter-spacing:.5px">AMD COLETOR <small style="color:#58a6ff">v4.5</small></b><span id="amd-led" style="width:9px;height:9px;border-radius:50%;background:#3fb950"></span></div>' +
       '<div id="amd-info" style="color:#9198a1"></div>' +
       '<button id="amd-var" style="' + btn() + ';width:100%;margin-top:9px;padding:7px 0;background:#1f6feb;border-color:#1f6feb">Varrer todas as ligas</button>' +
       '<div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:5px">' +
