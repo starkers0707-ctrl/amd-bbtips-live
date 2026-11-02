@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMD Coletor BBTips
 // @namespace    amd.live
-// @version      4.5.0
+// @version      4.6.0
 // @description  Coleta a grade de jogos do BB Tips em todas as casas e ligas (bet365 / betano / playpix) e envia para o coletor AMD
 // @author       AMD
 // @match        https://thtips.com.br/*
@@ -59,6 +59,22 @@
     jogos: 0, entradas: 0, enviados: 0, erros: 0,
     varrendo: 0, ultimoErro: '', ultimoEnvio: 0
   };
+  let tokenCapturado = null;
+
+  function tokenDosHeaders(headers) {
+    if (!headers) return null;
+    try {
+      const pares = headers instanceof Headers
+        ? Array.from(headers.entries())
+        : (Array.isArray(headers) ? headers : Object.entries(headers));
+      for (const [k, v] of pares) {
+        if (!/^authorization$/i.test(String(k))) continue;
+        const t = String(v || '').replace(/^Bearer\s+/i, '').trim();
+        if (t.length >= 40) return t;
+      }
+    } catch (e) {}
+    return null;
+  }
   let envioRapidoTimer = null;
 
   function agendarEnvioRapido() {
@@ -175,8 +191,15 @@
         try {
           const a0 = args[0];
           const url = (typeof a0 === 'string') ? a0 : (a0 && a0.url) || '';
+          const h = {};
+          try {
+            const baseHeaders = a0 && typeof a0 !== 'string' ? a0.headers : null;
+            if (baseHeaders) new Headers(baseHeaders).forEach((v, k) => { h[k] = v; });
+            const initHeaders = args[1] && args[1].headers;
+            if (initHeaders) new Headers(initHeaders).forEach((v, k) => { h[k] = v; });
+          } catch (e) {}
           if (S.ativo && ALVO.test(url)) {
-            p.then(r => { try { r.clone().text().then(t => capturar(url, t, 'fetch')).catch(() => {}); } catch (e) {} });
+            p.then(r => { try { r.clone().text().then(t => capturar(url, t, 'fetch', h)).catch(() => {}); } catch (e) {} });
           }
         } catch (e) {}
         return p;
@@ -217,6 +240,11 @@
   // ============================================================
   function capturar(url, texto, origem, headers) {
     if (!S.ativo || !texto) return 0;
+    const tokenAtivo = tokenDosHeaders(headers);
+    if (tokenAtivo && tokenAtivo !== tokenCapturado) {
+      tokenCapturado = tokenAtivo;
+      setTimeout(() => mandaToken(tokenAtivo), 0);
+    }
     const { path } = partes(url);
     const casa = casaDaUrl(url);
     const liga = ligaDaUrl(url);
@@ -566,9 +594,9 @@
   }
 
   let _tokenEnviado = null;
-  function mandaToken() {
+  function mandaToken(forcado) {
     if (!CFG.ENVIAR) return;
-    const t = achaToken();
+    const t = String(forcado || tokenCapturado || achaToken() || '').replace(/^Bearer\s+/i, '').trim();
     if (!t) return;
     const base = String(CFG.COLETOR_URL).replace(/\/api\/dados.*$/, '');
     try {
@@ -702,7 +730,7 @@
     p.style.cssText = 'position:fixed;right:14px;bottom:14px;z-index:2147483647;width:252px;background:#0d1117;color:#e6edf3;border:1px solid #30363d;border-radius:10px;padding:10px;font:12px/1.45 ui-monospace,Menlo,Consolas,monospace;box-shadow:0 8px 28px rgba(0,0,0,.55);user-select:none';
     p.innerHTML =
       '<div id="amd-cab" style="display:flex;justify-content:space-between;align-items:center;cursor:move;margin-bottom:8px">' +
-      '<b style="letter-spacing:.5px">AMD COLETOR <small style="color:#58a6ff">v4.5</small></b><span id="amd-led" style="width:9px;height:9px;border-radius:50%;background:#3fb950"></span></div>' +
+      '<b style="letter-spacing:.5px">AMD COLETOR <small style="color:#58a6ff">v4.6</small></b><span id="amd-led" style="width:9px;height:9px;border-radius:50%;background:#3fb950"></span></div>' +
       '<div id="amd-info" style="color:#9198a1"></div>' +
       '<button id="amd-var" style="' + btn() + ';width:100%;margin-top:9px;padding:7px 0;background:#1f6feb;border-color:#1f6feb">Varrer todas as ligas</button>' +
       '<div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:5px">' +
@@ -785,5 +813,5 @@
       (S.ultimoErro ? '<br><span style="color:#f85149">' + S.ultimoErro + '</span>' : '');
   }, 1000);
 
-  console.log('[AMD] coletor bbtips v4.4 carregado (grade rapida + protecao contra regressao)');
+  console.log('[AMD] coletor bbtips v4.6 carregado (token ativo + grade rapida)');
 })();
