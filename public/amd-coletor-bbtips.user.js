@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMD Coletor BBTips
 // @namespace    amd.live
-// @version      5.1.0
+// @version      5.2.0
 // @description  Coleta somente as ligas Kiron CAM, COP e AME e envia para o AMD
 // @author       AMD
 // @match        https://thtips.com.br/*
@@ -393,17 +393,19 @@
   };
 
   function horarioDaGrade(lin, c) {
+    const horario = limpo(c && c.Horario);
+    // Horario identifica o slot unico da partida. `Minuto` pode se repetir em
+    // duas celulas da mesma linha e, portanto, serve apenas como fallback.
+    if (/^\d{1,2}:\d{2}$/.test(String(horario || ''))) return horario;
     const horaLinha = limpo(c && c.Hora) || limpo(lin && lin.Hora);
     const minutoColuna = limpo(c && c.Minuto);
-    // A API pode informar Horario=17:18 para uma celula desenhada na coluna
-    // 12. Para a grade, a fonte de verdade e Hora da linha + Minuto da coluna.
     if (/^\d{1,2}$/.test(String(horaLinha || '')) &&
         /^\d{1,2}$/.test(String(minutoColuna || ''))) {
       return String(Number(horaLinha)).padStart(2, '0') + ':' +
         String(Number(minutoColuna)).padStart(2, '0');
     }
     if (/^\d{1,2}:\d{2}$/.test(String(horaLinha || ''))) return horaLinha;
-    return limpo(c && c.Horario);
+    return horario;
   }
 
   function parseGrade(json, url, casa) {
