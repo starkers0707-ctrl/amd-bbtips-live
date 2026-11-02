@@ -1919,7 +1919,12 @@ app.post("/api/bbtips/token", (req, res) => {
   if (!t || t.length < 40) return res.status(400).json({ ok: false, erro: "token invalido" });
   const novo = t !== BB_TOKEN; BB_TOKEN = t;
   res.json({ ok: true, novo });
-  if (novo) rodaAutoColeta();
+  // O JWT pode ter sido renovado pela sessao mantendo o mesmo valor visivel
+  // no armazenamento do navegador. Se a ultima tentativa falhou por token ou
+  // ja esta velha, um novo ping do userscript deve tentar imediatamente.
+  if (novo || bbUltima.erro === "token" || Date.now() - Number(bbUltima.ts || 0) > BB_INTERVALO) {
+    rodaAutoColeta();
+  }
 });
 
 app.get("/api/bbtips/estado", (req, res) => res.json({ temToken: !!BB_TOKEN, tamToken: BB_TOKEN.length, fim: BB_TOKEN.slice(-4), ...bbUltima }));
