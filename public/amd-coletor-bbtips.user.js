@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMD Coletor BBTips
 // @namespace    amd.live
-// @version      5.0.0
+// @version      5.1.0
 // @description  Coleta somente as ligas Kiron CAM, COP e AME e envia para o AMD
 // @author       AMD
 // @match        https://thtips.com.br/*
@@ -392,6 +392,20 @@
     return (s === '' || s === '-') ? null : s;
   };
 
+  function horarioDaGrade(lin, c) {
+    const horaLinha = limpo(c && c.Hora) || limpo(lin && lin.Hora);
+    const minutoColuna = limpo(c && c.Minuto);
+    // A API pode informar Horario=17:18 para uma celula desenhada na coluna
+    // 12. Para a grade, a fonte de verdade e Hora da linha + Minuto da coluna.
+    if (/^\d{1,2}$/.test(String(horaLinha || '')) &&
+        /^\d{1,2}$/.test(String(minutoColuna || ''))) {
+      return String(Number(horaLinha)).padStart(2, '0') + ':' +
+        String(Number(minutoColuna)).padStart(2, '0');
+    }
+    if (/^\d{1,2}:\d{2}$/.test(String(horaLinha || ''))) return horaLinha;
+    return limpo(c && c.Horario);
+  }
+
   function parseGrade(json, url, casa) {
     const { qs } = partes(url);
     const liga = ligaDaUrl(url);
@@ -406,7 +420,7 @@
         out.push({
           tipo: 'jogo', casa, liga: liga || null, ligaNome: nomeLiga(casa, liga),
           id: c.Id != null ? c.Id : null,
-          horario: limpo(c.Horario),
+          horario: horarioDaGrade(lin, c),
           hora: limpo(c.Hora) || (lin.Hora != null ? String(lin.Hora) : null),
           minuto: limpo(c.Minuto),
           timeA: limpo(c.TimeA), timeB: limpo(c.TimeB),
