@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMD Coletor BBTips
 // @namespace    amd.live
-// @version      4.7.0
+// @version      4.8.0
 // @description  Coleta a grade de jogos do BB Tips em todas as casas e ligas (bet365 / betano / playpix) e envia para o coletor AMD
 // @author       AMD
 // @match        https://thtips.com.br/*
@@ -166,7 +166,17 @@
     try { store.set('amd_nomes', Object.fromEntries(S.nomes)); } catch (e) {}
   }
 
-  const nomeLiga = (casa, id) => (id == null ? null : S.nomes.get(casa + '|' + id) || null);
+  // IDs fixos das nove abas PlayPix. Eles nao dependem da ordem de clique nem
+  // do texto visual, evitando ENG receber SPA e evitando ligas sem nome.
+  const NOMES_PLAYPIX = Object.freeze({
+    '1': 'ita', '2': 'eng', '3': 'spa', '4': 'bra', '5': 'lat',
+    '6': 'cam', '7': 'cop', '8': 'ame', '9': 'mnd'
+  });
+  const nomeLiga = (casa, id) => {
+    if (id == null) return null;
+    if (casa === 'playpix' && NOMES_PLAYPIX[String(id)]) return NOMES_PLAYPIX[String(id)];
+    return S.nomes.get(casa + '|' + id) || null;
+  };
 
   function urlEntradas(base, id) {
     try {
@@ -733,7 +743,7 @@
     p.style.cssText = 'position:fixed;right:14px;bottom:14px;z-index:2147483647;width:252px;background:#0d1117;color:#e6edf3;border:1px solid #30363d;border-radius:10px;padding:10px;font:12px/1.45 ui-monospace,Menlo,Consolas,monospace;box-shadow:0 8px 28px rgba(0,0,0,.55);user-select:none';
     p.innerHTML =
       '<div id="amd-cab" style="display:flex;justify-content:space-between;align-items:center;cursor:move;margin-bottom:8px">' +
-      '<b style="letter-spacing:.5px">AMD COLETOR <small style="color:#58a6ff">v4.7</small></b><span id="amd-led" style="width:9px;height:9px;border-radius:50%;background:#3fb950"></span></div>' +
+      '<b style="letter-spacing:.5px">AMD COLETOR <small style="color:#58a6ff">v4.8</small></b><span id="amd-led" style="width:9px;height:9px;border-radius:50%;background:#3fb950"></span></div>' +
       '<div id="amd-info" style="color:#9198a1"></div>' +
       '<button id="amd-var" style="' + btn() + ';width:100%;margin-top:9px;padding:7px 0;background:#1f6feb;border-color:#1f6feb">Varrer todas as ligas</button>' +
       '<div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:5px">' +
@@ -816,5 +826,5 @@
       (S.ultimoErro ? '<br><span style="color:#f85149">' + S.ultimoErro + '</span>' : '');
   }, 1000);
 
-  console.log('[AMD] coletor bbtips v4.7 carregado (envio imediato por liga)');
+  console.log('[AMD] coletor bbtips v4.8 carregado (mapa fixo das nove ligas)');
 })();
