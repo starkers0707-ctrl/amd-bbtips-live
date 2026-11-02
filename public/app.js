@@ -2726,6 +2726,8 @@ let contextoAudioAlertas = null;
 let registroAlertasFundo = null;
 let ultimaAmostraFib50 = null;
 const estadoAlertaFib50 = { armado: false, contexto: '', anterior: null };
+let ultimoAvisoGDCross = { chave: '', ts: 0 };
+let canalEventosGDCross = null;
 
 function obterContextoAudioAlertas() {
   if (contextoAudioAlertas && contextoAudioAlertas.state !== 'closed')
@@ -2747,19 +2749,59 @@ function desbloquearAlertasSonoros() {
 function registrarAlertasDeFundo() {
   if (!('serviceWorker' in navigator)) return Promise.resolve(null);
   if (!registroAlertasFundo) {
-    registroAlertasFundo = navigator.serviceWorker.register('/sw-alertas.js?v=20260815a', { scope: '/' })
+    registroAlertasFundo = navigator.serviceWorker.register('/sw-alertas.js?v=20261102-gdcross', { scope: '/' })
       .then(() => navigator.serviceWorker.ready)
       .catch(() => null);
   }
   return registroAlertasFundo;
 }
 
+function chavePublicaPush(valor) {
+  const base64 = String(valor || '').replace(/-/g, '+').replace(/_/g, '/');
+  const padrao = base64 + '='.repeat((4 - base64.length % 4) % 4);
+  const bruto = atob(padrao);
+  return Uint8Array.from(bruto, c => c.charCodeAt(0));
+}
+
+async function assinarPushGDCross() {
+  if (!('serviceWorker' in navigator) || !('PushManager' in window) ||
+      !('Notification' in window) || Notification.permission !== 'granted') return;
+  try {
+    const reg = await registrarAlertasDeFundo();
+    if (!reg || !reg.pushManager) return;
+    let inscricao = await reg.pushManager.getSubscription();
+    if (!inscricao) {
+      const resposta = await fetch('/api/push/key', {
+        credentials: 'same-origin', cache: 'no-store', headers: { Accept: 'application/json' }
+      });
+      if (!resposta.ok) return;
+      const dados = await resposta.json();
+      if (!dados || !dados.key) return;
+      inscricao = await reg.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: chavePublicaPush(dados.key)
+      });
+    }
+    await fetch('/api/push/sub', {
+      method: 'POST', credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(inscricao)
+    });
+  } catch (e) { /* SSE e alerta local continuam funcionando sem Push */ }
+}
+
 function habilitarAlertasDeFundo() {
   registrarAlertasDeFundo();
-  if (!('Notification' in window) || Notification.permission !== 'default') return;
+  if (!('Notification' in window)) return;
+  if (Notification.permission === 'granted') {
+    assinarPushGDCross();
+    return;
+  }
+  if (Notification.permission !== 'default') return;
   try {
     const permissao = Notification.requestPermission();
-    if (permissao && typeof permissao.catch === 'function') permissao.catch(() => {});
+    if (permissao && typeof permissao.then === 'function')
+      permissao.then(p => { if (p === 'granted') assinarPushGDCross(); }).catch(() => {});
   } catch (e) { /* navegador sem permissão: o áudio continua disponível */ }
 }
 
@@ -2925,9 +2967,15 @@ function textoAlertaGDCross(tipo, liga, horario) {
 }
 function falarAlertaGDCross(tipo, liga, horario) {
   if (!alertaPodeDispararAgora()) return;
-  if (!ligado('GDCROSS') || !somDeAlertaLigado()) return;
+  if (!ligado('GDCROSS')) return;
+  const chaveAviso = [tipo, String(liga || state.liga || '').toLowerCase(),
+    String(horario || '')].join('|');
+  if (ultimoAvisoGDCross.chave === chaveAviso &&
+      Date.now() - ultimoAvisoGDCross.ts < 15000) return;
+  ultimoAvisoGDCross = { chave: chaveAviso, ts: Date.now() };
   const texto = textoAlertaGDCross(tipo, liga, horario);
   notificarGDCross(tipo, liga, horario);
+  if (!somDeAlertaLigado()) return;
   let falou = false;
   if ('speechSynthesis' in window &&
       typeof window.SpeechSynthesisUtterance === 'function') {
@@ -2946,6 +2994,27 @@ function falarAlertaGDCross(tipo, liga, horario) {
      A sirene pelo AudioContext persistente funciona como segunda proteção. */
   if (!falou || document.hidden) tocarSireneGDCross();
 }
+
+function iniciarCanalGDCross() {
+  if (!('EventSource' in window) || canalEventosGDCross) return;
+  try {
+    canalEventosGDCross = new EventSource('/api/eventos');
+    canalEventosGDCross.onmessage = function (ev) {
+      let pacote;
+      try { pacote = JSON.parse(ev.data || '{}'); } catch (e) { return; }
+      const alerta = pacote && pacote.tipo === 'radar' ? pacote.alerta : null;
+      if (!alerta || alerta.tipo !== 'golden' || !ligado('GDCROSS')) return;
+      const nomesMercado = { o25: 'Over 2.5', o35: 'Over 3.5',
+        ge5: '5+ Gols', ambas: 'Ambas Marcam' };
+      const horario = alerta.horaFonte || alerta.hora || '';
+      mostrarAviso('\ud83c\udfc6 GOLDEN CROSS \u00b7 ' +
+        (nomesMercado[alerta.mkt] || alerta.mkt || 'Mercado') +
+        (horario ? ' \u00b7 ' + horario : ''));
+      falarAlertaGDCross('golden', alerta.liga || state.liga, horario);
+    };
+  } catch (e) { canalEventosGDCross = null; }
+}
+
 function mostrarAviso(texto) {
   const a = document.getElementById('aviso');
   a.textContent = texto; a.hidden = false;
@@ -3472,6 +3541,8 @@ sincronizarAria();
 tick();
 setInterval(tick, 1000);
 registrarAlertasDeFundo();
+iniciarCanalGDCross();
+if ('Notification' in window && Notification.permission === 'granted') assinarPushGDCross();
 document.addEventListener('pointerdown', desbloquearAlertasSonoros, { once: true, capture: true });
 document.addEventListener('keydown', desbloquearAlertasSonoros, { once: true, capture: true });
 document.addEventListener('click', salvarPrefs);

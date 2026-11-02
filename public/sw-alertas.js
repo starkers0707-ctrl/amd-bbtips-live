@@ -3,6 +3,21 @@ self.addEventListener('install', function () { self.skipWaiting(); });
 self.addEventListener('activate', function (event) {
   event.waitUntil(self.clients.claim());
 });
+self.addEventListener('push', function (event) {
+  var dados = {};
+  try { dados = event.data ? event.data.json() : {}; } catch (e) {
+    dados = { t: 'AMD LIVE', b: event.data ? event.data.text() : '' };
+  }
+  var titulo = dados.t || 'AMD LIVE';
+  var opcoes = {
+    body: dados.b || 'Novo alerta confirmado.',
+    tag: dados.tag || 'amd-live-alerta',
+    renotify: true,
+    requireInteraction: true,
+    data: { url: dados.url || '/index.html' }
+  };
+  event.waitUntil(self.registration.showNotification(titulo, opcoes));
+});
 self.addEventListener('notificationclick', function (event) {
   event.notification.close();
   var destino = event.notification.data && event.notification.data.url
