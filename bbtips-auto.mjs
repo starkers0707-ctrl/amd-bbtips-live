@@ -3,12 +3,14 @@ const MERCADOS = "o25,o35,ge5,ambas,u25,u15,u05";
 const CASAS = [
   { casa: "betano",  path: "betanoFutebolVirtual",  param: "liga", max: 12 },
   { casa: "bet365",  path: "futebolvirtual",        param: "liga", max: 6  },
-  { casa: "playpix", path: "PlayPixFutebolVirtual", param: "Liga", max: 8  }
+  { casa: "playpix", path: "PlayPixFutebolVirtual", param: "Liga", max: 9  }
 ];
 const API = "https://api.thtips.com.br/api/";
 // nomes reais das ligas por casa (a rota entradasAnalisadas so existe no bet365/playpix)
 const NOMES = {
-  betano: { 1:"brasileirao", 2:"classicos", 3:"copa", 4:"euro", 5:"america", 6:"british", 7:"espanhola", 8:"scudetto", 9:"italiano", 11:"estrelas", 12:"campeoes" }
+  betano: { 1:"brasileirao", 2:"classicos", 3:"copa", 4:"euro", 5:"america", 6:"british", 7:"espanhola", 8:"scudetto", 9:"italiano", 11:"estrelas", 12:"campeoes" },
+  // IDs reais mostrados nas nove abas PlayPix do BBTips.
+  playpix: { 1:"ita", 2:"eng", 3:"spa", 4:"bra", 5:"lat", 6:"cam", 7:"cop", 8:"ame", 9:"mnd" }
 };
 function normalizaNomeLiga(valor) {
   if (valor == null || typeof valor === "object") return null;
@@ -93,12 +95,14 @@ async function nomeDaLiga(base, param, id, token, jsonPrincipal) {
   const r = await pega(base + "/entradasAnalisadas?" + param + "=" + id + "&top=1", token, 12000);
   return extraiNomeLiga(r.json);
 }
-const ATIVAS = String(process.env.CASAS_ATIVAS || "betano,playpix").split(",").map(x => x.trim()).filter(Boolean);
+// O usuario coleta pela PlayPix. Tentar Betano antes fazia um 401 dessa casa
+// encerrar a rotina, mesmo com o token PlayPix perfeitamente valido.
+const ATIVAS = String(process.env.CASAS_ATIVAS || "playpix").split(",").map(x => x.trim()).filter(Boolean);
 const cacheNome = new Map();
 
 async function coletaTudo(token, onLiga, log = () => {}) {
   if (!token) return { ok: false, erro: "sem token" };
-  let ok = 0, falhas = 0, nomes = 0;
+  let ok = 0, falhas = 0, nomes = 0, falhasAuth = 0;
   const porCasa = {};
   for (const c of CASAS.filter(x => ATIVAS.includes(x.casa))) {
     porCasa[c.casa] = { ligas: 0, nomeadas: 0, falhas: 0 };
@@ -109,8 +113,11 @@ async function coletaTudo(token, onLiga, log = () => {}) {
       if (r.erro) {
         falhas++; porCasa[c.casa].falhas++;
         if (/401|403/.test(r.erro)) {
-          log("[bbtips] token invalido/expirado");
-          return { ok: false, erro: "token", ligas: ok, falhas, nomes, porCasa };
+          // Um token pode ter acesso a uma casa e nao a outra. Abandona apenas
+          // esta casa; nunca impede a tentativa da PlayPix seguinte.
+          falhasAuth++;
+          log("[bbtips] " + c.casa + ": acesso recusado; tentando a proxima casa");
+          break;
         }
         continue;
       }
@@ -132,6 +139,7 @@ async function coletaTudo(token, onLiga, log = () => {}) {
     }
     log("[bbtips] " + c.casa + ": " + porCasa[c.casa].ligas + " ligas (" + porCasa[c.casa].nomeadas + " com nome), " + porCasa[c.casa].falhas + " falhas");
   }
+  if (!ok && falhasAuth) return { ok: false, erro: "token", ligas: 0, falhas, nomes, porCasa };
   log("[bbtips] auto-coleta: " + ok + " ligas ok, " + falhas + " falhas");
   return { ok: true, ligas: ok, falhas, nomes, porCasa };
 }

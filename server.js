@@ -1929,7 +1929,9 @@ app.post("/api/bbtips/token", (req, res) => {
 
 app.get("/api/bbtips/estado", (req, res) => res.json({ temToken: !!BB_TOKEN, tamToken: BB_TOKEN.length, fim: BB_TOKEN.slice(-4), ...bbUltima }));
 
-const BB_INTERVALO = Number(process.env.BBTIPS_INTERVALO || 60000);
+// A coleta do servidor e o backup da extensao. Quinze segundos evita ficar
+// varios jogos atrasado se o navegador perder uma requisicao.
+const BB_INTERVALO = Number(process.env.BBTIPS_INTERVALO || 15000);
 
 async function rodaAutoColeta() {
   if (!bbtipsAuto || !BB_TOKEN || bbUltima.rodando) return;
