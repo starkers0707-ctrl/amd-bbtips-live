@@ -2174,6 +2174,12 @@ app.get("/api/grade", (req, res) => {
       odds: oddsAntigas(g.odds)
     };
   });
+  // O coletor pode enviar 24h ordenadas apenas pelo relogio (00..23). Nesse
+  // formato, 23h de ontem fica depois de 16h de hoje e o backtest interpreta
+  // ontem como o trecho mais recente. `slot_em` ja contem o dia correto; por
+  // isso a resposta deve seguir essa cronologia real. IDs e coordenadas da
+  // grade continuam intactos, logo esta ordenacao nao altera a matematica.
+  partidas.sort((a, b) => Date.parse(a.slot_em) - Date.parse(b.slot_em));
   const colunasVisuais = partidas.filter(p => p.coluna_visual != null)
     .map(p => Number(p.coluna_visual)).filter(Number.isFinite);
   res.json({ liga: ligaReal, liga_solicitada: liga, partidas,
