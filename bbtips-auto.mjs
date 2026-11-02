@@ -60,6 +60,21 @@ function parseOdds(txt) {
 }
 const limpo = v => { if (v == null) return null; const s = String(v).replace(/\u0000/g, "").trim(); return (s === "" || s === "-") ? null : s; };
 function placar(s) { if (typeof s !== "string") return [null, null]; const m = s.match(/(\d+)\s*[-x:]\s*(\d+)/i); return m ? [Number(m[1]), Number(m[2])] : [null, null]; }
+function horarioDaGrade(lin, c) {
+  const horaLinha = limpo(c && c.Hora) || limpo(lin && lin.Hora);
+  const minutoColuna = limpo(c && c.Minuto);
+  // `Horario` e o relogio nominal retornado pela API, mas nao e sempre a
+  // coluna em que a casa desenhou o jogo. A posicao visual correta vem da
+  // combinacao Hora da linha + Minuto da coluna (ex.: 17 + 12 = 17:12,
+  // mesmo quando Horario informa 17:18).
+  if (/^\d{1,2}$/.test(String(horaLinha || "")) &&
+      /^\d{1,2}$/.test(String(minutoColuna || ""))) {
+    return String(Number(horaLinha)).padStart(2, "0") + ":" +
+      String(Number(minutoColuna)).padStart(2, "0");
+  }
+  if (/^\d{1,2}:\d{2}$/.test(String(horaLinha || ""))) return horaLinha;
+  return limpo(c && c.Horario) || "";
+}
 async function pega(url, token, timeoutMs = 20000) {
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), timeoutMs);
@@ -90,7 +105,7 @@ function converte(json) {
       const timeA = limpo(c.TimeA), timeB = limpo(c.TimeB);
       const nome = (timeA && timeB) ? timeA + " x " + timeB : null;
       const odds = parseOdds(c.Odds) || {};
-      const hora = limpo(c.Horario) || "";
+      const hora = horarioDaGrade(lin, c);
       const [a, b] = placar(c.Resultado_FT || c.Resultado);
       if (a != null && b != null) {
         const linha = { a, b, total: a + b, odds };
