@@ -64,7 +64,20 @@ async function pega(url, token, timeoutMs = 20000) {
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), timeoutMs);
   try {
-    const r = await fetch(url, { headers: { Authorization: "Bearer " + token, Accept: "application/json" }, signal: ctrl.signal });
+    // A CDN do provedor pode manter a mesma URL em cache por varios jogos.
+    // Cada consulta precisa ser unica para trazer o placar que acabou de sair.
+    const separador = url.includes("?") ? "&" : "?";
+    const aoVivo = url + separador + "_amd_live=" + Date.now();
+    const r = await fetch(aoVivo, {
+      headers: {
+        Authorization: "Bearer " + token,
+        Accept: "application/json",
+        "Cache-Control": "no-cache",
+        Pragma: "no-cache"
+      },
+      cache: "no-store",
+      signal: ctrl.signal
+    });
     if (!r.ok) return { erro: "HTTP " + r.status };
     return { json: await r.json() };
   } catch (e) { return { erro: String((e && e.message) || e) }; } finally { clearTimeout(t); }
@@ -107,22 +120,22 @@ async function coletaTudo(token, onLiga, log = () => {}) {
   for (const c of CASAS.filter(x => ATIVAS.includes(x.casa))) {
     porCasa[c.casa] = { ligas: 0, nomeadas: 0, falhas: 0 };
     const base = API + c.path;
-    for (let id = 0; id <= c.max; id++) {
+    // Todas as ligas sao independentes. Consultar uma por vez fazia a ultima
+    // receber o resultado varios segundos depois da primeira.
+    const tarefas = [];
+    for (let id = 0; id <= c.max; id++) tarefas.push((async () => {
       const url = base + "?" + c.param + "=" + id + "&Horas=Horas12&filtros=" + encodeURIComponent(MERCADOS);
       const r = await pega(url, token);
       if (r.erro) {
         falhas++; porCasa[c.casa].falhas++;
         if (/401|403/.test(r.erro)) {
-          // Um token pode ter acesso a uma casa e nao a outra. Abandona apenas
-          // esta casa; nunca impede a tentativa da PlayPix seguinte.
           falhasAuth++;
-          log("[bbtips] " + c.casa + ": acesso recusado; tentando a proxima casa");
-          break;
+          log("[bbtips] " + c.casa + ": acesso recusado");
         }
-        continue;
+        return;
       }
       const { placares, upcoming } = converte(r.json);
-      if (placares.length < 20) continue;
+      if (placares.length < 20) return;
       const ck = c.casa + "|" + id;
       let nome = (NOMES[c.casa] && NOMES[c.casa][id]) || cacheNome.get(ck);
       if (!nome) {
@@ -135,8 +148,8 @@ async function coletaTudo(token, onLiga, log = () => {}) {
         ok++; porCasa[c.casa].ligas++;
         if (nomeado) { nomes++; porCasa[c.casa].nomeadas++; }
       } catch (e) { falhas++; porCasa[c.casa].falhas++; }
-      await new Promise(res => setTimeout(res, 120));
-    }
+    })());
+    await Promise.all(tarefas);
     log("[bbtips] " + c.casa + ": " + porCasa[c.casa].ligas + " ligas (" + porCasa[c.casa].nomeadas + " com nome), " + porCasa[c.casa].falhas + " falhas");
   }
   if (!ok && falhasAuth) return { ok: false, erro: "token", ligas: 0, falhas, nomes, porCasa };
