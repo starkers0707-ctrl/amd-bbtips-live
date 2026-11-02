@@ -2067,7 +2067,21 @@ app.get("/api/grade", (req, res) => {
   const todos = resolvidos.concat(futuros);
   // A âncora fixa impede que os resultados mudem de coluna no poll.
   const passoGradeMs = gradeCfg.passo * 60000;
-  const agora = Date.now() - (Date.now() % passoGradeMs);
+  // O relogio exibido pela fonte segue Brasilia. Representamos esse relogio
+  // como UTC apenas para fazer contas sem o navegador aplicar outro fuso.
+  const agoraGrade = (() => {
+    const partes = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Sao_Paulo', year: 'numeric', month: '2-digit',
+      day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit',
+      hourCycle: 'h23'
+    }).formatToParts(new Date()).reduce((acc, p) => {
+      if (p.type !== 'literal') acc[p.type] = Number(p.value);
+      return acc;
+    }, {});
+    return Date.UTC(partes.year, partes.month - 1, partes.day,
+      partes.hour, partes.minute, partes.second, 0);
+  })();
+  const agora = agoraGrade - (agoraGrade % passoGradeMs);
 
   const oddsAntigas = odds => {
     const o = odds || {};
@@ -2088,7 +2102,7 @@ app.get("/api/grade", (req, res) => {
   // referencia de coluna: 04:01 ocupa a primeira casa da hora, 04:03 a
   // segunda, e assim por diante. Nunca reencaixe pelo indice do array, pois
   // uma casa vazia deslocaria todos os jogos seguintes.
-  const instanteDaGrade = horario => {
+  const instanteDaGrade = (horario, futuro = false) => {
     const m = String(horario || '').match(/(\d{1,2}):(\d{2})/);
     if (!m) return null;
     let h = Number(m[1]), min = Number(m[2]);
@@ -2099,25 +2113,33 @@ app.get("/api/grade", (req, res) => {
     // legado da extensao, que nomeia a primeira casa um minuto adiante.
     if (liga !== 'ame' && liga !== 'cop') min -= 1;
     if (min < 0) { min += 60; h = (h + 23) % 24; }
-    const agoraReal = new Date();
+    const agoraReal = new Date(agoraGrade);
     let ts = Date.UTC(agoraReal.getUTCFullYear(), agoraReal.getUTCMonth(), agoraReal.getUTCDate(), h, min, 0, 0);
-    const meioDia = 12 * 60 * 60 * 1000;
-    if (ts - Date.now() > meioDia) ts -= 24 * 60 * 60 * 1000;
-    if (Date.now() - ts > meioDia) ts += 24 * 60 * 60 * 1000;
+    const dia = 24 * 60 * 60 * 1000;
+    const agoraMs = agoraGrade;
+    // Com 24h de historico existem resultados das 16h..23h de ontem e das
+    // 00h..15h de hoje. A regra antiga de "dia mais proximo" transformava a
+    // madrugada ja encerrada em amanha; em seguida os futuros das 15h eram
+    // empurrados para 07h. Resultado encerrado nunca pode ficar adiante do
+    // relogio atual (salvo a pequena folga de atualizacao da fonte).
+    if (!futuro && ts > agoraMs + passoGradeMs * 3) ts -= dia;
+    // Na virada de 23h para 00h, o futuro pertence ao dia seguinte. O ajuste
+    // fino pela sequencia abaixo preserva os minutos e evita novo salto.
+    if (futuro && ts < agoraMs - 12 * 60 * 60 * 1000) ts += dia;
     return ts;
   };
 
   const ultimoResolvidoEm = todos.reduce((maior, g) => {
     const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
     if (!resolvido) return maior;
-    const instante = instanteDaGrade(g.horario);
+    const instante = instanteDaGrade(g.horario, false);
     return Number.isFinite(instante) ? Math.max(maior, instante) : maior;
   }, Number.NEGATIVE_INFINITY);
   let ultimoSlotEm = ultimoResolvidoEm;
   const toleranciaFuturoMs = passoGradeMs * 3;
   const partidas = todos.map((g, i) => {
     const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
-    const tsDireto = instanteDaGrade(g.horario);
+    const tsDireto = instanteDaGrade(g.horario, !resolvido);
     let tsNormalizado = tsDireto;
     if (!resolvido && Number.isFinite(ultimoSlotEm)) {
       const foraDaSequencia = tsDireto == null || tsDireto <= ultimoSlotEm ||
