@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMD Coletor BBTips
 // @namespace    amd.live
-// @version      4.6.0
+// @version      4.7.0
 // @description  Coleta a grade de jogos do BB Tips em todas as casas e ligas (bet365 / betano / playpix) e envia para o coletor AMD
 // @author       AMD
 // @match        https://thtips.com.br/*
@@ -553,11 +553,14 @@
           else if (j.oddHt) linha.odds = { ht: j.oddHt };
           return linha;
         });
-      if (placares.length < 20) continue;   // pouco dado nao alimenta o motor
       const upcoming = g.mosaico.futuros.map(j => ({
         nome: j.casa + ' x ' + j.fora,
         horario: j.h, casa: j.casa, fora: j.fora, odds: j.odds || {}
       }));
+      // Cada liga possui um tamanho diferente e, logo apos abrir a pagina,
+      // pode haver somente jogos futuros. O servidor aceita ambos os casos;
+      // exigir 20 encerrados mantinha ligas validas presas em "enviados: 0".
+      if (!placares.length && !upcoming.length) continue;
       out.push({ liga: g.casa + '-' + nomeLg, placares, upcoming });
     }
     return out;
@@ -629,7 +632,7 @@
             headers: { 'Content-Type': 'application/json', 'x-amd-token': CFG.TOKEN },
             data: JSON.stringify(pk), timeout: 30000,
             onload: r => {
-              if (r.status >= 200 && r.status < 300) { ok++; total += pk.placares.length; S.enviados = total; S.ultimoEnvio = Date.now(); S.ultimoErro = ''; }
+              if (r.status >= 200 && r.status < 300) { ok++; total += pk.placares.length + pk.upcoming.length; S.enviados = total; S.ultimoEnvio = Date.now(); S.ultimoErro = ''; }
               else { S.erros++; S.ultimoErro = pk.liga + ': HTTP ' + r.status; }
             },
             onerror: () => { S.erros++; S.ultimoErro = pk.liga + ': rede'; },
@@ -730,7 +733,7 @@
     p.style.cssText = 'position:fixed;right:14px;bottom:14px;z-index:2147483647;width:252px;background:#0d1117;color:#e6edf3;border:1px solid #30363d;border-radius:10px;padding:10px;font:12px/1.45 ui-monospace,Menlo,Consolas,monospace;box-shadow:0 8px 28px rgba(0,0,0,.55);user-select:none';
     p.innerHTML =
       '<div id="amd-cab" style="display:flex;justify-content:space-between;align-items:center;cursor:move;margin-bottom:8px">' +
-      '<b style="letter-spacing:.5px">AMD COLETOR <small style="color:#58a6ff">v4.6</small></b><span id="amd-led" style="width:9px;height:9px;border-radius:50%;background:#3fb950"></span></div>' +
+      '<b style="letter-spacing:.5px">AMD COLETOR <small style="color:#58a6ff">v4.7</small></b><span id="amd-led" style="width:9px;height:9px;border-radius:50%;background:#3fb950"></span></div>' +
       '<div id="amd-info" style="color:#9198a1"></div>' +
       '<button id="amd-var" style="' + btn() + ';width:100%;margin-top:9px;padding:7px 0;background:#1f6feb;border-color:#1f6feb">Varrer todas as ligas</button>' +
       '<div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:5px">' +
@@ -813,5 +816,5 @@
       (S.ultimoErro ? '<br><span style="color:#f85149">' + S.ultimoErro + '</span>' : '');
   }, 1000);
 
-  console.log('[AMD] coletor bbtips v4.6 carregado (token ativo + grade rapida)');
+  console.log('[AMD] coletor bbtips v4.7 carregado (envio imediato por liga)');
 })();
