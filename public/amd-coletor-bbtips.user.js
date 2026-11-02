@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMD Coletor BBTips
 // @namespace    amd.live
-// @version      4.3.0
+// @version      4.4.0
 // @description  Coleta a grade de jogos do BB Tips em todas as casas e ligas (bet365 / betano / playpix) e envia para o coletor AMD
 // @author       AMD
 // @match        https://thtips.com.br/*
@@ -30,7 +30,8 @@
     INTERVALO_ENVIO: 3000,
     LOTE_MAX: 400,
     AUTO_REFETCH: true,
-    INTERVALO_REFETCH: 60000,
+    INTERVALO_REFETCH: 2500,
+    INTERVALO_REFETCH_COMPLETO: 60000,
     PAUSA_REFETCH: 200,
     // MERCADOS: o parametro 'filtros' da API do BBTips devolve as odds de cada
     // mercado pedido. Formato da resposta: "o25@2.48;o35@5.15;ge5@14.00;"
@@ -61,8 +62,14 @@
   let envioRapidoTimer = null;
 
   function agendarEnvioRapido() {
-    clearTimeout(envioRapidoTimer);
-    envioRapidoTimer = setTimeout(enviarLote, 350);
+    // Disparo na primeira mudanca. Nao reinicia o relogio a cada resposta:
+    // durante a varredura chegam varias rotas seguidas e o debounce antigo
+    // podia adiar o envio ate o fim do lote inteiro.
+    if (envioRapidoTimer) return;
+    envioRapidoTimer = setTimeout(() => {
+      envioRapidoTimer = null;
+      enviarLote();
+    }, 120);
   }
 
   // ============================================================
@@ -252,8 +259,17 @@
       const v = versao(l);
       if (S.versoes.has(v)) continue;
       const k = chave(l);
-      if (!S.buffer.has(k)) { if (l.tipo === 'jogo') S.jogos++; else S.entradas++; novas++; }
+      const anterior = S.buffer.get(k);
+      // Respostas de rotas diferentes podem chegar fora de ordem. Uma resposta
+      // velha nao pode transformar novamente em futuro um jogo ja encerrado.
+      const anteriorResolvido = anterior && anterior.tipo === 'jogo' &&
+        anterior.ftA != null && anterior.ftB != null;
+      const novoResolvido = l.tipo === 'jogo' && l.ftA != null && l.ftB != null;
+      if (anteriorResolvido && !novoResolvido) continue;
+      const mudou = !anterior || versao(anterior) !== v;
+      if (!anterior) { if (l.tipo === 'jogo') S.jogos++; else S.entradas++; }
       S.buffer.set(k, l);
+      if (mudou) novas++;
     }
     // O resultado que acabou de entrar nao precisa esperar o proximo ciclo
     // da varredura. Envia o snapshot atualizado desta liga quase na hora.
@@ -266,6 +282,14 @@
     try {
       const x = new URL(u, location.href);
       if (CFG.MERCADOS && !/entradasAnalisadas/i.test(x.pathname)) x.searchParams.set('filtros', CFG.MERCADOS);
+      return x.toString();
+    } catch (e) { return u; }
+  }
+
+  function semCache(u) {
+    try {
+      const x = new URL(u, location.href);
+      x.searchParams.set('_amd_live', String(Date.now()));
       return x.toString();
     } catch (e) { return u; }
   }
@@ -411,15 +435,18 @@
   // ============================================================
   // 6. AUTO-REFETCH
   // ============================================================
-  function refetch() {
+  function refetch(somenteGrades) {
     if (!CFG.AUTO_REFETCH || !S.ativo || S.varrendo > 0) return;
     let i = 0;
     for (const r of S.rotas.values()) {
+      if (somenteGrades && /entradasAnalisadas/i.test(r.url)) continue;
       const atraso = (i++) * CFG.PAUSA_REFETCH;
       setTimeout(() => {
       try {
         GM_xmlhttpRequest({
-          method: 'GET', url: r.url, headers: r.headers || {}, timeout: 20000,
+          method: 'GET', url: semCache(r.url),
+          headers: Object.assign({}, r.headers || {}, { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }),
+          timeout: 20000,
           onload: x => {
             if (x.status >= 200 && x.status < 300) capturar(r.url, x.responseText, 'refetch', r.headers);
             else if (x.status === 401) S.ultimoErro = 'sessao expirada (401)';
@@ -429,7 +456,10 @@
       }, atraso);
     }
   }
-  setInterval(refetch, CFG.INTERVALO_REFETCH);
+  // Resultado ao vivo: consulta apenas as grades, com baixa latencia.
+  // Entradas analisadas sao auxiliares e continuam no ciclo completo de 60 s.
+  setInterval(() => refetch(true), CFG.INTERVALO_REFETCH);
+  setInterval(() => refetch(false), CFG.INTERVALO_REFETCH_COMPLETO);
 
   // ============================================================
   // 6b. CONVERSAO PARA O FORMATO DO AMD LIVE 1
@@ -667,7 +697,7 @@
     p.style.cssText = 'position:fixed;right:14px;bottom:14px;z-index:2147483647;width:252px;background:#0d1117;color:#e6edf3;border:1px solid #30363d;border-radius:10px;padding:10px;font:12px/1.45 ui-monospace,Menlo,Consolas,monospace;box-shadow:0 8px 28px rgba(0,0,0,.55);user-select:none';
     p.innerHTML =
       '<div id="amd-cab" style="display:flex;justify-content:space-between;align-items:center;cursor:move;margin-bottom:8px">' +
-      '<b style="letter-spacing:.5px">AMD COLETOR</b><span id="amd-led" style="width:9px;height:9px;border-radius:50%;background:#3fb950"></span></div>' +
+      '<b style="letter-spacing:.5px">AMD COLETOR <small style="color:#58a6ff">v4.4</small></b><span id="amd-led" style="width:9px;height:9px;border-radius:50%;background:#3fb950"></span></div>' +
       '<div id="amd-info" style="color:#9198a1"></div>' +
       '<button id="amd-var" style="' + btn() + ';width:100%;margin-top:9px;padding:7px 0;background:#1f6feb;border-color:#1f6feb">Varrer todas as ligas</button>' +
       '<div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:5px">' +
@@ -750,5 +780,5 @@
       (S.ultimoErro ? '<br><span style="color:#f85149">' + S.ultimoErro + '</span>' : '');
   }, 1000);
 
-  console.log('[AMD] coletor bbtips v4.2 carregado (token: busca em qualquer formato)');
+  console.log('[AMD] coletor bbtips v4.4 carregado (grade rapida + protecao contra regressao)');
 })();
