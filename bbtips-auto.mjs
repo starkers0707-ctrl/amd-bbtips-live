@@ -61,19 +61,20 @@ function parseOdds(txt) {
 const limpo = v => { if (v == null) return null; const s = String(v).replace(/\u0000/g, "").trim(); return (s === "" || s === "-") ? null : s; };
 function placar(s) { if (typeof s !== "string") return [null, null]; const m = s.match(/(\d+)\s*[-x:]\s*(\d+)/i); return m ? [Number(m[1]), Number(m[2])] : [null, null]; }
 function horarioDaGrade(lin, c) {
+  const horario = limpo(c && c.Horario);
+  // Horario identifica o slot unico da partida no feed. `Minuto` nao pode
+  // substituir esse valor: a mesma linha pode trazer mais de uma celula com o
+  // mesmo Minuto, o que sobrepoe confrontos diferentes na grade.
+  if (/^\d{1,2}:\d{2}$/.test(String(horario || ""))) return horario;
   const horaLinha = limpo(c && c.Hora) || limpo(lin && lin.Hora);
   const minutoColuna = limpo(c && c.Minuto);
-  // `Horario` e o relogio nominal retornado pela API, mas nao e sempre a
-  // coluna em que a casa desenhou o jogo. A posicao visual correta vem da
-  // combinacao Hora da linha + Minuto da coluna (ex.: 17 + 12 = 17:12,
-  // mesmo quando Horario informa 17:18).
   if (/^\d{1,2}$/.test(String(horaLinha || "")) &&
       /^\d{1,2}$/.test(String(minutoColuna || ""))) {
     return String(Number(horaLinha)).padStart(2, "0") + ":" +
       String(Number(minutoColuna)).padStart(2, "0");
   }
   if (/^\d{1,2}:\d{2}$/.test(String(horaLinha || ""))) return horaLinha;
-  return limpo(c && c.Horario) || "";
+  return horario || "";
 }
 async function pega(url, token, timeoutMs = 20000) {
   const ctrl = new AbortController();
