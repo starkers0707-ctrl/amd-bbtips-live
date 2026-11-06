@@ -1,7 +1,3 @@
-Exit code: 0
-Wall time: 0.9 seconds
-Total output lines: 993
-Output:
 // ==UserScript==
 // @name         AMD Coletor BBTips
 // @namespace    amd.live
