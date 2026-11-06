@@ -1,9 +1,15 @@
+Exit code: 0
+Wall time: 0.9 seconds
+Total output lines: 993
+Output:
 // ==UserScript==
 // @name         AMD Coletor BBTips
 // @namespace    amd.live
-// @version      5.2.0
-// @description  Coleta somente as ligas Kiron CAM, COP e AME e envia para o AMD
+// @version      5.3.0
+// @description  Coleta Kiron (CAM/COP/AME) e 1Win (ING/SPA/ITA) e envia para o AMD
 // @author       AMD
+// @updateURL    https://amd-bbtips-live.onrender.com/amd-coletor-bbtips.user.js
+// @downloadURL  https://amd-bbtips-live.onrender.com/amd-coletor-bbtips.user.js
 // @match        https://thtips.com.br/*
 // @match        https://*.thtips.com.br/*
 // @run-at       document-start
@@ -18,6 +24,9 @@
 
 (function () {
   'use strict';
+
+  const VERSAO = (typeof GM_info !== 'undefined' && GM_info.script && GM_info.script.version)
+    ? GM_info.script.version : '5.3.0';
 
   // ============================================================
   // 1. CONFIG
@@ -43,6 +52,13 @@
   };
   const KIRON_IDS = new Set(['6', '7', '8']); // CAM, COP e AME
   const ehRotaKiron = r => !!r && r.casa === 'playpix' && KIRON_IDS.has(String(r.liga));
+  // A 1Win nao usa a mesma API da Kiron. A propria tela /1win/futebol/horarios
+  // entrega a grade com Inglaterra, Espanha e Italia, que lemos pelo DOM.
+  const ONEWIN_LIGAS = Object.freeze({
+    inglaterra: 'eng', england: 'eng',
+    espanha: 'spa', spain: 'spa',
+    italia: 'ita', italy: 'ita'
+  });
 
   const W = (typeof unsafeWindow !== 'undefined' && unsafeWindow) ? unsafeWindow : window;
   const store = {
@@ -323,6 +339,12 @@
       S.ligas.set(lk, r);
     }
 
+    return incorporarLinhas(linhas);
+  }
+
+  // Centraliza a entrada no buffer: tanto a API Kiron quanto a tabela 1Win
+  // passam pelo mesmo dedupe e pelo mesmo envio rapido.
+  function incorporarLinhas(linhas) {
     let novas = 0;
     for (const l of linhas) {
       const v = versao(l);
@@ -344,6 +366,84 @@
     // da varredura. Envia o snapshot atualizado desta liga quase na hora.
     if (novas > 0) agendarEnvioRapido();
     return linhas.length;
+  }
+
+  function textoNormalizado(v) {
+    return String(v || '').toLowerCase().normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ').trim();
+  }
+
+  function ligaOneWinAtiva() {
+    try {
+      const botoes = Array.from(document.querySelectorAll('nav button, [role="navigation"] button'));
+      for (const b of botoes) {
+        if (b.getAttribute('aria-pressed') !== 'true') continue;
+        const nome = textoNormalizado(b.textContent);
+        if (ONEWIN_LIGAS[nome]) return { codigo: ONEWIN_LIGAS[nome], nome: b.textContent.trim() };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function coletarOneWinTabela() {
+    if (!/\/1win\/futebol\/horarios/i.test(location.pathname)) return 0;
+    const liga = ligaOneWinAtiva();
+    const tabela = document.querySelector('table.customTable');
+    if (!liga || !tabela) return 0;
+    const linhas = [];
+    for (const tr of Array.from(tabela.querySelectorAll('tr'))) {
+      const horaLinha = (tr.querySelector('th[scope="row"]') || {}).textContent || '';
+      if (!/^\s*\d{1,2}\s*$/.test(horaLinha)) continue;
+      for (const game of Array.from(tr.querySelectorAll('.onewin-cell .game[aria-label]'))) {
+        const texto = String(game.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim();
+        const m = texto.match(/^(\d{1,2}:\d{2})\s+(.+?)\s+x\s+(.+?):\s*(.+)$/i);
+        if (!m) continue;
+        const [ftA, ftB] = placar(m[4]);
+        linhas.push({
+          tipo: 'jogo', casa: 'onewin', liga: liga.codigo, ligaNome: liga.nome,
+          id: liga.codigo + '|' + m[1] + '|' + m[2] + '|' + m[3],
+          horario: m[1], hora: m[1].split(':')[0], minuto: m[1].split(':')[1],
+          timeA: limpo(m[2]), timeB: limpo(m[3]), ftA, ftB,
+          totalFT: (ftA == null || ftB == null) ? null : ftA + ftB,
+          odds: null, atualizadoEm: new Date().toISOString(), capturadoEm: Date.now()
+        });
+      }
+    }
+    if (!linhas.length) return 0;
+    const chaveLiga = 'onewin|' + liga.codigo;
+    S.nomes.set(chaveLiga, liga.nome);
+    S.ligas.set(chaveLiga, { n: linhas.length, exemplo: linhas[0].timeA + ' x ' + linhas[0].timeB });
+    return incorporarLinhas(linhas);
+  }
+
+  const aguardarOneWin = ms => new Promise(resolve => setTimeout(resolve, ms));
+  async function varrerOneWin() {
+    const atual = ligaOneWinAtiva();
+    const botoes = Array.from(document.querySelectorAll('nav button, [role="navigation"] button'));
+    const nomes = ['inglaterra', 'espanha', 'italia'];
+    S.varrendo = nomes.length;
+    try {
+      for (const nome of nomes) {
+        const botao = botoes.find(b => textoNormalizado(b.textContent) === nome);
+        if (!botao) { S.varrendo--; continue; }
+        botao.click();
+        let total = 0;
+        for (let tentativa = 0; tentativa < 12; tentativa++) {
+          await aguardarOneWin(350);
+          total = coletarOneWinTabela();
+          if (total) break;
+        }
+        if (!total) S.ultimoErro = '1Win ' + nome + ': tabela nao carregou';
+        S.varrendo--;
+      }
+    } finally {
+      if (atual) {
+        const botaoOriginal = botoes.find(b => textoNormalizado(b.textContent) === textoNormalizado(atual.nome));
+        if (botaoOriginal) botaoOriginal.click();
+      }
+      S.varrendo = 0;
+      enviarLote();
+    }
   }
 
   // forca o parametro filtros para que a API devolva as odds
@@ -400,107 +500,7 @@
     const horaLinha = limpo(c && c.Hora) || limpo(lin && lin.Hora);
     const minutoColuna = limpo(c && c.Minuto);
     if (/^\d{1,2}$/.test(String(horaLinha || '')) &&
-        /^\d{1,2}$/.test(String(minutoColuna || ''))) {
-      return String(Number(horaLinha)).padStart(2, '0') + ':' +
-        String(Number(minutoColuna)).padStart(2, '0');
-    }
-    if (/^\d{1,2}:\d{2}$/.test(String(horaLinha || ''))) return horaLinha;
-    return horario;
-  }
-
-  function parseGrade(json, url, casa) {
-    const { qs } = partes(url);
-    const liga = ligaDaUrl(url);
-    const out = [];
-    for (const lin of json.Linhas) {
-      const cols = lin && lin.Colunas;
-      if (!Array.isArray(cols)) continue;
-      for (const c of cols) {
-        if (!c || (!c.TimeA && !c.TimeB)) continue;
-        const [ftA, ftB] = placar(c.Resultado_FT || c.Resultado);
-        const [htA, htB] = placar(c.Resultado_HT);
-        out.push({
-          tipo: 'jogo', casa, liga: liga || null, ligaNome: nomeLiga(casa, liga),
-          id: c.Id != null ? c.Id : null,
-          horario: horarioDaGrade(lin, c),
-          hora: limpo(c.Hora) || (lin.Hora != null ? String(lin.Hora) : null),
-          minuto: limpo(c.Minuto),
-          timeA: limpo(c.TimeA), timeB: limpo(c.TimeB),
-          siglaA: limpo(c.SiglaA), siglaB: limpo(c.SiglaB),
-          ftA, ftB, htA, htB,
-          totalFT: (ftA == null || ftB == null) ? null : ftA + ftB,
-          totalHT: (htA == null || htB == null) ? null : htA + htB,
-          primeiroMarcar: limpo(c.PrimeiroMarcar),
-          ultimoMarcar: limpo(c.UltimoMarcar),
-          vencedorHtFt: limpo(c.Vencedor_HT_FT),
-          oddHt: limpo(c.Resultado_HT_Odd),
-          odds: parseOdds(c.Odds),
-          dataInsercao: limpo(c.DataInsercao),
-          atualizadoEm: limpo(json.DataAtualizacao),
-          query: qs || null, capturadoEm: Date.now()
-        });
-      }
-    }
-    return out;
-  }
-
-  function parseEntradas(json, url, casa) {
-    const lista = Array.isArray(json && json.entradas) ? json.entradas : [];
-    return lista.map(e => ({
-      tipo: 'entrada', casa,
-      liga: ligaDaUrl(url) || null,
-      ligaNome: e.liga || json.liga || nomeLiga(casa, ligaDaUrl(url)) || null,
-      id: e.id || null, horario: limpo(e.horario),
-      timeA: limpo(e.timeA), timeB: limpo(e.timeB),
-      mercado: e.mercado || null, mercadoTexto: e.mercadoTexto || null,
-      odd: e.odd != null ? Number(e.odd) : null,
-      confianca: e.confianca || null,
-      score: e.score != null ? Number(e.score) : null,
-      amostra: e.amostra != null ? Number(e.amostra) : null,
-      sg: e.sg, g1: e.g1, g2: e.g2, red: e.red,
-      aproveitamentoG1: e.aproveitamentoG1,
-      estrategiasParecidas: e.estrategiasParecidas,
-      assinaturasParecidas: e.assinaturasParecidas,
-      performanceRobosAteG1: e.performanceRobosAteG1,
-      statusLote: json.status || null, geradoEm: json.generatedAt || null,
-      capturadoEm: Date.now()
-    }));
-  }
-
-  const resolver = l => (l.ligaNome ? l : Object.assign({}, l, { ligaNome: nomeLiga(l.casa, l.liga) }));
-
-  const chave = l => [l.tipo, l.casa, l.liga, l.id != null ? l.id : '', l.horario, l.timeA, l.timeB].join('|');
-  const versao = l => l.tipo === 'jogo'
-    ? chave(l) + '|' + l.ftA + '-' + l.ftB + '|' + l.htA + '-' + l.htB
-    : chave(l) + '|' + l.odd + '|' + l.score;
-
-  // ============================================================
-  // 5. VARREDURA DE LIGAS
-  // ============================================================
-  function varrerLigas() {
-    const bases = new Map();
-    for (const [k, r] of S.rotas) {
-      if (/entradasAnalisadas/i.test(k) || !ehRotaKiron(r)) continue;
-      if (!bases.has(r.casa) && temAutorizacao(r.headers)) bases.set(r.casa, r);
-    }
-    if (!bases.size) { S.ultimoErro = 'recarregue o BBTips uma vez para autorizar'; return; }
-
-    const porCasa = [];
-    for (const [, r] of bases) {
-      const lista = [];
-      for (const i of [6, 7, 8]) {
-        const e = urlEntradas(r.url, i);
-        const g = trocaLiga(r.url, i);
-        if (e) lista.push({ url: e, headers: r.headers });
-        if (g) lista.push({ url: g, headers: r.headers });
-      }
-      porCasa.push(lista);
-    }
-    // intercala as casas para que uma varredura interrompida cubra todas por igual
-    const fila = [];
-    const maior = Math.max.apply(null, porCasa.map(l => l.length));
-    for (let i = 0; i < maior; i++) for (const l of porCasa) if (l[i]) fila.push(l[i]);
-    S.varrendo = fila.length;
+        /^\d{1,2}$/.test(String(minutoCo…1163 tokens truncated…ngth;
     fila.forEach((f, i) => setTimeout(() => {
       try {
         GM_xmlhttpRequest({
@@ -551,6 +551,10 @@
   // Entradas analisadas sao auxiliares e continuam no ciclo completo de 60 s.
   setInterval(() => refetch(true), CFG.INTERVALO_REFETCH);
   setInterval(() => refetch(false), CFG.INTERVALO_REFETCH_COMPLETO);
+  // Enquanto a tela 1Win estiver aberta, absorve imediatamente qualquer novo
+  // placar/futuro renderizado, sem trocar de aba nem recarregar a pagina.
+  setInterval(coletarOneWinTabela, 1500);
+  setTimeout(coletarOneWinTabela, 1200);
 
   // ============================================================
   // 6b. CONVERSAO PARA O FORMATO DO AMD LIVE 1
@@ -598,8 +602,12 @@
   function paraApiDados() {
     const out = [];
     for (const g of paraAmdLive()) {
-      const nomeLg = slug(g.ligaNome || ('liga' + g.liga));
-      if (g.casa !== 'playpix' || !['cam', 'cop', 'ame'].includes(nomeLg)) continue;
+      const nomeLg = g.casa === 'onewin'
+        ? String(g.liga || '').toLowerCase()
+        : slug(g.ligaNome || ('liga' + g.liga));
+      const kironPermitida = g.casa === 'playpix' && ['cam', 'cop', 'ame'].includes(nomeLg);
+      const oneWinPermitida = g.casa === 'onewin' && ['eng', 'spa', 'ita'].includes(nomeLg);
+      if (!kironPermitida && !oneWinPermitida) continue;
       const placares = g.mosaico.passados
         .filter(j => j.placar)
         .map(j => {
@@ -620,7 +628,9 @@
       // pode haver somente jogos futuros. O servidor aceita ambos os casos;
       // exigir 20 encerrados mantinha ligas validas presas em "enviados: 0".
       if (!placares.length && !upcoming.length) continue;
-      out.push({ liga: g.casa + '-' + nomeLg, placares, upcoming });
+      // `liga` conserva o identificador que o AMD ja reconhece. `casaFonte`
+      // deixa explicito que ENG/SPA/ITA vieram da 1Win e nunca da Kiron.
+      out.push({ liga: nomeLg, ligaNome: g.ligaNome || nomeLg, casaFonte: g.casa, placares, upcoming });
     }
     return out;
   }
@@ -682,7 +692,7 @@
     // apidados: uma chamada por casa+liga, no formato que o AMD Live ja aceita
     if (CFG.FORMATO === 'apidados') {
       const pacotes = paraApiDados();
-      if (!pacotes.length) { S.ultimoErro = 'sem liga com 20+ jogos'; return; }
+      if (!pacotes.length) { S.ultimoErro = 'sem jogos das ligas permitidas'; return; }
       let ok = 0, total = 0;
       pacotes.forEach((pk, i) => setTimeout(() => {
         try {
@@ -792,7 +802,7 @@
     p.style.cssText = 'position:fixed;right:14px;bottom:14px;z-index:2147483647;width:252px;background:#0d1117;color:#e6edf3;border:1px solid #30363d;border-radius:10px;padding:10px;font:12px/1.45 ui-monospace,Menlo,Consolas,monospace;box-shadow:0 8px 28px rgba(0,0,0,.55);user-select:none';
     p.innerHTML =
       '<div id="amd-cab" style="display:flex;justify-content:space-between;align-items:center;cursor:move;margin-bottom:8px">' +
-      '<b style="letter-spacing:.5px">AMD COLETOR <small style="color:#58a6ff">v5.0</small></b><span id="amd-led" style="width:9px;height:9px;border-radius:50%;background:#3fb950"></span></div>' +
+      '<b style="letter-spacing:.5px">AMD COLETOR <small style="color:#58a6ff">v' + VERSAO + '</small></b><span id="amd-led" style="width:9px;height:9px;border-radius:50%;background:#3fb950"></span></div>' +
       '<div id="amd-info" style="color:#9198a1"></div>' +
       '<button id="amd-var" style="' + btn() + ';width:100%;margin-top:9px;padding:7px 0;background:#1f6feb;border-color:#1f6feb">Varrer todas as ligas</button>' +
       '<div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:5px">' +
@@ -875,5 +885,6 @@
       (S.ultimoErro ? '<br><span style="color:#f85149">' + S.ultimoErro + '</span>' : '');
   }, 1000);
 
-  console.log('[AMD] coletor bbtips v5.0 carregado (Kiron CAM/COP/AME)');
+  console.log('[AMD] coletor bbtips v' + VERSAO + ' carregado (Kiron CAM/COP/AME)');
 })();
+
