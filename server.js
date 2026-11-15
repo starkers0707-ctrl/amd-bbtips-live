@@ -1600,6 +1600,9 @@ app.post("/api/snapshot", (req, res) => {
     if (!LIGAS_PERMITIDAS.has(liga)) {
       return res.status(422).json({ ok: false, erro: "liga desativada", liga });
     }
+    if (vavadaDonaDaLiga(liga)) {
+      return res.json({ ok: true, liga, ignorado: true, motivo: "vavada-direta-ativa" });
+    }
     ultimoSnapshotCru[liga] = { cells: (data && data.cells) ? data.cells.length : 0, temData: !!data, hora: new Date().toLocaleTimeString("pt-BR", { timeZone: "America/Sao_Paulo" }), amostraCell: (data && data.cells && data.cells[0]) ? JSON.stringify(data.cells[0]).slice(0, 200) : null };
     let { games, upcoming, gamesAll } = decodeSnapshot(data);
     liga = ligaPeloConteudo(liga, games, upcoming);
@@ -1655,6 +1658,9 @@ app.post("/api/dados", (req, res) => {
     }
     if (!LIGAS_PERMITIDAS.has(liga)) {
       return res.status(422).json({ ok: false, erro: "liga desativada", liga });
+    }
+    if (vavadaDonaDaLiga(liga)) {
+      return res.json({ ok: true, liga, ignorado: true, motivo: "vavada-direta-ativa" });
     }
     // A sonda ja conhece a casa exata da grade. Preserve essas coordenadas;
     // recalcular a coluna pela ordem do array deslocava, por exemplo, a 48 para a 26.
@@ -1947,11 +1953,24 @@ app.get("/api/bbtips/estado", (req, res) => res.json({ temToken: !!BB_TOKEN, tam
 // paralelo e sem cache, entao cinco segundos mantem o resultado proximo da casa.
 const BB_INTERVALO = Number(process.env.BBTIPS_INTERVALO || 5000);
 
+// Uma liga atualizada diretamente pela Vavada tem prioridade sobre qualquer
+// coletor legado. Sem este porteiro, o ciclo BBTips (5 s) substitui o snapshot
+// Vavada (60 s) e a tela alterna entre correto, atrasado e vazio. O fallback
+// legado só volta se a fonte direta ficar realmente sem atualizar.
+const VAVADA_DONO_MS = Math.max(120000, Number(process.env.VAVADA_DONO_MS || 180000));
+function vavadaDonaDaLiga(liga) {
+  const atual = store[liga];
+  return process.env.VAVADA_ENABLED !== "0" &&
+    atual && atual.fonte === "vavada-kiron" &&
+    Date.now() - Number(atual.vavadaTs || 0) < VAVADA_DONO_MS;
+}
+
 async function rodaAutoColeta() {
   if (!bbtipsAuto || !BB_TOKEN || bbUltima.rodando) return;
   bbUltima.rodando = true;
   try {
     const r = await bbtipsAuto.coletaTudo(BB_TOKEN, async (liga, placares, upcoming) => {
+      if (vavadaDonaDaLiga(liga)) return;
       const games = placares.map((p, i) => ({
         nome: p.nome || "Jogo " + (i + 1), a: p.a, b: p.b, total: p.total,
         odds: p.odds || {}, hora: p.hora || null, horario: p.hora || p.horario || "",
