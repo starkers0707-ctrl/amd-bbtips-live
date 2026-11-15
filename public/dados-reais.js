@@ -462,9 +462,9 @@
   // ITA/ENG/SPA/MND usam 30 jogos/h. As demais usam 20 jogos/h.
   var CADENCIA = {
     // A tabela 1Win tem 20 colunas, uma a cada 3 minutos.
-    ita:{ini:0,passo:3}, eng:{ini:0,passo:3}, spa:{ini:0,passo:3},
+    ita:{ini:0,passo:2}, eng:{ini:1,passo:2}, spa:{ini:0,passo:2},
     mnd:{ini:1,passo:2},
-    bra:{ini:1,passo:3}, lat:{ini:1,passo:2},
+    bra:{ini:1,passo:3}, lat:{ini:1,passo:3},
     cam:{ini:2,passo:3}, cop:{ini:0,passo:3}, ame:{ini:1,passo:3},
     split:{ini:0,passo:2}
   };
