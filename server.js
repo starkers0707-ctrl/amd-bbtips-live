@@ -2037,13 +2037,13 @@ app.get("/api/grade", (req, res) => {
   // Relógio real de cada liga virtual: não misturar grades de 30 e 20 jogos.
   const cadenciaDaLiga = chave => ({
     // 1Win usa vinte jogos, de tres em tres minutos, para ENG/SPA/ITA.
-    ita: { cols: 30, passo: 2 }, eng: { cols: 30, passo: 2 },
-    spa: { cols: 30, passo: 2 }, mnd: { cols: 30, passo: 2 },
-    split: { cols: 30, passo: 2 },
-    lat: { cols: 20, passo: 3 },
-    bra: { cols: 20, passo: 3 }, cam: { cols: 20, passo: 3 },
+    ita: { cols: 30, passo: 2, ini: 1 }, eng: { cols: 30, passo: 2, ini: 0 },
+    spa: { cols: 30, passo: 2, ini: 1 }, mnd: { cols: 30, passo: 2, ini: 0 },
+    split: { cols: 30, passo: 2, ini: 0 },
+    lat: { cols: 20, passo: 3, ini: 2 },
+    bra: { cols: 20, passo: 3, ini: 2 }, cam: { cols: 20, passo: 3, ini: 2 },
     cop: { cols: 20, passo: 3 }, ame: { cols: 20, passo: 3 }
-  }[String(chave || '').toLowerCase()] || { cols: 30, passo: 2 });
+  }[String(chave || '').toLowerCase()] || { cols: 30, passo: 2, ini: 0 });
   const gradeCfg = cadenciaDaLiga(liga);
   const aliases = {
     ita:['ita'], eng:['eng'], spa:['spa'],
@@ -2136,7 +2136,10 @@ app.get("/api/grade", (req, res) => {
     return Date.UTC(partes.year, partes.month - 1, partes.day,
       partes.hour, partes.minute, partes.second, 0);
   })();
-  const agora = agoraGrade - (agoraGrade % passoGradeMs);
+  const dAgora = new Date(agoraGrade);
+  const minutoAgora = dAgora.getUTCMinutes();
+  const recuoMin = ((minutoAgora - gradeCfg.ini) % gradeCfg.passo + gradeCfg.passo) % gradeCfg.passo;
+  const agora = agoraGrade - recuoMin * 60000 - dAgora.getUTCSeconds() * 1000 - dAgora.getUTCMilliseconds();
 
   const oddsAntigas = odds => {
     const o = odds || {};
@@ -2147,6 +2150,7 @@ app.get("/api/grade", (req, res) => {
       "odd_over_3.5": o.o35 ?? null,
       "odd_total_gols_extatos_5": o.ge5 ?? null,
       "odd_ambas_sim": o.ambs ?? null,
+      "odd_ambas_nao": o.ambn ?? null,
       "odd_under_0.5": o.u05 ?? null,
       "odd_under_1.5": o.u15 ?? null,
       "odd_under_2.5": o.u25 ?? null
@@ -2167,9 +2171,8 @@ app.get("/api/grade", (req, res) => {
     // Subtrair 1 da CAM transformava 17:00 em 16:59, removia a primeira casa
     // da linha e fazia o cabecalho aparecer incorretamente como 02,05,08....
     // As demais ligas mantem o contrato legado da extensao, que nomeia a
-    // primeira casa um minuto adiante.
-    if (liga !== 'ame' && liga !== 'cop' && liga !== 'cam') min -= 1;
-    if (min < 0) { min += 60; h = (h + 23) % 24; }
+    // O minuto recebido da API é a fonte de verdade. Não deslocar entre ligas:
+    // ENG/MND começam em 00, ITA/SPA em 01 e BRA/LAT em 02.
     const agoraReal = new Date(agoraGrade);
     let ts = Date.UTC(agoraReal.getUTCFullYear(), agoraReal.getUTCMonth(), agoraReal.getUTCDate(), h, min, 0, 0);
     const dia = 24 * 60 * 60 * 1000;

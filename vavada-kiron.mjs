@@ -141,13 +141,14 @@ function parseDetail(detail, evento, liga) {
   const fora = competidores[1]?.name || nomes[1] || "Fora";
   const o25 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && linhaDaOdd(o) === "2.5");
   const o35 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && linhaDaOdd(o) === "3.5");
-  const ambas = oddDoMercado(detail, 29, o => Number(o.typeId) === 74 || /^sim$/i.test(String(o.name || "")));
+  const ambasSim = oddDoMercado(detail, 29, o => Number(o.typeId) === 74 || /^sim$/i.test(String(o.name || "")));
+  const ambasNao = oddDoMercado(detail, 29, o => Number(o.typeId) === 76 || /^n[aã]o$/i.test(String(o.name || "")));
   const horario = horaBR(detail?.startDate || evento?.startDate);
   return {
     id: `vavada:${liga}:${evento.id}`,
     nome: `${casa} x ${fora}`, casa, fora, a, b, total: a + b,
     placar: `${a}-${b}`, horario, hora: horario,
-    odds: { o25: o25?.price ?? null, o35: o35?.price ?? null, ambs: ambas?.price ?? null },
+    odds: { o25: o25?.price ?? null, o35: o35?.price ?? null, ambs: ambasSim?.price ?? null, ambn: ambasNao?.price ?? null },
     fonte: "vavada"
   };
 }
@@ -159,10 +160,11 @@ function parseUpcoming(detail, evento, liga) {
   const fora = competidores[1]?.name || nomes[1] || "Fora";
   const o25 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && linhaDaOdd(o) === "2.5");
   const o35 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && linhaDaOdd(o) === "3.5");
-  const ambas = oddDoMercado(detail, 29, o => Number(o.typeId) === 74 || /^sim$/i.test(String(o.name || "")));
+  const ambasSim = oddDoMercado(detail, 29, o => Number(o.typeId) === 74 || /^sim$/i.test(String(o.name || "")));
+  const ambasNao = oddDoMercado(detail, 29, o => Number(o.typeId) === 76 || /^n[aã]o$/i.test(String(o.name || "")));
   const horario = horaBR(detail?.startDate || evento?.startDate);
   return { id: `vavada:${liga}:${evento.id}`, nome: `${casa} x ${fora}`, casa, fora, horario, hora: horario,
-    odds: { o25: o25?.price ?? null, o35: o35?.price ?? null, ambs: ambas?.price ?? null }, fonte: "vavada" };
+    odds: { o25: o25?.price ?? null, o35: o35?.price ?? null, ambs: ambasSim?.price ?? null, ambn: ambasNao?.price ?? null }, fonte: "vavada" };
 }
 
 async function detalhes(game, evento) {
