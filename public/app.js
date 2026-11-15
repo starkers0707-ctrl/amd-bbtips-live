@@ -2376,9 +2376,9 @@ function renderGrade() {
   )].map(input => input.checked);
   // Cada liga usa sua própria cadência recebida do coletor.
   const LIGACFG = {
-    ita:{ini:0,passo:2,cols:30}, eng:{ini:1,passo:2,cols:30}, spa:{ini:0,passo:2,cols:30},
-    mnd:{ini:1,passo:2,cols:30},
-    bra:{ini:1,passo:3,cols:20}, lat:{ini:1,passo:3,cols:20},
+    ita:{ini:1,passo:2,cols:30}, eng:{ini:0,passo:2,cols:30}, spa:{ini:1,passo:2,cols:30},
+    mnd:{ini:0,passo:2,cols:30},
+    bra:{ini:2,passo:3,cols:20}, lat:{ini:2,passo:3,cols:20},
     cam:{ini:2,passo:3,cols:20}, cop:{ini:0,passo:3,cols:20},
     ame:{ini:1,passo:3,cols:20},
     split:{ini:0,passo:2,cols:30}
