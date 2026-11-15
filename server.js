@@ -211,11 +211,10 @@ async function revogar(c){if(!confirm('Revogar '+c+'?'))return;await api('/api/a
 </script></body></html>`);
 });
 
-// Fontes ativas: Kiron (CAM/COP/AME) e 1Win (ENG/SPA/ITA). A trava impede que
-// scripts antigos voltem a misturar as ligas que nao fazem parte desta tela.
-const LIGAS_PERMITIDAS = new Set(["cam", "cop", "ame", "eng", "spa", "ita", "mnd", "bra", "lat"]);
-const LIGAS = (process.env.LIGAS || "cam,cop,ame,eng,spa,ita").split(",").map(x => x.trim())
-  .filter(x => LIGAS_PERMITIDAS.has(x));
+// Fonte oficial do painel: seis ligas Kiron recebidas diretamente da Vavada.
+// A trava impede que identificadores antigos voltem a contaminar as telas.
+const LIGAS_PERMITIDAS = new Set(["eng", "ita", "spa", "mnd", "bra", "lat"]);
+const LIGAS = ["eng", "ita", "spa", "mnd", "bra", "lat"];
 function registraLiga(l) { if (LIGAS_PERMITIDAS.has(l) && !LIGAS.includes(l)) LIGAS.push(l); }
 function slugLiga(v) {
   return String(v == null ? "" : v).trim().toLowerCase().normalize("NFD")
@@ -2012,7 +2011,7 @@ const esperaVavada = setInterval(() => {
   iniciaVavadaKiron();
 }, 250);
 
-app.get("/api/vavada/estado", (req, res) => {
+app.get(["/api/vavada/estado", "/api/bbtips/vavada-estado"], (req, res) => {
   res.json(vavadaKiron ? vavadaKiron.obterEstado() : { ts: 0, erro: "módulo carregando", rodando: false, ligas: {} });
 });
 
