@@ -1,6 +1,7 @@
-const GRAPHQL_URL = process.env.VAVADA_GRAPHQL_URL || "https://vavada.com/graphql";
 const VIRTUALS_URL = process.env.VAVADA_VIRTUALS_URL || "https://sb2virtuals-altenar2.biahosted.com/api/";
-const INTERVALO = Math.max(5000, Number(process.env.VAVADA_INTERVALO || 10000));
+const INTERVALO = Math.max(10000, Number(process.env.VAVADA_INTERVALO || 60000));
+const DEBUG = process.argv.includes("--debug") || process.env.VAVADA_DEBUG === "1";
+const PAUSA_DETALHE = Math.max(0, Number(process.env.VAVADA_PAUSA_DETALHE || 300));
 
 // Jogos Kiron "single match" exibidos pela Vavada. As ligas permanecem
 // separadas no AMD; os IDs pares correspondem aos campeonatos, que não são a
@@ -20,65 +21,57 @@ let timer = null;
 const estado = { ts: 0, erro: null, rodando: false, ligas: {}, integrationId: null };
 const conhecidos = new Map();
 
-function unwrapLaunch(data) {
-  const x = data?.data?.launchAltenarSportLayout;
-  if (Array.isArray(x)) return x[0] || null;
-  return x || null;
-}
-
 async function carregarConfig(force = false) {
   if (config && !force) return config;
-  const integrationEnv = String(process.env.VAVADA_INTEGRATION_ID || "").trim();
-  if (integrationEnv) {
-    config = { integrationId: integrationEnv, token: String(process.env.VAVADA_TOKEN || "") };
-    return config;
-  }
-  const body = {
-    operationName: "GetSportData",
-    variables: {},
-    query: "query GetSportData { launchAltenarSportLayout { integrationId shareCode token wsdkUrl } }"
+  config = {
+    integrationId: String(process.env.VAVADA_INTEGRATION_ID || "vavada").trim(),
+    token: String(process.env.VAVADA_TOKEN || "")
   };
-  const r = await fetch(GRAPHQL_URL, {
-    method: "POST",
-    headers: { "content-type": "application/json", "accept": "application/json", "user-agent": "Mozilla/5.0" },
-    body: JSON.stringify(body),
-    signal: AbortSignal.timeout(15000)
-  });
-  if (!r.ok) throw new Error(`config Vavada HTTP ${r.status}`);
-  const json = await r.json();
-  const launch = unwrapLaunch(json);
-  if (!launch?.integrationId) throw new Error("integrationId não veio da Vavada");
-  config = { integrationId: String(launch.integrationId), token: String(launch.token || "") };
   estado.integrationId = config.integrationId;
   return config;
 }
 
 function paramsComuns(cfg) {
   return {
-    culture: "pt-BR",
+    culture: "pt-PT",
     timezoneOffset: "180",
     integration: cfg.integrationId,
     deviceType: "1",
-    numFormat: "pt-BR",
+    numFormat: "en-GB",
     countryCode: "BR"
   };
 }
 
-async function api(path, params = {}, retry = true) {
+const espera = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+async function api(path, params = {}) {
   const cfg = await carregarConfig();
   const url = new URL(path, VIRTUALS_URL);
   for (const [k, v] of Object.entries({ ...paramsComuns(cfg), ...params })) {
     if (v !== undefined && v !== null && v !== "") url.searchParams.set(k, String(v));
   }
-  const headers = { accept: "application/json", origin: "https://vavada.com", referer: "https://vavada.com/" };
+  const headers = {
+    accept: "application/json, text/plain, */*",
+    "user-agent": process.env.VAVADA_USER_AGENT || "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130.0 Safari/537.36",
+    origin: process.env.VAVADA_ORIGIN || "https://vavada.com",
+    referer: process.env.VAVADA_REFERER || "https://vavada.com/"
+  };
   if (cfg.token) headers.authorization = `Bearer ${cfg.token}`;
-  const r = await fetch(url, { headers, signal: AbortSignal.timeout(15000) });
-  if ((r.status === 401 || r.status === 403) && retry) {
-    await carregarConfig(true);
-    return api(path, params, false);
+  let ultimoErro;
+  for (let tentativa = 1; tentativa <= 3; tentativa++) {
+    try {
+      const r = await fetch(url, { headers, signal: AbortSignal.timeout(10000) });
+      if (r.status === 403 || r.status === 429) {
+        console.warn(`[vavada] ${path} HTTP ${r.status} tentativa ${tentativa}/3`);
+      }
+      if (!r.ok) throw new Error(`${path} HTTP ${r.status}`);
+      return await r.json();
+    } catch (e) {
+      ultimoErro = e;
+      if (tentativa < 3) await espera(500 * (2 ** (tentativa - 1)));
+    }
   }
-  if (!r.ok) throw new Error(`${path} HTTP ${r.status}`);
-  return r.json();
+  throw ultimoErro;
 }
 
 function lista(x, nomes) {
@@ -105,8 +98,40 @@ function oddDoMercado(detail, typeId, teste) {
   return lista(detail, ["odds", "oddList"]).find(o => ids.has(Number(o.id)) && teste(o));
 }
 
+function oddsDoMercado(detail, typeId) {
+  const ids = idsMercado(detail, typeId);
+  return lista(detail, ["odds", "oddList"]).filter(o => ids.has(Number(o.id)));
+}
+
+function linhaDaOdd(odd) {
+  try {
+    const sv = typeof odd?.sv === "string" ? JSON.parse(odd.sv) : odd?.sv;
+    return String(sv?.["1"] ?? sv?.[1] ?? "").replace(",", ".");
+  } catch { return ""; }
+}
+
+function vencedorUnico(detail, typeId) {
+  const vencedoras = oddsDoMercado(detail, typeId).filter(o => Number(o.oddStatus) === 1);
+  return vencedoras.length === 1 ? vencedoras[0] : null;
+}
+
+function debugMercados(detail, evento) {
+  if (!DEBUG) return;
+  const bruto = {};
+  for (const tipo of [1, 18, 29, 199]) {
+    bruto[tipo] = oddsDoMercado(detail, tipo).map(o => ({
+      id: o.id, typeId: o.typeId, name: o.name, sv: o.sv,
+      price: o.price, oddStatus: o.oddStatus
+    }));
+  }
+  console.log(`[vavada:debug] ${evento.id} ${evento.name}`, JSON.stringify(bruto));
+}
+
 function parseDetail(detail, evento, liga) {
-  const exato = oddDoMercado(detail, 199, o => Number(o.oddStatus) === 1 && /^\d+\s*:\s*\d+$/.test(String(o.name || "")));
+  debugMercados(detail, evento);
+  // Só confirma a partida quando o 1x2 tem exatamente uma seleção vencedora.
+  if (!vencedorUnico(detail, 1)) return null;
+  const exato = vencedorUnico(detail, 199);
   if (!exato) return null;
   const [a, b] = String(exato.name).split(":").map(Number);
   if (!Number.isFinite(a) || !Number.isFinite(b)) return null;
@@ -114,8 +139,8 @@ function parseDetail(detail, evento, liga) {
   const nomes = String(detail?.name || evento?.name || "").split(/\s+vs\.?\s+|\s+x\s+/i);
   const casa = competidores[0]?.name || nomes[0] || "Casa";
   const fora = competidores[1]?.name || nomes[1] || "Fora";
-  const o25 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && /2[,.]5/.test(String(o.name || o.sv || "")));
-  const o35 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && /3[,.]5/.test(String(o.name || o.sv || "")));
+  const o25 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && linhaDaOdd(o) === "2.5");
+  const o35 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && linhaDaOdd(o) === "3.5");
   const ambas = oddDoMercado(detail, 29, o => Number(o.typeId) === 74 || /^sim$/i.test(String(o.name || "")));
   const horario = horaBR(detail?.startDate || evento?.startDate);
   return {
@@ -132,8 +157,8 @@ function parseUpcoming(detail, evento, liga) {
   const nomes = String(detail?.name || evento?.name || "").split(/\s+vs\.?\s+|\s+x\s+/i);
   const casa = competidores[0]?.name || nomes[0] || "Casa";
   const fora = competidores[1]?.name || nomes[1] || "Fora";
-  const o25 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && /2[,.]5/.test(String(o.name || o.sv || "")));
-  const o35 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && /3[,.]5/.test(String(o.name || o.sv || "")));
+  const o25 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && linhaDaOdd(o) === "2.5");
+  const o35 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && linhaDaOdd(o) === "3.5");
   const ambas = oddDoMercado(detail, 29, o => Number(o.typeId) === 74 || /^sim$/i.test(String(o.name || "")));
   const horario = horaBR(detail?.startDate || evento?.startDate);
   return { id: `vavada:${liga}:${evento.id}`, nome: `${casa} x ${fora}`, casa, fora, horario, hora: horario,
@@ -162,6 +187,7 @@ async function rodada(onLiga) {
           const chave = `${liga}:${ev.id}:${ev.status}`;
           let salvo = conhecidos.get(chave);
           if (!salvo) {
+            await espera(PAUSA_DETALHE);
             const det = await detalhes(game, ev);
             salvo = Number(ev.status) === 2 ? parseDetail(det, ev, liga) : parseUpcoming(det, ev, liga);
             if (salvo) conhecidos.set(chave, salvo);
