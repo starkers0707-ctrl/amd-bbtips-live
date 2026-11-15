@@ -2015,6 +2015,31 @@ app.get(["/api/vavada/estado", "/api/bbtips/vavada-estado"], (req, res) => {
   res.json(vavadaKiron ? vavadaKiron.obterEstado() : { ts: 0, erro: "módulo carregando", rodando: false, ligas: {} });
 });
 
+// Diagnostico executado pelo proprio Render. Serve para distinguir erro de
+// configuracao de bloqueio da origem sem expor cookies, tokens ou credenciais.
+app.get("/debug-vavada", async (req, res) => {
+  const url = "https://sb2virtuals-altenar2.biahosted.com/api/Virtuals/GetEventList?culture=pt-PT&timezoneOffset=180&integration=vavada&deviceType=1&numFormat=en-GB&countryCode=BR&id=92&dbId=12";
+  try {
+    const r = await fetch(url, {
+      headers: {
+        "User-Agent": process.env.VAVADA_USER_AGENT || "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/130.0 Safari/537.36",
+        "Origin": process.env.VAVADA_ORIGIN || "https://vavada.com",
+        "Referer": process.env.VAVADA_REFERER || "https://vavada.com/"
+      },
+      signal: AbortSignal.timeout(10000)
+    });
+    const corpo = await r.text();
+    res.status(200).json({
+      status: r.status,
+      cfRay: r.headers.get("cf-ray"),
+      tipo: r.headers.get("content-type"),
+      inicio: corpo.slice(0, 300)
+    });
+  } catch (e) {
+    res.status(500).json({ erro: String(e) });
+  }
+});
+
 app.get("/api/status", (req, res) => {
   res.json(LIGAS.map(l => ({
     liga: l,
