@@ -99,7 +99,7 @@
   function formatarAlerta(tipo, liga, horario) {
     var cruzamento = tipo === 'golden' ? 'Golden Cross' : 'Death Cross';
     var chaveLiga = String(liga || '').trim().toLowerCase();
-    var ligas = { copa: 'Copa', euro: 'Euro', super: 'Super', premier: 'Premier' };
+    var ligas = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT' };
     var nomeLiga = ligas[chaveLiga] || String(liga || '').trim();
     var hora = normalizarHorario(horario);
     var frase = [nomeLiga, cruzamento, hora].filter(Boolean).join(' ');

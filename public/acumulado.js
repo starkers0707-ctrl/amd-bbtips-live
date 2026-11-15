@@ -23,8 +23,9 @@
   var LS_FAIXA = 'amd_faixaacum';
   var LS_REPLAY_DIA = 'amd_replay_dia';
   var LIGAS_COMPARATIVO = [
-    { id: 'cam', nome: 'CAM', cor: '#ff9d00' }, { id: 'cop', nome: 'COP', cor: '#ff6b9a' },
-    { id: 'ame', nome: 'AME', cor: '#e7edf1' }
+    { id: 'eng', nome: 'ENG', cor: '#18b8ff' }, { id: 'ita', nome: 'ITA', cor: '#20ef61' },
+    { id: 'spa', nome: 'SPA', cor: '#ffd000' }, { id: 'mnd', nome: 'MND', cor: '#c58cff' },
+    { id: 'bra', nome: 'BRA', cor: '#36e3b4' }, { id: 'lat', nome: 'LAT', cor: '#ff7b54' }
   ];
   var FAIXAS = [
     ['h3', '3h', 3],

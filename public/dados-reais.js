@@ -19,13 +19,14 @@
   var API  = '';
   var LS_LIGA = 'amd_liga';
   // express saiu: 60 jogos/hora estourava a cota e nao cabe em 20 colunas
-  var LIGAS = ['cam','cop','ame'];
+  // Seis ligas Kiron oficiais; a fonte fica identificada no payload.
+  var LIGAS = ['eng','ita','spa','mnd','bra','lat'];
 
   var ligaParametro = '';
   try { ligaParametro = new URLSearchParams(location.search).get('liga') || ''; }
   catch (_) { ligaParametro = ''; }
-  var liga = String(ligaParametro || localStorage.getItem(LS_LIGA) || 'cam').toLowerCase();
-  if (LIGAS.indexOf(liga) < 0) liga = 'cam';
+  var liga = String(ligaParametro || localStorage.getItem(LS_LIGA) || 'eng').toLowerCase();
+  if (LIGAS.indexOf(liga) < 0) liga = 'eng';
   // A API pode mapear a aba classica para uma liga descoberta pela extensao
   // (por exemplo, playpix-spa). Nesse caso a cadencia deve vir dos jogos reais,
   // e nao da tabela fixa da antiga copa/euro/super/premier.
@@ -460,7 +461,8 @@
   // Minuto inicial e intervalo observados no relógio que a extensão envia.
   // ITA/ENG/SPA/MND usam 30 jogos/h. As demais usam 20 jogos/h.
   var CADENCIA = {
-    ita:{ini:0,passo:2}, eng:{ini:1,passo:2}, spa:{ini:0,passo:2},
+    // A tabela 1Win tem 20 colunas, uma a cada 3 minutos.
+    ita:{ini:0,passo:3}, eng:{ini:0,passo:3}, spa:{ini:0,passo:3},
     mnd:{ini:1,passo:2},
     bra:{ini:1,passo:3}, lat:{ini:1,passo:2},
     cam:{ini:2,passo:3}, cop:{ini:0,passo:3}, ame:{ini:1,passo:3},

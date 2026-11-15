@@ -1,12 +1,12 @@
 (function () {
   'use strict';
-  var liga = localStorage.getItem('amd_liga') || 'copa';
+  var liga = localStorage.getItem('amd_liga') || 'eng';
   var mercado = localStorage.getItem('amd_filtro_odd_mercado') || 'over25';
   var horas = Number(localStorage.getItem('amd_filtro_odd_horas')) || 6;
   var quantidade = Number(localStorage.getItem('amd_filtro_odd_quantidade')) || 1;
   var partidas = [];
-  var LIGAS = ['copa', 'euro', 'super', 'premier'];
-  var NOMES = { copa: 'Copa', euro: 'Euro', super: 'Super', premier: 'Premier' };
+  var LIGAS = ['eng', 'ita', 'spa', 'mnd', 'bra', 'lat'];
+  var NOMES = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT' };
   function el(id) { return document.getElementById(id); }
   function esc(v) { return String(v == null ? '' : v).replace(/[&<>"']/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]; }); }
   function pct(v, casas) { return Number.isFinite(v) ? (v * 100).toFixed(casas == null ? 1 : casas) + '%' : '—'; }

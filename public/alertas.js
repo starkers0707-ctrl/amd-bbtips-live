@@ -1,5 +1,5 @@
 (function(){'use strict';
-var dados={},ranking=[],ativos=[],futuros={},amostraAtual=0,carregando=false,pendente=false,ultimoOk=0,autoTimer=null,pedido=0,worker=null,LIGAS=['copa','euro','super','premier'],NOMES={copa:'Copa',euro:'Euro',super:'Super',premier:'Premier'};
+var dados={},ranking=[],ativos=[],futuros={},amostraAtual=0,carregando=false,pendente=false,ultimoOk=0,autoTimer=null,pedido=0,worker=null,LIGAS=['eng','ita','spa','mnd','bra','lat'],NOMES={eng:'ENG',ita:'ITA',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT'};
 var AFRICA=['gana','senegal','marrocos','argélia','argelia','egito','nigéria','nigeria','camarões','camaroes','costa do marfim','áfrica do sul','africa do sul','tunísia','tunisia','mali','cabo verde','guiné','guine','burkina','congo'];
 function el(id){return document.getElementById(id)}function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]})}function pct(v){return Number.isFinite(v)?(v*100).toFixed(1)+'%':'—'}
 function nomeMercado(id){var m=AuditoriaTimesModel.MERCADOS.find(function(x){return x.id===id});return m?m.nome:id}function hora(j){var t=AlertasCrossModel.tempo(j);return t?new Date(t).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}):'—'}

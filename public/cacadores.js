@@ -49,7 +49,7 @@
 
   var MERCADOS = [['o25','Over 2.5'],['o35','Over 3.5'],['ge5','5+ Gols'],['ambs','Ambas marcam']];
   var ROTULO = {}; MERCADOS.forEach(function(m){ ROTULO[m[0]] = m[1]; });
-  var LIGAS = { ita:1, eng:1, spa:1, mnd:1, bra:1, lat:1, cam:1, cop:1, ame:1 };
+  var LIGAS = { eng:1, ita:1, spa:1, mnd:1, bra:1, lat:1 };
 
   var estado = { liga: null, mkt: 'o25', carregando: false, jogos: [] };
 

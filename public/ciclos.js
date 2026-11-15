@@ -38,7 +38,7 @@
   var TIROS = 3;           /* tiros do alvo e da regua */
   var RECARGA_MS = 60000;
 
-  var LIGAS = [['copa','Copa'],['euro','Euro'],['super','Super'],['premier','Premier']];
+  var LIGAS = [['eng','ENG'],['ita','ITA'],['spa','SPA'],['mnd','MND'],['bra','BRA'],['lat','LAT']];
   var JANELAS = [[3,'3 h (~60)'],[6,'6 h (~120)'],[12,'12 h (~240)'],[24,'24 h (~480)'],[48,'48 h (~960)']];
   var MERCADOS = [
     ['o15','Over 1.5', 1.5],

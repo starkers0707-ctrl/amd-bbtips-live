@@ -40,15 +40,15 @@
   }
   function robotLeagues(robot) {
     var values = robot && Array.isArray(robot.leagues) && robot.leagues.length
-      ? robot.leagues : [robot && robot.league || 'copa'];
+      ? robot.leagues : [robot && robot.league || 'eng'];
     return Array.from(new Set(values.map(function (value) {
       return String(value || '').toLowerCase();
     }).filter(function (value) {
-      return ['copa', 'euro', 'super', 'premier'].indexOf(value) >= 0;
+      return ['eng', 'ita', 'spa', 'mnd', 'bra', 'lat'].indexOf(value) >= 0;
     })));
   }
   function setSelectedLeagues(values) {
-    values = Array.isArray(values) && values.length ? values : ['copa'];
+    values = Array.isArray(values) && values.length ? values : ['eng'];
     qa('input[name="rbLiga"]').forEach(function (input) {
       input.checked = values.indexOf(input.value) >= 0;
     });
@@ -696,7 +696,7 @@
   function resetForm(silent) {
     editingId = '';
     q('#rbName').value = '';
-    setSelectedLeagues(['copa']);
+    setSelectedLeagues(['eng']);
     q('#rbJoin').value = 'all';
     q('#rbProfile').value = 'equilibrado';
     q('#rbThreshold').value = '65';

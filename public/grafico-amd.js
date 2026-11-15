@@ -80,9 +80,9 @@
   }
   function ligaAtual() {
     var t = (ativoEm(".tabrow") || ativoEm("#cligaMenu") || "").toLowerCase();
-    var nomes = ["copa", "euro", "super", "premier"];
+    var nomes = ["eng", "ita", "spa", "mnd", "bra", "lat"];
     for (var i = 0; i < nomes.length; i++) if (t.indexOf(nomes[i]) >= 0) return nomes[i];
-    return "copa";
+    return "eng";
   }
   function mercadoAtual() {
     var t = (ativoEm("#markets") || "").toLowerCase();

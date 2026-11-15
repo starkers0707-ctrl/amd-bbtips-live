@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  var LIGAS=[['copa','Copa'],['euro','Euro'],['super','Super'],['premier','Premier']];
+  var LIGAS=[['eng','ENG'],['ita','ITA'],['spa','SPA'],['mnd','MND'],['bra','BRA'],['lat','LAT']];
   var grade=document.getElementById('grade'), estado=document.getElementById('estado');
   var mercado=document.getElementById('mercado'), janela=document.getElementById('janela');
   var cache={};

@@ -68,7 +68,7 @@
     var raiz = document.getElementById("ligaOpts");
     var el = raiz ? raiz.querySelector(".on,.active") : null;
     var t = (el ? el.textContent : "").trim().toLowerCase();
-    var nomes = ["ita", "eng", "spa", "mnd", "bra", "lat", "cam", "cop", "ame"];
+    var nomes = ["eng", "ita", "spa", "mnd", "bra", "lat"];
     for (var i = 0; i < nomes.length; i++) if (t.indexOf(nomes[i]) >= 0) return nomes[i];
     return "ita";
   }

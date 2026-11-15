@@ -11,21 +11,21 @@
   var candidatos = el('mlCandidatos');
   var progress = document.querySelector('.ml-progress');
   if (!badge || !candidatos) return;
-  var ligaAtual = 'copa';
+  var ligaAtual = 'eng';
   var atualizacaoEmCurso = false;
   var atualizacaoPendente = null;
 
   function nomeLiga(liga) {
-    var nomes = { copa: 'Copa', euro: 'Euro', super: 'Super', premier: 'Premier' };
-    return nomes[String(liga || '').toLowerCase()] || 'Copa';
+    var nomes = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT' };
+    return nomes[String(liga || '').toLowerCase()] || 'ENG';
   }
 
   function detectarLiga() {
     if (window.Real && typeof window.Real.liga === 'function') {
-      return String(window.Real.liga() || 'copa').toLowerCase();
+      return String(window.Real.liga() || 'eng').toLowerCase();
     }
     var ativa = document.querySelector('#leagues .tab.active');
-    return String(ativa && (ativa.dataset.v || ativa.textContent) || 'copa')
+    return String(ativa && (ativa.dataset.v || ativa.textContent) || 'eng')
       .replace(/^\S+\s/, '').trim().toLowerCase();
   }
 

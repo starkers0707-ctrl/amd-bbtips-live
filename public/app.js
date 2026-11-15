@@ -22,7 +22,7 @@ function poisson(rng, lambda = 1.24) {
 }
 
 /* ---------- ESTADO ---------- */
-const state = { liga: 'cam', mercado: 'Over 2.5', mercadosGrafico: ['Over 2.5'], modoMercadosGrafico: 'fixo', qtd: 240, horas: 6, metrica: '% pagamento', visual: 'Clássico', gradeMercado: 'Over 2.5', zoom: 1, ht: false, mostrarTime: true,
+const state = { liga: 'eng', mercado: 'Over 2.5', mercadosGrafico: ['Over 2.5'], modoMercadosGrafico: 'fixo', qtd: 240, horas: 6, metrica: '% pagamento', visual: 'Clássico', gradeMercado: 'Over 2.5', zoom: 1, ht: false, mostrarTime: true,
   graficoTravado: true, panGrafico: 0, ancoraGrafico: null,
   totalFonteGrafico: 0, ultimoJogoViewport: null, odds: ['AS','O2.5','O3.5'] };
 const parametrosQuadro = new URLSearchParams(window.location.search);
@@ -46,16 +46,16 @@ window.atualizarSeletorLigaGrafico = function () {
     typeof window.GraficoReal.modo === 'function' &&
     window.GraficoReal.modo() === 'ligas';
   const botao = document.getElementById('cligaBtn');
-  const nomes = { ita:'ITA',eng:'ENG',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT',cam:'CAM',cop:'COP',ame:'AME',split:'Split' };
-  const chave = String(state.liga || 'cam').toLowerCase();
+  const nomes = { eng:'ENG',ita:'ITA',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT',split:'Split' };
+  const chave = String(state.liga || 'eng').toLowerCase();
   if (botao) {
     botao.textContent = comparar
-      ? 'Ligas: Todas (9)'
+      ? 'Ligas: Todas (6)'
       : 'Liga: ' + (nomes[chave] || state.liga) + ' ⌄';
     botao.disabled = !!comparar;
     botao.classList.toggle('compare', !!comparar);
     botao.setAttribute('aria-label', comparar
-      ? 'Comparando as 9 ligas da extensão'
+      ? 'Comparando as 6 ligas oficiais'
       : 'Selecionar liga do gráfico');
   }
   const caixa = document.querySelector('.chart-liga');
@@ -63,7 +63,7 @@ window.atualizarSeletorLigaGrafico = function () {
 };
 window.definirLigaApp = function (novaLiga) {
   const chave = String(novaLiga || '').trim().toLowerCase();
-  const nomes = { ita:'ITA',eng:'ENG',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT',cam:'CAM',cop:'COP',ame:'AME',split:'Split' };
+  const nomes = { eng:'ENG',ita:'ITA',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT',split:'Split' };
   if (!nomes[chave]) return false;
     /* Este e o caminho real da troca de liga: a barra lateral e o
        dados-reais.js chamam definirLigaApp, nao o bindTabs.
@@ -493,7 +493,7 @@ function escaparHover(valor) {
 
 function nomeLigaComparativo(liga) {
   const id = String(liga && (liga.id || liga.liga) || '').toLowerCase();
-  const nomes = { ita:'ITA', eng:'ENG', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT', cam:'CAM', cop:'COP', ame:'AME', split:'Split' };
+  const nomes = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT', split:'Split' };
   return nomes[id] || String(liga && liga.nome || id || 'Liga').toUpperCase();
 }
 
@@ -721,7 +721,7 @@ function renderTopLigas(svg, W, H) {
   }
 
   const melhores = new Set((pacote.completo ? pacote.melhores || [] : []).map(liga => liga.id));
-  const tracos = { ita: '', eng: '8 4', spa: '3 3', mnd: '12 4 2 4', bra: '2 3', lat: '4 3', cam: '10 3', cop: '6 3', ame: '1 3' };
+  const tracos = { eng: '8 4', ita: '', spa: '3 3', mnd: '12 4 2 4', bra: '2 3', lat: '4 3' };
   const ordenadas = ligas.slice().sort((a, b) =>
     Number(melhores.has(a.id)) - Number(melhores.has(b.id)));
   ordenadas.forEach(liga => {
@@ -970,7 +970,7 @@ function analisarAlertaMedias(pontos) {
 }
 
 function nomeLigaAlerta(liga) {
-  const nomes = { ita:'ITA', eng:'ENG', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT', cam:'CAM', cop:'COP', ame:'AME', split:'Split' };
+  const nomes = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT', split:'Split' };
   const chave = String(liga || '').trim().toLowerCase();
   return nomes[chave] || String(liga || 'Liga');
 }
@@ -3507,7 +3507,7 @@ const botaoGoldenInicial = [...document.querySelectorAll('#overlays .chip')]
 if (botaoGoldenInicial) {
   configurarGDCross(botaoGoldenInicial.classList.contains('on'), botaoGoldenInicial);
 }
-if (modoQuadro && ['ita', 'eng', 'spa', 'mnd', 'bra', 'lat', 'cam', 'cop', 'ame', 'split'].includes(ligaDoQuadro)) {
+if (modoQuadro && ['eng', 'ita', 'spa', 'mnd', 'bra', 'lat', 'split'].includes(ligaDoQuadro)) {
   window.definirLigaApp(ligaDoQuadro);
 }
 montarMira();
