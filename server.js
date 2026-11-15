@@ -131,6 +131,8 @@ const CODIGO_MESTRE = String(process.env.CODIGO_MESTRE || "").toUpperCase().trim
 // ===== AUTO-COLETA BBTIPS =====
 let bbtipsAuto = null;
 import("./bbtips-auto.mjs").then(m => { bbtipsAuto = m; console.log("[bbtips] auto-coleta carregada"); }).catch(e => console.log("[bbtips] modulo nao carregado:", e.message));
+let vavadaKiron = null;
+import("./vavada-kiron.mjs").then(m => { vavadaKiron = m; console.log("[vavada] coletor Kiron carregado"); }).catch(e => console.log("[vavada] modulo nao carregado:", e.message));
 function limpaToken(v) { const m = String(v || "").match(/ey[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_.-]+/); return m ? m[0] : ""; }
 let BB_TOKEN = limpaToken(process.env.BBTIPS_TOKEN);
 let bbUltima = { ts: 0, ligas: 0, nomes: 0, porCasa: {}, erro: null, rodando: false };
@@ -211,7 +213,7 @@ async function revogar(c){if(!confirm('Revogar '+c+'?'))return;await api('/api/a
 
 // Fontes ativas: Kiron (CAM/COP/AME) e 1Win (ENG/SPA/ITA). A trava impede que
 // scripts antigos voltem a misturar as ligas que nao fazem parte desta tela.
-const LIGAS_PERMITIDAS = new Set(["cam", "cop", "ame", "eng", "spa", "ita"]);
+const LIGAS_PERMITIDAS = new Set(["cam", "cop", "ame", "eng", "spa", "ita", "mnd", "bra", "lat"]);
 const LIGAS = (process.env.LIGAS || "cam,cop,ame,eng,spa,ita").split(",").map(x => x.trim())
   .filter(x => LIGAS_PERMITIDAS.has(x));
 function registraLiga(l) { if (LIGAS_PERMITIDAS.has(l) && !LIGAS.includes(l)) LIGAS.push(l); }
@@ -1973,6 +1975,46 @@ async function rodaAutoColeta() {
 
 setInterval(rodaAutoColeta, BB_INTERVALO);
 setTimeout(rodaAutoColeta, 4000);
+
+// ===== FONTE DIRETA VAVADA / KIRON =====
+// Mantém o histórico já existente e acrescenta somente eventos novos. Assim a
+// fonte direta reduz o atraso sem apagar a memória nem alterar a matemática.
+function iniciaVavadaKiron() {
+  if (!vavadaKiron || process.env.VAVADA_ENABLED === "0") return;
+  vavadaKiron.iniciar(async (liga, novos, futuros) => {
+    if (!LIGAS_PERMITIDAS.has(liga)) return;
+    const anterior = store[liga] || {};
+    const historico = Array.isArray(anterior.gamesAll) ? anterior.gamesAll : (anterior.games || []);
+    const mapa = new Map();
+    const chave = g => String(g.id || `${g.horario || ""}|${g.casa || ""}|${g.fora || ""}`);
+    for (const g of historico) mapa.set(chave(g), g);
+    for (const g of novos || []) mapa.set(chave(g), g);
+    const gamesAll = [...mapa.values()].slice(-1200);
+    // Não substitui futuros bons por uma resposta temporariamente vazia.
+    const upcoming = (futuros && futuros.length) ? futuros : (anterior.upcomingRaw || []);
+    if (!gamesAll.length && !upcoming.length) return;
+    const st = buildStore(liga, gamesAll, upcoming, new Date().toISOString());
+    st.gamesAll = gamesAll;
+    st.fonte = "vavada-kiron";
+    st.vavadaTs = Date.now();
+    store[liga] = st;
+    jogosDirty = true;
+    registraLiga(liga);
+    registraUpVistos(liga, upcoming);
+    atualizaRadar(liga, st);
+    atualizaRoboLedger();
+    avisaClientes(liga);
+  });
+}
+const esperaVavada = setInterval(() => {
+  if (!vavadaKiron) return;
+  clearInterval(esperaVavada);
+  iniciaVavadaKiron();
+}, 250);
+
+app.get("/api/vavada/estado", (req, res) => {
+  res.json(vavadaKiron ? vavadaKiron.obterEstado() : { ts: 0, erro: "módulo carregando", rodando: false, ligas: {} });
+});
 
 app.get("/api/status", (req, res) => {
   res.json(LIGAS.map(l => ({
