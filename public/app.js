@@ -2389,8 +2389,10 @@ function renderGrade() {
   // (ex.: 48), a grade abre todas as casas ate ela.
   const colsRecebidas = window.__amdGradeCols || {};
   const colunasDaFonte = Number(colsRecebidas[ligaGrade]);
-  const COLS = Number.isFinite(colunasDaFonte) && colunasDaFonte > LG.cols
-    ? Math.ceil(colunasDaFonte) : LG.cols;
+  // A quantidade de colunas pertence ao relógio da liga, não ao volume de
+  // registros recebido. BRA/LAT têm exatamente 20 jogos por hora; permitir
+  // que a fonte amplie esse número mistura partidas da hora seguinte.
+  const COLS = LG.cols;
   const mkt = state.gradeMercado;
   /* Lente HT: avalia e mostra o placar do intervalo. */
   const lente = function (j) { return j; };
