@@ -78,7 +78,6 @@ async function api(path, params = {}) {
         urlFinal = `https://api.scrapingant.com/v2/general?url=${encodeURIComponent(url.toString())}&x-api-key=${apiKey}`;
       }
 
-      // Faz a requisição para a URL (que agora é da ScrapingAnt, se a chave existir)
       const r = await curlFetch(urlFinal, {
         headers: headers,
         browser: 'chrome_149', 
