@@ -1,4 +1,4 @@
-import { fetch as curlFetch } from 'curl-impersonate-node'; // Importa o impostor de Chrome
+import { fetch as curlFetch } from 'wreq-js'; // Importa o impostor de Chrome correto
 
 const VIRTUALS_URL = process.env.VAVADA_VIRTUALS_URL || "https://sb2virtuals-altenar2.biahosted.com/api/";
 const INTERVALO = Math.max(10000, Number(process.env.VAVADA_INTERVALO || 60000));
@@ -70,11 +70,11 @@ async function api(path, params = {}) {
   let ultimoErro;
   for (let tentativa = 1; tentativa <= 3; tentativa++) {
     try {
-      // Usando curlFetch para mascarar o TLS do Node.js e parecer um Chrome
+      // Usando curlFetch (wreq-js) para mascarar o TLS do Node.js e parecer um Chrome
       const r = await curlFetch(url.toString(), {
         headers,
-        impersonate: 'chrome110', // Finge ser o Chrome 110
-        timeout: 10000 
+        browser: 'chrome_149', // Opção correta do wreq-js
+        timeout: 15000 
       });
 
       if (r.status === 403 || r.status === 429) {
