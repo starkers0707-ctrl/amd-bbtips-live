@@ -238,6 +238,14 @@ async function rodada(onLiga) {
   try {
     const gamesJson = await api("Virtuals/GetGames");
     const games = lista(gamesJson, ["games", "items", "data", "sports", "events"]);
+    if (!games.length) {
+      estado.diagnostico = {
+        chaves: gamesJson && typeof gamesJson === "object" ? Object.keys(gamesJson) : [],
+        inicio: JSON.stringify(gamesJson).slice(0, 3000)
+      };
+    } else {
+      delete estado.diagnostico;
+    }
     
     for (const [liga, tipo] of Object.entries(LIGAS)) {
       const game = games.find(g => Number(g.id) === tipo || Number(g.typeId) === tipo || Number(g.gameTypeId) === tipo);
