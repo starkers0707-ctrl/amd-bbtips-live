@@ -469,3 +469,22 @@ function chartSeries(games, mkt, qtdJogos = 20) {
   for (let i = qtdJogos; i <= games.length; i++) {
     const block = games.slice(i - qtdJogos, i);
     if (mkt === "totft")
+      vals.push(Math.round(avg * 10));
+    } else {
+      vals.push(Math.round(block.filter(g => pays(g, mkt)).length / qtdJogos * 100));
+    }
+  }
+  return vals;
+}
+
+function ema(arr, period) {
+  if (!arr.length) return [];
+  const k = 2 / (period + 1);
+  const out = [arr[0]];
+  for (let i = 1; i < arr.length; i++) out.push(arr[i] * k + out[i - 1] * (1 - k));
+  return out;
+}
+
+const server = app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
