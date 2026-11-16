@@ -237,33 +237,16 @@ async function rodada(onLiga) {
   rodando = true; estado.rodando = true;
   try {
     const gamesJson = await api("Virtuals/GetGames");
-    const games = lista(gamesJson, ["games", "items", "data", "sports", "events"]);
-    const estrutura = [];
-    const visitar = (valor, caminho = "raiz", nivel = 0) => {
-      if (estrutura.length >= 250 || nivel > 6 || valor == null) return;
-      if (Array.isArray(valor)) {
-        estrutura.push({ caminho, tipo: "array", total: valor.length });
-        valor.slice(0, 30).forEach((item, i) => visitar(item, `${caminho}[${i}]`, nivel + 1));
-        return;
-      }
-      if (typeof valor !== "object") return;
-      const chavesSeguras = Object.keys(valor).filter(k => !/token|key|auth|secret/i.test(k));
-      const resumo = { caminho, chaves: chavesSeguras };
-      for (const k of ["id", "typeId", "gameTypeId", "dbId", "name", "title", "sportId", "categoryId"]) {
-        if (valor[k] != null) resumo[k] = valor[k];
-      }
-      estrutura.push(resumo);
-      for (const k of chavesSeguras) visitar(valor[k], `${caminho}.${k}`, nivel + 1);
-    };
-    visitar(gamesJson);
+    const games = Array.isArray(gamesJson?.sports)
+      ? gamesJson.sports.flatMap(sport => Array.isArray(sport?.games) ? sport.games : [])
+      : lista(gamesJson, ["games", "items", "data", "events"]);
     estado.diagnostico = {
       total: games.length,
       chaves: gamesJson && typeof gamesJson === "object" ? Object.keys(gamesJson) : [],
       amostra: games.slice(0, 30).map(g => ({
         id: g?.id, typeId: g?.typeId, gameTypeId: g?.gameTypeId,
         dbId: g?.dbId, name: g?.name
-      })),
-      estrutura
+      }))
     };
     
     for (const [liga, tipo] of Object.entries(LIGAS)) {
