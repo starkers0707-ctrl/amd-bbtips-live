@@ -44,6 +44,17 @@ function paramsComuns(cfg) {
 
 const espera = ms => new Promise(resolve => setTimeout(resolve, ms));
 
+function jsonDaResposta(texto) {
+  const bruto = String(texto || "").trim();
+  try { return JSON.parse(bruto); } catch {}
+  const pre = bruto.match(/<pre[^>]*>([\s\S]*?)<\/pre>/i);
+  if (!pre) throw new Error(`Resposta nao JSON: ${bruto.slice(0, 120)}`);
+  const limpo = pre[1]
+    .replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'")
+    .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
+  return JSON.parse(limpo);
+}
+
 async function api(path, params = {}) {
   const cfg = await carregarConfig();
   const url = new URL(path, VIRTUALS_URL);
@@ -75,13 +86,19 @@ async function api(path, params = {}) {
       let urlFinal = url.toString();
 
       if (apiKey) {
-        urlFinal = `https://api.scrapingant.com/v2/general?url=${encodeURIComponent(url.toString())}&x-api-key=${apiKey}`;
+        const proxyUrl = new URL('https://api.scrapingant.com/v2/general');
+        proxyUrl.searchParams.set('url', url.toString());
+        proxyUrl.searchParams.set('x-api-key', apiKey);
+        proxyUrl.searchParams.set('browser', 'true');
+        proxyUrl.searchParams.set('return_page_source', 'true');
+        proxyUrl.searchParams.set('timeout', '60');
+        urlFinal = proxyUrl.toString();
       }
 
       const r = await curlFetch(urlFinal, {
         headers: headers,
         browser: process.env.VAVADA_BROWSER_PROFILE || 'chrome_147',
-        timeout: 15000 
+        timeout: apiKey ? 75000 : 15000
       });
 
       if (r.status === 403 || r.status === 429) {
@@ -93,8 +110,7 @@ async function api(path, params = {}) {
         throw new Error(`${path} HTTP ${r.status} - Resposta: ${errorText.substring(0, 100)}`);
       }
       
-      const data = await r.json();
-      return data;
+      return jsonDaResposta(await r.text());
 
     } catch (e) {
       ultimoErro = e;
