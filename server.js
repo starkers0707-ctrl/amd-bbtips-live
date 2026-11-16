@@ -1695,7 +1695,9 @@ app.post("/api/dados", (req, res) => {
         coluna_visual: p.coluna_visual ?? p.coluna ?? p.col ?? p.column ?? null
       }))
     };
-    s.fonte = "sonda";
+    const fonteVavada = String((req.body || {}).fonte || "") === "vavada-browser";
+    s.fonte = fonteVavada ? "vavada-browser" : "sonda";
+    if (fonteVavada) s.vavadaTs = Date.now();
     s.sondaTs = Date.now();
     if (Array.isArray(curva)) {
       liveCurves[liga + "|" + (mkt || "o35")] = { curva, mm1, mm2, topo, fundo, ts: Date.now() };
@@ -1960,9 +1962,9 @@ const BB_INTERVALO = Number(process.env.BBTIPS_INTERVALO || 5000);
 const VAVADA_DONO_MS = Math.max(120000, Number(process.env.VAVADA_DONO_MS || 180000));
 function vavadaDonaDaLiga(liga) {
   const atual = store[liga];
-  return process.env.VAVADA_ENABLED !== "0" &&
-    atual && atual.fonte === "vavada-kiron" &&
-    Date.now() - Number(atual.vavadaTs || 0) < VAVADA_DONO_MS;
+  if (!atual || Date.now() - Number(atual.vavadaTs || 0) >= VAVADA_DONO_MS) return false;
+  if (atual.fonte === "vavada-browser") return true;
+  return process.env.VAVADA_ENABLED !== "0" && atual.fonte === "vavada-kiron";
 }
 
 async function rodaAutoColeta() {
