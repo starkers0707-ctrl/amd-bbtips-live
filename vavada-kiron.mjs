@@ -80,7 +80,7 @@ async function api(path, params = {}) {
 
       const r = await curlFetch(urlFinal, {
         headers: headers,
-        browser: 'chrome_149', 
+        browser: process.env.VAVADA_BROWSER_PROFILE || 'chrome_147',
         timeout: 15000 
       });
 
