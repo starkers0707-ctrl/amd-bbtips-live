@@ -1644,10 +1644,17 @@ app.post("/api/snapshot", (req, res) => {
   }
 });
 
-// recebe os DADOS AO VIVO da sonda (placares da grade) - fonte nova, JSON morreu
+// Recebe dados ao vivo enviados pelo navegador/Tampermonkey.
+// O endpoint novo e explicito; /api/dados continua como alias compativel com
+// coletores antigos. Nenhum dos dois reativa a fonte BBTips do servidor.
 let lastDebug = {};
-app.post("/api/dados", (req, res) => {
+function recebeDadosTampermonkey(req, res) {
   try {
+    const tokenEsperado = String(process.env.TAMPERMONKEY_TOKEN || "").trim();
+    const tokenRecebido = String(req.get("authorization") || "").replace(/^Bearer\s+/i, "").trim();
+    if (tokenEsperado && tokenRecebido !== tokenEsperado) {
+      return res.status(401).json({ ok: false, erro: "token-tampermonkey-invalido" });
+    }
     const { mkt, placares, upcoming, curva, mm1, mm2, topo, fundo, debug } = req.body || {};
     let liga = ligaRecebida(req.body || {});
     const placaresLista = Array.isArray(placares) ? placares : [];
@@ -1694,7 +1701,7 @@ app.post("/api/dados", (req, res) => {
         coluna_visual: p.coluna_visual ?? p.coluna ?? p.col ?? p.column ?? null
       }))
     };
-    s.fonte = "sonda";
+    s.fonte = req.path === "/api/tampermonkey" ? "tampermonkey" : "sonda";
     s.sondaTs = Date.now();
     if (Array.isArray(curva)) {
       liveCurves[liga + "|" + (mkt || "o35")] = { curva, mm1, mm2, topo, fundo, ts: Date.now() };
@@ -1708,7 +1715,10 @@ app.post("/api/dados", (req, res) => {
   } catch (e) {
     res.status(500).json({ ok: false, erro: e.message });
   }
-});
+}
+
+app.post("/api/tampermonkey", recebeDadosTampermonkey);
+app.post("/api/dados", recebeDadosTampermonkey);
 
 // le o que a sonda achou na tela (pra debug remoto, ja que a aba trava pra automacao)
 app.get("/api/debug/:liga", (req, res) => {
