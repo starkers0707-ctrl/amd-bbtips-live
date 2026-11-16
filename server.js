@@ -125,7 +125,6 @@ if (BBTIPS_ENABLED) {
   import("./bbtips-auto.mjs").then(m => { bbtipsAuto = m; console.log("[bbtips] auto-coleta carregada"); }).catch(e => console.log("[bbtips] modulo nao carregado:", e.message));
 }
 
-// --- VAVADA INICIADA AQUI ---
 let vavadaKiron = null;
 import("./vavada-kiron.mjs").then(m => { 
   vavadaKiron = m; 
@@ -138,7 +137,6 @@ import("./vavada-kiron.mjs").then(m => {
     });
   }
 }).catch(e => console.log("[vavada] modulo nao carregado:", e.message));
-// ----------------------------
 
 function limpaToken(v) { const m = String(v || "").match(/ey[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_.-]+/); return m ? m[0] : ""; }
 let BB_TOKEN = limpaToken(process.env.BBTIPS_TOKEN);
@@ -470,16 +468,4 @@ function chartSeries(games, mkt, qtdJogos = 20) {
   const vals = [];
   for (let i = qtdJogos; i <= games.length; i++) {
     const block = games.slice(i - qtdJogos, i);
-    if (mkt === "totft") {
-      const avg = block.reduce((s, g) => s + (g.total || 0), 0) / qtdJogos;
-      vals.push(Math.round(avg * 10));
-    } else {
-      vals.push(Math.round(block.filter(g => pays(g, mkt)).length / qtdJogos * 100));
-    }
-  }
-  return vals;
-}
-
-function ema(arr, period) {
-  if (!arr.length) return [];
-  const k = 2 / (period
+    if (mkt === "totft")
