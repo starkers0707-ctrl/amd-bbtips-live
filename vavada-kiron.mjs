@@ -1,4 +1,4 @@
-import { fetch as curlFetch } from 'wreq-js'; // Importa o impostor de Chrome correto
+import { fetch as curlFetch } from 'wreq-js';
 
 const VIRTUALS_URL = process.env.VAVADA_VIRTUALS_URL || "https://sb2virtuals-altenar2.biahosted.com/api/";
 const INTERVALO = Math.max(10000, Number(process.env.VAVADA_INTERVALO || 60000));
@@ -70,10 +70,18 @@ async function api(path, params = {}) {
   let ultimoErro;
   for (let tentativa = 1; tentativa <= 3; tentativa++) {
     try {
-      // Usando curlFetch (wreq-js) para mascarar o TLS do Node.js e parecer um Chrome
-      const r = await curlFetch(url.toString(), {
-        headers,
-        browser: 'chrome_149', // Opção correta do wreq-js
+      // AQUI ESTÁ A MÁGICA: O ScrapingAnt busca de um IP limpo e entrega pro Render
+      const apiKey = process.env.SCRAPINGANT_API_KEY; 
+      let urlFinal = url.toString();
+
+      if (apiKey) {
+        // Se a chave existir nas variáveis de ambiente, usa o proxy da ScrapingAnt
+        urlFinal = `https://api.scrapingant.com/v2/general?url=${encodeURIComponent(url.toString())}&x-api-key=${apiKey}`;
+      }
+
+      const r = await curlFetch(urlFinal, {
+        headers: headers,
+        browser: 'chrome_149', 
         timeout: 15000 
       });
 
@@ -82,7 +90,7 @@ async function api(path, params = {}) {
       }
       
       if (!r.ok) {
-        const errorText = await r.text(); // Pega o HTML do erro para debugar
+        const errorText = await r.text(); 
         throw new Error(`${path} HTTP ${r.status} - Resposta: ${errorText.substring(0, 100)}`);
       }
       
@@ -201,7 +209,6 @@ function parseUpcoming(detail, evento, liga) {
 }
 
 async function detalhes(game, evento) {
-  // O dbId é fundamental. Se não vier no game, usamos o dbId padrão que vimos no seu JSON (12)
   const dbIdSeguro = game.dbId || evento.dbId || 12; 
   return api("WidgetVirtuals/GetVirtualEventDetails", { 
     eventId: evento.id, 
@@ -215,7 +222,6 @@ async function rodada(onLiga) {
   rodando = true; estado.rodando = true;
   try {
     const gamesJson = await api("Virtuals/GetGames");
-    // A API pode retornar os games em 'games', 'items' ou 'data'
     const games = lista(gamesJson, ["games", "items", "data", "sports", "events"]);
     
     for (const [liga, tipo] of Object.entries(LIGAS)) {
@@ -240,7 +246,6 @@ async function rodada(onLiga) {
             await espera(PAUSA_DETALHE);
             const det = await detalhes(game, ev);
             
-            // Se o status for 2 (finalizado), busca o placar. Se for 0 (futuro), só as odds.
             salvo = Number(ev.status) === 2 ? parseDetail(det, ev, liga) : parseUpcoming(det, ev, liga);
             if (salvo) conhecidos.set(chave, salvo);
           }
