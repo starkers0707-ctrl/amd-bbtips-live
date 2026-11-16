@@ -20,6 +20,7 @@ let rodando = false;
 let timer = null;
 const estado = { ts: 0, erro: null, rodando: false, ligas: {}, integrationId: null };
 const conhecidos = new Map();
+let proximoGames = 0; // enquanto GetGames estiver bloqueado, não insiste a cada rodada
 
 async function carregarConfig(force = false) {
   if (config && !force) return config;
@@ -58,7 +59,7 @@ function jsonDaResposta(texto) {
 async function api(path, params = {}) {
   const cfg = await carregarConfig();
   const url = new URL(path, VIRTUALS_URL);
-  
+
   for (const [k, v] of Object.entries({ ...paramsComuns(cfg), ...params })) {
     if (v !== undefined && v !== null && v !== "") url.searchParams.set(k, String(v));
   }
@@ -82,7 +83,7 @@ async function api(path, params = {}) {
   for (let tentativa = 1; tentativa <= 3; tentativa++) {
     try {
       // MÁGICA DA SCRAPINGANT: Pega a URL da Vavada e passa pelo proxy deles
-      const apiKey = process.env.SCRAPINGANT_API_KEY; 
+      const apiKey = process.env.SCRAPINGANT_API_KEY;
       let urlFinal = url.toString();
 
       if (apiKey) {
@@ -104,12 +105,12 @@ async function api(path, params = {}) {
       if (r.status === 403 || r.status === 429) {
         console.warn(`[vavada] ${path} HTTP ${r.status} tentativa ${tentativa}/3`);
       }
-      
+
       if (!r.ok) {
-        const errorText = await r.text(); 
+        const errorText = await r.text();
         throw new Error(`${path} HTTP ${r.status} - Resposta: ${errorText.substring(0, 100)}`);
       }
-      
+
       return jsonDaResposta(await r.text());
 
     } catch (e) {
@@ -180,19 +181,19 @@ function parseDetail(detail, evento, liga) {
   if (!exato) return null;
   const [a, b] = String(exato.name).split(":").map(Number);
   if (!Number.isFinite(a) || !Number.isFinite(b)) return null;
-  
+
   const competidores = lista(detail, ["competitors", "participants"]);
   const nomes = String(detail?.name || evento?.name || "").split(/\s+vs\.?\s+|\s+x\s+/i);
   const casa = competidores[0]?.name || nomes[0] || "Casa";
   const fora = competidores[1]?.name || nomes[1] || "Fora";
-  
+
   const o25 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && linhaDaOdd(o) === "2.5");
   const o35 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && linhaDaOdd(o) === "3.5");
   const ambasSim = oddDoMercado(detail, 29, o => Number(o.typeId) === 74 || /^sim$/i.test(String(o.name || "")));
   const ambasNao = oddDoMercado(detail, 29, o => Number(o.typeId) === 76 || /^n[aã]o$/i.test(String(o.name || "")));
-  
+
   const horario = horaBR(detail?.startDate || evento?.startDate);
-  
+
   return {
     id: `vavada:${liga}:${evento.id}`,
     nome: `${casa} x ${fora}`, casa, fora, a, b, total: a + b,
@@ -207,28 +208,28 @@ function parseUpcoming(detail, evento, liga) {
   const nomes = String(detail?.name || evento?.name || "").split(/\s+vs\.?\s+|\s+x\s+/i);
   const casa = competidores[0]?.name || nomes[0] || "Casa";
   const fora = competidores[1]?.name || nomes[1] || "Fora";
-  
+
   const o25 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && linhaDaOdd(o) === "2.5");
   const o35 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && linhaDaOdd(o) === "3.5");
   const ambasSim = oddDoMercado(detail, 29, o => Number(o.typeId) === 74 || /^sim$/i.test(String(o.name || "")));
   const ambasNao = oddDoMercado(detail, 29, o => Number(o.typeId) === 76 || /^n[aã]o$/i.test(String(o.name || "")));
-  
+
   const horario = horaBR(detail?.startDate || evento?.startDate);
-  
-  return { 
-    id: `vavada:${liga}:${evento.id}`, 
+
+  return {
+    id: `vavada:${liga}:${evento.id}`,
     nome: `${casa} x ${fora}`, casa, fora, horario, hora: horario,
-    odds: { o25: o25?.price ?? null, o35: o35?.price ?? null, ambs: ambasSim?.price ?? null, ambn: ambasNao?.price ?? null }, 
-    fonte: "vavada" 
+    odds: { o25: o25?.price ?? null, o35: o35?.price ?? null, ambs: ambasSim?.price ?? null, ambn: ambasNao?.price ?? null },
+    fonte: "vavada"
   };
 }
 
 async function detalhes(game, evento) {
-  const dbIdSeguro = game.dbId || evento.dbId || 12; 
-  return api("WidgetVirtuals/GetVirtualEventDetails", { 
-    eventId: evento.id, 
-    id: game.id || evento.id, 
-    dbId: dbIdSeguro 
+  const dbIdSeguro = game.dbId || evento.dbId || 12;
+  return api("WidgetVirtuals/GetVirtualEventDetails", {
+    eventId: evento.id,
+    id: game.id || evento.id,
+    dbId: dbIdSeguro
   });
 }
 
@@ -236,60 +237,77 @@ async function rodada(onLiga) {
   if (rodando) return;
   rodando = true; estado.rodando = true;
   try {
-    const gamesJson = await api("Virtuals/GetGames");
-    const games = lista(gamesJson, ["games", "items", "data", "sports", "events"]);
-    estado.diagnostico = {
-      total: games.length,
-      chaves: gamesJson && typeof gamesJson === "object" ? Object.keys(gamesJson) : [],
-      amostra: games.slice(0, 30).map(g => ({
-        id: g?.id, typeId: g?.typeId, gameTypeId: g?.gameTypeId,
-        dbId: g?.dbId, name: g?.name
-      }))
-    };
-    
-    for (const [liga, tipo] of Object.entries(LIGAS)) {
-      const game = games.find(g => Number(g.id) === tipo || Number(g.typeId) === tipo || Number(g.gameTypeId) === tipo);
-      
-      if (!game) { 
-        estado.ligas[liga] = { erro: `jogo Kiron ${tipo} não encontrado` }; 
-        continue; 
+    // GetGames é opcional: se a Vavada/Cloudflare devolver 403, usamos os ids fixos de LIGAS
+    // (dbId 12) e seguimos direto para GetEventList + GetVirtualEventDetails.
+    let games = [];
+    if (Date.now() >= proximoGames) {
+      try {
+        const gamesJson = await api("Virtuals/GetGames");
+        games = lista(gamesJson, ["games", "items", "data", "sports", "events"]);
+        proximoGames = 0;
+        estado.diagnostico = {
+          total: games.length,
+          chaves: gamesJson && typeof gamesJson === "object" ? Object.keys(gamesJson) : [],
+          amostra: games.slice(0, 30).map(g => ({
+            id: g?.id, typeId: g?.typeId, gameTypeId: g?.gameTypeId,
+            dbId: g?.dbId, name: g?.name
+          }))
+        };
+      } catch (e) {
+        proximoGames = Date.now() + 10 * 60 * 1000;
+        estado.diagnostico = { getGamesErro: String(e.message || e).slice(0, 200), modo: "ids fixos (sem GetGames)" };
+        console.warn("[vavada] GetGames indisponível, uso ids fixos por 10 min:", String(e.message || e).slice(0, 120));
       }
-      
+    } else if (estado.diagnostico && !estado.diagnostico.modo) {
+      estado.diagnostico = { ...estado.diagnostico, modo: "ids fixos (sem GetGames)" };
+    }
+
+    for (const [liga, tipo] of Object.entries(LIGAS)) {
+      const game = games.length
+        ? games.find(g => Number(g.id) === tipo || Number(g.typeId) === tipo || Number(g.gameTypeId) === tipo)
+        : { id: tipo, dbId: 12 };
+
+      if (!game) {
+        estado.ligas[liga] = { erro: `jogo Kiron ${tipo} não encontrado` };
+        continue;
+      }
+
       try {
         const evJson = await api("Virtuals/GetEventList", { id: game.id, dbId: game.dbId || 12 });
         const eventos = lista(evJson, ["events", "items", "data"]);
         const fechados = [];
         const futuros = [];
-        
+
         for (const ev of eventos) {
           const chave = `${liga}:${ev.id}:${ev.status}`;
           let salvo = conhecidos.get(chave);
-          
+
           if (!salvo) {
             await espera(PAUSA_DETALHE);
             const det = await detalhes(game, ev);
-            
+
             salvo = Number(ev.status) === 2 ? parseDetail(det, ev, liga) : parseUpcoming(det, ev, liga);
             if (salvo) conhecidos.set(chave, salvo);
           }
-          
+
           if (!salvo) continue;
           if (Number(ev.status) === 2 && salvo.a != null) fechados.push(salvo);
           else if (Number(ev.status) === 0) futuros.push(salvo);
         }
-        
+
         await onLiga(liga, fechados, futuros);
-        estado.ligas[liga] = { jogos: fechados.length, futuros: futuros.length, ts: Date.now(), erro: null };
-        
+        estado.ligas[liga] = { jogos: fechados.length, futuros: futuros.length, ts: Date.now(), erro: null, id: game.id, dbId: game.dbId || 12, times: eventos.slice(0, 3).map(e => e.name) };
+
       } catch (e) {
         estado.ligas[liga] = { ...(estado.ligas[liga] || {}), ts: Date.now(), erro: String(e.message || e) };
       }
     }
+    if (conhecidos.size > 4000) for (const k of [...conhecidos.keys()].slice(0, 1500)) conhecidos.delete(k);
     estado.ts = Date.now(); estado.erro = null;
   } catch (e) {
     estado.ts = Date.now(); estado.erro = String(e.message || e);
-  } finally { 
-    rodando = false; estado.rodando = false; 
+  } finally {
+    rodando = false; estado.rodando = false;
   }
 }
 
