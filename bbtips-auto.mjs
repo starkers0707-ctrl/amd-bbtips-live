@@ -83,33 +83,18 @@ async function pega(url, token, timeoutMs = 20000) {
     // A CDN do provedor pode manter a mesma URL em cache por varios jogos.
     // Cada consulta precisa ser unica para trazer o placar que acabou de sair.
     const separador = url.includes("?") ? "&" : "?";
-    const aoVivo = process.env.BBTIPS_CACHE_BUST === "0"
-      ? url
-      : url + separador + "_amd_live=" + Date.now();
+    const aoVivo = url + separador + "_amd_live=" + Date.now();
     const r = await fetch(aoVivo, {
       headers: {
         Authorization: "Bearer " + token,
         Accept: "application/json",
-        "User-Agent": process.env.BBTIPS_USER_AGENT || "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130.0 Safari/537.36",
-        Origin: process.env.BBTIPS_ORIGIN || "https://thtips.com.br",
-        Referer: process.env.BBTIPS_REFERER || "https://thtips.com.br/",
         "Cache-Control": "no-cache",
         Pragma: "no-cache"
       },
       cache: "no-store",
       signal: ctrl.signal
     });
-    if (!r.ok) {
-      // Nao confundir token invalido (401) com WAF/IP bloqueado (403).
-      const corpo = (await r.text()).replace(/\s+/g, " ").slice(0, 180);
-      return {
-        erro: "HTTP " + r.status,
-        status: r.status,
-        detalhe: corpo,
-        cfRay: r.headers.get("cf-ray") || null,
-        servidor: r.headers.get("server") || null
-      };
-    }
+    if (!r.ok) return { erro: "HTTP " + r.status };
     return { json: await r.json() };
   } catch (e) { return { erro: String((e && e.message) || e) }; } finally { clearTimeout(t); }
 }
@@ -146,7 +131,7 @@ const cacheNome = new Map();
 
 async function coletaTudo(token, onLiga, log = () => {}) {
   if (!token) return { ok: false, erro: "sem token" };
-  let ok = 0, falhas = 0, nomes = 0, falhasAuth = 0, ultimoErro = null;
+  let ok = 0, falhas = 0, nomes = 0, falhasAuth = 0;
   const porCasa = {};
   for (const c of CASAS.filter(x => ATIVAS.includes(x.casa))) {
     porCasa[c.casa] = { ligas: 0, nomeadas: 0, falhas: 0 };
@@ -158,8 +143,6 @@ async function coletaTudo(token, onLiga, log = () => {}) {
       const url = base + "?" + c.param + "=" + id + "&Horas=Horas12&filtros=" + encodeURIComponent(MERCADOS);
       const r = await pega(url, token);
       if (r.erro) {
-        ultimoErro = { casa: c.casa, id, erro: r.erro, status: r.status || null,
-          detalhe: r.detalhe || null, cfRay: r.cfRay || null, servidor: r.servidor || null };
         falhas++; porCasa[c.casa].falhas++;
         if (/401|403/.test(r.erro)) {
           falhasAuth++;
@@ -185,12 +168,8 @@ async function coletaTudo(token, onLiga, log = () => {}) {
     await Promise.all(tarefas);
     log("[bbtips] " + c.casa + ": " + porCasa[c.casa].ligas + " ligas (" + porCasa[c.casa].nomeadas + " com nome), " + porCasa[c.casa].falhas + " falhas");
   }
-  if (!ok && falhasAuth) {
-    const erro = ultimoErro?.status === 401 ? "token" :
-      ultimoErro?.status === 403 ? "bloqueio-403" : "acesso";
-    return { ok: false, erro, ligas: 0, falhas, nomes, porCasa, ultimoErro };
-  }
+  if (!ok && falhasAuth) return { ok: false, erro: "token", ligas: 0, falhas, nomes, porCasa };
   log("[bbtips] auto-coleta: " + ok + " ligas ok, " + falhas + " falhas");
-  return { ok: true, ligas: ok, falhas, nomes, porCasa, ultimoErro };
+  return { ok: true, ligas: ok, falhas, nomes, porCasa };
 }
 export { coletaTudo, converte, parseOdds, normalizaNomeLiga, extraiNomeLiga, CASAS, MERCADOS };
