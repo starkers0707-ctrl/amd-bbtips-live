@@ -129,8 +129,13 @@ carregaCodigos();
 const CODIGO_MESTRE = String(process.env.CODIGO_MESTRE || "").toUpperCase().trim();
 
 // ===== AUTO-COLETA BBTIPS =====
+// Legado desligado: as seis ligas atuais pertencem exclusivamente à Vavada.
+// Só pode ser reativado de forma explícita com BBTIPS_ENABLED=1.
+const BBTIPS_ENABLED = process.env.BBTIPS_ENABLED === "1";
 let bbtipsAuto = null;
-import("./bbtips-auto.mjs").then(m => { bbtipsAuto = m; console.log("[bbtips] auto-coleta carregada"); }).catch(e => console.log("[bbtips] modulo nao carregado:", e.message));
+if (BBTIPS_ENABLED) {
+  import("./bbtips-auto.mjs").then(m => { bbtipsAuto = m; console.log("[bbtips] auto-coleta carregada"); }).catch(e => console.log("[bbtips] modulo nao carregado:", e.message));
+}
 let vavadaKiron = null;
 import("./vavada-kiron.mjs").then(m => { vavadaKiron = m; console.log("[vavada] coletor Kiron carregado"); }).catch(e => console.log("[vavada] modulo nao carregado:", e.message));
 function limpaToken(v) { const m = String(v || "").match(/ey[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_.-]+/); return m ? m[0] : ""; }
@@ -1929,6 +1934,7 @@ app.get("/api/liga/:liga", (req, res) => {
 });
 
 app.post("/api/bbtips/token", (req, res) => {
+  if (!BBTIPS_ENABLED) return res.status(410).json({ ok: false, erro: "fonte-bbtips-desativada" });
   const t = limpaToken((req.body && req.body.token) || "");
   if (!t || t.length < 40) return res.status(400).json({ ok: false, erro: "token invalido" });
   const novo = t !== BB_TOKEN; BB_TOKEN = t;
@@ -1941,14 +1947,14 @@ app.post("/api/bbtips/token", (req, res) => {
   }
 });
 
-app.get("/api/bbtips/estado", (req, res) => res.json({ temToken: !!BB_TOKEN, tamToken: BB_TOKEN.length, fim: BB_TOKEN.slice(-4), ...bbUltima }));
+app.get("/api/bbtips/estado", (req, res) => res.json({ ativo: BBTIPS_ENABLED, temToken: !!BB_TOKEN, tamToken: BB_TOKEN.length, fim: BB_TOKEN.slice(-4), ...bbUltima }));
 
 // A coleta do servidor e o backup da extensao. As ligas sao consultadas em
 // paralelo e sem cache, entao cinco segundos mantem o resultado proximo da casa.
 const BB_INTERVALO = Number(process.env.BBTIPS_INTERVALO || 5000);
 
 async function rodaAutoColeta() {
-  if (!bbtipsAuto || !BB_TOKEN || bbUltima.rodando) return;
+  if (!BBTIPS_ENABLED || !bbtipsAuto || !BB_TOKEN || bbUltima.rodando) return;
   bbUltima.rodando = true;
   try {
     const r = await bbtipsAuto.coletaTudo(BB_TOKEN, async (liga, placares, upcoming) => {
