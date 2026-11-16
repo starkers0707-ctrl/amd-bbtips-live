@@ -70,15 +70,15 @@ async function api(path, params = {}) {
   let ultimoErro;
   for (let tentativa = 1; tentativa <= 3; tentativa++) {
     try {
-      // AQUI ESTÁ A MÁGICA: O ScrapingAnt busca de um IP limpo e entrega pro Render
+      // MÁGICA DA SCRAPINGANT: Pega a URL da Vavada e passa pelo proxy deles
       const apiKey = process.env.SCRAPINGANT_API_KEY; 
       let urlFinal = url.toString();
 
       if (apiKey) {
-        // Se a chave existir nas variáveis de ambiente, usa o proxy da ScrapingAnt
         urlFinal = `https://api.scrapingant.com/v2/general?url=${encodeURIComponent(url.toString())}&x-api-key=${apiKey}`;
       }
 
+      // Faz a requisição para a URL (que agora é da ScrapingAnt, se a chave existir)
       const r = await curlFetch(urlFinal, {
         headers: headers,
         browser: 'chrome_149', 
