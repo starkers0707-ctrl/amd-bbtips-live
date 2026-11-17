@@ -942,7 +942,7 @@ function processarAlertaGDCross(analise, pontos, metas, escopo, mercado, liga) {
   mostrarAviso(`\ud83c\udfc6 ${nome} \u00b7 ${mercado} \u00b7 ` +
     `MM${analise.periodoRapido} cruzou ${direcao} da MM${analise.periodoLento}` +
     (horario ? ` \u00b7 ${horario}` : ''));
-  falarAlertaGDCross(cruzamento.tipo, liga || state.liga, horario);
+  falarAlertaGDCross(cruzamento.tipo, liga || state.liga, horario, mercado);
 }
 
 const mediaAlerta = { armado: false, escopo: '', ultimaChave: null,
@@ -2807,14 +2807,14 @@ function habilitarAlertasDeFundo() {
   } catch (e) { /* navegador sem permissão: o áudio continua disponível */ }
 }
 
-function notificarGDCross(tipo, liga, horario) {
+function notificarGDCross(tipo, liga, horario, mkt) {
   if (!alertaPodeDispararAgora()) return;
   // O Golden precisa avisar na hora, inclusive com o painel aberto. Antes o
   // aviso era cancelado justamente quando o usuario estava olhando a tela.
   if (!('Notification' in window) || Notification.permission !== 'granted') return;
   const golden = tipo === 'golden';
   const titulo = golden ? '🏆 GOLDEN CROSS' : '💀 DEATH CROSS';
-  const texto = textoAlertaGDCross(tipo, liga, horario).replace(/\.\s*$/, '');
+  const texto = textoAlertaGDCross(tipo, liga, horario, mkt).replace(/\.\s*$/, '');
   const opcoes = {
     body: texto,
     tag: 'amd-gdcross-' + tipo + '-' + String(liga || state.liga || '') + '-' +
@@ -2958,25 +2958,28 @@ function tocarSireneGDCross() {
     }, { once: true });
   } catch (e) { /* navegador bloqueou audio: segue com o aviso visual */ }
 }
-function textoAlertaGDCross(tipo, liga, horario) {
+function textoAlertaGDCross(tipo, liga, horario, mkt) {
   const ligaAtual = liga || state.liga || '';
+  const nomesMercado = { o25: 'Over 2.5', o35: 'Over 3.5',
+    ge5: '5+ Gols', ambas: 'Ambas Marcam' };
+  const mercado = nomesMercado[mkt] || String(mkt || '').trim();
   if (window.GDCross && typeof window.GDCross.formatarAlerta === 'function')
-    return window.GDCross.formatarAlerta(tipo, ligaAtual, horario);
+    return window.GDCross.formatarAlerta(tipo, ligaAtual, horario, mercado);
   const cruzamento = tipo === 'golden' ? 'Golden Cross' : 'Death Cross';
-  const frase = [nomeLigaAlerta(ligaAtual), cruzamento, String(horario || '').trim()]
+  const frase = [nomeLigaAlerta(ligaAtual), mercado, cruzamento, String(horario || '').trim()]
     .filter(Boolean).join(' ');
   return frase + '. ' + frase + '.';
 }
-function falarAlertaGDCross(tipo, liga, horario) {
+function falarAlertaGDCross(tipo, liga, horario, mkt) {
   if (!alertaPodeDispararAgora()) return;
   if (!ligado('GDCROSS')) return;
   const chaveAviso = [tipo, String(liga || state.liga || '').toLowerCase(),
-    String(horario || '')].join('|');
+    String(mkt || ''), String(horario || '')].join('|');
   if (ultimoAvisoGDCross.chave === chaveAviso &&
       Date.now() - ultimoAvisoGDCross.ts < 15000) return;
   ultimoAvisoGDCross = { chave: chaveAviso, ts: Date.now() };
-  const texto = textoAlertaGDCross(tipo, liga, horario);
-  notificarGDCross(tipo, liga, horario);
+  const texto = textoAlertaGDCross(tipo, liga, horario, mkt);
+  notificarGDCross(tipo, liga, horario, mkt);
   if (!somDeAlertaLigado()) return;
   let falou = false;
   if ('speechSynthesis' in window &&
@@ -3012,7 +3015,7 @@ function iniciarCanalGDCross() {
       mostrarAviso('\ud83c\udfc6 GOLDEN CROSS \u00b7 ' +
         (nomesMercado[alerta.mkt] || alerta.mkt || 'Mercado') +
         (horario ? ' \u00b7 ' + horario : ''));
-      falarAlertaGDCross('golden', alerta.liga || state.liga, horario);
+      falarAlertaGDCross('golden', alerta.liga || state.liga, horario, alerta.mkt);
     };
   } catch (e) { canalEventosGDCross = null; }
 }

@@ -96,13 +96,14 @@
     return String(hora).padStart(2, '0') + ':' + String(minuto).padStart(2, '0');
   }
 
-  function formatarAlerta(tipo, liga, horario) {
+  function formatarAlerta(tipo, liga, horario, mercado) {
     var cruzamento = tipo === 'golden' ? 'Golden Cross' : 'Death Cross';
     var chaveLiga = String(liga || '').trim().toLowerCase();
     var ligas = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT' };
     var nomeLiga = ligas[chaveLiga] || String(liga || '').trim();
     var hora = normalizarHorario(horario);
-    var frase = [nomeLiga, cruzamento, hora].filter(Boolean).join(' ');
+    var frase = [nomeLiga, String(mercado || '').trim(), cruzamento, hora]
+      .filter(Boolean).join(' ');
     return frase + '. ' + frase + '.';
   }
 
