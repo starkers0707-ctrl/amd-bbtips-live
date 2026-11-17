@@ -18,7 +18,7 @@ const LIGAS = {
 let config = null;
 let rodando = false;
 let timer = null;
-const estado = { ts: 0, erro: null, rodando: false, ligas: {}, integrationId: null };
+const estado = { ts: 0, erro: null, rodando: false, ligas: {}, integrationId: null, ciclos: 0, duracaoMs: 0, proxima: 0 };
 const conhecidos = new Map();
 
 async function carregarConfig(force = false) {
@@ -232,74 +232,79 @@ async function detalhes(game, evento) {
   });
 }
 
+async function coletaLiga(games, liga, tipo, onLiga) {
+  const game = games.find(g => Number(g.id) === tipo || Number(g.typeId) === tipo || Number(g.gameTypeId) === tipo);
+  if (!game) {
+    estado.ligas[liga] = { ...(estado.ligas[liga] || {}), ts: Date.now(), erro: `jogo Kiron ${tipo} não encontrado` };
+    return;
+  }
+
+  try {
+    const evJson = await api("Virtuals/GetEventList", { id: game.id, dbId: game.dbId || 12 });
+    const eventos = lista(evJson, ["events", "items", "data"]);
+    const fechados = [];
+    const futuros = [];
+
+    for (const ev of eventos) {
+      const chave = `${liga}:${ev.id}:${ev.status}`;
+      let salvo = conhecidos.get(chave);
+      if (!salvo) {
+        await espera(PAUSA_DETALHE);
+        const det = await detalhes(game, ev);
+        salvo = Number(ev.status) === 2 ? parseDetail(det, ev, liga) : parseUpcoming(det, ev, liga);
+        if (salvo) conhecidos.set(chave, salvo);
+      }
+      if (!salvo) continue;
+      if (Number(ev.status) === 2 && salvo.a != null) fechados.push(salvo);
+      else if (Number(ev.status) === 0) futuros.push(salvo);
+    }
+
+    await onLiga(liga, fechados, futuros);
+    estado.ligas[liga] = { jogos: fechados.length, futuros: futuros.length, eventos: eventos.length, ts: Date.now(), erro: null };
+  } catch (e) {
+    estado.ligas[liga] = { ...(estado.ligas[liga] || {}), ts: Date.now(), erro: String(e.message || e) };
+  }
+}
+
 async function rodada(onLiga) {
   if (rodando) return;
-  rodando = true; estado.rodando = true;
+  const inicio = Date.now();
+  rodando = true; estado.rodando = true; estado.inicio = inicio; estado.proxima = 0;
   try {
     const gamesJson = await api("Virtuals/GetGames");
     const games = Array.isArray(gamesJson?.sports)
       ? gamesJson.sports.flatMap(sport => Array.isArray(sport?.games) ? sport.games : [])
       : lista(gamesJson, ["games", "items", "data", "events"]);
-    estado.diagnostico = {
-      total: games.length,
-      chaves: gamesJson && typeof gamesJson === "object" ? Object.keys(gamesJson) : [],
-      amostra: games.slice(0, 30).map(g => ({
-        id: g?.id, typeId: g?.typeId, gameTypeId: g?.gameTypeId,
-        dbId: g?.dbId, name: g?.name
-      }))
+    estado.diagnostico = { total: games.length, chaves: gamesJson && typeof gamesJson === "object" ? Object.keys(gamesJson) : [] };
+
+    // Três trabalhadores impedem que uma liga lenta congele as cinco seguintes,
+    // sem disparar todas as consultas simultaneamente contra o proxy.
+    const fila = Object.entries(LIGAS);
+    let indice = 0;
+    const trabalhador = async () => {
+      while (indice < fila.length) {
+        const atual = fila[indice++];
+        await coletaLiga(games, atual[0], atual[1], onLiga);
+      }
     };
-    
-    for (const [liga, tipo] of Object.entries(LIGAS)) {
-      const game = games.find(g => Number(g.id) === tipo || Number(g.typeId) === tipo || Number(g.gameTypeId) === tipo);
-      
-      if (!game) { 
-        estado.ligas[liga] = { erro: `jogo Kiron ${tipo} não encontrado` }; 
-        continue; 
-      }
-      
-      try {
-        const evJson = await api("Virtuals/GetEventList", { id: game.id, dbId: game.dbId || 12 });
-        const eventos = lista(evJson, ["events", "items", "data"]);
-        const fechados = [];
-        const futuros = [];
-        
-        for (const ev of eventos) {
-          const chave = `${liga}:${ev.id}:${ev.status}`;
-          let salvo = conhecidos.get(chave);
-          
-          if (!salvo) {
-            await espera(PAUSA_DETALHE);
-            const det = await detalhes(game, ev);
-            
-            salvo = Number(ev.status) === 2 ? parseDetail(det, ev, liga) : parseUpcoming(det, ev, liga);
-            if (salvo) conhecidos.set(chave, salvo);
-          }
-          
-          if (!salvo) continue;
-          if (Number(ev.status) === 2 && salvo.a != null) fechados.push(salvo);
-          else if (Number(ev.status) === 0) futuros.push(salvo);
-        }
-        
-        await onLiga(liga, fechados, futuros);
-        estado.ligas[liga] = { jogos: fechados.length, futuros: futuros.length, ts: Date.now(), erro: null };
-        
-      } catch (e) {
-        estado.ligas[liga] = { ...(estado.ligas[liga] || {}), ts: Date.now(), erro: String(e.message || e) };
-      }
-    }
-    estado.ts = Date.now(); estado.erro = null;
+    await Promise.all([trabalhador(), trabalhador(), trabalhador()]);
+    estado.ts = Date.now(); estado.erro = null; estado.ciclos++;
   } catch (e) {
     estado.ts = Date.now(); estado.erro = String(e.message || e);
-  } finally { 
-    rodando = false; estado.rodando = false; 
+  } finally {
+    estado.duracaoMs = Date.now() - inicio;
+    rodando = false; estado.rodando = false;
   }
 }
 
 export function iniciar(onLiga) {
   if (timer) return;
-  const tick = () => rodada(onLiga).catch(() => {});
-  tick();
-  timer = setInterval(tick, INTERVALO);
+  const tick = async () => {
+    await rodada(onLiga).catch(e => { estado.ts = Date.now(); estado.erro = String(e?.message || e); });
+    estado.proxima = Date.now() + INTERVALO;
+    timer = setTimeout(tick, INTERVALO);
+  };
+  timer = setTimeout(tick, 0);
 }
 
 export function obterEstado() { return JSON.parse(JSON.stringify(estado)); }
