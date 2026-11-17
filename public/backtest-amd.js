@@ -200,10 +200,11 @@
     return mktEscolhido || "o25";     // independente da grade
   }
   function minimoHistorico(liga) {
-    // A extensao entrega ligas de 30 jogos/h (passo de 2 minutos) e de
-    // 20 jogos/h (passo de 3 minutos). O bloqueio continua representando
-    // 12 horas de jogos, sem alterar a matematica do backtest.
-    return /^(ita|eng|spa|mnd|lat|split)$/.test(liga) ? 360 : 240;
+    // O motor usa 120 jogos para aquecimento e libera o calculo com 150.
+    // Exigir 12 horas completas aqui bloqueava o backtest mesmo com 292 jogos
+    // validos, como acontece depois de reiniciar a coleta. A janela exibida
+    // continua limitada a ate 12h pelo proprio motor.
+    return 150;
   }
   function nomeDoMercado(id) {
     for (var i = 0; i < MERCADOS_BT.length; i++) if (MERCADOS_BT[i].id === id) return MERCADOS_BT[i].nome;
@@ -305,7 +306,8 @@
     }
     buscar(liga).then(function (jogos) {
       if (!jogos || jogos.length < minimoHistorico(liga)) {
-        avisa("histórico insuficiente para calcular as últimas 12 horas agora");
+        avisa("histórico insuficiente: " + (jogos ? jogos.length : 0) +
+          " de 150 jogos necessários para iniciar o backtest");
         return;
       }
       var bt;

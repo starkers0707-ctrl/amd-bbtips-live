@@ -20,7 +20,11 @@
 // (a chave da odd de "ambas" é `ambs` — ver oddKey)
 // ============================================================================
 
-function oddKey(mkt) { return mkt === "ambas" ? "ambs" : mkt; }
+function oddKey(mkt) {
+  if (mkt === "ambas") return "ambs";
+  if (mkt === "ambasN") return "ambn";
+  return mkt;
+}
 const pct = (n, d) => (d ? Math.round((n / d) * 1000) / 10 : 0);
 function teamNames(nome) {
   if (!nome) return [];
@@ -37,6 +41,7 @@ function pays(g, mkt) {
   if (mkt === "o35") return g.total >= 4;
   if (mkt === "ge5") return g.total >= 5;
   if (mkt === "ambas") return g.a > 0 && g.b > 0;
+  if (mkt === "ambasN") return !(g.a > 0 && g.b > 0);
   if (mkt === "u05") return g.total <= 0;
   if (mkt === "u15") return g.total <= 1;
   if (mkt === "u25") return g.total <= 2;
