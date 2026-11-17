@@ -262,7 +262,11 @@ app.post("/api/acesso/logout", (req, res) => {
   res.setHeader("Set-Cookie", `${COOKIE_SESSAO}=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0`);
   res.json({ ok: true });
 });
-const isAdmin = req => ADMIN_KEY && (igualSeguro(req.headers["x-admin"], ADMIN_KEY) || igualSeguro(req.query.k, ADMIN_KEY));
+const isAdmin = req => {
+  const recebido = String(req.headers["x-admin"] || req.query.k || "").trim();
+  return !!((ADMIN_KEY && igualSeguro(recebido, ADMIN_KEY)) ||
+    (CODIGO_MESTRE && igualSeguro(recebido.toUpperCase(), CODIGO_MESTRE)));
+};
 app.use("/api/admin", (req, res, next) => {
   const espera = loginBloqueado(req);
   if (espera) { res.setHeader("Retry-After", String(espera)); return res.status(429).json({ erro: "muitas tentativas; aguarde" }); }
