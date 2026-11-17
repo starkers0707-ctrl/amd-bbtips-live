@@ -105,9 +105,9 @@ app.use((req, res, next) => {
   let t = trafegoPorIp.get(ip);
   if (!t || agora - t.inicio >= 60000) t = { inicio: agora, total: 0 };
   t.total++; trafegoPorIp.set(ip, t);
-  res.setHeader("RateLimit-Limit", "1200");
-  res.setHeader("RateLimit-Remaining", String(Math.max(0, 1200 - t.total)));
-  if (t.total > 1200) { res.setHeader("Retry-After", "60"); return res.status(429).json({ erro: "muitas requisicoes" }); }
+  res.setHeader("RateLimit-Limit", "6000");
+  res.setHeader("RateLimit-Remaining", String(Math.max(0, 6000 - t.total)));
+  if (t.total > 6000) { res.setHeader("Retry-After", "60"); return res.status(429).json({ erro: "muitas requisicoes" }); }
   if (trafegoPorIp.size > 10000) for (const [chave, item] of trafegoPorIp) if (agora - item.inicio >= 60000) trafegoPorIp.delete(chave);
   next();
 });
@@ -163,6 +163,7 @@ function cookieValor(req, nome) {
   return "";
 }
 function codigoAtivo(c) {
+  if (ADMIN_KEY && igualSeguro(String(c || "").toUpperCase(), ADMIN_KEY.trim().toUpperCase())) return { nome: "Administrador", expira: Date.now() + 30 * 86400000, mestre: true };
   if (CODIGO_MESTRE && igualSeguro(c, CODIGO_MESTRE)) return { nome: "Administrador", expira: Date.now() + 30 * 86400000, mestre: true };
   const d = codigos[c];
   return d && Date.now() <= Number(d.expira || 0) ? d : null;
