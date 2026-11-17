@@ -261,8 +261,11 @@ async function coletaLiga(games, liga, tipo, onLiga) {
 
     await onLiga(liga, fechados, futuros);
     estado.ligas[liga] = { jogos: fechados.length, futuros: futuros.length, eventos: eventos.length, ts: Date.now(), erro: null };
+    console.log(`[vavada] ${liga}: ${fechados.length} fechados, ${futuros.length} futuros, ${eventos.length} eventos`);
   } catch (e) {
-    estado.ligas[liga] = { ...(estado.ligas[liga] || {}), ts: Date.now(), erro: String(e.message || e) };
+    const erro = String(e?.message || e);
+    estado.ligas[liga] = { ...(estado.ligas[liga] || {}), ts: Date.now(), erro };
+    console.warn(`[vavada] ${liga} falhou: ${erro}`);
   }
 }
 
@@ -277,8 +280,7 @@ async function rodada(onLiga) {
       : lista(gamesJson, ["games", "items", "data", "events"]);
     estado.diagnostico = { total: games.length, chaves: gamesJson && typeof gamesJson === "object" ? Object.keys(gamesJson) : [] };
 
-    // Três trabalhadores impedem que uma liga lenta congele as cinco seguintes,
-    // sem disparar todas as consultas simultaneamente contra o proxy.
+    // Uma única fila evita estourar a concorrência do proxy e mantém as ligas estáveis.
     const fila = Object.entries(LIGAS);
     let indice = 0;
     const trabalhador = async () => {
@@ -287,13 +289,15 @@ async function rodada(onLiga) {
         await coletaLiga(games, atual[0], atual[1], onLiga);
       }
     };
-    await Promise.all([trabalhador(), trabalhador(), trabalhador()]);
+    await trabalhador();
     estado.ts = Date.now(); estado.erro = null; estado.ciclos++;
   } catch (e) {
     estado.ts = Date.now(); estado.erro = String(e.message || e);
+    console.warn(`[vavada] ciclo falhou: ${estado.erro}`);
   } finally {
     estado.duracaoMs = Date.now() - inicio;
     rodando = false; estado.rodando = false;
+    console.log(`[vavada] ciclo concluido em ${estado.duracaoMs}ms; ciclo ${estado.ciclos}`);
   }
 }
 
