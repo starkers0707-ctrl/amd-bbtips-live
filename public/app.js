@@ -2751,7 +2751,7 @@ function desbloquearAlertasSonoros() {
 function registrarAlertasDeFundo() {
   if (!('serviceWorker' in navigator)) return Promise.resolve(null);
   if (!registroAlertasFundo) {
-    registroAlertasFundo = navigator.serviceWorker.register('/sw-alertas.js?v=20261102-gdcross', { scope: '/' })
+    registroAlertasFundo = navigator.serviceWorker.register('/sw-alertas.js?v=20261117-notification-fallback', { scope: '/' })
       .then(() => navigator.serviceWorker.ready)
       .catch(() => null);
   }
@@ -2823,10 +2823,15 @@ function notificarGDCross(tipo, liga, horario, mkt) {
     requireInteraction: true,
     data: { url: '/index.html' }
   };
-  registrarAlertasDeFundo().then(reg => {
-    if (reg && typeof reg.showNotification === 'function') return reg.showNotification(titulo, opcoes);
+  const notificacaoDireta = () => {
     try { return new Notification(titulo, opcoes); } catch (e) { return null; }
-  }).catch(() => {});
+  };
+  registrarAlertasDeFundo().then(reg => {
+    if (reg && typeof reg.showNotification === 'function') {
+      return Promise.resolve(reg.showNotification(titulo, opcoes)).catch(notificacaoDireta);
+    }
+    return notificacaoDireta();
+  }).catch(notificacaoDireta);
 }
 
 function atualizarBotaoFib50() {

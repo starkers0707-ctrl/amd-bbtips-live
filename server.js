@@ -276,8 +276,11 @@ app.use("/api/admin", (req, res, next) => {
 });
 app.post("/api/admin/testar-alerta", (req, res) => {
   if (!isAdmin(req)) return res.status(401).json({ erro: "admin" });
-  avisaRadar({ liga: "copa", mkt: "o25", tipo: "subida", pagando: 35, deOnde: 25, base: 38, fita: [0,1,1,0,1,1], teste: true, ts: Date.now() });
-  res.json({ ok: true, msg: "alerta de teste enviado a todas as telas abertas" });
+  const hora = horaBR();
+  avisaRadar({ liga: "eng", mkt: "o35", tipo: "golden", pagando: 35, base: 38,
+    fita: [0,1,1,0,1,1], mm10: 29.4, mm20: 29.1, spread: 0.3, barsAgo: 0,
+    hora, horaFonte: hora, cruzouEm: Date.now(), teste: true, ts: Date.now() });
+  res.json({ ok: true, msg: "Golden Cross de teste enviado com mercado Over 3.5" });
 });
 app.get("/api/admin/codigos", (req, res) => {
   if (!isAdmin(req)) return res.status(401).json({ erro: "admin" });
