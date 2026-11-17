@@ -704,6 +704,28 @@ function goldenCrossData(series) {
   };
 }
 
+function deathCrossData(series) {
+  // Espelho do Golden: EMA9 cruza a EMA21 de cima para baixo.
+  const mm1 = ema(series, 9), mm2 = ema(series, 21);
+  const hist = series.map((_, i) => +(mm1[i] - mm2[i]).toFixed(2));
+  const last = hist.length - 1;
+  if (last < 0) return { active: false, crossedNow: false, index: null, barsAgo: null, fast: null, slow: null, spread: 0 };
+  let index = null;
+  for (let i = 1; i <= last; i++) {
+    if (hist[i] < 0 && hist[i - 1] >= 0) index = i;
+  }
+  const active = hist[last] < 0;
+  return {
+    active,
+    crossedNow: last > 0 && hist[last] < 0 && hist[last - 1] >= 0,
+    index,
+    barsAgo: index == null ? null : last - index,
+    fast: +mm1[last].toFixed(1),
+    slow: +mm2[last].toFixed(1),
+    spread: +hist[last].toFixed(2)
+  };
+}
+
 function zoneSignal(series){
   if(!series.length)return{zona:"—",zonaPct:0,direcao:"—",pagamento:"—",sinal:"AGUARDAR",macd:0,mm1:0,mm2:0,goldenCross:goldenCrossData(series)};
   const sorted=series.slice().sort((a,b)=>a-b);
@@ -4620,7 +4642,23 @@ function atualizaRadar(liga, s) {
         const cruzamentoRecente = golden.crossedNow || (golden.barsAgo != null && golden.barsAgo <= 5);
         if (cruzamentoRecente && !prev.golden && !primeira && podeAvisar(chaveGolden)) avisaRadar(radarAtivos[chaveGolden]);
       } else delete radarAtivos[k + "|golden"];
-      radarEstado[k] = { fundo, sobe, ltb: quebrouLTB, nivelMin, pull, golden: golden.active };
+
+      // DEATH CROSS: usa o mesmo canal em tempo real do Golden.
+      const death = deathCrossData(serie);
+      if (death.active) {
+        const chaveDeath = k + "|death";
+        const deathAnterior = radarAtivos[chaveDeath];
+        const jogoCross = death.index == null ? null : gAll[gAll.length - serie.length + death.index];
+        const horaCross = horaCurta(jogoCross && (jogoCross.horario || jogoCross.hora));
+        const cruzouEm = death.crossedNow ? Date.now() : (deathAnterior && deathAnterior.cruzouEm) || null;
+        const hora = death.crossedNow ? horaBR() : (deathAnterior && deathAnterior.hora) || horaBR();
+        const horaFonte = horaCross || (deathAnterior && deathAnterior.horaFonte) || hora;
+        const atrasoMin = atrasoMinutos(horaFonte, hora);
+        radarAtivos[chaveDeath] = { liga, mkt, tipo: "death", pagando: cur, base: c.base, fita, mm10: death.fast, mm20: death.slow, spread: death.spread, barsAgo: death.barsAgo, hora, horaFonte, atrasoMin, cruzouEm, ts: Date.now() };
+        const cruzamentoRecente = death.crossedNow || (death.barsAgo != null && death.barsAgo <= 5);
+        if (cruzamentoRecente && !prev.death && !primeira && podeAvisar(chaveDeath)) avisaRadar(radarAtivos[chaveDeath]);
+      } else delete radarAtivos[k + "|death"];
+      radarEstado[k] = { fundo, sobe, ltb: quebrouLTB, nivelMin, pull, golden: golden.active, death: death.active };
     }
   } catch (e) { console.error("erro atualizaRadar " + liga + ":", e.message); }
 }
@@ -4668,11 +4706,12 @@ function enviaPushRobo(titulo, corpo, tag) {
 
 function enviaPushRadar(info) {
   if (!webpush || !pushData.vapid || !pushData.subs.length) return;
-  if (!info || info.tipo !== "golden") return;
+  if (!info || (info.tipo !== "golden" && info.tipo !== "death")) return;
   const liga = NOMES_L[info.liga] || info.liga;
   const mercado = NOMES_M[info.mkt] || info.mkt;
-  const titulo = `✨ GOLDEN CROSS AGORA${info.hora ? ` ${info.hora}` : ""} — ${liga} · ${mercado}`;
-  const corpo = `Confirmado assim que o resultado chegou${info.horaFonte ? ` · jogo ${info.horaFonte}` : ""} — EMA10 ${info.mm10 ?? "—"} acima da EMA20 ${info.mm20 ?? "—"}`;
+  const golden = info.tipo === "golden";
+  const titulo = `${golden ? "✨ GOLDEN" : "💀 DEATH"} CROSS AGORA${info.hora ? ` ${info.hora}` : ""} — ${liga} · ${mercado}`;
+  const corpo = `Confirmado assim que o resultado chegou${info.horaFonte ? ` · jogo ${info.horaFonte}` : ""} — EMA9 ${info.mm10 ?? "—"} ${golden ? "acima" : "abaixo"} da EMA21 ${info.mm20 ?? "—"}`;
   const payload = JSON.stringify({ t: titulo, b: corpo, tag: info.liga + "|" + info.mkt + "|" + info.tipo });
   for (const s of [...pushData.subs]) {
     webpush.sendNotification(s, payload).catch(err => {
@@ -4687,7 +4726,7 @@ function enviaPushRadar(info) {
 function avisaRadar(info) {
   const msg = `data: ${JSON.stringify({ tipo: "radar", alerta: info })}\n\n`; // BUGFIX: info.tipo sobrescrevia o rotulo "radar"
   for (const res of sseClientes) { try { res.write(msg); } catch (e) { sseClientes.delete(res); } }
-  enviaPushRadar(info); // WEB PUSH: somente Golden Cross, mesmo com aba congelada/fechada
+  enviaPushRadar(info); // WEB PUSH: Golden e Death Cross, mesmo com aba congelada/fechada
 }
 app.get("/api/push/key", (req, res) => res.json({ key: (pushData.vapid && pushData.vapid.publicKey) || null, pronto: !!(webpush && pushData.vapid), inscritos: pushData.subs.length }));
 app.post("/api/push/sub", (req, res) => {
@@ -4705,7 +4744,7 @@ app.post("/api/push/sub", (req, res) => {
 // RADAR ENXUTO (pedido do usuario): so o que ele opera - movimento de SUBIDA,
 // QUEBRA DE LTB e MINIMA do dia. Os avisos de minima de janela curta e de repique
 // (minjan / pull) sao ruido para essa leitura e ficam de fora.
-const RADAR_TIPOS = ["golden", "subida", "ltb", "minima", "pull"]; // inclui Golden Cross EMA10 x EMA20
+const RADAR_TIPOS = ["golden", "death", "subida", "ltb", "minima", "pull"];
 app.get("/api/radar", (req, res) => res.json(
   Object.values(radarAtivos).filter(r => RADAR_TIPOS.includes(r.tipo)).sort((a, b) => b.ts - a.ts)
 ));

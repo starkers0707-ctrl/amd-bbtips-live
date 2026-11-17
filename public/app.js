@@ -3008,14 +3008,15 @@ function iniciarCanalGDCross() {
       let pacote;
       try { pacote = JSON.parse(ev.data || '{}'); } catch (e) { return; }
       const alerta = pacote && pacote.tipo === 'radar' ? pacote.alerta : null;
-      if (!alerta || alerta.tipo !== 'golden' || !ligado('GDCROSS')) return;
+      if (!alerta || !['golden', 'death'].includes(alerta.tipo) || !ligado('GDCROSS')) return;
       const nomesMercado = { o25: 'Over 2.5', o35: 'Over 3.5',
         ge5: '5+ Gols', ambas: 'Ambas Marcam' };
       const horario = alerta.horaFonte || alerta.hora || '';
-      mostrarAviso('\ud83c\udfc6 GOLDEN CROSS \u00b7 ' +
+      const golden = alerta.tipo === 'golden';
+      mostrarAviso((golden ? '\ud83c\udfc6 GOLDEN CROSS' : '\ud83d\udc80 DEATH CROSS') + ' \u00b7 ' +
         (nomesMercado[alerta.mkt] || alerta.mkt || 'Mercado') +
         (horario ? ' \u00b7 ' + horario : ''));
-      falarAlertaGDCross('golden', alerta.liga || state.liga, horario, alerta.mkt);
+      falarAlertaGDCross(alerta.tipo, alerta.liga || state.liga, horario, alerta.mkt);
     };
   } catch (e) { canalEventosGDCross = null; }
 }
