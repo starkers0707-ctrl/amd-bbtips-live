@@ -2,6 +2,7 @@ import express from "express";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import { createRequire } from "module";
+import { createHmac, randomBytes, timingSafeEqual } from "crypto";
 
 const require = createRequire(import.meta.url);
 let brainAdapter = null;
@@ -62,6 +63,8 @@ function brainEval(games, upcoming, liga, mkt) {
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
+app.disable("x-powered-by");
+app.set("trust proxy", 1);
 const PORT = process.env.PORT || 3000;
 // libera CORS pra extensao no caramelo conseguir mandar a curva
 // ===== BLINDAGEM ANTI-SCRAPING: so o proprio site consome a API =====
@@ -95,6 +98,20 @@ app.use((req, res, next) => {
 });
 app.use(express.json({ limit: "25mb" }));
 
+// Limite por IP contra flood simples. Alto o bastante para o painel em tempo real.
+const trafegoPorIp = new Map();
+app.use((req, res, next) => {
+  const agora = Date.now(), ip = String(req.ip || req.socket?.remoteAddress || "desconhecido");
+  let t = trafegoPorIp.get(ip);
+  if (!t || agora - t.inicio >= 60000) t = { inicio: agora, total: 0 };
+  t.total++; trafegoPorIp.set(ip, t);
+  res.setHeader("RateLimit-Limit", "1200");
+  res.setHeader("RateLimit-Remaining", String(Math.max(0, 1200 - t.total)));
+  if (t.total > 1200) { res.setHeader("Retry-After", "60"); return res.status(429).json({ erro: "muitas requisicoes" }); }
+  if (trafegoPorIp.size > 10000) for (const [chave, item] of trafegoPorIp) if (agora - item.inicio >= 60000) trafegoPorIp.delete(chave);
+  next();
+});
+
 // ===== ACESSO POR CODIGO + ADMIN (controle de testes 1 dia e assinantes 30 dias) =====
 const ADMIN_KEY = process.env.ADMIN_KEY || "";
 const GH_T = process.env.GH_TOKEN || "";
@@ -127,6 +144,66 @@ async function salvaCodigos() {
 }
 carregaCodigos();
 const CODIGO_MESTRE = String(process.env.CODIGO_MESTRE || "").toUpperCase().trim();
+const SESSION_SECRET = String(process.env.SESSION_SECRET || ADMIN_KEY || CODIGO_MESTRE || "");
+const sessoes = new Map();
+const tentativasLogin = new Map();
+const COOKIE_SESSAO = "amd_session";
+
+function igualSeguro(a, b) {
+  const aa = Buffer.from(String(a || ""));
+  const bb = Buffer.from(String(b || ""));
+  return aa.length === bb.length && aa.length > 0 && timingSafeEqual(aa, bb);
+}
+function assinaturaSessao(id) { return createHmac("sha256", SESSION_SECRET).update(id).digest("base64url"); }
+function cookieValor(req, nome) {
+  for (const item of String(req.headers.cookie || "").split(";")) {
+    const i = item.indexOf("=");
+    if (i > 0 && item.slice(0, i).trim() === nome) return decodeURIComponent(item.slice(i + 1).trim());
+  }
+  return "";
+}
+function codigoAtivo(c) {
+  if (CODIGO_MESTRE && igualSeguro(c, CODIGO_MESTRE)) return { nome: "Administrador", expira: Date.now() + 30 * 86400000, mestre: true };
+  const d = codigos[c];
+  return d && Date.now() <= Number(d.expira || 0) ? d : null;
+}
+function sessaoValida(req) {
+  if (!SESSION_SECRET) return null;
+  const bruto = cookieValor(req, COOKIE_SESSAO); const ponto = bruto.lastIndexOf(".");
+  if (ponto < 1) return null;
+  const id = bruto.slice(0, ponto), assinatura = bruto.slice(ponto + 1);
+  if (!igualSeguro(assinatura, assinaturaSessao(id))) return null;
+  const s = sessoes.get(id);
+  if (!s || Date.now() > s.expira || !codigoAtivo(s.codigo)) { sessoes.delete(id); return null; }
+  s.ultimoUso = Date.now(); return s;
+}
+function criaSessao(res, codigo, dados) {
+  if (!SESSION_SECRET) throw new Error("SESSION_SECRET/CODIGO_MESTRE nao configurado");
+  const id = randomBytes(32).toString("base64url");
+  const expira = Math.min(Number(dados.expira || Date.now() + 30 * 86400000), Date.now() + 30 * 86400000);
+  sessoes.set(id, { codigo, nome: dados.nome || "Usuario", criado: Date.now(), ultimoUso: Date.now(), expira });
+  const maxAge = Math.max(60, Math.floor((expira - Date.now()) / 1000));
+  res.setHeader("Set-Cookie", `${COOKIE_SESSAO}=${id}.${assinaturaSessao(id)}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=${maxAge}`);
+  return expira;
+}
+function ipCliente(req) { return String(req.ip || req.socket?.remoteAddress || "desconhecido"); }
+function loginBloqueado(req) {
+  const agora = Date.now(), ip = ipCliente(req); let t = tentativasLogin.get(ip);
+  if (!t || agora - t.inicio > 15 * 60000) t = { inicio: agora, falhas: 0, bloqueadoAte: 0 };
+  tentativasLogin.set(ip, t);
+  return t.bloqueadoAte > agora ? Math.ceil((t.bloqueadoAte - agora) / 1000) : 0;
+}
+function registraFalhaLogin(req) {
+  const agora = Date.now(), ip = ipCliente(req); let t = tentativasLogin.get(ip) || { inicio: agora, falhas: 0, bloqueadoAte: 0 };
+  if (agora - t.inicio > 15 * 60000) t = { inicio: agora, falhas: 0, bloqueadoAte: 0 };
+  if (++t.falhas >= 7) t.bloqueadoAte = agora + 30 * 60000;
+  tentativasLogin.set(ip, t);
+}
+setInterval(() => {
+  const agora = Date.now(), limite = agora - 35 * 60000;
+  for (const [ip, t] of tentativasLogin) if (t.inicio < limite && t.bloqueadoAte < agora) tentativasLogin.delete(ip);
+  for (const [id, s] of sessoes) if (s.expira < agora) sessoes.delete(id);
+}, 10 * 60000).unref();
 
 // ===== AUTO-COLETA BBTIPS =====
 // Legado desligado: as seis ligas atuais pertencem exclusivamente à Vavada.
@@ -142,26 +219,56 @@ function limpaToken(v) { const m = String(v || "").match(/ey[A-Za-z0-9_-]+\.[A-Z
 let BB_TOKEN = limpaToken(process.env.BBTIPS_TOKEN);
 let bbUltima = { ts: 0, ligas: 0, nomes: 0, porCasa: {}, erro: null, rodando: false };
 function codigoValido(c) {
-  if (CODIGO_MESTRE && c === CODIGO_MESTRE) return true;
-  const d = codigos[c]; if (!d) return false;
-  if (Date.now() > d.expira) return false;
+  const d = codigoAtivo(c); if (!d) return false;
   d.usos = (d.usos || 0) + 1; d.ultimoUso = Date.now(); return true;
 }
 // PORTAO: protege os dados; deixa livre snapshot (sonda), eventos (SSE), acesso/admin e arquivos estaticos
 app.use((req, res, next) => {
   const p = req.path;
-  const livre = p === "/api/snapshot" || p === "/api/snapshot2" || p === "/api/dados" || p === "/api/tampermonkey" || p.startsWith("/api/bbtips") || p === "/api/eventos" || p === "/api/grade" || p.startsWith("/api/acesso") || p.startsWith("/api/admin") || !p.startsWith("/api/");
+  const livre = p === "/login" || p === "/robots.txt" || p === "/favicon.ico" || p === "/admin" ||
+    p.startsWith("/api/acesso") || p.startsWith("/api/admin") ||
+    ((p === "/api/snapshot" || p === "/api/snapshot2" || p === "/api/dados" || p === "/api/tampermonkey" || p === "/api/bbtips/token") && req.method === "POST");
   if (livre) return next();
+  if (sessaoValida(req)) return next();
   const c = String(req.headers["x-acesso"] || req.query.c || "").toUpperCase().trim();
   if (codigoValido(c)) return next();
-  res.status(401).json({ erro: "acesso" });
+  if (p.startsWith("/api/")) return res.status(401).json({ erro: "login necessario" });
+  return res.redirect(302, "/login");
 });
-app.post("/api/acesso/validar", (req, res) => {
+app.post("/api/acesso/validar-legado", (req, res) => {
   const c = String((req.body || {}).codigo || "").toUpperCase().trim();
   if (codigoValido(c)) { const d = codigos[c] || { nome: "mestre", expira: Date.now() + 3153600000000 }; res.json({ ok: true, nome: d.nome, expira: d.expira }); }
   else res.status(401).json({ ok: false, erro: "código inválido ou expirado" });
 });
-const isAdmin = req => ADMIN_KEY && (req.headers["x-admin"] === ADMIN_KEY || req.query.k === ADMIN_KEY);
+function loginComCodigo(req, res) {
+  const espera = loginBloqueado(req);
+  if (espera) { res.setHeader("Retry-After", String(espera)); return res.status(429).json({ ok: false, erro: "muitas tentativas; aguarde" }); }
+  const c = String((req.body || {}).codigo || "").toUpperCase().trim();
+  if (!codigoValido(c)) { registraFalhaLogin(req); return res.status(401).json({ ok: false, erro: "codigo invalido ou expirado" }); }
+  tentativasLogin.delete(ipCliente(req));
+  const d = codigoAtivo(c), expira = criaSessao(res, c, d);
+  res.json({ ok: true, nome: d.nome, expira });
+}
+app.post(["/api/acesso/login", "/api/acesso/validar"], loginComCodigo);
+app.get("/api/acesso/sessao", (req, res) => {
+  const s = sessaoValida(req);
+  if (!s) return res.status(401).json({ ok: false });
+  res.json({ ok: true, nome: s.nome, expira: s.expira });
+});
+app.post("/api/acesso/logout", (req, res) => {
+  const bruto = cookieValor(req, COOKIE_SESSAO), ponto = bruto.lastIndexOf(".");
+  if (ponto > 0) sessoes.delete(bruto.slice(0, ponto));
+  res.setHeader("Set-Cookie", `${COOKIE_SESSAO}=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0`);
+  res.json({ ok: true });
+});
+const isAdmin = req => ADMIN_KEY && (igualSeguro(req.headers["x-admin"], ADMIN_KEY) || igualSeguro(req.query.k, ADMIN_KEY));
+app.use("/api/admin", (req, res, next) => {
+  const espera = loginBloqueado(req);
+  if (espera) { res.setHeader("Retry-After", String(espera)); return res.status(429).json({ erro: "muitas tentativas; aguarde" }); }
+  if (!isAdmin(req)) { registraFalhaLogin(req); return res.status(401).json({ erro: "admin" }); }
+  tentativasLogin.delete(ipCliente(req));
+  next();
+});
 app.post("/api/admin/testar-alerta", (req, res) => {
   if (!isAdmin(req)) return res.status(401).json({ erro: "admin" });
   avisaRadar({ liga: "copa", mkt: "o25", tipo: "subida", pagando: 35, deOnde: 25, base: 38, fita: [0,1,1,0,1,1], teste: true, ts: Date.now() });
@@ -174,7 +281,7 @@ app.get("/api/admin/codigos", (req, res) => {
 app.post("/api/admin/criar", async (req, res) => {
   if (!isAdmin(req)) return res.status(401).json({ erro: "admin" });
   const { nome, dias } = req.body || {};
-  const cod = "CL-" + Math.random().toString(36).slice(2, 8).toUpperCase();
+  const cod = "AMD-" + randomBytes(16).toString("hex").toUpperCase();
   codigos[cod] = { nome: String(nome || ""), criado: Date.now(), expira: Date.now() + (parseFloat(dias) || 1) * 86400000, usos: 0 };
   await salvaCodigos();
   res.json({ ok: true, codigo: cod, expira: codigos[cod].expira });
@@ -201,7 +308,7 @@ app.get("/admin", (req, res) => {
 </div>
 <script>
 let K='';
-async function api(p,m,b){const r=await fetch(p+(p.includes('?')?'&':'?')+'k='+encodeURIComponent(K),{method:m||'GET',headers:{'Content-Type':'application/json'},body:b?JSON.stringify(b):undefined});if(r.status===401)throw new Error('senha errada');return r.json();}
+async function api(p,m,b){const r=await fetch(p,{method:m||'GET',headers:{'Content-Type':'application/json','X-Admin':K},body:b?JSON.stringify(b):undefined});if(r.status===401)throw new Error('senha errada');return r.json();}
 async function entrar(){K=document.getElementById('k').value;try{await lista();document.getElementById('login').style.display='none';document.getElementById('painel').style.display='block';}catch(e){document.getElementById('dica').textContent='Senha incorreta (ou ADMIN_KEY não definida no Render).';}}
 async function lista(){const j=await api('/api/admin/codigos');const tb=document.getElementById('lista');tb.innerHTML='';
  const agora=Date.now();
@@ -214,6 +321,18 @@ async function criar(){const j=await api('/api/admin/criar','POST',{nome:documen
 async function teste(){await api('/api/admin/testar-alerta','POST',{});alert('Alerta de teste enviado! Olhe a notificação no canto (com o site aberto em outra aba).');}
 async function revogar(c){if(!confirm('Revogar '+c+'?'))return;await api('/api/admin/revogar','POST',{codigo:c});await lista();}
 </script></body></html>`);
+});
+
+app.get("/login", (req, res) => {
+  if (sessaoValida(req)) return res.redirect(302, "/");
+  res.setHeader("Cache-Control", "no-store");
+  res.type("html").send(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Entrar — AMD Live</title><meta name="robots" content="noindex,nofollow">
+<style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:radial-gradient(circle at 50% 10%,#10251a,#030807 55%);color:#edf7f0;font-family:system-ui,-apple-system,sans-serif;padding:20px}.card{width:min(420px,100%);background:#0b1210;border:1px solid #1e3a2a;border-radius:18px;padding:30px;box-shadow:0 24px 80px #000a}.logo{font-size:12px;letter-spacing:.22em;color:#31e76c;font-weight:800}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#31e76c;box-shadow:0 0 16px #31e76c;margin-right:8px}h1{font-size:27px;margin:18px 0 8px}p{color:#91a49a;font-size:14px;line-height:1.5}label{display:block;font-size:12px;font-weight:700;margin:24px 0 8px}input,button{width:100%;border-radius:10px;padding:14px;font-size:16px}input{color:#fff;background:#07100c;border:1px solid #294535;outline:none}input:focus{border-color:#31e76c;box-shadow:0 0 0 3px #31e76c22}button{margin-top:12px;border:0;background:#27c95b;color:#031007;font-weight:800;cursor:pointer}button:disabled{opacity:.55;cursor:wait}.erro{min-height:20px;color:#ff7373;font-size:13px;margin-top:12px}.seg{border-top:1px solid #18271f;margin-top:22px;padding-top:16px;font-size:11px;color:#617269}</style></head>
+<body><main class="card"><div class="logo"><span class="dot"></span>AMD LIVE</div><h1>Acesso protegido</h1><p>Digite o código criado pelo administrador para abrir o painel.</p>
+<form id="form"><label for="codigo">Código de acesso</label><input id="codigo" name="codigo" type="password" autocomplete="current-password" maxlength="80" required autofocus><button id="entrar" type="submit">Entrar com segurança</button><div class="erro" id="erro" role="alert"></div></form>
+<div class="seg">Sessão protegida por cookie HttpOnly. Tentativas repetidas são bloqueadas automaticamente.</div></main>
+<script>const f=document.getElementById('form'),b=document.getElementById('entrar'),e=document.getElementById('erro'),c=document.getElementById('codigo');f.addEventListener('submit',async x=>{x.preventDefault();b.disabled=true;e.textContent='';try{const r=await fetch('/api/acesso/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({codigo:c.value})});const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.erro||'Acesso negado');location.replace('/');}catch(err){e.textContent=err.message;b.disabled=false;c.select();}});</script></body></html>`);
 });
 
 // Fonte oficial do painel: seis ligas Kiron recebidas diretamente da Vavada.
