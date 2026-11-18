@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         AMD Coletor Vavada
 // @namespace    amd.live
-// @version      1.2.1
+// @version      1.2.2
 // @description  Coleta as seis ligas Kiron diretamente da API Vavada e envia ao AMD Live.
 // @match        https://vavada.com/*
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @connect      sb2virtuals-altenar2.biahosted.com
-// @connect      amd-bbtips-live.onrender.com
+// @connect      amd-virtual-live.onrender.com
 // @run-at       document-start
 // ==/UserScript==
 
@@ -16,7 +16,7 @@
   'use strict';
 
   const API = 'https://sb2virtuals-altenar2.biahosted.com/api/';
-  const DESTINO = 'https://amd-bbtips-live.onrender.com/api/tampermonkey';
+  const DESTINO = 'https://amd-virtual-live.onrender.com/api/tampermonkey';
   const QS = { culture:'pt-PT', timezoneOffset:'180', integration:'vavada', deviceType:'1', numFormat:'en-GB', countryCode:'BR' };
   const LIGAS = {
     bra:{id:55, cols:20, passo:3, inicio:2},
@@ -120,7 +120,7 @@
   async function enviar(liga,placares,upcoming) {
     const token=String(GM_getValue('amd_vavada_token','')).trim();
     if(!token) throw new Error('token não configurado');
-    return requisicao('POST',DESTINO,JSON.stringify({liga,mkt:'o25',placares,upcoming,debug:{versao:'1.2.1',ts:Date.now()}}),{
+    return requisicao('POST',DESTINO,JSON.stringify({liga,mkt:'o25',placares,upcoming,debug:{versao:'1.2.2',ts:Date.now()}}),{
       'Content-Type':'application/json','Authorization':`Bearer ${token}`
     });
   }
@@ -154,7 +154,7 @@
         status(`${liga.toUpperCase()}: ${placares.length} resultados + ${futuros.length} futuros (${eventos.length} eventos lidos)`);
         console.log('[AMD Vavada]',liga,resp);
       }
-      status(`OK v1.2.1: ${total} resultados armazenados · próxima consulta em 30s`);
+      status(`OK v1.2.2: ${total} resultados armazenados · próxima consulta em 30s`);
     } catch(e) { status(`ERRO: ${e.message}`); console.error('[AMD Vavada]',e); }
     finally { executando=false; }
   }
@@ -164,7 +164,7 @@
     if(document.getElementById('amd-vavada')) return;
     const p=document.createElement('div'); p.id='amd-vavada';
     p.style.cssText='position:fixed;right:14px;bottom:14px;z-index:2147483647;width:350px;background:#0d1117;color:#e6edf3;border:1px solid #30363d;border-radius:14px;padding:16px;font:14px monospace;box-shadow:0 12px 32px #0009';
-    p.innerHTML='<b>AMD COLETOR VAVADA v1.2.1</b><div id="amd-vavada-info" style="color:#f0b90b;margin:12px 0;white-space:pre-wrap">iniciando...</div><button id="amd-vavada-agora">Coletar agora</button> <button id="amd-vavada-token">Trocar token</button>';
+    p.innerHTML='<b>AMD COLETOR VAVADA v1.2.2</b><div id="amd-vavada-info" style="color:#f0b90b;margin:12px 0;white-space:pre-wrap">iniciando...</div><button id="amd-vavada-agora">Coletar agora</button> <button id="amd-vavada-token">Trocar token</button>';
     document.body.appendChild(p); painelInfo=p.querySelector('#amd-vavada-info');
     p.querySelector('#amd-vavada-agora').onclick=ciclo;
     p.querySelector('#amd-vavada-token').onclick=()=>{const t=prompt('Cole o TAMPERMONKEY_TOKEN configurado no Render:',GM_getValue('amd_vavada_token',''));if(t){GM_setValue('amd_vavada_token',t.trim());status('token atualizado');}};
