@@ -5122,6 +5122,7 @@ app.post("/api/push/prefs", (req, res) => {
     mm1, mm2, ts: Date.now()
   };
   salvaPush();
+  console.log(`[push] config do grafico: ${s.prefs.liga} ${s.prefs.mercado} ${s.prefs.modo} ${s.prefs.janela} jogos MM${s.prefs.mm1}/MM${s.prefs.mm2} GD=${s.prefs.gd}`);
   res.json({ ok: true, prefs: s.prefs });
 });
 function avisaRadar(info) {
