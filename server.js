@@ -1613,6 +1613,7 @@ function listaCheia(d, alt) { const a = d && d.gamesAll; if (a && a.length) retu
 function gamesFundidos(liga) {
   const d = store[liga];
   const ga = listaCheia(d); // fallback a prova de array VAZIO (que e truthy em JS)
+  if (fonteDiretaAtiva(liga)) return ga;
   const r = rapidos[liga] || {};
   const cauda = ga.slice(-40);
   const extra = Object.values(r).filter(g => !cauda.some(x => x.horario === g.horario && x.casa === g.casa));
@@ -1754,6 +1755,7 @@ app.post("/api/snapshot", (req, res) => {
     if (!LIGAS_PERMITIDAS.has(liga)) {
       return res.status(422).json({ ok: false, erro: "liga desativada", liga });
     }
+    if (fonteDiretaAtiva(liga)) { registraRecusa("/api/snapshot", liga, req); return res.json({ ok: true, ignorado: "fonte-direta-vavada-ativa" }); }
     ultimoSnapshotCru[liga] = { cells: (data && data.cells) ? data.cells.length : 0, temData: !!data, hora: new Date().toLocaleTimeString("pt-BR", { timeZone: "America/Sao_Paulo" }), amostraCell: (data && data.cells && data.cells[0]) ? JSON.stringify(data.cells[0]).slice(0, 200) : null };
     let { games, upcoming, gamesAll } = decodeSnapshot(data);
     liga = ligaPeloConteudo(liga, games, upcoming);
@@ -1797,6 +1799,20 @@ app.post("/api/snapshot", (req, res) => {
 // O endpoint novo e explicito; /api/dados continua como alias compativel com
 // coletores antigos. Nenhum dos dois reativa a fonte BBTips do servidor.
 let lastDebug = {};
+// Quando a coleta direta da Vavada esta ativa, ela e a unica fonte das seis
+// ligas. Envios externos (scripts antigos no navegador) chegavam sem data e
+// com posicao fixa de grade, substituindo os dados corretos.
+function fonteDiretaAtiva(liga) {
+  const st = store[liga];
+  return !!(st && st.fonte === "vavada-kiron" && Date.now() - (st.vavadaTs || 0) < 5 * 60000);
+}
+const recusasExternas = {};
+function registraRecusa(rota, liga, req) {
+  const k = rota + "|" + liga; const agora = Date.now();
+  if (agora - (recusasExternas[k] || 0) < 60000) return;
+  recusasExternas[k] = agora;
+  console.log(`[fonte-externa] recusado ${rota} liga=${liga} origem=${req.get("origin") || req.get("referer") || "-"} ua=${String(req.get("user-agent") || "").slice(0, 60)}`);
+}
 function recebeDadosTampermonkey(req, res) {
   try {
     const tokenEsperado = String(process.env.TAMPERMONKEY_TOKEN || "").trim();
@@ -1809,6 +1825,10 @@ function recebeDadosTampermonkey(req, res) {
     const placaresLista = Array.isArray(placares) ? placares : [];
     const futurosLista = Array.isArray(upcoming) ? upcoming : [];
     if (debug) lastDebug[liga || "?"] = { debug, ts: Date.now() };
+    if (liga && fonteDiretaAtiva(codigoLiga(liga) || liga) && !placaresLista.concat(futurosLista).some(p => String(p && p.inicio || ""))) {
+      registraRecusa(req.path, liga, req);
+      return res.json({ ok: true, ignorado: "fonte-direta-vavada-ativa" });
+    }
     /* Uma liga pode abrir o ciclo apenas com partidas futuras. Rejeitar esse
        lote deixava a BRA vazia ate sair o primeiro FT. */
     if (!liga || (!placaresLista.length && !futurosLista.length)) {
