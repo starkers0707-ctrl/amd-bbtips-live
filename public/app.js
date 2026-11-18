@@ -942,7 +942,10 @@ function processarAlertaGDCross(analise, pontos, metas, escopo, mercado, liga) {
   mostrarAviso(`\ud83c\udfc6 ${nome} \u00b7 ${mercado} \u00b7 ` +
     `MM${analise.periodoRapido} cruzou ${direcao} da MM${analise.periodoLento}` +
     (horario ? ` \u00b7 ${horario}` : ''));
-  jogoDoUltimoGDCross = meta ? { horario: horario, a: meta.timeA, b: meta.timeB, ft: meta.ft || meta.FT } : null;
+  // So avisa quando o ponto identifica o jogo (horario + times). Em modos sem
+  // jogo por ponto (comparativo de ligas/mercados) nao ha o que informar.
+  if (!horario || !meta || !meta.timeA) return;
+  jogoDoUltimoGDCross = { horario: horario, a: meta.timeA, b: meta.timeB, ft: meta.ft || meta.FT };
   falarAlertaGDCross(cruzamento.tipo, liga || state.liga, horario, mercado);
 }
 
@@ -977,6 +980,7 @@ function nomeLigaAlerta(liga) {
 }
 
 function notificarAlertaMedias(analise, mercado, liga, meta) {
+  if (!meta || !meta.timeA) return; // so avisa com o jogo identificado
   if (!alertaPodeDispararAgora()) return;
   if (!document.hidden || !('Notification' in window) || Notification.permission !== 'granted') return;
   const nomeLiga = nomeLigaAlerta(liga);
@@ -2858,6 +2862,7 @@ function habilitarAlertasDeFundo() {
 
 function notificarGDCross(tipo, liga, horario, mkt) {
   if (!alertaPodeDispararAgora()) return;
+  if (!horario) return; // alerta sem o jogo nao serve
   // O Golden precisa avisar na hora, inclusive com o painel aberto. Antes o
   // aviso era cancelado justamente quando o usuario estava olhando a tela.
   if (!('Notification' in window) || Notification.permission !== 'granted') return;
