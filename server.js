@@ -5082,7 +5082,10 @@ function avaliaPushGrafico(liga) {
   for (const s of pushData.subs) {
     const p0 = s.prefs;
     if (!p0 || !p0.gd) continue;
-    const mercados = [...new Set([p0.mercado, ...MERCADOS_PUSH].filter(Boolean))];
+    // So a liga e o mercado abertos no grafico do aparelho (24 graficos davam
+    // alerta demais). Com p0.todas = true volta a monitorar todos.
+    if (!p0.todas && p0.liga !== liga) continue;
+    const mercados = p0.todas ? [...new Set([p0.mercado, ...MERCADOS_PUSH].filter(Boolean))] : [p0.mercado];
     for (const mercado of mercados) {
     const p = { ...p0, mercado };
     try {
