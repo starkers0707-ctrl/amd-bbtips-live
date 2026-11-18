@@ -148,7 +148,9 @@
         ambs: o["odd_ambas_sim"] || null, ambn: o["odd_ambas_nao"] || null,
         ge5: o["odd_total_gols_extatos_5"] || null,   // "extatos_5" = 5 ou mais (verificado)
         u05: o["odd_under_0.5"] || null, u15: o["odd_under_1.5"] || null,
-        u25: o["odd_under_2.5"] || null
+        u25: o["odd_under_2.5"] || null, o15: o["odd_over_1.5"] || null,
+        u35: o["odd_under_3.5"] || null,
+        pj: o.pj || null      // probabilidade justa (sem margem) de cada mercado
       }
     };
   }
@@ -355,7 +357,8 @@
         return;
       }
       var bt;
-      try { bt = mkt === "ge5" ? backtest5Mais(jogos, jogosHora(liga)) : AMD_MOTOR.backtest(jogos, mkt, 12 * jogosHora(liga), { liga: liga }); } catch (e) { return; }
+      try { var temOdd5 = mkt === "ge5" && jogos.filter(function (g) { return g.odds && g.odds.ge5; }).length >= jogos.length * 0.5;
+      bt = (mkt === "ge5" && !temOdd5) ? backtest5Mais(jogos, jogosHora(liga)) : AMD_MOTOR.backtest(jogos, mkt, 12 * jogosHora(liga), { liga: liga }); } catch (e) { return; }
       if (!bt || bt.erro) { avisa("sem base suficiente para o backtest deste mercado agora"); return; }
       poeTitulo("Backtest · " + liga.charAt(0).toUpperCase() + liga.slice(1) + " — " + nomeDoMercado(mkt) +
         (mkt === "ge5" ? " · probabilidade sem EV" : " · sinais novos"));

@@ -347,6 +347,29 @@ function comboScore({ graphSubindo, graphTopo, temMinima, minimaLonga, cycleStro
   return { score: Math.round(score), ready, points };
 }
 
+// ---------------------------------------------------------------------------
+// PROBABILIDADE KIRON: a odd ja traz a forca do jogo + margem da casa
+// (~6.5% nos totais/ambas, ~14% no 5+). A probabilidade de partida e a JUSTA
+// (sem margem) e so sobe se os jogos com a mesma prob. justa estiverem pagando
+// acima do esperado. EV = prob * odd - 1 contra a odd real.
+// ---------------------------------------------------------------------------
+const MARGEM_PADRAO = { ge5: 1.14 };
+function probJusta(g, mkt) {
+  const k = oddKey(mkt), o = g && g.odds ? g.odds : {};
+  if (o.pj && o.pj[k] != null) return Number(o.pj[k]);
+  const odd = Number(o[k]);
+  return odd > 1 ? (1 / odd) / (MARGEM_PADRAO[mkt] || 1.065) : null;
+}
+function probKiron(games, u, mkt) {
+  const pF = probJusta(u, mkt);
+  if (pF == null) return null;
+  const rows = games.filter(g => { const p = probJusta(g, mkt); return p != null && Math.abs(p - pF) <= 0.03; });
+  const j = rows.length, hits = rows.filter(g => pays(g, mkt)).length;
+  const M = 40; // peso da prob. justa: 40 jogos "virtuais" puxando para o preco da Kiron
+  const pEst = (hits + M * pF) / (j + M);
+  const z = j >= 20 ? (hits / j - pF) / Math.sqrt(Math.max(1e-6, pF * (1 - pF) / j)) : 0;
+  return { pF, pEst, j, hits, real: j ? hits / j : null, z };
+}
 function fullEvalUpcoming(upcoming, games, mkt, opts = {}) {
   const jph = opts.jogosHora || 20;
   const baseGeral = pct(games.filter(g => pays(g, mkt)).length, games.length);
@@ -361,8 +384,10 @@ function fullEvalUpcoming(upcoming, games, mkt, opts = {}) {
     const oddBase = oddPayPct(games, odd, mkt);
     const teamBase = teamPayPct(games, u.nome, mkt);
     const dist = odd ? scoreDistribution(games, odd, mkt) : null;
+    const pk = probKiron(games, u, mkt);
     let prob = baseGeral;
-    if (oddBase.j >= 5) prob = (oddBase.p * 2 + baseGeral) / 3;
+    if (pk) prob = pk.pEst * 100;
+    else if (oddBase.j >= 5) prob = (oddBase.p * 2 + baseGeral) / 3;
     prob = Math.round(prob * 10) / 10;
     const justa = prob > 0 ? +(100 / prob).toFixed(2) : null;
     const ev = odd ? Math.round((prob / 100 * odd - 1) * 1000) / 10 : null;
@@ -374,7 +399,8 @@ function fullEvalUpcoming(upcoming, games, mkt, opts = {}) {
     const temMinima = cur <= minSerie + 5 && sinal.zonaPct <= 40; // perto do fundo
     const cycleStrong = cycle && cycle.cur === "RED" && cycle.avgRed && cycle.streak >= cycle.avgRed;
     const cycleBuilding = cycle && cycle.cur === "RED" && cycle.pressao >= 35;
-    const probStrong = prob >= (mkt === "ge5" ? 12 : mkt === "o35" ? 28 : 45);
+    // Forte = os jogos com essa prob. justa estao pagando acima dela (z >= 1).
+    const probStrong = pk ? pk.z >= 1 : prob >= (mkt === "ge5" ? 12 : mkt === "o35" ? 28 : 45);
     const evStrong = ev != null && ev >= 0;
     const baseForte = (teamBase.j >= 6 && teamBase.p >= 52) || (oddBase.j >= 8 && oddBase.p >= 52);
     const coldOdd = oddBase.j >= 8 && oddBase.p < 30;
@@ -392,6 +418,9 @@ function fullEvalUpcoming(upcoming, games, mkt, opts = {}) {
       nome: u.nome, odd: odd || null,
       score: combo.score, ready: combo.ready,
       prob, justa, ev, edge, status,
+      probJusta: pk ? Math.round(pk.pF * 1000) / 10 : null,
+      pagandoReal: pk && pk.real != null ? Math.round(pk.real * 1000) / 10 : null,
+      amostraJusta: pk ? pk.j : 0,
       oddBase: oddBase.j ? `${oddBase.g}/${oddBase.j} ${oddBase.p}%` : "sem base",
       teamBase: teamBase.j ? `${teamBase.g}/${teamBase.j} ${teamBase.p}%` : "sem base",
       placarCorreto: dist ? dist.top.join(" | ") : "—",

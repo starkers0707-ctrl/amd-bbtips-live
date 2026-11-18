@@ -160,6 +160,34 @@ function linhaDaOdd(odd) {
   } catch { return ""; }
 }
 
+// Todas as odds uteis da Kiron + probabilidade JUSTA (sem a margem da casa).
+// Total (18): tipo 12 = Mais, 13 = Menos, linha em sv. Ambas (29): 74 Sim, 76 Nao.
+// Nº exato de gols (21): o 5+ e o dutching de "5" e "6" (6 = 6 ou mais).
+export function oddsKiron(detail) {
+  const total = (tipo, linha) => oddDoMercado(detail, 18, o => Number(o.typeId) === tipo && linhaDaOdd(o) === linha)?.price ?? null;
+  const o = {
+    o15: total(12, "1.5"), u15: total(13, "1.5"),
+    o25: total(12, "2.5"), u25: total(13, "2.5"),
+    o35: total(12, "3.5"), u35: total(13, "3.5"),
+    ambs: oddDoMercado(detail, 29, x => Number(x.typeId) === 74 || /^sim$/i.test(String(x.name || "")))?.price ?? null,
+    ambn: oddDoMercado(detail, 29, x => Number(x.typeId) === 76 || /^n[aã]o$/i.test(String(x.name || "")))?.price ?? null,
+    ge5: null
+  };
+  const pj = {};
+  const par = (a, b, ka, kb) => { if (o[a] > 1 && o[b] > 1) { const ia = 1 / o[a], ib = 1 / o[b]; pj[ka] = +(ia / (ia + ib)).toFixed(4); pj[kb] = +(ib / (ia + ib)).toFixed(4); } };
+  par("o15", "u15", "o15", "u15"); par("o25", "u25", "o25", "u25"); par("o35", "u35", "o35", "u35"); par("ambs", "ambn", "ambs", "ambn");
+  const ng = oddsDoMercado(detail, 21).filter(x => Number(x.price) > 1);
+  const soma = ng.reduce((s, x) => s + 1 / x.price, 0);
+  const cinco = ng.filter(x => ["5", "6"].includes(String(x.name).trim()));
+  if (cinco.length === 2 && soma > 0) {
+    const inv = cinco.reduce((s, x) => s + 1 / x.price, 0);
+    o.ge5 = +(1 / inv).toFixed(2);
+    pj.ge5 = +(inv / soma).toFixed(4);
+  }
+  o.pj = pj;
+  return o;
+}
+
 function vencedorUnico(detail, typeId) {
   const vencedoras = oddsDoMercado(detail, typeId).filter(o => Number(o.oddStatus) === 1);
   return vencedoras.length === 1 ? vencedoras[0] : null;
@@ -217,11 +245,7 @@ function parseDetail(detail, evento, liga) {
   const casa = competidores[0]?.name || nomes[0] || "Casa";
   const fora = competidores[1]?.name || nomes[1] || "Fora";
   
-  const o25 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && linhaDaOdd(o) === "2.5");
-  const o35 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && linhaDaOdd(o) === "3.5");
-  const ambasSim = oddDoMercado(detail, 29, o => Number(o.typeId) === 74 || /^sim$/i.test(String(o.name || "")));
-  const ambasNao = oddDoMercado(detail, 29, o => Number(o.typeId) === 76 || /^n[aã]o$/i.test(String(o.name || "")));
-  
+
   const horario = horaBR(detail?.startDate || evento?.startDate);
   
   return {
@@ -229,7 +253,7 @@ function parseDetail(detail, evento, liga) {
     nome: `${casa} x ${fora}`, casa, fora, a, b, total: a + b,
     placar: `${a}-${b}`, horario, hora: horario,
     inicio: detail?.startDate || evento?.startDate || null,
-    odds: { o25: o25?.price ?? null, o35: o35?.price ?? null, ambs: ambasSim?.price ?? null, ambn: ambasNao?.price ?? null },
+    odds: oddsKiron(detail),
     fonte: "vavada"
   };
 }
@@ -240,18 +264,14 @@ function parseUpcoming(detail, evento, liga) {
   const casa = competidores[0]?.name || nomes[0] || "Casa";
   const fora = competidores[1]?.name || nomes[1] || "Fora";
   
-  const o25 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && linhaDaOdd(o) === "2.5");
-  const o35 = oddDoMercado(detail, 18, o => Number(o.typeId) === 12 && linhaDaOdd(o) === "3.5");
-  const ambasSim = oddDoMercado(detail, 29, o => Number(o.typeId) === 74 || /^sim$/i.test(String(o.name || "")));
-  const ambasNao = oddDoMercado(detail, 29, o => Number(o.typeId) === 76 || /^n[aã]o$/i.test(String(o.name || "")));
-  
+
   const horario = horaBR(detail?.startDate || evento?.startDate);
   
   return { 
     id: `vavada:${liga}:${evento.id}`, 
     nome: `${casa} x ${fora}`, casa, fora, horario, hora: horario,
     inicio: detail?.startDate || evento?.startDate || null,
-    odds: { o25: o25?.price ?? null, o35: o35?.price ?? null, ambs: ambasSim?.price ?? null, ambn: ambasNao?.price ?? null }, 
+    odds: oddsKiron(detail), 
     fonte: "vavada" 
   };
 }

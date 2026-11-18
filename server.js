@@ -323,7 +323,7 @@ app.post("/api/admin/criar", async (req, res) => {
   const expiraNovo = Date.now() + (parseFloat(dias) || 1) * 86400000;
   const cod = geraCodigoAssinado(expiraNovo);
   codigos[cod] = { nome: String(nome || ""), criado: Date.now(), expira: leCodigoAssinado(cod).expira, usos: 0 };
-  await salvaCodigos();
+  await salvaCodigos(); kvSalva();
   res.json({ ok: true, codigo: cod, expira: codigos[cod].expira });
 });
 app.post("/api/admin/consultar", (req, res) => {
@@ -337,7 +337,7 @@ app.post("/api/admin/revogar", async (req, res) => {
   const codRev = String((req.body || {}).codigo || "").toUpperCase().trim();
   delete codigos[codRev];
   if (leCodigoAssinado(codRev)) revogados.add(codRev);
-  await salvaCodigos();
+  await salvaCodigos(); kvSalva();
   res.json({ ok: true });
 });
 // pagina /admin (painel do dono)
@@ -925,6 +925,29 @@ function comboScore({ graphSubindo, graphTopo, temMinima, minimaLonga, cycleStro
   return { score: Math.round(score), ready, points };
 }
 
+// ---------------------------------------------------------------------------
+// PROBABILIDADE KIRON: a odd ja traz a forca do jogo + margem da casa
+// (~6.5% nos totais/ambas, ~14% no 5+). A probabilidade de partida e a JUSTA
+// (sem margem) e so sobe se os jogos com a mesma prob. justa estiverem pagando
+// acima do esperado. EV = prob * odd - 1 contra a odd real.
+// ---------------------------------------------------------------------------
+const MARGEM_PADRAO = { ge5: 1.14 };
+function probJusta(g, mkt) {
+  const k = oddKey(mkt), o = g && g.odds ? g.odds : {};
+  if (o.pj && o.pj[k] != null) return Number(o.pj[k]);
+  const odd = Number(o[k]);
+  return odd > 1 ? (1 / odd) / (MARGEM_PADRAO[mkt] || 1.065) : null;
+}
+function probKiron(games, u, mkt) {
+  const pF = probJusta(u, mkt);
+  if (pF == null) return null;
+  const rows = games.filter(g => { const p = probJusta(g, mkt); return p != null && Math.abs(p - pF) <= 0.03; });
+  const j = rows.length, hits = rows.filter(g => pays(g, mkt)).length;
+  const M = 40; // peso da prob. justa: 40 jogos "virtuais" puxando para o preco da Kiron
+  const pEst = (hits + M * pF) / (j + M);
+  const z = j >= 20 ? (hits / j - pF) / Math.sqrt(Math.max(1e-6, pF * (1 - pF) / j)) : 0;
+  return { pF, pEst, j, hits, real: j ? hits / j : null, z };
+}
 // Cadencia real: ENG/ITA/SPA/MND 30 jogos/h, BRA/LAT 20 jogos/h.
 function jogosPorHora(liga) { return /^(eng|ita|spa|mnd)$/.test(String(liga || "")) ? 30 : 20; }
 function fullEvalUpcoming(upcoming, games, mkt, opts = {}) {
@@ -941,8 +964,10 @@ function fullEvalUpcoming(upcoming, games, mkt, opts = {}) {
     const oddBase = oddPayPct(games, odd, mkt);
     const teamBase = teamPayPct(games, u.nome, mkt);
     const dist = odd ? scoreDistribution(games, odd, mkt) : null;
+    const pk = probKiron(games, u, mkt);
     let prob = baseGeral;
-    if (oddBase.j >= 5) prob = (oddBase.p * 2 + baseGeral) / 3;
+    if (pk) prob = pk.pEst * 100;
+    else if (oddBase.j >= 5) prob = (oddBase.p * 2 + baseGeral) / 3;
     prob = Math.round(prob * 10) / 10;
     const justa = prob > 0 ? +(100 / prob).toFixed(2) : null;
     const ev = odd ? Math.round((prob / 100 * odd - 1) * 1000) / 10 : null;
@@ -954,7 +979,8 @@ function fullEvalUpcoming(upcoming, games, mkt, opts = {}) {
     const temMinima = cur <= minSerie + 5 && sinal.zonaPct <= 40; // perto do fundo
     const cycleStrong = cycle && cycle.cur === "RED" && cycle.avgRed && cycle.streak >= cycle.avgRed;
     const cycleBuilding = cycle && cycle.cur === "RED" && cycle.pressao >= 35;
-    const probStrong = prob >= (mkt === "ge5" ? 12 : mkt === "o35" ? 28 : 45);
+    // Forte = os jogos com essa prob. justa estao pagando acima dela (z >= 1).
+    const probStrong = pk ? pk.z >= 1 : prob >= (mkt === "ge5" ? 12 : mkt === "o35" ? 28 : 45);
     const evStrong = ev != null && ev >= 0;
     const baseForte = (teamBase.j >= 6 && teamBase.p >= 52) || (oddBase.j >= 8 && oddBase.p >= 52);
     const coldOdd = oddBase.j >= 8 && oddBase.p < 30;
@@ -972,6 +998,9 @@ function fullEvalUpcoming(upcoming, games, mkt, opts = {}) {
       nome: u.nome, odd: odd || null,
       score: combo.score, ready: combo.ready,
       prob, justa, ev, edge, status,
+      probJusta: pk ? Math.round(pk.pF * 1000) / 10 : null,
+      pagandoReal: pk && pk.real != null ? Math.round(pk.real * 1000) / 10 : null,
+      amostraJusta: pk ? pk.j : 0,
       oddBase: oddBase.j ? `${oddBase.g}/${oddBase.j} ${oddBase.p}%` : "sem base",
       teamBase: teamBase.j ? `${teamBase.g}/${teamBase.j} ${teamBase.p}%` : "sem base",
       placarCorreto: dist ? dist.top.join(" | ") : "—",
@@ -1793,6 +1822,67 @@ async function carregaJogos() {
   } catch (e) {}
 }
 carregaJogos();
+// ===== MEMORIA PERSISTENTE (Render Key Value / Redis) =====
+// Guarda historico de jogos e codigos de acesso fora do processo: um deploy ou
+// reinicio nao apaga mais a grade nem o backtest.
+let kv = null, kvOk = false;
+async function kvConecta() {
+  if (!process.env.REDIS_URL) { console.log("[memoria] REDIS_URL ausente: sem persistencia"); return; }
+  try {
+    const { createClient } = await import("redis");
+    kv = createClient({ url: process.env.REDIS_URL, socket: { reconnectStrategy: n => Math.min(n * 500, 5000) } });
+    kv.on("error", e => { if (kvOk) console.warn("[memoria] erro:", e.message); kvOk = false; });
+    kv.on("ready", () => { kvOk = true; });
+    await kv.connect();
+    kvOk = true;
+    await kvCarrega();
+  } catch (e) { console.warn("[memoria] falha ao conectar:", e.message); }
+}
+async function kvCarrega() {
+  let total = 0;
+  for (const liga of LIGAS_PERMITIDAS) {
+    try {
+      const bruto = await kv.get("amd:jogos:" + liga);
+      if (!bruto) continue;
+      const salvos = JSON.parse(bruto);
+      if (!Array.isArray(salvos) || !salvos.length) continue;
+      const atual = store[liga] || {};
+      const chave = g => String(g.id || `${g.horario || ""}|${g.casa || ""}|${g.fora || ""}`);
+      const mapa = new Map(salvos.map(g => [chave(g), g]));
+      for (const g of (Array.isArray(atual.gamesAll) ? atual.gamesAll : [])) mapa.set(chave(g), g);
+      const gamesAll = [...mapa.values()].slice(-2000);
+      const st = buildStore(liga, gamesAll, atual.upcomingRaw || [], new Date().toISOString());
+      st.gamesAll = gamesAll;
+      st.fonte = atual.fonte || "memoria";
+      if (atual.vavadaTs) st.vavadaTs = atual.vavadaTs;
+      store[liga] = st;
+      registraLiga(liga);
+      atualizaRadar(liga, st);
+      total += salvos.length;
+    } catch (e) { console.warn("[memoria] liga", liga, e.message); }
+  }
+  try {
+    const c = await kv.get("amd:codigos");
+    if (c) { const salvos = JSON.parse(c); for (const [k, v] of Object.entries(salvos)) if (!codigos[k]) codigos[k] = v; }
+    const r = await kv.get("amd:revogados");
+    if (r) for (const k of JSON.parse(r)) revogados.add(k);
+  } catch (e) {}
+  console.log(`[memoria] carregada: ${total} jogos, ${Object.keys(codigos).length} codigos`);
+}
+async function kvSalva() {
+  if (!kv || !kvOk) return;
+  try {
+    for (const liga of LIGAS_PERMITIDAS) {
+      const ga = (store[liga] || {}).gamesAll;
+      if (Array.isArray(ga) && ga.length) await kv.set("amd:jogos:" + liga, JSON.stringify(ga.slice(-2000)));
+    }
+    await kv.set("amd:codigos", JSON.stringify(codigos));
+    await kv.set("amd:revogados", JSON.stringify([...revogados]));
+  } catch (e) { console.warn("[memoria] falha ao salvar:", e.message); }
+}
+kvConecta();
+setInterval(kvSalva, 60000);
+for (const sinal of ["SIGTERM", "SIGINT"]) process.once(sinal, async () => { try { await kvSalva(); } catch (e) {} process.exit(0); });
 setInterval(salvaJogos, 3 * 60000); // salva a cada 3min (se mudou)
 
 app.post("/api/snapshot", (req, res) => {
@@ -2427,7 +2517,8 @@ app.get("/api/grade", (req, res) => {
       "odd_ambas_nao": o.ambn ?? null,
       "odd_under_0.5": o.u05 ?? null,
       "odd_under_1.5": o.u15 ?? null,
-      "odd_under_2.5": o.u25 ?? null
+      "odd_under_2.5": o.u25 ?? null,
+      "odd_under_3.5": o.u35 ?? null
     };
   };
 
