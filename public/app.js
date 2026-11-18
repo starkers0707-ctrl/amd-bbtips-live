@@ -2772,7 +2772,7 @@ function desbloquearAlertasSonoros() {
 function registrarAlertasDeFundo() {
   if (!('serviceWorker' in navigator)) return Promise.resolve(null);
   if (!registroAlertasFundo) {
-    registroAlertasFundo = navigator.serviceWorker.register('/sw-alertas.js?v=20261117-notification-fallback', { scope: '/' })
+    registroAlertasFundo = navigator.serviceWorker.register('/sw-alertas.js?v=20261118-voz', { scope: '/' })
       .then(() => navigator.serviceWorker.ready)
       .catch(() => null);
   }
@@ -3045,7 +3045,7 @@ function textoAlertaGDCross(tipo, liga, horario, mkt) {
     .filter(Boolean).join(' ');
   return frase + '. ' + frase + '.';
 }
-function falarAlertaGDCross(tipo, liga, horario, mkt) {
+function falarAlertaGDCross(tipo, liga, horario, mkt, semNotificar) {
   if (!alertaPodeDispararAgora()) return;
   if (!ligado('GDCROSS')) return;
   const chaveAviso = [tipo, String(liga || state.liga || '').toLowerCase(),
@@ -3053,14 +3053,20 @@ function falarAlertaGDCross(tipo, liga, horario, mkt) {
   if (ultimoAvisoGDCross.chave === chaveAviso &&
       Date.now() - ultimoAvisoGDCross.ts < 15000) return;
   ultimoAvisoGDCross = { chave: chaveAviso, ts: Date.now() };
+  // Varias abas abertas: so uma fala cada cruzamento.
+  try {
+    const k = 'amd-voz-' + chaveAviso, antes = Number(localStorage.getItem(k) || 0);
+    if (Date.now() - antes < 20000) return;
+    localStorage.setItem(k, String(Date.now()));
+  } catch (e) {}
   const texto = textoAlertaGDCross(tipo, liga, horario, mkt);
-  notificarGDCross(tipo, liga, horario, mkt);
+  if (!semNotificar) notificarGDCross(tipo, liga, horario, mkt);
   if (!somDeAlertaLigado()) return;
   let falou = false;
   if ('speechSynthesis' in window &&
       typeof window.SpeechSynthesisUtterance === 'function') {
     try {
-      window.speechSynthesis.cancel();
+      // sem cancel(): varios cruzamentos no mesmo minuto entram na fila e todos falam
       const fala = new window.SpeechSynthesisUtterance(texto);
       fala.lang = 'pt-BR';
       fala.rate = .92;
@@ -3073,6 +3079,17 @@ function falarAlertaGDCross(tipo, liga, horario, mkt) {
   /* Em segundo plano a API de voz pode aceitar a fala e ficar silenciosa.
      A sirene pelo AudioContext persistente funciona como segunda proteção. */
   if (!falou || document.hidden) tocarSireneGDCross();
+}
+
+// Push do servidor (todas as ligas/mercados): o service worker repassa para a
+// pagina aberta, que FALA o Golden/Death. A notificacao ja foi exibida pelo push.
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.addEventListener('message', function (ev) {
+    const m = ev && ev.data;
+    const gd = m && m.tipo === 'amd-push' && m.dados && m.dados.gd;
+    if (!gd || !gd.tipo) return;
+    falarAlertaGDCross(gd.tipo, gd.liga, gd.horario, gd.mercado, true);
+  });
 }
 
 function iniciarCanalGDCross() {

@@ -16,7 +16,10 @@ self.addEventListener('push', function (event) {
     requireInteraction: true,
     data: { url: dados.url || '/index.html' }
   };
-  event.waitUntil(self.registration.showNotification(titulo, opcoes));
+  var avisarAbas = self.clients.matchAll({ type: 'window', includeUncontrolled: true })
+    .then(function (abas) { abas.forEach(function (aba) { try { aba.postMessage({ tipo: 'amd-push', dados: dados }); } catch (e) {} }); })
+    .catch(function () {});
+  event.waitUntil(Promise.all([self.registration.showNotification(titulo, opcoes), avisarAbas]));
 });
 self.addEventListener('notificationclick', function (event) {
   event.notification.close();

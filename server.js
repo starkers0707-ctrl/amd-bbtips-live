@@ -5110,6 +5110,7 @@ function avaliaPushGrafico(liga) {
       const payload = JSON.stringify({
         t: (golden ? "\ud83c\udfc6 GOLDEN" : "\ud83d\udc80 DEATH") + ` ${horario} \u2014 ${nomeLiga} \u00b7 ${p.mercado}`,
         b: `Bateu no jogo das ${horario}: ${jogoTxt} \u00b7 MM${r.an.periodoRapido} ${golden ? "cruzou acima da" : "cruzou abaixo da"} MM${r.an.periodoLento}`,
+        gd: { tipo: ultimo.tipo, liga, mercado: p.mercado, horario },
         // mesma tag do aviso local da pagina: o navegador junta os dois
         tag: "amd-gdcross-" + ultimo.tipo + "-" + liga + "-" + horario
       });
