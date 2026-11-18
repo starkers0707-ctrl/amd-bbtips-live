@@ -2395,9 +2395,43 @@ app.get("/api/grade", (req, res) => {
       .reduce((acc, x) => { if (x.type !== "literal") acc[x.type] = Number(x.value); return acc; }, {});
     return Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute, 0, 0);
   };
+  // Jogos sem data real (coletados antes da correcao): o numero do evento da
+  // Vavada so cresce, entao no mesmo HH:MM o de id maior e o mais recente e os
+  // demais recuam um dia cada. Calculado sob demanda, apos instanteDaGrade.
+  const numeroEvento = g => { const m = String(g && g.id || "").match(/(\d+)$/); return m ? Number(m[1]) : NaN; };
+  let recuoDias = null;
+  const calculaRecuo = () => {
+    recuoDias = new Map();
+    const grupos = new Map();
+    for (const g of todos) {
+      if (!(Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b)))) continue;
+      const n = numeroEvento(g); if (!Number.isFinite(n)) continue;
+      const k = String(g.horario || "");
+      if (!grupos.has(k)) grupos.set(k, []);
+      grupos.get(k).push(g);
+    }
+    for (const lista of grupos.values()) {
+      lista.sort((x, y) => numeroEvento(y) - numeroEvento(x));
+      const topo = lista[0];
+      const base = relogioGrade(topo.inicio) ?? instanteDaGrade(topo.horario, false);
+      lista.forEach((g, k) => { if (!g.inicio && base != null) recuoDias.set(g, base - k * 24 * 60 * 60 * 1000); });
+    }
+    // Um evento com numero menor que o do datado mais antigo e anterior a ele.
+    let refN = Infinity, refT = null;
+    for (const g of todos) { if (!(Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b)))) continue; const t = relogioGrade(g.inicio), n = numeroEvento(g); if (t != null && Number.isFinite(n) && n < refN) { refN = n; refT = t; } }
+    if (refT != null) for (const [g, t] of recuoDias) {
+      let x = t; while (numeroEvento(g) < refN && x >= refT) x -= 24 * 60 * 60 * 1000;
+      recuoDias.set(g, x);
+    }
+  };
   const instanteDoJogo = (g, futuro) => {
     const real = relogioGrade(g && g.inicio);
-    return real != null ? real : instanteDaGrade(g && g.horario, futuro);
+    if (real != null) return real;
+    if (!futuro && g && Number.isFinite(numeroEvento(g))) {
+      if (!recuoDias) calculaRecuo();
+      if (recuoDias.has(g)) return recuoDias.get(g);
+    }
+    return instanteDaGrade(g && g.horario, futuro);
   };
   const instanteDaGrade = (horario, futuro = false) => {
     const m = String(horario || '').match(/(\d{1,2}):(\d{2})/);
@@ -2439,17 +2473,6 @@ app.get("/api/grade", (req, res) => {
     if (!g.inicio && Number.isFinite(ultimoDatadoEm) && instante > ultimoDatadoEm) return maior;
     return Number.isFinite(instante) ? Math.max(maior, instante) : maior;
   }, Number.NEGATIVE_INFINITY);
-  try {
-    const agoraLog = Date.now();
-    if (!globalThis.__gradeLog) globalThis.__gradeLog = {};
-    if (agoraLog - (globalThis.__gradeLog[ligaReal] || 0) > 60000) {
-      globalThis.__gradeLog[ligaReal] = agoraLog;
-      const res = todos.filter(g => Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b)));
-      const recentes = res.map(g => ({ g, t: instanteDoJogo(g, false) })).filter(x => x.t >= agoraGrade - 15 * 60000)
-        .map(x => `${new Date(x.t).toISOString().slice(11, 16)} ${x.g.casa}-${x.g.fora} ${x.g.a}-${x.g.b} ini=${x.g.inicio || "-"} hor=${x.g.horario} id=${x.g.id || "-"} lv=${x.g.linha_visual ?? "-"}`);
-      console.log(`[grade-diag] ${ligaReal} total=${todos.length} datados=${res.filter(g => g.inicio).length} semData=${res.filter(g => !g.inicio).length} ultimoDatado=${Number.isFinite(ultimoDatadoEm) ? new Date(ultimoDatadoEm).toISOString().slice(11, 16) : "nenhum"} fonte=${d.fonte} | ${recentes.join(" ; ")}`);
-    }
-  } catch (e) { console.log("[grade-diag] erro", e.message); }
   const partidas = todos.map((g, i) => {
     const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
     const tsDireto = instanteDoJogo(g, !resolvido);
