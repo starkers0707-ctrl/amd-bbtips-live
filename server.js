@@ -5075,9 +5075,16 @@ const pushGraficoEnviado = {}; // endpoint|liga|mercado -> ultimo jogo avisado
 function avaliaPushGrafico(liga) {
   if (!webpush || !pushData.vapid || !pushData.subs.length) return;
   const cache = {};
+  // Todas as ligas e os mercados principais, com a MESMA configuracao do
+  // grafico do aparelho (modo, Qtd. Jogos, MM1/MM2): cada alerta bate com o G/D
+  // que aquela liga/mercado mostraria no grafico.
+  const MERCADOS_PUSH = ["Over 2.5", "Over 3.5", "Ambas Marcam (Sim)", "5+ Gols"];
   for (const s of pushData.subs) {
-    const p = s.prefs;
-    if (!p || !p.gd || p.liga !== liga || !p.mercado) continue;
+    const p0 = s.prefs;
+    if (!p0 || !p0.gd) continue;
+    const mercados = [...new Set([p0.mercado, ...MERCADOS_PUSH].filter(Boolean))];
+    for (const mercado of mercados) {
+    const p = { ...p0, mercado };
     try {
       const ck = [p.modo, p.janela, p.mercado, p.mm1, p.mm2].join("|");
       const r = cache[ck] || (cache[ck] = (() => {
@@ -5092,6 +5099,8 @@ function avaliaPushGrafico(liga) {
       const chave = s.endpoint + "|" + liga + "|" + p.mercado;
       const jogoId = String(meta.g.id || meta.t) + "|" + ultimo.tipo;
       if (pushGraficoEnviado[chave] === jogoId) continue;
+      // logo apos reiniciar: so registra o cruzamento ja avisado, sem reenviar
+      if (!(chave in pushGraficoEnviado) && Date.now() - inicioProcesso < 90000) { pushGraficoEnviado[chave] = jogoId; continue; }
       console.log(`[push-gd] ${liga} ${p.mercado} ${ultimo.tipo.toUpperCase()} no jogo ${meta.g.horario} ${meta.g.casa}x${meta.g.fora} (${p.modo} ${p.janela} MM${r.an.periodoRapido}/${r.an.periodoLento})`);
       pushGraficoEnviado[chave] = jogoId;
       const golden = ultimo.tipo === "golden";
@@ -5110,8 +5119,10 @@ function avaliaPushGrafico(liga) {
         }
       });
     } catch (e) {}
+    }
   }
 }
+const inicioProcesso = Date.now();
 app.post("/api/push/prefs", (req, res) => {
   const b = req.body || {};
   const s = pushData.subs.find(x => x.endpoint === b.endpoint);
