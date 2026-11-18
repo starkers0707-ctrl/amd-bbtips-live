@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMD Coletor Vavada
 // @namespace    amd.live
-// @version      1.1.2
+// @version      1.2.0
 // @description  Coleta as seis ligas Kiron diretamente da API Vavada e envia ao AMD Live.
 // @match        https://vavada.com/*
 // @grant        GM_xmlhttpRequest
@@ -14,12 +14,6 @@
 
 (function () {
   'use strict';
-
-  // Desativado preventivamente: oddStatus do placar exato nao foi confirmado
-  // como placar final e gerou resultados incorretos. Nao enviar nenhum dado.
-  for (const liga of ['bra','eng','ita','lat','spa','mnd']) GM_setValue(`amd_cache_${liga}`, {});
-  console.error('[AMD Vavada] coleta pausada: resultados aguardando validacao');
-  return;
 
   const API = 'https://sb2virtuals-altenar2.biahosted.com/api/';
   const DESTINO = 'https://amd-bbtips-live.onrender.com/api/tampermonkey';
@@ -97,6 +91,20 @@
     const an=odd(det,29,o=>Number(o.typeId)===76||/^n[aã]o$/i.test(String(o.name||'')));
     return {o25:o25?.price??null,o35:o35?.price??null,ambs:as?.price??null,ambn:an?.price??null};
   }
+  // oddStatus 1 = vencedora, 7 = perdedora (validado na API em 2026-11-18).
+  // O placar exato so vale se bater com 1x2, nº de gols e ambas marcam.
+  function placarValidado(det) {
+    const ex=vencedor(det,199); if(!ex) return null;
+    const [a,b]=String(ex.name||'').split(':').map(Number);
+    if(!Number.isFinite(a)||!Number.isFinite(b)) return null;
+    const v=vencedor(det,1); if(!v) return null;
+    if(Number(v.typeId)!==(a>b?1:a===b?2:3)) return null;
+    const ng=vencedor(det,21);
+    if(ng){const n=parseInt(String(ng.name),10); if(Number.isFinite(n)&&!(n===a+b||(n>=6&&a+b>=6))) return null;}
+    const am=vencedor(det,29);
+    if(am){const nm=String(am.name||'').trim(), sim=/^sim$/i.test(nm), nao=/^n[aã]o$/i.test(nm); if((sim||nao)&&sim!==(a>0&&b>0)) return null;}
+    return {a,b};
+  }
   function interpretar(det,ev,liga,cfg) {
     const [casa,fora]=nomes(det,ev), h=horario(det?.startDate||ev?.startDate), coord=coordenadas(h,cfg);
     const base={id:`vavada:${liga}:${ev.id}`,nome:`${casa} x ${fora}`,casa,fora,hora:h,horario:h,odds:oddsBasicas(det),...coord};
@@ -104,16 +112,15 @@
     // O placar exato liquidado é a confirmação mais direta do resultado. Em
     // alguns eventos a Vavada já remove a marca vencedora do mercado 1x2,
     // embora mantenha o resultado exato corretamente liquidado.
-    const ex=vencedor(det,199); if(!ex) return {};
-    const [a,b]=String(ex.name||'').split(':').map(Number);
-    if(!Number.isFinite(a)||!Number.isFinite(b)) return {};
+    const pv=placarValidado(det); if(!pv) return {};
+    const {a,b}=pv;
     return {placar:{...base,a,b,total:a+b,placar:`${a}-${b}`}};
   }
 
   async function enviar(liga,placares,upcoming) {
     const token=String(GM_getValue('amd_vavada_token','')).trim();
     if(!token) throw new Error('token não configurado');
-    return requisicao('POST',DESTINO,JSON.stringify({liga,mkt:'o25',placares,upcoming,debug:{versao:'1.1.0',ts:Date.now()}}),{
+    return requisicao('POST',DESTINO,JSON.stringify({liga,mkt:'o25',placares,upcoming,debug:{versao:'1.2.0',ts:Date.now()}}),{
       'Content-Type':'application/json','Authorization':`Bearer ${token}`
     });
   }
@@ -123,17 +130,17 @@
     try {
       status('consultando catálogo das 6 ligas...');
       const gj=await requisicao('GET',url('Virtuals/GetGames'));
-      const games=lista(gj,['games','items','data']);
+      const games=Array.isArray(gj?.sports)?gj.sports.flatMap(sp=>Array.isArray(sp?.games)?sp.games:[]):lista(gj,['games','items','data']);
       let total=0;
       for(const [liga,cfg] of Object.entries(LIGAS)) {
         const game=games.find(g=>Number(g.id)===cfg.id||Number(g.typeId)===cfg.id||Number(g.gameTypeId)===cfg.id);
         if(!game) { status(`${liga.toUpperCase()}: liga ${cfg.id} não encontrada`); continue; }
-        const ej=await requisicao('GET',url('Virtuals/GetEventList',{id:game.id,dbId:game.dbId}));
+        const ej=await requisicao('GET',url('Virtuals/GetEventList',{id:game.id,dbId:game.dbId||12}));
         const eventos=lista(ej,['events','items','data']);
         const cache=GM_getValue(`amd_cache_${liga}`,{}), futuros=[];
         for(const ev of eventos) {
           try {
-            const det=await requisicao('GET',url('WidgetVirtuals/GetVirtualEventDetails',{id:game.id,dbId:game.dbId,eventId:ev.id}));
+            const det=await requisicao('GET',url('WidgetVirtuals/GetVirtualEventDetails',{id:game.id,dbId:game.dbId||12,eventId:ev.id}));
             const r=interpretar(det,ev,liga,cfg);
             if(r.placar) cache[r.placar.id]=r.placar;
             if(r.futuro) futuros.push(r.futuro);
@@ -147,7 +154,7 @@
         status(`${liga.toUpperCase()}: ${placares.length} resultados + ${futuros.length} futuros (${eventos.length} eventos lidos)`);
         console.log('[AMD Vavada]',liga,resp);
       }
-      status(`OK v1.1.1: ${total} resultados armazenados · próxima consulta em 30s`);
+      status(`OK v1.2.0: ${total} resultados armazenados · próxima consulta em 30s`);
     } catch(e) { status(`ERRO: ${e.message}`); console.error('[AMD Vavada]',e); }
     finally { executando=false; }
   }
@@ -157,7 +164,7 @@
     if(document.getElementById('amd-vavada')) return;
     const p=document.createElement('div'); p.id='amd-vavada';
     p.style.cssText='position:fixed;right:14px;bottom:14px;z-index:2147483647;width:350px;background:#0d1117;color:#e6edf3;border:1px solid #30363d;border-radius:14px;padding:16px;font:14px monospace;box-shadow:0 12px 32px #0009';
-    p.innerHTML='<b>AMD COLETOR VAVADA v1.1.1</b><div id="amd-vavada-info" style="color:#f0b90b;margin:12px 0;white-space:pre-wrap">iniciando...</div><button id="amd-vavada-agora">Coletar agora</button> <button id="amd-vavada-token">Trocar token</button>';
+    p.innerHTML='<b>AMD COLETOR VAVADA v1.2.0</b><div id="amd-vavada-info" style="color:#f0b90b;margin:12px 0;white-space:pre-wrap">iniciando...</div><button id="amd-vavada-agora">Coletar agora</button> <button id="amd-vavada-token">Trocar token</button>';
     document.body.appendChild(p); painelInfo=p.querySelector('#amd-vavada-info');
     p.querySelector('#amd-vavada-agora').onclick=ciclo;
     p.querySelector('#amd-vavada-token').onclick=()=>{const t=prompt('Cole o TAMPERMONKEY_TOKEN configurado no Render:',GM_getValue('amd_vavada_token',''));if(t){GM_setValue('amd_vavada_token',t.trim());status('token atualizado');}};

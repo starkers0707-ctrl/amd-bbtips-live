@@ -1717,17 +1717,6 @@ async function carregaJogos() {
     if (r.ok) {
       const j = await r.json();
       jogosSha = j.sha;
-      // A coleta Vavada 1.1.1 interpretou incorretamente oddStatus como placar
-      // final. Remova essa memoria antes que dados nao validados reaparecam.
-      const bodyLimpeza = { message: "limpar resultados Vavada nao validados", content: Buffer.from("{}").toString("base64"), branch: GH_BRANCH, sha: jogosSha };
-      const limpeza = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${JOGOS_FILE}`, { method: "PUT", headers: { ...ghHead(), "Content-Type": "application/json" }, body: JSON.stringify(bodyLimpeza) });
-      if (limpeza.ok) {
-        const salvo = await limpeza.json();
-        jogosSha = salvo.content.sha;
-        jogosSemente = {};
-        console.warn("memoria Vavada nao validada removida por seguranca");
-      }
-      return;
       const dados = JSON.parse(Buffer.from(j.content, "base64").toString());
       if (dados && typeof dados === "object") {
         jogosSemente = dados;
@@ -1815,9 +1804,6 @@ function recebeDadosTampermonkey(req, res) {
     if (tokenEsperado && tokenRecebido !== tokenEsperado) {
       return res.status(401).json({ ok: false, erro: "token-tampermonkey-invalido" });
     }
-    if (req.path === "/api/tampermonkey") {
-      return res.status(503).json({ ok: false, erro: "coletor-vavada-bloqueado-ate-validacao-dos-placares" });
-    }
     const { mkt, placares, upcoming, curva, mm1, mm2, topo, fundo, debug } = req.body || {};
     let liga = ligaRecebida(req.body || {});
     const placaresLista = Array.isArray(placares) ? placares : [];
@@ -1854,7 +1840,20 @@ function recebeDadosTampermonkey(req, res) {
     const upc = futurosLista.filter(u => u && u.nome)
       .map(u => ({ ...u, horario: horarioFonte(u), ...coord(u) }));
     liga = ligaPeloConteudo(liga, games, upc);
-    const s = buildStore(liga, games, upc, new Date().toISOString());
+    // Placares da Vavada chegam com id estavel (vavada:liga:evento). Funde com o
+    // historico ja acumulado pela coleta do servidor em vez de substitui-lo.
+    let gamesFinal = games;
+    if (placaresLista.some(p => String(p.id || "").startsWith("vavada:"))) {
+      placaresLista.forEach((p, i) => { if (p.id) games[i].id = p.id; });
+      const ant = store[liga] || {};
+      const hist = Array.isArray(ant.gamesAll) ? ant.gamesAll : (ant.games || []);
+      const chave = g => String(g.id || `${g.horario || ""}|${g.casa || ""}|${g.fora || ""}`);
+      const mapa = new Map(hist.map(g => [chave(g), g]));
+      for (const g of games) mapa.set(chave(g), g);
+      gamesFinal = [...mapa.values()].slice(-1200);
+    }
+    const s = buildStore(liga, gamesFinal, upc, new Date().toISOString());
+    s.gamesAll = gamesFinal;
     // Diagnostico leve do contrato da extensao. Nao muda coleta nem calculos;
     // permite confirmar quais campos de posicao ela esta enviando.
     s.gradeMeta = {

@@ -173,13 +173,40 @@ function debugMercados(detail, evento) {
   console.log(`[vavada:debug] ${evento.id} ${evento.name}`, JSON.stringify(bruto));
 }
 
-function parseDetail(detail, evento, liga) {
-  debugMercados(detail, evento);
-  if (!vencedorUnico(detail, 1)) return null;
+// Validado contra a API real em 2026-11-18: oddStatus 1 = selecao vencedora,
+// 7 = perdedora, nos mercados liquidados. O placar vem do "Resultado exato"
+// (199) e so e aceito se bater com os outros mercados liquidados.
+export function placarValidado(detail) {
   const exato = vencedorUnico(detail, 199);
   if (!exato) return null;
   const [a, b] = String(exato.name).split(":").map(Number);
   if (!Number.isFinite(a) || !Number.isFinite(b)) return null;
+  // 1x2: typeId 1 = casa, 2 = empate, 3 = fora
+  const v1x2 = vencedorUnico(detail, 1);
+  if (!v1x2) return null;
+  const esperado = a > b ? 1 : a === b ? 2 : 3;
+  if (Number(v1x2.typeId) !== esperado) return null;
+  // Nº exato de gols (21), quando liquidado
+  const ng = vencedorUnico(detail, 21);
+  if (ng) {
+    const n = parseInt(String(ng.name), 10);
+    if (Number.isFinite(n) && !(n === a + b || (n >= 6 && a + b >= 6))) return null;
+  }
+  // Ambas marcam (29), quando liquidado
+  const ambas = vencedorUnico(detail, 29);
+  if (ambas) {
+    const sim = /^sim$/i.test(String(ambas.name || "").trim());
+    const nao = /^n[aã]o$/i.test(String(ambas.name || "").trim());
+    if ((sim || nao) && sim !== (a > 0 && b > 0)) return null;
+  }
+  return { a, b };
+}
+
+function parseDetail(detail, evento, liga) {
+  debugMercados(detail, evento);
+  const placar = placarValidado(detail);
+  if (!placar) return null;
+  const { a, b } = placar;
   
   const competidores = lista(detail, ["competitors", "participants"]);
   const nomes = String(detail?.name || evento?.name || "").split(/\s+vs\.?\s+|\s+x\s+/i);
