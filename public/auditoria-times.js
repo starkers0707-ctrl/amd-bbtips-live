@@ -1,5 +1,5 @@
 (function(){'use strict';
-var dados={},ranking=[],LIGAS=['eng','ita','spa','mnd','bra','lat'],NOMES={eng:'ENG',ita:'ITA',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT'};
+var dados={},ranking=[],LIGAS=['eng','ita','spa','mnd','bra','lat','cam','cop','ame'],NOMES={eng:'ENG',ita:'ITA',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT',cam:'CAM',cop:'COP',ame:'AME'};
 function el(id){return document.getElementById(id)}function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]})}function pct(v){return Number.isFinite(v)?(v*100).toFixed(1)+'%':'—'}
 function mercadoNome(id){var m=AuditoriaTimesModel.MERCADOS.find(function(x){return x.id===id});return m?m.nome:id}
 function classe(s){return s==='RELAÇÃO VALIDADA'?'forte':s==='SINAL RECORRENTE'?'sinal':''}

@@ -35,3 +35,10 @@ O endpoint tambem aceita `casa: "playpix"` junto de `nomeLiga`, `ligaNome` ou `l
 ## Odds
 
 O BBTips nao entrega odds. Os jogos passados nao precisam delas (o motor calcula tudo com a, b e total); os jogos futuros ficam sem EV/edge ate ligar uma fonte de odds.
+
+## Ligas Inspired (CAM / COP / AME)
+
+`inspired-bbtips.mjs` coleta Champions (6), Copa do Mundo (7) e America (8) em
+`api.thtips.com.br/api/PlayPixFutebolVirtual` com o token do BBTips.
+O token vem de `BBTIPS_TOKEN` (env) ou de `POST /api/bbtips/token` (o servidor testa antes de aceitar).
+Estado da coleta: `/api/inspired/estado`. O JWT do BBTips expira em ~30 dias.

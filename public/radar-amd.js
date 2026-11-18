@@ -17,7 +17,7 @@
   var LIGAS = [
     { id: "eng", nome: "ENG" }, { id: "ita", nome: "ITA" },
     { id: "spa", nome: "SPA" }, { id: "mnd", nome: "MND" },
-    { id: "bra", nome: "BRA" }, { id: "lat", nome: "LAT" }
+    { id: "bra", nome: "BRA" }, { id: "lat", nome: "LAT" }, { id: "cam", nome: "CAM" }, { id: "cop", nome: "COP" }, { id: "ame", nome: "AME" }
   ];
   var MERCADOS = [
     { id: "o25", nome: "Over 2.5" },

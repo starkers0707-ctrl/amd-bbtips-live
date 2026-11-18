@@ -23,7 +23,7 @@
   function robotLeagues(robot) {
     var values=robot&&Array.isArray(robot.leagues)&&robot.leagues.length?robot.leagues:[robot&&robot.league||'copa'];
     var seen={};return values.map(function(value){return String(value||'').toLowerCase();})
-      .filter(function(value){if(['eng','ita','spa','mnd','bra','lat'].indexOf(value)<0||seen[value])return false;seen[value]=true;return true;});
+      .filter(function(value){if(['eng','ita','spa','mnd','bra','lat','cam','cop','ame'].indexOf(value)<0||seen[value])return false;seen[value]=true;return true;});
   }
   function claimLeadership() {
     try {

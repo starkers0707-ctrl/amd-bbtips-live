@@ -391,8 +391,10 @@ app.get("/login", (req, res) => {
 
 // Fonte oficial do painel: seis ligas Kiron recebidas diretamente da Vavada.
 // A trava impede que identificadores antigos voltem a contaminar as telas.
-const LIGAS_PERMITIDAS = new Set(["eng", "ita", "spa", "mnd", "bra", "lat"]);
-const LIGAS = ["eng", "ita", "spa", "mnd", "bra", "lat"];
+// CAM, COP e AME (Inspired) chegam pelo BBTips/PlayPix (inspired-bbtips.mjs).
+const LIGAS_INSPIRED = new Set(["cam", "cop", "ame"]);
+const LIGAS_PERMITIDAS = new Set(["eng", "ita", "spa", "mnd", "bra", "lat", "cam", "cop", "ame"]);
+const LIGAS = ["eng", "ita", "spa", "mnd", "bra", "lat", "cam", "cop", "ame"];
 function registraLiga(l) { if (LIGAS_PERMITIDAS.has(l) && !LIGAS.includes(l)) LIGAS.push(l); }
 function slugLiga(v) {
   return String(v == null ? "" : v).trim().toLowerCase().normalize("NFD")
@@ -2284,11 +2286,16 @@ app.get("/api/liga/:liga", (req, res) => {
   });
 });
 
-app.post("/api/bbtips/token", (req, res) => {
-  if (!BBTIPS_ENABLED) return res.status(410).json({ ok: false, erro: "fonte-bbtips-desativada" });
+app.post("/api/bbtips/token", async (req, res) => {
   const t = limpaToken((req.body && req.body.token) || "");
   if (!t || t.length < 40) return res.status(400).json({ ok: false, erro: "token invalido" });
+  // A rota e aberta (o userscript manda de fora): so aceita token que o BBTips aceita.
+  if (t !== BB_TOKEN && inspiredBB && !(await inspiredBB.tokenFunciona(t))) {
+    return res.status(401).json({ ok: false, erro: "token recusado pelo BBTips" });
+  }
   const novo = t !== BB_TOKEN; BB_TOKEN = t;
+  if (inspiredBB) inspiredBB.definirToken(t);
+  if (!BBTIPS_ENABLED) return res.json({ ok: true, novo, inspired: true });
   res.json({ ok: true, novo });
   // O JWT pode ter sido renovado pela sessao mantendo o mesmo valor visivel
   // no armazenamento do navegador. Se a ultima tentativa falhou por token ou
@@ -2338,7 +2345,7 @@ setTimeout(rodaAutoColeta, 4000);
 function iniciaVavadaKiron() {
   if (!vavadaKiron || process.env.VAVADA_ENABLED === "0") return;
   vavadaKiron.iniciar(async (liga, novos, futuros) => {
-    if (!LIGAS_PERMITIDAS.has(liga)) return;
+    if (!LIGAS_PERMITIDAS.has(liga) || LIGAS_INSPIRED.has(liga)) return;
     const anterior = store[liga] || {};
     const historico = Array.isArray(anterior.gamesAll) ? anterior.gamesAll : (anterior.games || []);
     const mapa = new Map();
@@ -2368,6 +2375,42 @@ const esperaVavada = setInterval(() => {
   clearInterval(esperaVavada);
   iniciaVavadaKiron();
 }, 250);
+
+// ===== FONTE INSPIRED (CAM / COP / AME) VIA BBTIPS =====
+let inspiredBB = null;
+import("./inspired-bbtips.mjs").then(m => {
+  inspiredBB = m;
+  console.log("[inspired] coletor BBTips carregado" + (BB_TOKEN ? "" : " (aguardando token)"));
+  m.iniciar(BB_TOKEN, async (liga, novos, futuros) => {
+    if (!LIGAS_INSPIRED.has(liga)) return;
+    const anterior = store[liga] || {};
+    const historico = Array.isArray(anterior.gamesAll) ? anterior.gamesAll : (anterior.games || []);
+    const chave = g => String(g.id || `${g.horario || ""}|${g.casa || ""}|${g.fora || ""}`);
+    const mapa = new Map();
+    for (const g of historico) if (g && g.inicio) mapa.set(chave(g), g);
+    for (const g of novos || []) mapa.set(chave(g), g);
+    const gamesAll = [...mapa.values()]
+      .sort((x, y) => Date.parse(x.inicio) - Date.parse(y.inicio))
+      .slice(-1200);
+    const upcoming = (futuros && futuros.length) ? futuros : (anterior.upcomingRaw || []);
+    if (!gamesAll.length && !upcoming.length) return;
+    const st = buildStore(liga, gamesAll, upcoming, new Date().toISOString());
+    st.gamesAll = gamesAll;
+    st.fonte = "bbtips-inspired";
+    st.inspiredTs = Date.now();
+    store[liga] = st;
+    jogosDirty = true;
+    registraLiga(liga);
+    try { avaliaPushGrafico(liga); } catch (e) {}
+    registraUpVistos(liga, upcoming);
+    atualizaRadar(liga, st);
+    atualizaRoboLedger();
+    avisaClientes(liga);
+  });
+}).catch(e => console.log("[inspired] modulo nao carregado:", e.message));
+app.get("/api/inspired/estado", (req, res) => {
+  res.json(inspiredBB ? inspiredBB.obterEstado() : { ts: 0, erro: "módulo carregando", rodando: false, ligas: {} });
+});
 
 app.get(["/api/vavada/estado", "/api/bbtips/vavada-estado"], (req, res) => {
   res.json(vavadaKiron ? vavadaKiron.obterEstado() : { ts: 0, erro: "módulo carregando", rodando: false, ligas: {} });
@@ -2424,8 +2467,8 @@ app.get("/api/grade", (req, res) => {
     spa: { cols: 30, passo: 2, ini: 1 }, mnd: { cols: 30, passo: 2, ini: 0 },
     split: { cols: 30, passo: 2, ini: 0 },
     lat: { cols: 20, passo: 3, ini: 2 },
-    bra: { cols: 20, passo: 3, ini: 2 }, cam: { cols: 20, passo: 3, ini: 2 },
-    cop: { cols: 20, passo: 3 }, ame: { cols: 20, passo: 3 }
+    bra: { cols: 20, passo: 3, ini: 2 }, cam: { cols: 20, passo: 3, ini: 0 },
+    cop: { cols: 20, passo: 3, ini: 0 }, ame: { cols: 20, passo: 3, ini: 1 }
   }[String(chave || '').toLowerCase()] || { cols: 30, passo: 2, ini: 0 });
   const gradeCfg = cadenciaDaLiga(liga);
   const aliases = {

@@ -1,7 +1,7 @@
 (function () {
   'use strict';
-  var LIGAS = ['eng', 'ita', 'spa', 'mnd', 'bra', 'lat'];
-  var NOMES = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT' };
+  var LIGAS = ['eng', 'ita', 'spa', 'mnd', 'bra', 'lat', 'cam', 'cop', 'ame'];
+  var NOMES = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT',cam:'CAM',cop:'COP',ame:'AME' };
   var liga = localStorage.getItem('amd_liga') || 'eng';
   var mercado = localStorage.getItem('amd_convergencia_mercado') || 'over25';
   var horas = Number(localStorage.getItem('amd_convergencia_horas')) || 6;

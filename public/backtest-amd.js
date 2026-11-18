@@ -183,11 +183,11 @@
     try {
       if (window.Real && typeof window.Real.liga === "function") {
         var real = String(window.Real.liga() || "").toLowerCase();
-        if (/^(eng|ita|spa|mnd|bra|lat|split)$/.test(real)) return real;
+        if (/^(eng|ita|spa|mnd|bra|lat|cam|cop|ame|split)$/.test(real)) return real;
       }
     } catch (e) {}
     var t = (ativoEm(".tabrow") || ativoEm("#cligaMenu") || "").toLowerCase();
-    var nomes = ["eng", "ita", "spa", "mnd", "bra", "lat", "split"];
+    var nomes = ["eng", "ita", "spa", "mnd", "bra", "lat", "cam", "cop", "ame", "split"];
     for (var i = 0; i < nomes.length; i++) if (t.indexOf(nomes[i]) >= 0) return nomes[i];
     return "ita";
   }

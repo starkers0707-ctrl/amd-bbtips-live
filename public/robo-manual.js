@@ -44,7 +44,7 @@
     return Array.from(new Set(values.map(function (value) {
       return String(value || '').toLowerCase();
     }).filter(function (value) {
-      return ['eng', 'ita', 'spa', 'mnd', 'bra', 'lat'].indexOf(value) >= 0;
+      return ['eng', 'ita', 'spa', 'mnd', 'bra', 'lat', 'cam', 'cop', 'ame'].indexOf(value) >= 0;
     })));
   }
   function setSelectedLeagues(values) {

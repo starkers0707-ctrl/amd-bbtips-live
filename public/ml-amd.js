@@ -16,7 +16,7 @@
   var atualizacaoPendente = null;
 
   function nomeLiga(liga) {
-    var nomes = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT' };
+    var nomes = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT',cam:'CAM',cop:'COP',ame:'AME' };
     return nomes[String(liga || '').toLowerCase()] || 'ENG';
   }
 

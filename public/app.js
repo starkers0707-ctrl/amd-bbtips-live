@@ -46,16 +46,16 @@ window.atualizarSeletorLigaGrafico = function () {
     typeof window.GraficoReal.modo === 'function' &&
     window.GraficoReal.modo() === 'ligas';
   const botao = document.getElementById('cligaBtn');
-  const nomes = { eng:'ENG',ita:'ITA',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT',split:'Split' };
+  const nomes = { eng:'ENG',ita:'ITA',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT',cam:'CAM',cop:'COP',ame:'AME',split:'Split' };
   const chave = String(state.liga || 'eng').toLowerCase();
   if (botao) {
     botao.textContent = comparar
-      ? 'Ligas: Todas (6)'
+      ? 'Ligas: Todas (9)'
       : 'Liga: ' + (nomes[chave] || state.liga) + ' ⌄';
     botao.disabled = !!comparar;
     botao.classList.toggle('compare', !!comparar);
     botao.setAttribute('aria-label', comparar
-      ? 'Comparando as 6 ligas oficiais'
+      ? 'Comparando as 9 ligas oficiais'
       : 'Selecionar liga do gráfico');
   }
   const caixa = document.querySelector('.chart-liga');
@@ -63,7 +63,7 @@ window.atualizarSeletorLigaGrafico = function () {
 };
 window.definirLigaApp = function (novaLiga) {
   const chave = String(novaLiga || '').trim().toLowerCase();
-  const nomes = { eng:'ENG',ita:'ITA',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT',split:'Split' };
+  const nomes = { eng:'ENG',ita:'ITA',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT',cam:'CAM',cop:'COP',ame:'AME',split:'Split' };
   if (!nomes[chave]) return false;
     /* Este e o caminho real da troca de liga: a barra lateral e o
        dados-reais.js chamam definirLigaApp, nao o bindTabs.
@@ -493,7 +493,7 @@ function escaparHover(valor) {
 
 function nomeLigaComparativo(liga) {
   const id = String(liga && (liga.id || liga.liga) || '').toLowerCase();
-  const nomes = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT', split:'Split' };
+  const nomes = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT',cam:'CAM',cop:'COP',ame:'AME', split:'Split' };
   return nomes[id] || String(liga && liga.nome || id || 'Liga').toUpperCase();
 }
 
@@ -721,7 +721,7 @@ function renderTopLigas(svg, W, H) {
   }
 
   const melhores = new Set((pacote.completo ? pacote.melhores || [] : []).map(liga => liga.id));
-  const tracos = { eng: '8 4', ita: '', spa: '3 3', mnd: '12 4 2 4', bra: '2 3', lat: '4 3' };
+  const tracos = { eng: '8 4', ita: '', spa: '3 3', mnd: '12 4 2 4', bra: '2 3', lat: '4 3', cam: '6 2', cop: '1 3', ame: '5 2 1 2' };
   const ordenadas = ligas.slice().sort((a, b) =>
     Number(melhores.has(a.id)) - Number(melhores.has(b.id)));
   ordenadas.forEach(liga => {
@@ -985,7 +985,7 @@ function analisarAlertaMedias(pontos) {
 }
 
 function nomeLigaAlerta(liga) {
-  const nomes = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT', split:'Split' };
+  const nomes = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT',cam:'CAM',cop:'COP',ame:'AME', split:'Split' };
   const chave = String(liga || '').trim().toLowerCase();
   return nomes[chave] || String(liga || 'Liga');
 }
@@ -2399,7 +2399,7 @@ function renderGrade() {
     ita:{ini:1,passo:2,cols:30}, eng:{ini:0,passo:2,cols:30}, spa:{ini:1,passo:2,cols:30},
     mnd:{ini:0,passo:2,cols:30},
     bra:{ini:2,passo:3,cols:20}, lat:{ini:2,passo:3,cols:20},
-    cam:{ini:2,passo:3,cols:20}, cop:{ini:0,passo:3,cols:20},
+    cam:{ini:0,passo:3,cols:20}, cop:{ini:0,passo:3,cols:20},
     ame:{ini:1,passo:3,cols:20},
     split:{ini:0,passo:2,cols:30}
   };
@@ -2889,7 +2889,7 @@ function notificarGDCross(tipo, liga, horario, mkt) {
   // aviso era cancelado justamente quando o usuario estava olhando a tela.
   if (!('Notification' in window) || Notification.permission !== 'granted') return;
   const golden = tipo === 'golden';
-  const nomesL = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT' };
+  const nomesL = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT',cam:'CAM',cop:'COP',ame:'AME' };
   const nomeL = nomesL[String(liga || state.liga || '').toLowerCase()] || String(liga || state.liga || '');
   const titulo = (golden ? '🏆 GOLDEN' : '💀 DEATH') + (horario ? ' ' + horario : '') + ' — ' + nomeL + ' · ' + (mkt || '');
   const j = jogoDoUltimoGDCross && jogoDoUltimoGDCross.horario === horario ? jogoDoUltimoGDCross : null;
@@ -3640,7 +3640,7 @@ const botaoGoldenInicial = [...document.querySelectorAll('#overlays .chip')]
 if (botaoGoldenInicial) {
   configurarGDCross(botaoGoldenInicial.classList.contains('on'), botaoGoldenInicial);
 }
-if (modoQuadro && ['eng', 'ita', 'spa', 'mnd', 'bra', 'lat', 'split'].includes(ligaDoQuadro)) {
+if (modoQuadro && ['eng', 'ita', 'spa', 'mnd', 'bra', 'lat', 'cam', 'cop', 'ame', 'split'].includes(ligaDoQuadro)) {
   window.definirLigaApp(ligaDoQuadro);
 }
 montarMira();

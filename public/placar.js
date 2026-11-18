@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  var LIGAS=['eng','ita','spa','mnd','bra','lat'],NOMES={eng:'ENG',ita:'ITA',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT'};
+  var LIGAS=['eng','ita','spa','mnd','bra','lat','cam','cop','ame'],NOMES={eng:'ENG',ita:'ITA',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT',cam:'CAM',cop:'COP',ame:'AME'};
   var liga=localStorage.getItem('amd_liga')||'eng';if(LIGAS.indexOf(liga)<0)liga='eng';
   var partidas=[],futuros=[],selecionado=null,timer=null;
   var modoPlacar=localStorage.getItem('amd_placar_modo')||'todos';if(['todos','under','over'].indexOf(modoPlacar)<0)modoPlacar='todos';

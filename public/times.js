@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  var LIGAS=['eng','ita','spa','mnd','bra','lat'],NOMES={eng:'ENG',ita:'ITA',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT'};
+  var LIGAS=['eng','ita','spa','mnd','bra','lat','cam','cop','ame'],NOMES={eng:'ENG',ita:'ITA',spa:'SPA',mnd:'MND',bra:'BRA',lat:'LAT',cam:'CAM',cop:'COP',ame:'AME'};
   var liga=localStorage.getItem('amd_liga')||'ita';if(LIGAS.indexOf(liga)<0)liga='ita';
   var mercado=localStorage.getItem('amd_times_mercado')||'over25';
   if(!TimesModel.MERCADOS.some(function(m){return m.id===mercado;}))mercado='over25';

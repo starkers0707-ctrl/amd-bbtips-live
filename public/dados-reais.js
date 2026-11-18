@@ -20,7 +20,7 @@
   var LS_LIGA = 'amd_liga';
   // express saiu: 60 jogos/hora estourava a cota e nao cabe em 20 colunas
   // Seis ligas Kiron oficiais; a fonte fica identificada no payload.
-  var LIGAS = ['eng','ita','spa','mnd','bra','lat'];
+  var LIGAS = ['eng','ita','spa','mnd','bra','lat','cam','cop','ame'];
 
   var ligaParametro = '';
   try { ligaParametro = new URLSearchParams(location.search).get('liga') || ''; }
@@ -464,7 +464,7 @@
     // A tabela 1Win tem 20 colunas, uma a cada 3 minutos.
     ita:{ini:0,passo:2}, eng:{ini:1,passo:2}, spa:{ini:0,passo:2},
     mnd:{ini:1,passo:2},
-    bra:{ini:1,passo:3}, lat:{ini:1,passo:3},
+    bra:{ini:1,passo:3}, lat:{ini:1,passo:3}, cam:{ini:0,passo:3}, cop:{ini:0,passo:3}, ame:{ini:1,passo:3},
     cam:{ini:2,passo:3}, cop:{ini:0,passo:3}, ame:{ini:1,passo:3},
     split:{ini:0,passo:2}
   };

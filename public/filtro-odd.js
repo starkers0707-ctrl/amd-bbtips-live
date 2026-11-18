@@ -5,8 +5,8 @@
   var horas = Number(localStorage.getItem('amd_filtro_odd_horas')) || 6;
   var quantidade = Number(localStorage.getItem('amd_filtro_odd_quantidade')) || 1;
   var partidas = [];
-  var LIGAS = ['eng', 'ita', 'spa', 'mnd', 'bra', 'lat'];
-  var NOMES = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT' };
+  var LIGAS = ['eng', 'ita', 'spa', 'mnd', 'bra', 'lat', 'cam', 'cop', 'ame'];
+  var NOMES = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT',cam:'CAM',cop:'COP',ame:'AME' };
   function el(id) { return document.getElementById(id); }
   function esc(v) { return String(v == null ? '' : v).replace(/[&<>"']/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]; }); }
   function pct(v, casas) { return Number.isFinite(v) ? (v * 100).toFixed(casas == null ? 1 : casas) + '%' : '—'; }

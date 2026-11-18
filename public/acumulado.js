@@ -25,7 +25,7 @@
   var LIGAS_COMPARATIVO = [
     { id: 'eng', nome: 'ENG', cor: '#18b8ff' }, { id: 'ita', nome: 'ITA', cor: '#20ef61' },
     { id: 'spa', nome: 'SPA', cor: '#ffd000' }, { id: 'mnd', nome: 'MND', cor: '#c58cff' },
-    { id: 'bra', nome: 'BRA', cor: '#36e3b4' }, { id: 'lat', nome: 'LAT', cor: '#ff7b54' }
+    { id: 'bra', nome: 'BRA', cor: '#36e3b4' }, { id: 'lat', nome: 'LAT', cor: '#ff7b54' }, { id: 'cam', nome: 'CAM', cor: '#5b8cff' }, { id: 'cop', nome: 'COP', cor: '#ffd23f' }, { id: 'ame', nome: 'AME', cor: '#c77dff' }
   ];
   var FAIXAS = [
     ['h3', '3h', 3],

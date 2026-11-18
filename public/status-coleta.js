@@ -21,7 +21,7 @@
 
   var API = '/api/grade';
   var RECARGA_MS = 20000;
-  var LIGAS = { eng:1, ita:1, spa:1, mnd:1, bra:1, lat:1 };
+  var LIGAS = { eng:1, ita:1, spa:1, mnd:1, bra:1, lat:1, cam:1, cop:1, ame:1 };
   var estado = { liga: null, carregando: false };
 
   function $(id){ return document.getElementById(id); }

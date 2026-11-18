@@ -80,7 +80,7 @@
   }
   function ligaAtual() {
     var t = (ativoEm(".tabrow") || ativoEm("#cligaMenu") || "").toLowerCase();
-    var nomes = ["eng", "ita", "spa", "mnd", "bra", "lat"];
+    var nomes = ["eng", "ita", "spa", "mnd", "bra", "lat", "cam", "cop", "ame"];
     for (var i = 0; i < nomes.length; i++) if (t.indexOf(nomes[i]) >= 0) return nomes[i];
     return "eng";
   }

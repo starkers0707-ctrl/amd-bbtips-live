@@ -10,7 +10,7 @@ var AMD_ANALISE_DADOS=window.AMD_ANALISE_DADOS||(function(){
   var CACHE_MS=90000,cache={},buscando={};
   function idLiga(nome){
     var n=String(nome||'ita').toLowerCase();
-    return ['eng','ita','spa','mnd','bra','lat'].indexOf(n)>=0?n:'eng';
+    return ['eng','ita','spa','mnd','bra','lat','cam','cop','ame'].indexOf(n)>=0?n:'eng';
   }
   function horasValidas(h){h=parseInt(h,10)||24;return Math.max(1,Math.min(168,h));}
   function melhorCache(id,horas){

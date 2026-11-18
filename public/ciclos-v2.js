@@ -47,7 +47,7 @@
   var OFF_IDX_4 = 59;
   var OFF_IDX_5 = 79;
 
-  var LIGAS = [['eng','ENG'],['ita','ITA'],['spa','SPA'],['mnd','MND'],['bra','BRA'],['lat','LAT']];
+  var LIGAS = [['eng','ENG'],['ita','ITA'],['spa','SPA'],['mnd','MND'],['bra','BRA'],['lat','LAT'],['cam','CAM'],['cop','COP'],['ame','AME']];
   var JANELAS = [[60,'3 h (~60)'],[120,'6 h (~120)'],[240,'12 h (~240)'],[480,'24 h (~480)'],[960,'48 h (~960)']];
   var LINHAS = [[1.5,'Over/Under 1.5'],[2.5,'Over/Under 2.5'],[3.5,'Over/Under 3.5']];
   var MODOS = [['ou','Over / Under'],['ambas','Ambas Marcam']];
