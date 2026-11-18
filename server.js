@@ -164,7 +164,7 @@ function cookieValor(req, nome) {
 }
 function codigoAtivo(c) {
   if (ADMIN_KEY && igualSeguro(String(c || "").toUpperCase(), ADMIN_KEY.trim().toUpperCase())) return { nome: "Administrador", expira: Date.now() + 30 * 86400000, mestre: true };
-  if (CODIGO_MESTRE && igualSeguro(c, CODIGO_MESTRE)) return { nome: "Administrador", expira: Date.now() + 30 * 86400000, mestre: true };
+  if (CODIGO_MESTRE && igualSeguro(String(c || "").toUpperCase(), CODIGO_MESTRE.trim().toUpperCase())) return { nome: "Administrador", expira: Date.now() + 30 * 86400000, mestre: true };
   const d = codigos[c];
   return d && Date.now() <= Number(d.expira || 0) ? d : null;
 }
