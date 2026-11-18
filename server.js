@@ -4989,7 +4989,9 @@ function enviaPushRobo(titulo, corpo, tag) {
 
 function enviaPushRadar(info) {
   if (!webpush || !pushData.vapid || !pushData.subs.length) return;
-  if (!info || (info.tipo !== "golden" && info.tipo !== "death")) return;
+  // Golden/Death agora saem so pelo push do grafico (avaliaPushGrafico), com o
+  // jogo em que o cruzamento aconteceu. O aviso antigo (EMA 9/21) foi desligado.
+  return;
   const liga = NOMES_L[info.liga] || info.liga;
   const mercado = NOMES_M[info.mkt] || info.mkt;
   const golden = info.tipo === "golden";

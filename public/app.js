@@ -976,18 +976,22 @@ function nomeLigaAlerta(liga) {
   return nomes[chave] || String(liga || 'Liga');
 }
 
-function notificarAlertaMedias(analise, mercado, liga) {
+function notificarAlertaMedias(analise, mercado, liga, meta) {
   if (!alertaPodeDispararAgora()) return;
   if (!document.hidden || !('Notification' in window) || Notification.permission !== 'granted') return;
   const nomeLiga = nomeLigaAlerta(liga);
-  const texto = `${nomeLiga} · ${mercado} em ${analise.atual}% · ` + analise.periodos.map((p, i) =>
+  meta = meta || {};
+  const horaJogo = meta.rotulo || (meta.hora != null && meta.minuto != null ? pad(meta.hora) + ':' + pad(meta.minuto) : '');
+  const jogoTxt = meta.timeA ? `${meta.timeA} x ${meta.timeB}${meta.ft || meta.FT ? ' ' + (meta.ft || meta.FT) : ''}` : '';
+  const texto = (jogoTxt ? `Aconteceu no jogo das ${horaJogo}: ${jogoTxt} · ` : '') +
+    `${mercado} em ${analise.atual}% · ` + analise.periodos.map((p, i) =>
     `MM${p} ${analise.medias[i]}%`).join(' · ');
   const opcoes = { body: texto, tag: 'amd-mm-abaixo-' + String(liga) + '-' + String(mercado),
     renotify: true, requireInteraction: true, data: { url: '/index.html' } };
   registrarAlertasDeFundo().then(reg => {
     if (reg && typeof reg.showNotification === 'function')
-      return reg.showNotification('📈 Médias abaixo · ' + nomeLiga, opcoes);
-    try { return new Notification('📈 Médias abaixo · ' + nomeLiga, opcoes); } catch (e) { return null; }
+      return reg.showNotification('📈 MM' + (horaJogo ? ' ' + horaJogo : '') + ' — ' + nomeLiga + ' · ' + mercado, opcoes);
+    try { return new Notification('📈 MM' + (horaJogo ? ' ' + horaJogo : '') + ' — ' + nomeLiga + ' · ' + mercado, opcoes); } catch (e) { return null; }
   }).catch(() => {});
 }
 
@@ -1031,7 +1035,7 @@ function processarAlertaMedias(analise, pontos, metas, escopo, mercado, liga) {
     const detalhes = analise.periodos.map((p, i) => `MM${p} ${analise.medias[i]}%`).join(' · ');
     const nomeLiga = nomeLigaAlerta(liga);
     mostrarAviso(`📈 MÉDIAS ABAIXO DO GRÁFICO · ${nomeLiga} · ${mercado} ${analise.atual}% · ${detalhes}`);
-    notificarAlertaMedias(analise, mercado, liga);
+    notificarAlertaMedias(analise, mercado, liga, ultimaMetaMedia);
     if (somDeAlertaLigado()) bip();
   } else {
     mediaAlerta.ultimaChave = ultimaChave;
@@ -3065,8 +3069,7 @@ function iniciarCanalGDCross() {
       const alerta = pacote && pacote.tipo === 'radar' ? pacote.alerta : null;
       // Golden/Death seguem o grafico do usuario (aviso local + push do servidor
       // com a mesma conta). O radar antigo usava outra media e outro horario.
-      if (alerta && ['golden', 'death'].includes(alerta.tipo)) return;
-      if (!alerta || !ligado('GDCROSS')) return;
+      if (alerta) return; // Golden/Death vem do grafico (aviso local + push com o jogo)
       const nomesMercado = { o25: 'Over 2.5', o35: 'Over 3.5',
         ge5: '5+ Gols', ambas: 'Ambas Marcam' };
       const horario = alerta.horaFonte || alerta.hora || '';
