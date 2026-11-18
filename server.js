@@ -5138,6 +5138,9 @@ app.post("/api/push/prefs", (req, res) => {
   res.json({ ok: true, prefs: s.prefs });
 });
 function avisaRadar(info) {
+  // Golden/Death do radar antigo (EMA 9/21, sem o jogo) nao sao mais transmitidos:
+  // os alertas de cruzamento saem so pelo grafico de cada aparelho, com o jogo.
+  if (info && (info.tipo === "golden" || info.tipo === "death")) return;
   const msg = `data: ${JSON.stringify({ tipo: "radar", alerta: info })}\n\n`; // BUGFIX: info.tipo sobrescrevia o rotulo "radar"
   for (const res of sseClientes) { try { res.write(msg); } catch (e) { sseClientes.delete(res); } }
   enviaPushRadar(info); // WEB PUSH: Golden e Death Cross, mesmo com aba congelada/fechada
