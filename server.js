@@ -2675,6 +2675,19 @@ app.get("/api/grade", (req, res) => {
   // ontem como o trecho mais recente. `slot_em` ja contem o dia correto; por
   // isso a resposta deve seguir essa cronologia real. IDs e coordenadas da
   // grade continuam intactos, logo esta ordenacao nao altera a matematica.
+  try {
+    globalThis.__gdiag = globalThis.__gdiag || {};
+    if (Date.now() - (globalThis.__gdiag[ligaReal] || 0) > 120000) {
+      globalThis.__gdiag[ligaReal] = Date.now();
+      const futuro = agoraGrade + 60000;
+      const adiante = partidas.filter(p => p.resultado_ft && Date.parse(p.slot_em) > agoraGrade - 3 * 60000).map(p => {
+        const g = todos.find(x => (x.casa === p.time_a) && String(x.horario || "").endsWith(String(p.minuto).padStart(2, "0")) && Number.isFinite(Number(x.a)));
+        return `${p.slot_em.slice(5, 16)} ${p.time_a}-${p.time_b} ${p.resultado_ft} ini=${g ? (g.inicio || "-") : "?"} id=${g ? g.id : "?"}`;
+      });
+      const dat = todos.filter(g => g.inicio).length;
+      console.log(`[grade-diag2] ${ligaReal} agora=${new Date(agoraGrade).toISOString().slice(11, 16)} total=${todos.length} datados=${dat} ultimoDatado=${Number.isFinite(ultimoDatadoEm) ? new Date(ultimoDatadoEm).toISOString().slice(5, 16) : "-"} | resultados recentes/adiante: ${adiante.join(" ; ")}`);
+    }
+  } catch (e) { console.log("[grade-diag2] erro", e.message); }
   partidas.sort((a, b) => Date.parse(a.slot_em) - Date.parse(b.slot_em));
   const colunasVisuais = partidas.filter(p => p.coluna_visual != null)
     .map(p => Number(p.coluna_visual)).filter(Number.isFinite);
