@@ -1831,7 +1831,7 @@ function recebeDadosTampermonkey(req, res) {
       return /\d{1,2}:\d{2}/.test(completo) ? completo : (p && (p.hora || p.horario) || "");
     };
     const games = placaresLista.map((p, i) => ({
-      nome: p.nome || "Jogo " + (i + 1), a: p.a, b: p.b, total: p.total, odds: p.odds || {}, hora: p.hora || null, horario: horarioFonte(p),
+      nome: p.nome || "Jogo " + (i + 1), a: p.a, b: p.b, total: p.total, odds: p.odds || {}, hora: p.hora || null, horario: horarioFonte(p), inicio: p.inicio || null,
       casa: p.casa || (p.nome && p.nome.includes(" x ") ? p.nome.split(" x ")[0].trim() : null),
       fora: p.fora || (p.nome && p.nome.includes(" x ") ? (p.nome.split(" x ")[1] || "").trim() : null),
       ...coord(p)
@@ -2364,6 +2364,21 @@ app.get("/api/grade", (req, res) => {
   // referencia de coluna: 04:01 ocupa a primeira casa da hora, 04:03 a
   // segunda, e assim por diante. Nunca reencaixe pelo indice do array, pois
   // uma casa vazia deslocaria todos os jogos seguintes.
+  // Instante real (ISO/UTC vindo da API) convertido para o relogio da grade
+  // (Brasilia representado como UTC). Sem isto, um jogo de ontem com o mesmo
+  // HH:MM ocupava a casa de hoje e apagava os futuros seguintes.
+  const relogioGrade = iso => {
+    const t = Date.parse(iso || "");
+    if (!Number.isFinite(t)) return null;
+    const p = new Intl.DateTimeFormat("en-US", { timeZone: "America/Sao_Paulo", year: "numeric", month: "2-digit",
+      day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date(t))
+      .reduce((acc, x) => { if (x.type !== "literal") acc[x.type] = Number(x.value); return acc; }, {});
+    return Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute, 0, 0);
+  };
+  const instanteDoJogo = (g, futuro) => {
+    const real = relogioGrade(g && g.inicio);
+    return real != null ? real : instanteDaGrade(g && g.horario, futuro);
+  };
   const instanteDaGrade = (horario, futuro = false) => {
     const m = String(horario || '').match(/(\d{1,2}):(\d{2})/);
     if (!m) return null;
@@ -2392,15 +2407,25 @@ app.get("/api/grade", (req, res) => {
     return ts;
   };
 
+  const ultimoDatadoEm = todos.reduce((maior, g) => {
+    if (!(Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b)))) return maior;
+    const t = relogioGrade(g.inicio);
+    return t != null ? Math.max(maior, t) : maior;
+  }, Number.NEGATIVE_INFINITY);
   const ultimoResolvidoEm = todos.reduce((maior, g) => {
     const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
     if (!resolvido) return maior;
-    const instante = instanteDaGrade(g.horario, false);
+    const instante = instanteDoJogo(g, false);
+    if (!g.inicio && Number.isFinite(ultimoDatadoEm) && instante > ultimoDatadoEm) return maior;
     return Number.isFinite(instante) ? Math.max(maior, instante) : maior;
   }, Number.NEGATIVE_INFINITY);
   const partidas = todos.map((g, i) => {
     const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
-    const tsDireto = instanteDaGrade(g.horario, !resolvido);
+    const tsDireto = instanteDoJogo(g, !resolvido);
+    // Resultado antigo sem data real (coletado antes desta versao) que cairia
+    // depois do ultimo resultado datado e de ontem no mesmo HH:MM: descarta.
+    if (resolvido && !g.inicio && Number.isFinite(ultimoDatadoEm) &&
+        Number.isFinite(tsDireto) && tsDireto > ultimoDatadoEm) return null;
     // Um pendente antigo pode continuar no HTML da fonte mesmo depois que a
     // grade ja recebeu resultados mais recentes. A regra anterior empurrava
     // esse pendente para o proximo slot livre, fazendo um jogo da linha 17

@@ -224,6 +224,7 @@ function parseDetail(detail, evento, liga) {
     id: `vavada:${liga}:${evento.id}`,
     nome: `${casa} x ${fora}`, casa, fora, a, b, total: a + b,
     placar: `${a}-${b}`, horario, hora: horario,
+    inicio: detail?.startDate || evento?.startDate || null,
     odds: { o25: o25?.price ?? null, o35: o35?.price ?? null, ambs: ambasSim?.price ?? null, ambn: ambasNao?.price ?? null },
     fonte: "vavada"
   };
@@ -245,6 +246,7 @@ function parseUpcoming(detail, evento, liga) {
   return { 
     id: `vavada:${liga}:${evento.id}`, 
     nome: `${casa} x ${fora}`, casa, fora, horario, hora: horario,
+    inicio: detail?.startDate || evento?.startDate || null,
     odds: { o25: o25?.price ?? null, o35: o35?.price ?? null, ambs: ambasSim?.price ?? null, ambn: ambasNao?.price ?? null }, 
     fonte: "vavada" 
   };
