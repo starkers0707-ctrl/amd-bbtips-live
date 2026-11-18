@@ -3464,6 +3464,12 @@ app.get("/api/robo", (req, res) => {
       const _dec = L.greens + L.redsCiclo;
       melhor.empate = { precisa: empateNecessario(mkt), esta: _dec ? Math.round(L.greens / _dec * 1000) / 10 : null };
       melhor.registro = { saldo: L.saldo, hoje: Math.round((dias[dh2] || 0) * 10) / 10, semana7: somaDias(7), mes30: somaDias(30), ciclos: L.ciclos, greens: L.greens, redsCiclo: L.redsCiclo, aborts: L.aborts, descartes: L.descartes || 0 };
+      if (req.query.view === "panel") {
+        melhor.nome = NMR[mkt] || mkt.toUpperCase();
+        melhor.historico = (L.historico || []).slice(0, 80).map(h => ({
+          quando: h.quando, resultado: h.resultado, unidades: h.unidades, detalhe: h.detalhe
+        }));
+      }
       if (!melhor.liga && !melhor.cicloView && L.consumidas) {
         for (const liga of Object.keys(L.consumidas)) {
           const d = store[liga]; if (!d || !d.games || d.games.length < 60) continue;

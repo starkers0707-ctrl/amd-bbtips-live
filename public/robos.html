@@ -7,7 +7,7 @@
   <title>AMD LIVE — Laboratório de Robôs</title>
   <meta name="theme-color" content="#030a0f">
   <link rel="stylesheet" href="styles.css?v=20260828b">
-  <link rel="stylesheet" href="robos.css?v=20260908-status">
+  <link rel="stylesheet" href="robos.css?v=20261118-automaticos">
 </head>
 <body>
   <header class="topbar rb-topbar">
@@ -39,6 +39,26 @@
           <p>Escolha as métricas que somam confiança. Apenas a subida do gráfico é obrigatória; as demais aumentam a pontuação.</p>
         </div>
         <div class="rb-beta"><b>BETA</b><span>Não envia Telegram</span></div>
+      </section>
+
+      <section class="rb-card rb-auto-live" aria-labelledby="rbAutoTitle">
+        <div class="rb-card-head">
+          <div><small>ROBÔS AUTOMÁTICOS</small><h2 id="rbAutoTitle">Resultados e ciclos em tempo real</h2></div>
+          <a class="rb-secondary rb-auto-export" href="/api/robo/exportar">Baixar histórico</a>
+        </div>
+        <div class="rb-auto-summary">
+          <div><span>EM ANDAMENTO</span><strong id="rbAutoActive">0</strong></div>
+          <div><span>GREENS</span><strong id="rbAutoGreens">0</strong></div>
+          <div><span>REDS</span><strong id="rbAutoReds">0</strong></div>
+          <div><span>SALDO</span><strong id="rbAutoBalance">0.0u</strong></div>
+        </div>
+        <div id="rbAutoCards" class="rb-auto-cards">
+          <div class="rb-auto-empty">Carregando resultados dos robôs...</div>
+        </div>
+        <details class="rb-auto-history" open>
+          <summary>Histórico dos resultados <b id="rbAutoHistoryCount">0</b></summary>
+          <div id="rbAutoHistoryList" class="rb-auto-history-list"></div>
+        </details>
       </section>
 
       <section class="rb-card rb-manual-live" aria-labelledby="rbManualLiveTitle">
@@ -172,6 +192,7 @@
   <script src="grade-tab-coordinator.js?v=20260924-grade-unfreeze"></script>
   <script src="robo-manual-monitor.js?v=20260909-multiliga-tiros"></script>
   <script src="robo-manual-status.js?v=20260909-multiliga-tiros"></script>
+  <script src="robos-automaticos.js?v=20261118a"></script>
   <script src="robos.js?v=20260908-no-late-alerts"></script>
 </body>
 </html>
