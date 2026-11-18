@@ -5092,6 +5092,7 @@ function avaliaPushGrafico(liga) {
       const chave = s.endpoint + "|" + liga + "|" + p.mercado;
       const jogoId = String(meta.g.id || meta.t) + "|" + ultimo.tipo;
       if (pushGraficoEnviado[chave] === jogoId) continue;
+      console.log(`[push-gd] ${liga} ${p.mercado} ${ultimo.tipo.toUpperCase()} no jogo ${meta.g.horario} ${meta.g.casa}x${meta.g.fora} (${p.modo} ${p.janela} MM${r.an.periodoRapido}/${r.an.periodoLento})`);
       pushGraficoEnviado[chave] = jogoId;
       const golden = ultimo.tipo === "golden";
       const horario = meta.g.horario || "";

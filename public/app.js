@@ -869,10 +869,21 @@ function chavePontoGDCross(meta, indice, valor) {
    a duracao normal do jogo virtual mais uma coleta; acima disso o alerta ja
    nao serve como entrada. */
 const ALERTA_DADO_MAX_MS = 5.5 * 60 * 1000;
+// O slot da grade e o relogio de Brasilia escrito como se fosse UTC. Comparar
+// com Date.now() (UTC real) dava +3h e o aviso local nunca saia.
+function agoraNoRelogioDaGrade() {
+  try {
+    const p = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Sao_Paulo', year: 'numeric',
+      month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit',
+      hourCycle: 'h23' }).formatToParts(new Date())
+      .reduce((a, x) => { if (x.type !== 'literal') a[x.type] = Number(x.value); return a; }, {});
+    return Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute, p.second);
+  } catch (e) { return Date.now() - 3 * 3600000; }
+}
 function dadoDeAlertaRecente(meta) {
   meta = meta || {};
   const slot = Number(meta.slotAbs != null ? meta.slotAbs : meta.slot);
-  return !Number.isFinite(slot) || Date.now() - slot <= ALERTA_DADO_MAX_MS;
+  return !Number.isFinite(slot) || Math.abs(agoraNoRelogioDaGrade() - slot) <= ALERTA_DADO_MAX_MS;
 }
 
 function somDeAlertaLigado() {
