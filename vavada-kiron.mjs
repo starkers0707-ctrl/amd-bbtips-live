@@ -285,6 +285,8 @@ async function coletaLiga(games, liga, tipo, onLiga) {
         await espera(PAUSA_DETALHE);
         const det = await detalhes(game, ev);
         salvo = Number(ev.status) === 2 ? parseDetail(det, ev, liga) : parseUpcoming(det, ev, liga);
+        if (salvo && Number(ev.status) === 2) console.log(`[vavada] novo ${liga} ${salvo.horario} ${salvo.casa}-${salvo.fora} ${salvo.placar}`);
+        else if (!salvo && Number(ev.status) === 2) console.log(`[vavada] ${liga} ${ev.name} encerrado sem liquidacao completa, tentando de novo`);
         if (salvo) conhecidos.set(chave, salvo);
       }
       if (!salvo) continue;
