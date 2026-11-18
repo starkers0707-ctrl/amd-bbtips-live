@@ -3103,6 +3103,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+const APP_VERSAO = '20261118-gd3';
 function iniciarCanalGDCross() {
   if (!('EventSource' in window) || canalEventosGDCross) return;
   try {
@@ -3110,6 +3111,13 @@ function iniciarCanalGDCross() {
     canalEventosGDCross.onmessage = function (ev) {
       let pacote;
       try { pacote = JSON.parse(ev.data || '{}'); } catch (e) { return; }
+      // aba com codigo antigo: recarrega para nao disparar alerta no formato velho
+      if (pacote && pacote.tipo === 'oi' && pacote.v && pacote.v !== APP_VERSAO) {
+        try {
+          const k = 'amd-reload-' + pacote.v;
+          if (!sessionStorage.getItem(k)) { sessionStorage.setItem(k, '1'); location.reload(); return; }
+        } catch (e) {}
+      }
       // Golden/Death calculados com o grafico deste aparelho: fala aqui.
       if (pacote && pacote.tipo === 'gd' && pacote.alerta) {
         const a = pacote.alerta;

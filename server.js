@@ -5183,6 +5183,17 @@ function avisaClientes(liga) {
   const msg = `data: ${JSON.stringify({ tipo: "liga", liga, ts: Date.now() })}\n\n`;
   for (const res of sseClientes) { try { res.write(msg); } catch (e) { sseClientes.delete(res); } }
 }
+// versao do app.js servida no index: abas antigas comparam e recarregam sozinhas
+let _versaoApp = null;
+function versaoApp() {
+  if (_versaoApp) return _versaoApp;
+  try {
+    const html = require("fs").readFileSync(join(__dirname, "public", "index.html"), "utf8");
+    const m = html.match(/app\.js\?v=([^"'\s>]+)/);
+    _versaoApp = m ? m[1] : "";
+  } catch (e) { _versaoApp = ""; }
+  return _versaoApp;
+}
 app.get("/api/eventos", (req, res) => {
   res.writeHead(200, {
     "Content-Type": "text/event-stream",
@@ -5190,7 +5201,7 @@ app.get("/api/eventos", (req, res) => {
     "Connection": "keep-alive",
     "Access-Control-Allow-Origin": "*"
   });
-  res.write(`data: ${JSON.stringify({ tipo: "oi", ts: Date.now() })}\n\n`);
+  res.write(`data: ${JSON.stringify({ tipo: "oi", ts: Date.now(), v: versaoApp() })}\n\n`);
   sseClientes.add(res);
   req.on("close", () => sseClientes.delete(res));
 });
