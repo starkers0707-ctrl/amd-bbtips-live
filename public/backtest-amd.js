@@ -3,8 +3,8 @@
 //
 // Usa a MESMA matemática do AMD Live 1 (motor.js -> AMD_MOTOR.backtest):
 // para cada jogo, refaz a avaliação usando SÓ os jogos anteriores (janela de 400).
-// Indicação = score >= 30 E ev > 0. Lista as indicações das últimas 12 horas do
-// relógio do jogo e marca com ⚠️ a maior EV+ que terminou em RED.
+// Indicação = nascimento da condição do motor. A mesma condição ativa não se
+// repete nos jogos seguintes.
 //
 // Escreve nas MESMAS colunas da tabela que já existe (#backtest):
 //   HORA | JOGO | PLACAR | SCORE | EV | RESULTADO | LIGA
@@ -21,25 +21,18 @@
   var meuHtml = null, escrevendo = false, observando = false;
   var chaveAtual = null;   // liga|mercado desenhado por ultimo
 
-  // mercados que a fonte NAO precifica: sem odd nao ha EV, e sem EV nao ha indicacao.
-  // 5+ TEM odd sim: a fonte chama de "odd_total_gols_extatos_5", mas o nome engana -
-  // ela e 5 OU MAIS (implicita 9,5% bate com a frequencia real de 9,5% em 859 jogos,
-  // enquanto "exatamente 5" da 5,5%). Por isso o 5+ volta ao backtest.
-  var SEM_ODD = {};
-
-  // MERCADOS PROPRIOS DO BACKTEST (independentes da grade), no lugar do "Ver todos"
+  // A Vavada entrega odds somente para quatro mercados. O 5+ fica disponivel
+  // como estudo independente de frequencia e odd justa.
   var MERCADOS_BT = [
     { id: "o25", nome: "Over 2.5" },
     { id: "o35", nome: "Over 3.5" },
     { id: "ge5", nome: "5+ Gols" },
     { id: "ambas", nome: "Ambas Sim" },
     { id: "ambasN", nome: "Ambas Não" },
-    { id: "u05", nome: "Under 0.5" },
-    { id: "u15", nome: "Under 1.5" },
-    { id: "u25", nome: "Under 2.5" }
   ];
   var mktEscolhido = null;
   try { mktEscolhido = localStorage.getItem("amd_bt_mkt"); } catch (e) {}
+  if (!MERCADOS_BT.some(function (m) { return m.id === mktEscolhido; })) mktEscolhido = "o25";
 
   function montaSeletor() {
     var head = document.getElementById("btTitle");
@@ -211,6 +204,48 @@
     return id;
   }
 
+  // Estudo independente do 5+: cada decisao usa apenas jogos anteriores.
+  // O sinal nasce quando a frequencia dos ultimos 60 jogos supera a base longa
+  // com 90% de confianca unilateral (z >= 1,28). Sem odd real nao ha EV/ROI;
+  // exibimos a odd justa estatistica, sem inventar cotacao.
+  function backtest5Mais(jogos) {
+    var resultados = [], ativoAnterior = false;
+    for (var i = 120; i < jogos.length; i++) {
+      var hist = jogos.slice(Math.max(0, i - 400), i);
+      var recente = hist.slice(-60);
+      if (recente.length < 60) continue;
+      var verdesBase = hist.filter(function (g) { return g.total >= 5; }).length;
+      var verdesRecentes = recente.filter(function (g) { return g.total >= 5; }).length;
+      var pBase = verdesBase / hist.length;
+      var pRecente = verdesRecentes / recente.length;
+      var erro = Math.sqrt(Math.max(0.0001, pBase * (1 - pBase) / recente.length));
+      var ativo = (pRecente - pBase) / erro >= 1.28;
+      if (ativo && !ativoAnterior) {
+        var g = jogos[i], prob = Math.round(pRecente * 1000) / 10;
+        resultados.push({
+          nome: g.nome, horario: g.horario || "", placar: g.a + "-" + g.b,
+          score: prob, ev: null, oddJusta: prob > 0 ? +(100 / prob).toFixed(2) : null,
+          resultado: g.total >= 5 ? "GREEN" : "RED", green: g.total >= 5
+        });
+      }
+      ativoAnterior = ativo;
+    }
+    var agora = jogos.length ? jogos[jogos.length - 1].horario : null;
+    function minutos(h) { var m = /^(\d{1,2}):(\d{1,2})/.exec(h || ""); return m ? (+m[1]) * 60 + (+m[2]) : null; }
+    var agoraMin = minutos(agora);
+    var janela = resultados.filter(function (r) {
+      var v = minutos(r.horario);
+      return v == null || agoraMin == null || (agoraMin - v + 1440) % 1440 <= 720;
+    });
+    var verdes = resultados.filter(function (r) { return r.green; }).length;
+    return {
+      ultimos10indicados: janela,
+      indicados: { n: resultados.length, green: verdes, pct: resultados.length ? Math.round(verdes / resultados.length * 1000) / 10 : null },
+      taxaIndicados: resultados.length ? Math.round(verdes / resultados.length * 1000) / 10 : null,
+      roiIndicados: null, cincoMaisSemOdd: true
+    };
+  }
+
   // ---- desenho: mesmas colunas e classes da tabela existente --------------
   function esc(s) { return String(s == null ? "" : s).replace(/[<>&]/g, ""); }
 
@@ -221,12 +256,16 @@
     if (!lista.length) {
       // passa pelo avisa(), que destranca a escrita - sem isso a proteção bloqueia
       // a mensagem e a tabela fica presa no "calculando" (era exatamente o bug do Under 1.5)
-      avisa("nenhuma indicação neste mercado nas últimas 12 horas — score ≥ 30 com EV positivo não ocorreu");
+      avisa(bt && bt.cincoMaisSemOdd
+        ? "nenhum novo sinal estatístico de 5+ nas últimas 12 horas — frequência calculada sem odd/EV"
+        : "nenhum sinal novo nas últimas 12 horas — uma condição já ativa não é repetida em todos os jogos");
       return;
     }
     var linhas = lista.slice().reverse().map(function (u) {
       var green = u.resultado === "GREEN";
-      var evTxt = (u.ev > 0 ? "+" : "") + u.ev + "%";
+      var temEv = typeof u.ev === "number" && isFinite(u.ev);
+      var evTxt = temEv ? ((u.ev > 0 ? "+" : "") + u.ev + "%")
+        : (u.oddJusta ? "justa @" + u.oddJusta : "—");
       var gid = mapaId[u.horario + "|" + u.nome] || "";
       return '<tr data-gid="' + gid + '" style="cursor:' + (gid ? "pointer" : "default") + '" title="' +
         (gid ? "clique para localizar na grade" : "") + '">' +
@@ -234,7 +273,7 @@
         "<td>" + (u.alerta ? "⚠️ " : "") + esc(u.nome) + "</td>" +
         "<td>" + esc(u.placar) + "</td>" +
         "<td>" + esc(u.score) + "</td>" +
-        '<td class="' + (u.ev > 0 ? "bt-pos" : "bt-neg") + '">' + evTxt + "</td>" +
+        '<td class="' + (temEv ? (u.ev > 0 ? "bt-pos" : "bt-neg") : "") + '">' + evTxt + "</td>" +
         '<td class="' + (green ? "bt-pos" : "bt-neg") + '">' + (green ? "✓" : "✗") + "</td>" +
         "<td>" + esc(liga) + "</td>" +
         "</tr>";
@@ -248,9 +287,13 @@
     // resumo honesto, se existir algum lugar para ele (não cria elemento novo)
     var alvo = document.getElementById("btResumo");
     if (alvo && bt.indicados) {
-      alvo.textContent = "indicadas " + bt.indicados.n + " · acerto " +
-        (bt.taxaIndicados == null ? "—" : bt.taxaIndicados + "%") +
-        " · régua do mercado " + bt.baseGeral + "%";
+      alvo.textContent = bt.cincoMaisSemOdd
+        ? "sinais estatísticos " + bt.indicados.n + " · acerto " +
+          (bt.taxaIndicados == null ? "—" : bt.taxaIndicados + "%") + " · sem odd/EV"
+        : "sinais novos " + bt.indicados.n + " · acerto " +
+          (bt.taxaIndicados == null ? "—" : bt.taxaIndicados + "%") +
+          " · ROI " + (bt.roiIndicados == null ? "—" : bt.roiIndicados + "%") +
+          " · base " + bt.baseGeral + "%";
     }
   }
 
@@ -296,13 +339,9 @@
     if (chave !== chaveAtual) {          // trocou de liga/mercado: nunca deixar a tabela velha
       chaveAtual = chave;
       meuHtml = null;
-      poeTitulo("Backtest · " + liga.charAt(0).toUpperCase() + liga.slice(1) + " — " + nomeDoMercado(mkt));
+      poeTitulo("Backtest · " + liga.charAt(0).toUpperCase() + liga.slice(1) + " — " + nomeDoMercado(mkt) +
+        (mkt === "ge5" ? " · probabilidade sem EV" : " · sinais novos"));
       avisa("calculando " + nomeDoMercado(mkt) + " · " + liga + "…");
-    }
-    if (SEM_ODD[mkt]) {
-      avisa("A fonte não fornece odd para " + SEM_ODD[mkt] +
-            " — sem odd não há EV, e sem EV não há indicação. Backtest indisponível neste mercado.");
-      return;
     }
     buscar(liga).then(function (jogos) {
       if (!jogos || jogos.length < minimoHistorico(liga)) {
@@ -311,9 +350,10 @@
         return;
       }
       var bt;
-      try { bt = AMD_MOTOR.backtest(jogos, mkt, 240); } catch (e) { return; }
+      try { bt = mkt === "ge5" ? backtest5Mais(jogos) : AMD_MOTOR.backtest(jogos, mkt, 240); } catch (e) { return; }
       if (!bt || bt.erro) { avisa("sem base suficiente para o backtest deste mercado agora"); return; }
-      poeTitulo("Backtest · " + liga.charAt(0).toUpperCase() + liga.slice(1) + " — " + nomeDoMercado(mkt));
+      poeTitulo("Backtest · " + liga.charAt(0).toUpperCase() + liga.slice(1) + " — " + nomeDoMercado(mkt) +
+        (mkt === "ge5" ? " · probabilidade sem EV" : " · sinais novos"));
       ultimo = bt; ultimaLiga = liga;
       desenha(bt, liga);
     });

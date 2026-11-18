@@ -501,7 +501,8 @@ function _calculaBacktest(liga, mkt, n, store) {
       const ev = fullEvalUpcoming([{ nome: g.nome, horario: "", casa: g.casa, fora: g.fora, odds: g.odds }], hist, mkt)[0] || {};
       resultados.push({
         nome: g.nome, horario: g.horario || "", odd: g.odds[oddKey(mkt)],
-        score: ev.score ?? null, ev: ev.ev ?? null, motivo: ev.motivo || "",
+        score: ev.score ?? null, ev: ev.ev ?? null, ready: ev.ready === true,
+        motivo: ev.motivo || "",
         green: pays(g, mkt), placar: (g.a != null && g.b != null) ? g.a + "-" + g.b : null
       });
     }
@@ -512,13 +513,35 @@ function _calculaBacktest(liga, mkt, n, store) {
     };
     const evPos = resultados.filter(r => r.ev != null && r.ev > 0);
     const baseGeral = Math.round(resultados.filter(r => r.green).length / (resultados.length || 1) * 100);
-    const indicados = resultados.filter(r => r.score != null && r.score >= 30 && r.ev > 0);
+    // Registra somente quando a condicao nasce. A versao anterior repetia a
+    // mesma condicao em todos os jogos enquanto score >= 30 e EV > 0.
+    const indicados = [];
+    let armado = true, inativosSeguidos = 6;
+    for (const r of resultados) {
+      const sinalAtual = r.score != null && r.score >= 30 && r.ev > 0;
+      if (sinalAtual) {
+        if (armado) indicados.push(r);
+        armado = false;
+        inativosSeguidos = 0;
+      } else {
+        inativosSeguidos++;
+        // A fita do motor tem seis jogos. Exigimos uma fita inteira sem sinal
+        // antes de rearmar, evitando que uma oscilacao de um jogo vire entrada.
+        if (inativosSeguidos >= 6) armado = true;
+      }
+    }
+    const lucroIndicados = indicados.reduce((s, r) => s + (r.green ? r.odd - 1 : -1), 0);
+    const taxaIndicados = indicados.length
+      ? Math.round(indicados.filter(r => r.green).length / indicados.length * 1000) / 10 : null;
+    const roiIndicados = indicados.length
+      ? Math.round(lucroIndicados / indicados.length * 1000) / 10 : null;
     const out = {
       liga, mkt, jogosAvaliados: resultados.length, baseGeral,
       _seqIndicados: indicados.map(r => !!r.green),
       faixas: { forte_60mais: faixa(60, 999), media_30a59: faixa(30, 60), fraca_0a29: faixa(0, 30), negativa: faixa(-999, 0) },
       evPositivo: { n: evPos.length, green: evPos.filter(r => r.green).length, pct: evPos.length ? Math.round(evPos.filter(r => r.green).length / evPos.length * 100) : null },
       indicados: { n: indicados.length, green: indicados.filter(r => r.green).length, pct: indicados.length ? Math.round(indicados.filter(r => r.green).length / indicados.length * 100) : null },
+      taxaIndicados, roiIndicados,
       ultimos10indicados: (() => {
         // JANELA DE 12 HORAS do relogio do jogo.
         const hm = h => { const m = /^(\d{1,2}):(\d{1,2})/.exec(h || ""); return m ? (+m[1]) * 60 + (+m[2]) : null; };
