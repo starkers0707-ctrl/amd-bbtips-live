@@ -162,10 +162,38 @@ function cookieValor(req, nome) {
   }
   return "";
 }
+// Codigos e sessoes AUTOASSINADOS: a validade vai dentro do proprio codigo,
+// assinada com o CODIGO_MESTRE. Nao dependem de memoria nem de banco, entao
+// sobrevivem a reinicio, deploy e troca de servidor (Render/DigitalOcean).
+const CHAVE_CODIGOS = createHmac("sha256", String(CODIGO_MESTRE || ADMIN_KEY || "")).update("amd-codigos-v2").digest();
+const revogados = new Set();
+function assinaCodigo(buf) { return createHmac("sha256", CHAVE_CODIGOS).update(buf).digest().subarray(0, 5); }
+function geraCodigoAssinado(expira) {
+  const corpo = Buffer.alloc(7);
+  corpo.writeUInt32BE(Math.floor(expira / 60000), 0);
+  randomBytes(3).copy(corpo, 4);
+  return "AMD-" + Buffer.concat([corpo, assinaCodigo(corpo)]).toString("hex").toUpperCase();
+}
+function leCodigoAssinado(c) {
+  const m = String(c || "").toUpperCase().trim().match(/^AMD-([0-9A-F]{24})$/);
+  if (!m || !CODIGO_MESTRE && !ADMIN_KEY) return null;
+  const b = Buffer.from(m[1], "hex"), corpo = b.subarray(0, 7);
+  if (!timingSafeEqual(b.subarray(7), assinaCodigo(corpo))) return null;
+  return { expira: corpo.readUInt32BE(0) * 60000 };
+}
 function codigoAtivo(c) {
   if (ADMIN_KEY && igualSeguro(String(c || "").toUpperCase(), ADMIN_KEY.trim().toUpperCase())) return { nome: "Administrador", expira: Date.now() + 30 * 86400000, mestre: true };
   if (CODIGO_MESTRE && igualSeguro(String(c || "").toUpperCase(), CODIGO_MESTRE.trim().toUpperCase())) return { nome: "Administrador", expira: Date.now() + 30 * 86400000, mestre: true };
-  const d = codigos[c];
+  const cod = String(c || "").toUpperCase().trim();
+  if (revogados.has(cod)) return null;
+  const assinado = leCodigoAssinado(cod);
+  if (assinado) {
+    if (Date.now() > assinado.expira) return null;
+    const salvo = codigos[cod] || (codigos[cod] = { nome: "", criado: null, expira: assinado.expira, usos: 0 });
+    salvo.expira = assinado.expira;
+    return salvo;
+  }
+  const d = codigos[cod];
   return d && Date.now() <= Number(d.expira || 0) ? d : null;
 }
 function sessaoValida(req) {
@@ -174,15 +202,18 @@ function sessaoValida(req) {
   if (ponto < 1) return null;
   const id = bruto.slice(0, ponto), assinatura = bruto.slice(ponto + 1);
   if (!igualSeguro(assinatura, assinaturaSessao(id))) return null;
-  const s = sessoes.get(id);
-  if (!s || Date.now() > s.expira || !codigoAtivo(s.codigo)) { sessoes.delete(id); return null; }
+  let s = sessoes.get(id);
+  if (!s) { try { s = JSON.parse(Buffer.from(id, "base64url").toString()); } catch (e) { return null; } }
+  if (!s || !s.codigo || Date.now() > Number(s.expira || 0)) return null;
+  const ativo = codigoAtivo(s.codigo);
+  if (!ativo) return null;
+  if (ativo.nome && !s.nome) s.nome = ativo.nome;
   s.ultimoUso = Date.now(); return s;
 }
 function criaSessao(res, codigo, dados) {
   if (!SESSION_SECRET) throw new Error("SESSION_SECRET/CODIGO_MESTRE nao configurado");
-  const id = randomBytes(32).toString("base64url");
   const expira = Math.min(Number(dados.expira || Date.now() + 30 * 86400000), Date.now() + 30 * 86400000);
-  sessoes.set(id, { codigo, nome: dados.nome || "Usuario", criado: Date.now(), ultimoUso: Date.now(), expira });
+  const id = Buffer.from(JSON.stringify({ codigo, nome: dados.nome || "Usuario", expira, r: randomBytes(6).toString("hex") })).toString("base64url");
   const maxAge = Math.max(60, Math.floor((expira - Date.now()) / 1000));
   res.setHeader("Set-Cookie", `${COOKIE_SESSAO}=${id}.${assinaturaSessao(id)}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=${maxAge}`);
   return expira;
@@ -284,19 +315,28 @@ app.post("/api/admin/testar-alerta", (req, res) => {
 });
 app.get("/api/admin/codigos", (req, res) => {
   if (!isAdmin(req)) return res.status(401).json({ erro: "admin" });
-  res.json({ codigos, persistencia: !!GH_T && !ghErro && !!ghSha, tokenPresente: !!GH_T, erroSave: ghErro, adminKeyDefinida: !!ADMIN_KEY });
+  res.json({ codigos, autoassinado: !!(CODIGO_MESTRE || ADMIN_KEY), persistencia: !!GH_T && !ghErro && !!ghSha, tokenPresente: !!GH_T, erroSave: ghErro, adminKeyDefinida: !!ADMIN_KEY });
 });
 app.post("/api/admin/criar", async (req, res) => {
   if (!isAdmin(req)) return res.status(401).json({ erro: "admin" });
   const { nome, dias } = req.body || {};
-  const cod = "AMD-" + randomBytes(16).toString("hex").toUpperCase();
-  codigos[cod] = { nome: String(nome || ""), criado: Date.now(), expira: Date.now() + (parseFloat(dias) || 1) * 86400000, usos: 0 };
+  const expiraNovo = Date.now() + (parseFloat(dias) || 1) * 86400000;
+  const cod = geraCodigoAssinado(expiraNovo);
+  codigos[cod] = { nome: String(nome || ""), criado: Date.now(), expira: leCodigoAssinado(cod).expira, usos: 0 };
   await salvaCodigos();
   res.json({ ok: true, codigo: cod, expira: codigos[cod].expira });
 });
+app.post("/api/admin/consultar", (req, res) => {
+  const cod = String((req.body || {}).codigo || "").toUpperCase().trim();
+  const a = leCodigoAssinado(cod), d = codigos[cod];
+  const expira = a ? a.expira : (d ? d.expira : null);
+  res.json({ ok: true, valido: !!codigoAtivo(cod), assinado: !!a, revogado: revogados.has(cod), expira, nome: d ? d.nome : null });
+});
 app.post("/api/admin/revogar", async (req, res) => {
   if (!isAdmin(req)) return res.status(401).json({ erro: "admin" });
-  delete codigos[String((req.body || {}).codigo || "").toUpperCase().trim()];
+  const codRev = String((req.body || {}).codigo || "").toUpperCase().trim();
+  delete codigos[codRev];
+  if (leCodigoAssinado(codRev)) revogados.add(codRev);
   await salvaCodigos();
   res.json({ ok: true });
 });
@@ -311,7 +351,9 @@ app.get("/admin", (req, res) => {
     <select id="dias"><option value="1">1 dia (teste)</option><option value="30">30 dias</option><option value="7">7 dias</option><option value="0.125">3 horas</option></select>
     <button onclick="criar()">➕ Criar código</button> <button onclick="teste()">🔔 Testar alerta</button></p>
   <p id="novo" style="font-weight:700;color:#3fb950"></p>
-  <table><thead><tr><th>Código</th><th>Nome</th><th>Expira</th><th>Usos</th><th></th></tr></thead><tbody id="lista"></tbody></table>
+  <p>Consultar código: <input id="cons" placeholder="AMD-..." style="width:300px"> <button onclick="consultar()">🔎 Ver tempo de acesso</button></p>
+  <p id="consRes" style="font-weight:700"></p>
+  <table><thead><tr><th>Código</th><th>Nome</th><th>Expira</th><th>Restante</th><th>Usos</th><th></th></tr></thead><tbody id="lista"></tbody></table>
   <p class="note" id="aviso"></p>
 </div>
 <script>
@@ -322,8 +364,12 @@ async function lista(){const j=await api('/api/admin/codigos');const tb=document
  const agora=Date.now();
  Object.entries(j.codigos).sort((a,b)=>b[1].criado-a[1].criado).forEach(([c,d])=>{
   const exp=new Date(d.expira);const ativo=agora<d.expira;
-  tb.innerHTML+=\`<tr><td><b>\${c}</b></td><td>\${d.nome||'—'}</td><td class="\${ativo?'ok':'exp'}">\${exp.toLocaleString('pt-BR')} \${ativo?'✅':'⛔ expirado'}</td><td>\${d.usos||0}\${d.ultimoUso?' <span class=note>('+new Date(d.ultimoUso).toLocaleTimeString('pt-BR')+')</span>':''}</td><td><button onclick="revogar('\${c}')">🗑️</button></td></tr>\`;});
- document.getElementById('aviso').textContent=j.persistencia?'✔ códigos salvos com persistência (sobrevivem a reinício)':(j.tokenPresente?('⚠️ GH_TOKEN presente mas o salvamento FALHOU: '+(j.erroSave||'crie um código para testar')):'⚠️ SEM persistência — falta GH_TOKEN no Render; códigos somem a cada reinício');}
+  tb.innerHTML+=\`<tr><td><b>\${c}</b></td><td>\${d.nome||'—'}</td><td class="\${ativo?'ok':'exp'}">\${exp.toLocaleString('pt-BR')} \${ativo?'✅':'⛔ expirado'}</td><td>\${restante(d.expira)}</td><td>\${d.usos||0}\${d.ultimoUso?' <span class=note>('+new Date(d.ultimoUso).toLocaleTimeString('pt-BR')+')</span>':''}</td><td><button onclick="revogar('\${c}')">🗑️</button></td></tr>\`;});
+ document.getElementById('aviso').textContent=j.autoassinado?'✔ Códigos autoassinados: continuam valendo após reinício e deploy. A lista abaixo mostra os criados/usados desde o último reinício; use "Consultar código" para ver qualquer um.':j.persistencia?'✔ códigos salvos com persistência (sobrevivem a reinício)':(j.tokenPresente?('⚠️ GH_TOKEN presente mas o salvamento FALHOU: '+(j.erroSave||'crie um código para testar')):'⚠️ SEM persistência — falta GH_TOKEN no Render; códigos somem a cada reinício');}
+function restante(e){const ms=Number(e)-Date.now();if(!(ms>0))return '⛔ 0';const d=Math.floor(ms/86400000),h=Math.floor(ms%86400000/3600000),m=Math.floor(ms%3600000/60000);return (d?d+'d ':'')+(d||h?h+'h ':'')+m+'min';}
+async function consultar(){const c=document.getElementById('cons').value.trim();const j=await api('/api/admin/consultar','POST',{codigo:c});const el=document.getElementById('consRes');
+ if(!j.expira){el.style.color='#f85149';el.textContent='Código desconhecido ou inválido.';return;}
+ el.style.color=j.valido?'#3fb950':'#f85149';el.textContent=(j.valido?'✅ Ativo':(j.revogado?'⛔ Revogado':'⛔ Expirado'))+' — expira '+new Date(j.expira).toLocaleString('pt-BR')+' · restante: '+restante(j.expira)+(j.nome?' · '+j.nome:'');}
 async function criar(){const j=await api('/api/admin/criar','POST',{nome:document.getElementById('nome').value,dias:document.getElementById('dias').value});
  document.getElementById('novo').textContent='Código criado: '+j.codigo+' — envie ao usuário';await lista();}
 async function teste(){await api('/api/admin/testar-alerta','POST',{});alert('Alerta de teste enviado! Olhe a notificação no canto (com o site aberto em outra aba).');}
