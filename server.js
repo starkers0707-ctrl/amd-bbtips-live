@@ -1844,12 +1844,15 @@ async function kvCarrega() {
     try {
       const bruto = await kv.get("amd:jogos:" + liga);
       if (!bruto) continue;
-      const salvos = JSON.parse(bruto);
+      let salvos = JSON.parse(bruto);
       if (!Array.isArray(salvos) || !salvos.length) continue;
+      // Jogos sem data real nao tem dia confiavel (vinham de coletores antigos).
+      if (fonteDiretaAtiva(liga)) salvos = salvos.filter(g => g && g.inicio);
+      if (!salvos.length) continue;
       const atual = store[liga] || {};
       const chave = g => String(g.id || `${g.horario || ""}|${g.casa || ""}|${g.fora || ""}`);
       const mapa = new Map(salvos.map(g => [chave(g), g]));
-      for (const g of (Array.isArray(atual.gamesAll) ? atual.gamesAll : [])) mapa.set(chave(g), g);
+      for (const g of (Array.isArray(atual.gamesAll) ? atual.gamesAll : [])) if (!fonteDiretaAtiva(liga) || g.inicio) mapa.set(chave(g), g);
       const gamesAll = [...mapa.values()].slice(-2000);
       const st = buildStore(liga, gamesAll, atual.upcomingRaw || [], new Date().toISOString());
       st.gamesAll = gamesAll;
@@ -1956,8 +1959,10 @@ let lastDebug = {};
 // ligas. Envios externos (scripts antigos no navegador) chegavam sem data e
 // com posicao fixa de grade, substituindo os dados corretos.
 function fonteDiretaAtiva(liga) {
-  const st = store[liga];
-  return !!(st && st.fonte === "vavada-kiron" && Date.now() - (st.vavadaTs || 0) < 5 * 60000);
+  // Com a coleta direta ligada, ela e a UNICA fonte das seis ligas: o antigo
+  // teste por "ultimo envio recente" deixava passar envios externos logo apos
+  // cada reinicio, e eles traziam jogos de outros dias sem data.
+  return LIGAS_PERMITIDAS.has(String(liga || "")) && process.env.VAVADA_ENABLED !== "0";
 }
 const recusasExternas = {};
 function registraRecusa(rota, liga, req) {
@@ -1979,7 +1984,7 @@ function recebeDadosTampermonkey(req, res) {
     const placaresLista = Array.isArray(placares) ? placares : [];
     const futurosLista = Array.isArray(upcoming) ? upcoming : [];
     if (debug) lastDebug[liga || "?"] = { debug, ts: Date.now() };
-    if (liga && fonteDiretaAtiva(codigoLiga(liga) || liga) && !placaresLista.concat(futurosLista).some(p => String(p && p.inicio || ""))) {
+    if (liga && fonteDiretaAtiva(codigoLiga(liga) || liga)) {
       registraRecusa(req.path, liga, req);
       return res.json({ ok: true, ignorado: "fonte-direta-vavada-ativa" });
     }
@@ -2338,7 +2343,7 @@ function iniciaVavadaKiron() {
     const historico = Array.isArray(anterior.gamesAll) ? anterior.gamesAll : (anterior.games || []);
     const mapa = new Map();
     const chave = g => String(g.id || `${g.horario || ""}|${g.casa || ""}|${g.fora || ""}`);
-    for (const g of historico) mapa.set(chave(g), g);
+    for (const g of historico) if (g && g.inicio) mapa.set(chave(g), g);
     for (const g of novos || []) mapa.set(chave(g), g);
     const gamesAll = [...mapa.values()].slice(-1200);
     // Não substitui futuros bons por uma resposta temporariamente vazia.
@@ -2675,19 +2680,6 @@ app.get("/api/grade", (req, res) => {
   // ontem como o trecho mais recente. `slot_em` ja contem o dia correto; por
   // isso a resposta deve seguir essa cronologia real. IDs e coordenadas da
   // grade continuam intactos, logo esta ordenacao nao altera a matematica.
-  try {
-    globalThis.__gdiag = globalThis.__gdiag || {};
-    if (Date.now() - (globalThis.__gdiag[ligaReal] || 0) > 120000) {
-      globalThis.__gdiag[ligaReal] = Date.now();
-      const futuro = agoraGrade + 60000;
-      const adiante = partidas.filter(p => p.resultado_ft && Date.parse(p.slot_em) > agoraGrade - 3 * 60000).map(p => {
-        const g = todos.find(x => (x.casa === p.time_a) && String(x.horario || "").endsWith(String(p.minuto).padStart(2, "0")) && Number.isFinite(Number(x.a)));
-        return `${p.slot_em.slice(5, 16)} ${p.time_a}-${p.time_b} ${p.resultado_ft} ini=${g ? (g.inicio || "-") : "?"} id=${g ? g.id : "?"}`;
-      });
-      const dat = todos.filter(g => g.inicio).length;
-      console.log(`[grade-diag2] ${ligaReal} agora=${new Date(agoraGrade).toISOString().slice(11, 16)} total=${todos.length} datados=${dat} ultimoDatado=${Number.isFinite(ultimoDatadoEm) ? new Date(ultimoDatadoEm).toISOString().slice(5, 16) : "-"} | resultados recentes/adiante: ${adiante.join(" ; ")}`);
-    }
-  } catch (e) { console.log("[grade-diag2] erro", e.message); }
   partidas.sort((a, b) => Date.parse(a.slot_em) - Date.parse(b.slot_em));
   const colunasVisuais = partidas.filter(p => p.coluna_visual != null)
     .map(p => Number(p.coluna_visual)).filter(Number.isFinite);
