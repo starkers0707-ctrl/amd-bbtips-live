@@ -95,11 +95,15 @@ async function api(path, params = {}) {
         urlFinal = proxyUrl.toString();
       }
 
-      const r = await curlFetch(urlFinal, {
-        headers: headers,
-        browser: process.env.VAVADA_BROWSER_PROFILE || 'chrome_147',
-        timeout: apiKey ? 75000 : 15000
-      });
+      const limite = apiKey ? 80000 : 20000;
+      const r = await Promise.race([
+        curlFetch(urlFinal, {
+          headers: headers,
+          browser: process.env.VAVADA_BROWSER_PROFILE || 'chrome_147',
+          timeout: limite - 5000
+        }),
+        new Promise((_, rej) => setTimeout(() => rej(new Error(`${path} timeout ${limite}ms`)), limite))
+      ]);
 
       if (r.status === 403 || r.status === 429) {
         console.warn(`[vavada] ${path} HTTP ${r.status} tentativa ${tentativa}/3`);
@@ -302,6 +306,7 @@ async function rodada(onLiga) {
   if (rodando) return;
   const inicio = Date.now();
   rodando = true; estado.rodando = true; estado.inicio = inicio; estado.proxima = 0;
+  console.log(`[vavada] ciclo ${estado.ciclos + 1} iniciado (proxy ${process.env.SCRAPINGANT_API_KEY ? "scrapingant" : "direto"})`);
   try {
     const gamesJson = await api("Virtuals/GetGames");
     const games = Array.isArray(gamesJson?.sports)

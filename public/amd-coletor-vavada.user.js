@@ -9,6 +9,8 @@
 // @grant        GM_setValue
 // @connect      sb2virtuals-altenar2.biahosted.com
 // @connect      amd-virtual-live.onrender.com
+// @updateURL    https://raw.githubusercontent.com/starkers0707-ctrl/amd-bbtips-live/main/public/amd-coletor-vavada.user.js
+// @downloadURL  https://raw.githubusercontent.com/starkers0707-ctrl/amd-bbtips-live/main/public/amd-coletor-vavada.user.js
 // @run-at       document-start
 // ==/UserScript==
 
