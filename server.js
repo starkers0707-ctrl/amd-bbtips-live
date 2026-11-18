@@ -2419,6 +2419,17 @@ app.get("/api/grade", (req, res) => {
     if (!g.inicio && Number.isFinite(ultimoDatadoEm) && instante > ultimoDatadoEm) return maior;
     return Number.isFinite(instante) ? Math.max(maior, instante) : maior;
   }, Number.NEGATIVE_INFINITY);
+  try {
+    const agoraLog = Date.now();
+    if (!globalThis.__gradeLog) globalThis.__gradeLog = {};
+    if (agoraLog - (globalThis.__gradeLog[ligaReal] || 0) > 60000) {
+      globalThis.__gradeLog[ligaReal] = agoraLog;
+      const res = todos.filter(g => Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b)));
+      const recentes = res.map(g => ({ g, t: instanteDoJogo(g, false) })).filter(x => x.t >= agoraGrade - 15 * 60000)
+        .map(x => `${new Date(x.t).toISOString().slice(11, 16)} ${x.g.casa}-${x.g.fora} ${x.g.a}-${x.g.b} ini=${x.g.inicio || "-"} hor=${x.g.horario} id=${x.g.id || "-"} lv=${x.g.linha_visual ?? "-"}`);
+      console.log(`[grade-diag] ${ligaReal} total=${todos.length} datados=${res.filter(g => g.inicio).length} semData=${res.filter(g => !g.inicio).length} ultimoDatado=${Number.isFinite(ultimoDatadoEm) ? new Date(ultimoDatadoEm).toISOString().slice(11, 16) : "nenhum"} fonte=${d.fonte} | ${recentes.join(" ; ")}`);
+    }
+  } catch (e) { console.log("[grade-diag] erro", e.message); }
   const partidas = todos.map((g, i) => {
     const resolvido = Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b));
     const tsDireto = instanteDoJogo(g, !resolvido);
