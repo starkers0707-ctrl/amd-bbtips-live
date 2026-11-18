@@ -1862,6 +1862,18 @@ async function kvCarrega() {
     } catch (e) { console.warn("[memoria] liga", liga, e.message); }
   }
   try {
+    const pz = await kv.get("amd:push");
+    if (pz) {
+      const d = JSON.parse(pz);
+      if (d && d.vapid && d.vapid.publicKey) {
+        pushData.vapid = d.vapid;
+        const conhecidos = new Set(pushData.subs.map(x => x.endpoint));
+        pushData.subs = (d.subs || []).filter(x => !conhecidos.has(x.endpoint)).concat(pushData.subs).slice(-50);
+        if (webpush) try { webpush.setVapidDetails("mailto:amd@live.local", pushData.vapid.publicKey, pushData.vapid.privateKey); } catch (e) {}
+      }
+    }
+  } catch (e) {}
+  try {
     const c = await kv.get("amd:codigos");
     if (c) { const salvos = JSON.parse(c); for (const [k, v] of Object.entries(salvos)) if (!codigos[k]) codigos[k] = v; }
     const r = await kv.get("amd:revogados");
@@ -1878,6 +1890,7 @@ async function kvSalva() {
     }
     await kv.set("amd:codigos", JSON.stringify(codigos));
     await kv.set("amd:revogados", JSON.stringify([...revogados]));
+    if (pushData && pushData.vapid) await kv.set("amd:push", JSON.stringify(pushData));
   } catch (e) { console.warn("[memoria] falha ao salvar:", e.message); }
 }
 kvConecta();
@@ -4781,6 +4794,15 @@ function jogosRadarEmOrdem(games) {
     return acc;
   }, {});
   const minutoAtual = (agoraBR.hour || 0) * 60 + (agoraBR.minute || 0);
+  // Com historico de varios dias, o HH:MM sozinho misturava jogos de ontem e de
+  // hoje no mesmo ponto da serie. Jogos com data real ficam na ordem exata e so
+  // entram as ultimas 30 horas.
+  const datados = lista.filter(g => Number.isFinite(Date.parse(g && g.inicio || "")));
+  if (datados.length >= lista.length * 0.5) {
+    const corte = Date.now() - 30 * 3600000;
+    return datados.map(g => ({ g, t: Date.parse(g.inicio) })).filter(x => x.t >= corte)
+      .sort((a, b) => a.t - b.t).map(x => x.g);
+  }
   return lista.map((g, i) => {
     const partes = String(g.horario || g.hora || '').match(/(\d{1,2}):(\d{2})/);
     const minuto = partes ? Number(partes[1]) * 60 + Number(partes[2]) : i;
@@ -4923,6 +4945,7 @@ let pushData = { vapid: null, subs: [] };
 const NOMES_L = { ita: "ITA", eng: "ENG", spa: "SPA", mnd: "MND", bra: "BRA", lat: "LAT", cam: "CAM", cop: "COP", ame: "AME", split: "Split" };
 const NOMES_M = { o25: "Over 2.5", o35: "Over 3.5", ambas: "Ambas Marcam", ge5: "5+ gols" };
 async function salvaPush() {
+  try { if (typeof kvSalva === "function") kvSalva(); } catch (e) {}
   if (!GH_T) return;
   try {
     const body = { message: "push", content: Buffer.from(JSON.stringify(pushData, null, 1)).toString("base64"), branch: GH_BRANCH };
@@ -4949,7 +4972,7 @@ function enviaPushRobo(titulo, corpo, tag) {
   const payload = JSON.stringify({ t: titulo, b: corpo, tag: tag || "robo" });
   for (const s of [...pushData.subs]) {
     webpush.sendNotification(s, payload).catch(err => {
-      if (err && (err.statusCode === 410 || err.statusCode === 404)) {
+      if (err && (err.statusCode === 410 || err.statusCode === 404 || err.statusCode === 403)) {
         pushData.subs = pushData.subs.filter(x => x.endpoint !== s.endpoint);
         salvaPush();
       }

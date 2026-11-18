@@ -2772,13 +2772,23 @@ async function assinarPushGDCross() {
     const reg = await registrarAlertasDeFundo();
     if (!reg || !reg.pushManager) return;
     let inscricao = await reg.pushManager.getSubscription();
+    const resposta = await fetch('/api/push/key', {
+      credentials: 'same-origin', cache: 'no-store', headers: { Accept: 'application/json' }
+    });
+    if (!resposta.ok) return;
+    const dados = await resposta.json();
+    if (!dados || !dados.key) return;
+    // Inscricao feita com uma chave antiga do servidor nunca recebe push:
+    // compara a chave e refaz a inscricao quando mudou.
+    if (inscricao) {
+      try {
+        const atual = new Uint8Array(inscricao.options && inscricao.options.applicationServerKey || []);
+        const nova = chavePublicaPush(dados.key);
+        const igual = atual.length === nova.length && atual.every((b, i) => b === nova[i]);
+        if (!igual) { await inscricao.unsubscribe(); inscricao = null; }
+      } catch (e) {}
+    }
     if (!inscricao) {
-      const resposta = await fetch('/api/push/key', {
-        credentials: 'same-origin', cache: 'no-store', headers: { Accept: 'application/json' }
-      });
-      if (!resposta.ok) return;
-      const dados = await resposta.json();
-      if (!dados || !dados.key) return;
       inscricao = await reg.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: chavePublicaPush(dados.key)
