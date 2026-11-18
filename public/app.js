@@ -942,6 +942,7 @@ function processarAlertaGDCross(analise, pontos, metas, escopo, mercado, liga) {
   mostrarAviso(`\ud83c\udfc6 ${nome} \u00b7 ${mercado} \u00b7 ` +
     `MM${analise.periodoRapido} cruzou ${direcao} da MM${analise.periodoLento}` +
     (horario ? ` \u00b7 ${horario}` : ''));
+  jogoDoUltimoGDCross = meta ? { horario: horario, a: meta.timeA, b: meta.timeB, ft: meta.ft || meta.FT } : null;
   falarAlertaGDCross(cruzamento.tipo, liga || state.liga, horario, mercado);
 }
 
@@ -2729,6 +2730,7 @@ let registroAlertasFundo = null;
 let ultimaAmostraFib50 = null;
 const estadoAlertaFib50 = { armado: false, contexto: '', anterior: null };
 let ultimoAvisoGDCross = { chave: '', ts: 0 };
+let jogoDoUltimoGDCross = null;
 let canalEventosGDCross = null;
 
 function obterContextoAudioAlertas() {
@@ -2799,8 +2801,41 @@ async function assinarPushGDCross() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(inscricao)
     });
+    prefsPushEnviadas = '';
+    enviarPrefsPush();
   } catch (e) { /* SSE e alerta local continuam funcionando sem Push */ }
 }
+
+let prefsPushEnviadas = '';
+async function enviarPrefsPush() {
+  try {
+    if (!('serviceWorker' in navigator) || !('PushManager' in window)) return;
+    if (!('Notification' in window) || Notification.permission !== 'granted') return;
+    const reg = await registrarAlertasDeFundo();
+    const inscricao = reg && reg.pushManager ? await reg.pushManager.getSubscription() : null;
+    if (!inscricao) return;
+    const ctx = window.GraficoReal && typeof window.GraficoReal.contexto === 'function'
+      ? (window.GraficoReal.contexto() || {}) : {};
+    const modo = window.GraficoReal && typeof window.GraficoReal.modo === 'function'
+      ? window.GraficoReal.modo() : 'janela';
+    const ativoQtd = document.querySelector('#qtd .active');
+    const janela = ativoQtd ? parseInt(String(ativoQtd.textContent).replace(/\D/g, ''), 10) || 20 : 20;
+    const prefs = {
+      endpoint: inscricao.endpoint,
+      gd: ligado('GDCROSS'),
+      liga: window.Real && typeof window.Real.liga === 'function' ? window.Real.liga() : state.liga,
+      mercado: ctx.mercado || state.mercado,
+      modo: modo === 'acum' ? 'acum' : 'janela',
+      janela, mm1: cfg.mm1, mm2: cfg.mm2
+    };
+    const chave = JSON.stringify(prefs);
+    if (chave === prefsPushEnviadas) return;
+    const r = await fetch('/api/push/prefs', { method: 'POST', credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' }, body: chave });
+    if (r.ok) prefsPushEnviadas = chave;
+  } catch (e) {}
+}
+setInterval(enviarPrefsPush, 5000);
 
 function habilitarAlertasDeFundo() {
   registrarAlertasDeFundo();
@@ -2823,8 +2858,13 @@ function notificarGDCross(tipo, liga, horario, mkt) {
   // aviso era cancelado justamente quando o usuario estava olhando a tela.
   if (!('Notification' in window) || Notification.permission !== 'granted') return;
   const golden = tipo === 'golden';
-  const titulo = golden ? '🏆 GOLDEN CROSS' : '💀 DEATH CROSS';
-  const texto = textoAlertaGDCross(tipo, liga, horario, mkt).replace(/\.\s*$/, '');
+  const nomesL = { eng:'ENG', ita:'ITA', spa:'SPA', mnd:'MND', bra:'BRA', lat:'LAT' };
+  const nomeL = nomesL[String(liga || state.liga || '').toLowerCase()] || String(liga || state.liga || '');
+  const titulo = (golden ? '🏆 GOLDEN' : '💀 DEATH') + (horario ? ' ' + horario : '') + ' — ' + nomeL + ' · ' + (mkt || '');
+  const j = jogoDoUltimoGDCross && jogoDoUltimoGDCross.horario === horario ? jogoDoUltimoGDCross : null;
+  const texto = j && j.a
+    ? `Bateu no jogo das ${horario}: ${j.a} x ${j.b}${j.ft ? ' ' + j.ft : ''}`
+    : textoAlertaGDCross(tipo, liga, horario, mkt).replace(/\.\s*$/, '');
   const opcoes = {
     body: texto,
     tag: 'amd-gdcross-' + tipo + '-' + String(liga || state.liga || '') + '-' +
@@ -3023,7 +3063,10 @@ function iniciarCanalGDCross() {
       let pacote;
       try { pacote = JSON.parse(ev.data || '{}'); } catch (e) { return; }
       const alerta = pacote && pacote.tipo === 'radar' ? pacote.alerta : null;
-      if (!alerta || !['golden', 'death'].includes(alerta.tipo) || !ligado('GDCROSS')) return;
+      // Golden/Death seguem o grafico do usuario (aviso local + push do servidor
+      // com a mesma conta). O radar antigo usava outra media e outro horario.
+      if (alerta && ['golden', 'death'].includes(alerta.tipo)) return;
+      if (!alerta || !ligado('GDCROSS')) return;
       const nomesMercado = { o25: 'Over 2.5', o35: 'Over 3.5',
         ge5: '5+ Gols', ambas: 'Ambas Marcam' };
       const horario = alerta.horaFonte || alerta.hora || '';

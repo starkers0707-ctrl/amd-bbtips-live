@@ -2356,6 +2356,7 @@ function iniciaVavadaKiron() {
     store[liga] = st;
     jogosDirty = true;
     registraLiga(liga);
+    try { avaliaPushGrafico(liga); } catch (e) {}
     registraUpVistos(liga, upcoming);
     atualizaRadar(liga, st);
     atualizaRoboLedger();
@@ -4976,6 +4977,7 @@ function enviaPushRobo(titulo, corpo, tag) {
   if (!webpush || !pushData.vapid || !pushData.subs.length) return;
   const payload = JSON.stringify({ t: titulo, b: corpo, tag: tag || "robo" });
   for (const s of [...pushData.subs]) {
+    if (s.prefs && s.prefs.gd) continue; // esse aparelho recebe o push calculado com o grafico dele
     webpush.sendNotification(s, payload).catch(err => {
       if (err && (err.statusCode === 410 || err.statusCode === 404 || err.statusCode === 403)) {
         pushData.subs = pushData.subs.filter(x => x.endpoint !== s.endpoint);
@@ -5004,6 +5006,122 @@ function enviaPushRadar(info) {
   }
 }
 
+// ===== PUSH DO GRAFICO: Golden/Death no MESMO ponto do grafico de cada aparelho =====
+// Cada aparelho informa a configuracao do seu grafico (liga, mercado, modo,
+// Qtd. Jogos, MM1/MM2). O servidor refaz exatamente a mesma conta do grafico
+// (% de pagamento na janela + medias simples do GDCross) e avisa no jogo em
+// que o cruzamento aparece no desenho.
+const GDCrossModel = (() => { const m = require("./public/gdcross.js"); return (m && typeof m.analisar === "function") ? m : globalThis.GDCross; })();
+function pagouRotulo(mkt, g) {
+  const a = Number(g.a), b = Number(g.b), t = a + b;
+  const casa = a > b, fora = b > a, empate = a === b, ambas = a > 0 && b > 0;
+  switch (mkt) {
+    case "Over 0.5": return t >= 1; case "Over 1.5": return t >= 2;
+    case "Over 2.5": return t >= 3; case "Over 3.5": return t >= 4;
+    case "Under 0.5": return t < 1; case "Under 1.5": return t < 2;
+    case "Under 2.5": return t < 3; case "Under 3.5": return t < 4;
+    case "Total Gols (FT)": return t >= 3;
+    case "Gols Casa (FT)": return a >= 2; case "Gols Fora (FT)": return b >= 2;
+    case "Ambas Marcam (Sim)": return ambas; case "Ambas Marcam (Não)": return !ambas;
+    case "Casa FT": return casa; case "Empate FT": return empate; case "Fora FT": return fora;
+    case "Casa/Fora e Sim": return !empate && ambas;
+    case "Casa e Sim": return casa && ambas; case "Casa e Não": return casa && !ambas;
+    case "Fora e Sim": return fora && ambas; case "Fora e Não": return fora && !ambas;
+    case "Empate e Sim": return empate && ambas; case "Empate e Não": return empate && !ambas;
+    case "5+ Gols": return t >= 5;
+    default: {
+      let m = String(mkt).match(/^(\d) Gols?$/); if (m) return t === +m[1];
+      m = String(mkt).match(/^Casa (\d) Gols?$/); if (m) return a === +m[1];
+      m = String(mkt).match(/^Fora (\d) Gols?$/); if (m) return b === +m[1];
+      if (/HT|2º tempo/.test(String(mkt))) return false; // a Vavada nao informa o intervalo
+      return t >= 3;
+    }
+  }
+}
+function serieDoGrafico(liga, p) {
+  const jogos = (gamesFundidos(liga) || [])
+    .filter(g => g && g.inicio && Number.isFinite(Number(g.a)) && Number.isFinite(Number(g.b)))
+    .map(g => ({ g, t: Date.parse(g.inicio) })).filter(x => Number.isFinite(x.t))
+    .sort((x, y) => x.t - y.t);
+  const vistos = new Set(); const lista = [];
+  for (const x of jogos) { if (vistos.has(x.t)) continue; vistos.add(x.t); lista.push(x); }
+  const serie = [], metas = [];
+  const arred = v => Math.round(v * 10) / 10;
+  if (p.modo === "acum") {
+    // dia do relogio do jogo (Brasilia) do ultimo resultado
+    const dia = t => new Date(t - 3 * 3600000).toISOString().slice(0, 10);
+    const hoje = lista.length ? dia(lista[lista.length - 1].t) : null;
+    let pagos = 0, n = 0;
+    for (const x of lista) {
+      if (dia(x.t) !== hoje) continue;
+      n++; if (pagouRotulo(p.mercado, x.g)) pagos++;
+      serie.push(arred(pagos / n * 100)); metas.push(x);
+    }
+  } else {
+    const J = Math.min(Math.max(2, Number(p.janela) || 20), Math.max(2, Math.floor(lista.length / 2))); const fila = []; let pagos = 0;
+    for (const x of lista) {
+      const pg = pagouRotulo(p.mercado, x.g) ? 1 : 0;
+      fila.push(pg); pagos += pg;
+      if (fila.length > J) pagos -= fila.shift();
+      if (fila.length < J) continue;
+      serie.push(arred(pagos / J * 100)); metas.push(x);
+    }
+  }
+  return { serie, metas };
+}
+const pushGraficoEnviado = {}; // endpoint|liga|mercado -> ultimo jogo avisado
+function avaliaPushGrafico(liga) {
+  if (!webpush || !pushData.vapid || !pushData.subs.length) return;
+  const cache = {};
+  for (const s of pushData.subs) {
+    const p = s.prefs;
+    if (!p || !p.gd || p.liga !== liga || !p.mercado) continue;
+    try {
+      const ck = [p.modo, p.janela, p.mercado, p.mm1, p.mm2].join("|");
+      const r = cache[ck] || (cache[ck] = (() => {
+        const { serie, metas } = serieDoGrafico(liga, p);
+        return { metas, an: GDCrossModel.analisar(serie, p.mm1, p.mm2), n: serie.length };
+      })());
+      if (!r.an.valido || !r.n) continue;
+      const ultimo = r.an.cruzamentos[r.an.cruzamentos.length - 1];
+      if (!ultimo || ultimo.indice !== r.n - 1) continue;      // cruzou no jogo mais recente
+      const meta = r.metas[ultimo.indice];
+      if (!meta || Date.now() - meta.t > 6 * 60000) continue;  // nao avisa resultado antigo
+      const chave = s.endpoint + "|" + liga + "|" + p.mercado;
+      const jogoId = String(meta.g.id || meta.t) + "|" + ultimo.tipo;
+      if (pushGraficoEnviado[chave] === jogoId) continue;
+      pushGraficoEnviado[chave] = jogoId;
+      const golden = ultimo.tipo === "golden";
+      const horario = meta.g.horario || "";
+      const nomeLiga = (NOMES_L[liga] || liga.toUpperCase());
+      const jogoTxt = `${meta.g.casa || "?"} x ${meta.g.fora || "?"} ${meta.g.a}-${meta.g.b}`;
+      const payload = JSON.stringify({
+        t: (golden ? "\ud83c\udfc6 GOLDEN" : "\ud83d\udc80 DEATH") + ` ${horario} \u2014 ${nomeLiga} \u00b7 ${p.mercado}`,
+        b: `Bateu no jogo das ${horario}: ${jogoTxt} \u00b7 MM${r.an.periodoRapido} ${golden ? "cruzou acima da" : "cruzou abaixo da"} MM${r.an.periodoLento}`,
+        // mesma tag do aviso local da pagina: o navegador junta os dois
+        tag: "amd-gdcross-" + ultimo.tipo + "-" + liga + "-" + horario
+      });
+      webpush.sendNotification(s, payload).catch(err => {
+        if (err && [403, 404, 410].includes(err.statusCode)) {
+          pushData.subs = pushData.subs.filter(x => x.endpoint !== s.endpoint); salvaPush();
+        }
+      });
+    } catch (e) {}
+  }
+}
+app.post("/api/push/prefs", (req, res) => {
+  const b = req.body || {};
+  const s = pushData.subs.find(x => x.endpoint === b.endpoint);
+  if (!s) return res.status(404).json({ ok: false, erro: "inscricao nao encontrada" });
+  const mm1 = Math.max(1, Math.round(Number(b.mm1) || 9)), mm2 = Math.max(1, Math.round(Number(b.mm2) || 21));
+  s.prefs = {
+    gd: !!b.gd, liga: String(b.liga || "").toLowerCase(), mercado: String(b.mercado || "Over 2.5"),
+    modo: b.modo === "acum" ? "acum" : "janela", janela: Math.max(2, Math.min(500, Math.round(Number(b.janela) || 20))),
+    mm1, mm2, ts: Date.now()
+  };
+  salvaPush();
+  res.json({ ok: true, prefs: s.prefs });
+});
 function avisaRadar(info) {
   const msg = `data: ${JSON.stringify({ tipo: "radar", alerta: info })}\n\n`; // BUGFIX: info.tipo sobrescrevia o rotulo "radar"
   for (const res of sseClientes) { try { res.write(msg); } catch (e) { sseClientes.delete(res); } }
