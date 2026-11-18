@@ -1,7 +1,7 @@
 import { fetch as curlFetch } from 'wreq-js';
 
 const VIRTUALS_URL = process.env.VAVADA_VIRTUALS_URL || "https://sb2virtuals-altenar2.biahosted.com/api/";
-const INTERVALO = Math.max(10000, Number(process.env.VAVADA_INTERVALO || 60000));
+const INTERVALO = Math.max(4000, Number(process.env.VAVADA_INTERVALO || 8000));
 const DEBUG = process.argv.includes("--debug") || process.env.VAVADA_DEBUG === "1";
 const PAUSA_DETALHE = Math.max(0, Number(process.env.VAVADA_PAUSA_DETALHE || 300));
 
@@ -314,16 +314,8 @@ async function rodada(onLiga) {
       : lista(gamesJson, ["games", "items", "data", "events"]);
     estado.diagnostico = { total: games.length, chaves: gamesJson && typeof gamesJson === "object" ? Object.keys(gamesJson) : [] };
 
-    // Uma única fila evita estourar a concorrência do proxy e mantém as ligas estáveis.
-    const fila = Object.entries(LIGAS);
-    let indice = 0;
-    const trabalhador = async () => {
-      while (indice < fila.length) {
-        const atual = fila[indice++];
-        await coletaLiga(games, atual[0], atual[1], onLiga);
-      }
-    };
-    await trabalhador();
+    // As seis ligas em paralelo: o ciclo dura o tempo da liga mais lenta.
+    await Promise.all(Object.entries(LIGAS).map(([liga, tipo]) => coletaLiga(games, liga, tipo, onLiga)));
     estado.ts = Date.now(); estado.erro = null; estado.ciclos++;
   } catch (e) {
     estado.ts = Date.now(); estado.erro = String(e.message || e);
