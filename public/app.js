@@ -2826,6 +2826,16 @@ async function assinarPushGDCross() {
 }
 
 let prefsPushEnviadas = '';
+let meuEndpointPush = '';
+async function descobrirEndpointPush() {
+  try {
+    if (!('serviceWorker' in navigator)) return '';
+    const reg = await registrarAlertasDeFundo();
+    const s = reg && reg.pushManager ? await reg.pushManager.getSubscription() : null;
+    meuEndpointPush = s ? s.endpoint : '';
+  } catch (e) {}
+  return meuEndpointPush;
+}
 async function enviarPrefsPush() {
   try {
     if (!('serviceWorker' in navigator) || !('PushManager' in window)) return;
@@ -2833,6 +2843,7 @@ async function enviarPrefsPush() {
     const reg = await registrarAlertasDeFundo();
     const inscricao = reg && reg.pushManager ? await reg.pushManager.getSubscription() : null;
     if (!inscricao) return;
+    meuEndpointPush = inscricao.endpoint;
     const ctx = window.GraficoReal && typeof window.GraficoReal.contexto === 'function'
       ? (window.GraficoReal.contexto() || {}) : {};
     const modo = window.GraficoReal && typeof window.GraficoReal.modo === 'function'
@@ -3099,6 +3110,20 @@ function iniciarCanalGDCross() {
     canalEventosGDCross.onmessage = function (ev) {
       let pacote;
       try { pacote = JSON.parse(ev.data || '{}'); } catch (e) { return; }
+      // Golden/Death calculados com o grafico deste aparelho: fala aqui.
+      if (pacote && pacote.tipo === 'gd' && pacote.alerta) {
+        const a = pacote.alerta;
+        if (meuEndpointPush && a.ep && a.ep !== meuEndpointPush) return;
+        if (!meuEndpointPush && a.ep) {
+          // ainda sem saber o endpoint: descobre e fala se for deste aparelho
+          descobrirEndpointPush().then(ep => {
+            if (!ep || ep === a.ep) falarAlertaGDCross(a.tipo, a.liga, a.horario, a.mercado, true);
+          });
+          return;
+        }
+        falarAlertaGDCross(a.tipo, a.liga, a.horario, a.mercado, true);
+        return;
+      }
       const alerta = pacote && pacote.tipo === 'radar' ? pacote.alerta : null;
       // Golden/Death seguem o grafico do usuario (aviso local + push do servidor
       // com a mesma conta). O radar antigo usava outra media e outro horario.

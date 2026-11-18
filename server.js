@@ -5114,6 +5114,11 @@ function avaliaPushGrafico(liga) {
         // mesma tag do aviso local da pagina: o navegador junta os dois
         tag: "amd-gdcross-" + ultimo.tipo + "-" + liga + "-" + horario
       });
+      // Tambem pelo canal em tempo real: a pagina aberta desse aparelho FALA o alerta.
+      try {
+        const msgVoz = `data: ${JSON.stringify({ tipo: "gd", alerta: { tipo: ultimo.tipo, liga, mercado: p.mercado, horario, ep: s.endpoint } })}\n\n`;
+        for (const res of sseClientes) { try { res.write(msgVoz); } catch (e) {} }
+      } catch (e) {}
       webpush.sendNotification(s, payload).catch(err => {
         if (err && [403, 404, 410].includes(err.statusCode)) {
           pushData.subs = pushData.subs.filter(x => x.endpoint !== s.endpoint); salvaPush();
