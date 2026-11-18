@@ -204,7 +204,7 @@
     buscar(liga).then(function (jogos) {
       if (!jogos || jogos.length < 3) return;
       if (modoAcumulado()) {
-        var ac = AMD_MOTOR.acumulado(jogos, mkt, jan);
+        var ac = AMD_MOTOR.acumulado(jogos, mkt, jan, { liga: liga });
         if (!ac || !ac.faixas) return;
         var f = ac.faixas[faixaAtual()] || ac.faixas.dia;
         if (!f) return;

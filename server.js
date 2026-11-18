@@ -865,9 +865,10 @@ function teamNames(nome) {
 function teamPayPct(games, nome, mkt) {
   const names = teamNames(nome);
   if (!names.length) return { g: 0, j: 0, p: null };
+  // Siglas da Vavada/Kiron: compara o time exato, nao trecho do nome.
   const rows = games.filter(g => {
-    const t = (g.nome || "").toLowerCase();
-    return names.some(n => n && t.includes(n));
+    const times = teamNames(g.nome);
+    return names.some(n => n && times.includes(n));
   });
   const g = rows.filter(x => pays(x, mkt)).length;
   return { g, j: rows.length, p: rows.length ? Math.round(g / rows.length * 1000) / 10 : null };
@@ -924,11 +925,14 @@ function comboScore({ graphSubindo, graphTopo, temMinima, minimaLonga, cycleStro
   return { score: Math.round(score), ready, points };
 }
 
-function fullEvalUpcoming(upcoming, games, mkt) {
+// Cadencia real: ENG/ITA/SPA/MND 30 jogos/h, BRA/LAT 20 jogos/h.
+function jogosPorHora(liga) { return /^(eng|ita|spa|mnd)$/.test(String(liga || "")) ? 30 : 20; }
+function fullEvalUpcoming(upcoming, games, mkt, opts = {}) {
+  const jph = opts.jogosHora || 20;
   const baseGeral = pct(games.filter(g => pays(g, mkt)).length, games.length);
-  const cycle = cycleStats(games, mkt);
-  // sinal do grafico da liga (direcao/zona) - vale pra todos os jogos da liga
-  const serie = chartSeries(games, mkt, 20);
+  const cycle = cycleStats(games, mkt, 4 * jph);
+  // sinal do grafico da liga (direcao/zona): janela de 1 hora da liga
+  const serie = chartSeries(games, mkt, jph);
   const sinal = zoneSignal(serie);
   const cur = serie.length ? serie[serie.length - 1] : 0;
   const minSerie = serie.length ? Math.min(...serie) : 0;
@@ -979,11 +983,11 @@ function fullEvalUpcoming(upcoming, games, mkt) {
   });
 }
 
-function oddKey(mkt) { return mkt === "ambas" ? "ambs" : mkt; }
+function oddKey(mkt) { return mkt === "ambas" ? "ambs" : mkt === "ambasN" ? "ambn" : mkt; }
 
-function cycleStats(games, mkt) {
-  // ultimos 80 resultados como GREEN(paga)/RED(nao paga), do mais novo
-  const hist = games.slice(-80).reverse().map(g => pays(g, mkt));
+function cycleStats(games, mkt, janela = 80) {
+  // ultimos ~4h de resultados como GREEN(paga)/RED(nao paga), do mais novo
+  const hist = games.slice(-janela).reverse().map(g => pays(g, mkt));
   if (!hist.length) return null;
   const cur = hist[0] ? "GREEN" : "RED";
   let streak = 0;
@@ -1366,13 +1370,13 @@ function buildStore(liga, games, upcoming, lastUpdated) {
       totft: computeMarket(games, "totft")
     },
     upcoming: {
-      o35: brainEval(games, upcoming, liga, "o35") || fullEvalUpcoming(upcoming, games, "o35"),
-      ge5: brainEval(games, upcoming, liga, "ge5") || fullEvalUpcoming(upcoming, games, "ge5"),
-      o25: brainEval(games, upcoming, liga, "o25") || fullEvalUpcoming(upcoming, games, "o25"),
-      ambas: brainEval(games, upcoming, liga, "ambas") || fullEvalUpcoming(upcoming, games, "ambas"),
-      u25: fullEvalUpcoming(upcoming, games, "u25"),
-      u15: fullEvalUpcoming(upcoming, games, "u15"),
-      u05: fullEvalUpcoming(upcoming, games, "u05"),
+      o35: brainEval(games, upcoming, liga, "o35") || fullEvalUpcoming(upcoming, games, "o35", { jogosHora: jogosPorHora(liga) }),
+      ge5: brainEval(games, upcoming, liga, "ge5") || fullEvalUpcoming(upcoming, games, "ge5", { jogosHora: jogosPorHora(liga) }),
+      o25: brainEval(games, upcoming, liga, "o25") || fullEvalUpcoming(upcoming, games, "o25", { jogosHora: jogosPorHora(liga) }),
+      ambas: brainEval(games, upcoming, liga, "ambas") || fullEvalUpcoming(upcoming, games, "ambas", { jogosHora: jogosPorHora(liga) }),
+      u25: fullEvalUpcoming(upcoming, games, "u25", { jogosHora: jogosPorHora(liga) }),
+      u15: fullEvalUpcoming(upcoming, games, "u15", { jogosHora: jogosPorHora(liga) }),
+      u05: fullEvalUpcoming(upcoming, games, "u05", { jogosHora: jogosPorHora(liga) }),
       // Total Gols (FT): nao e aposta sim/nao, entao mostra so o jogo (sem EV/score)
       totft: upcoming.map(u => ({ nome: u.nome, horario: u.horario, casa: u.casa, fora: u.fora, semEV: true }))
     },
@@ -2588,13 +2592,14 @@ function calculaBacktest(liga, mkt, n) {
       return btCache[key].out;
     }
     const games = d.games;
-    const ini = Math.max(120, games.length - n); // exige 120 jogos de historico minimo
+    const jph = jogosPorHora(liga);
+    const ini = Math.max(6 * jph, games.length - n); // aquecimento de 6h da liga
     const resultados = [];
     for (let i = ini; i < games.length; i++) {
       const g = games[i];
       if (!g.odds || !g.odds[oddKey(mkt)]) continue;
-      const hist = games.slice(0, i).slice(-400); // 400 anteriores: mesmas stats, 3x mais leve
-      const ev = fullEvalUpcoming([{ nome: g.nome, horario: "", casa: g.casa, fora: g.fora, odds: g.odds }], hist, mkt)[0] || {};
+      const hist = games.slice(0, i).slice(-20 * jph); // 20h anteriores da liga
+      const ev = fullEvalUpcoming([{ nome: g.nome, horario: "", casa: g.casa, fora: g.fora, odds: g.odds }], hist, mkt, { jogosHora: jph })[0] || {};
       resultados.push({
         nome: g.nome, horario: g.horario || "", odd: g.odds[oddKey(mkt)],
         score: ev.score ?? null, ev: ev.ev ?? null, motivo: ev.motivo || "",
@@ -2608,7 +2613,16 @@ function calculaBacktest(liga, mkt, n) {
     };
     const evPos = resultados.filter(r => r.ev != null && r.ev > 0);
     const baseGeral = Math.round(resultados.filter(r => r.green).length / (resultados.length || 1) * 100);
-    const indicados = resultados.filter(r => r.score != null && r.score >= 30 && r.ev > 0);
+    // Mesma regra do painel: registra so quando o sinal NASCE e rearma depois
+    // de 6 jogos seguidos sem sinal (antes contava o mesmo sinal em todo jogo).
+    const indicados = [];
+    let armado = true, inativosSeguidos = 6;
+    for (const r of resultados) {
+      if (r.score != null && r.score >= 30 && r.ev > 0) {
+        if (armado) indicados.push(r);
+        armado = false; inativosSeguidos = 0;
+      } else if (++inativosSeguidos >= 6) armado = true;
+    }
     const out = {
       liga, mkt, jogosAvaliados: resultados.length, baseGeral,
       _seqIndicados: indicados.map(r => !!r.green),

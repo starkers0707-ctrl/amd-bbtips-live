@@ -155,7 +155,7 @@
 
   function buscar(liga) {
     if (buscando[liga]) return buscando[liga];
-    buscando[liga] = fetch(API + liga + "&horas=24&compacto=1", { cache: "no-store" })
+    buscando[liga] = fetch(API + liga + "&horas=36&compacto=1", { cache: "no-store" })
       .then(function (r) { return r.json(); })
       .then(function (j) {
         var out = [], lista = (j && j.partidas) || [];
@@ -192,12 +192,15 @@
   function mercadoAtual() {
     return mktEscolhido || "o25";     // independente da grade
   }
+  function jogosHora(liga) {
+    return (typeof AMD_MOTOR !== "undefined" && AMD_MOTOR.jogosPorHora) ? AMD_MOTOR.jogosPorHora(liga) : 20;
+  }
   function minimoHistorico(liga) {
     // O motor usa 120 jogos para aquecimento e libera o calculo com 150.
     // Exigir 12 horas completas aqui bloqueava o backtest mesmo com 292 jogos
     // validos, como acontece depois de reiniciar a coleta. A janela exibida
     // continua limitada a ate 12h pelo proprio motor.
-    return 150;
+    return Math.max(150, 6 * jogosHora(liga) + 30);
   }
   function nomeDoMercado(id) {
     for (var i = 0; i < MERCADOS_BT.length; i++) if (MERCADOS_BT[i].id === id) return MERCADOS_BT[i].nome;
@@ -208,12 +211,14 @@
   // O sinal nasce quando a frequencia dos ultimos 60 jogos supera a base longa
   // com 90% de confianca unilateral (z >= 1,28). Sem odd real nao ha EV/ROI;
   // exibimos a odd justa estatistica, sem inventar cotacao.
-  function backtest5Mais(jogos) {
-    var resultados = [], ativoAnterior = false;
-    for (var i = 120; i < jogos.length; i++) {
-      var hist = jogos.slice(Math.max(0, i - 400), i);
-      var recente = hist.slice(-60);
-      if (recente.length < 60) continue;
+  function backtest5Mais(jogos, jph) {
+    jph = jph || 20;
+    // Janelas em horas da liga: aquecimento 6h, base 20h, recente 3h.
+    var resultados = [], ativoAnterior = false, nRecente = 3 * jph;
+    for (var i = 6 * jph; i < jogos.length; i++) {
+      var hist = jogos.slice(Math.max(0, i - 20 * jph), i);
+      var recente = hist.slice(-nRecente);
+      if (recente.length < nRecente) continue;
       var verdesBase = hist.filter(function (g) { return g.total >= 5; }).length;
       var verdesRecentes = recente.filter(function (g) { return g.total >= 5; }).length;
       var pBase = verdesBase / hist.length;
@@ -346,11 +351,11 @@
     buscar(liga).then(function (jogos) {
       if (!jogos || jogos.length < minimoHistorico(liga)) {
         avisa("histórico insuficiente: " + (jogos ? jogos.length : 0) +
-          " de 150 jogos necessários para iniciar o backtest");
+          " de " + minimoHistorico(liga) + " jogos necessários para iniciar o backtest");
         return;
       }
       var bt;
-      try { bt = mkt === "ge5" ? backtest5Mais(jogos) : AMD_MOTOR.backtest(jogos, mkt, 240); } catch (e) { return; }
+      try { bt = mkt === "ge5" ? backtest5Mais(jogos, jogosHora(liga)) : AMD_MOTOR.backtest(jogos, mkt, 12 * jogosHora(liga), { liga: liga }); } catch (e) { return; }
       if (!bt || bt.erro) { avisa("sem base suficiente para o backtest deste mercado agora"); return; }
       poeTitulo("Backtest · " + liga.charAt(0).toUpperCase() + liga.slice(1) + " — " + nomeDoMercado(mkt) +
         (mkt === "ge5" ? " · probabilidade sem EV" : " · sinais novos"));

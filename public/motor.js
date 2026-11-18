@@ -26,6 +26,14 @@ function oddKey(mkt) {
   return mkt;
 }
 const pct = (n, d) => (d ? Math.round((n / d) * 1000) / 10 : 0);
+// Cadencia real de cada liga da Vavada: ENG/ITA/SPA/MND = 1 jogo a cada 2 min
+// (30/h); BRA/LAT = 1 a cada 3 min (20/h). Os parametros do motor foram
+// calibrados em HORAS na Bet365 (20 jogos/h); aqui convertemos horas em jogos.
+function jogosPorHora(liga) {
+  const l = String(liga || "").toLowerCase();
+  if (/^(eng|ita|spa|mnd)$/.test(l)) return 30;
+  return 20;
+}
 function teamNames(nome) {
   if (!nome) return [];
   return nome.toLowerCase().split(/\s+x\s+/).map(s => s.trim()).filter(Boolean);
@@ -247,9 +255,10 @@ function serieDoDia(gAll, mkt, JAN) {
 function teamPayPct(games, nome, mkt) {
   const names = teamNames(nome);
   if (!names.length) return { g: 0, j: 0, p: null };
+  // Vavada/Kiron usa siglas (MNC, MNU, RMA...): compara o time exato, nao trecho do nome.
   const rows = games.filter(g => {
-    const t = (g.nome || "").toLowerCase();
-    return names.some(n => n && t.includes(n));
+    const times = teamNames(g.nome);
+    return names.some(n => n && times.includes(n));
   });
   const g = rows.filter(x => pays(x, mkt)).length;
   return { g, j: rows.length, p: rows.length ? Math.round(g / rows.length * 1000) / 10 : null };
@@ -297,9 +306,9 @@ function scoreDistribution(games, odd, mkt) {
   return { j: band.length, top, marketP: Math.round(green / band.length * 1000) / 10 };
 }
 
-function cycleStats(games, mkt) {
-  // ultimos 80 resultados como GREEN(paga)/RED(nao paga), do mais novo
-  const hist = games.slice(-80).reverse().map(g => pays(g, mkt));
+function cycleStats(games, mkt, janela = 80) {
+  // ultimos ~4h de resultados como GREEN(paga)/RED(nao paga), do mais novo
+  const hist = games.slice(-janela).reverse().map(g => pays(g, mkt));
   if (!hist.length) return null;
   const cur = hist[0] ? "GREEN" : "RED";
   let streak = 0;
@@ -338,11 +347,12 @@ function comboScore({ graphSubindo, graphTopo, temMinima, minimaLonga, cycleStro
   return { score: Math.round(score), ready, points };
 }
 
-function fullEvalUpcoming(upcoming, games, mkt) {
+function fullEvalUpcoming(upcoming, games, mkt, opts = {}) {
+  const jph = opts.jogosHora || 20;
   const baseGeral = pct(games.filter(g => pays(g, mkt)).length, games.length);
-  const cycle = cycleStats(games, mkt);
-  // sinal do grafico da liga (direcao/zona) - vale pra todos os jogos da liga
-  const serie = chartSeries(games, mkt, 20);
+  const cycle = cycleStats(games, mkt, 4 * jph);
+  // sinal do grafico da liga (direcao/zona): janela de 1 hora da liga
+  const serie = chartSeries(games, mkt, jph);
   const sinal = zoneSignal(serie);
   const cur = serie.length ? serie[serie.length - 1] : 0;
   const minSerie = serie.length ? Math.min(...serie) : 0;
@@ -484,21 +494,21 @@ function radar(games, mkt, opts = {}) {
 // ---------------------------------------------------------------------------
 // (motor interno do backtest — original, adaptado para receber `store`)
 // ---------------------------------------------------------------------------
-function _calculaBacktest(liga, mkt, n, store) {
+function _calculaBacktest(liga, mkt, n, store, jph = 20) {
     const key = liga + "|" + mkt + "|" + n;
     const d = store[liga];
-    if (!d || !d.games || d.games.length < 150) return { erro: "historico insuficiente" };
+    if (!d || !d.games || d.games.length < Math.max(150, 6 * jph + 30)) return { erro: "historico insuficiente" };
     if (false && btCache[key] && Date.now() - btCache[key].ts < 60000 && btCache[key].lu === d.lastUpdated) {
       return btCache[key].out;
     }
     const games = d.games;
-    const ini = Math.max(120, games.length - n); // exige 120 jogos de historico minimo
+    const ini = Math.max(6 * jph, games.length - n); // aquecimento de 6h da liga
     const resultados = [];
     for (let i = ini; i < games.length; i++) {
       const g = games[i];
       if (!g.odds || !g.odds[oddKey(mkt)]) continue;
-      const hist = games.slice(0, i).slice(-400); // 400 anteriores: mesmas stats, 3x mais leve
-      const ev = fullEvalUpcoming([{ nome: g.nome, horario: "", casa: g.casa, fora: g.fora, odds: g.odds }], hist, mkt)[0] || {};
+      const hist = games.slice(0, i).slice(-20 * jph); // 20h anteriores da liga
+      const ev = fullEvalUpcoming([{ nome: g.nome, horario: "", casa: g.casa, fora: g.fora, odds: g.odds }], hist, mkt, { jogosHora: jph })[0] || {};
       resultados.push({
         nome: g.nome, horario: g.horario || "", odd: g.odds[oddKey(mkt)],
         score: ev.score ?? null, ev: ev.ev ?? null, ready: ev.ready === true,
@@ -573,9 +583,10 @@ const btCache = {};
 // LIMITE HONESTO: o filtro (score/EV) foi calibrado olhando estes mesmos dados,
 // então o backtest é DESCRITIVO, não preditivo.
 // ---------------------------------------------------------------------------
-function backtest(games, mkt, n = 100) {
+function backtest(games, mkt, n = 100, opts = {}) {
   const store = { _: { games: games || [] } };   // adaptador: a função original lê de store[liga]
-  return _calculaBacktest("_", mkt, n, store);
+  const jph = opts.jogosHora || (opts.liga ? jogosPorHora(opts.liga) : 20);
+  return _calculaBacktest("_", mkt, n, store, jph);
 }
 
 
@@ -607,7 +618,7 @@ function chartJanela(games, mkt, qtd = 20) {
 //   a.faixas.dia.serie / .horas / .macd   |  a.faixas.h3, h6, h12, h18, h24
 //   a.jogos / a.desde / a.base
 // ---------------------------------------------------------------------------
-function acumulado(games, mkt, qtd) {
+function acumulado(games, mkt, qtd, opts = {}) {
   games = (games || []).filter(Boolean);
   if (games.length < 2) return null;
   // corte na virada do dia pelo RELOGIO DO JOGO (queda de hora), nao pelo nosso horario
@@ -633,7 +644,7 @@ function acumulado(games, mkt, qtd) {
     }
     return { serie, horas: hrs, macd: serie.length > 3 ? (macdData(serie).hist || []) : [] };
   };
-  const JOGOS_HORA = 20; // 1 jogo a cada 3 min
+  const JOGOS_HORA = opts.jogosHora || (opts.liga ? jogosPorHora(opts.liga) : 20);
   const faixasAcum = {};
   for (const h of [3, 6, 12, 18, 24]) {
     const n = h * JOGOS_HORA;
@@ -657,6 +668,7 @@ var AMD_MOTOR = {
   chartJanela: chartJanela,
   acumulado: acumulado,
   // peças soltas, se você quiser montar outra coisa
+  jogosPorHora: jogosPorHora,
   pays: pays, oddKey: oddKey, chartSeries: chartSeries, serieDoDia: serieDoDia,
   ema: ema, macdData: macdData, zoneSignal: zoneSignal, trendLines: trendLines,
   teamPayPct: teamPayPct, oddPayPct: oddPayPct, scoreDistribution: scoreDistribution,
