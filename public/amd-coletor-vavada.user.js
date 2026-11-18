@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMD Coletor Vavada
 // @namespace    amd.live
-// @version      1.1.1
+// @version      1.1.2
 // @description  Coleta as seis ligas Kiron diretamente da API Vavada e envia ao AMD Live.
 // @match        https://vavada.com/*
 // @grant        GM_xmlhttpRequest
@@ -14,6 +14,12 @@
 
 (function () {
   'use strict';
+
+  // Desativado preventivamente: oddStatus do placar exato nao foi confirmado
+  // como placar final e gerou resultados incorretos. Nao enviar nenhum dado.
+  for (const liga of ['bra','eng','ita','lat','spa','mnd']) GM_setValue(`amd_cache_${liga}`, {});
+  console.error('[AMD Vavada] coleta pausada: resultados aguardando validacao');
+  return;
 
   const API = 'https://sb2virtuals-altenar2.biahosted.com/api/';
   const DESTINO = 'https://amd-bbtips-live.onrender.com/api/tampermonkey';
