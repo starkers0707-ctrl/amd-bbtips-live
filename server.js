@@ -1817,7 +1817,8 @@ function recebeDadosTampermonkey(req, res) {
   try {
     const tokenEsperado = String(process.env.TAMPERMONKEY_TOKEN || "").trim();
     const tokenRecebido = String(req.get("authorization") || "").replace(/^Bearer\s+/i, "").trim();
-    if (tokenEsperado && tokenRecebido !== tokenEsperado) {
+    // Sem token configurado, envios externos ficam fechados: a coleta e feita pelo proprio servidor.
+    if (!tokenEsperado || tokenRecebido !== tokenEsperado) {
       return res.status(401).json({ ok: false, erro: "token-tampermonkey-invalido" });
     }
     const { mkt, placares, upcoming, curva, mm1, mm2, topo, fundo, debug } = req.body || {};
