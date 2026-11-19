@@ -2420,7 +2420,7 @@ import("./tipsclan-inspired.mjs").then(m => {
   tipsclan = m;
   m.iniciar(async (liga, novos, futuros) => {
     const mapa = oddsGiro[liga] || {};
-    for (const f of futuros || []) if (mapa[f.inicio]) f.odds = mapa[f.inicio];
+    for (const f of futuros || []) if (!(f.odds && f.odds.o25) && mapa[f.inicio]) f.odds = mapa[f.inicio];
     await aplicaInspired(liga, novos, futuros);
   });
 }).catch(e => console.log("[tipsclan] modulo nao carregado:", e.message));

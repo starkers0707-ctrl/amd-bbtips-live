@@ -53,9 +53,46 @@ async function historico(liga, range) {
     if (!r.ok) throw new Error("HTTP " + r.status + " " + (await r.text().catch(() => "")).slice(0, 100));
     const j = await r.json();
     const prov = j && j.data && j.data.snapshot && j.data.snapshot.providers && j.data.snapshot.providers.futvirtual;
-    return prov ? Object.values(prov) : [];
+    const layouts = (j && j.layouts) || [];
+    return prov ? Object.values(prov).map(e => ({ ...e, oddsMap: decodificaOdds(e, layouts) })) : [];
   }
   throw new Error("sessao recusada");
+}
+
+// transport odds-columns-v1: layouts[e.oddsLayout][i] e o nome da odd e.odds[i]
+// (string, ou [prefixo, indice em e.oddsIds]).
+function decodificaOdds(e, layouts) {
+  const m = layouts[e.oddsLayout];
+  if (!Array.isArray(m) || !Array.isArray(e.odds) || m.length !== e.odds.length) return {};
+  const o = {};
+  for (let i = 0; i < m.length; i++) {
+    const k = typeof m[i] === "string" ? m[i] : null;
+    if (k) o[k] = Number(e.odds[i]);
+  }
+  return o;
+}
+
+// Mesmo formato de odds do coletor da Vavada (o motor do AMD usa estas chaves).
+function oddsAMD(x) {
+  const v = k => (x[k] > 1 ? x[k] : null);
+  const o = {
+    o15: v("over_1_5"), u15: v("under_1_5"), o25: v("over_2_5"), u25: v("under_2_5"),
+    o35: v("over_3_5"), u35: v("under_3_5"), ambs: v("btts_yes"), ambn: v("btts_no"), ge5: null
+  };
+  const pj = {};
+  const par = (a, b) => { if (o[a] > 1 && o[b] > 1) { const ia = 1 / o[a], ib = 1 / o[b]; pj[a] = +(ia / (ia + ib)).toFixed(4); pj[b] = +(ib / (ia + ib)).toFixed(4); } };
+  par("o15", "u15"); par("o25", "u25"); par("o35", "u35"); par("ambs", "ambn");
+  // 5+ gols a partir do placar exato
+  let soma = 0, cinco = 0;
+  for (const [k, val] of Object.entries(x)) {
+    const mm = k.match(/^cs_(\d+)_(\d+)$/);
+    if (!mm || !(val > 1)) continue;
+    soma += 1 / val;
+    if (Number(mm[1]) + Number(mm[2]) >= 5) cinco += 1 / val;
+  }
+  if (soma > 0 && cinco > 0) { o.ge5 = +(1 / cinco).toFixed(2); pj.ge5 = +(cinco / soma).toFixed(4); }
+  o.pj = pj;
+  return o;
 }
 
 function converte(liga, eventos) {
@@ -70,11 +107,11 @@ function converte(liga, eventos) {
     const base = { id: `insp:${liga}:${inicio}`, nome: `${casa} x ${fora}`, casa, fora, horario, hora: horario, inicio, fonte: "tipsclan" };
     if (e.status === "finished" && e.score && e.score.home != null && e.score.away != null) {
       const a = Number(e.score.home), b = Number(e.score.away);
-      const jogo = { ...base, a, b, total: a + b, placar: `${a}-${b}`, odds: {} };
+      const jogo = { ...base, a, b, total: a + b, placar: `${a}-${b}`, odds: oddsAMD(e.oddsMap || {}) };
       if (e.htScore && e.htScore.home != null) { jogo.htA = Number(e.htScore.home); jogo.htB = Number(e.htScore.away); }
       finais.push(jogo);
     } else if (e.status === "upcoming" && Number(e.startTime) > agora - 60000) {
-      futuros.push({ ...base, odds: {} });
+      futuros.push({ ...base, odds: oddsAMD(e.oddsMap || {}) });
     }
   }
   finais.sort((x, y) => Date.parse(x.inicio) - Date.parse(y.inicio));
