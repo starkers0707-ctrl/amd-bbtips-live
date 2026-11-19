@@ -388,7 +388,7 @@ async function detalhePorId(id) {
   return null;
 }
 
-export async function recuperarHistorico(onLiga, horas = 24) {
+export async function recuperarHistorico(onLiga, horas = 24, jaTem = null) {
   if (backfillEstado.rodando) return;
   backfillEstado.rodando = true;
   const PAUSA = Math.max(0, Number(process.env.VAVADA_BACKFILL_PAUSA || 200));
@@ -418,7 +418,7 @@ export async function recuperarHistorico(onLiga, horas = 24) {
       while (cache.size > 4000) cache.delete(cache.keys().next().value);
       return cache.get(id) || busca(id);
     };
-    const maisVelho = {}, pend = {}, lido = new Set();
+    const maisVelho = {}, pend = {}, lido = new Set(), repetidos = {};
     for (const l of ligas) { maisVelho[l] = Infinity; pend[l] = []; backfillEstado.porLiga[l] = { jogos: 0, ate: null }; }
     const despeja = async l => {
       if (!pend[l].length) return;
@@ -451,8 +451,15 @@ export async function recuperarHistorico(onLiga, horas = 24) {
         let a = id, b = id;
         while (ligaDoChamp[(await le(a - 1)).champ] === ligaDoChamp[v.champ]) a--;
         while (ligaDoChamp[(await le(b + 1)).champ] === ligaDoChamp[v.champ]) b++;
-        for (let k = a; k <= b; k++) pega(k, await le(k));
         const liga = ligaDoChamp[v.champ];
+        let conhecidos = 0;
+        for (let k = a; k <= b; k++) {
+          if (jaTem && jaTem(liga, k)) { conhecidos++; lido.add(k); continue; }
+          pega(k, await le(k));
+        }
+        // a memoria ja tinha esses jogos: depois de 3 grupos conhecidos seguidos, a liga esta completa
+        repetidos[liga] = conhecidos === b - a + 1 ? (repetidos[liga] || 0) + 1 : 0;
+        if (repetidos[liga] >= 3) maisVelho[liga] = -Infinity;
         if (pend[liga].length >= 20) await despeja(liga);
         id = a - 2;
       } else id -= 2;

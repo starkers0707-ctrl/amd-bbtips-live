@@ -1828,11 +1828,11 @@ async function kvConecta() {
     await kvCarrega();
   } catch (e) { console.warn("[memoria] falha ao conectar:", e.message); }
 }
-async function kvCarrega() {
+async function kvCarrega(ler = k => kv.get(k), origem = "redis") {
   let total = 0;
   for (const liga of LIGAS_PERMITIDAS) {
     try {
-      const bruto = await kv.get("amd:jogos:" + liga);
+      const bruto = await ler("amd:jogos:" + liga);
       if (!bruto) continue;
       let salvos = JSON.parse(bruto);
       if (!Array.isArray(salvos) || !salvos.length) continue;
@@ -1844,7 +1844,8 @@ async function kvCarrega() {
       const chave = g => String(g.id || `${g.horario || ""}|${g.casa || ""}|${g.fora || ""}`);
       const mapa = new Map(salvos.map(g => [chave(g), g]));
       for (const g of (Array.isArray(atual.gamesAll) ? atual.gamesAll : [])) if (!fonteDiretaAtiva(liga) || g.inicio) mapa.set(chave(g), g);
-      const gamesAll = [...mapa.values()].slice(-2000);
+      const tIni = g => { const t = Date.parse(g.inicio || ""); return Number.isFinite(t) ? t : 0; };
+      const gamesAll = [...mapa.values()].sort((x, y) => tIni(x) - tIni(y)).slice(-2000);
       const st = buildStore(liga, gamesAll, atual.upcomingRaw || [], new Date().toISOString());
       st.gamesAll = gamesAll;
       st.fonte = atual.fonte || "memoria";
@@ -1856,7 +1857,7 @@ async function kvCarrega() {
     } catch (e) { console.warn("[memoria] liga", liga, e.message); }
   }
   try {
-    const pz = await kv.get("amd:push");
+    const pz = await ler("amd:push");
     if (pz) {
       const d = JSON.parse(pz);
       if (d && d.vapid && d.vapid.publicKey) {
@@ -1868,12 +1869,12 @@ async function kvCarrega() {
     }
   } catch (e) {}
   try {
-    const c = await kv.get("amd:codigos");
+    const c = await ler("amd:codigos");
     if (c) { const salvos = JSON.parse(c); for (const [k, v] of Object.entries(salvos)) if (!codigos[k]) codigos[k] = v; }
-    const r = await kv.get("amd:revogados");
+    const r = await ler("amd:revogados");
     if (r) for (const k of JSON.parse(r)) revogados.add(k);
   } catch (e) {}
-  console.log(`[memoria] carregada: ${total} jogos, ${Object.keys(codigos).length} codigos`);
+  console.log(`[memoria] carregada (${origem}): ${total} jogos, ${Object.keys(codigos).length} codigos`);
 }
 async function kvSalva() {
   if (!kv || !kvOk) return;
@@ -1887,9 +1888,41 @@ async function kvSalva() {
     if (pushData && pushData.vapid) await kv.set("amd:push", JSON.stringify(pushData));
   } catch (e) { console.warn("[memoria] falha ao salvar:", e.message); }
 }
-kvConecta();
+// Copia em arquivo local: sobrevive quando o Render reinicia o processo no
+// mesmo container (queda por health check), mesmo sem o Redis.
+const ARQ_MEMORIA = process.env.DADOS_ARQUIVO || join(__dirname, ".memoria-amd.json");
+function arquivoMonta() {
+  const d = {};
+  for (const liga of LIGAS_PERMITIDAS) {
+    const ga = (store[liga] || {}).gamesAll;
+    if (Array.isArray(ga) && ga.length) d["amd:jogos:" + liga] = JSON.stringify(ga.slice(-2000));
+  }
+  d["amd:codigos"] = JSON.stringify(codigos);
+  d["amd:revogados"] = JSON.stringify([...revogados]);
+  if (pushData && pushData.vapid) d["amd:push"] = JSON.stringify(pushData);
+  d.salvoEm = Date.now();
+  return d;
+}
+function arquivoSalva(sync) {
+  try {
+    const fs = require("fs"), tmp = ARQ_MEMORIA + ".tmp", txt = JSON.stringify(arquivoMonta());
+    if (sync) { fs.writeFileSync(tmp, txt); fs.renameSync(tmp, ARQ_MEMORIA); return; }
+    fs.promises.writeFile(tmp, txt).then(() => fs.promises.rename(tmp, ARQ_MEMORIA)).catch(() => {});
+  } catch (e) {}
+}
+async function arquivoCarrega() {
+  try {
+    const fs = require("fs");
+    if (!fs.existsSync(ARQ_MEMORIA)) return;
+    const d = JSON.parse(fs.readFileSync(ARQ_MEMORIA, "utf8"));
+    if (!d || Date.now() - Number(d.salvoEm || 0) > 48 * 3600000) return;
+    await kvCarrega(async k => d[k] || null, "arquivo");
+  } catch (e) { console.warn("[memoria] arquivo local ilegivel:", e.message); }
+}
+arquivoCarrega().finally(() => kvConecta());
 setInterval(kvSalva, 60000);
-for (const sinal of ["SIGTERM", "SIGINT"]) process.once(sinal, async () => { try { await kvSalva(); } catch (e) {} process.exit(0); });
+setInterval(() => arquivoSalva(false), 60000);
+for (const sinal of ["SIGTERM", "SIGINT"]) process.once(sinal, async () => { arquivoSalva(true); try { await kvSalva(); } catch (e) {} process.exit(0); });
 setInterval(salvaJogos, 3 * 60000); // salva a cada 3min (se mudou)
 
 app.post("/api/snapshot", (req, res) => {
@@ -2361,7 +2394,7 @@ function iniciaVavadaKiron() {
   };
   vavadaKiron.iniciar(aoReceber);
   if (process.env.VAVADA_HISTORICO !== "0" && typeof vavadaKiron.recuperarHistorico === "function")
-    setTimeout(() => vavadaKiron.recuperarHistorico(aoReceber, Number(process.env.VAVADA_HISTORICO_HORAS || 24)), 20000);
+    setTimeout(() => vavadaKiron.recuperarHistorico(aoReceber, Number(process.env.VAVADA_HISTORICO_HORAS || 24), (liga, id) => ((store[liga] || {}).gamesAll || []).some(g => g && g.id === `vavada:${liga}:${id}`)), 20000);
 }
 const esperaVavada = setInterval(() => {
   if (!vavadaKiron) return;
@@ -2407,7 +2440,7 @@ async function aplicaInspired(liga, novos, futuros) {
 // jogos e reserva quando a TipsClan cair ou nao estiver configurada.
 let tipsclan = null;
 const oddsGiro = {};
-import("./tipsclan-inspired.mjs").then(m => {
+(process.env.INSPIRED_ENABLED === "1" ? import("./tipsclan-inspired.mjs") : Promise.reject(new Error("desligado (INSPIRED_ENABLED)"))).then(m => {
   tipsclan = m;
   m.iniciar(async (liga, novos, futuros) => {
     const mapa = oddsGiro[liga] || {};
@@ -2415,7 +2448,7 @@ import("./tipsclan-inspired.mjs").then(m => {
     await aplicaInspired(liga, novos, futuros);
   });
 }).catch(e => console.log("[tipsclan] modulo nao carregado:", e.message));
-import("./girocerto-inspired.mjs").then(m => {
+(process.env.INSPIRED_ENABLED === "1" ? import("./girocerto-inspired.mjs") : Promise.reject(new Error("desligado (INSPIRED_ENABLED)"))).then(m => {
   girocerto = m;
   console.log("[girocerto] coletor Inspired carregado");
   m.iniciar(async (liga, novos, futuros) => {
@@ -2427,7 +2460,7 @@ import("./girocerto-inspired.mjs").then(m => {
     await aplicaInspired(liga, novos, futuros);
   });
 }).catch(e => console.log("[girocerto] modulo nao carregado:", e.message));
-import("./inspired-bbtips.mjs").then(m => {
+(process.env.INSPIRED_ENABLED === "1" ? import("./inspired-bbtips.mjs") : Promise.reject(new Error("desligado (INSPIRED_ENABLED)"))).then(m => {
   inspiredBB = m;
   m.iniciar(BB_TOKEN, aplicaInspired);
 }).catch(e => console.log("[inspired] modulo nao carregado:", e.message));
