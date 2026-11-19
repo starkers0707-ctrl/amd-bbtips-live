@@ -194,7 +194,7 @@ function codigoAtivo(c) {
     return salvo;
   }
   const d = codigos[cod];
-  return d && Date.now() <= Number(d.expira || 0) ? d : null;
+  return d && !d.bloqueado && Date.now() <= Number(d.expira || 0) ? d : null;
 }
 function sessaoValida(req) {
   if (!SESSION_SECRET) return null;
@@ -208,6 +208,12 @@ function sessaoValida(req) {
   const ativo = codigoAtivo(s.codigo);
   if (!ativo) return null;
   if (ativo.nome && !s.nome) s.nome = ativo.nome;
+  if (!ativo.mestre) { // tempo de uso: soma os intervalos entre requisicoes (site aberto)
+    const ag = Date.now();
+    if (ativo.visto && ag - ativo.visto < 180000) ativo.tempoUso = (ativo.tempoUso || 0) + (ag - ativo.visto);
+    if (!ativo.primeiroUso) ativo.primeiroUso = ag;
+    ativo.visto = ag; ativo.ultimoUso = ag;
+  }
   s.ultimoUso = Date.now(); return s;
 }
 function criaSessao(res, codigo, dados) {
@@ -328,10 +334,22 @@ app.post("/api/admin/criar", async (req, res) => {
   res.json({ ok: true, codigo: cod, expira: codigos[cod].expira });
 });
 app.post("/api/admin/consultar", (req, res) => {
+  if (!isAdmin(req)) return res.status(401).json({ erro: "admin" });
   const cod = String((req.body || {}).codigo || "").toUpperCase().trim();
   const a = leCodigoAssinado(cod), d = codigos[cod];
   const expira = a ? a.expira : (d ? d.expira : null);
-  res.json({ ok: true, valido: !!codigoAtivo(cod), assinado: !!a, revogado: revogados.has(cod), expira, nome: d ? d.nome : null });
+  res.json({ ok: true, valido: !!codigoAtivo(cod), assinado: !!a, revogado: revogados.has(cod), expira, nome: d ? d.nome : null, tempoUso: d ? d.tempoUso || 0 : 0, ultimoUso: d ? d.ultimoUso || null : null });
+});
+app.post("/api/admin/bloquear", async (req, res) => {
+  if (!isAdmin(req)) return res.status(401).json({ erro: "admin" });
+  const cod = String((req.body || {}).codigo || "").toUpperCase().trim();
+  const bloquear = !!(req.body || {}).bloquear;
+  if (!codigos[cod] && !leCodigoAssinado(cod)) return res.status(404).json({ erro: "codigo" });
+  const d = codigos[cod] || (codigos[cod] = { nome: "", criado: null, expira: (leCodigoAssinado(cod) || {}).expira, usos: 0 });
+  d.bloqueado = bloquear;
+  if (bloquear) revogados.add(cod); else revogados.delete(cod);
+  await salvaCodigos(); kvSalva();
+  res.json({ ok: true, bloqueado: bloquear });
 });
 app.post("/api/admin/revogar", async (req, res) => {
   if (!isAdmin(req)) return res.status(401).json({ erro: "admin" });
@@ -343,39 +361,8 @@ app.post("/api/admin/revogar", async (req, res) => {
 });
 // pagina /admin (painel do dono)
 app.get("/admin", (req, res) => {
-  res.type("html").send(`<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin — AMD Live</title>
-<style>body{background:#0d1117;color:#e8edf4;font-family:system-ui;margin:0;padding:20px;max-width:760px;margin:auto}h2{color:#3fb950}input,select,button{padding:9px 12px;border-radius:8px;border:1px solid #2d3646;background:#1c2333;color:#e8edf4;font-size:14px}button{cursor:pointer}table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}td,th{padding:8px;border-bottom:1px solid #2d3646;text-align:left}.ok{color:#3fb950}.exp{color:#f85149}.note{color:#8b98a8;font-size:12px}</style></head><body>
-<h2>🔑 Admin — AMD Live</h2>
-<div id="login"><p>Senha do admin: <input id="k" type="password"> <button onclick="entrar()">Entrar</button></p><p class="note" id="dica"></p></div>
-<div id="painel" style="display:none">
-  <p>Nome: <input id="nome" placeholder="ex: João teste"> Duração:
-    <select id="dias"><option value="1">1 dia (teste)</option><option value="30">30 dias</option><option value="7">7 dias</option><option value="0.125">3 horas</option></select>
-    <button onclick="criar()">➕ Criar código</button> <button onclick="teste()">🔔 Testar alerta</button></p>
-  <p id="novo" style="font-weight:700;color:#3fb950"></p>
-  <p>Consultar código: <input id="cons" placeholder="AMD-..." style="width:300px"> <button onclick="consultar()">🔎 Ver tempo de acesso</button></p>
-  <p id="consRes" style="font-weight:700"></p>
-  <table><thead><tr><th>Código</th><th>Nome</th><th>Expira</th><th>Restante</th><th>Usos</th><th></th></tr></thead><tbody id="lista"></tbody></table>
-  <p class="note" id="aviso"></p>
-</div>
-<script>
-let K='';
-async function api(p,m,b){const r=await fetch(p,{method:m||'GET',headers:{'Content-Type':'application/json','X-Admin':K},body:b?JSON.stringify(b):undefined});if(r.status===401)throw new Error('senha errada');return r.json();}
-async function entrar(){K=document.getElementById('k').value;try{await lista();document.getElementById('login').style.display='none';document.getElementById('painel').style.display='block';}catch(e){document.getElementById('dica').textContent='Senha incorreta (ou ADMIN_KEY não definida no Render).';}}
-async function lista(){const j=await api('/api/admin/codigos');const tb=document.getElementById('lista');tb.innerHTML='';
- const agora=Date.now();
- Object.entries(j.codigos).sort((a,b)=>b[1].criado-a[1].criado).forEach(([c,d])=>{
-  const exp=new Date(d.expira);const ativo=agora<d.expira;
-  tb.innerHTML+=\`<tr><td><b>\${c}</b></td><td>\${d.nome||'—'}</td><td class="\${ativo?'ok':'exp'}">\${exp.toLocaleString('pt-BR')} \${ativo?'✅':'⛔ expirado'}</td><td>\${restante(d.expira)}</td><td>\${d.usos||0}\${d.ultimoUso?' <span class=note>('+new Date(d.ultimoUso).toLocaleTimeString('pt-BR')+')</span>':''}</td><td><button onclick="revogar('\${c}')">🗑️</button></td></tr>\`;});
- document.getElementById('aviso').textContent=j.autoassinado?'✔ Códigos autoassinados: continuam valendo após reinício e deploy. A lista abaixo mostra os criados/usados desde o último reinício; use "Consultar código" para ver qualquer um.':j.persistencia?'✔ códigos salvos com persistência (sobrevivem a reinício)':(j.tokenPresente?('⚠️ GH_TOKEN presente mas o salvamento FALHOU: '+(j.erroSave||'crie um código para testar')):'⚠️ SEM persistência — falta GH_TOKEN no Render; códigos somem a cada reinício');}
-function restante(e){const ms=Number(e)-Date.now();if(!(ms>0))return '⛔ 0';const d=Math.floor(ms/86400000),h=Math.floor(ms%86400000/3600000),m=Math.floor(ms%3600000/60000);return (d?d+'d ':'')+(d||h?h+'h ':'')+m+'min';}
-async function consultar(){const c=document.getElementById('cons').value.trim();const j=await api('/api/admin/consultar','POST',{codigo:c});const el=document.getElementById('consRes');
- if(!j.expira){el.style.color='#f85149';el.textContent='Código desconhecido ou inválido.';return;}
- el.style.color=j.valido?'#3fb950':'#f85149';el.textContent=(j.valido?'✅ Ativo':(j.revogado?'⛔ Revogado':'⛔ Expirado'))+' — expira '+new Date(j.expira).toLocaleString('pt-BR')+' · restante: '+restante(j.expira)+(j.nome?' · '+j.nome:'');}
-async function criar(){const j=await api('/api/admin/criar','POST',{nome:document.getElementById('nome').value,dias:document.getElementById('dias').value});
- document.getElementById('novo').textContent='Código criado: '+j.codigo+' — envie ao usuário';await lista();}
-async function teste(){await api('/api/admin/testar-alerta','POST',{});alert('Alerta de teste enviado! Olhe a notificação no canto (com o site aberto em outra aba).');}
-async function revogar(c){if(!confirm('Revogar '+c+'?'))return;await api('/api/admin/revogar','POST',{codigo:c});await lista();}
-</script></body></html>`);
+  res.setHeader("Cache-Control", "no-store");
+  res.type("html").send(require("fs").readFileSync(join(__dirname, "admin-page.html"), "utf8"));
 });
 
 app.get("/login", (req, res) => {
