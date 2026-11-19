@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMD Inspired (CAM / COP / AME)
 // @namespace    amd.live
-// @version      1.0.0
+// @version      1.1.0
 // @description  Com o thtips.com.br aberto e logado, envia as grades PlayPix CAM/COP/AME para o AMD
 // @author       AMD
 // @updateURL    https://amd-virtual-live.onrender.com/amd-inspired.user.js
@@ -28,7 +28,7 @@
     CHAVE = String(prompt('AMD Inspired: cole a chave TAMPERMONKEY_TOKEN do Render') || '').trim();
     if (CHAVE) GM_setValue('chave', CHAVE);
   }
-  const INTERVALO = 15000;
+  const INTERVALO = 4000; // so consulta ultimaAtualizacao (resposta pequena); a grade so vem quando muda
   const LIGAS = { cam: 6, cop: 7, ame: 8 };
   const API = 'https://api.thtips.com.br/api/PlayPixFutebolVirtual';
 
@@ -87,13 +87,13 @@
     rodando = true;
     try {
       const grades = {};
-      for (const [liga, id] of Object.entries(LIGAS)) {
+      await Promise.all(Object.entries(LIGAS).map(async ([liga, id]) => {
         const ua = String(await bb(`${API}/ultimaAtualizacao?liga=${id}`));
-        if (ua === marca[liga]) continue;
+        if (ua === marca[liga]) return;
         const horas = enviouCheia[liga] ? 'Horas12' : 'Horas24';
         grades[liga] = await bb(`${API}?Liga=${id}&Horas=${horas}&filtros=&confrontos=false&hrsConfrontos=240`);
         grades[liga].__ua = ua;
-      }
+      }));
       const ligas = Object.keys(grades);
       if (ligas.length) {
         const resp = JSON.parse(await envia(grades));
@@ -119,6 +119,16 @@
     selo.style.color = /^ok|aguard/.test(status) ? '#9fe8b4' : '#ff8a8a';
   }
 
-  setTimeout(ciclo, 2000);
-  setInterval(ciclo, INTERVALO);
+  // O Chrome segura setInterval de aba em segundo plano para 1x por minuto.
+  // Timer dentro de um Worker nao sofre esse freio: ele so avisa a pagina.
+  let relogio = null;
+  try {
+    const src = 'setInterval(function(){postMessage(1)},' + INTERVALO + ')';
+    relogio = new Worker(URL.createObjectURL(new Blob([src], { type: 'text/javascript' })));
+    relogio.onmessage = () => ciclo();
+  } catch (e) { relogio = null; }
+  if (!relogio) setInterval(ciclo, INTERVALO);
+  // Ao voltar para a aba, coleta na hora.
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) ciclo(); });
+  setTimeout(ciclo, 1500);
 })();
