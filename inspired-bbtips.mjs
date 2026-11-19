@@ -112,13 +112,29 @@ async function coletaLiga(liga, id) {
   return null;
 }
 
+// Grade enviada pelo navegador (userscript), quando o servidor e barrado pelo Cloudflare.
+export async function recebeGrade(liga, json) {
+  if (!(liga in LIGAS_INSPIRED)) return 0;
+  const { finais, futuros } = converteGrade(json, liga);
+  if (!finais.length && !futuros.length) return 0;
+  const st = estado.ligas[liga] || (estado.ligas[liga] = {});
+  st.ts = Date.now(); st.erro = null; st.jogos = finais.length; st.futuros = futuros.length; st.fonte = "navegador";
+  st.ultimo = finais.length ? finais[finais.length - 1].horario + " " + finais[finais.length - 1].nome + " " + finais[finais.length - 1].placar : null;
+  estado.navegadorTs = Date.now();
+  if (onLigaCb) await onLigaCb(liga, finais, futuros);
+  return finais.length;
+}
+
+let bloqueadoAte = 0;
 async function ciclo() {
-  if (estado.rodando || !tokenAtual) return;
+  if (estado.rodando || !tokenAtual || Date.now() < bloqueadoAte) return;
   estado.rodando = true;
   try {
     const erros = await Promise.all(Object.entries(LIGAS_INSPIRED).map(([l, id]) => coletaLiga(l, id).catch(e => String(e.message || e))));
     const erro = erros.includes("token") ? "token" : (erros.find(Boolean) || null);
     if (erro !== estado.erro) console.log("[inspired] " + (erro ? "erro: " + erro : "coleta ok"));
+    // Cloudflare barrando o servidor: tenta de novo so a cada 30 min (o navegador cobre).
+    if (erro && /HTTP 403/.test(erro)) { bloqueadoAte = Date.now() + 30 * 60000; estado.bloqueado = true; } else estado.bloqueado = false;
     estado.erro = erro;
     estado.ts = Date.now();
   } finally {

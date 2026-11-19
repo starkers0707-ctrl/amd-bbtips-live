@@ -86,7 +86,7 @@ app.use((req, res, next) => {
   res.header("X-Robots-Tag", "noindex, nofollow");        // fora dos buscadores
   if (req.method === "OPTIONS") return res.sendStatus(204);
   // API de dados: exige vir do PROPRIO site (referer/origin), fecha para curl/bots/outros sites.
-  const ehApiDado = p.startsWith("/api/") && !p.startsWith("/api/snapshot") && !p.startsWith("/api/dados") && !p.startsWith("/api/tampermonkey") && !p.startsWith("/api/bbtips") && !p.startsWith("/api/admin") && !p.startsWith("/api/acesso") && !p.startsWith("/api/eventos") && p !== "/api/grade";
+  const ehApiDado = p.startsWith("/api/") && !p.startsWith("/api/snapshot") && !p.startsWith("/api/dados") && !p.startsWith("/api/tampermonkey") && !p.startsWith("/api/bbtips") && !p.startsWith("/api/admin") && !p.startsWith("/api/acesso") && !p.startsWith("/api/eventos") && p !== "/api/grade" && p !== "/api/inspired/grade";
   if (ehApiDado) {
     const ref = (req.headers.referer || req.headers.origin || "");
     // bloqueia SO quando o referer aponta claramente para OUTRO site (scraping via browser de terceiro).
@@ -259,7 +259,8 @@ app.use((req, res, next) => {
   const p = req.path;
   const livre = p === "/login" || p === "/robots.txt" || p === "/favicon.ico" || p === "/admin" ||
     p.startsWith("/api/acesso") || p.startsWith("/api/admin") ||
-    ((p === "/api/snapshot" || p === "/api/snapshot2" || p === "/api/dados" || p === "/api/tampermonkey" || p === "/api/bbtips/token") && req.method === "POST");
+    ((p === "/api/snapshot" || p === "/api/snapshot2" || p === "/api/dados" || p === "/api/tampermonkey" || p === "/api/bbtips/token" || p === "/api/inspired/grade") && req.method === "POST") ||
+    p === "/amd-inspired.user.js";
   if (livre) return next();
   if (sessaoValida(req)) return next();
   const c = String(req.headers["x-acesso"] || req.query.c || "").toUpperCase().trim();
@@ -2408,6 +2409,21 @@ import("./inspired-bbtips.mjs").then(m => {
     avisaClientes(liga);
   });
 }).catch(e => console.log("[inspired] modulo nao carregado:", e.message));
+// Grades CAM/COP/AME enviadas pelo navegador (userscript amd-inspired.user.js).
+app.post("/api/inspired/grade", async (req, res) => {
+  const esperado = String(process.env.TAMPERMONKEY_TOKEN || "").trim();
+  const recebido = String(req.get("authorization") || "").replace(/^Bearer\s+/i, "").trim();
+  if (!esperado || recebido !== esperado) return res.status(401).json({ ok: false, erro: "chave invalida" });
+  if (!inspiredBB) return res.status(503).json({ ok: false, erro: "carregando" });
+  const grades = (req.body && req.body.grades) || {};
+  const ligas = {};
+  for (const [liga, json] of Object.entries(grades)) {
+    if (!LIGAS_INSPIRED.has(liga) || !json || !Array.isArray(json.Linhas)) continue;
+    try { ligas[liga] = await inspiredBB.recebeGrade(liga, json); } catch (e) { ligas[liga] = 0; }
+  }
+  console.log("[inspired] navegador: " + Object.entries(ligas).map(([l, n]) => l + " " + n).join(", "));
+  res.json({ ok: true, ligas });
+});
 app.get("/api/inspired/estado", (req, res) => {
   res.json(inspiredBB ? inspiredBB.obterEstado() : { ts: 0, erro: "módulo carregando", rodando: false, ligas: {} });
 });
