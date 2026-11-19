@@ -84,15 +84,19 @@ function converte(liga, eventos) {
 
 async function coletaLiga(liga) {
   const st = estado.ligas[liga] || (estado.ligas[liga] = { ts: 0, erro: null, cheio: false });
-  const range = st.cheio ? "3h" : "72h";
+  const range = st.cheio ? "3h" : "48h";
   const { finais, futuros } = converte(liga, await historico(liga, range));
   if (!finais.length && !futuros.length) throw new Error("sem jogos");
   const ult = finais[finais.length - 1];
   const marca = ult ? ult.id + ult.placar : null;
   if (marca && marca !== st.marca) console.log(`[tipsclan] ${liga} ${ult.horario} ${ult.nome} ${ult.placar}${st.cheio ? "" : ` (carga inicial ${range}: ${finais.length} jogos)`}`);
-  st.marca = marca; st.cheio = true; st.ts = Date.now(); st.erro = null;
+  // So recalcula a liga no AMD quando algo mudou (resultado novo ou lista de proximos).
+  const marcaFut = futuros.map(f => f.id).join(",");
+  const mudou = marca !== st.marca || marcaFut !== st.marcaFut || !st.cheio;
+  const primeira = !st.cheio;
+  st.marca = marca; st.marcaFut = marcaFut; st.cheio = true; st.ts = Date.now(); st.erro = null;
   st.jogos = finais.length; st.futuros = futuros.length; st.ultimo = ult ? `${ult.horario} ${ult.nome} ${ult.placar}` : null;
-  if (onLigaCb) await onLigaCb(liga, finais, futuros);
+  if (onLigaCb && mudou) await onLigaCb(liga, primeira ? finais : finais.slice(-40), futuros);
 }
 
 async function ciclo() {

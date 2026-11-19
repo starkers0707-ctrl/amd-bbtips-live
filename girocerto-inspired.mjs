@@ -111,7 +111,10 @@ async function coletaLiga(liga, produto, comFuturos) {
   st.ultimo = ultimo ? `${ultimo.horario} ${ultimo.nome} ${ultimo.placar}` : null;
   st.ts = Date.now(); st.erro = null; st.resultados = finais.length;
   if (futuros) st.futuros = futuros.length;
-  if (onLigaCb && (finais.length || (futuros && futuros.length))) await onLigaCb(liga, finais, futuros);
+  const marcaFut = futuros ? futuros.map(f => f.id).join(",") : st.marcaFut;
+  const mudou = novoUltimo !== st.marcaAplicada || marcaFut !== st.marcaFut;
+  st.marcaAplicada = novoUltimo; st.marcaFut = marcaFut;
+  if (onLigaCb && mudou && (finais.length || (futuros && futuros.length))) await onLigaCb(liga, finais, futuros);
 }
 
 async function ciclo() {
