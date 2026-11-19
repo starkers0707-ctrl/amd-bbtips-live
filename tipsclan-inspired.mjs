@@ -84,7 +84,7 @@ function converte(liga, eventos) {
 
 async function coletaLiga(liga) {
   const st = estado.ligas[liga] || (estado.ligas[liga] = { ts: 0, erro: null, cheio: false });
-  const range = st.cheio ? "3h" : "48h";
+  const range = st.cheio ? "3h" : (process.env.TIPSCLAN_CARGA || "24h");
   const { finais, futuros } = converte(liga, await historico(liga, range));
   if (!finais.length && !futuros.length) throw new Error("sem jogos");
   const ult = finais[finais.length - 1];
@@ -105,6 +105,8 @@ async function ciclo() {
   try {
     const erros = [];
     for (const liga of Object.keys(LIGAS_TC)) {
+      // Plano gratuito tem 0,15 CPU: respira entre as ligas para o servidor seguir respondendo.
+      await new Promise(r => setTimeout(r, 1500));
       try { await coletaLiga(liga); }
       catch (e) { const m = String((e && e.message) || e); if (estado.ligas[liga]) estado.ligas[liga].erro = m; erros.push(liga + ": " + m); }
     }
@@ -127,7 +129,7 @@ export function iniciar(onLiga) {
   if (!configurado()) { console.log("[tipsclan] sem TIPSCLAN_EMAIL/TIPSCLAN_SENHA: desligado"); return; }
   if (timer) clearInterval(timer);
   timer = setInterval(ciclo, INTERVALO);
-  setTimeout(ciclo, 2500);
+  setTimeout(ciclo, 20000); // deixa o boot (Redis + Vavada) terminar antes
 }
 
 export function obterEstado() { return { ...estado, configurado: configurado() }; }

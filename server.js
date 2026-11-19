@@ -1849,6 +1849,7 @@ async function kvCarrega() {
       if (!bruto) continue;
       let salvos = JSON.parse(bruto);
       if (!Array.isArray(salvos) || !salvos.length) continue;
+      if (LIGAS_INSPIRED.has(liga)) salvos = salvos.slice(-480);
       // Jogos sem data real nao tem dia confiavel (vinham de coletores antigos).
       if (fonteDiretaAtiva(liga)) salvos = salvos.filter(g => g && g.inicio);
       if (!salvos.length) continue;
@@ -2381,6 +2382,8 @@ const esperaVavada = setInterval(() => {
 // Fonte principal: girocerto.fun (publico). BBTips fica como reserva (userscript),
 // porque o Cloudflare do BBTips barra o servidor.
 let inspiredBB = null, girocerto = null;
+// 480 jogos = 24h de liga de 3 em 3 min (o servidor gratuito nao aguenta recalcular 1200).
+const INSPIRED_MAX = Number(process.env.INSPIRED_MAX || 480);
 async function aplicaInspired(liga, novos, futuros) {
     if (!LIGAS_INSPIRED.has(liga)) return;
     const anterior = store[liga] || {};
@@ -2391,7 +2394,7 @@ async function aplicaInspired(liga, novos, futuros) {
     for (const g of novos || []) mapa.set(chave(g), g);
     const gamesAll = [...mapa.values()]
       .sort((x, y) => Date.parse(x.inicio) - Date.parse(y.inicio))
-      .slice(-1200);
+      .slice(-INSPIRED_MAX);
     const agoraMs = Date.now();
     const upcoming = (futuros && futuros.length) ? futuros
       : (anterior.upcomingRaw || []).filter(u => !u.inicio || Date.parse(u.inicio) > agoraMs - 60000);
