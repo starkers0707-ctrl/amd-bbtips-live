@@ -391,7 +391,7 @@ async function detalhePorId(id) {
 export async function recuperarHistorico(onLiga, horas = 24) {
   if (backfillEstado.rodando) return;
   backfillEstado.rodando = true;
-  const PAUSA = Math.max(50, Number(process.env.VAVADA_BACKFILL_PAUSA || 150));
+  const PAUSA = Math.max(0, Number(process.env.VAVADA_BACKFILL_PAUSA || 200));
   try {
     for (let i = 0; i < 60 && Object.keys(LIGAS).some(l => !champPorLiga[l] || !menorIdLiga[l]); i++) await espera(5000);
     const ligaDoChamp = {};
@@ -399,14 +399,24 @@ export async function recuperarHistorico(onLiga, horas = 24) {
     const ligas = Object.keys(ligaDoChamp).map(c => ligaDoChamp[c]);
     const limite = Date.now() - horas * 3600000;
     const cache = new Map();
-    const le = async id => {
-      if (cache.has(id)) return cache.get(id);
-      await espera(PAUSA);
+    const PARALELO = Math.max(1, Math.min(8, Number(process.env.VAVADA_BACKFILL_PARALELO || 6)));
+    const busca = async id => {
       const det = await detalhePorId(id);
       const v = { champ: Number(det?.champ?.id || 0), det };
       cache.set(id, v);
-      if (cache.size > 3000) cache.delete(cache.keys().next().value);
       return v;
+    };
+    // le um bloco de ids de uma vez (varias consultas em paralelo)
+    const le = async id => {
+      if (cache.has(id)) return cache.get(id);
+      const ids = [];
+      for (let k = id; k > id - PARALELO * 2; k--) if (!cache.has(k)) ids.push(k);
+      for (let i = 0; i < ids.length; i += PARALELO) {
+        await Promise.all(ids.slice(i, i + PARALELO).map(busca));
+        await espera(PAUSA);
+      }
+      while (cache.size > 4000) cache.delete(cache.keys().next().value);
+      return cache.get(id) || busca(id);
     };
     const maisVelho = {}, pend = {}, lido = new Set();
     for (const l of ligas) { maisVelho[l] = Infinity; pend[l] = []; backfillEstado.porLiga[l] = { jogos: 0, ate: null }; }
