@@ -2378,11 +2378,10 @@ const esperaVavada = setInterval(() => {
 }, 250);
 
 // ===== FONTE INSPIRED (CAM / COP / AME) VIA BBTIPS =====
-let inspiredBB = null;
-import("./inspired-bbtips.mjs").then(m => {
-  inspiredBB = m;
-  console.log("[inspired] coletor BBTips carregado" + (BB_TOKEN ? "" : " (aguardando token)"));
-  m.iniciar(BB_TOKEN, async (liga, novos, futuros) => {
+// Fonte principal: girocerto.fun (publico). BBTips fica como reserva (userscript),
+// porque o Cloudflare do BBTips barra o servidor.
+let inspiredBB = null, girocerto = null;
+async function aplicaInspired(liga, novos, futuros) {
     if (!LIGAS_INSPIRED.has(liga)) return;
     const anterior = store[liga] || {};
     const historico = Array.isArray(anterior.gamesAll) ? anterior.gamesAll : (anterior.games || []);
@@ -2393,11 +2392,13 @@ import("./inspired-bbtips.mjs").then(m => {
     const gamesAll = [...mapa.values()]
       .sort((x, y) => Date.parse(x.inicio) - Date.parse(y.inicio))
       .slice(-1200);
-    const upcoming = (futuros && futuros.length) ? futuros : (anterior.upcomingRaw || []);
+    const agoraMs = Date.now();
+    const upcoming = (futuros && futuros.length) ? futuros
+      : (anterior.upcomingRaw || []).filter(u => !u.inicio || Date.parse(u.inicio) > agoraMs - 60000);
     if (!gamesAll.length && !upcoming.length) return;
     const st = buildStore(liga, gamesAll, upcoming, new Date().toISOString());
     st.gamesAll = gamesAll;
-    st.fonte = "bbtips-inspired";
+    st.fonte = (novos && novos[0] && novos[0].fonte) || "inspired";
     st.inspiredTs = Date.now();
     store[liga] = st;
     jogosDirty = true;
@@ -2407,7 +2408,15 @@ import("./inspired-bbtips.mjs").then(m => {
     atualizaRadar(liga, st);
     atualizaRoboLedger();
     avisaClientes(liga);
-  });
+}
+import("./girocerto-inspired.mjs").then(m => {
+  girocerto = m;
+  console.log("[girocerto] coletor Inspired carregado");
+  m.iniciar(aplicaInspired);
+}).catch(e => console.log("[girocerto] modulo nao carregado:", e.message));
+import("./inspired-bbtips.mjs").then(m => {
+  inspiredBB = m;
+  m.iniciar(BB_TOKEN, aplicaInspired);
 }).catch(e => console.log("[inspired] modulo nao carregado:", e.message));
 // Grades CAM/COP/AME enviadas pelo navegador (userscript amd-inspired.user.js).
 app.post("/api/inspired/grade", async (req, res) => {
@@ -2425,7 +2434,10 @@ app.post("/api/inspired/grade", async (req, res) => {
   res.json({ ok: true, ligas });
 });
 app.get("/api/inspired/estado", (req, res) => {
-  res.json(inspiredBB ? inspiredBB.obterEstado() : { ts: 0, erro: "módulo carregando", rodando: false, ligas: {} });
+  res.json({
+    girocerto: girocerto ? girocerto.obterEstado() : { erro: "módulo carregando" },
+    bbtips: inspiredBB ? inspiredBB.obterEstado() : { erro: "módulo carregando" }
+  });
 });
 
 app.get(["/api/vavada/estado", "/api/bbtips/vavada-estado"], (req, res) => {

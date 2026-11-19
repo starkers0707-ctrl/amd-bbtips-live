@@ -72,7 +72,7 @@ export function converteGrade(json, liga, agoraMs = Date.now()) {
       const hm = horario.match(/^(\d{1,2}):(\d{2})$/);
       if (!hm) continue;
       const inicio = isoDe(hoje, offset, Number(hm[1]), Number(hm[2]));
-      const id = `bbtips:${liga}:${inicio}`;
+      const id = `insp:${liga}:${inicio}`;
       const [a, b] = placar(limpo(c.Resultado_FT) || limpo(c.Resultado));
       if (a != null && b != null) {
         const jogo = {
