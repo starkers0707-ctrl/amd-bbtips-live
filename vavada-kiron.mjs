@@ -433,6 +433,11 @@ export async function recuperarHistorico(onLiga, horas = 24) {
             if (v.champ === champ) { achou = id; break; }
           }
         }
+        // as vezes a Kiron insere um bloco grande de outro jogo (~100 ids):
+        // varre para tras de 3 em 3 (todo grupo de liga tem 3+ ids seguidos)
+        for (let id = chute - 21; !achou && id > cur[liga] - 700; id -= 3) {
+          if ((await le(id)).champ === champ) achou = id;
+        }
         if (!achou) {
           console.warn(`[vavada-hist] ${liga}: grupo anterior a ${cur[liga]} nao encontrado; parando a liga`);
           ativo[liga] = false; continue;
