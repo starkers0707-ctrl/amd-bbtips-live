@@ -2409,10 +2409,29 @@ async function aplicaInspired(liga, novos, futuros) {
     atualizaRoboLedger();
     avisaClientes(liga);
 }
+// TipsClan = fonte principal (historico 72h + HT). Girocerto = odds dos proximos
+// jogos e reserva quando a TipsClan cair ou nao estiver configurada.
+let tipsclan = null;
+const oddsGiro = {};
+import("./tipsclan-inspired.mjs").then(m => {
+  tipsclan = m;
+  m.iniciar(async (liga, novos, futuros) => {
+    const mapa = oddsGiro[liga] || {};
+    for (const f of futuros || []) if (mapa[f.inicio]) f.odds = mapa[f.inicio];
+    await aplicaInspired(liga, novos, futuros);
+  });
+}).catch(e => console.log("[tipsclan] modulo nao carregado:", e.message));
 import("./girocerto-inspired.mjs").then(m => {
   girocerto = m;
   console.log("[girocerto] coletor Inspired carregado");
-  m.iniciar(aplicaInspired);
+  m.iniciar(async (liga, novos, futuros) => {
+    if (futuros) {
+      const mapa = oddsGiro[liga] = {};
+      for (const f of futuros) if (f.odds) mapa[f.inicio] = f.odds;
+    }
+    if (tipsclan && tipsclan.ativaLiga(liga)) return;
+    await aplicaInspired(liga, novos, futuros);
+  });
 }).catch(e => console.log("[girocerto] modulo nao carregado:", e.message));
 import("./inspired-bbtips.mjs").then(m => {
   inspiredBB = m;
@@ -2435,6 +2454,7 @@ app.post("/api/inspired/grade", async (req, res) => {
 });
 app.get("/api/inspired/estado", (req, res) => {
   res.json({
+    tipsclan: tipsclan ? tipsclan.obterEstado() : { erro: "módulo carregando" },
     girocerto: girocerto ? girocerto.obterEstado() : { erro: "módulo carregando" },
     bbtips: inspiredBB ? inspiredBB.obterEstado() : { erro: "módulo carregando" }
   });
