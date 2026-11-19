@@ -460,7 +460,7 @@ export async function recuperarHistorico(onLiga, horas = 24, jaTem = null) {
         // a memoria ja tinha esses jogos: depois de 3 grupos conhecidos seguidos, a liga esta completa
         repetidos[liga] = conhecidos === b - a + 1 ? (repetidos[liga] || 0) + 1 : 0;
         if (repetidos[liga] >= 3) maisVelho[liga] = -Infinity;
-        if (pend[liga].length >= 20) await despeja(liga);
+        if (pend[liga].length >= 40) await despeja(liga);
         id = a - 2;
       } else id -= 2;
     }

@@ -2388,8 +2388,7 @@ function iniciaVavadaKiron() {
     registraLiga(liga);
     if (!opc.historico) { try { avaliaPushGrafico(liga); } catch (e) {} }
     registraUpVistos(liga, upcoming);
-    atualizaRadar(liga, st);
-    atualizaRoboLedger();
+    if (!opc.historico) { atualizaRadar(liga, st); atualizaRoboLedger(); }
     avisaClientes(liga);
   };
   vavadaKiron.iniciar(aoReceber);
@@ -2530,6 +2529,28 @@ app.get("/api/status", (req, res) => {
 // Compatibilidade com o frontend classico do AMD. A extensao continua
 // alimentando o store atual; esta rota apenas traduz o mesmo dado para o
 // contrato antigo usado pela grade, backtest e cacadores do backup.
+// Cache da grade: varias abas/clientes pedem a mesma liga a cada poucos
+// segundos; so recalcula quando a liga recebe jogo novo (store[liga] troca).
+const gradeCache = new Map();
+app.get("/api/grade", (req, res, next) => {
+  const liga = String(req.query.liga || "ita").toLowerCase();
+  const st = store[liga], k = req.originalUrl;
+  const c = gradeCache.get(k);
+  if (c && c.st === st && Date.now() - c.ts < 20000) { res.type("application/json"); return res.send(c.body); }
+  const orig = res.json.bind(res);
+  res.json = b => {
+    try {
+      const body = JSON.stringify(b);
+      if ((res.statusCode || 200) === 200) {
+        gradeCache.set(k, { st, ts: Date.now(), body });
+        if (gradeCache.size > 300) gradeCache.delete(gradeCache.keys().next().value);
+      }
+      res.type("application/json");
+      return res.send(body);
+    } catch (e) { return orig(b); }
+  };
+  next();
+});
 app.get("/api/grade", (req, res) => {
   // Corrige, uma unica vez, eventual lote ENG/SPA recebido antes da
   // identificacao por times. Nao altera resultados, odds ou matematica.
