@@ -2440,7 +2440,7 @@ async function aplicaInspired(liga, novos, futuros) {
 // jogos e reserva quando a TipsClan cair ou nao estiver configurada.
 let tipsclan = null;
 const oddsGiro = {};
-(process.env.INSPIRED_ENABLED === "1" ? import("./tipsclan-inspired.mjs") : Promise.reject(new Error("desligado (INSPIRED_ENABLED)"))).then(m => {
+import("./tipsclan-inspired.mjs").then(m => {
   tipsclan = m;
   m.iniciar(async (liga, novos, futuros) => {
     const mapa = oddsGiro[liga] || {};
@@ -2448,7 +2448,7 @@ const oddsGiro = {};
     await aplicaInspired(liga, novos, futuros);
   });
 }).catch(e => console.log("[tipsclan] modulo nao carregado:", e.message));
-(process.env.INSPIRED_ENABLED === "1" ? import("./girocerto-inspired.mjs") : Promise.reject(new Error("desligado (INSPIRED_ENABLED)"))).then(m => {
+import("./girocerto-inspired.mjs").then(m => {
   girocerto = m;
   console.log("[girocerto] coletor Inspired carregado");
   m.iniciar(async (liga, novos, futuros) => {
