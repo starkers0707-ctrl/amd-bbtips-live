@@ -534,7 +534,7 @@
       return !/lead/.test(c.className);
     });
     cels.forEach(function (c, i) {
-      c.textContent = pad2(base + i * passo);
+      c.textContent = pad2((base + i * passo) % 60);
     });
   }
 

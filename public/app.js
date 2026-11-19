@@ -102,6 +102,10 @@ window.definirLigaApp = function (novaLiga) {
   window.dispatchEvent(new CustomEvent('amd:liga-alterada', {
     detail: { liga: chave, nome: nomes[chave] }
   }));
+  // A grade precisa ser redesenhada com a cadencia da liga nova: sem isto,
+  // ao sair de uma liga de 30 jogos (ENG/ITA/SPA/MND) para uma de 20
+  // (BRA/LAT/CAM/COP/AME) as 30 colunas antigas ficavam na tela.
+  try { renderGrade(); } catch (e) {}
   return true;
 };
 var ODDS_LISTA=[['CASA','Casa vence'],['FORA','Fora vence'],
