@@ -391,85 +391,61 @@ async function detalhePorId(id) {
 export async function recuperarHistorico(onLiga, horas = 24) {
   if (backfillEstado.rodando) return;
   backfillEstado.rodando = true;
-  const PAUSA = Math.max(100, Number(process.env.VAVADA_BACKFILL_PAUSA || 250));
+  const PAUSA = Math.max(50, Number(process.env.VAVADA_BACKFILL_PAUSA || 150));
   try {
-    // espera o coletor descobrir a liga (champ) e o id do ultimo jogo encerrado
     for (let i = 0; i < 60 && Object.keys(LIGAS).some(l => !champPorLiga[l] || !menorIdLiga[l]); i++) await espera(5000);
-    const cache = new Map(); // id -> { champ, det }
+    const ligaDoChamp = {};
+    for (const [l, c] of Object.entries(champPorLiga)) ligaDoChamp[c] = l;
+    const ligas = Object.keys(ligaDoChamp).map(c => ligaDoChamp[c]);
+    const limite = Date.now() - horas * 3600000;
+    const cache = new Map();
     const le = async id => {
       if (cache.has(id)) return cache.get(id);
       await espera(PAUSA);
       const det = await detalhePorId(id);
       const v = { champ: Number(det?.champ?.id || 0), det };
       cache.set(id, v);
-      if (cache.size > 4000) cache.delete(cache.keys().next().value);
+      if (cache.size > 3000) cache.delete(cache.keys().next().value);
       return v;
     };
-    const limite = Date.now() - horas * 3600000;
-    const ligas = Object.keys(LIGAS).filter(l => champPorLiga[l] && menorIdLiga[l]);
-    const cur = {}, passo = {}, ativo = {};
-    for (const l of ligas) { cur[l] = menorIdLiga[l]; passo[l] = 96; ativo[l] = true; backfillEstado.porLiga[l] = { jogos: 0, ate: null }; }
-    let falhasSeguidas = 0;
-    const pend = {};
-    for (const l of ligas) pend[l] = [];
-    // junta em lotes: reconstruir a liga a cada grupo pesaria no servidor
+    const maisVelho = {}, pend = {}, lido = new Set();
+    for (const l of ligas) { maisVelho[l] = Infinity; pend[l] = []; backfillEstado.porLiga[l] = { jogos: 0, ate: null }; }
     const despeja = async l => {
       if (!pend[l].length) return;
       const lote = pend[l]; pend[l] = [];
       try { await onLiga(l, lote, null, { historico: true }); } catch (e) {}
-      console.log(`[vavada-hist] ${l}: +${lote.length} jogos (ate ${lote[0].horario})`);
+      const velho = lote.reduce((m, g) => (g.inicio && g.inicio < m.inicio ? g : m), lote[0]);
+      console.log(`[vavada-hist] ${l}: +${lote.length} jogos (ja chegou em ${velho.horario})`);
     };
-    while (ligas.some(l => ativo[l])) {
-      for (const liga of ligas) {
-        if (!ativo[liga]) continue;
-        const champ = champPorLiga[liga];
-        const chute = cur[liga] - passo[liga];
-        // procura o grupo da liga perto do chute
-        let achou = null;
-        for (let d = 0; d <= 20 && !achou; d++) {
-          for (const id of d ? [chute - d, chute + d] : [chute]) {
-            if (id >= cur[liga]) continue;
-            const v = await le(id);
-            if (v.champ === champ) { achou = id; break; }
-          }
-        }
-        // as vezes a Kiron insere um bloco grande de outro jogo (~100 ids):
-        // varre para tras de 3 em 3 (todo grupo de liga tem 3+ ids seguidos)
-        for (let id = chute - 21; !achou && id > cur[liga] - 700; id -= 3) {
-          if ((await le(id)).champ === champ) achou = id;
-        }
-        if (!achou) {
-          console.warn(`[vavada-hist] ${liga}: grupo anterior a ${cur[liga]} nao encontrado; parando a liga`);
-          ativo[liga] = false; continue;
-        }
-        // le o grupo inteiro (ids consecutivos da mesma liga)
-        let ini = achou, fim = achou;
-        while ((await le(ini - 1)).champ === champ) ini--;
-        while (fim + 1 < cur[liga] && (await le(fim + 1)).champ === champ) fim++;
-        const jogos = [];
-        let maisVelho = Infinity;
-        for (let id = ini; id <= fim; id++) {
-          const { det } = await le(id);
-          if (!det) continue;
-          const t = Date.parse(det.startDate || "");
-          if (Number.isFinite(t)) maisVelho = Math.min(maisVelho, t);
-          const g = parseDetail(det, { id, name: det.name, startDate: det.startDate }, liga);
-          if (g && g.a != null) jogos.push(g);
-        }
-        const novoPasso = cur[liga] - ini;
-        if (novoPasso > 40 && novoPasso < 160) passo[liga] = novoPasso;
-        cur[liga] = ini;
-        if (jogos.length) {
-          falhasSeguidas = 0;
-          backfillEstado.feitos += jogos.length;
-          backfillEstado.porLiga[liga].jogos += jogos.length;
-          backfillEstado.porLiga[liga].ate = jogos[0].inicio;
-          pend[liga].push(...jogos);
-          if (pend[liga].length >= 60) await despeja(liga);
-        } else if (++falhasSeguidas > 30) { ativo[liga] = false; }
-        if (maisVelho < limite) ativo[liga] = false;
-        if (!ativo[liga]) await despeja(liga);
-      }
+    const pega = (id, v) => {
+      if (lido.has(id)) return;
+      lido.add(id);
+      const liga = ligaDoChamp[v.champ];
+      if (!liga || !v.det) return;
+      const t = Date.parse(v.det.startDate || "");
+      if (Number.isFinite(t)) maisVelho[liga] = Math.min(maisVelho[liga], t);
+      if (!(t >= limite)) return;
+      const g = parseDetail(v.det, { id, name: v.det.name, startDate: v.det.startDate }, liga);
+      if (!g || g.a == null) return;
+      pend[liga].push(g);
+      backfillEstado.feitos++; backfillEstado.porLiga[liga].jogos++; backfillEstado.porLiga[liga].ate = g.inicio;
+    };
+    // Varre os ids para tras de 2 em 2 (todo grupo de uma liga tem 2+ ids
+    // seguidos). Ao achar uma liga nossa, le o grupo inteiro.
+    let id = Math.min(...ligas.map(l => menorIdLiga[l])) - 1;
+    let vazios = 0;
+    while (ligas.some(l => maisVelho[l] >= limite) && vazios < 3000) {
+      const v = await le(id);
+      if (!v.det) vazios++; else vazios = 0;
+      if (ligaDoChamp[v.champ]) {
+        let a = id, b = id;
+        while (ligaDoChamp[(await le(a - 1)).champ] === ligaDoChamp[v.champ]) a--;
+        while (ligaDoChamp[(await le(b + 1)).champ] === ligaDoChamp[v.champ]) b++;
+        for (let k = a; k <= b; k++) pega(k, await le(k));
+        const liga = ligaDoChamp[v.champ];
+        if (pend[liga].length >= 20) await despeja(liga);
+        id = a - 2;
+      } else id -= 2;
     }
     for (const l of ligas) await despeja(l);
     console.log(`[vavada-hist] concluido: ${backfillEstado.feitos} jogos recuperados em ${backfillEstado.requisicoes} consultas`);
