@@ -34,8 +34,8 @@ async function pega(url) {
       cache: "no-store",
       signal: ctrl.signal
     });
-    if (r.status === 401 || r.status === 403) return { erro: "token" };
-    if (!r.ok) return { erro: "HTTP " + r.status };
+    if (r.status === 401) return { erro: "token" };
+    if (!r.ok) return { erro: "HTTP " + r.status + " " + (await r.text().catch(() => "")).slice(0, 120).replace(/\s+/g, " ") };
     return { json: await r.json() };
   } catch (e) {
     return { erro: String((e && e.message) || e) };
@@ -107,6 +107,7 @@ async function coletaLiga(liga, id) {
   st.atualizacao = marca; st.ts = Date.now(); st.erro = null; st.primeira = false;
   st.jogos = finais.length; st.futuros = futuros.length;
   st.ultimo = finais.length ? finais[finais.length - 1].horario + " " + finais[finais.length - 1].nome + " " + finais[finais.length - 1].placar : null;
+  console.log(`[inspired] ${liga}: ${finais.length} jogos, ${futuros.length} futuros, ultimo ${st.ultimo || "-"} (${horas})`);
   if (onLigaCb) await onLigaCb(liga, finais, futuros);
   return null;
 }
@@ -116,7 +117,9 @@ async function ciclo() {
   estado.rodando = true;
   try {
     const erros = await Promise.all(Object.entries(LIGAS_INSPIRED).map(([l, id]) => coletaLiga(l, id).catch(e => String(e.message || e))));
-    estado.erro = erros.includes("token") ? "token" : (erros.find(Boolean) || null);
+    const erro = erros.includes("token") ? "token" : (erros.find(Boolean) || null);
+    if (erro !== estado.erro) console.log("[inspired] " + (erro ? "erro: " + erro : "coleta ok"));
+    estado.erro = erro;
     estado.ts = Date.now();
   } finally {
     estado.rodando = false;
