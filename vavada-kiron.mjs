@@ -20,6 +20,9 @@ let rodando = false;
 let timer = null;
 const estado = { ts: 0, erro: null, rodando: false, ligas: {}, integrationId: null, ciclos: 0, duracaoMs: 0, proxima: 0 };
 const conhecidos = new Map();
+const champPorLiga = {};
+const menorIdLiga = {};
+const backfillEstado = { rodando: false, feitos: 0, requisicoes: 0, porLiga: {}, erro: null };
 
 async function carregarConfig(force = false) {
   if (config && !force) return config;
@@ -304,6 +307,8 @@ async function coletaLiga(games, liga, tipo, onLiga) {
       if (!salvo) {
         await espera(PAUSA_DETALHE);
         const det = await detalhes(game, ev);
+        const cid = det?.champ?.id;
+        if (cid) champPorLiga[liga] = Number(cid);
         salvo = Number(ev.status) === 2 ? parseDetail(det, ev, liga) : parseUpcoming(det, ev, liga);
         if (salvo && Number(ev.status) === 2) console.log(`[vavada] novo ${liga} ${salvo.horario} ${salvo.casa}-${salvo.fora} ${salvo.placar}`);
         else if (!salvo && Number(ev.status) === 2) console.log(`[vavada] ${liga} ${ev.name} encerrado sem liquidacao completa, tentando de novo`);
@@ -311,6 +316,7 @@ async function coletaLiga(games, liga, tipo, onLiga) {
       }
       if (!salvo) continue;
       if (Number(ev.status) === 2 && salvo.a != null) fechados.push(salvo);
+      if (Number(ev.status) === 2 && Number(ev.id) < (menorIdLiga[liga] || Infinity)) menorIdLiga[liga] = Number(ev.id);
       else if (Number(ev.status) === 0) futuros.push(salvo);
     }
 
@@ -360,3 +366,113 @@ export function iniciar(onLiga) {
 }
 
 export function obterEstado() { return JSON.parse(JSON.stringify(estado)); }
+
+// ---------------------------------------------------------------------------
+// RECUPERACAO DO HISTORICO: a API so lista os 2 ultimos jogos encerrados, mas
+// GetVirtualEventDetails responde qualquer eventId antigo (ja liquidado).
+// Os ids sao sequenciais para todos os jogos virtuais; cada liga aparece em
+// grupos de ids consecutivos (um grupo por rodada, ~96 ids de distancia).
+// Para cada liga: chuta onde fica o grupo anterior, procura em volta e le o
+// grupo inteiro. Vai do mais novo para o mais velho, sem pressa (rate limit).
+async function detalhePorId(id) {
+  backfillEstado.requisicoes++;
+  for (let t = 0; t < 4; t++) {
+    try {
+      return await api("WidgetVirtuals/GetVirtualEventDetails", { eventId: id, dbId: 12 });
+    } catch (e) {
+      const msg = String(e?.message || e);
+      if (/HTTP 4(04|00)/.test(msg)) return null;
+      await espera(/429|403/.test(msg) ? 30000 : 3000);
+    }
+  }
+  return null;
+}
+
+export async function recuperarHistorico(onLiga, horas = 24) {
+  if (backfillEstado.rodando) return;
+  backfillEstado.rodando = true;
+  const PAUSA = Math.max(100, Number(process.env.VAVADA_BACKFILL_PAUSA || 250));
+  try {
+    // espera o coletor descobrir a liga (champ) e o id do ultimo jogo encerrado
+    for (let i = 0; i < 60 && Object.keys(LIGAS).some(l => !champPorLiga[l] || !menorIdLiga[l]); i++) await espera(5000);
+    const cache = new Map(); // id -> { champ, det }
+    const le = async id => {
+      if (cache.has(id)) return cache.get(id);
+      await espera(PAUSA);
+      const det = await detalhePorId(id);
+      const v = { champ: Number(det?.champ?.id || 0), det };
+      cache.set(id, v);
+      if (cache.size > 4000) cache.delete(cache.keys().next().value);
+      return v;
+    };
+    const limite = Date.now() - horas * 3600000;
+    const ligas = Object.keys(LIGAS).filter(l => champPorLiga[l] && menorIdLiga[l]);
+    const cur = {}, passo = {}, ativo = {};
+    for (const l of ligas) { cur[l] = menorIdLiga[l]; passo[l] = 96; ativo[l] = true; backfillEstado.porLiga[l] = { jogos: 0, ate: null }; }
+    let falhasSeguidas = 0;
+    const pend = {};
+    for (const l of ligas) pend[l] = [];
+    // junta em lotes: reconstruir a liga a cada grupo pesaria no servidor
+    const despeja = async l => {
+      if (!pend[l].length) return;
+      const lote = pend[l]; pend[l] = [];
+      try { await onLiga(l, lote, null, { historico: true }); } catch (e) {}
+      console.log(`[vavada-hist] ${l}: +${lote.length} jogos (ate ${lote[0].horario})`);
+    };
+    while (ligas.some(l => ativo[l])) {
+      for (const liga of ligas) {
+        if (!ativo[liga]) continue;
+        const champ = champPorLiga[liga];
+        const chute = cur[liga] - passo[liga];
+        // procura o grupo da liga perto do chute
+        let achou = null;
+        for (let d = 0; d <= 20 && !achou; d++) {
+          for (const id of d ? [chute - d, chute + d] : [chute]) {
+            if (id >= cur[liga]) continue;
+            const v = await le(id);
+            if (v.champ === champ) { achou = id; break; }
+          }
+        }
+        if (!achou) {
+          console.warn(`[vavada-hist] ${liga}: grupo anterior a ${cur[liga]} nao encontrado; parando a liga`);
+          ativo[liga] = false; continue;
+        }
+        // le o grupo inteiro (ids consecutivos da mesma liga)
+        let ini = achou, fim = achou;
+        while ((await le(ini - 1)).champ === champ) ini--;
+        while (fim + 1 < cur[liga] && (await le(fim + 1)).champ === champ) fim++;
+        const jogos = [];
+        let maisVelho = Infinity;
+        for (let id = ini; id <= fim; id++) {
+          const { det } = await le(id);
+          if (!det) continue;
+          const t = Date.parse(det.startDate || "");
+          if (Number.isFinite(t)) maisVelho = Math.min(maisVelho, t);
+          const g = parseDetail(det, { id, name: det.name, startDate: det.startDate }, liga);
+          if (g && g.a != null) jogos.push(g);
+        }
+        const novoPasso = cur[liga] - ini;
+        if (novoPasso > 40 && novoPasso < 160) passo[liga] = novoPasso;
+        cur[liga] = ini;
+        if (jogos.length) {
+          falhasSeguidas = 0;
+          backfillEstado.feitos += jogos.length;
+          backfillEstado.porLiga[liga].jogos += jogos.length;
+          backfillEstado.porLiga[liga].ate = jogos[0].inicio;
+          pend[liga].push(...jogos);
+          if (pend[liga].length >= 60) await despeja(liga);
+        } else if (++falhasSeguidas > 30) { ativo[liga] = false; }
+        if (maisVelho < limite) ativo[liga] = false;
+        if (!ativo[liga]) await despeja(liga);
+      }
+    }
+    for (const l of ligas) await despeja(l);
+    console.log(`[vavada-hist] concluido: ${backfillEstado.feitos} jogos recuperados em ${backfillEstado.requisicoes} consultas`);
+  } catch (e) {
+    backfillEstado.erro = String(e?.message || e);
+    console.warn(`[vavada-hist] falhou: ${backfillEstado.erro}`);
+  } finally {
+    backfillEstado.rodando = false;
+  }
+}
+export function estadoHistorico() { return JSON.parse(JSON.stringify(backfillEstado)); }

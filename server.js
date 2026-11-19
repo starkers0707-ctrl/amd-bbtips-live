@@ -2333,7 +2333,7 @@ setTimeout(rodaAutoColeta, 4000);
 // fonte direta reduz o atraso sem apagar a memória nem alterar a matemática.
 function iniciaVavadaKiron() {
   if (!vavadaKiron || process.env.VAVADA_ENABLED === "0") return;
-  vavadaKiron.iniciar(async (liga, novos, futuros) => {
+  const aoReceber = async (liga, novos, futuros, opc = {}) => {
     if (!LIGAS_PERMITIDAS.has(liga) || LIGAS_INSPIRED.has(liga)) return;
     const anterior = store[liga] || {};
     const historico = Array.isArray(anterior.gamesAll) ? anterior.gamesAll : (anterior.games || []);
@@ -2341,7 +2341,8 @@ function iniciaVavadaKiron() {
     const chave = g => String(g.id || `${g.horario || ""}|${g.casa || ""}|${g.fora || ""}`);
     for (const g of historico) if (g && g.inicio) mapa.set(chave(g), g);
     for (const g of novos || []) mapa.set(chave(g), g);
-    const gamesAll = [...mapa.values()].slice(-1200);
+    const tIni = g => { const t = Date.parse(g.inicio || ""); return Number.isFinite(t) ? t : 0; };
+    const gamesAll = [...mapa.values()].sort((x, y) => tIni(x) - tIni(y)).slice(-1200);
     // Não substitui futuros bons por uma resposta temporariamente vazia.
     const upcoming = (futuros && futuros.length) ? futuros : (anterior.upcomingRaw || []);
     if (!gamesAll.length && !upcoming.length) return;
@@ -2352,12 +2353,15 @@ function iniciaVavadaKiron() {
     store[liga] = st;
     jogosDirty = true;
     registraLiga(liga);
-    try { avaliaPushGrafico(liga); } catch (e) {}
+    if (!opc.historico) { try { avaliaPushGrafico(liga); } catch (e) {} }
     registraUpVistos(liga, upcoming);
     atualizaRadar(liga, st);
     atualizaRoboLedger();
     avisaClientes(liga);
-  });
+  };
+  vavadaKiron.iniciar(aoReceber);
+  if (process.env.VAVADA_HISTORICO !== "0" && typeof vavadaKiron.recuperarHistorico === "function")
+    setTimeout(() => vavadaKiron.recuperarHistorico(aoReceber, Number(process.env.VAVADA_HISTORICO_HORAS || 24)), 20000);
 }
 const esperaVavada = setInterval(() => {
   if (!vavadaKiron) return;
