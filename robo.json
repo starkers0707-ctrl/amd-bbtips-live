@@ -37,13 +37,31 @@
   }
  },
  "o25": {
-  "saldo": -2.4,
-  "ciclos": 37,
-  "greens": 5,
+  "saldo": -1.5,
+  "ciclos": 40,
+  "greens": 6,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 31,
+  "descartes": 33,
   "historico": [
+   {
+    "quando": "2026-11-20T07:01:03.353Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-1)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:01:03.265Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:01:03.262Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "lat · RAC x FLU @1.92 (tiro 1) · gatilho: placar acima de 1-0 (2-0)"
+   },
    {
     "quando": "2026-11-20T07:00:58.666Z",
     "resultado": "GREEN_OBS",
@@ -267,54 +285,56 @@
     "detalhe": "cam · ciclo perdido (3 tiros) · gatilho: placar 0-0"
    }
   ],
-  "consumidas": {},
+  "consumidas": {
+   "lat": 1795158063261
+  },
   "ciclo": {
-   "liga": "lat",
+   "liga": "spa",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "03:59",
-     "jogo": "RAC x FLU",
-     "odd": 1.92
-    },
-    {
-     "h": "04:02",
-     "jogo": "PAR x RIV",
-     "odd": 1.92
-    },
-    {
      "h": "04:05",
-     "jogo": "THI x NAC",
-     "odd": 1.83
+     "jogo": "VAL x BAR",
+     "odd": 1.75
+    },
+    {
+     "h": "04:07",
+     "jogo": "ELC x OSA",
+     "odd": 1.95
+    },
+    {
+     "h": "04:09",
+     "jogo": "ATM x VIL",
+     "odd": 1.94
     }
    ],
-   "gatilho": "placar acima de 1-0 (2-0)",
+   "gatilho": "time ELC",
    "alvo": {
-    "h": "03:59",
-    "jogo": "RAC x FLU",
-    "odd": 1.92,
+    "h": "04:05",
+    "jogo": "VAL x BAR",
+    "odd": 1.75,
     "unidades": 1,
-    "desde": 1795157589260
+    "desde": 1795158081260
    },
-   "iniciadoEm": 1795157589260
+   "iniciadoEm": 1795158081260
   },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795148138865,
    "ita": 1795153133854,
    "spa": 1795150600556,
-   "lat": 1795151235760
+   "lat": 1795158063261
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "BOC",
-   "n": 8,
-   "start": 8
+   "chave": "ELC",
+   "n": 10,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
-   "2026-11-20": 4.6
+   "2026-11-20": 5.5
   },
   "_obs": {}
  },
@@ -424,12 +444,7 @@
    "2026-11-19": -7,
    "2026-11-20": 4.6
   },
-  "_obs": {
-   "lat": {
-    "desde": 1795158058665,
-    "gatilho": "time BOC"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": 0,
