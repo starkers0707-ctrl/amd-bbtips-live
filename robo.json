@@ -69,8 +69,8 @@
   },
   "ciclo": {
    "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "05:45",
@@ -90,13 +90,21 @@
    ],
    "gatilho": "odd 3.31",
    "alvo": {
-    "h": "05:45",
-    "jogo": "PAR x SAS",
-    "odd": 3.35,
-    "unidades": 1,
-    "desde": 1795164195440
+    "h": "05:47",
+    "jogo": "JUV x UDI",
+    "odd": 3.31,
+    "unidades": 2,
+    "desde": 1795164402441
    },
-   "iniciadoEm": 1795164195440
+   "iniciadoEm": 1795164195440,
+   "tiros": [
+    {
+     "h": "05:45",
+     "jogo": "PAR x SAS",
+     "odd": 3.35,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795158589261,
@@ -117,12 +125,18 @@
  },
  "o25": {
   "saldo": 1.1,
-  "ciclos": 624,
+  "ciclos": 625,
   "greens": 9,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 614,
+  "descartes": 615,
   "historico": [
+   {
+    "quando": "2026-11-20T08:46:12.939Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T08:46:11.548Z",
     "resultado": "GREEN_OBS",
@@ -3716,12 +3730,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T06:56:18.866Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -3829,12 +3837,7 @@
    "2026-11-19": -7,
    "2026-11-20": 4.6
   },
-  "_obs": {
-   "lat": {
-    "desde": 1795164371547,
-    "gatilho": "time BOC"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": 0,
