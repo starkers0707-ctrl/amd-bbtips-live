@@ -68,12 +68,42 @@
  },
  "o25": {
   "saldo": -0.7,
-  "ciclos": 73,
+  "ciclos": 78,
   "greens": 7,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 65,
+  "descartes": 70,
   "historico": [
+   {
+    "quando": "2026-11-20T07:08:15.253Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:08:12.462Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:07:43.060Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:07:39.162Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:07:20.563Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T07:07:16.365Z",
     "resultado": "GREEN_OBS",
@@ -569,12 +599,18 @@
  },
  "o25b": {
   "saldo": -2.4,
-  "ciclos": 8,
+  "ciclos": 9,
   "greens": 5,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 2,
+  "descartes": 3,
   "historico": [
+   {
+    "quando": "2026-11-20T07:08:12.466Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "ita · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-20T06:53:06.067Z",
     "resultado": "DESCARTADO",
@@ -625,37 +661,7 @@
    }
   ],
   "consumidas": {},
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "04:11",
-     "jogo": "GEN x MON",
-     "odd": 1.94
-    },
-    {
-     "h": "04:13",
-     "jogo": "CAG x FRO",
-     "odd": 1.91
-    },
-    {
-     "h": "04:15",
-     "jogo": "VEN x ATA",
-     "odd": 1.78
-    }
-   ],
-   "gatilho": "time CAG",
-   "alvo": {
-    "h": "04:11",
-    "jogo": "GEN x MON",
-    "odd": 1.94,
-    "unidades": 1,
-    "desde": 1795157589359
-   },
-   "iniciadoEm": 1795157589359
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462862,
    "eng": 1795148138958,
@@ -674,9 +680,9 @@
    "2026-11-20": 4.6
   },
   "_obs": {
-   "spa": {
-    "desde": 1795158436364,
-    "gatilho": "time OSA"
+   "ita": {
+    "desde": 1795158495253,
+    "gatilho": "time CAG"
    }
   }
  },
