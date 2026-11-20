@@ -193,12 +193,30 @@
  },
  "o25": {
   "saldo": 1,
-  "ciclos": 2440,
+  "ciclos": 2443,
   "greens": 18,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 2420,
+  "descartes": 2423,
   "historico": [
+   {
+    "quando": "2026-11-20T16:18:43.726Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :29) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T16:18:19.024Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :29) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T16:18:15.636Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T16:18:15.632Z",
     "resultado": "GREEN_OBS",
@@ -3780,24 +3798,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :29) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T15:07:32.736Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T15:07:32.726Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :29) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T15:07:29.236Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -3852,10 +3852,10 @@
    "bra": 1795188649232
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.83",
-   "n": 14,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":36",
+   "n": 12,
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
@@ -3965,8 +3965,12 @@
    "2026-11-20": -1.6
   },
   "_obs": {
+   "eng": {
+    "desde": 1795191499027,
+    "gatilho": "coluna :36"
+   },
    "bra": {
-    "desde": 1795191495631,
+    "desde": 1795191523726,
     "gatilho": "coluna :29"
    }
   }
