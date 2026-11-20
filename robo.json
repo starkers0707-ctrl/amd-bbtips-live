@@ -71,7 +71,37 @@
   "consumidas": {
    "ita": 1795164544540
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "06:53",
+     "jogo": "PAL x OLI",
+     "odd": 3.37
+    },
+    {
+     "h": "06:56",
+     "jogo": "IND x MEN",
+     "odd": 3.34
+    },
+    {
+     "h": "06:59",
+     "jogo": "VAL x ATC",
+     "odd": 3.35
+    }
+   ],
+   "gatilho": "time IND",
+   "alvo": {
+    "h": "06:53",
+    "jogo": "PAL x OLI",
+    "odd": 3.37,
+    "unidades": 1,
+    "desde": 1795167671139
+   },
+   "iniciadoEm": 1795167671139
+  },
   "cooldown": {
    "mnd": 1795158589261,
    "lat": 1795164050045,
@@ -80,10 +110,10 @@
    "ita": 1795164544540
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "3.31",
-   "n": 8,
-   "start": 1
+   "tipo": "time",
+   "chave": "IND",
+   "n": 11,
+   "start": 2
   },
   "dias": {
    "2026-11-20": 12.5
@@ -3704,8 +3734,8 @@
   },
   "ciclo": {
    "liga": "bra",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "06:44",
@@ -3725,13 +3755,21 @@
    ],
    "gatilho": "time CRM",
    "alvo": {
-    "h": "06:44",
-    "jogo": "ZEI x GOI",
-    "odd": 1.79,
-    "unidades": 1,
-    "desde": 1795167598740
+    "h": "06:47",
+    "jogo": "PAL x CRM",
+    "odd": 1.92,
+    "unidades": 2,
+    "desde": 1795167951138
    },
-   "iniciadoEm": 1795167598740
+   "iniciadoEm": 1795167598740,
+   "tiros": [
+    {
+     "h": "06:44",
+     "jogo": "ZEI x GOI",
+     "odd": 1.79,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -3741,8 +3779,8 @@
    "lat": 1795167575048
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "CRM",
+   "tipo": "placar",
+   "chave": "1-0 / 0-1",
    "n": 8,
    "start": 1
   },
