@@ -91,8 +91,8 @@
   },
   "ciclo": {
    "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "07:21",
@@ -112,13 +112,21 @@
    ],
    "gatilho": "odd 3.31",
    "alvo": {
-    "h": "07:21",
-    "jogo": "TOR x INT",
-    "odd": 2.97,
-    "unidades": 1,
-    "desde": 1795170021550
+    "h": "07:23",
+    "jogo": "LEC x SAS",
+    "odd": 3.31,
+    "unidades": 2,
+    "desde": 1795170164045
    },
-   "iniciadoEm": 1795170021550
+   "iniciadoEm": 1795170021550,
+   "tiros": [
+    {
+     "h": "07:21",
+     "jogo": "TOR x INT",
+     "odd": 2.97,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795158589261,
@@ -140,12 +148,24 @@
  },
  "o25": {
   "saldo": 2.7,
-  "ciclos": 764,
+  "ciclos": 766,
   "greens": 11,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 752,
+  "descartes": 754,
   "historico": [
+   {
+    "quando": "2026-11-20T10:23:17.440Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T10:22:44.139Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T10:22:42.046Z",
     "resultado": "GREEN_OBS",
@@ -3733,18 +3753,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:17:45.767Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:17:41.859Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -3865,7 +3873,7 @@
   },
   "_obs": {
    "lat": {
-    "desde": 1795170162045,
+    "desde": 1795170197439,
     "gatilho": "time VAL"
    }
   }
