@@ -173,12 +173,18 @@
  },
  "o25": {
   "saldo": -4.3,
-  "ciclos": 813,
+  "ciclos": 814,
   "greens": 11,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 800,
+  "descartes": 801,
   "historico": [
+   {
+    "quando": "2026-11-20T12:14:25.672Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time GAM) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T12:14:25.577Z",
     "resultado": "GREEN_OBS",
@@ -3772,16 +3778,40 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:26:43.661Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "09:38",
+     "jogo": "PAR x JUV",
+     "odd": 1.82
+    },
+    {
+     "h": "09:41",
+     "jogo": "GAM x ATC",
+     "odd": 1.89
+    },
+    {
+     "h": "09:44",
+     "jogo": "CRM x FOR",
+     "odd": 1.91
+    }
+   ],
+   "gatilho": "time GAM",
+   "alvo": {
+    "h": "09:38",
+    "jogo": "PAR x JUV",
+    "odd": 1.82,
+    "unidades": 1,
+    "desde": 1795176887272
+   },
+   "iniciadoEm": 1795176887272
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795148138865,
@@ -3792,20 +3822,15 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "CRM",
-   "n": 10,
-   "start": 4
+   "chave": "GAM",
+   "n": 8,
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 2.7
   },
-  "_obs": {
-   "bra": {
-    "desde": 1795176865577,
-    "gatilho": "time GAM"
-   }
-  }
+  "_obs": {}
  },
  "o25b": {
   "saldo": -8.6,
