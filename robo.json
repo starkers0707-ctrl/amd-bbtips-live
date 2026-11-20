@@ -54,7 +54,37 @@
    "lat": 1795160426537,
    "eng": 1795162065445
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "05:31",
+     "jogo": "SEV x GET",
+     "odd": 3.33
+    },
+    {
+     "h": "05:33",
+     "jogo": "BAR x VIL",
+     "odd": 3.28
+    },
+    {
+     "h": "05:35",
+     "jogo": "LEV x CEL",
+     "odd": 3.3
+    }
+   ],
+   "gatilho": "seq RRRRR",
+   "alvo": {
+    "h": "05:31",
+    "jogo": "SEV x GET",
+    "odd": 3.33,
+    "unidades": 1,
+    "desde": 1795163313840
+   },
+   "iniciadoEm": 1795163313840
+  },
   "cooldown": {
    "mnd": 1795158589261,
    "lat": 1795160426537,
@@ -62,8 +92,8 @@
   },
   "_gatilhoAtual": {
    "tipo": "seq",
-   "chave": "RRRGR",
-   "n": 10,
+   "chave": "RRRRR",
+   "n": 11,
    "start": 1
   },
   "dias": {
@@ -73,12 +103,18 @@
  },
  "o25": {
   "saldo": 1.1,
-  "ciclos": 530,
+  "ciclos": 531,
   "greens": 9,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 520,
+  "descartes": 521,
   "historico": [
+   {
+    "quando": "2026-11-20T08:28:13.047Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T08:28:10.942Z",
     "resultado": "GREEN_OBS",
@@ -3365,12 +3401,7 @@
    "2026-11-19": -7,
    "2026-11-20": 4.6
   },
-  "_obs": {
-   "lat": {
-    "desde": 1795163290942,
-    "gatilho": "time PER"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": 0,
