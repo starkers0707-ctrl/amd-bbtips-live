@@ -126,7 +126,37 @@
    "eng": 1795177422374,
    "ita": 1795177845275
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "09:50",
+     "jogo": "WAL x COL",
+     "odd": 3.31
+    },
+    {
+     "h": "09:52",
+     "jogo": "MEX x SWI",
+     "odd": 3.37
+    },
+    {
+     "h": "09:54",
+     "jogo": "BRA x SPA",
+     "odd": 3.2
+    }
+   ],
+   "gatilho": "coluna :52",
+   "alvo": {
+    "h": "09:50",
+    "jogo": "WAL x COL",
+    "odd": 3.31,
+    "unidades": 1,
+    "desde": 1795178056973
+   },
+   "iniciadoEm": 1795178056973
+  },
   "cooldown": {
    "mnd": 1795158589261,
    "lat": 1795174070472,
@@ -137,9 +167,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":27",
+   "chave": ":52",
    "n": 8,
-   "start": 1
+   "start": 8
   },
   "dias": {
    "2026-11-20": 3
@@ -148,12 +178,24 @@
  },
  "o25": {
   "saldo": -4.3,
-  "ciclos": 885,
+  "ciclos": 887,
   "greens": 11,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 872,
+  "descartes": 874,
   "historico": [
+   {
+    "quando": "2026-11-20T12:34:39.270Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time GAM) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T12:34:16.980Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time GAM) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T12:34:14.371Z",
     "resultado": "GREEN_OBS",
@@ -3741,18 +3783,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:41:20.739Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:41:19.446Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
    }
   ],
   "consumidas": {},
@@ -3904,7 +3934,7 @@
   },
   "_obs": {
    "bra": {
-    "desde": 1795178054371,
+    "desde": 1795178079270,
     "gatilho": "time GAM"
    }
   }
