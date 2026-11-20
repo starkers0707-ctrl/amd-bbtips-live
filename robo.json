@@ -162,13 +162,43 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": -3,
-  "ciclos": 1378,
-  "greens": 13,
+  "saldo": -2.2,
+  "ciclos": 1383,
+  "greens": 14,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 1363,
+  "descartes": 1367,
   "historico": [
+   {
+    "quando": "2026-11-20T14:10:15.335Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T14:09:46.537Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T14:09:46.531Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "bra · ZEI x BAH @1.89 (tiro 2) · gatilho: seq GRRG"
+   },
+   {
+    "quando": "2026-11-20T14:09:45.229Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T14:09:42.727Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T14:09:40.427Z",
     "resultado": "GREEN_OBS",
@@ -3738,87 +3768,20 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T10:26:15.842Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T10:25:46.142Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T10:25:43.940Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T10:25:25.837Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T10:25:23.545Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "eng": 1795182943126
+   "eng": 1795182943126,
+   "bra": 1795183786531
   },
-  "ciclo": {
-   "liga": "bra",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "11:05",
-     "jogo": "CRM x VIT",
-     "odd": 1.91
-    },
-    {
-     "h": "11:08",
-     "jogo": "ZEI x BAH",
-     "odd": 1.89
-    },
-    {
-     "h": "11:11",
-     "jogo": "PAR x THI",
-     "odd": 1.81
-    }
-   ],
-   "gatilho": "seq GRRG",
-   "alvo": {
-    "h": "11:08",
-    "jogo": "ZEI x BAH",
-    "odd": 1.89,
-    "unidades": 2,
-    "desde": 1795183630633
-   },
-   "iniciadoEm": 1795183245329,
-   "tiros": [
-    {
-     "h": "11:05",
-     "jogo": "CRM x VIT",
-     "odd": 1.91,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795182943126,
    "ita": 1795158777156,
    "spa": 1795158394858,
    "lat": 1795167575048,
-   "bra": 1795178747178
+   "bra": 1795183786531
   },
   "_gatilhoAtual": {
    "tipo": "seq",
@@ -3828,7 +3791,7 @@
   },
   "dias": {
    "2026-11-19": -7,
-   "2026-11-20": 4
+   "2026-11-20": 4.8
   },
   "_obs": {}
  },
@@ -3935,7 +3898,7 @@
   },
   "_obs": {
    "eng": {
-    "desde": 1795183780426,
+    "desde": 1795183815335,
     "gatilho": "odd 1.85"
    }
   }
