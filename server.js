@@ -1921,7 +1921,7 @@ async function arquivoCarrega() {
 }
 arquivoCarrega().finally(() => kvConecta());
 setInterval(kvSalva, 60000);
-setInterval(() => arquivoSalva(false), 60000);
+setInterval(() => arquivoSalva(false), 5 * 60000);
 for (const sinal of ["SIGTERM", "SIGINT"]) process.once(sinal, async () => { arquivoSalva(true); try { await kvSalva(); } catch (e) {} process.exit(0); });
 setInterval(salvaJogos, 3 * 60000); // salva a cada 3min (se mudou)
 
@@ -2373,16 +2373,26 @@ function iniciaVavadaKiron() {
     const mapa = new Map();
     const chave = g => String(g.id || `${g.horario || ""}|${g.casa || ""}|${g.fora || ""}`);
     for (const g of historico) if (g && g.inicio) mapa.set(chave(g), g);
-    for (const g of novos || []) mapa.set(chave(g), g);
-    const tIni = g => { const t = Date.parse(g.inicio || ""); return Number.isFinite(t) ? t : 0; };
-    const gamesAll = [...mapa.values()].sort((x, y) => tIni(x) - tIni(y)).slice(-1200);
+    let mudou = 0;
+    for (const g of novos || []) {
+      const k = chave(g), velho = mapa.get(k);
+      if (!velho || velho.placar !== g.placar) mudou++;
+      mapa.set(k, g);
+    }
     // Não substitui futuros bons por uma resposta temporariamente vazia.
     const upcoming = (futuros && futuros.length) ? futuros : (anterior.upcomingRaw || []);
+    // Nada novo (o coletor roda a cada 8s): nao reconstroi a liga nem faz
+    // todos os clientes baixarem a grade de novo. Era isso que travava a CPU.
+    const assinaturaUp = upcoming.map(u => (u.id || u.inicio || u.horario || "") + ":" + JSON.stringify((u.odds && u.odds.o25) || "")).join("|");
+    if (!mudou && anterior.gamesAll && anterior.assinaturaUp === assinaturaUp) { anterior.vavadaTs = Date.now(); return; }
+    const tIni = g => { const t = Date.parse(g.inicio || ""); return Number.isFinite(t) ? t : 0; };
+    const gamesAll = [...mapa.values()].sort((x, y) => tIni(x) - tIni(y)).slice(-1200);
     if (!gamesAll.length && !upcoming.length) return;
     const st = buildStore(liga, gamesAll, upcoming, new Date().toISOString());
     st.gamesAll = gamesAll;
     st.fonte = "vavada-kiron";
     st.vavadaTs = Date.now();
+    st.assinaturaUp = assinaturaUp;
     store[liga] = st;
     jogosDirty = true;
     registraLiga(liga);

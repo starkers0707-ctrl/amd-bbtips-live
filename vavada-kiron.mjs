@@ -391,7 +391,7 @@ async function detalhePorId(id) {
 export async function recuperarHistorico(onLiga, horas = 24, jaTem = null) {
   if (backfillEstado.rodando) return;
   backfillEstado.rodando = true;
-  const PAUSA = Math.max(0, Number(process.env.VAVADA_BACKFILL_PAUSA || 200));
+  const PAUSA = Math.max(0, Number(process.env.VAVADA_BACKFILL_PAUSA || 400));
   try {
     for (let i = 0; i < 60 && Object.keys(LIGAS).some(l => !champPorLiga[l] || !menorIdLiga[l]); i++) await espera(5000);
     const ligaDoChamp = {};
@@ -399,7 +399,7 @@ export async function recuperarHistorico(onLiga, horas = 24, jaTem = null) {
     const ligas = Object.keys(ligaDoChamp).map(c => ligaDoChamp[c]);
     const limite = Date.now() - horas * 3600000;
     const cache = new Map();
-    const PARALELO = Math.max(1, Math.min(8, Number(process.env.VAVADA_BACKFILL_PARALELO || 6)));
+    const PARALELO = Math.max(1, Math.min(8, Number(process.env.VAVADA_BACKFILL_PARALELO || 4)));
     const busca = async id => {
       const det = await detalhePorId(id);
       const v = { champ: Number(det?.champ?.id || 0), det };
