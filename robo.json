@@ -73,13 +73,25 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 0.2,
-  "ciclos": 431,
-  "greens": 8,
+  "saldo": 1.1,
+  "ciclos": 433,
+  "greens": 9,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 422,
+  "descartes": 423,
   "historico": [
+   {
+    "quando": "2026-11-20T08:09:42.445Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "lat · COL x FLU @1.86 (tiro 1) · gatilho: time CIO"
+   },
+   {
+    "quando": "2026-11-20T08:08:41.242Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T08:08:39.244Z",
     "resultado": "GREEN_OBS",
@@ -2668,45 +2680,16 @@
    }
   ],
   "consumidas": {
-   "ita": 1795158777156
+   "ita": 1795158777156,
+   "lat": 1795162182444
   },
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "05:08",
-     "jogo": "COL x FLU",
-     "odd": 1.86
-    },
-    {
-     "h": "05:11",
-     "jogo": "THI x CIO",
-     "odd": 1.85
-    },
-    {
-     "h": "05:14",
-     "jogo": "VAL x PAL",
-     "odd": 1.88
-    }
-   ],
-   "gatilho": "time CIO",
-   "alvo": {
-    "h": "05:08",
-    "jogo": "COL x FLU",
-    "odd": 1.86,
-    "unidades": 1,
-    "desde": 1795161677445
-   },
-   "iniciadoEm": 1795161677445
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795148138865,
    "ita": 1795158777156,
    "spa": 1795158394858,
-   "lat": 1795158063261
+   "lat": 1795162182444
   },
   "_gatilhoAtual": {
    "tipo": "time",
@@ -2716,7 +2699,7 @@
   },
   "dias": {
    "2026-11-19": -7,
-   "2026-11-20": 7.2
+   "2026-11-20": 8.1
   },
   "_obs": {}
  },
@@ -2806,10 +2789,6 @@
    "lat": {
     "desde": 1795161648439,
     "gatilho": "time CIO"
-   },
-   "ita": {
-    "desde": 1795162119244,
-    "gatilho": "time FRO"
    }
   }
  },
