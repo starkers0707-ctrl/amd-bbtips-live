@@ -66,12 +66,36 @@
  },
  "o25": {
   "saldo": 0.2,
-  "ciclos": 392,
+  "ciclos": 396,
   "greens": 8,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 383,
+  "descartes": 387,
   "historico": [
+   {
+    "quando": "2026-11-20T08:01:44.841Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T08:01:42.449Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T08:01:19.839Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T08:01:17.447Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T08:00:53.744Z",
     "resultado": "GREEN_OBS",
@@ -2429,7 +2453,37 @@
    "spa": 1795158394858,
    "ita": 1795158777156
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "05:08",
+     "jogo": "COL x FLU",
+     "odd": 1.86
+    },
+    {
+     "h": "05:11",
+     "jogo": "THI x CIO",
+     "odd": 1.85
+    },
+    {
+     "h": "05:14",
+     "jogo": "VAL x PAL",
+     "odd": 1.88
+    }
+   ],
+   "gatilho": "time CIO",
+   "alvo": {
+    "h": "05:08",
+    "jogo": "COL x FLU",
+    "odd": 1.86,
+    "unidades": 1,
+    "desde": 1795161677445
+   },
+   "iniciadoEm": 1795161677445
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795148138865,
@@ -2438,10 +2492,10 @@
    "lat": 1795158063261
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "RRRG",
-   "n": 8,
-   "start": 1
+   "tipo": "time",
+   "chave": "CIO",
+   "n": 10,
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -2535,6 +2589,10 @@
    "lat": {
     "desde": 1795161648439,
     "gatilho": "time CIO"
+   },
+   "ita": {
+    "desde": 1795161704840,
+    "gatilho": "time FRO"
    }
   }
  },
