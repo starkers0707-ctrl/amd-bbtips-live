@@ -3801,7 +3801,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "20:35",
+     "jogo": "BOL x IND",
+     "odd": 1.93
+    },
+    {
+     "h": "20:38",
+     "jogo": "RAC x OLI",
+     "odd": 1.92
+    },
+    {
+     "h": "20:41",
+     "jogo": "COL x BOC",
+     "odd": 1.77
+    }
+   ],
+   "gatilho": "coluna :38",
+   "alvo": {
+    "h": "20:35",
+    "jogo": "BOL x IND",
+    "odd": 1.93,
+    "unidades": 1,
+    "desde": 1795216288875
+   },
+   "iniciadoEm": 1795216288875
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795201072038,
@@ -3811,10 +3841,10 @@
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "PER",
-   "n": 35,
-   "start": 2
+   "tipo": "coluna",
+   "chave": ":38",
+   "n": 19,
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
