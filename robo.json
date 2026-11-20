@@ -193,12 +193,30 @@
  },
  "o25": {
   "saldo": 0.5,
-  "ciclos": 2333,
+  "ciclos": 2336,
   "greens": 17,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 2314,
+  "descartes": 2317,
   "historico": [
+   {
+    "quando": "2026-11-20T16:08:50.835Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T16:08:35.135Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T16:08:32.733Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T16:08:30.531Z",
     "resultado": "GREEN_OBS",
@@ -3780,24 +3798,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T14:47:50.527Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T14:47:26.836Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T14:47:24.027Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -3805,8 +3805,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "13:05",
@@ -3826,11 +3826,11 @@
    ],
    "gatilho": "coluna :07",
    "alvo": {
-    "h": "13:07",
-    "jogo": "MLG x ALV",
-    "odd": 1.9,
-    "unidades": 2,
-    "desde": 1795190686433
+    "h": "13:09",
+    "jogo": "GET x VIL",
+    "odd": 1.87,
+    "unidades": 4,
+    "desde": 1795190930832
    },
    "iniciadoEm": 1795189765635,
    "tiros": [
@@ -3839,6 +3839,12 @@
      "jogo": "RAY x ATH",
      "odd": 1.94,
      "unidades": 1
+    },
+    {
+     "h": "13:07",
+     "jogo": "MLG x ALV",
+     "odd": 1.9,
+     "unidades": 2
     }
    ]
   },
@@ -3854,7 +3860,7 @@
    "tipo": "odd",
    "chave": "1.89",
    "n": 9,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -3973,7 +3979,7 @@
     "gatilho": "odd 1.83"
    },
    "bra": {
-    "desde": 1795190910531,
+    "desde": 1795190930835,
     "gatilho": "seq GRRG"
    }
   }
