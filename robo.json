@@ -77,7 +77,37 @@
   "consumidas": {
    "lat": 1795168694537
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "07:21",
+     "jogo": "TOR x INT",
+     "odd": 2.97
+    },
+    {
+     "h": "07:23",
+     "jogo": "LEC x SAS",
+     "odd": 3.31
+    },
+    {
+     "h": "07:25",
+     "jogo": "NAP x MIL",
+     "odd": 3.36
+    }
+   ],
+   "gatilho": "odd 3.31",
+   "alvo": {
+    "h": "07:21",
+    "jogo": "TOR x INT",
+    "odd": 2.97,
+    "unidades": 1,
+    "desde": 1795169116942
+   },
+   "iniciadoEm": 1795169116942
+  },
   "cooldown": {
    "mnd": 1795158589261,
    "lat": 1795168694537,
@@ -86,10 +116,10 @@
    "ita": 1795164544540
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "IND",
-   "n": 11,
-   "start": 1
+   "tipo": "odd",
+   "chave": "3.31",
+   "n": 9,
+   "start": 8
   },
   "dias": {
    "2026-11-20": 16.2
