@@ -108,7 +108,37 @@
    "bra": 1795173185038,
    "lat": 1795174070472
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "09:18",
+     "jogo": "FUL x LEE",
+     "odd": 3.37
+    },
+    {
+     "h": "09:20",
+     "jogo": "EVE x CHE",
+     "odd": 3.35
+    },
+    {
+     "h": "09:22",
+     "jogo": "COV x MNC",
+     "odd": 2.98
+    }
+   ],
+   "gatilho": "coluna :20",
+   "alvo": {
+    "h": "09:18",
+    "jogo": "FUL x LEE",
+    "odd": 3.37,
+    "unidades": 1,
+    "desde": 1795176570175
+   },
+   "iniciadoEm": 1795176570175
+  },
   "cooldown": {
    "mnd": 1795158589261,
    "lat": 1795174070472,
@@ -118,10 +148,10 @@
    "bra": 1795173185038
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "IND",
-   "n": 13,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":20",
+   "n": 8,
+   "start": 4
   },
   "dias": {
    "2026-11-20": 4.1
