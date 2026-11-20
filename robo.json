@@ -56,8 +56,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "05:31",
@@ -77,13 +77,21 @@
    ],
    "gatilho": "seq RRRRR",
    "alvo": {
-    "h": "05:31",
-    "jogo": "SEV x GET",
-    "odd": 3.33,
-    "unidades": 1,
-    "desde": 1795163313840
+    "h": "05:33",
+    "jogo": "BAR x VIL",
+    "odd": 3.28,
+    "unidades": 2,
+    "desde": 1795163555947
    },
-   "iniciadoEm": 1795163313840
+   "iniciadoEm": 1795163313840,
+   "tiros": [
+    {
+     "h": "05:31",
+     "jogo": "SEV x GET",
+     "odd": 3.33,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795158589261,
@@ -103,12 +111,30 @@
  },
  "o25": {
   "saldo": 1.1,
-  "ciclos": 550,
+  "ciclos": 553,
   "greens": 9,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 540,
+  "descartes": 543,
   "historico": [
+   {
+    "quando": "2026-11-20T08:32:18.238Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T08:32:16.248Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T08:32:14.951Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T08:32:13.448Z",
     "resultado": "GREEN_OBS",
@@ -3515,12 +3541,7 @@
    "2026-11-19": -7,
    "2026-11-20": 4.6
   },
-  "_obs": {
-   "lat": {
-    "desde": 1795163533448,
-    "gatilho": "time PER"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": 0,
