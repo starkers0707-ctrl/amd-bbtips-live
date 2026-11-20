@@ -22,6 +22,68 @@
   "consumidas": {},
   "ciclo": {
    "liga": "cam",
+   "degrau": 2,
+   "apostado": 3,
+   "plano": [
+    {
+     "h": "23:33",
+     "jogo": "Liverpool x Benfica",
+     "odd": 2.12
+    },
+    {
+     "h": "23:36",
+     "jogo": "Amsterdam x Turin",
+     "odd": 2.37
+    },
+    {
+     "h": "23:39",
+     "jogo": "City x Dortmund",
+     "odd": 2.32
+    }
+   ],
+   "gatilho": "placar 0-0",
+   "alvo": {
+    "h": "23:39",
+    "jogo": "City x Dortmund",
+    "odd": 2.32,
+    "unidades": 4,
+    "desde": 1795142263467
+   },
+   "iniciadoEm": 1795141829656,
+   "tiros": [
+    {
+     "h": "23:33",
+     "jogo": "Liverpool x Benfica",
+     "odd": 2.12,
+     "unidades": 1
+    },
+    {
+     "h": "23:36",
+     "jogo": "Amsterdam x Turin",
+     "odd": 2.37,
+     "unidades": 2
+    }
+   ]
+  },
+  "cooldown": {},
+  "_gatilhoAtual": {
+   "tipo": "odd",
+   "chave": "2.05",
+   "n": 20,
+   "start": 3
+  }
+ },
+ "o25b": {
+  "saldo": 0,
+  "ciclos": 0,
+  "greens": 0,
+  "redsCiclo": 0,
+  "aborts": 0,
+  "descartes": 0,
+  "historico": [],
+  "consumidas": {},
+  "ciclo": {
+   "liga": "cam",
    "degrau": 1,
    "apostado": 1,
    "plano": [
@@ -47,9 +109,9 @@
     "jogo": "Amsterdam x Turin",
     "odd": 2.37,
     "unidades": 2,
-    "desde": 1795142082461
+    "desde": 1795142082464
    },
-   "iniciadoEm": 1795141829656,
+   "iniciadoEm": 1795141829659,
    "tiros": [
     {
      "h": "23:33",
@@ -65,54 +127,6 @@
    "chave": "2.05",
    "n": 20,
    "start": 4
-  }
- },
- "o25b": {
-  "saldo": 0,
-  "ciclos": 0,
-  "greens": 0,
-  "redsCiclo": 0,
-  "aborts": 0,
-  "descartes": 0,
-  "historico": [],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "23:33",
-     "jogo": "Liverpool x Benfica",
-     "odd": 2.12
-    },
-    {
-     "h": "23:36",
-     "jogo": "Amsterdam x Turin",
-     "odd": 2.37
-    },
-    {
-     "h": "23:39",
-     "jogo": "City x Dortmund",
-     "odd": 2.32
-    }
-   ],
-   "gatilho": "placar 0-0",
-   "alvo": {
-    "h": "23:33",
-    "jogo": "Liverpool x Benfica",
-    "odd": 2.12,
-    "unidades": 1,
-    "desde": 1795141829659
-   },
-   "iniciadoEm": 1795141829659
-  },
-  "cooldown": {},
-  "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.05",
-   "n": 20,
-   "start": 5
   }
  },
  "ambas": {
