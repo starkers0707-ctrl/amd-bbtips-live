@@ -1764,7 +1764,8 @@ let jogosSha = null;
 let jogosSemente = {}; // liga -> gamesAll persistido (semeado no 1o snapshot pos-boot)
 let jogosDirty = false;
 async function salvaJogos() {
-  if (!GH_T || !jogosDirty) return;
+  if (!GH_T) { if (!salvaJogos.avisou) { salvaJogos.avisou = true; console.log("[github] GH_TOKEN ausente: jogos nao sao salvos fora do servidor"); } return; }
+  if (!jogosDirty) return;
   jogosDirty = false;
   try {
     const dump = {};
@@ -1773,7 +1774,8 @@ async function salvaJogos() {
     const body = { message: "jogos", content: Buffer.from(JSON.stringify(dump)).toString("base64"), branch: GH_BRANCH };
     if (jogosSha) body.sha = jogosSha;
     const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${JOGOS_FILE}`, { method: "PUT", headers: { ...ghHead(), "Content-Type": "application/json" }, body: JSON.stringify(body) });
-    if (r.ok) { const j = await r.json(); jogosSha = j.content.sha; }
+    if (!r.ok) console.warn("[github] falha ao salvar jogos: HTTP " + r.status + " " + (await r.clone().text().catch(() => "")).slice(0, 160));
+    if (r.ok) { const j = await r.json(); jogosSha = j.content.sha; if (!salvaJogos.ok) console.log("[github] jogos salvos no branch " + GH_BRANCH); salvaJogos.ok = true; }
     else if (r.status === 409 || r.status === 422) { // sha defasado: rebusca
       const g = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${JOGOS_FILE}?ref=${GH_BRANCH}`, { headers: ghHead() });
       if (g.ok) { const j2 = await g.json(); jogosSha = j2.sha; }
@@ -1933,6 +1935,7 @@ setInterval(kvSalva, 60000);
 setInterval(() => arquivoSalva(false), 5 * 60000);
 for (const sinal of ["SIGTERM", "SIGINT"]) process.once(sinal, async () => { arquivoSalva(true); try { await kvSalva(); } catch (e) {} process.exit(0); });
 setInterval(salvaJogos, 3 * 60000); // salva a cada 3min (se mudou)
+setTimeout(salvaJogos, 60000);
 
 app.post("/api/snapshot", (req, res) => {
   try {
