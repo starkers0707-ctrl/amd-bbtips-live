@@ -86,7 +86,37 @@
   "consumidas": {
    "ita": 1795153133854
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "03:56",
+     "jogo": "ARG x VAL",
+     "odd": 1.93
+    },
+    {
+     "h": "03:59",
+     "jogo": "RAC x FLU",
+     "odd": 1.92
+    },
+    {
+     "h": "04:02",
+     "jogo": "PAR x RIV",
+     "odd": 1.92
+    }
+   ],
+   "gatilho": "placar acima de 1-0 (2-0)",
+   "alvo": {
+    "h": "03:56",
+    "jogo": "ARG x VAL",
+    "odd": 1.93,
+    "unidades": 1,
+    "desde": 1795154872758
+   },
+   "iniciadoEm": 1795154872758
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795148138865,
@@ -95,10 +125,10 @@
    "lat": 1795151235760
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "JUV",
-   "n": 11,
-   "start": 5
+   "tipo": "placar",
+   "chave": "acima de 1-0 (2-0)",
+   "n": 9,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -151,7 +181,6 @@
    }
   ],
   "consumidas": {
-   "lat": 1795151235764,
    "ita": 1795153133860
   },
   "ciclo": null,
