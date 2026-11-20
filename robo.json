@@ -27,15 +27,45 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "01:14",
+     "jogo": "SUN x BHA",
+     "odd": 1.95
+    },
+    {
+     "h": "01:16",
+     "jogo": "MNC x CRY",
+     "odd": 1.85
+    },
+    {
+     "h": "01:18",
+     "jogo": "IPS x CHE",
+     "odd": 1.81
+    }
+   ],
+   "gatilho": "placar goleada (3+)",
+   "alvo": {
+    "h": "01:14",
+    "jogo": "SUN x BHA",
+    "odd": 1.95,
+    "unidades": 1,
+    "desde": 1795147893256
+   },
+   "iniciadoEm": 1795147893256
+  },
   "cooldown": {
    "cam": 1795142462857
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.05",
-   "n": 20,
-   "start": 2
+   "tipo": "placar",
+   "chave": "goleada (3+)",
+   "n": 8,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7
