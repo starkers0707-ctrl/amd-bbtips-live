@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 4.1,
-  "ciclos": 17,
+  "saldo": -2.9,
+  "ciclos": 18,
   "greens": 9,
-  "redsCiclo": 3,
+  "redsCiclo": 4,
   "aborts": 0,
   "descartes": 5,
   "historico": [
+   {
+    "quando": "2026-11-20T12:23:42.374Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "eng · ciclo perdido (3 tiros) · gatilho: coluna :20"
+   },
    {
     "quando": "2026-11-20T12:09:35.481Z",
     "resultado": "GREEN_OBS",
@@ -111,57 +117,14 @@
    }
   ],
   "consumidas": {
-   "lat": 1795174070472
+   "lat": 1795174070472,
+   "eng": 1795177422374
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "09:18",
-     "jogo": "FUL x LEE",
-     "odd": 3.37
-    },
-    {
-     "h": "09:20",
-     "jogo": "EVE x CHE",
-     "odd": 3.35
-    },
-    {
-     "h": "09:22",
-     "jogo": "COV x MNC",
-     "odd": 2.98
-    }
-   ],
-   "gatilho": "coluna :20",
-   "alvo": {
-    "h": "09:22",
-    "jogo": "COV x MNC",
-    "odd": 2.98,
-    "unidades": 4,
-    "desde": 1795177332891
-   },
-   "iniciadoEm": 1795176570175,
-   "tiros": [
-    {
-     "h": "09:18",
-     "jogo": "FUL x LEE",
-     "odd": 3.37,
-     "unidades": 1
-    },
-    {
-     "h": "09:20",
-     "jogo": "EVE x CHE",
-     "odd": 3.35,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795158589261,
    "lat": 1795174070472,
-   "eng": 1795162065445,
+   "eng": 1795177422374,
    "spa": 1795163811039,
    "ita": 1795170404238,
    "bra": 1795173185038
@@ -170,10 +133,10 @@
    "tipo": "coluna",
    "chave": ":27",
    "n": 8,
-   "start": 2
+   "start": 1
   },
   "dias": {
-   "2026-11-20": 4.1
+   "2026-11-20": -2.9
   },
   "_obs": {}
  },
