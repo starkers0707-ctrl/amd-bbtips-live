@@ -68,12 +68,42 @@
  },
  "o25": {
   "saldo": -0.7,
-  "ciclos": 68,
+  "ciclos": 73,
   "greens": 7,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 60,
+  "descartes": 65,
   "historico": [
+   {
+    "quando": "2026-11-20T07:07:16.365Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:06:41.160Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:06:39.857Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:06:37.861Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:06:34.861Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T07:06:34.858Z",
     "resultado": "GREEN",
@@ -487,7 +517,37 @@
    "lat": 1795158063261,
    "spa": 1795158394858
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:11",
+     "jogo": "GEN x MON",
+     "odd": 1.94
+    },
+    {
+     "h": "04:13",
+     "jogo": "CAG x FRO",
+     "odd": 1.91
+    },
+    {
+     "h": "04:15",
+     "jogo": "VEN x ATA",
+     "odd": 1.78
+    }
+   ],
+   "gatilho": "time CAG",
+   "alvo": {
+    "h": "04:11",
+    "jogo": "GEN x MON",
+    "odd": 1.94,
+    "unidades": 1,
+    "desde": 1795158397856
+   },
+   "iniciadoEm": 1795158397856
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795148138865,
@@ -497,9 +557,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "OSA",
+   "chave": "CAG",
    "n": 9,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -607,13 +667,18 @@
    "tipo": "time",
    "chave": "CAG",
    "n": 9,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 4.6
   },
-  "_obs": {}
+  "_obs": {
+   "spa": {
+    "desde": 1795158436364,
+    "gatilho": "time OSA"
+   }
+  }
  },
  "ambas": {
   "saldo": 0,
