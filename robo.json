@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 7.8,
-  "ciclos": 5,
-  "greens": 3,
+  "saldo": 10.1,
+  "ciclos": 6,
+  "greens": 4,
   "redsCiclo": 0,
   "aborts": 0,
   "descartes": 2,
   "historico": [
+   {
+    "quando": "2026-11-20T07:40:26.538Z",
+    "resultado": "GREEN",
+    "unidades": 2.3,
+    "detalhe": "lat · FLU x MEN @3.34 (tiro 1) · gatilho: time IND"
+   },
    {
     "quando": "2026-11-20T07:29:52.063Z",
     "resultado": "GREEN_OBS",
@@ -39,42 +45,13 @@
    }
   ],
   "consumidas": {
-   "mnd": 1795158589261
+   "mnd": 1795158589261,
+   "lat": 1795160426537
   },
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "04:38",
-     "jogo": "FLU x MEN",
-     "odd": 3.34
-    },
-    {
-     "h": "04:41",
-     "jogo": "CIO x IND",
-     "odd": 3.37
-    },
-    {
-     "h": "04:44",
-     "jogo": "PER x BAR",
-     "odd": 3.28
-    }
-   ],
-   "gatilho": "time IND",
-   "alvo": {
-    "h": "04:38",
-    "jogo": "FLU x MEN",
-    "odd": 3.34,
-    "unidades": 1,
-    "desde": 1795159795856
-   },
-   "iniciadoEm": 1795159795856
-  },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795158589261,
-   "lat": 1795152299459
+   "lat": 1795160426537
   },
   "_gatilhoAtual": {
    "tipo": "time",
@@ -83,18 +60,24 @@
    "start": 1
   },
   "dias": {
-   "2026-11-20": 7.8
+   "2026-11-20": 10.1
   },
   "_obs": {}
  },
  "o25": {
   "saldo": 0.2,
-  "ciclos": 280,
+  "ciclos": 281,
   "greens": 8,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 271,
+  "descartes": 272,
   "historico": [
+   {
+    "quando": "2026-11-20T07:40:31.144Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T07:38:49.359Z",
     "resultado": "GREEN_OBS",
