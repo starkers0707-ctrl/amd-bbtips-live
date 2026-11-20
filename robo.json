@@ -92,13 +92,37 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 1.1,
-  "ciclos": 704,
-  "greens": 9,
+  "saldo": 1.9,
+  "ciclos": 708,
+  "greens": 10,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 694,
+  "descartes": 697,
   "historico": [
+   {
+    "quando": "2026-11-20T09:39:37.041Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T09:39:35.139Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T09:39:35.048Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "lat · VAL x BOC @1.92 (tiro 2) · gatilho: time BOC"
+   },
+   {
+    "quando": "2026-11-20T09:39:34.048Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T09:39:11.856Z",
     "resultado": "GREEN_OBS",
@@ -3674,88 +3698,58 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:11:24.063Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:11:20.360Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:11:18.463Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:10:59.855Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
    }
   ],
-  "consumidas": {},
+  "consumidas": {
+   "lat": 1795167575048
+  },
   "ciclo": {
-   "liga": "lat",
-   "degrau": 1,
-   "apostado": 1,
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
    "plano": [
     {
-     "h": "06:38",
-     "jogo": "IND x CIO",
-     "odd": 1.93
+     "h": "06:44",
+     "jogo": "ZEI x GOI",
+     "odd": 1.79
     },
     {
-     "h": "06:41",
-     "jogo": "VAL x BOC",
+     "h": "06:47",
+     "jogo": "PAL x CRM",
      "odd": 1.92
     },
     {
-     "h": "06:44",
-     "jogo": "FLU x COL",
-     "odd": 1.89
+     "h": "06:50",
+     "jogo": "ATC x PAR",
+     "odd": 1.87
     }
    ],
-   "gatilho": "time BOC",
+   "gatilho": "time CRM",
    "alvo": {
-    "h": "06:41",
-    "jogo": "VAL x BOC",
-    "odd": 1.92,
-    "unidades": 2,
-    "desde": 1795167574044
+    "h": "06:44",
+    "jogo": "ZEI x GOI",
+    "odd": 1.79,
+    "unidades": 1,
+    "desde": 1795167598740
    },
-   "iniciadoEm": 1795166926538,
-   "tiros": [
-    {
-     "h": "06:38",
-     "jogo": "IND x CIO",
-     "odd": 1.93,
-     "unidades": 1
-    }
-   ]
+   "iniciadoEm": 1795167598740
   },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795148138865,
    "ita": 1795158777156,
    "spa": 1795158394858,
-   "lat": 1795162182444
+   "lat": 1795167575048
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "BOC",
-   "n": 12,
-   "start": 6
+   "chave": "CRM",
+   "n": 8,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
-   "2026-11-20": 8.1
+   "2026-11-20": 8.9
   },
   "_obs": {}
  },
@@ -3823,7 +3817,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "06:44",
+     "jogo": "ZEI x GOI",
+     "odd": 1.79
+    },
+    {
+     "h": "06:47",
+     "jogo": "PAL x CRM",
+     "odd": 1.92
+    },
+    {
+     "h": "06:50",
+     "jogo": "ATC x PAR",
+     "odd": 1.87
+    }
+   ],
+   "gatilho": "time CRM",
+   "alvo": {
+    "h": "06:44",
+    "jogo": "ZEI x GOI",
+    "odd": 1.79,
+    "unidades": 1,
+    "desde": 1795167598747
+   },
+   "iniciadoEm": 1795167598747
+  },
   "cooldown": {
    "cam": 1795142462862,
    "eng": 1795148138958,
@@ -3833,9 +3857,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "CAG",
-   "n": 9,
-   "start": 2
+   "chave": "CRM",
+   "n": 8,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
