@@ -38,12 +38,36 @@
  },
  "o25": {
   "saldo": -1.5,
-  "ciclos": 56,
+  "ciclos": 60,
   "greens": 6,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 49,
+  "descartes": 53,
   "historico": [
+   {
+    "quando": "2026-11-20T07:05:14.453Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:04:42.566Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:04:39.056Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:04:19.560Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T07:04:15.458Z",
     "resultado": "GREEN_OBS",
@@ -423,9 +447,9 @@
    "lat": 1795158063261
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "ELC",
-   "n": 11,
+   "tipo": "placar",
+   "chave": "acima de 1-0 (2-0)",
+   "n": 8,
    "start": 1
   },
   "dias": {
@@ -534,7 +558,7 @@
    "tipo": "time",
    "chave": "CAG",
    "n": 9,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -542,8 +566,8 @@
   },
   "_obs": {
    "spa": {
-    "desde": 1795158255458,
-    "gatilho": "time ELC"
+    "desde": 1795158314453,
+    "gatilho": "placar acima de 1-0 (2-0)"
    }
   }
  },
