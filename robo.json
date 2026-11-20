@@ -45,13 +45,49 @@
   }
  },
  "o25": {
-  "saldo": -0.7,
-  "ciclos": 113,
-  "greens": 7,
+  "saldo": 0.2,
+  "ciclos": 119,
+  "greens": 8,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 105,
+  "descartes": 110,
   "historico": [
+   {
+    "quando": "2026-11-20T07:13:25.960Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:13:01.665Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:13:01.662Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:12:57.161Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:12:57.158Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:12:57.157Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "ita · GEN x MON @1.94 (tiro 1) · gatilho: time CAG"
+   },
    {
     "quando": "2026-11-20T07:12:46.156Z",
     "resultado": "GREEN_OBS",
@@ -733,55 +769,26 @@
   ],
   "consumidas": {
    "lat": 1795158063261,
-   "spa": 1795158394858
+   "spa": 1795158394858,
+   "ita": 1795158777156
   },
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "04:11",
-     "jogo": "GEN x MON",
-     "odd": 1.94
-    },
-    {
-     "h": "04:13",
-     "jogo": "CAG x FRO",
-     "odd": 1.91
-    },
-    {
-     "h": "04:15",
-     "jogo": "VEN x ATA",
-     "odd": 1.78
-    }
-   ],
-   "gatilho": "time CAG",
-   "alvo": {
-    "h": "04:11",
-    "jogo": "GEN x MON",
-    "odd": 1.94,
-    "unidades": 1,
-    "desde": 1795158397856
-   },
-   "iniciadoEm": 1795158397856
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795148138865,
-   "ita": 1795153133854,
+   "ita": 1795158777156,
    "spa": 1795158394858,
    "lat": 1795158063261
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "CAG",
-   "n": 9,
+   "tipo": "seq",
+   "chave": "RRRG",
+   "n": 8,
    "start": 1
   },
   "dias": {
    "2026-11-19": -7,
-   "2026-11-20": 6.3
+   "2026-11-20": 7.2
   },
   "_obs": {}
  },
@@ -869,12 +876,8 @@
   },
   "_obs": {
    "ita": {
-    "desde": 1795158638355,
-    "gatilho": "time CAG"
-   },
-   "spa": {
-    "desde": 1795158766156,
-    "gatilho": "time OSA"
+    "desde": 1795158805960,
+    "gatilho": "seq RRRG"
    }
   }
  },
