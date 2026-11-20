@@ -38,12 +38,24 @@
  },
  "o25": {
   "saldo": -2.4,
-  "ciclos": 9,
+  "ciclos": 11,
   "greens": 5,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 3,
+  "descartes": 5,
   "historico": [
+   {
+    "quando": "2026-11-20T06:28:34.556Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T06:28:31.353Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T06:28:04.355Z",
     "resultado": "GREEN_OBS",
@@ -141,10 +153,10 @@
    "lat": 1795151235760
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "ELC",
-   "n": 10,
-   "start": 2
+   "tipo": "placar",
+   "chave": "acima de 1-0 (2-0)",
+   "n": 9,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -254,7 +266,12 @@
    "2026-11-19": -7,
    "2026-11-20": 4.6
   },
-  "_obs": {}
+  "_obs": {
+   "lat": {
+    "desde": 1795156114555,
+    "gatilho": "placar acima de 1-0 (2-0)"
+   }
+  }
  },
  "ambas": {
   "saldo": 0,
