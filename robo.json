@@ -165,12 +165,48 @@
  },
  "o25": {
   "saldo": -3.7,
-  "ciclos": 1225,
+  "ciclos": 1231,
   "greens": 12,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 1211,
+  "descartes": 1217,
   "historico": [
+   {
+    "quando": "2026-11-20T13:43:31.330Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T13:43:24.729Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T13:43:06.226Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T13:43:04.524Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T13:43:01.630Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T13:43:01.534Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T13:42:54.127Z",
     "resultado": "DESCARTADO",
@@ -3734,48 +3770,42 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.91) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T09:14:35.450Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.91) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T09:14:33.344Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.91) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T09:14:09.048Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.91) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T09:13:40.237Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.91) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T09:13:38.141Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.91) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T09:13:23.350Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.91) — liga REARMADA"
    }
   ],
   "consumidas": {
    "bra": 1795178747178
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "10:52",
+     "jogo": "AST x MNU",
+     "odd": 1.92
+    },
+    {
+     "h": "10:54",
+     "jogo": "SUN x ARS",
+     "odd": 1.83
+    },
+    {
+     "h": "10:56",
+     "jogo": "MNC x CRY",
+     "odd": 1.85
+    }
+   ],
+   "gatilho": "odd 1.83",
+   "alvo": {
+    "h": "10:52",
+    "jogo": "AST x MNU",
+    "odd": 1.92,
+    "unidades": 1,
+    "desde": 1795182184435
+   },
+   "iniciadoEm": 1795182184435
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795148138865,
@@ -3878,37 +3908,7 @@
    }
   ],
   "consumidas": {},
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "10:42",
-     "jogo": "MNU x NEW",
-     "odd": 1.9
-    },
-    {
-     "h": "10:44",
-     "jogo": "CHE x MNC",
-     "odd": 1.85
-    },
-    {
-     "h": "10:46",
-     "jogo": "NOT x EVE",
-     "odd": 1.93
-    }
-   ],
-   "gatilho": "odd 1.85",
-   "alvo": {
-    "h": "10:42",
-    "jogo": "MNU x NEW",
-    "odd": 1.9,
-    "unidades": 1,
-    "desde": 1795181256404
-   },
-   "iniciadoEm": 1795181256404
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462862,
    "eng": 1795148138958,
@@ -3931,6 +3931,10 @@
    "bra": {
     "desde": 1795182174130,
     "gatilho": "time GAM"
+   },
+   "eng": {
+    "desde": 1795182211330,
+    "gatilho": "odd 1.83"
    }
   }
  },
