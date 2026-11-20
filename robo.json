@@ -67,13 +67,25 @@
   }
  },
  "o25": {
-  "saldo": -1.5,
-  "ciclos": 66,
-  "greens": 6,
+  "saldo": -0.7,
+  "ciclos": 68,
+  "greens": 7,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 59,
+  "descartes": 60,
   "historico": [
+   {
+    "quando": "2026-11-20T07:06:34.858Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "spa · VAL x BAR @1.75 (tiro 1) · gatilho: time ELC"
+   },
+   {
+    "quando": "2026-11-20T07:06:18.665Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T07:06:14.362Z",
     "resultado": "GREEN_OBS",
@@ -472,55 +484,26 @@
    }
   ],
   "consumidas": {
-   "lat": 1795158063261
+   "lat": 1795158063261,
+   "spa": 1795158394858
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "04:05",
-     "jogo": "VAL x BAR",
-     "odd": 1.75
-    },
-    {
-     "h": "04:07",
-     "jogo": "ELC x OSA",
-     "odd": 1.95
-    },
-    {
-     "h": "04:09",
-     "jogo": "ATM x VIL",
-     "odd": 1.94
-    }
-   ],
-   "gatilho": "time ELC",
-   "alvo": {
-    "h": "04:05",
-    "jogo": "VAL x BAR",
-    "odd": 1.75,
-    "unidades": 1,
-    "desde": 1795158081260
-   },
-   "iniciadoEm": 1795158081260
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795148138865,
    "ita": 1795153133854,
-   "spa": 1795150600556,
+   "spa": 1795158394858,
    "lat": 1795158063261
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "acima de 1-0 (2-0)",
-   "n": 8,
-   "start": 1
+   "tipo": "time",
+   "chave": "OSA",
+   "n": 9,
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
-   "2026-11-20": 5.5
+   "2026-11-20": 6.3
   },
   "_obs": {}
  },
@@ -630,12 +613,7 @@
    "2026-11-19": -7,
    "2026-11-20": 4.6
   },
-  "_obs": {
-   "spa": {
-    "desde": 1795158374362,
-    "gatilho": "placar acima de 1-0 (2-0)"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": 0,
