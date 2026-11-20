@@ -145,13 +145,19 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 2.7,
-  "ciclos": 811,
+  "saldo": -4.3,
+  "ciclos": 812,
   "greens": 11,
-  "redsCiclo": 1,
+  "redsCiclo": 2,
   "aborts": 0,
   "descartes": 799,
   "historico": [
+   {
+    "quando": "2026-11-20T11:01:22.641Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "bra · ciclo perdido (3 tiros) · gatilho: time FLU"
+   },
    {
     "quando": "2026-11-20T10:31:10.042Z",
     "resultado": "GREEN_OBS",
@@ -3745,67 +3751,19 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:26:37.058Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "bra",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "07:56",
-     "jogo": "GOI x FOR",
-     "odd": 1.83
-    },
-    {
-     "h": "07:59",
-     "jogo": "FLU x ATC",
-     "odd": 1.87
-    },
-    {
-     "h": "08:02",
-     "jogo": "NAC x PAL",
-     "odd": 1.93
-    }
-   ],
-   "gatilho": "time FLU",
-   "alvo": {
-    "h": "08:02",
-    "jogo": "NAC x PAL",
-    "odd": 1.93,
-    "unidades": 4,
-    "desde": 1795172462442
-   },
-   "iniciadoEm": 1795171759742,
-   "tiros": [
-    {
-     "h": "07:56",
-     "jogo": "GOI x FOR",
-     "odd": 1.83,
-     "unidades": 1
-    },
-    {
-     "h": "07:59",
-     "jogo": "FLU x ATC",
-     "odd": 1.87,
-     "unidades": 2
-    }
-   ]
+  "consumidas": {
+   "bra": 1795172482640
   },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795148138865,
    "ita": 1795158777156,
    "spa": 1795158394858,
    "lat": 1795167575048,
-   "bra": 1795168124148
+   "bra": 1795172482640
   },
   "_gatilhoAtual": {
    "tipo": "time",
@@ -3815,7 +3773,7 @@
   },
   "dias": {
    "2026-11-19": -7,
-   "2026-11-20": 9.7
+   "2026-11-20": 2.7
   },
   "_obs": {}
  },
@@ -3891,8 +3849,8 @@
   "consumidas": {},
   "ciclo": {
    "liga": "bra",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "07:56",
@@ -3912,11 +3870,11 @@
    ],
    "gatilho": "time FLU",
    "alvo": {
-    "h": "07:59",
-    "jogo": "FLU x ATC",
-    "odd": 1.87,
-    "unidades": 2,
-    "desde": 1795172265349
+    "h": "08:02",
+    "jogo": "NAC x PAL",
+    "odd": 1.93,
+    "unidades": 4,
+    "desde": 1795172462446
    },
    "iniciadoEm": 1795171759837,
    "tiros": [
@@ -3925,6 +3883,12 @@
      "jogo": "GOI x FOR",
      "odd": 1.83,
      "unidades": 1
+    },
+    {
+     "h": "07:59",
+     "jogo": "FLU x ATC",
+     "odd": 1.87,
+     "unidades": 2
     }
    ]
   },
@@ -3940,7 +3904,7 @@
    "tipo": "time",
    "chave": "CRM",
    "n": 10,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
