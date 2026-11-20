@@ -3703,35 +3703,35 @@
   ],
   "consumidas": {},
   "ciclo": {
-   "liga": "spa",
+   "liga": "lat",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "06:29",
-     "jogo": "GET x CEL",
-     "odd": 1.94
+     "h": "06:38",
+     "jogo": "IND x CIO",
+     "odd": 1.93
     },
     {
-     "h": "06:31",
-     "jogo": "BET x LEV",
-     "odd": 1.91
+     "h": "06:41",
+     "jogo": "VAL x BOC",
+     "odd": 1.92
     },
     {
-     "h": "06:33",
-     "jogo": "OSA x ALV",
-     "odd": 1.94
+     "h": "06:44",
+     "jogo": "FLU x COL",
+     "odd": 1.89
     }
    ],
-   "gatilho": "odd 1.91",
+   "gatilho": "time BOC",
    "alvo": {
-    "h": "06:29",
-    "jogo": "GET x CEL",
-    "odd": 1.94,
+    "h": "06:38",
+    "jogo": "IND x CIO",
+    "odd": 1.93,
     "unidades": 1,
-    "desde": 1795166003344
+    "desde": 1795166926538
    },
-   "iniciadoEm": 1795166003344
+   "iniciadoEm": 1795166926538
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -3834,7 +3834,12 @@
    "2026-11-19": -7,
    "2026-11-20": 4.6
   },
-  "_obs": {}
+  "_obs": {
+   "lat": {
+    "desde": 1795166910346,
+    "gatilho": "time BOC"
+   }
+  }
  },
  "ambas": {
   "saldo": 0,
