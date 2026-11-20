@@ -167,7 +167,37 @@
   "consumidas": {
    "mnd": 1795186689228
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "12:01",
+     "jogo": "RSO x CEL",
+     "odd": 3.32
+    },
+    {
+     "h": "12:03",
+     "jogo": "ESP x ALV",
+     "odd": 3.37
+    },
+    {
+     "h": "12:05",
+     "jogo": "BAR x MLG",
+     "odd": 2.54
+    }
+   ],
+   "gatilho": "seq GRGRR",
+   "alvo": {
+    "h": "12:01",
+    "jogo": "RSO x CEL",
+    "odd": 3.32,
+    "unidades": 1,
+    "desde": 1795186735136
+   },
+   "iniciadoEm": 1795186735136
+  },
   "cooldown": {
    "mnd": 1795186689228,
    "lat": 1795174070472,
@@ -177,9 +207,9 @@
    "bra": 1795173185038
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":52",
-   "n": 10,
+   "tipo": "seq",
+   "chave": "GRGRR",
+   "n": 9,
    "start": 1
   },
   "dias": {
@@ -189,12 +219,24 @@
  },
  "o25": {
   "saldo": -0.4,
-  "ciclos": 1808,
+  "ciclos": 1810,
   "greens": 16,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 1790,
+  "descartes": 1792,
   "historico": [
+   {
+    "quando": "2026-11-20T14:58:55.232Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T14:58:34.331Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T14:58:30.126Z",
     "resultado": "GREEN_OBS",
@@ -3782,18 +3824,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time GAM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T13:38:53.004Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time GAM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T13:38:33.012Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time GAM) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -3929,8 +3959,8 @@
     "gatilho": "coluna :07"
    },
    "eng": {
-    "desde": 1795186710126,
-    "gatilho": "coluna :02"
+    "desde": 1795186735232,
+    "gatilho": "odd 1.82"
    }
   }
  },
