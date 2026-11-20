@@ -17,14 +17,44 @@
   "consumidas": {
    "mnd": 1795150545760
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "02:23",
+     "jogo": "ARG x THI",
+     "odd": 3.27
+    },
+    {
+     "h": "02:26",
+     "jogo": "PAL x BOC",
+     "odd": 3.35
+    },
+    {
+     "h": "02:29",
+     "jogo": "BAR x ATC",
+     "odd": 3.02
+    }
+   ],
+   "gatilho": "placar acima de 1-0 (2-1)",
+   "alvo": {
+    "h": "02:23",
+    "jogo": "ARG x THI",
+    "odd": 3.27,
+    "unidades": 1,
+    "desde": 1795151939565
+   },
+   "iniciadoEm": 1795151939565
+  },
   "cooldown": {
    "mnd": 1795150545760
   },
   "_gatilhoAtual": {
    "tipo": "placar",
-   "chave": "1-0 / 0-1",
-   "n": 8,
+   "chave": "acima de 1-0 (2-1)",
+   "n": 9,
    "start": 1
   },
   "dias": {
@@ -134,7 +164,6 @@
    }
   ],
   "consumidas": {
-   "eng": 1795148138958,
    "ita": 1795149517558,
    "spa": 1795150600560,
    "lat": 1795151235764
