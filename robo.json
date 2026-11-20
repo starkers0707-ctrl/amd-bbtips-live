@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 12.5,
-  "ciclos": 7,
+  "saldo": 5.5,
+  "ciclos": 8,
   "greens": 5,
-  "redsCiclo": 0,
+  "redsCiclo": 1,
   "aborts": 0,
   "descartes": 2,
   "historico": [
+   {
+    "quando": "2026-11-20T08:36:51.039Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "spa · ciclo perdido (3 tiros) · gatilho: seq RRRRR"
+   },
    {
     "quando": "2026-11-20T08:07:45.446Z",
     "resultado": "GREEN",
@@ -52,57 +58,15 @@
   ],
   "consumidas": {
    "lat": 1795160426537,
-   "eng": 1795162065445
+   "eng": 1795162065445,
+   "spa": 1795163811039
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "05:31",
-     "jogo": "SEV x GET",
-     "odd": 3.33
-    },
-    {
-     "h": "05:33",
-     "jogo": "BAR x VIL",
-     "odd": 3.28
-    },
-    {
-     "h": "05:35",
-     "jogo": "LEV x CEL",
-     "odd": 3.3
-    }
-   ],
-   "gatilho": "seq RRRRR",
-   "alvo": {
-    "h": "05:35",
-    "jogo": "LEV x CEL",
-    "odd": 3.3,
-    "unidades": 4,
-    "desde": 1795163679237
-   },
-   "iniciadoEm": 1795163313840,
-   "tiros": [
-    {
-     "h": "05:31",
-     "jogo": "SEV x GET",
-     "odd": 3.33,
-     "unidades": 1
-    },
-    {
-     "h": "05:33",
-     "jogo": "BAR x VIL",
-     "odd": 3.28,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795158589261,
    "lat": 1795160426537,
-   "eng": 1795162065445
+   "eng": 1795162065445,
+   "spa": 1795163811039
   },
   "_gatilhoAtual": {
    "tipo": "seq",
@@ -111,18 +75,30 @@
    "start": 1
   },
   "dias": {
-   "2026-11-20": 12.5
+   "2026-11-20": 5.5
   },
   "_obs": {}
  },
  "o25": {
   "saldo": 1.1,
-  "ciclos": 572,
+  "ciclos": 574,
   "greens": 9,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 562,
+  "descartes": 564,
   "historico": [
+   {
+    "quando": "2026-11-20T08:36:51.046Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T08:36:28.449Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T08:36:25.747Z",
     "resultado": "GREEN_OBS",
@@ -3663,7 +3639,7 @@
   },
   "_obs": {
    "lat": {
-    "desde": 1795163785746,
+    "desde": 1795163811046,
     "gatilho": "time BOC"
    }
   }
