@@ -94,12 +94,36 @@
  },
  "o25": {
   "saldo": 1.1,
-  "ciclos": 645,
+  "ciclos": 649,
   "greens": 9,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 635,
+  "descartes": 639,
   "historico": [
+   {
+    "quando": "2026-11-20T09:17:37.037Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T09:17:15.748Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T09:17:14.750Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T09:17:12.348Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T09:17:10.247Z",
     "resultado": "GREEN_OBS",
@@ -3675,30 +3699,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:02:37.166Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:02:17.664Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:02:15.565Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:02:14.458Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
    }
   ],
   "consumidas": {},
@@ -3741,10 +3741,10 @@
    "lat": 1795162182444
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.91",
-   "n": 8,
-   "start": 6
+   "tipo": "time",
+   "chave": "ELC",
+   "n": 18,
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
@@ -3836,8 +3836,8 @@
   },
   "_obs": {
    "spa": {
-    "desde": 1795166230247,
-    "gatilho": "odd 1.91"
+    "desde": 1795166256950,
+    "gatilho": "time ELC"
    }
   }
  },
