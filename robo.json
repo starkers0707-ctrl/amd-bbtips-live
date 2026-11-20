@@ -48,15 +48,45 @@
    "mnd": 1795158589261,
    "lat": 1795160426537
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "05:06",
+     "jogo": "AST x BRE",
+     "odd": 3.35
+    },
+    {
+     "h": "05:08",
+     "jogo": "BOU x EVE",
+     "odd": 3.36
+    },
+    {
+     "h": "05:10",
+     "jogo": "ARS x COV",
+     "odd": 2.92
+    }
+   ],
+   "gatilho": "seq RRRGR",
+   "alvo": {
+    "h": "05:06",
+    "jogo": "AST x BRE",
+    "odd": 3.35,
+    "unidades": 1,
+    "desde": 1795161836839
+   },
+   "iniciadoEm": 1795161836839
+  },
   "cooldown": {
    "mnd": 1795158589261,
    "lat": 1795160426537
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "IND",
-   "n": 8,
+   "tipo": "seq",
+   "chave": "RRRGR",
+   "n": 10,
    "start": 1
   },
   "dias": {
@@ -66,12 +96,42 @@
  },
  "o25": {
   "saldo": 0.2,
-  "ciclos": 405,
+  "ciclos": 410,
   "greens": 8,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 396,
+  "descartes": 401,
   "historico": [
+   {
+    "quando": "2026-11-20T08:04:21.858Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T08:04:19.551Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T08:04:00.240Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T08:03:58.846Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T08:03:56.846Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T08:03:54.644Z",
     "resultado": "GREEN_OBS",
@@ -2549,7 +2609,7 @@
    "tipo": "time",
    "chave": "CIO",
    "n": 10,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -2645,7 +2705,7 @@
     "gatilho": "time CIO"
    },
    "ita": {
-    "desde": 1795161834644,
+    "desde": 1795161861857,
     "gatilho": "time FRO"
    }
   }
