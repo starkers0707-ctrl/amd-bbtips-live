@@ -67,7 +67,37 @@
    "spa": 1795163811039,
    "lat": 1795164050045
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "05:45",
+     "jogo": "PAR x SAS",
+     "odd": 3.35
+    },
+    {
+     "h": "05:47",
+     "jogo": "JUV x UDI",
+     "odd": 3.31
+    },
+    {
+     "h": "05:49",
+     "jogo": "ATA x MON",
+     "odd": 3.26
+    }
+   ],
+   "gatilho": "odd 3.31",
+   "alvo": {
+    "h": "05:45",
+    "jogo": "PAR x SAS",
+    "odd": 3.35,
+    "unidades": 1,
+    "desde": 1795164195440
+   },
+   "iniciadoEm": 1795164195440
+  },
   "cooldown": {
    "mnd": 1795158589261,
    "lat": 1795164050045,
@@ -75,10 +105,10 @@
    "spa": 1795163811039
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "IND",
-   "n": 9,
-   "start": 4
+   "tipo": "odd",
+   "chave": "3.31",
+   "n": 8,
+   "start": 1
   },
   "dias": {
    "2026-11-20": 8.9
@@ -87,12 +117,30 @@
  },
  "o25": {
   "saldo": 1.1,
-  "ciclos": 604,
+  "ciclos": 607,
   "greens": 9,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 594,
+  "descartes": 597,
   "historico": [
+   {
+    "quando": "2026-11-20T08:42:41.143Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T08:42:39.846Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T08:42:34.744Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T08:42:32.841Z",
     "resultado": "GREEN_OBS",
@@ -3674,24 +3722,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T06:27:59.953Z",
-    "resultado": "DESCARTADO",
-    "unidades": 0,
-    "detalhe": "lat · alvo sem fechamento em 15min antes da 1a aposta"
-   },
-   {
-    "quando": "2026-11-20T05:38:53.855Z",
-    "resultado": "GREEN",
-    "unidades": 0.9,
-    "detalhe": "ita · JUV x SAS @1.91 (tiro 1) · gatilho: time JUV"
-   },
-   {
-    "quando": "2026-11-20T05:07:15.760Z",
-    "resultado": "GREEN",
-    "unidades": 0.9,
-    "detalhe": "lat · RIV x PER @1.93 (tiro 1) · gatilho: placar acima de 1-0 (2-1)"
    }
   ],
   "consumidas": {
@@ -3799,12 +3829,7 @@
    "2026-11-19": -7,
    "2026-11-20": 4.6
   },
-  "_obs": {
-   "lat": {
-    "desde": 1795164152841,
-    "gatilho": "time BOC"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": 0,
