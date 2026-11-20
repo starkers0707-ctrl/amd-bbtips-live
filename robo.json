@@ -169,8 +169,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "12:01",
@@ -190,13 +190,21 @@
    ],
    "gatilho": "seq GRGRR",
    "alvo": {
-    "h": "12:01",
-    "jogo": "RSO x CEL",
-    "odd": 3.32,
-    "unidades": 1,
-    "desde": 1795186735136
+    "h": "12:03",
+    "jogo": "ESP x ALV",
+    "odd": 3.37,
+    "unidades": 2,
+    "desde": 1795186990328
    },
-   "iniciadoEm": 1795186735136
+   "iniciadoEm": 1795186735136,
+   "tiros": [
+    {
+     "h": "12:01",
+     "jogo": "RSO x CEL",
+     "odd": 3.32,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795186689228,
@@ -3959,8 +3967,12 @@
     "gatilho": "coluna :07"
    },
    "eng": {
-    "desde": 1795186801933,
+    "desde": 1795186804831,
     "gatilho": "odd 1.82"
+   },
+   "bra": {
+    "desde": 1795186942335,
+    "gatilho": "coluna :29"
    }
   }
  },
