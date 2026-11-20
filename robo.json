@@ -192,13 +192,37 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 1,
-  "ciclos": 2449,
-  "greens": 18,
+  "saldo": 1.7,
+  "ciclos": 2453,
+  "greens": 19,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 2429,
+  "descartes": 2432,
   "historico": [
+   {
+    "quando": "2026-11-20T16:20:12.028Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :29) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T16:19:40.028Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :36) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T16:19:40.025Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :29) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T16:19:39.937Z",
+    "resultado": "GREEN",
+    "unidades": 0.7,
+    "detalhe": "eng · HUL x CHE @1.83 (tiro 2) · gatilho: odd 1.83"
+   },
    {
     "quando": "2026-11-20T16:19:37.326Z",
     "resultado": "GREEN_OBS",
@@ -3774,78 +3798,17 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :29) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T15:08:27.334Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T15:08:27.332Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :29) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T15:08:24.633Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T15:08:24.630Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :29) — liga REARMADA"
    }
   ],
   "consumidas": {
    "bra": 1795188649232,
-   "spa": 1795191046235
+   "spa": 1795191046235,
+   "eng": 1795191579937
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "13:16",
-     "jogo": "NEW x NOT",
-     "odd": 1.94
-    },
-    {
-     "h": "13:18",
-     "jogo": "HUL x CHE",
-     "odd": 1.83
-    },
-    {
-     "h": "13:20",
-     "jogo": "BHA x TOT",
-     "odd": 1.93
-    }
-   ],
-   "gatilho": "odd 1.83",
-   "alvo": {
-    "h": "13:18",
-    "jogo": "HUL x CHE",
-    "odd": 1.83,
-    "unidades": 2,
-    "desde": 1795191078738
-   },
-   "iniciadoEm": 1795191076927,
-   "tiros": [
-    {
-     "h": "13:16",
-     "jogo": "NEW x NOT",
-     "odd": 1.94,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
-   "eng": 1795186550832,
+   "eng": 1795191579937,
    "ita": 1795158777156,
    "spa": 1795191046235,
    "lat": 1795167575048,
@@ -3855,11 +3818,11 @@
    "tipo": "coluna",
    "chave": ":36",
    "n": 12,
-   "start": 8
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
-   "2026-11-20": 8
+   "2026-11-20": 8.7
   },
   "_obs": {}
  },
@@ -3965,12 +3928,8 @@
    "2026-11-20": -1.6
   },
   "_obs": {
-   "eng": {
-    "desde": 1795191499027,
-    "gatilho": "coluna :36"
-   },
    "bra": {
-    "desde": 1795191577326,
+    "desde": 1795191612027,
     "gatilho": "coluna :29"
    }
   }
