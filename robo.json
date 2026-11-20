@@ -192,13 +192,49 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 10,
-  "ciclos": 5047,
-  "greens": 29,
+  "saldo": 10.8,
+  "ciclos": 5053,
+  "greens": 30,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 5016,
+  "descartes": 5021,
   "historico": [
+   {
+    "quando": "2026-11-20T21:49:55.352Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T21:49:49.555Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T21:49:29.752Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T21:49:21.149Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T21:49:19.352Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T21:49:19.346Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "lat · PER x ATC @1.91 (tiro 2) · gatilho: time PER"
+   },
    {
     "quando": "2026-11-20T21:49:15.652Z",
     "resultado": "GREEN_OBS",
@@ -3762,103 +3798,30 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time PAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T19:29:21.829Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time PAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T19:29:19.629Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time PAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T19:29:15.129Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time PAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T19:29:10.131Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time PAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T19:28:42.628Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time PAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T19:28:30.230Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time PAL) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "spa": 1795208913381
+   "spa": 1795208913381,
+   "lat": 1795211359345
   },
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "18:44",
-     "jogo": "RAC x RIV",
-     "odd": 1.92
-    },
-    {
-     "h": "18:47",
-     "jogo": "PER x ATC",
-     "odd": 1.91
-    },
-    {
-     "h": "18:50",
-     "jogo": "OLI x ATL",
-     "odd": 1.9
-    }
-   ],
-   "gatilho": "time PER",
-   "alvo": {
-    "h": "18:47",
-    "jogo": "PER x ATC",
-    "odd": 1.91,
-    "unidades": 2,
-    "desde": 1795211138156
-   },
-   "iniciadoEm": 1795210239350,
-   "tiros": [
-    {
-     "h": "18:44",
-     "jogo": "RAC x RIV",
-     "odd": 1.92,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795201072038,
    "ita": 1795158777156,
    "spa": 1795208913381,
-   "lat": 1795201978531,
+   "lat": 1795211359345,
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
    "tipo": "time",
    "chave": "PER",
    "n": 35,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
-   "2026-11-20": 17
+   "2026-11-20": 17.8
   },
   "_obs": {}
  },
@@ -3969,7 +3932,7 @@
     "gatilho": "coluna :29"
    },
    "lat": {
-    "desde": 1795211355652,
+    "desde": 1795211395351,
     "gatilho": "time PER"
    }
   }
