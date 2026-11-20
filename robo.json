@@ -93,12 +93,30 @@
  },
  "o25": {
   "saldo": 1.1,
-  "ciclos": 701,
+  "ciclos": 704,
   "greens": 9,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 691,
+  "descartes": 694,
   "historico": [
+   {
+    "quando": "2026-11-20T09:39:11.856Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T09:39:09.647Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T09:38:48.643Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T09:38:46.743Z",
     "resultado": "GREEN_OBS",
@@ -3680,31 +3698,13 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:10:38.358Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:10:15.455Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:10:15.354Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
    }
   ],
   "consumidas": {},
   "ciclo": {
    "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "06:38",
@@ -3724,13 +3724,21 @@
    ],
    "gatilho": "time BOC",
    "alvo": {
-    "h": "06:38",
-    "jogo": "IND x CIO",
-    "odd": 1.93,
-    "unidades": 1,
-    "desde": 1795166926538
+    "h": "06:41",
+    "jogo": "VAL x BOC",
+    "odd": 1.92,
+    "unidades": 2,
+    "desde": 1795167574044
    },
-   "iniciadoEm": 1795166926538
+   "iniciadoEm": 1795166926538,
+   "tiros": [
+    {
+     "h": "06:38",
+     "jogo": "IND x CIO",
+     "odd": 1.93,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -3743,7 +3751,7 @@
    "tipo": "time",
    "chave": "BOC",
    "n": 12,
-   "start": 1
+   "start": 6
   },
   "dias": {
    "2026-11-19": -7,
@@ -3833,12 +3841,7 @@
    "2026-11-19": -7,
    "2026-11-20": 4.6
   },
-  "_obs": {
-   "lat": {
-    "desde": 1795167526743,
-    "gatilho": "time BOC"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": 0,
