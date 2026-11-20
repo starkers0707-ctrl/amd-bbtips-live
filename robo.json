@@ -20,9 +20,7 @@
     "detalhe": "mnd · POL x ENG @3.07 (tiro 2) · gatilho: placar 1-0 / 0-1"
    }
   ],
-  "consumidas": {
-   "lat": 1795152299459
-  },
+  "consumidas": {},
   "ciclo": null,
   "cooldown": {
    "mnd": 1795150545760,
@@ -40,12 +38,30 @@
  },
  "o25": {
   "saldo": -2.4,
-  "ciclos": 6,
+  "ciclos": 9,
   "greens": 5,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 0,
+  "descartes": 3,
   "historico": [
+   {
+    "quando": "2026-11-20T06:28:04.355Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T06:28:04.263Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T06:27:59.953Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "lat · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-20T05:38:53.855Z",
     "resultado": "GREEN",
@@ -87,35 +103,35 @@
    "ita": 1795153133854
   },
   "ciclo": {
-   "liga": "lat",
+   "liga": "spa",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "03:56",
-     "jogo": "ARG x VAL",
-     "odd": 1.93
+     "h": "04:05",
+     "jogo": "VAL x BAR",
+     "odd": 1.75
     },
     {
-     "h": "03:59",
-     "jogo": "RAC x FLU",
-     "odd": 1.92
+     "h": "04:07",
+     "jogo": "ELC x OSA",
+     "odd": 1.95
     },
     {
-     "h": "04:02",
-     "jogo": "PAR x RIV",
-     "odd": 1.92
+     "h": "04:09",
+     "jogo": "ATM x VIL",
+     "odd": 1.94
     }
    ],
-   "gatilho": "placar acima de 1-0 (2-0)",
+   "gatilho": "time ELC",
    "alvo": {
-    "h": "03:56",
-    "jogo": "ARG x VAL",
-    "odd": 1.93,
+    "h": "04:05",
+    "jogo": "VAL x BAR",
+    "odd": 1.75,
     "unidades": 1,
-    "desde": 1795154872758
+    "desde": 1795156084265
    },
-   "iniciadoEm": 1795154872758
+   "iniciadoEm": 1795156084265
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -125,24 +141,31 @@
    "lat": 1795151235760
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "acima de 1-0 (2-0)",
-   "n": 9,
-   "start": 1
+   "tipo": "time",
+   "chave": "ELC",
+   "n": 10,
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 4.6
-  }
+  },
+  "_obs": {}
  },
  "o25b": {
   "saldo": -2.4,
-  "ciclos": 6,
+  "ciclos": 7,
   "greens": 5,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 0,
+  "descartes": 1,
   "historico": [
+   {
+    "quando": "2026-11-20T06:27:59.959Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "lat · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-20T05:38:53.860Z",
     "resultado": "GREEN",
@@ -183,7 +206,37 @@
   "consumidas": {
    "ita": 1795153133860
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:05",
+     "jogo": "VAL x BAR",
+     "odd": 1.75
+    },
+    {
+     "h": "04:07",
+     "jogo": "ELC x OSA",
+     "odd": 1.95
+    },
+    {
+     "h": "04:09",
+     "jogo": "ATM x VIL",
+     "odd": 1.94
+    }
+   ],
+   "gatilho": "time ELC",
+   "alvo": {
+    "h": "04:05",
+    "jogo": "VAL x BAR",
+    "odd": 1.75,
+    "unidades": 1,
+    "desde": 1795156084358
+   },
+   "iniciadoEm": 1795156084358
+  },
   "cooldown": {
    "cam": 1795142462862,
    "eng": 1795148138958,
@@ -193,14 +246,15 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "JUV",
-   "n": 11,
-   "start": 5
+   "chave": "ELC",
+   "n": 10,
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 4.6
-  }
+  },
+  "_obs": {}
  },
  "ambas": {
   "saldo": 0,
