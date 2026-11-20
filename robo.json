@@ -1,12 +1,18 @@
 {
  "o35": {
   "saldo": 4.1,
-  "ciclos": 16,
+  "ciclos": 17,
   "greens": 9,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 4,
+  "descartes": 5,
   "historico": [
+   {
+    "quando": "2026-11-20T12:09:35.481Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :27) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T11:27:50.473Z",
     "resultado": "GREEN",
@@ -105,13 +111,12 @@
    }
   ],
   "consumidas": {
-   "bra": 1795173185038,
    "lat": 1795174070472
   },
   "ciclo": {
    "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "09:18",
@@ -131,13 +136,21 @@
    ],
    "gatilho": "coluna :20",
    "alvo": {
-    "h": "09:18",
-    "jogo": "FUL x LEE",
-    "odd": 3.37,
-    "unidades": 1,
-    "desde": 1795176570175
+    "h": "09:20",
+    "jogo": "EVE x CHE",
+    "odd": 3.35,
+    "unidades": 2,
+    "desde": 1795176573270
    },
-   "iniciadoEm": 1795176570175
+   "iniciadoEm": 1795176570175,
+   "tiros": [
+    {
+     "h": "09:18",
+     "jogo": "FUL x LEE",
+     "odd": 3.37,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795158589261,
@@ -151,7 +164,7 @@
    "tipo": "coluna",
    "chave": ":20",
    "n": 8,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-20": 4.1
