@@ -21,15 +21,45 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:08",
+     "jogo": "POR x ARG",
+     "odd": 3.36
+    },
+    {
+     "h": "04:10",
+     "jogo": "BEL x URY",
+     "odd": 3.01
+    },
+    {
+     "h": "04:12",
+     "jogo": "ENG x CRO",
+     "odd": 3.33
+    }
+   ],
+   "gatilho": "time URY",
+   "alvo": {
+    "h": "04:08",
+    "jogo": "POR x ARG",
+    "odd": 3.36,
+    "unidades": 1,
+    "desde": 1795158344659
+   },
+   "iniciadoEm": 1795158344659
+  },
   "cooldown": {
    "mnd": 1795150545760,
    "lat": 1795152299459
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "acima de 1-0 (2-1)",
-   "n": 9,
+   "tipo": "time",
+   "chave": "URY",
+   "n": 8,
    "start": 1
   },
   "dias": {
@@ -38,12 +68,24 @@
  },
  "o25": {
   "saldo": -1.5,
-  "ciclos": 64,
+  "ciclos": 66,
   "greens": 6,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 57,
+  "descartes": 59,
   "historico": [
+   {
+    "quando": "2026-11-20T07:06:14.362Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:05:44.762Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T07:05:40.557Z",
     "resultado": "GREEN_OBS",
@@ -590,7 +632,7 @@
   },
   "_obs": {
    "spa": {
-    "desde": 1795158340557,
+    "desde": 1795158374362,
     "gatilho": "placar acima de 1-0 (2-0)"
    }
   }
