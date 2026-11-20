@@ -192,13 +192,19 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 8.2,
-  "ciclos": 4698,
-  "greens": 27,
+  "saldo": 9.1,
+  "ciclos": 4699,
+  "greens": 28,
   "redsCiclo": 2,
   "aborts": 0,
   "descartes": 4669,
   "historico": [
+   {
+    "quando": "2026-11-20T20:45:50.538Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "bra · GOI x FLU @1.87 (tiro 1) · gatilho: seq GRRG"
+   },
    {
     "quando": "2026-11-20T20:45:39.737Z",
     "resultado": "GREEN_OBS",
@@ -3792,53 +3798,19 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T19:01:17.427Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "bra",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "17:44",
-     "jogo": "GOI x FLU",
-     "odd": 1.87
-    },
-    {
-     "h": "17:47",
-     "jogo": "JUV x TFG",
-     "odd": 1.85
-    },
-    {
-     "h": "17:50",
-     "jogo": "MEN x VIT",
-     "odd": 1.75
-    }
-   ],
-   "gatilho": "seq GRRG",
-   "alvo": {
-    "h": "17:44",
-    "jogo": "GOI x FLU",
-    "odd": 1.87,
-    "unidades": 1,
-    "desde": 1795207182834
-   },
-   "iniciadoEm": 1795207182834
+  "consumidas": {
+   "bra": 1795207550537
   },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795201072038,
    "ita": 1795158777156,
    "spa": 1795195118935,
    "lat": 1795201978531,
-   "bra": 1795203248028
+   "bra": 1795207550537
   },
   "_gatilhoAtual": {
    "tipo": "seq",
@@ -3848,7 +3820,7 @@
   },
   "dias": {
    "2026-11-19": -7,
-   "2026-11-20": 15.2
+   "2026-11-20": 16.1
   },
   "_obs": {}
  },
@@ -3953,12 +3925,7 @@
    "2026-11-19": -7,
    "2026-11-20": -1.6
   },
-  "_obs": {
-   "bra": {
-    "desde": 1795207539737,
-    "gatilho": "seq GRRGR"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": 0,
