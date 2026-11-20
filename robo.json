@@ -120,7 +120,45 @@
    "lat": 1795174070472,
    "eng": 1795177422374
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 1,
+   "apostado": 1,
+   "plano": [
+    {
+     "h": "09:25",
+     "jogo": "GEN x TOR",
+     "odd": 3.34
+    },
+    {
+     "h": "09:27",
+     "jogo": "FRO x SAS",
+     "odd": 3.15
+    },
+    {
+     "h": "09:29",
+     "jogo": "INT x ATA",
+     "odd": 3.23
+    }
+   ],
+   "gatilho": "coluna :27",
+   "alvo": {
+    "h": "09:27",
+    "jogo": "FRO x SAS",
+    "odd": 3.15,
+    "unidades": 2,
+    "desde": 1795177620070
+   },
+   "iniciadoEm": 1795177424577,
+   "tiros": [
+    {
+     "h": "09:25",
+     "jogo": "GEN x TOR",
+     "odd": 3.34,
+     "unidades": 1
+    }
+   ]
+  },
   "cooldown": {
    "mnd": 1795158589261,
    "lat": 1795174070472,
@@ -3793,7 +3831,7 @@
    "tipo": "time",
    "chave": "GAM",
    "n": 8,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
