@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 9.2,
-  "ciclos": 14,
+  "saldo": 2.2,
+  "ciclos": 15,
   "greens": 8,
-  "redsCiclo": 2,
+  "redsCiclo": 3,
   "aborts": 0,
   "descartes": 4,
   "historico": [
+   {
+    "quando": "2026-11-20T11:13:05.039Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "bra · ciclo perdido (3 tiros) · gatilho: time CUI"
+   },
    {
     "quando": "2026-11-20T10:26:44.238Z",
     "resultado": "RED_CICLO",
@@ -93,68 +99,26 @@
    }
   ],
   "consumidas": {
-   "ita": 1795170404238
+   "ita": 1795170404238,
+   "bra": 1795173185038
   },
-  "ciclo": {
-   "liga": "bra",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "08:05",
-     "jogo": "TFG x GRM",
-     "odd": 3.3
-    },
-    {
-     "h": "08:08",
-     "jogo": "BAH x CUI",
-     "odd": 2.55
-    },
-    {
-     "h": "08:11",
-     "jogo": "FLU x PAR",
-     "odd": 2.95
-    }
-   ],
-   "gatilho": "time CUI",
-   "alvo": {
-    "h": "08:11",
-    "jogo": "FLU x PAR",
-    "odd": 2.95,
-    "unidades": 4,
-    "desde": 1795172978440
-   },
-   "iniciadoEm": 1795172118839,
-   "tiros": [
-    {
-     "h": "08:05",
-     "jogo": "TFG x GRM",
-     "odd": 3.3,
-     "unidades": 1
-    },
-    {
-     "h": "08:08",
-     "jogo": "BAH x CUI",
-     "odd": 2.55,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795158589261,
    "lat": 1795168694537,
    "eng": 1795162065445,
    "spa": 1795163811039,
-   "ita": 1795170404238
+   "ita": 1795170404238,
+   "bra": 1795173185038
   },
   "_gatilhoAtual": {
    "tipo": "time",
    "chave": "IND",
    "n": 13,
-   "start": 6
+   "start": 4
   },
   "dias": {
-   "2026-11-20": 9.2
+   "2026-11-20": 2.2
   },
   "_obs": {}
  },
