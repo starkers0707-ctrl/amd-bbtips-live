@@ -44,65 +44,35 @@
   }
  },
  "o25b": {
-  "saldo": 0,
-  "ciclos": 0,
+  "saldo": -7,
+  "ciclos": 1,
   "greens": 0,
-  "redsCiclo": 0,
+  "redsCiclo": 1,
   "aborts": 0,
   "descartes": 0,
-  "historico": [],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "23:33",
-     "jogo": "Liverpool x Benfica",
-     "odd": 2.12
-    },
-    {
-     "h": "23:36",
-     "jogo": "Amsterdam x Turin",
-     "odd": 2.37
-    },
-    {
-     "h": "23:39",
-     "jogo": "City x Dortmund",
-     "odd": 2.32
-    }
-   ],
-   "gatilho": "placar 0-0",
-   "alvo": {
-    "h": "23:39",
-    "jogo": "City x Dortmund",
-    "odd": 2.32,
-    "unidades": 4,
-    "desde": 1795142263556
-   },
-   "iniciadoEm": 1795141829659,
-   "tiros": [
-    {
-     "h": "23:33",
-     "jogo": "Liverpool x Benfica",
-     "odd": 2.12,
-     "unidades": 1
-    },
-    {
-     "h": "23:36",
-     "jogo": "Amsterdam x Turin",
-     "odd": 2.37,
-     "unidades": 2
-    }
-   ]
+  "historico": [
+   {
+    "quando": "2026-11-20T02:41:02.862Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "cam · ciclo perdido (3 tiros) · gatilho: placar 0-0"
+   }
+  ],
+  "consumidas": {
+   "cam": 1795142462862
   },
-  "cooldown": {},
+  "ciclo": null,
+  "cooldown": {
+   "cam": 1795142462862
+  },
   "_gatilhoAtual": {
    "tipo": "odd",
    "chave": "2.05",
    "n": 20,
-   "start": 3
+   "start": 2
+  },
+  "dias": {
+   "2026-11-19": -7
   }
  },
  "ambas": {
@@ -114,7 +84,43 @@
   "descartes": 0,
   "historico": [],
   "consumidas": {},
-  "ciclo": null,
-  "cooldown": {}
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "00:21",
+     "jogo": "Madrid x Barcelona",
+     "odd": 1.96
+    },
+    {
+     "h": "00:24",
+     "jogo": "Liverpool x Porto",
+     "odd": 2.15
+    },
+    {
+     "h": "00:27",
+     "jogo": "Paris x Rome",
+     "odd": 1.85
+    }
+   ],
+   "gatilho": "odd 2.15",
+   "alvo": {
+    "h": "00:21",
+    "jogo": "Madrid x Barcelona",
+    "odd": 1.96,
+    "unidades": 1,
+    "desde": 1795143562358
+   },
+   "iniciadoEm": 1795143562358
+  },
+  "cooldown": {},
+  "_gatilhoAtual": {
+   "tipo": "odd",
+   "chave": "2.15",
+   "n": 14,
+   "start": 7
+  }
  }
 }
