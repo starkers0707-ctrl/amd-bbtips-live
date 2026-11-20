@@ -193,12 +193,30 @@
  },
  "o25": {
   "saldo": 2.6,
-  "ciclos": 2966,
+  "ciclos": 2969,
   "greens": 20,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 2944,
+  "descartes": 2947,
   "historico": [
+   {
+    "quando": "2026-11-20T17:16:36.832Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T17:16:33.926Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T17:16:13.032Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T17:16:08.533Z",
     "resultado": "GREEN_OBS",
@@ -3780,24 +3798,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :29) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T16:12:24.526Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T16:12:24.437Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T16:12:24.434Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :29) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -3806,8 +3806,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "14:15",
@@ -3827,13 +3827,21 @@
    ],
    "gatilho": "odd 1.89",
    "alvo": {
-    "h": "14:15",
-    "jogo": "BET x ELC",
-    "odd": 1.92,
-    "unidades": 1,
-    "desde": 1795194671631
+    "h": "14:17",
+    "jogo": "VIL x ESP",
+    "odd": 1.89,
+    "unidades": 2,
+    "desde": 1795194993834
    },
-   "iniciadoEm": 1795194671631
+   "iniciadoEm": 1795194671631,
+   "tiros": [
+    {
+     "h": "14:15",
+     "jogo": "BET x ELC",
+     "odd": 1.92,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -3847,7 +3855,7 @@
    "tipo": "odd",
    "chave": "1.89",
    "n": 11,
-   "start": 1
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -3962,7 +3970,7 @@
     "gatilho": "coluna :29"
    },
    "spa": {
-    "desde": 1795194968533,
+    "desde": 1795194996832,
     "gatilho": "odd 1.89"
    }
   }
