@@ -68,9 +68,7 @@
     "detalhe": "mnd · POL x ENG @3.07 (tiro 2) · gatilho: placar 1-0 / 0-1"
    }
   ],
-  "consumidas": {
-   "ita": 1795164544540
-  },
+  "consumidas": {},
   "ciclo": {
    "liga": "lat",
    "degrau": 0,
@@ -113,7 +111,7 @@
    "tipo": "time",
    "chave": "IND",
    "n": 11,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-20": 12.5
@@ -3755,13 +3753,19 @@
   "_obs": {}
  },
  "o25b": {
-  "saldo": -2.4,
-  "ciclos": 9,
-  "greens": 5,
+  "saldo": -1.6,
+  "ciclos": 10,
+  "greens": 6,
   "redsCiclo": 1,
   "aborts": 0,
   "descartes": 3,
   "historico": [
+   {
+    "quando": "2026-11-20T09:48:44.238Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "bra · PAL x CRM @1.92 (tiro 2) · gatilho: time CRM"
+   },
    {
     "quando": "2026-11-20T07:08:12.466Z",
     "resultado": "DESCARTADO",
@@ -3817,52 +3821,17 @@
     "detalhe": "cam · ciclo perdido (3 tiros) · gatilho: placar 0-0"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "bra",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "06:44",
-     "jogo": "ZEI x GOI",
-     "odd": 1.79
-    },
-    {
-     "h": "06:47",
-     "jogo": "PAL x CRM",
-     "odd": 1.92
-    },
-    {
-     "h": "06:50",
-     "jogo": "ATC x PAR",
-     "odd": 1.87
-    }
-   ],
-   "gatilho": "time CRM",
-   "alvo": {
-    "h": "06:47",
-    "jogo": "PAL x CRM",
-    "odd": 1.92,
-    "unidades": 2,
-    "desde": 1795167951143
-   },
-   "iniciadoEm": 1795167598747,
-   "tiros": [
-    {
-     "h": "06:44",
-     "jogo": "ZEI x GOI",
-     "odd": 1.79,
-     "unidades": 1
-    }
-   ]
+  "consumidas": {
+   "bra": 1795168124238
   },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462862,
    "eng": 1795148138958,
    "ita": 1795153133860,
    "spa": 1795150600560,
-   "lat": 1795151235764
+   "lat": 1795151235764,
+   "bra": 1795168124238
   },
   "_gatilhoAtual": {
    "tipo": "placar",
@@ -3872,7 +3841,7 @@
   },
   "dias": {
    "2026-11-19": -7,
-   "2026-11-20": 4.6
+   "2026-11-20": 5.4
   },
   "_obs": {}
  },
