@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 12.5,
-  "ciclos": 10,
-  "greens": 7,
+  "saldo": 16.2,
+  "ciclos": 11,
+  "greens": 8,
   "redsCiclo": 1,
   "aborts": 0,
   "descartes": 2,
   "historico": [
+   {
+    "quando": "2026-11-20T09:58:14.537Z",
+    "resultado": "GREEN",
+    "unidades": 3.7,
+    "detalhe": "lat · IND x MEN @3.34 (tiro 2) · gatilho: time IND"
+   },
    {
     "quando": "2026-11-20T08:49:04.540Z",
     "resultado": "GREEN",
@@ -68,49 +74,13 @@
     "detalhe": "mnd · POL x ENG @3.07 (tiro 2) · gatilho: placar 1-0 / 0-1"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "06:53",
-     "jogo": "PAL x OLI",
-     "odd": 3.37
-    },
-    {
-     "h": "06:56",
-     "jogo": "IND x MEN",
-     "odd": 3.34
-    },
-    {
-     "h": "06:59",
-     "jogo": "VAL x ATC",
-     "odd": 3.35
-    }
-   ],
-   "gatilho": "time IND",
-   "alvo": {
-    "h": "06:56",
-    "jogo": "IND x MEN",
-    "odd": 3.34,
-    "unidades": 2,
-    "desde": 1795168479246
-   },
-   "iniciadoEm": 1795167671139,
-   "tiros": [
-    {
-     "h": "06:53",
-     "jogo": "PAL x OLI",
-     "odd": 3.37,
-     "unidades": 1
-    }
-   ]
+  "consumidas": {
+   "lat": 1795168694537
   },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795158589261,
-   "lat": 1795164050045,
+   "lat": 1795168694537,
    "eng": 1795162065445,
    "spa": 1795163811039,
    "ita": 1795164544540
@@ -122,7 +92,7 @@
    "start": 1
   },
   "dias": {
-   "2026-11-20": 12.5
+   "2026-11-20": 16.2
   },
   "_obs": {}
  },
