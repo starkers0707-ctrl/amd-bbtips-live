@@ -193,12 +193,36 @@
  },
  "o25": {
   "saldo": 10.8,
-  "ciclos": 5216,
+  "ciclos": 5220,
   "greens": 30,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 5184,
+  "descartes": 5188,
   "historico": [
+   {
+    "quando": "2026-11-20T23:14:38.170Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T23:14:35.769Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T23:14:15.868Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T23:14:13.864Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :38) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T23:14:08.585Z",
     "resultado": "GREEN_OBS",
@@ -3774,30 +3798,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho seq GRRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T20:18:43.432Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho seq GRRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T20:18:27.932Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho seq GRRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T20:18:22.926Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho seq GRRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T20:18:03.825Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho seq GRRGR) — liga REARMADA"
    }
   ],
   "consumidas": {},
@@ -3841,10 +3841,10 @@
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":38",
-   "n": 19,
-   "start": 7
+   "tipo": "odd",
+   "chave": "1.77",
+   "n": 11,
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
@@ -3959,8 +3959,8 @@
     "gatilho": "coluna :29"
    },
    "lat": {
-    "desde": 1795216448585,
-    "gatilho": "coluna :38"
+    "desde": 1795216478170,
+    "gatilho": "odd 1.77"
    }
   }
  },
