@@ -35,10 +35,80 @@
   "consumidas": {
    "eng": 1795148138865
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "01:41",
+     "jogo": "FRO x TOR",
+     "odd": 1.86
+    },
+    {
+     "h": "01:43",
+     "jogo": "ROM x MIL",
+     "odd": 1.94
+    },
+    {
+     "h": "01:45",
+     "jogo": "JUV x FIO",
+     "odd": 1.89
+    }
+   ],
+   "gatilho": "placar acima de 1-0 (2-1)",
+   "alvo": {
+    "h": "01:41",
+    "jogo": "FRO x TOR",
+    "odd": 1.86,
+    "unidades": 1,
+    "desde": 1795149515956
+   },
+   "iniciadoEm": 1795149515956
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795148138865
+  },
+  "_gatilhoAtual": {
+   "tipo": "placar",
+   "chave": "acima de 1-0 (2-1)",
+   "n": 8,
+   "start": 1
+  },
+  "dias": {
+   "2026-11-19": -7,
+   "2026-11-20": 1
+  }
+ },
+ "o25b": {
+  "saldo": -6,
+  "ciclos": 2,
+  "greens": 1,
+  "redsCiclo": 1,
+  "aborts": 0,
+  "descartes": 0,
+  "historico": [
+   {
+    "quando": "2026-11-20T04:15:38.958Z",
+    "resultado": "GREEN",
+    "unidades": 1,
+    "detalhe": "eng · SUN x BHA @1.95 (tiro 1) · gatilho: placar goleada (3+)"
+   },
+   {
+    "quando": "2026-11-20T02:41:02.862Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "cam · ciclo perdido (3 tiros) · gatilho: placar 0-0"
+   }
+  ],
+  "consumidas": {
+   "eng": 1795148138958
+  },
+  "ciclo": null,
+  "cooldown": {
+   "cam": 1795142462862,
+   "eng": 1795148138958
   },
   "_gatilhoAtual": {
    "tipo": "placar",
@@ -49,66 +119,6 @@
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 1
-  }
- },
- "o25b": {
-  "saldo": -7,
-  "ciclos": 1,
-  "greens": 0,
-  "redsCiclo": 1,
-  "aborts": 0,
-  "descartes": 0,
-  "historico": [
-   {
-    "quando": "2026-11-20T02:41:02.862Z",
-    "resultado": "RED_CICLO",
-    "unidades": -7,
-    "detalhe": "cam · ciclo perdido (3 tiros) · gatilho: placar 0-0"
-   }
-  ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "01:14",
-     "jogo": "SUN x BHA",
-     "odd": 1.95
-    },
-    {
-     "h": "01:16",
-     "jogo": "MNC x CRY",
-     "odd": 1.85
-    },
-    {
-     "h": "01:18",
-     "jogo": "IPS x CHE",
-     "odd": 1.81
-    }
-   ],
-   "gatilho": "placar goleada (3+)",
-   "alvo": {
-    "h": "01:14",
-    "jogo": "SUN x BHA",
-    "odd": 1.95,
-    "unidades": 1,
-    "desde": 1795147893262
-   },
-   "iniciadoEm": 1795147893262
-  },
-  "cooldown": {
-   "cam": 1795142462862
-  },
-  "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "goleada (3+)",
-   "n": 8,
-   "start": 1
-  },
-  "dias": {
-   "2026-11-19": -7
   }
  },
  "ambas": {
