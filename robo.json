@@ -3801,7 +3801,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "17:44",
+     "jogo": "GOI x FLU",
+     "odd": 1.87
+    },
+    {
+     "h": "17:47",
+     "jogo": "JUV x TFG",
+     "odd": 1.85
+    },
+    {
+     "h": "17:50",
+     "jogo": "MEN x VIT",
+     "odd": 1.75
+    }
+   ],
+   "gatilho": "seq GRRG",
+   "alvo": {
+    "h": "17:44",
+    "jogo": "GOI x FLU",
+    "odd": 1.87,
+    "unidades": 1,
+    "desde": 1795207182834
+   },
+   "iniciadoEm": 1795207182834
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795201072038,
@@ -3811,9 +3841,9 @@
    "bra": 1795203248028
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":29",
-   "n": 12,
+   "tipo": "seq",
+   "chave": "GRRG",
+   "n": 19,
    "start": 1
   },
   "dias": {
