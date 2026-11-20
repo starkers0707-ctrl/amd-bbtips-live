@@ -193,12 +193,18 @@
  },
  "o25": {
   "saldo": 10,
-  "ciclos": 4947,
+  "ciclos": 4948,
   "greens": 29,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 4916,
+  "descartes": 4917,
   "historico": [
+   {
+    "quando": "2026-11-20T21:30:36.848Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T21:27:44.248Z",
     "resultado": "DESCARTADO",
@@ -3792,49 +3798,13 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T19:21:10.333Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
    }
   ],
   "consumidas": {
    "bra": 1795207550537,
    "spa": 1795208913381
   },
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "18:32",
-     "jogo": "NAC x PAR",
-     "odd": 1.93
-    },
-    {
-     "h": "18:35",
-     "jogo": "BOL x THI",
-     "odd": 1.87
-    },
-    {
-     "h": "18:38",
-     "jogo": "ATL x VAL",
-     "odd": 1.9
-    }
-   ],
-   "gatilho": "odd 1.87",
-   "alvo": {
-    "h": "18:32",
-    "jogo": "NAC x PAR",
-    "odd": 1.93,
-    "unidades": 1,
-    "desde": 1795209163780
-   },
-   "iniciadoEm": 1795209163780
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795201072038,
@@ -3853,7 +3823,12 @@
    "2026-11-19": -7,
    "2026-11-20": 17
   },
-  "_obs": {}
+  "_obs": {
+   "lat": {
+    "desde": 1795210066448,
+    "gatilho": "time PER"
+   }
+  }
  },
  "o25b": {
   "saldo": -8.6,
