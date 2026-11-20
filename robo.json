@@ -38,12 +38,48 @@
  },
  "o25": {
   "saldo": -2.4,
-  "ciclos": 12,
+  "ciclos": 18,
   "greens": 5,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 6,
+  "descartes": 12,
   "historico": [
+   {
+    "quando": "2026-11-20T06:54:50.164Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T06:53:09.357Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T06:53:09.354Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T06:53:09.256Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T06:53:06.063Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T06:53:06.054Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "spa · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-20T06:29:02.863Z",
     "resultado": "GREEN_OBS",
@@ -119,35 +155,35 @@
   ],
   "consumidas": {},
   "ciclo": {
-   "liga": "spa",
+   "liga": "lat",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
+     "h": "03:59",
+     "jogo": "RAC x FLU",
+     "odd": 1.92
+    },
+    {
+     "h": "04:02",
+     "jogo": "PAR x RIV",
+     "odd": 1.92
+    },
+    {
      "h": "04:05",
-     "jogo": "VAL x BAR",
-     "odd": 1.75
-    },
-    {
-     "h": "04:07",
-     "jogo": "ELC x OSA",
-     "odd": 1.95
-    },
-    {
-     "h": "04:09",
-     "jogo": "ATM x VIL",
-     "odd": 1.94
+     "jogo": "THI x NAC",
+     "odd": 1.83
     }
    ],
-   "gatilho": "time ELC",
+   "gatilho": "placar acima de 1-0 (2-0)",
    "alvo": {
-    "h": "04:05",
-    "jogo": "VAL x BAR",
-    "odd": 1.75,
+    "h": "03:59",
+    "jogo": "RAC x FLU",
+    "odd": 1.92,
     "unidades": 1,
-    "desde": 1795156084265
+    "desde": 1795157589260
    },
-   "iniciadoEm": 1795156084265
+   "iniciadoEm": 1795157589260
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -157,9 +193,9 @@
    "lat": 1795151235760
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "acima de 1-0 (2-0)",
-   "n": 9,
+   "tipo": "time",
+   "chave": "PAR",
+   "n": 8,
    "start": 1
   },
   "dias": {
@@ -170,12 +206,18 @@
  },
  "o25b": {
   "saldo": -2.4,
-  "ciclos": 7,
+  "ciclos": 8,
   "greens": 5,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 1,
+  "descartes": 2,
   "historico": [
+   {
+    "quando": "2026-11-20T06:53:06.067Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "spa · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-20T06:27:59.959Z",
     "resultado": "DESCARTADO",
@@ -219,39 +261,37 @@
     "detalhe": "cam · ciclo perdido (3 tiros) · gatilho: placar 0-0"
    }
   ],
-  "consumidas": {
-   "ita": 1795153133860
-  },
+  "consumidas": {},
   "ciclo": {
-   "liga": "spa",
+   "liga": "ita",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "04:05",
-     "jogo": "VAL x BAR",
-     "odd": 1.75
-    },
-    {
-     "h": "04:07",
-     "jogo": "ELC x OSA",
-     "odd": 1.95
-    },
-    {
-     "h": "04:09",
-     "jogo": "ATM x VIL",
+     "h": "04:11",
+     "jogo": "GEN x MON",
      "odd": 1.94
+    },
+    {
+     "h": "04:13",
+     "jogo": "CAG x FRO",
+     "odd": 1.91
+    },
+    {
+     "h": "04:15",
+     "jogo": "VEN x ATA",
+     "odd": 1.78
     }
    ],
-   "gatilho": "time ELC",
+   "gatilho": "time CAG",
    "alvo": {
-    "h": "04:05",
-    "jogo": "VAL x BAR",
-    "odd": 1.75,
+    "h": "04:11",
+    "jogo": "GEN x MON",
+    "odd": 1.94,
     "unidades": 1,
-    "desde": 1795156084358
+    "desde": 1795157589359
    },
-   "iniciadoEm": 1795156084358
+   "iniciadoEm": 1795157589359
   },
   "cooldown": {
    "cam": 1795142462862,
@@ -262,15 +302,20 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "ELC",
-   "n": 10,
-   "start": 2
+   "chave": "CAG",
+   "n": 8,
+   "start": 5
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 4.6
   },
-  "_obs": {}
+  "_obs": {
+   "spa": {
+    "desde": 1795157690164,
+    "gatilho": "time ELC"
+   }
+  }
  },
  "ambas": {
   "saldo": 0,
