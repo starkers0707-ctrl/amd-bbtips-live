@@ -165,12 +165,30 @@
  },
  "o25": {
   "saldo": -3.7,
-  "ciclos": 1222,
+  "ciclos": 1225,
   "greens": 12,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 1208,
+  "descartes": 1211,
   "historico": [
+   {
+    "quando": "2026-11-20T13:42:54.127Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "eng · alvo sem fechamento em 15min antes da 1a aposta"
+   },
+   {
+    "quando": "2026-11-20T13:42:23.229Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time GAM) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T13:42:19.931Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time GAM) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T13:41:54.533Z",
     "resultado": "GREEN_OBS",
@@ -3752,60 +3770,12 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.91) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T08:46:12.939Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T08:46:11.548Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T08:46:09.350Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOC) — liga REARMADA"
    }
   ],
   "consumidas": {
    "bra": 1795178747178
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "10:42",
-     "jogo": "MNU x NEW",
-     "odd": 1.9
-    },
-    {
-     "h": "10:44",
-     "jogo": "CHE x MNC",
-     "odd": 1.85
-    },
-    {
-     "h": "10:46",
-     "jogo": "NOT x EVE",
-     "odd": 1.93
-    }
-   ],
-   "gatilho": "odd 1.85",
-   "alvo": {
-    "h": "10:42",
-    "jogo": "MNU x NEW",
-    "odd": 1.9,
-    "unidades": 1,
-    "desde": 1795181256306
-   },
-   "iniciadoEm": 1795181256306
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795148138865,
@@ -3828,12 +3798,18 @@
  },
  "o25b": {
   "saldo": -8.6,
-  "ciclos": 11,
+  "ciclos": 12,
   "greens": 6,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 3,
+  "descartes": 4,
   "historico": [
+   {
+    "quando": "2026-11-20T13:42:54.134Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "eng · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-20T11:01:22.647Z",
     "resultado": "RED_CICLO",
@@ -3953,7 +3929,7 @@
   },
   "_obs": {
    "bra": {
-    "desde": 1795182114533,
+    "desde": 1795182174130,
     "gatilho": "time GAM"
    }
   }
