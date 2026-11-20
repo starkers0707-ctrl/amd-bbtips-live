@@ -162,13 +162,19 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": -3.7,
-  "ciclos": 1330,
-  "greens": 12,
+  "saldo": -3,
+  "ciclos": 1331,
+  "greens": 13,
   "redsCiclo": 2,
   "aborts": 0,
   "descartes": 1316,
   "historico": [
+   {
+    "quando": "2026-11-20T13:55:43.126Z",
+    "resultado": "GREEN",
+    "unidades": 0.7,
+    "detalhe": "eng · SUN x ARS @1.83 (tiro 2) · gatilho: odd 1.83"
+   },
    {
     "quando": "2026-11-20T13:55:16.031Z",
     "resultado": "GREEN_OBS",
@@ -3762,71 +3768,59 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T10:16:11.041Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
    }
   ],
-  "consumidas": {},
+  "consumidas": {
+   "eng": 1795182943126
+  },
   "ciclo": {
-   "liga": "eng",
-   "degrau": 1,
-   "apostado": 1,
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
    "plano": [
     {
-     "h": "10:52",
-     "jogo": "AST x MNU",
-     "odd": 1.92
+     "h": "11:05",
+     "jogo": "CRM x VIT",
+     "odd": 1.91
     },
     {
-     "h": "10:54",
-     "jogo": "SUN x ARS",
-     "odd": 1.83
+     "h": "11:08",
+     "jogo": "ZEI x BAH",
+     "odd": 1.89
     },
     {
-     "h": "10:56",
-     "jogo": "MNC x CRY",
-     "odd": 1.85
+     "h": "11:11",
+     "jogo": "PAR x THI",
+     "odd": 1.81
     }
    ],
-   "gatilho": "odd 1.83",
+   "gatilho": "seq GRRG",
    "alvo": {
-    "h": "10:54",
-    "jogo": "SUN x ARS",
-    "odd": 1.83,
-    "unidades": 2,
-    "desde": 1795182814735
+    "h": "11:05",
+    "jogo": "CRM x VIT",
+    "odd": 1.91,
+    "unidades": 1,
+    "desde": 1795183245329
    },
-   "iniciadoEm": 1795182184435,
-   "tiros": [
-    {
-     "h": "10:52",
-     "jogo": "AST x MNU",
-     "odd": 1.92,
-     "unidades": 1
-    }
-   ]
+   "iniciadoEm": 1795183245329
   },
   "cooldown": {
    "cam": 1795142462857,
-   "eng": 1795148138865,
+   "eng": 1795182943126,
    "ita": 1795158777156,
    "spa": 1795158394858,
    "lat": 1795167575048,
    "bra": 1795178747178
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.85",
-   "n": 9,
+   "tipo": "seq",
+   "chave": "GRRG",
+   "n": 10,
    "start": 1
   },
   "dias": {
    "2026-11-19": -7,
-   "2026-11-20": 3.3
+   "2026-11-20": 4
   },
   "_obs": {}
  },
