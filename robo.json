@@ -192,13 +192,37 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 10.8,
-  "ciclos": 5336,
-  "greens": 30,
+  "saldo": 11.7,
+  "ciclos": 5340,
+  "greens": 31,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 5304,
+  "descartes": 5307,
   "historico": [
+   {
+    "quando": "2026-11-20T23:40:04.972Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T23:39:45.174Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T23:39:45.169Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "lat · RAC x OLI @1.92 (tiro 1) · gatilho: odd 1.77"
+   },
+   {
+    "quando": "2026-11-20T23:39:42.371Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T23:39:39.869Z",
     "resultado": "GREEN_OBS",
@@ -3774,81 +3798,29 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :29) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T21:04:25.582Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.73) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T21:04:25.579Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :29) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T21:03:56.679Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.73) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T21:03:56.675Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :29) — liga REARMADA"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "20:38",
-     "jogo": "RAC x OLI",
-     "odd": 1.92
-    },
-    {
-     "h": "20:41",
-     "jogo": "COL x BOC",
-     "odd": 1.77
-    },
-    {
-     "h": "20:44",
-     "jogo": "FLU x ATL",
-     "odd": 1.94
-    }
-   ],
-   "gatilho": "odd 1.77",
-   "alvo": {
-    "h": "20:38",
-    "jogo": "RAC x OLI",
-    "odd": 1.92,
-    "unidades": 1,
-    "desde": 1795217202664
-   },
-   "iniciadoEm": 1795217202664
+  "consumidas": {
+   "lat": 1795217985168
   },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795201072038,
    "ita": 1795158777156,
    "spa": 1795208913381,
-   "lat": 1795211359345,
+   "lat": 1795217985168,
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
    "tipo": "odd",
    "chave": "1.77",
    "n": 11,
-   "start": 1
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
-   "2026-11-20": 17.8
+   "2026-11-20": 18.7
   },
   "_obs": {}
  },
@@ -3959,7 +3931,7 @@
     "gatilho": "coluna :29"
    },
    "lat": {
-    "desde": 1795217979869,
+    "desde": 1795218004972,
     "gatilho": "odd 1.77"
    }
   }
