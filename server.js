@@ -114,7 +114,9 @@ app.use((req, res, next) => {
 
 // ===== ACESSO POR CODIGO + ADMIN (controle de testes 1 dia e assinantes 30 dias) =====
 const ADMIN_KEY = process.env.ADMIN_KEY || "";
-const GH_T = process.env.GH_TOKEN || "";
+// aceita o token mesmo colado com espaco, aspas ou texto junto
+const GH_T = (() => { const b = String(process.env.GH_TOKEN || ""); const m = b.match(/(github_pat_[A-Za-z0-9_]+|gh[pousr]_[A-Za-z0-9]+)/); return m ? m[1] : b.trim().replace(/^["']|["']$/g, ""); })();
+console.log(`[github] GH_TOKEN: ${GH_T ? (GH_T.startsWith("github_pat_") ? "fine-grained" : GH_T.startsWith("ghp_") ? "classico" : "formato desconhecido") + ", " + GH_T.length + " caracteres" + (GH_T.length !== String(process.env.GH_TOKEN || "").length ? " (limpo de espacos/texto extra)" : "") : "ausente"}`);
 const GH_REPO = process.env.GH_REPO || "starkers0707-ctrl/amd-bbtips-live";
 const GH_BRANCH = process.env.GH_BRANCH || "dados"; // branch separado: salvar dados nao dispara deploy
 let webpush = null;
