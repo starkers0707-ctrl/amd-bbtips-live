@@ -196,12 +196,36 @@
  },
  "o25": {
   "saldo": -0.4,
-  "ciclos": 1996,
+  "ciclos": 2000,
   "greens": 16,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 1978,
+  "descartes": 1982,
   "historico": [
+   {
+    "quando": "2026-11-20T15:22:22.736Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :29) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T15:22:07.230Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T15:22:07.227Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :29) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T15:22:05.737Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T15:22:05.731Z",
     "resultado": "GREEN_OBS",
@@ -3777,30 +3801,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time GAM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T14:13:02.936Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time GAM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T14:13:00.131Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time GAM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T14:12:58.027Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time GAM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T14:12:53.929Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time GAM) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -3846,9 +3846,9 @@
    "bra": 1795183786531
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "GRRG",
-   "n": 11,
+   "tipo": "coluna",
+   "chave": ":29",
+   "n": 8,
    "start": 1
   },
   "dias": {
@@ -3964,8 +3964,8 @@
     "gatilho": "coluna :07"
    },
    "bra": {
-    "desde": 1795188125730,
-    "gatilho": "seq GRRG"
+    "desde": 1795188142736,
+    "gatilho": "coluna :29"
    }
   }
  },
