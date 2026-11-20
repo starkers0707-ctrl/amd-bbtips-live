@@ -121,8 +121,8 @@
   },
   "ciclo": {
    "liga": "ita",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "09:25",
@@ -142,11 +142,11 @@
    ],
    "gatilho": "coluna :27",
    "alvo": {
-    "h": "09:27",
-    "jogo": "FRO x SAS",
-    "odd": 3.15,
-    "unidades": 2,
-    "desde": 1795177620070
+    "h": "09:29",
+    "jogo": "INT x ATA",
+    "odd": 3.23,
+    "unidades": 4,
+    "desde": 1795177724377
    },
    "iniciadoEm": 1795177424577,
    "tiros": [
@@ -155,6 +155,12 @@
      "jogo": "GEN x TOR",
      "odd": 3.34,
      "unidades": 1
+    },
+    {
+     "h": "09:27",
+     "jogo": "FRO x SAS",
+     "odd": 3.15,
+     "unidades": 2
     }
    ]
   },
@@ -179,12 +185,24 @@
  },
  "o25": {
   "saldo": -4.3,
-  "ciclos": 854,
+  "ciclos": 856,
   "greens": 11,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 841,
+  "descartes": 843,
   "historico": [
+   {
+    "quando": "2026-11-20T12:28:42.072Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time GAM) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T12:28:16.075Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time GAM) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T12:28:13.476Z",
     "resultado": "GREEN_OBS",
@@ -3772,18 +3790,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:34:14.754Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:33:55.363Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
    }
   ],
   "consumidas": {},
@@ -3933,12 +3939,7 @@
    "2026-11-19": -7,
    "2026-11-20": -1.6
   },
-  "_obs": {
-   "bra": {
-    "desde": 1795177693475,
-    "gatilho": "time GAM"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": 0,
