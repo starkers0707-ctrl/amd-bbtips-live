@@ -8,17 +8,59 @@
   "descartes": 0,
   "historico": [],
   "consumidas": {},
-  "ciclo": null,
-  "cooldown": {}
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "01:52",
+     "jogo": "URY x NED",
+     "odd": 3.38
+    },
+    {
+     "h": "01:54",
+     "jogo": "POL x ENG",
+     "odd": 3.07
+    },
+    {
+     "h": "01:56",
+     "jogo": "GER x SWE",
+     "odd": 3.34
+    }
+   ],
+   "gatilho": "placar 1-0 / 0-1",
+   "alvo": {
+    "h": "01:52",
+    "jogo": "URY x NED",
+    "odd": 3.38,
+    "unidades": 1,
+    "desde": 1795150177356
+   },
+   "iniciadoEm": 1795150177356
+  },
+  "cooldown": {},
+  "_gatilhoAtual": {
+   "tipo": "placar",
+   "chave": "1-0 / 0-1",
+   "n": 8,
+   "start": 1
+  }
  },
  "o25": {
-  "saldo": -6,
-  "ciclos": 2,
-  "greens": 1,
+  "saldo": -5.1,
+  "ciclos": 3,
+  "greens": 2,
   "redsCiclo": 1,
   "aborts": 0,
   "descartes": 0,
   "historico": [
+   {
+    "quando": "2026-11-20T04:38:37.468Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "ita · FRO x TOR @1.86 (tiro 1) · gatilho: placar acima de 1-0 (2-1)"
+   },
    {
     "quando": "2026-11-20T04:15:38.866Z",
     "resultado": "GREEN",
@@ -33,42 +75,14 @@
    }
   ],
   "consumidas": {
-   "eng": 1795148138865
+   "eng": 1795148138865,
+   "ita": 1795149517467
   },
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "01:41",
-     "jogo": "FRO x TOR",
-     "odd": 1.86
-    },
-    {
-     "h": "01:43",
-     "jogo": "ROM x MIL",
-     "odd": 1.94
-    },
-    {
-     "h": "01:45",
-     "jogo": "JUV x FIO",
-     "odd": 1.89
-    }
-   ],
-   "gatilho": "placar acima de 1-0 (2-1)",
-   "alvo": {
-    "h": "01:41",
-    "jogo": "FRO x TOR",
-    "odd": 1.86,
-    "unidades": 1,
-    "desde": 1795149515956
-   },
-   "iniciadoEm": 1795149515956
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
-   "eng": 1795148138865
+   "eng": 1795148138865,
+   "ita": 1795149517467
   },
   "_gatilhoAtual": {
    "tipo": "placar",
@@ -78,17 +92,23 @@
   },
   "dias": {
    "2026-11-19": -7,
-   "2026-11-20": 1
+   "2026-11-20": 1.9
   }
  },
  "o25b": {
-  "saldo": -6,
-  "ciclos": 2,
-  "greens": 1,
+  "saldo": -5.1,
+  "ciclos": 3,
+  "greens": 2,
   "redsCiclo": 1,
   "aborts": 0,
   "descartes": 0,
   "historico": [
+   {
+    "quando": "2026-11-20T04:38:37.558Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "ita · FRO x TOR @1.86 (tiro 1) · gatilho: placar acima de 1-0 (2-1)"
+   },
    {
     "quando": "2026-11-20T04:15:38.958Z",
     "resultado": "GREEN",
@@ -103,22 +123,24 @@
    }
   ],
   "consumidas": {
-   "eng": 1795148138958
+   "eng": 1795148138958,
+   "ita": 1795149517558
   },
   "ciclo": null,
   "cooldown": {
    "cam": 1795142462862,
-   "eng": 1795148138958
+   "eng": 1795148138958,
+   "ita": 1795149517558
   },
   "_gatilhoAtual": {
    "tipo": "placar",
-   "chave": "goleada (3+)",
+   "chave": "acima de 1-0 (2-1)",
    "n": 8,
    "start": 1
   },
   "dias": {
    "2026-11-19": -7,
-   "2026-11-20": 1
+   "2026-11-20": 1.9
   }
  },
  "ambas": {
