@@ -94,12 +94,36 @@
  },
  "o25": {
   "saldo": 1.1,
-  "ciclos": 653,
+  "ciclos": 657,
   "greens": 9,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 643,
+  "descartes": 647,
   "historico": [
+   {
+    "quando": "2026-11-20T09:28:30.340Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "spa · alvo sem fechamento em 15min antes da 1a aposta"
+   },
+   {
+    "quando": "2026-11-20T09:18:41.139Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T09:18:39.950Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T09:18:38.945Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T09:18:37.047Z",
     "resultado": "GREEN_OBS",
@@ -3675,30 +3699,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:04:19.560Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:04:15.458Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:03:40.154Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T07:03:37.962Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
    }
   ],
   "consumidas": {},
@@ -3742,9 +3742,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "ELC",
-   "n": 18,
-   "start": 7
+   "chave": "BOC",
+   "n": 11,
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -3834,12 +3834,7 @@
    "2026-11-19": -7,
    "2026-11-20": 4.6
   },
-  "_obs": {
-   "spa": {
-    "desde": 1795166317047,
-    "gatilho": "time ELC"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": 0,
