@@ -29,16 +29,46 @@
   "consumidas": {
    "mnd": 1795158589261
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:38",
+     "jogo": "FLU x MEN",
+     "odd": 3.34
+    },
+    {
+     "h": "04:41",
+     "jogo": "CIO x IND",
+     "odd": 3.37
+    },
+    {
+     "h": "04:44",
+     "jogo": "PER x BAR",
+     "odd": 3.28
+    }
+   ],
+   "gatilho": "time IND",
+   "alvo": {
+    "h": "04:38",
+    "jogo": "FLU x MEN",
+    "odd": 3.34,
+    "unidades": 1,
+    "desde": 1795158861359
+   },
+   "iniciadoEm": 1795158861359
+  },
   "cooldown": {
    "mnd": 1795158589261,
    "lat": 1795152299459
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "URY",
+   "chave": "IND",
    "n": 8,
-   "start": 4
+   "start": 8
   },
   "dias": {
    "2026-11-20": 7.8
@@ -46,12 +76,48 @@
  },
  "o25": {
   "saldo": 0.2,
-  "ciclos": 129,
+  "ciclos": 135,
   "greens": 8,
   "redsCiclo": 1,
   "aborts": 0,
-  "descartes": 120,
+  "descartes": 126,
   "historico": [
+   {
+    "quando": "2026-11-20T07:14:37.455Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:14:21.366Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:14:21.363Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:14:19.960Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:14:19.957Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T07:14:15.854Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time OSA) — liga REARMADA"
+   },
    {
     "quando": "2026-11-20T07:14:15.765Z",
     "resultado": "GREEN_OBS",
@@ -936,7 +1002,7 @@
   },
   "_obs": {
    "ita": {
-    "desde": 1795158855764,
+    "desde": 1795158877455,
     "gatilho": "seq RRRG"
    }
   }
