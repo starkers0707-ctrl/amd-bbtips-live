@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 2.2,
-  "ciclos": 15,
-  "greens": 8,
+  "saldo": 4.1,
+  "ciclos": 16,
+  "greens": 9,
   "redsCiclo": 3,
   "aborts": 0,
   "descartes": 4,
   "historico": [
+   {
+    "quando": "2026-11-20T11:27:50.473Z",
+    "resultado": "GREEN",
+    "unidades": 1.9,
+    "detalhe": "lat · NAC x BAR @2.9 (tiro 1) · gatilho: time IND"
+   },
    {
     "quando": "2026-11-20T11:13:05.039Z",
     "resultado": "RED_CICLO",
@@ -99,42 +105,13 @@
    }
   ],
   "consumidas": {
-   "bra": 1795173185038
+   "bra": 1795173185038,
+   "lat": 1795174070472
   },
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "08:26",
-     "jogo": "NAC x BAR",
-     "odd": 2.9
-    },
-    {
-     "h": "08:29",
-     "jogo": "BOL x IND",
-     "odd": 3.36
-    },
-    {
-     "h": "08:32",
-     "jogo": "COL x FLU",
-     "odd": 3.19
-    }
-   ],
-   "gatilho": "time IND",
-   "alvo": {
-    "h": "08:26",
-    "jogo": "NAC x BAR",
-    "odd": 2.9,
-    "unidades": 1,
-    "desde": 1795173724173
-   },
-   "iniciadoEm": 1795173724173
-  },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795158589261,
-   "lat": 1795168694537,
+   "lat": 1795174070472,
    "eng": 1795162065445,
    "spa": 1795163811039,
    "ita": 1795170404238,
@@ -147,7 +124,7 @@
    "start": 1
   },
   "dias": {
-   "2026-11-20": 2.2
+   "2026-11-20": 4.1
   },
   "_obs": {}
  },
