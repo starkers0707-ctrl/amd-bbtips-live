@@ -22,8 +22,8 @@
   "consumidas": {},
   "ciclo": {
    "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "23:33",
@@ -43,20 +43,28 @@
    ],
    "gatilho": "placar 0-0",
    "alvo": {
-    "h": "23:33",
-    "jogo": "Liverpool x Benfica",
-    "odd": 2.12,
-    "unidades": 1,
-    "desde": 1795141829656
+    "h": "23:36",
+    "jogo": "Amsterdam x Turin",
+    "odd": 2.37,
+    "unidades": 2,
+    "desde": 1795142082461
    },
-   "iniciadoEm": 1795141829656
+   "iniciadoEm": 1795141829656,
+   "tiros": [
+    {
+     "h": "23:33",
+     "jogo": "Liverpool x Benfica",
+     "odd": 2.12,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {},
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "0-0",
-   "n": 34,
-   "start": 1
+   "tipo": "odd",
+   "chave": "2.05",
+   "n": 20,
+   "start": 4
   }
  },
  "o25b": {
@@ -101,10 +109,10 @@
   },
   "cooldown": {},
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "0-0",
-   "n": 34,
-   "start": 1
+   "tipo": "odd",
+   "chave": "2.05",
+   "n": 20,
+   "start": 5
   }
  },
  "ambas": {
@@ -116,6 +124,7 @@
   "descartes": 0,
   "historico": [],
   "consumidas": {},
-  "ciclo": null
+  "ciclo": null,
+  "cooldown": {}
  }
 }
