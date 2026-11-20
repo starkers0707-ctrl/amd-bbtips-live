@@ -192,13 +192,25 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 2.6,
-  "ciclos": 2979,
-  "greens": 20,
+  "saldo": 3.4,
+  "ciclos": 2981,
+  "greens": 21,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 2957,
+  "descartes": 2958,
   "historico": [
+   {
+    "quando": "2026-11-20T17:18:39.026Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :36) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-20T17:18:38.936Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "spa · VIL x ESP @1.89 (tiro 2) · gatilho: odd 1.89"
+   },
    {
     "quando": "2026-11-20T17:18:09.630Z",
     "resultado": "GREEN_OBS",
@@ -3786,68 +3798,19 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :29) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T16:12:48.731Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T16:12:48.729Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
    }
   ],
   "consumidas": {
    "eng": 1795191579937,
-   "bra": 1795193515027
+   "bra": 1795193515027,
+   "spa": 1795195118935
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "14:15",
-     "jogo": "BET x ELC",
-     "odd": 1.92
-    },
-    {
-     "h": "14:17",
-     "jogo": "VIL x ESP",
-     "odd": 1.89
-    },
-    {
-     "h": "14:19",
-     "jogo": "VAL x RSO",
-     "odd": 1.94
-    }
-   ],
-   "gatilho": "odd 1.89",
-   "alvo": {
-    "h": "14:17",
-    "jogo": "VIL x ESP",
-    "odd": 1.89,
-    "unidades": 2,
-    "desde": 1795194993834
-   },
-   "iniciadoEm": 1795194671631,
-   "tiros": [
-    {
-     "h": "14:15",
-     "jogo": "BET x ELC",
-     "odd": 1.92,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795191579937,
    "ita": 1795158777156,
-   "spa": 1795191046235,
+   "spa": 1795195118935,
    "lat": 1795167575048,
    "bra": 1795193515027
   },
@@ -3855,11 +3818,11 @@
    "tipo": "odd",
    "chave": "1.89",
    "n": 11,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
-   "2026-11-20": 9.6
+   "2026-11-20": 10.4
   },
   "_obs": {}
  },
@@ -3969,9 +3932,9 @@
     "desde": 1795194770233,
     "gatilho": "coluna :29"
    },
-   "spa": {
-    "desde": 1795195089630,
-    "gatilho": "odd 1.89"
+   "eng": {
+    "desde": 1795195119026,
+    "gatilho": "coluna :36"
    }
   }
  },
