@@ -116,7 +116,7 @@ app.use((req, res, next) => {
 const ADMIN_KEY = process.env.ADMIN_KEY || "";
 const GH_T = process.env.GH_TOKEN || "";
 const GH_REPO = process.env.GH_REPO || "starkers0707-ctrl/amd-bbtips-live";
-const GH_BRANCH = process.env.GH_BRANCH || "main";
+const GH_BRANCH = process.env.GH_BRANCH || "dados"; // branch separado: salvar dados nao dispara deploy
 let webpush = null;
 try { webpush = require("web-push"); } catch (e) { console.log("web-push indisponivel:", e.message); }
 
@@ -1768,7 +1768,7 @@ async function salvaJogos() {
   jogosDirty = false;
   try {
     const dump = {};
-    for (const l of Object.keys(store)) { const ga = (store[l] || {}).gamesAll; if (ga && ga.length) dump[l] = ga.slice(-600); }
+    for (const l of Object.keys(store)) { const ga = (store[l] || {}).gamesAll; if (ga && ga.length) dump[l] = ga.slice(-800); }
     if (!Object.keys(dump).length) return;
     const body = { message: "jogos", content: Buffer.from(JSON.stringify(dump)).toString("base64"), branch: GH_BRANCH };
     if (jogosSha) body.sha = jogosSha;
@@ -1783,11 +1783,13 @@ async function salvaJogos() {
 async function carregaJogos() {
   if (!GH_T) return;
   try {
-    const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${JOGOS_FILE}?ref=${GH_BRANCH}`, { headers: ghHead() });
+    const url = `https://api.github.com/repos/${GH_REPO}/contents/${JOGOS_FILE}?ref=${GH_BRANCH}`;
+    const meta = await fetch(url, { headers: ghHead() });
+    if (meta.ok) { try { jogosSha = (await meta.json()).sha; } catch (e) {} }
+    // arquivo passa de 1 MB: o conteudo vem pelo formato "raw"
+    const r = await fetch(url, { headers: { ...ghHead(), Accept: "application/vnd.github.raw" } });
     if (r.ok) {
-      const j = await r.json();
-      jogosSha = j.sha;
-      const dados = JSON.parse(Buffer.from(j.content, "base64").toString());
+      const dados = JSON.parse(await r.text());
       if (dados && typeof dados === "object") {
         jogosSemente = dados;
         // O dashboard classico consulta /api/grade assim que abre. Antes, o
@@ -1799,8 +1801,15 @@ async function carregaJogos() {
         for (const [liga, gamesSalvos] of Object.entries(dados)) {
           if (!LIGAS_PERMITIDAS.has(liga)) continue;
           if (!Array.isArray(gamesSalvos) || !gamesSalvos.length) continue;
-          const st = buildStore(liga, gamesSalvos, [], new Date().toISOString());
-          st.gamesAll = gamesSalvos;
+          const atual = store[liga] || {};
+          const chave = g => String(g.id || `${g.horario || ""}|${g.casa || ""}|${g.fora || ""}`);
+          const mapa = new Map(gamesSalvos.filter(g => g && g.inicio).map(g => [chave(g), g]));
+          for (const g of (atual.gamesAll || [])) if (g && g.inicio) mapa.set(chave(g), g);
+          const tIni = g => { const t = Date.parse(g.inicio || ""); return Number.isFinite(t) ? t : 0; };
+          const todos = [...mapa.values()].sort((x, y) => tIni(x) - tIni(y)).slice(-1200);
+          if (!todos.length) continue;
+          const st = buildStore(liga, todos, atual.upcomingRaw || [], new Date().toISOString());
+          st.gamesAll = todos;
           st.fonte = "memoria";
           store[liga] = st;
           registraLiga(liga);
