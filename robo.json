@@ -189,7 +189,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "01:20",
+     "jogo": "NOT x MNC",
+     "odd": 3.05
+    },
+    {
+     "h": "01:22",
+     "jogo": "BHA x BRE",
+     "odd": 3.37
+    },
+    {
+     "h": "01:24",
+     "jogo": "HUL x LIV",
+     "odd": 2.99
+    }
+   ],
+   "gatilho": "seq RGRR",
+   "alvo": {
+    "h": "01:20",
+    "jogo": "NOT x MNC",
+    "odd": 3.05,
+    "unidades": 1,
+    "desde": 1795234712665
+   },
+   "iniciadoEm": 1795234712665
+  },
   "cooldown": {
    "mnd": 1795224861868,
    "lat": 1795174070472,
@@ -200,7 +230,7 @@
   },
   "_gatilhoAtual": {
    "tipo": "seq",
-   "chave": "GGRRG",
+   "chave": "RGRR",
    "n": 8,
    "start": 1
   },
@@ -208,12 +238,7 @@
    "2026-11-20": 4.3,
    "2026-11-21": 0
   },
-  "_obs": {
-   "eng": {
-    "desde": 1795234681570,
-    "gatilho": "seq RGRR"
-   }
-  }
+  "_obs": {}
  },
  "o25": {
   "saldo": 12.2,
