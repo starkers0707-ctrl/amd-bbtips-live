@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 13.2,
-  "ciclos": 76,
-  "greens": 29,
+  "saldo": 16.8,
+  "ciclos": 77,
+  "greens": 30,
   "redsCiclo": 13,
   "aborts": 0,
   "descartes": 34,
   "historico": [
+   {
+    "quando": "2026-11-21T22:45:31.716Z",
+    "resultado": "GREEN",
+    "unidades": 3.6,
+    "detalhe": "lat · BOC x PAL @3.3 (tiro 2) · gatilho: seq RRGGR"
+   },
    {
     "quando": "2026-11-21T22:12:13.913Z",
     "resultado": "DESCARTADO",
@@ -464,49 +470,13 @@
     "detalhe": "mnd · POL x ENG @3.07 (tiro 2) · gatilho: placar 1-0 / 0-1"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "19:41",
-     "jogo": "ARG x RIV",
-     "odd": 3.37
-    },
-    {
-     "h": "19:44",
-     "jogo": "BOC x PAL",
-     "odd": 3.3
-    },
-    {
-     "h": "19:47",
-     "jogo": "OLI x COL",
-     "odd": 2.88
-    }
-   ],
-   "gatilho": "seq RRGGR",
-   "alvo": {
-    "h": "19:44",
-    "jogo": "BOC x PAL",
-    "odd": 3.3,
-    "unidades": 2,
-    "desde": 1795300957919
-   },
-   "iniciadoEm": 1795300593717,
-   "tiros": [
-    {
-     "h": "19:41",
-     "jogo": "ARG x RIV",
-     "odd": 3.37,
-     "unidades": 1
-    }
-   ]
+  "consumidas": {
+   "lat": 1795301131715
   },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795271142083,
-   "lat": 1795281158283,
+   "lat": 1795301131715,
    "eng": 1795295497815,
    "spa": 1795249964237,
    "ita": 1795268150386,
@@ -520,7 +490,7 @@
   },
   "dias": {
    "2026-11-20": 4.3,
-   "2026-11-21": 8.9
+   "2026-11-21": 12.5
   },
   "_obs": {
    "ita": {
@@ -4274,10 +4244,6 @@
    "ita": {
     "desde": 1795299751813,
     "gatilho": "coluna :25"
-   },
-   "spa": {
-    "desde": 1795301110922,
-    "gatilho": "coluna :47"
    }
   }
  },
