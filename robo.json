@@ -299,12 +299,30 @@
  },
  "o25": {
   "saldo": 9.7,
-  "ciclos": 7076,
+  "ciclos": 7079,
   "greens": 39,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 7034,
+  "descartes": 7037,
   "historico": [
+   {
+    "quando": "2026-11-21T10:30:21.129Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T10:30:21.045Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T10:30:17.441Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T10:30:17.436Z",
     "resultado": "GREEN_OBS",
@@ -3886,24 +3904,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T08:35:21.037Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T08:35:18.125Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T08:35:15.535Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -3911,8 +3911,8 @@
   },
   "ciclo": {
    "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "07:29",
@@ -3932,13 +3932,21 @@
    ],
    "gatilho": "time ROM",
    "alvo": {
-    "h": "07:29",
-    "jogo": "ROM x FIO",
+    "h": "07:31",
+    "jogo": "INT x LAZ",
     "odd": 1.87,
-    "unidades": 1,
-    "desde": 1795256804434
+    "unidades": 2,
+    "desde": 1795257050228
    },
-   "iniciadoEm": 1795256804434
+   "iniciadoEm": 1795256804434,
+   "tiros": [
+    {
+     "h": "07:29",
+     "jogo": "ROM x FIO",
+     "odd": 1.87,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -3952,7 +3960,7 @@
    "tipo": "time",
    "chave": "ROM",
    "n": 14,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -4066,10 +4074,6 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
-   },
-   "ita": {
-    "desde": 1795257017436,
-    "gatilho": "time ROM"
    }
   }
  },
