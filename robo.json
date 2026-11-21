@@ -309,7 +309,7 @@
    "tipo": "time",
    "chave": "PAR",
    "n": 10,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -319,12 +319,42 @@
  },
  "o25": {
   "saldo": 9,
-  "ciclos": 6695,
+  "ciclos": 6700,
   "greens": 38,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6654,
+  "descartes": 6659,
   "historico": [
+   {
+    "quando": "2026-11-21T09:25:23.429Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T09:25:19.725Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T09:24:56.235Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T09:24:54.531Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T09:24:51.530Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T09:24:48.928Z",
     "resultado": "GREEN_OBS",
@@ -3894,36 +3924,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time ALV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:36:36.338Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:36:36.335Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ALV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:36:34.736Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:36:34.733Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ALV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:36:14.232Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4058,19 +4058,25 @@
     "gatilho": "coluna :29"
    },
    "spa": {
-    "desde": 1795253088928,
-    "gatilho": "time DLC"
+    "desde": 1795253123429,
+    "gatilho": "time VAL"
    }
   }
  },
  "ambas": {
-  "saldo": 0.7,
-  "ciclos": 2,
-  "greens": 1,
+  "saldo": 0.6,
+  "ciclos": 3,
+  "greens": 2,
   "redsCiclo": 0,
   "aborts": 0,
   "descartes": 1,
   "historico": [
+   {
+    "quando": "2026-11-21T09:24:54.628Z",
+    "resultado": "GREEN",
+    "unidades": -0.1,
+    "detalhe": "lat · VAL x CIO @1.72 (tiro 3) · gatilho: time ARG"
+   },
    {
     "quando": "2026-11-21T08:06:36.934Z",
     "resultado": "GREEN",
@@ -4084,64 +4090,22 @@
     "detalhe": "cam · alvo sem fechamento em 15min antes da 1a aposta"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "06:17",
-     "jogo": "IND x MEN",
-     "odd": 1.69
-    },
-    {
-     "h": "06:20",
-     "jogo": "RIV x ARG",
-     "odd": 1.69
-    },
-    {
-     "h": "06:23",
-     "jogo": "VAL x CIO",
-     "odd": 1.72
-    }
-   ],
-   "gatilho": "time ARG",
-   "alvo": {
-    "h": "06:23",
-    "jogo": "VAL x CIO",
-    "odd": 1.72,
-    "unidades": 4,
-    "desde": 1795252904938
-   },
-   "iniciadoEm": 1795252009631,
-   "tiros": [
-    {
-     "h": "06:17",
-     "jogo": "IND x MEN",
-     "odd": 1.69,
-     "unidades": 1
-    },
-    {
-     "h": "06:20",
-     "jogo": "RIV x ARG",
-     "odd": 1.69,
-     "unidades": 2
-    }
-   ]
+  "consumidas": {
+   "lat": 1795253094628
   },
+  "ciclo": null,
   "cooldown": {
-   "lat": 1795248396934
+   "lat": 1795253094628
   },
   "_gatilhoAtual": {
    "tipo": "time",
    "chave": "PAR",
    "n": 10,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
-   "2026-11-21": 0.7
+   "2026-11-21": 0.6
   }
  }
 }
