@@ -215,7 +215,37 @@
   "consumidas": {
    "spa": 1795244921532
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "05:05",
+     "jogo": "OLI x PAL",
+     "odd": 3.34
+    },
+    {
+     "h": "05:08",
+     "jogo": "PAR x MEN",
+     "odd": 3.35
+    },
+    {
+     "h": "05:11",
+     "jogo": "ARG x VAL",
+     "odd": 3.34
+    }
+   ],
+   "gatilho": "time PAR",
+   "alvo": {
+    "h": "05:05",
+    "jogo": "OLI x PAL",
+    "odd": 3.34,
+    "unidades": 1,
+    "desde": 1795247533627
+   },
+   "iniciadoEm": 1795247533627
+  },
   "cooldown": {
    "mnd": 1795224861868,
    "lat": 1795174070472,
@@ -226,9 +256,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "VAL",
-   "n": 10,
-   "start": 5
+   "chave": "PAR",
+   "n": 8,
+   "start": 4
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -238,12 +268,54 @@
  },
  "o25": {
   "saldo": 8.5,
-  "ciclos": 6222,
+  "ciclos": 6229,
   "greens": 36,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6183,
+  "descartes": 6190,
   "historico": [
+   {
+    "quando": "2026-11-21T07:52:17.138Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T07:52:13.725Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T07:52:13.636Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T07:51:50.128Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T07:51:50.126Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T07:51:47.525Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T07:51:47.438Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T07:51:44.432Z",
     "resultado": "GREEN_OBS",
@@ -3801,48 +3873,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T00:51:29.880Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T00:51:16.878Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T00:51:04.066Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T00:50:43.664Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T00:50:40.572Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T00:50:20.165Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T00:50:16.765Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -3978,9 +4008,9 @@
     "desde": 1795209937682,
     "gatilho": "coluna :29"
    },
-   "spa": {
-    "desde": 1795247504432,
-    "gatilho": "time VAL"
+   "eng": {
+    "desde": 1795247537137,
+    "gatilho": "time LIV"
    }
   }
  },
@@ -4000,13 +4030,43 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "05:05",
+     "jogo": "OLI x PAL",
+     "odd": 1.69
+    },
+    {
+     "h": "05:08",
+     "jogo": "PAR x MEN",
+     "odd": 1.73
+    },
+    {
+     "h": "05:11",
+     "jogo": "ARG x VAL",
+     "odd": 1.69
+    }
+   ],
+   "gatilho": "time PAR",
+   "alvo": {
+    "h": "05:05",
+    "jogo": "OLI x PAL",
+    "odd": 1.69,
+    "unidades": 1,
+    "desde": 1795247534334
+   },
+   "iniciadoEm": 1795247534334
+  },
   "cooldown": {},
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.15",
-   "n": 14,
-   "start": 6
+   "tipo": "time",
+   "chave": "PAR",
+   "n": 8,
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0
