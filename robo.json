@@ -366,7 +366,37 @@
    "bra": 1795267346031,
    "ita": 1795268150386
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "11:05",
+     "jogo": "RIV x PAR",
+     "odd": 3.25
+    },
+    {
+     "h": "11:08",
+     "jogo": "ARG x VAL",
+     "odd": 3.34
+    },
+    {
+     "h": "11:11",
+     "jogo": "FLU x BOC",
+     "odd": 3.25
+    }
+   ],
+   "gatilho": "coluna :08",
+   "alvo": {
+    "h": "11:05",
+    "jogo": "RIV x PAR",
+    "odd": 3.25,
+    "unidades": 1,
+    "desde": 1795269393887
+   },
+   "iniciadoEm": 1795269393887
+  },
   "cooldown": {
    "mnd": 1795264908333,
    "lat": 1795264429833,
@@ -385,21 +415,46 @@
    "2026-11-20": 4.3,
    "2026-11-21": 10.1
   },
-  "_obs": {
-   "lat": {
-    "desde": 1795269381086,
-    "gatilho": "coluna :08"
-   }
-  }
+  "_obs": {}
  },
  "o25": {
-  "saldo": -8,
-  "ciclos": 8988,
-  "greens": 43,
+  "saldo": -7.1,
+  "ciclos": 8993,
+  "greens": 44,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 8939,
+  "descartes": 8943,
   "historico": [
+   {
+    "quando": "2026-11-21T13:56:36.186Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "ita · ROM x SAS @1.91 (tiro 1) · gatilho: odd 1.85"
+   },
+   {
+    "quando": "2026-11-21T13:56:33.894Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T13:56:33.893Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T13:56:21.094Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T13:56:21.093Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T13:56:18.894Z",
     "resultado": "GREEN_OBS",
@@ -3969,76 +4024,17 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T12:45:38.838Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T12:45:38.833Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T12:45:24.234Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T12:45:24.226Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T12:45:18.435Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "spa": 1795268158184
+   "spa": 1795268158184,
+   "ita": 1795269396185
   },
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "10:55",
-     "jogo": "ROM x SAS",
-     "odd": 1.91
-    },
-    {
-     "h": "10:57",
-     "jogo": "JUV x MON",
-     "odd": 1.85
-    },
-    {
-     "h": "10:59",
-     "jogo": "FIO x COM",
-     "odd": 1.83
-    }
-   ],
-   "gatilho": "odd 1.85",
-   "alvo": {
-    "h": "10:55",
-    "jogo": "ROM x SAS",
-    "odd": 1.91,
-    "unidades": 1,
-    "desde": 1795269278490
-   },
-   "iniciadoEm": 1795269278490
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795263582528,
-   "ita": 1795261722736,
+   "ita": 1795269396185,
    "spa": 1795268158184,
    "lat": 1795244093933,
    "bra": 1795207550537
@@ -4052,7 +4048,7 @@
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
-   "2026-11-21": -20.2
+   "2026-11-21": -19.3
   },
   "_obs": {}
  },
