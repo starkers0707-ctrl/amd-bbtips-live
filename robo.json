@@ -244,12 +244,36 @@
  },
  "o25": {
   "saldo": 8.5,
-  "ciclos": 6432,
+  "ciclos": 6436,
   "greens": 37,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6392,
+  "descartes": 6396,
   "historico": [
+   {
+    "quando": "2026-11-21T08:23:28.932Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T08:23:18.238Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T08:23:14.638Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T08:23:12.038Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T08:23:08.827Z",
     "resultado": "GREEN_OBS",
@@ -3825,30 +3849,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:26:24.297Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:26:18.997Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:25:54.112Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:25:50.504Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -3895,9 +3895,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "GET",
-   "n": 11,
-   "start": 4
+   "chave": "VAL",
+   "n": 12,
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
@@ -4017,8 +4017,8 @@
     "gatilho": "time COV"
    },
    "spa": {
-    "desde": 1795249388826,
-    "gatilho": "time GET"
+    "desde": 1795249408931,
+    "gatilho": "time VAL"
    }
   }
  },
