@@ -234,7 +234,37 @@
    "lat": 1795248396735,
    "spa": 1795249964237
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "05:34",
+     "jogo": "WAL x COL",
+     "odd": 3.3
+    },
+    {
+     "h": "05:36",
+     "jogo": "MEX x GER",
+     "odd": 3.37
+    },
+    {
+     "h": "05:38",
+     "jogo": "POL x BEL",
+     "odd": 2.55
+    }
+   ],
+   "gatilho": "placar 0-0",
+   "alvo": {
+    "h": "05:34",
+    "jogo": "WAL x COL",
+    "odd": 3.3,
+    "unidades": 1,
+    "desde": 1795249994330
+   },
+   "iniciadoEm": 1795249994330
+  },
   "cooldown": {
    "mnd": 1795224861868,
    "lat": 1795248396735,
@@ -3869,8 +3899,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "05:31",
@@ -3890,13 +3920,21 @@
    ],
    "gatilho": "time GET",
    "alvo": {
-    "h": "05:31",
-    "jogo": "CEL x ESP",
-    "odd": 1.94,
-    "unidades": 1,
-    "desde": 1795249362329
+    "h": "05:33",
+    "jogo": "GET x BAR",
+    "odd": 1.76,
+    "unidades": 2,
+    "desde": 1795249964335
    },
-   "iniciadoEm": 1795249362329
+   "iniciadoEm": 1795249362329,
+   "tiros": [
+    {
+     "h": "05:31",
+     "jogo": "CEL x ESP",
+     "odd": 1.94,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -3910,7 +3948,7 @@
    "tipo": "time",
    "chave": "VAL",
    "n": 13,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
