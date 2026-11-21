@@ -191,8 +191,8 @@
   "consumidas": {},
   "ciclo": {
    "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "01:20",
@@ -212,13 +212,21 @@
    ],
    "gatilho": "seq RGRR",
    "alvo": {
-    "h": "01:20",
-    "jogo": "NOT x MNC",
-    "odd": 3.05,
-    "unidades": 1,
-    "desde": 1795234712665
+    "h": "01:22",
+    "jogo": "BHA x BRE",
+    "odd": 3.37,
+    "unidades": 2,
+    "desde": 1795234927266
    },
-   "iniciadoEm": 1795234712665
+   "iniciadoEm": 1795234712665,
+   "tiros": [
+    {
+     "h": "01:20",
+     "jogo": "NOT x MNC",
+     "odd": 3.05,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795224861868,
