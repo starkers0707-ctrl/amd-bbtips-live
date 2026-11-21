@@ -307,12 +307,18 @@
  },
  "o25": {
   "saldo": 9,
-  "ciclos": 6604,
+  "ciclos": 6605,
   "greens": 38,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6563,
+  "descartes": 6564,
   "historico": [
+   {
+    "quando": "2026-11-21T09:09:41.635Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T09:09:29.329Z",
     "resultado": "GREEN_OBS",
@@ -3906,12 +3912,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:28:12.531Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4051,7 +4051,7 @@
     "gatilho": "time COV"
    },
    "spa": {
-    "desde": 1795252169329,
+    "desde": 1795252181635,
     "gatilho": "time GET"
    }
   }
@@ -4113,10 +4113,10 @@
    "lat": 1795248396934
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "empate 1-1",
-   "n": 11,
-   "start": 1
+   "tipo": "time",
+   "chave": "ARG",
+   "n": 10,
+   "start": 2
   },
   "dias": {
    "2026-11-20": 0,
