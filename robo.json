@@ -351,25 +351,48 @@
    "bra": 1795261002034
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":20",
-   "n": 8,
-   "start": 7
+   "tipo": "time",
+   "chave": "PAR",
+   "n": 15,
+   "start": 8
   },
   "dias": {
    "2026-11-20": 4.3,
    "2026-11-21": 18.2
   },
-  "_obs": {}
+  "_obs": {
+   "ita": {
+    "desde": 1795262720536,
+    "gatilho": "coluna :23"
+   }
+  }
  },
  "o25": {
   "saldo": -9.7,
-  "ciclos": 7955,
+  "ciclos": 7958,
   "greens": 41,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 7908,
+  "descartes": 7911,
   "historico": [
+   {
+    "quando": "2026-11-21T12:05:38.728Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :18) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:05:24.934Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :18) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:05:20.727Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :18) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T12:05:16.226Z",
     "resultado": "GREEN_OBS",
@@ -3951,24 +3974,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:57:34.240Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:57:34.237Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:57:32.137Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4113,7 +4118,7 @@
     "gatilho": "coluna :17"
    },
    "eng": {
-    "desde": 1795262716226,
+    "desde": 1795262738728,
     "gatilho": "coluna :18"
    }
   }
