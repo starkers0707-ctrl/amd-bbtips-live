@@ -378,12 +378,24 @@
  },
  "o25": {
   "saldo": -8,
-  "ciclos": 8840,
+  "ciclos": 8842,
   "greens": 43,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 8791,
+  "descartes": 8793,
   "historico": [
+   {
+    "quando": "2026-11-21T13:39:12.187Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T13:39:09.091Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T13:38:48.484Z",
     "resultado": "GREEN_OBS",
@@ -3971,24 +3983,42 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T12:32:30.831Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T12:32:30.826Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795268158184
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "10:55",
+     "jogo": "ROM x SAS",
+     "odd": 1.91
+    },
+    {
+     "h": "10:57",
+     "jogo": "JUV x MON",
+     "odd": 1.85
+    },
+    {
+     "h": "10:59",
+     "jogo": "FIO x COM",
+     "odd": 1.83
+    }
+   ],
+   "gatilho": "odd 1.85",
+   "alvo": {
+    "h": "10:55",
+    "jogo": "ROM x SAS",
+    "odd": 1.91,
+    "unidades": 1,
+    "desde": 1795268349088
+   },
+   "iniciadoEm": 1795268349088
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795263582528,
@@ -3998,10 +4028,10 @@
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "VAL",
-   "n": 25,
-   "start": 2
+   "tipo": "odd",
+   "chave": "1.85",
+   "n": 12,
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
@@ -4121,8 +4151,12 @@
     "gatilho": "coluna :42"
    },
    "spa": {
-    "desde": 1795268328484,
+    "desde": 1795268331389,
     "gatilho": "time VAL"
+   },
+   "ita": {
+    "desde": 1795268352187,
+    "gatilho": "odd 1.85"
    }
   }
  },
