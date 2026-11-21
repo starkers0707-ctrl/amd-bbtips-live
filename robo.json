@@ -465,7 +465,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "19:41",
+     "jogo": "ARG x RIV",
+     "odd": 3.37
+    },
+    {
+     "h": "19:44",
+     "jogo": "BOC x PAL",
+     "odd": 3.3
+    },
+    {
+     "h": "19:47",
+     "jogo": "OLI x COL",
+     "odd": 2.88
+    }
+   ],
+   "gatilho": "seq RRGGR",
+   "alvo": {
+    "h": "19:41",
+    "jogo": "ARG x RIV",
+    "odd": 3.37,
+    "unidades": 1,
+    "desde": 1795300593717
+   },
+   "iniciadoEm": 1795300593717
+  },
   "cooldown": {
    "mnd": 1795271142083,
    "lat": 1795281158283,
@@ -475,9 +505,9 @@
    "bra": 1795277376896
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "3.22",
-   "n": 8,
+   "tipo": "seq",
+   "chave": "RRGGR",
+   "n": 9,
    "start": 1
   },
   "dias": {
@@ -493,12 +523,24 @@
  },
  "o25": {
   "saldo": 8.5,
-  "ciclos": 13359,
+  "ciclos": 13361,
   "greens": 63,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 13290,
+  "descartes": 13292,
   "historico": [
+   {
+    "quando": "2026-11-21T22:32:17.022Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T22:32:14.125Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T22:32:10.514Z",
     "resultado": "GREEN_OBS",
@@ -4086,18 +4128,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T21:18:05.818Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :19) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T21:18:05.810Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4238,7 +4268,7 @@
     "gatilho": "coluna :25"
    },
    "spa": {
-    "desde": 1795300330514,
+    "desde": 1795300354317,
     "gatilho": "coluna :47"
    }
   }
