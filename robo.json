@@ -504,7 +504,7 @@
    "tipo": "odd",
    "chave": "3.22",
    "n": 8,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -4124,8 +4124,8 @@
   "consumidas": {},
   "ciclo": {
    "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "19:09",
@@ -4145,13 +4145,21 @@
    ],
    "gatilho": "odd 1.85",
    "alvo": {
-    "h": "19:09",
-    "jogo": "ROM x NAP",
-    "odd": 1.94,
-    "unidades": 1,
-    "desde": 1795298497018
+    "h": "19:11",
+    "jogo": "PAR x COM",
+    "odd": 1.85,
+    "unidades": 2,
+    "desde": 1795299046215
    },
-   "iniciadoEm": 1795298497018
+   "iniciadoEm": 1795298497018,
+   "tiros": [
+    {
+     "h": "19:09",
+     "jogo": "ROM x NAP",
+     "odd": 1.94,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -4279,10 +4287,6 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
-   },
-   "spa": {
-    "desde": 1795299010815,
-    "gatilho": "odd 1.84"
    }
   }
  },
