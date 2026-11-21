@@ -297,7 +297,7 @@
    "tipo": "time",
    "chave": "FLU",
    "n": 8,
-   "start": 8
+   "start": 7
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -307,12 +307,18 @@
  },
  "o25": {
   "saldo": 9,
-  "ciclos": 6603,
+  "ciclos": 6604,
   "greens": 38,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6562,
+  "descartes": 6563,
   "historico": [
+   {
+    "quando": "2026-11-21T09:09:29.329Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T09:09:18.328Z",
     "resultado": "GREEN_OBS",
@@ -3906,12 +3912,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:28:12.528Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time COV) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4051,7 +4051,7 @@
     "gatilho": "time COV"
    },
    "spa": {
-    "desde": 1795252158327,
+    "desde": 1795252169329,
     "gatilho": "time GET"
    }
   }
