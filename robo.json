@@ -443,12 +443,24 @@
  },
  "o25": {
   "saldo": -2.8,
-  "ciclos": 10486,
+  "ciclos": 10488,
   "greens": 49,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 10431,
+  "descartes": 10433,
   "historico": [
+   {
+    "quando": "2026-11-21T16:14:04.088Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T16:14:04.082Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "ita · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-21T16:13:33.990Z",
     "resultado": "GREEN_OBS",
@@ -4036,55 +4048,13 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T15:16:35.685Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T15:16:35.595Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
    }
   ],
   "consumidas": {
    "eng": 1795274377792,
    "spa": 1795276142992
   },
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "13:15",
-     "jogo": "INT x GEN",
-     "odd": 1.8
-    },
-    {
-     "h": "13:17",
-     "jogo": "NAP x UDI",
-     "odd": 1.89
-    },
-    {
-     "h": "12:59",
-     "jogo": "MIL x FRO",
-     "odd": 1.78
-    }
-   ],
-   "gatilho": "coluna :17",
-   "alvo": {
-    "h": "13:15",
-    "jogo": "INT x GEN",
-    "odd": 1.8,
-    "unidades": 1,
-    "desde": 1795276743894
-   },
-   "iniciadoEm": 1795276743894
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795274377792,
@@ -4216,9 +4186,9 @@
     "desde": 1795277555486,
     "gatilho": "coluna :17"
    },
-   "eng": {
-    "desde": 1795277613990,
-    "gatilho": "coluna :20"
+   "ita": {
+    "desde": 1795277644087,
+    "gatilho": "coluna :17"
    }
   }
  },
