@@ -209,8 +209,8 @@
   "consumidas": {},
   "ciclo": {
    "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "04:03",
@@ -230,13 +230,21 @@
    ],
    "gatilho": "time VAL",
    "alvo": {
-    "h": "04:03",
-    "jogo": "OSA x VAL",
-    "odd": 3.32,
-    "unidades": 1,
-    "desde": 1795243993031
+    "h": "04:05",
+    "jogo": "CEL x RAY",
+    "odd": 3.37,
+    "unidades": 2,
+    "desde": 1795244678433
    },
-   "iniciadoEm": 1795243993031
+   "iniciadoEm": 1795243993031,
+   "tiros": [
+    {
+     "h": "04:03",
+     "jogo": "OSA x VAL",
+     "odd": 3.32,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795224861868,
@@ -250,7 +258,7 @@
    "tipo": "time",
    "chave": "VAL",
    "n": 9,
-   "start": 1
+   "start": 7
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -3913,7 +3921,7 @@
    "tipo": "time",
    "chave": "LIV",
    "n": 11,
-   "start": 4
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -4029,7 +4037,7 @@
     "gatilho": "coluna :29"
    },
    "eng": {
-    "desde": 1795241765738,
+    "desde": 1795244176529,
     "gatilho": "time LIV"
    }
   }
