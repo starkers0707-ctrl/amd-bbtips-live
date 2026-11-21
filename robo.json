@@ -4075,7 +4075,37 @@
    "spa": 1795289256016,
    "eng": 1795289735215
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "17:15",
+     "jogo": "PAR x TOR",
+     "odd": 1.94
+    },
+    {
+     "h": "17:17",
+     "jogo": "UDI x ROM",
+     "odd": 1.87
+    },
+    {
+     "h": "17:19",
+     "jogo": "FIO x SAS",
+     "odd": 1.93
+    }
+   ],
+   "gatilho": "coluna :17",
+   "alvo": {
+    "h": "17:15",
+    "jogo": "PAR x TOR",
+    "odd": 1.94,
+    "unidades": 1,
+    "desde": 1795291159919
+   },
+   "iniciadoEm": 1795291159919
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795289735215,
@@ -4085,10 +4115,10 @@
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "GGGRR",
-   "n": 12,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":17",
+   "n": 16,
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
@@ -4204,8 +4234,8 @@
     "gatilho": "coluna :29"
    },
    "spa": {
-    "desde": 1795291008821,
-    "gatilho": "odd 1.91"
+    "desde": 1795291031419,
+    "gatilho": "coluna :15"
    }
   }
  },
