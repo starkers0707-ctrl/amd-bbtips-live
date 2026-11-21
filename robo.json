@@ -463,13 +463,19 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 2.9,
-  "ciclos": 12027,
-  "greens": 56,
+  "saldo": 3.8,
+  "ciclos": 12028,
+  "greens": 57,
   "redsCiclo": 6,
   "aborts": 0,
   "descartes": 11965,
   "historico": [
+   {
+    "quando": "2026-11-21T19:27:36.017Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "spa · BET x ELC @1.92 (tiro 1) · gatilho: coluna :27"
+   },
    {
     "quando": "2026-11-21T19:25:07.887Z",
     "resultado": "GREEN_OBS",
@@ -4063,53 +4069,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T18:14:12.383Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "ita": 1795286224084
+   "ita": 1795286224084,
+   "spa": 1795289256016
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "16:25",
-     "jogo": "BET x ELC",
-     "odd": 1.92
-    },
-    {
-     "h": "16:27",
-     "jogo": "DLC x RMA",
-     "odd": 1.75
-    },
-    {
-     "h": "16:29",
-     "jogo": "BAR x RAY",
-     "odd": 1.8
-    }
-   ],
-   "gatilho": "coluna :27",
-   "alvo": {
-    "h": "16:25",
-    "jogo": "BET x ELC",
-    "odd": 1.92,
-    "unidades": 1,
-    "desde": 1795288974094
-   },
-   "iniciadoEm": 1795288974094
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795283379393,
    "ita": 1795286224084,
-   "spa": 1795285370992,
+   "spa": 1795289256016,
    "lat": 1795244093933,
    "bra": 1795207550537
   },
@@ -4122,7 +4093,7 @@
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
-   "2026-11-21": -9.3
+   "2026-11-21": -8.4
   },
   "_obs": {}
  },
