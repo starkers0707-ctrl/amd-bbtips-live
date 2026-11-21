@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 4.3,
-  "ciclos": 30,
-  "greens": 13,
+  "saldo": 8,
+  "ciclos": 31,
+  "greens": 14,
   "redsCiclo": 5,
   "aborts": 0,
   "descartes": 12,
   "historico": [
+   {
+    "quando": "2026-11-21T04:23:46.465Z",
+    "resultado": "GREEN",
+    "unidades": 3.7,
+    "detalhe": "eng · BHA x BRE @3.37 (tiro 2) · gatilho: seq RGRR"
+   },
    {
     "quando": "2026-11-21T04:18:01.571Z",
     "resultado": "GREEN_OBS",
@@ -188,50 +194,14 @@
     "detalhe": "mnd · POL x ENG @3.07 (tiro 2) · gatilho: placar 1-0 / 0-1"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "01:20",
-     "jogo": "NOT x MNC",
-     "odd": 3.05
-    },
-    {
-     "h": "01:22",
-     "jogo": "BHA x BRE",
-     "odd": 3.37
-    },
-    {
-     "h": "01:24",
-     "jogo": "HUL x LIV",
-     "odd": 2.99
-    }
-   ],
-   "gatilho": "seq RGRR",
-   "alvo": {
-    "h": "01:22",
-    "jogo": "BHA x BRE",
-    "odd": 3.37,
-    "unidades": 2,
-    "desde": 1795234927266
-   },
-   "iniciadoEm": 1795234712665,
-   "tiros": [
-    {
-     "h": "01:20",
-     "jogo": "NOT x MNC",
-     "odd": 3.05,
-     "unidades": 1
-    }
-   ]
+  "consumidas": {
+   "eng": 1795235026375
   },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795224861868,
    "lat": 1795174070472,
-   "eng": 1795177422374,
+   "eng": 1795235026375,
    "spa": 1795187107235,
    "ita": 1795177845275,
    "bra": 1795173185038
@@ -244,7 +214,7 @@
   },
   "dias": {
    "2026-11-20": 4.3,
-   "2026-11-21": 0
+   "2026-11-21": 3.7
   },
   "_obs": {}
  },
