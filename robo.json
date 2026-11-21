@@ -229,8 +229,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "05:27",
@@ -250,11 +250,11 @@
    ],
    "gatilho": "placar empate 2-2",
    "alvo": {
-    "h": "05:29",
-    "jogo": "SEV x RSO",
-    "odd": 3.35,
-    "unidades": 2,
-    "desde": 1795249718735
+    "h": "05:31",
+    "jogo": "CEL x ESP",
+    "odd": 3.36,
+    "unidades": 4,
+    "desde": 1795249844230
    },
    "iniciadoEm": 1795249484228,
    "tiros": [
@@ -263,6 +263,12 @@
      "jogo": "ALV x RMA",
      "odd": 2.91,
      "unidades": 1
+    },
+    {
+     "h": "05:29",
+     "jogo": "SEV x RSO",
+     "odd": 3.35,
+     "unidades": 2
     }
    ]
   },
@@ -288,12 +294,30 @@
  },
  "o25": {
   "saldo": 8.5,
-  "ciclos": 6471,
+  "ciclos": 6474,
   "greens": 37,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6431,
+  "descartes": 6434,
   "historico": [
+   {
+    "quando": "2026-11-21T08:30:41.638Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T08:30:36.831Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T08:30:16.232Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T08:30:12.533Z",
     "resultado": "GREEN_OBS",
@@ -3875,24 +3899,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:34:48.499Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:34:43.696Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:34:20.202Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4059,10 +4065,6 @@
    "eng": {
     "desde": 1795248222235,
     "gatilho": "time COV"
-   },
-   "spa": {
-    "desde": 1795249812533,
-    "gatilho": "time VAL"
    }
   }
  },
