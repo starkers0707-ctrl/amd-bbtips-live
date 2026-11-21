@@ -464,12 +464,18 @@
  },
  "o25": {
   "saldo": 4.7,
-  "ciclos": 12333,
+  "ciclos": 12334,
   "greens": 58,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 12269,
+  "descartes": 12270,
   "historico": [
+   {
+    "quando": "2026-11-21T20:14:28.516Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T20:14:28.512Z",
     "resultado": "DESCARTADO",
@@ -4063,12 +4069,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.91) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T18:38:26.784Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho seq GGRRG) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4081,30 +4081,30 @@
    "apostado": 0,
    "plano": [
     {
-     "h": "17:15",
-     "jogo": "PAR x TOR",
-     "odd": 1.94
+     "h": "17:29",
+     "jogo": "MIL x FIO",
+     "odd": 1.88
     },
     {
-     "h": "17:17",
-     "jogo": "UDI x ROM",
-     "odd": 1.87
+     "h": "17:31",
+     "jogo": "FRO x UDI",
+     "odd": 1.85
     },
     {
-     "h": "17:19",
-     "jogo": "FIO x SAS",
-     "odd": 1.93
+     "h": "17:33",
+     "jogo": "NAP x BOL",
+     "odd": 1.92
     }
    ],
-   "gatilho": "coluna :17",
+   "gatilho": "odd 1.85",
    "alvo": {
-    "h": "17:15",
-    "jogo": "PAR x TOR",
-    "odd": 1.94,
+    "h": "17:29",
+    "jogo": "MIL x FIO",
+    "odd": 1.88,
     "unidades": 1,
-    "desde": 1795291159919
+    "desde": 1795292080418
    },
-   "iniciadoEm": 1795291159919
+   "iniciadoEm": 1795292080418
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -4118,7 +4118,7 @@
    "tipo": "odd",
    "chave": "1.85",
    "n": 18,
-   "start": 8
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -4232,6 +4232,10 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
+   },
+   "spa": {
+    "desde": 1795292068520,
+    "gatilho": "coluna :17"
    }
   }
  },
