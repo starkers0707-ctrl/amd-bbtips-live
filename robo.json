@@ -250,8 +250,8 @@
   },
   "ciclo": {
    "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "05:57",
@@ -271,13 +271,21 @@
    ],
    "gatilho": "seq GRRG",
    "alvo": {
-    "h": "05:57",
-    "jogo": "FIO x INT",
-    "odd": 2.92,
-    "unidades": 1,
-    "desde": 1795251299633
+    "h": "05:59",
+    "jogo": "LEC x GEN",
+    "odd": 3.35,
+    "unidades": 2,
+    "desde": 1795251513135
    },
-   "iniciadoEm": 1795251299633
+   "iniciadoEm": 1795251299633,
+   "tiros": [
+    {
+     "h": "05:57",
+     "jogo": "FIO x INT",
+     "odd": 2.92,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795250376237,
@@ -301,12 +309,24 @@
  },
  "o25": {
   "saldo": 9,
-  "ciclos": 6590,
+  "ciclos": 6592,
   "greens": 38,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6549,
+  "descartes": 6551,
   "historico": [
+   {
+    "quando": "2026-11-21T08:59:12.140Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T08:58:33.230Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T08:58:30.826Z",
     "resultado": "GREEN_OBS",
@@ -3894,18 +3914,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:27:37.237Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time COV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:27:34.729Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4045,7 +4053,7 @@
     "gatilho": "time COV"
    },
    "spa": {
-    "desde": 1795251510826,
+    "desde": 1795251552140,
     "gatilho": "time GET"
    }
   }
