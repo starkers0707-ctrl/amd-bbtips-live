@@ -258,7 +258,7 @@
    "tipo": "time",
    "chave": "PAR",
    "n": 8,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -268,12 +268,36 @@
  },
  "o25": {
   "saldo": 8.5,
-  "ciclos": 6304,
+  "ciclos": 6308,
   "greens": 36,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6265,
+  "descartes": 6269,
   "historico": [
+   {
+    "quando": "2026-11-21T08:00:40.531Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T08:00:38.427Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T08:00:34.935Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T08:00:15.531Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T08:00:15.528Z",
     "resultado": "GREEN_OBS",
@@ -3849,30 +3873,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T04:48:25.665Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T04:47:52.171Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T04:47:48.470Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T04:47:29.875Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4007,8 +4007,12 @@
     "desde": 1795209937682,
     "gatilho": "coluna :29"
    },
+   "spa": {
+    "desde": 1795248034937,
+    "gatilho": "time GET"
+   },
    "eng": {
-    "desde": 1795248015528,
+    "desde": 1795248040530,
     "gatilho": "placar 0-0"
    }
   }
@@ -4065,7 +4069,7 @@
    "tipo": "time",
    "chave": "PAR",
    "n": 8,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0
