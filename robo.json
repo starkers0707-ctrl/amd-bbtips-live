@@ -397,8 +397,8 @@
   },
   "ciclo": {
    "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "12:26",
@@ -418,13 +418,21 @@
    ],
    "gatilho": "seq RRGGR",
    "alvo": {
-    "h": "12:26",
-    "jogo": "IND x OLI",
-    "odd": 3.18,
-    "unidades": 1,
-    "desde": 1795274501296
+    "h": "12:29",
+    "jogo": "FLU x BOL",
+    "odd": 3.3,
+    "unidades": 2,
+    "desde": 1795274876594
    },
-   "iniciadoEm": 1795274501296
+   "iniciadoEm": 1795274501296,
+   "tiros": [
+    {
+     "h": "12:26",
+     "jogo": "IND x OLI",
+     "odd": 3.18,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795271142083,
@@ -448,12 +456,54 @@
  },
  "o25": {
   "saldo": -3.6,
-  "ciclos": 10029,
+  "ciclos": 10036,
   "greens": 48,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 9975,
+  "descartes": 9982,
   "historico": [
+   {
+    "quando": "2026-11-21T15:28:02.483Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T15:28:02.395Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :42) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T15:27:59.584Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T15:27:59.496Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :42) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T15:27:56.695Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T15:27:56.692Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :42) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T15:27:45.492Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T15:27:45.488Z",
     "resultado": "GREEN_OBS",
@@ -4011,48 +4061,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T14:30:46.282Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :42) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T14:30:43.583Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T14:30:43.493Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :42) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T14:30:40.187Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T14:30:40.184Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :42) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T14:30:35.792Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T14:30:35.789Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :42) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4192,9 +4200,9 @@
     "desde": 1795274794989,
     "gatilho": "odd 1.85"
    },
-   "eng": {
-    "desde": 1795274865488,
-    "gatilho": "coluna :42"
+   "spa": {
+    "desde": 1795274882483,
+    "gatilho": "odd 1.88"
    }
   }
  },
