@@ -348,7 +348,7 @@
    "tipo": "time",
    "chave": "FLU",
    "n": 8,
-   "start": 1
+   "start": 5
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -358,12 +358,42 @@
  },
  "o25": {
   "saldo": 4.3,
-  "ciclos": 7633,
+  "ciclos": 7638,
   "greens": 41,
   "redsCiclo": 4,
   "aborts": 0,
-  "descartes": 7588,
+  "descartes": 7593,
   "historico": [
+   {
+    "quando": "2026-11-21T11:30:35.832Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T11:30:35.828Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T11:30:33.042Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T11:30:33.037Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T11:30:18.428Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T11:30:18.336Z",
     "resultado": "GREEN_OBS",
@@ -3933,36 +3963,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:26:21.639Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:26:21.635Z",
-    "resultado": "DESCARTADO",
-    "unidades": 0,
-    "detalhe": "ita · alvo sem fechamento em 15min antes da 1a aposta"
-   },
-   {
-    "quando": "2026-11-21T10:26:18.233Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:26:18.230Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:26:14.538Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4098,9 +4098,9 @@
     "desde": 1795209937682,
     "gatilho": "coluna :29"
    },
-   "ita": {
-    "desde": 1795260618336,
-    "gatilho": "time ROM"
+   "spa": {
+    "desde": 1795260635831,
+    "gatilho": "time DLC"
    }
   }
  },
