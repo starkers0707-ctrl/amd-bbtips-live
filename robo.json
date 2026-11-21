@@ -478,12 +478,30 @@
  },
  "o25": {
   "saldo": -1.1,
-  "ciclos": 10809,
+  "ciclos": 10812,
   "greens": 51,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 10752,
+  "descartes": 10755,
   "historico": [
+   {
+    "quando": "2026-11-21T16:49:37.293Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T16:49:19.485Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T16:49:15.584Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T16:48:54.287Z",
     "resultado": "GREEN_OBS",
@@ -4065,31 +4083,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T15:40:32.591Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T15:40:32.588Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :42) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T15:40:32.585Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ita": 1795277918290,
    "eng": 1795279294584
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "13:53",
+     "jogo": "VIL x CEL",
+     "odd": 1.91
+    },
+    {
+     "h": "13:55",
+     "jogo": "VAL x DLC",
+     "odd": 1.94
+    },
+    {
+     "h": "13:57",
+     "jogo": "SEV x GET",
+     "odd": 1.92
+    }
+   ],
+   "gatilho": "time VAL",
+   "alvo": {
+    "h": "13:53",
+    "jogo": "VIL x CEL",
+    "odd": 1.91,
+    "unidades": 1,
+    "desde": 1795279755492
+   },
+   "iniciadoEm": 1795279755492
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795279294584,
@@ -4099,10 +4129,10 @@
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":46",
-   "n": 12,
-   "start": 1
+   "tipo": "time",
+   "chave": "VAL",
+   "n": 34,
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -4216,6 +4246,10 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
+   },
+   "spa": {
+    "desde": 1795279777293,
+    "gatilho": "time VAL"
    }
   }
  },
