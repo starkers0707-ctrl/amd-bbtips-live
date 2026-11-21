@@ -1,12 +1,18 @@
 {
  "o35": {
   "saldo": 10.7,
-  "ciclos": 35,
+  "ciclos": 36,
   "greens": 17,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 12,
+  "descartes": 13,
   "historico": [
+   {
+    "quando": "2026-11-21T08:24:41.834Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho placar empate 2-2) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T08:06:36.735Z",
     "resultado": "GREEN",
@@ -221,7 +227,37 @@
   "consumidas": {
    "lat": 1795248396735
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "05:27",
+     "jogo": "ALV x RMA",
+     "odd": 2.91
+    },
+    {
+     "h": "05:29",
+     "jogo": "SEV x RSO",
+     "odd": 3.35
+    },
+    {
+     "h": "05:31",
+     "jogo": "CEL x ESP",
+     "odd": 3.36
+    }
+   ],
+   "gatilho": "placar empate 2-2",
+   "alvo": {
+    "h": "05:27",
+    "jogo": "ALV x RMA",
+    "odd": 2.91,
+    "unidades": 1,
+    "desde": 1795249484228
+   },
+   "iniciadoEm": 1795249484228
+  },
   "cooldown": {
    "mnd": 1795224861868,
    "lat": 1795248396735,
@@ -231,8 +267,8 @@
    "bra": 1795173185038
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "PAR",
+   "tipo": "placar",
+   "chave": "empate 2-2",
    "n": 8,
    "start": 1
   },
@@ -244,12 +280,42 @@
  },
  "o25": {
   "saldo": 8.5,
-  "ciclos": 6439,
+  "ciclos": 6444,
   "greens": 37,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6399,
+  "descartes": 6404,
   "historico": [
+   {
+    "quando": "2026-11-21T08:24:44.238Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho placar empate 2-2) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T08:24:41.930Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho placar empate 2-2) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T08:24:38.632Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T08:24:26.236Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T08:24:23.326Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T08:24:20.638Z",
     "resultado": "GREEN_OBS",
@@ -3819,36 +3885,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:27:55.606Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:27:51.999Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:27:47.198Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:27:29.402Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:27:24.306Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -3894,10 +3930,10 @@
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "VAL",
-   "n": 12,
-   "start": 8
+   "tipo": "placar",
+   "chave": "empate 2-2",
+   "n": 8,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -4017,8 +4053,8 @@
     "gatilho": "time COV"
    },
    "spa": {
-    "desde": 1795249460637,
-    "gatilho": "time VAL"
+    "desde": 1795249484238,
+    "gatilho": "placar empate 2-2"
    }
   }
  },
