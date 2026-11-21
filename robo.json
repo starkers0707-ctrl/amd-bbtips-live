@@ -377,13 +377,31 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": -8.8,
-  "ciclos": 8823,
-  "greens": 42,
+  "saldo": -8,
+  "ciclos": 8826,
+  "greens": 43,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 8775,
+  "descartes": 8777,
   "historico": [
+   {
+    "quando": "2026-11-21T13:36:11.086Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T13:35:58.190Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T13:35:58.184Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "spa · VAL x MLG @1.9 (tiro 2) · gatilho: time VAL"
+   },
    {
     "quando": "2026-11-21T13:32:52.938Z",
     "resultado": "GREEN_OBS",
@@ -3965,71 +3983,17 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho seq RRRGG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T12:31:00.437Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T12:30:54.631Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T12:30:54.629Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho seq RRRGG) — liga REARMADA"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "10:29",
-     "jogo": "ALV x BET",
-     "odd": 1.89
-    },
-    {
-     "h": "10:31",
-     "jogo": "VAL x MLG",
-     "odd": 1.9
-    },
-    {
-     "h": "10:33",
-     "jogo": "RAY x LEV",
-     "odd": 1.93
-    }
-   ],
-   "gatilho": "time VAL",
-   "alvo": {
-    "h": "10:31",
-    "jogo": "VAL x MLG",
-    "odd": 1.9,
-    "unidades": 2,
-    "desde": 1795267851233
-   },
-   "iniciadoEm": 1795266889631,
-   "tiros": [
-    {
-     "h": "10:29",
-     "jogo": "ALV x BET",
-     "odd": 1.89,
-     "unidades": 1
-    }
-   ]
+  "consumidas": {
+   "spa": 1795268158184
   },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795263582528,
    "ita": 1795261722736,
-   "spa": 1795262679635,
+   "spa": 1795268158184,
    "lat": 1795244093933,
    "bra": 1795207550537
   },
@@ -4037,12 +4001,12 @@
    "tipo": "time",
    "chave": "VAL",
    "n": 25,
-   "start": 5
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
-   "2026-11-21": -21
+   "2026-11-21": -20.2
   },
   "_obs": {}
  },
@@ -4155,6 +4119,10 @@
    "eng": {
     "desde": 1795267972938,
     "gatilho": "coluna :42"
+   },
+   "spa": {
+    "desde": 1795268171085,
+    "gatilho": "time VAL"
    }
   }
  },
