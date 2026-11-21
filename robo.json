@@ -337,8 +337,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "09:36",
@@ -358,13 +358,21 @@
    ],
    "gatilho": "coluna :38",
    "alvo": {
-    "h": "09:36",
-    "jogo": "NED x ITA",
+    "h": "09:38",
+    "jogo": "COL x CHL",
     "odd": 3.36,
-    "unidades": 1,
-    "desde": 1795264435137
+    "unidades": 2,
+    "desde": 1795264661728
    },
-   "iniciadoEm": 1795264435137
+   "iniciadoEm": 1795264435137,
+   "tiros": [
+    {
+     "h": "09:36",
+     "jogo": "NED x ITA",
+     "odd": 3.36,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795250376237,
@@ -376,7 +384,7 @@
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":38",
+   "chave": ":40",
    "n": 8,
    "start": 1
   },
@@ -4127,10 +4135,6 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
-   },
-   "spa": {
-    "desde": 1795264648140,
-    "gatilho": "time VAL"
    }
   }
  },
