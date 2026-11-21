@@ -484,12 +484,30 @@
  },
  "o25": {
   "saldo": 6.4,
-  "ciclos": 12940,
+  "ciclos": 12943,
   "greens": 60,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 12874,
+  "descartes": 12877,
   "historico": [
+   {
+    "quando": "2026-11-21T21:46:16.815Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T21:46:13.121Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T21:46:08.721Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T21:46:05.311Z",
     "resultado": "GREEN_OBS",
@@ -4071,30 +4089,42 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T20:16:12.321Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T20:16:08.721Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T20:15:40.913Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795294118613
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "19:01",
+     "jogo": "CAG x BOL",
+     "odd": 1.91
+    },
+    {
+     "h": "19:03",
+     "jogo": "FRO x ATA",
+     "odd": 1.79
+    },
+    {
+     "h": "19:05",
+     "jogo": "LEC x LAZ",
+     "odd": 1.89
+    }
+   ],
+   "gatilho": "odd 1.79",
+   "alvo": {
+    "h": "19:01",
+    "jogo": "CAG x BOL",
+    "odd": 1.91,
+    "unidades": 1,
+    "desde": 1795297593123
+   },
+   "iniciadoEm": 1795297593123
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795289735215,
@@ -4104,10 +4134,10 @@
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":47",
-   "n": 16,
-   "start": 1
+   "tipo": "odd",
+   "chave": "1.79",
+   "n": 8,
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -4221,10 +4251,6 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
-   },
-   "spa": {
-    "desde": 1795297565310,
-    "gatilho": "coluna :47"
    }
   }
  },
