@@ -1,12 +1,18 @@
 {
  "o35": {
   "saldo": 2.3,
-  "ciclos": 40,
+  "ciclos": 41,
   "greens": 19,
   "redsCiclo": 8,
   "aborts": 0,
-  "descartes": 13,
+  "descartes": 14,
   "historico": [
+   {
+    "quando": "2026-11-21T09:22:15.630Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "lat · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-21T09:02:37.035Z",
     "resultado": "RED_CICLO",
@@ -254,37 +260,7 @@
    "eng": 1795251209337,
    "ita": 1795251757035
   },
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "06:26",
-     "jogo": "BOC x THI",
-     "odd": 3.11
-    },
-    {
-     "h": "06:29",
-     "jogo": "ATC x IND",
-     "odd": 3.36
-    },
-    {
-     "h": "06:20",
-     "jogo": "RIV x ARG",
-     "odd": 3.34
-    }
-   ],
-   "gatilho": "odd 3.36",
-   "alvo": {
-    "h": "06:26",
-    "jogo": "BOC x THI",
-    "odd": 3.11,
-    "unidades": 1,
-    "desde": 1795252009335
-   },
-   "iniciadoEm": 1795252009335
-  },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795250376237,
    "lat": 1795248396735,
@@ -297,7 +273,7 @@
    "tipo": "time",
    "chave": "PAR",
    "n": 10,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -307,12 +283,36 @@
  },
  "o25": {
   "saldo": 9,
-  "ciclos": 6679,
+  "ciclos": 6683,
   "greens": 38,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6638,
+  "descartes": 6642,
   "historico": [
+   {
+    "quando": "2026-11-21T09:22:15.733Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T09:21:44.837Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T09:21:41.836Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T09:21:39.436Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T09:21:35.135Z",
     "resultado": "GREEN_OBS",
@@ -3888,30 +3888,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:35:16.636Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ALV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:35:14.229Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:35:14.226Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ALV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:34:40.140Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4046,7 +4022,7 @@
     "gatilho": "coluna :29"
    },
    "spa": {
-    "desde": 1795252895135,
+    "desde": 1795252935733,
     "gatilho": "time DLC"
    }
   }
@@ -4075,8 +4051,8 @@
   "consumidas": {},
   "ciclo": {
    "liga": "lat",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "06:17",
@@ -4096,11 +4072,11 @@
    ],
    "gatilho": "time ARG",
    "alvo": {
-    "h": "06:20",
-    "jogo": "RIV x ARG",
-    "odd": 1.69,
-    "unidades": 2,
-    "desde": 1795252717229
+    "h": "06:23",
+    "jogo": "VAL x CIO",
+    "odd": 1.72,
+    "unidades": 4,
+    "desde": 1795252904938
    },
    "iniciadoEm": 1795252009631,
    "tiros": [
@@ -4109,6 +4085,12 @@
      "jogo": "IND x MEN",
      "odd": 1.69,
      "unidades": 1
+    },
+    {
+     "h": "06:20",
+     "jogo": "RIV x ARG",
+     "odd": 1.69,
+     "unidades": 2
     }
    ]
   },
@@ -4119,7 +4101,7 @@
    "tipo": "time",
    "chave": "PAR",
    "n": 10,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
