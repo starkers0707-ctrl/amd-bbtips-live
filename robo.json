@@ -419,12 +419,24 @@
  },
  "o25": {
   "saldo": -7.1,
-  "ciclos": 9013,
+  "ciclos": 9015,
   "greens": 44,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 8963,
+  "descartes": 8965,
   "historico": [
+   {
+    "quando": "2026-11-21T14:00:11.387Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T13:59:35.284Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T13:59:35.282Z",
     "resultado": "GREEN_OBS",
@@ -4012,25 +4024,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T12:48:49.831Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T12:48:44.930Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795268158184,
    "ita": 1795269396185
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "11:06",
+     "jogo": "CRY x LIV",
+     "odd": 1.89
+    },
+    {
+     "h": "11:08",
+     "jogo": "AST x EVE",
+     "odd": 1.92
+    },
+    {
+     "h": "11:10",
+     "jogo": "MNC x ARS",
+     "odd": 1.92
+    }
+   ],
+   "gatilho": "coluna :08",
+   "alvo": {
+    "h": "11:06",
+    "jogo": "CRY x LIV",
+    "odd": 1.89,
+    "unidades": 1,
+    "desde": 1795269611382
+   },
+   "iniciadoEm": 1795269611382
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795263582528,
@@ -4040,10 +4070,10 @@
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.85",
-   "n": 12,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":08",
+   "n": 9,
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -4163,7 +4193,7 @@
     "gatilho": "coluna :42"
    },
    "ita": {
-    "desde": 1795269575282,
+    "desde": 1795269611387,
     "gatilho": "coluna :17"
    }
   }
