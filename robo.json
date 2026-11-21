@@ -305,7 +305,37 @@
   "consumidas": {
    "lat": 1795258652040
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "08:32",
+     "jogo": "ZEI x FLU",
+     "odd": 3.24
+    },
+    {
+     "h": "08:35",
+     "jogo": "CRM x THI",
+     "odd": 3.36
+    },
+    {
+     "h": "08:38",
+     "jogo": "JUV x PAR",
+     "odd": 2.97
+    }
+   ],
+   "gatilho": "time FLU",
+   "alvo": {
+    "h": "08:32",
+    "jogo": "ZEI x FLU",
+    "odd": 3.24,
+    "unidades": 1,
+    "desde": 1795260471230
+   },
+   "iniciadoEm": 1795260471230
+  },
   "cooldown": {
    "mnd": 1795250376237,
    "lat": 1795258652040,
@@ -324,21 +354,46 @@
    "2026-11-20": 4.3,
    "2026-11-21": 13.3
   },
-  "_obs": {
-   "bra": {
-    "desde": 1795260375831,
-    "gatilho": "time FLU"
-   }
-  }
+  "_obs": {}
  },
  "o25": {
   "saldo": 4.3,
-  "ciclos": 7606,
+  "ciclos": 7611,
   "greens": 41,
   "redsCiclo": 4,
   "aborts": 0,
-  "descartes": 7561,
+  "descartes": 7566,
   "historico": [
+   {
+    "quando": "2026-11-21T11:28:13.434Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T11:27:51.327Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T11:27:51.237Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T11:27:47.429Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T11:27:47.425Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T11:27:34.133Z",
     "resultado": "GREEN_OBS",
@@ -3908,36 +3963,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:24:18.234Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:23:59.134Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:23:59.131Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:23:56.227Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:23:56.137Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4072,6 +4097,10 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
+   },
+   "ita": {
+    "desde": 1795260493434,
+    "gatilho": "time ROM"
    }
   }
  },
