@@ -413,7 +413,37 @@
   "consumidas": {
    "lat": 1795275218085
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "13:02",
+     "jogo": "THI x NAC",
+     "odd": 3.32
+    },
+    {
+     "h": "13:05",
+     "jogo": "VIT x ZEI",
+     "odd": 2.88
+    },
+    {
+     "h": "13:08",
+     "jogo": "GOI x MEN",
+     "odd": 2.81
+    }
+   ],
+   "gatilho": "coluna :05",
+   "alvo": {
+    "h": "13:02",
+    "jogo": "THI x NAC",
+    "odd": 3.32,
+    "unidades": 1,
+    "desde": 1795276711998
+   },
+   "iniciadoEm": 1795276711998
+  },
   "cooldown": {
    "mnd": 1795271142083,
    "lat": 1795275218085,
@@ -432,12 +462,7 @@
    "2026-11-20": 4.3,
    "2026-11-21": 8.6
   },
-  "_obs": {
-   "bra": {
-    "desde": 1795276690284,
-    "gatilho": "coluna :05"
-   }
-  }
+  "_obs": {}
  },
  "o25": {
   "saldo": -2.8,
