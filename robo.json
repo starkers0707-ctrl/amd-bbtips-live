@@ -518,13 +518,19 @@
   }
  },
  "o25": {
-  "saldo": 9.3,
-  "ciclos": 13763,
-  "greens": 64,
+  "saldo": 9.7,
+  "ciclos": 13764,
+  "greens": 65,
   "redsCiclo": 6,
   "aborts": 0,
   "descartes": 13693,
   "historico": [
+   {
+    "quando": "2026-11-21T23:50:51.224Z",
+    "resultado": "GREEN",
+    "unidades": 0.4,
+    "detalhe": "spa · RST x BAR @1.7 (tiro 2) · gatilho: coluna :47"
+   },
    {
     "quando": "2026-11-21T23:50:24.111Z",
     "resultado": "GREEN_OBS",
@@ -4118,61 +4124,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.75) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T22:12:36.812Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "ita": 1795303123723
+   "ita": 1795303123723,
+   "spa": 1795305051223
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "20:47",
-     "jogo": "OSA x BET",
-     "odd": 1.88
-    },
-    {
-     "h": "20:49",
-     "jogo": "RST x BAR",
-     "odd": 1.7
-    },
-    {
-     "h": "20:51",
-     "jogo": "VIL x ELC",
-     "odd": 1.88
-    }
-   ],
-   "gatilho": "coluna :47",
-   "alvo": {
-    "h": "20:49",
-    "jogo": "RST x BAR",
-    "odd": 1.7,
-    "unidades": 2,
-    "desde": 1795304914312
-   },
-   "iniciadoEm": 1795304679517,
-   "tiros": [
-    {
-     "h": "20:47",
-     "jogo": "OSA x BET",
-     "odd": 1.88,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795300083920,
    "ita": 1795303123723,
-   "spa": 1795299392714,
+   "spa": 1795305051223,
    "lat": 1795244093933,
    "bra": 1795207550537
   },
@@ -4185,7 +4148,7 @@
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
-   "2026-11-21": -2.9
+   "2026-11-21": -2.5
   },
   "_obs": {}
  },
@@ -4294,10 +4257,6 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
-   },
-   "eng": {
-    "desde": 1795305024111,
-    "gatilho": "odd 1.75"
    }
   }
  },
