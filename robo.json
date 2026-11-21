@@ -220,12 +220,24 @@
  },
  "o25": {
   "saldo": 13,
-  "ciclos": 5757,
+  "ciclos": 5759,
   "greens": 33,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 5722,
+  "descartes": 5724,
   "historico": [
+   {
+    "quando": "2026-11-21T04:59:49.971Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T04:59:43.664Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T04:59:38.176Z",
     "resultado": "GREEN_OBS",
@@ -3813,24 +3825,42 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T22:12:08.270Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T22:12:05.872Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795236644564
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "02:02",
+     "jogo": "CHE x BRE",
+     "odd": 1.94
+    },
+    {
+     "h": "02:04",
+     "jogo": "TOT x LIV",
+     "odd": 1.88
+    },
+    {
+     "h": "02:06",
+     "jogo": "BHA x IPS",
+     "odd": 1.85
+    }
+   ],
+   "gatilho": "time LIV",
+   "alvo": {
+    "h": "02:02",
+    "jogo": "CHE x BRE",
+    "odd": 1.94,
+    "unidades": 1,
+    "desde": 1795237212068
+   },
+   "iniciadoEm": 1795237212068
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795201072038,
@@ -3840,10 +3870,10 @@
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.94",
-   "n": 9,
-   "start": 6
+   "tipo": "time",
+   "chave": "LIV",
+   "n": 8,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -3957,10 +3987,6 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
-   },
-   "spa": {
-    "desde": 1795237178176,
-    "gatilho": "odd 1.94"
    }
   }
  },
