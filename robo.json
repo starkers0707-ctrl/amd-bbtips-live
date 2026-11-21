@@ -237,13 +237,19 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 6.8,
-  "ciclos": 5912,
-  "greens": 34,
+  "saldo": 7.6,
+  "ciclos": 5913,
+  "greens": 35,
   "redsCiclo": 3,
   "aborts": 0,
   "descartes": 5875,
   "historico": [
+   {
+    "quando": "2026-11-21T07:09:43.033Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "eng · BOU x HUL @1.84 (tiro 1) · gatilho: time LIV"
+   },
    {
     "quando": "2026-11-21T06:54:53.933Z",
     "resultado": "RED_CICLO",
@@ -3837,51 +3843,16 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T23:34:32.368Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "lat": 1795244093933
+   "lat": 1795244093933,
+   "eng": 1795244983033
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "04:08",
-     "jogo": "BOU x HUL",
-     "odd": 1.84
-    },
-    {
-     "h": "04:10",
-     "jogo": "LIV x FUL",
-     "odd": 1.95
-    },
-    {
-     "h": "04:12",
-     "jogo": "TOT x EVE",
-     "odd": 1.92
-    }
-   ],
-   "gatilho": "time LIV",
-   "alvo": {
-    "h": "04:08",
-    "jogo": "BOU x HUL",
-    "odd": 1.84,
-    "unidades": 1,
-    "desde": 1795244176442
-   },
-   "iniciadoEm": 1795244176442
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
-   "eng": 1795237533699,
+   "eng": 1795244983033,
    "ita": 1795158777156,
    "spa": 1795236644564,
    "lat": 1795244093933,
@@ -3896,7 +3867,7 @@
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
-   "2026-11-21": -5.4
+   "2026-11-21": -4.6
   },
   "_obs": {}
  },
