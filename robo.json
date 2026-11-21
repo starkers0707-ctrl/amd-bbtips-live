@@ -192,13 +192,25 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 11.7,
-  "ciclos": 5641,
-  "greens": 31,
+  "saldo": 12.2,
+  "ciclos": 5643,
+  "greens": 32,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 5608,
+  "descartes": 5609,
   "historico": [
+   {
+    "quando": "2026-11-21T00:54:35.076Z",
+    "resultado": "GREEN",
+    "unidades": 0.5,
+    "detalhe": "lat · OLI x COL @1.77 (tiro 2) · gatilho: odd 1.77"
+   },
+   {
+    "quando": "2026-11-21T00:54:18.176Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T00:54:14.669Z",
     "resultado": "GREEN_OBS",
@@ -3786,66 +3798,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T21:47:44.648Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T21:47:41.946Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "21:50",
-     "jogo": "NAC x MEN",
-     "odd": 1.94
-    },
-    {
-     "h": "21:53",
-     "jogo": "OLI x COL",
-     "odd": 1.77
-    },
-    {
-     "h": "21:56",
-     "jogo": "ATC x IND",
-     "odd": 1.95
-    }
-   ],
-   "gatilho": "odd 1.77",
-   "alvo": {
-    "h": "21:53",
-    "jogo": "OLI x COL",
-    "odd": 1.77,
-    "unidades": 2,
-    "desde": 1795221623275
-   },
-   "iniciadoEm": 1795221617674,
-   "tiros": [
-    {
-     "h": "21:50",
-     "jogo": "NAC x MEN",
-     "odd": 1.94,
-     "unidades": 1
-    }
-   ]
+  "consumidas": {
+   "lat": 1795222475076
   },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795201072038,
    "ita": 1795158777156,
    "spa": 1795208913381,
-   "lat": 1795217985168,
+   "lat": 1795222475076,
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
@@ -3856,7 +3820,7 @@
   },
   "dias": {
    "2026-11-19": -7,
-   "2026-11-20": 18.7
+   "2026-11-20": 19.2
   },
   "_obs": {}
  },
@@ -3965,10 +3929,6 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
-   },
-   "lat": {
-    "desde": 1795222454669,
-    "gatilho": "odd 1.77"
    }
   }
  },
