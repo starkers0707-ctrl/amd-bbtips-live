@@ -463,13 +463,37 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 4.7,
-  "ciclos": 12457,
-  "greens": 58,
+  "saldo": 5.6,
+  "ciclos": 12461,
+  "greens": 59,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 12393,
+  "descartes": 12396,
   "historico": [
+   {
+    "quando": "2026-11-21T20:32:35.515Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "ita · FRO x UDI @1.85 (tiro 1) · gatilho: odd 1.85"
+   },
+   {
+    "quando": "2026-11-21T20:32:16.369Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T20:32:13.015Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T20:32:10.619Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T20:32:07.014Z",
     "resultado": "GREEN_OBS",
@@ -4045,70 +4069,17 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T18:56:12.893Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T18:55:52.384Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T18:55:46.195Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T18:55:15.290Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "eng": 1795289735215
+   "eng": 1795289735215,
+   "ita": 1795293155514
   },
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "17:31",
-     "jogo": "FRO x UDI",
-     "odd": 1.85
-    },
-    {
-     "h": "17:33",
-     "jogo": "NAP x BOL",
-     "odd": 1.92
-    },
-    {
-     "h": "17:35",
-     "jogo": "MON x LEC",
-     "odd": 1.94
-    }
-   ],
-   "gatilho": "odd 1.85",
-   "alvo": {
-    "h": "17:31",
-    "jogo": "FRO x UDI",
-    "odd": 1.85,
-    "unidades": 1,
-    "desde": 1795293008618
-   },
-   "iniciadoEm": 1795293008618
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795289735215,
-   "ita": 1795286224084,
+   "ita": 1795293155514,
    "spa": 1795289256016,
    "lat": 1795244093933,
    "bra": 1795207550537
@@ -4122,7 +4093,7 @@
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
-   "2026-11-21": -7.5
+   "2026-11-21": -6.6
   },
   "_obs": {}
  },
@@ -4231,10 +4202,6 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
-   },
-   "spa": {
-    "desde": 1795293127014,
-    "gatilho": "coluna :47"
    }
   }
  },
