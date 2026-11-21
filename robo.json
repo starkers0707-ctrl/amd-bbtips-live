@@ -1,12 +1,18 @@
 {
  "o35": {
   "saldo": 5.9,
-  "ciclos": 70,
+  "ciclos": 71,
   "greens": 27,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 30,
+  "descartes": 31,
   "historico": [
+   {
+    "quando": "2026-11-21T17:03:46.484Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :08) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T16:58:15.184Z",
     "resultado": "DESCARTADO",
@@ -431,7 +437,37 @@
   "consumidas": {
    "bra": 1795277376896
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "14:08",
+     "jogo": "IND x NAC",
+     "odd": 3.3
+    },
+    {
+     "h": "14:11",
+     "jogo": "BOC x RIV",
+     "odd": 3.32
+    },
+    {
+     "h": "14:14",
+     "jogo": "ATC x RAC",
+     "odd": 3.24
+    }
+   ],
+   "gatilho": "coluna :08",
+   "alvo": {
+    "h": "14:08",
+    "jogo": "IND x NAC",
+    "odd": 3.3,
+    "unidades": 1,
+    "desde": 1795280629784
+   },
+   "iniciadoEm": 1795280629784
+  },
   "cooldown": {
    "mnd": 1795271142083,
    "lat": 1795275218085,
@@ -444,27 +480,58 @@
    "tipo": "coluna",
    "chave": ":08",
    "n": 12,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-20": 4.3,
    "2026-11-21": 1.6
   },
-  "_obs": {
-   "lat": {
-    "desde": 1795280297795,
-    "gatilho": "coluna :08"
-   }
-  }
+  "_obs": {}
  },
  "o25": {
   "saldo": -0.2,
-  "ciclos": 10888,
+  "ciclos": 10894,
   "greens": 52,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 10830,
+  "descartes": 10836,
   "historico": [
+   {
+    "quando": "2026-11-21T17:04:10.791Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T17:03:49.796Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T17:03:49.794Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T17:03:46.592Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T17:03:46.586Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T17:03:43.183Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T17:03:43.094Z",
     "resultado": "GREEN_OBS",
@@ -4028,42 +4095,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T16:00:14.985Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T16:00:14.896Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T16:00:11.284Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T16:00:11.191Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T15:59:42.784Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T15:59:42.695Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4200,7 +4231,7 @@
     "gatilho": "coluna :29"
    },
    "ita": {
-    "desde": 1795280623093,
+    "desde": 1795280650790,
     "gatilho": "odd 1.85"
    }
   }
