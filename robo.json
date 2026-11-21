@@ -464,12 +464,36 @@
  },
  "o25": {
   "saldo": 4.7,
-  "ciclos": 12297,
+  "ciclos": 12301,
   "greens": 58,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 12233,
+  "descartes": 12237,
   "historico": [
+   {
+    "quando": "2026-11-21T20:10:57.514Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T20:10:12.819Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T20:10:12.816Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T20:10:09.415Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T20:10:09.319Z",
     "resultado": "GREEN_OBS",
@@ -4045,30 +4069,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :42) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T18:36:04.592Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T18:35:59.888Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.91) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T18:35:59.884Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :42) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T18:35:59.792Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4118,7 +4118,7 @@
    "tipo": "coluna",
    "chave": ":17",
    "n": 16,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -4234,7 +4234,11 @@
     "gatilho": "coluna :29"
    },
    "ita": {
-    "desde": 1795291809319,
+    "desde": 1795291857421,
+    "gatilho": "coluna :17"
+   },
+   "spa": {
+    "desde": 1795291857514,
     "gatilho": "coluna :17"
    }
   }
