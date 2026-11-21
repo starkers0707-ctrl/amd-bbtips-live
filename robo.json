@@ -4077,7 +4077,37 @@
    "ita": 1795281766286,
    "eng": 1795283379393
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "15:13",
+     "jogo": "VAL x ALV",
+     "odd": 1.95
+    },
+    {
+     "h": "15:15",
+     "jogo": "ATH x RMA",
+     "odd": 1.77
+    },
+    {
+     "h": "15:17",
+     "jogo": "OSA x GET",
+     "odd": 1.92
+    }
+   ],
+   "gatilho": "coluna :15",
+   "alvo": {
+    "h": "15:13",
+    "jogo": "VAL x ALV",
+    "odd": 1.95,
+    "unidades": 1,
+    "desde": 1795283830788
+   },
+   "iniciadoEm": 1795283830788
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795283379393,
@@ -4088,9 +4118,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":46",
+   "chave": ":15",
    "n": 13,
-   "start": 1
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
