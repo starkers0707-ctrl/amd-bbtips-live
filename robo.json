@@ -244,12 +244,24 @@
  },
  "o25": {
   "saldo": 8.5,
-  "ciclos": 6430,
+  "ciclos": 6432,
   "greens": 37,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6390,
+  "descartes": 6392,
   "historico": [
+   {
+    "quando": "2026-11-21T08:23:08.827Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T08:22:42.333Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T08:22:29.531Z",
     "resultado": "GREEN_OBS",
@@ -3837,24 +3849,42 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:25:28.698Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:25:24.798Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
    }
   ],
   "consumidas": {
    "eng": 1795248945438
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "05:31",
+     "jogo": "CEL x ESP",
+     "odd": 1.94
+    },
+    {
+     "h": "05:33",
+     "jogo": "GET x BAR",
+     "odd": 1.76
+    },
+    {
+     "h": "05:35",
+     "jogo": "ELC x RMA",
+     "odd": 1.76
+    }
+   ],
+   "gatilho": "time GET",
+   "alvo": {
+    "h": "05:31",
+    "jogo": "CEL x ESP",
+    "odd": 1.94,
+    "unidades": 1,
+    "desde": 1795249362329
+   },
+   "iniciadoEm": 1795249362329
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795248945438,
@@ -3865,9 +3895,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "COV",
-   "n": 9,
-   "start": 1
+   "chave": "GET",
+   "n": 11,
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -3985,6 +4015,10 @@
    "eng": {
     "desde": 1795248222235,
     "gatilho": "time COV"
+   },
+   "spa": {
+    "desde": 1795249388826,
+    "gatilho": "time GET"
    }
   }
  },
