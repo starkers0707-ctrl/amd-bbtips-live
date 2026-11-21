@@ -519,12 +519,24 @@
  },
  "o25": {
   "saldo": 9.7,
-  "ciclos": 13764,
+  "ciclos": 13766,
   "greens": 65,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 13693,
+  "descartes": 13695,
   "historico": [
+   {
+    "quando": "2026-11-21T23:50:55.322Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.75) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T23:50:51.316Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.75) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T23:50:51.224Z",
     "resultado": "GREEN",
@@ -4112,25 +4124,51 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.75) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T22:12:38.715Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T22:12:38.713Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.75) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ita": 1795303123723,
    "spa": 1795305051223
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 1,
+   "apostado": 1,
+   "plano": [
+    {
+     "h": "20:56",
+     "jogo": "CRY x LIV",
+     "odd": 1.9
+    },
+    {
+     "h": "20:58",
+     "jogo": "TOT x ARS",
+     "odd": 1.75
+    },
+    {
+     "h": "21:00",
+     "jogo": "HUL x NEW",
+     "odd": 1.84
+    }
+   ],
+   "gatilho": "odd 1.75",
+   "alvo": {
+    "h": "20:58",
+    "jogo": "TOT x ARS",
+    "odd": 1.75,
+    "unidades": 2,
+    "desde": 1795305070913
+   },
+   "iniciadoEm": 1795305055317,
+   "tiros": [
+    {
+     "h": "20:56",
+     "jogo": "CRY x LIV",
+     "odd": 1.9,
+     "unidades": 1
+    }
+   ]
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795300083920,
