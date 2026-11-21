@@ -335,12 +335,30 @@
  },
  "o25": {
   "saldo": -2.7,
-  "ciclos": 7792,
+  "ciclos": 7795,
   "greens": 41,
   "redsCiclo": 5,
   "aborts": 0,
-  "descartes": 7746,
+  "descartes": 7749,
   "historico": [
+   {
+    "quando": "2026-11-21T11:49:35.835Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T11:49:32.334Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T11:49:19.929Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T11:49:16.138Z",
     "resultado": "GREEN_OBS",
@@ -3922,31 +3940,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:42:16.836Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:42:16.832Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:42:12.935Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
    }
   ],
   "consumidas": {
    "eng": 1795259738727,
    "ita": 1795261722736
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "09:01",
+     "jogo": "RAY x VIL",
+     "odd": 1.86
+    },
+    {
+     "h": "09:03",
+     "jogo": "ATH x GET",
+     "odd": 1.93
+    },
+    {
+     "h": "09:05",
+     "jogo": "LEV x OSA",
+     "odd": 1.95
+    }
+   ],
+   "gatilho": "time GET",
+   "alvo": {
+    "h": "09:01",
+    "jogo": "RAY x VIL",
+    "odd": 1.86,
+    "unidades": 1,
+    "desde": 1795261759837
+   },
+   "iniciadoEm": 1795261759837
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795259738727,
@@ -3956,10 +3986,10 @@
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.92",
-   "n": 14,
-   "start": 2
+   "tipo": "time",
+   "chave": "GET",
+   "n": 23,
+   "start": 6
   },
   "dias": {
    "2026-11-19": -7,
@@ -4077,6 +4107,10 @@
    "ita": {
     "desde": 1795261487339,
     "gatilho": "odd 1.92"
+   },
+   "spa": {
+    "desde": 1795261775835,
+    "gatilho": "time GET"
    }
   }
  },
