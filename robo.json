@@ -334,13 +334,31 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 4.3,
-  "ciclos": 7787,
+  "saldo": -2.7,
+  "ciclos": 7790,
   "greens": 41,
-  "redsCiclo": 4,
+  "redsCiclo": 5,
   "aborts": 0,
-  "descartes": 7742,
+  "descartes": 7744,
   "historico": [
+   {
+    "quando": "2026-11-21T11:48:42.829Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T11:48:42.736Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "ita · ciclo perdido (3 tiros) · gatilho: time ROM"
+   },
+   {
+    "quando": "2026-11-21T11:48:39.228Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T11:44:42.633Z",
     "resultado": "GREEN_OBS",
@@ -3922,79 +3940,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:41:39.436Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:41:35.838Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:41:35.835Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795258157532,
-   "eng": 1795259738727
+   "eng": 1795259738727,
+   "ita": 1795261722736
   },
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "08:43",
-     "jogo": "NAP x LEC",
-     "odd": 1.84
-    },
-    {
-     "h": "08:45",
-     "jogo": "ROM x PAR",
-     "odd": 1.88
-    },
-    {
-     "h": "08:47",
-     "jogo": "BOL x GEN",
-     "odd": 1.93
-    }
-   ],
-   "gatilho": "time ROM",
-   "alvo": {
-    "h": "08:47",
-    "jogo": "BOL x GEN",
-    "odd": 1.93,
-    "unidades": 4,
-    "desde": 1795261649234
-   },
-   "iniciadoEm": 1795260881630,
-   "tiros": [
-    {
-     "h": "08:43",
-     "jogo": "NAP x LEC",
-     "odd": 1.84,
-     "unidades": 1
-    },
-    {
-     "h": "08:45",
-     "jogo": "ROM x PAR",
-     "odd": 1.88,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795259738727,
-   "ita": 1795257278632,
+   "ita": 1795261722736,
    "spa": 1795258157532,
    "lat": 1795244093933,
    "bra": 1795207550537
@@ -4003,12 +3960,12 @@
    "tipo": "odd",
    "chave": "1.92",
    "n": 14,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
-   "2026-11-21": -7.9
+   "2026-11-21": -14.9
   },
   "_obs": {}
  },
@@ -4118,13 +4075,13 @@
     "desde": 1795209937682,
     "gatilho": "coluna :29"
    },
-   "spa": {
-    "desde": 1795261482636,
-    "gatilho": "time DLC"
-   },
    "ita": {
     "desde": 1795261487339,
     "gatilho": "odd 1.92"
+   },
+   "spa": {
+    "desde": 1795261722829,
+    "gatilho": "time GET"
    }
   }
  },
