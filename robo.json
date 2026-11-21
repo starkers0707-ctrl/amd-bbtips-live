@@ -492,13 +492,19 @@
   }
  },
  "o25": {
-  "saldo": 8,
-  "ciclos": 13341,
-  "greens": 62,
+  "saldo": 8.5,
+  "ciclos": 13342,
+  "greens": 63,
   "redsCiclo": 6,
   "aborts": 0,
   "descartes": 13273,
   "historico": [
+   {
+    "quando": "2026-11-21T22:28:03.921Z",
+    "resultado": "GREEN",
+    "unidades": 0.5,
+    "detalhe": "eng · MNU x IPS @1.75 (tiro 2) · gatilho: odd 1.75"
+   },
    {
     "quando": "2026-11-21T22:26:16.023Z",
     "resultado": "GREEN_OBS",
@@ -4092,60 +4098,17 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T21:16:11.218Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ita": 1795299050619,
-   "spa": 1795299392714
+   "spa": 1795299392714,
+   "eng": 1795300083920
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "19:24",
-     "jogo": "HUL x NEW",
-     "odd": 1.84
-    },
-    {
-     "h": "19:26",
-     "jogo": "MNU x IPS",
-     "odd": 1.75
-    },
-    {
-     "h": "19:28",
-     "jogo": "ARS x CHE",
-     "odd": 1.85
-    }
-   ],
-   "gatilho": "odd 1.75",
-   "alvo": {
-    "h": "19:26",
-    "jogo": "MNU x IPS",
-    "odd": 1.75,
-    "unidades": 2,
-    "desde": 1795299938416
-   },
-   "iniciadoEm": 1795299395117,
-   "tiros": [
-    {
-     "h": "19:24",
-     "jogo": "HUL x NEW",
-     "odd": 1.84,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
-   "eng": 1795289735215,
+   "eng": 1795300083920,
    "ita": 1795299050619,
    "spa": 1795299392714,
    "lat": 1795244093933,
@@ -4160,7 +4123,7 @@
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
-   "2026-11-21": -4.2
+   "2026-11-21": -3.7
   },
   "_obs": {}
  },
@@ -4273,10 +4236,6 @@
    "ita": {
     "desde": 1795299751813,
     "gatilho": "coluna :25"
-   },
-   "spa": {
-    "desde": 1795299976022,
-    "gatilho": "coluna :27"
    }
   }
  },
