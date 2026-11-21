@@ -229,8 +229,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "05:27",
@@ -250,13 +250,21 @@
    ],
    "gatilho": "placar empate 2-2",
    "alvo": {
-    "h": "05:27",
-    "jogo": "ALV x RMA",
-    "odd": 2.91,
-    "unidades": 1,
-    "desde": 1795249484228
+    "h": "05:29",
+    "jogo": "SEV x RSO",
+    "odd": 3.35,
+    "unidades": 2,
+    "desde": 1795249718735
    },
-   "iniciadoEm": 1795249484228
+   "iniciadoEm": 1795249484228,
+   "tiros": [
+    {
+     "h": "05:27",
+     "jogo": "ALV x RMA",
+     "odd": 2.91,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795224861868,
@@ -280,12 +288,24 @@
  },
  "o25": {
   "saldo": 8.5,
-  "ciclos": 6463,
+  "ciclos": 6465,
   "greens": 37,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6423,
+  "descartes": 6425,
   "historico": [
+   {
+    "quando": "2026-11-21T08:29:13.531Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T08:28:38.830Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T08:28:36.338Z",
     "resultado": "GREEN_OBS",
@@ -3873,18 +3893,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:32:35.204Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:32:30.006Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -3933,7 +3941,7 @@
    "tipo": "time",
    "chave": "VAL",
    "n": 13,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-19": -7,
@@ -4053,7 +4061,7 @@
     "gatilho": "time COV"
    },
    "spa": {
-    "desde": 1795249716338,
+    "desde": 1795249753531,
     "gatilho": "time VAL"
    }
   }
