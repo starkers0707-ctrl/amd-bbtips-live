@@ -365,12 +365,36 @@
  },
  "o25": {
   "saldo": -8.8,
-  "ciclos": 8432,
+  "ciclos": 8436,
   "greens": 42,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 8384,
+  "descartes": 8388,
   "historico": [
+   {
+    "quando": "2026-11-21T12:51:59.628Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:51:25.239Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:51:25.235Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :08) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:51:19.338Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T12:51:19.336Z",
     "resultado": "GREEN_OBS",
@@ -3946,30 +3970,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:54:12.630Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.92) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:53:42.225Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:53:42.133Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.92) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:53:38.441Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4105,8 +4105,12 @@
     "gatilho": "coluna :29"
    },
    "eng": {
-    "desde": 1795265479335,
+    "desde": 1795265519625,
     "gatilho": "coluna :08"
+   },
+   "spa": {
+    "desde": 1795265519628,
+    "gatilho": "odd 1.88"
    }
   }
  },
