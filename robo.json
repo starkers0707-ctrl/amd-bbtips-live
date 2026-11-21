@@ -206,10 +206,38 @@
     "detalhe": "mnd · POL x ENG @3.07 (tiro 2) · gatilho: placar 1-0 / 0-1"
    }
   ],
-  "consumidas": {
-   "spa": 1795239521002
+  "consumidas": {},
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:03",
+     "jogo": "OSA x VAL",
+     "odd": 3.32
+    },
+    {
+     "h": "04:05",
+     "jogo": "CEL x RAY",
+     "odd": 3.37
+    },
+    {
+     "h": "04:07",
+     "jogo": "ATM x BAR",
+     "odd": 3.17
+    }
+   ],
+   "gatilho": "time VAL",
+   "alvo": {
+    "h": "04:03",
+    "jogo": "OSA x VAL",
+    "odd": 3.32,
+    "unidades": 1,
+    "desde": 1795243993031
+   },
+   "iniciadoEm": 1795243993031
   },
-  "ciclo": null,
   "cooldown": {
    "mnd": 1795224861868,
    "lat": 1795174070472,
@@ -221,8 +249,8 @@
   "_gatilhoAtual": {
    "tipo": "time",
    "chave": "VAL",
-   "n": 8,
-   "start": 2
+   "n": 9,
+   "start": 1
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -231,13 +259,19 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 13.8,
-  "ciclos": 5911,
+  "saldo": 6.8,
+  "ciclos": 5912,
   "greens": 34,
-  "redsCiclo": 2,
+  "redsCiclo": 3,
   "aborts": 0,
   "descartes": 5875,
   "historico": [
+   {
+    "quando": "2026-11-21T06:54:53.933Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "lat · ciclo perdido (3 tiros) · gatilho: odd 1.88"
+   },
    {
     "quando": "2026-11-21T05:54:46.928Z",
     "resultado": "GREEN_OBS",
@@ -3831,66 +3865,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T23:34:12.668Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "02:56",
-     "jogo": "FLU x COL",
-     "odd": 1.89
-    },
-    {
-     "h": "02:59",
-     "jogo": "PER x ARG",
-     "odd": 1.88
-    },
-    {
-     "h": "03:53",
-     "jogo": "NAC x ATC",
-     "odd": 1.93
-    }
-   ],
-   "gatilho": "odd 1.88",
-   "alvo": {
-    "h": "03:53",
-    "jogo": "NAC x ATC",
-    "odd": 1.93,
-    "unidades": 4,
-    "desde": 1795241746440
-   },
-   "iniciadoEm": 1795240476830,
-   "tiros": [
-    {
-     "h": "02:56",
-     "jogo": "FLU x COL",
-     "odd": 1.89,
-     "unidades": 1
-    },
-    {
-     "h": "02:59",
-     "jogo": "PER x ARG",
-     "odd": 1.88,
-     "unidades": 2
-    }
-   ]
+  "consumidas": {
+   "lat": 1795244093933
   },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795237533699,
    "ita": 1795158777156,
    "spa": 1795236644564,
-   "lat": 1795222475076,
+   "lat": 1795244093933,
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
@@ -3902,7 +3888,7 @@
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
-   "2026-11-21": 1.6
+   "2026-11-21": -5.4
   },
   "_obs": {}
  },
