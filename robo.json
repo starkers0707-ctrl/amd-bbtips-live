@@ -327,13 +327,31 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 2.7,
-  "ciclos": 7265,
-  "greens": 39,
+  "saldo": 3.4,
+  "ciclos": 7268,
+  "greens": 40,
   "redsCiclo": 4,
   "aborts": 0,
-  "descartes": 7222,
+  "descartes": 7224,
   "historico": [
+   {
+    "quando": "2026-11-21T10:49:17.533Z",
+    "resultado": "GREEN",
+    "unidades": 0.7,
+    "detalhe": "spa · RST x BAR @1.7 (tiro 1) · gatilho: time DLC"
+   },
+   {
+    "quando": "2026-11-21T10:48:44.632Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T10:48:44.630Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T10:48:41.127Z",
     "resultado": "GREEN_OBS",
@@ -3915,65 +3933,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T09:19:13.438Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T09:19:09.828Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T09:18:42.132Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "ita": 1795257278632
+   "ita": 1795257278632,
+   "spa": 1795258157532
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "07:53",
-     "jogo": "RST x BAR",
-     "odd": 1.7
-    },
-    {
-     "h": "07:55",
-     "jogo": "DLC x SEV",
-     "odd": 1.95
-    },
-    {
-     "h": "07:57",
-     "jogo": "CEL x BET",
-     "odd": 1.93
-    }
-   ],
-   "gatilho": "time DLC",
-   "alvo": {
-    "h": "07:53",
-    "jogo": "RST x BAR",
-    "odd": 1.7,
-    "unidades": 1,
-    "desde": 1795258124626
-   },
-   "iniciadoEm": 1795258124626
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795248945438,
    "ita": 1795257278632,
-   "spa": 1795254522339,
+   "spa": 1795258157532,
    "lat": 1795244093933,
    "bra": 1795207550537
   },
@@ -3986,7 +3957,7 @@
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
-   "2026-11-21": -9.5
+   "2026-11-21": -8.8
   },
   "_obs": {}
  },
