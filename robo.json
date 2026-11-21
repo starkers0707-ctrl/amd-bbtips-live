@@ -4131,8 +4131,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "20:47",
@@ -4152,13 +4152,21 @@
    ],
    "gatilho": "coluna :47",
    "alvo": {
-    "h": "20:47",
-    "jogo": "OSA x BET",
-    "odd": 1.88,
-    "unidades": 1,
-    "desde": 1795304679517
+    "h": "20:49",
+    "jogo": "RST x BAR",
+    "odd": 1.7,
+    "unidades": 2,
+    "desde": 1795304914312
    },
-   "iniciadoEm": 1795304679517
+   "iniciadoEm": 1795304679517,
+   "tiros": [
+    {
+     "h": "20:47",
+     "jogo": "OSA x BET",
+     "odd": 1.88,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -4169,10 +4177,10 @@
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":47",
-   "n": 19,
-   "start": 1
+   "tipo": "odd",
+   "chave": "1.75",
+   "n": 9,
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -4290,10 +4298,6 @@
    "eng": {
     "desde": 1795304418316,
     "gatilho": "odd 1.75"
-   },
-   "spa": {
-    "desde": 1795304799212,
-    "gatilho": "coluna :47"
    }
   }
  },
