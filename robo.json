@@ -465,13 +465,61 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": -0.2,
-  "ciclos": 11023,
-  "greens": 52,
+  "saldo": 0.7,
+  "ciclos": 11031,
+  "greens": 53,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 10965,
+  "descartes": 10972,
   "historico": [
+   {
+    "quando": "2026-11-21T17:22:46.293Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :27) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T17:22:46.291Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :32) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T17:22:46.286Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "ita · UDI x NAP @1.85 (tiro 1) · gatilho: odd 1.85"
+   },
+   {
+    "quando": "2026-11-21T17:22:42.988Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :27) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T17:22:42.986Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :32) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T17:22:31.387Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :27) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T17:22:31.294Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :32) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T17:22:28.182Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :27) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T17:22:28.090Z",
     "resultado": "GREEN_OBS",
@@ -4023,95 +4071,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T16:09:37.188Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T16:09:37.096Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T16:09:37.090Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T16:09:33.592Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T16:09:33.590Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T16:09:33.588Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T16:09:30.893Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T16:09:30.891Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
    }
   ],
   "consumidas": {
    "eng": 1795279294584,
-   "spa": 1795280084084
+   "spa": 1795280084084,
+   "ita": 1795281766286
   },
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "14:21",
-     "jogo": "UDI x NAP",
-     "odd": 1.85
-    },
-    {
-     "h": "14:23",
-     "jogo": "SAS x TOR",
-     "odd": 1.95
-    },
-    {
-     "h": "14:25",
-     "jogo": "BOL x LEC",
-     "odd": 1.91
-    }
-   ],
-   "gatilho": "odd 1.85",
-   "alvo": {
-    "h": "14:21",
-    "jogo": "UDI x NAP",
-    "odd": 1.85,
-    "unidades": 1,
-    "desde": 1795281522884
-   },
-   "iniciadoEm": 1795281522884
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795279294584,
-   "ita": 1795277918290,
+   "ita": 1795281766286,
    "spa": 1795280084084,
    "lat": 1795244093933,
    "bra": 1795207550537
@@ -4125,7 +4096,7 @@
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
-   "2026-11-21": -12.4
+   "2026-11-21": -11.5
   },
   "_obs": {}
  },
@@ -4239,9 +4210,9 @@
     "desde": 1795281276189,
     "gatilho": "odd 1.85"
    },
-   "eng": {
-    "desde": 1795281748090,
-    "gatilho": "coluna :32"
+   "spa": {
+    "desde": 1795281766292,
+    "gatilho": "coluna :27"
    }
   }
  },
