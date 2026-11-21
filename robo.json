@@ -297,7 +297,7 @@
    "tipo": "time",
    "chave": "PAR",
    "n": 10,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -307,12 +307,30 @@
  },
  "o25": {
   "saldo": 9,
-  "ciclos": 6661,
+  "ciclos": 6664,
   "greens": 38,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6620,
+  "descartes": 6623,
   "historico": [
+   {
+    "quando": "2026-11-21T09:18:37.131Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T09:18:34.735Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T09:18:12.839Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T09:18:09.539Z",
     "resultado": "GREEN_OBS",
@@ -3894,24 +3912,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:33:17.336Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:33:17.334Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:33:14.030Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4044,10 +4044,6 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
-   },
-   "spa": {
-    "desde": 1795252689539,
-    "gatilho": "time DLC"
    }
   }
  },
@@ -4075,8 +4071,8 @@
   "consumidas": {},
   "ciclo": {
    "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "06:17",
@@ -4096,13 +4092,21 @@
    ],
    "gatilho": "time ARG",
    "alvo": {
-    "h": "06:17",
-    "jogo": "IND x MEN",
+    "h": "06:20",
+    "jogo": "RIV x ARG",
     "odd": 1.69,
-    "unidades": 1,
-    "desde": 1795252009631
+    "unidades": 2,
+    "desde": 1795252717229
    },
-   "iniciadoEm": 1795252009631
+   "iniciadoEm": 1795252009631,
+   "tiros": [
+    {
+     "h": "06:17",
+     "jogo": "IND x MEN",
+     "odd": 1.69,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795248396934
@@ -4111,7 +4115,7 @@
    "tipo": "time",
    "chave": "PAR",
    "n": 10,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-20": 0,
