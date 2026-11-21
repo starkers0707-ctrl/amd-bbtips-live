@@ -329,10 +329,10 @@
    "bra": 1795173185038
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "GRRGR",
-   "n": 8,
-   "start": 1
+   "tipo": "time",
+   "chave": "BOC",
+   "n": 13,
+   "start": 8
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -342,12 +342,30 @@
  },
  "o25": {
   "saldo": 3.4,
-  "ciclos": 7314,
+  "ciclos": 7317,
   "greens": 40,
   "redsCiclo": 4,
   "aborts": 0,
-  "descartes": 7270,
+  "descartes": 7273,
   "historico": [
+   {
+    "quando": "2026-11-21T10:53:53.831Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T10:53:25.031Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T10:53:25.027Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T10:53:21.529Z",
     "resultado": "GREEN_OBS",
@@ -3929,24 +3947,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T09:28:32.030Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T09:28:19.528Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T09:28:16.326Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4081,9 +4081,9 @@
     "desde": 1795209937682,
     "gatilho": "coluna :29"
    },
-   "spa": {
-    "desde": 1795258401529,
-    "gatilho": "time DLC"
+   "ita": {
+    "desde": 1795258433831,
+    "gatilho": "time ROM"
    }
   }
  },
