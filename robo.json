@@ -464,12 +464,30 @@
  },
  "o25": {
   "saldo": 3.8,
-  "ciclos": 12061,
+  "ciclos": 12064,
   "greens": 57,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 11998,
+  "descartes": 12001,
   "historico": [
+   {
+    "quando": "2026-11-21T19:33:38.218Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T19:33:35.125Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T19:33:14.514Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T19:33:11.812Z",
     "resultado": "GREEN_OBS",
@@ -4051,24 +4069,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T18:17:32.194Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T18:17:27.490Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T18:17:27.487Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4077,8 +4077,8 @@
   },
   "ciclo": {
    "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "16:32",
@@ -4098,13 +4098,21 @@
    ],
    "gatilho": "seq GGGRR",
    "alvo": {
-    "h": "16:32",
-    "jogo": "COV x LEE",
-    "odd": 1.92,
-    "unidades": 1,
-    "desde": 1795289380421
+    "h": "16:34",
+    "jogo": "AST x LIV",
+    "odd": 1.95,
+    "unidades": 2,
+    "desde": 1795289618214
    },
-   "iniciadoEm": 1795289380421
+   "iniciadoEm": 1795289380421,
+   "tiros": [
+    {
+     "h": "16:32",
+     "jogo": "COV x LEE",
+     "odd": 1.92,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -4234,7 +4242,7 @@
     "gatilho": "coluna :29"
    },
    "spa": {
-    "desde": 1795289591811,
+    "desde": 1795289618218,
     "gatilho": "coluna :47"
    }
   }
