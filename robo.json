@@ -286,13 +286,19 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 8.5,
-  "ciclos": 6474,
-  "greens": 37,
+  "saldo": 9,
+  "ciclos": 6475,
+  "greens": 38,
   "redsCiclo": 3,
   "aborts": 0,
   "descartes": 6434,
   "historico": [
+   {
+    "quando": "2026-11-21T08:34:40.637Z",
+    "resultado": "GREEN",
+    "unidades": 0.5,
+    "detalhe": "spa · GET x BAR @1.76 (tiro 2) · gatilho: time GET"
+   },
    {
     "quando": "2026-11-21T08:30:41.638Z",
     "resultado": "GREEN_OBS",
@@ -3886,61 +3892,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:34:54.601Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time LIV) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "eng": 1795248945438
+   "eng": 1795248945438,
+   "spa": 1795250080637
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "05:31",
-     "jogo": "CEL x ESP",
-     "odd": 1.94
-    },
-    {
-     "h": "05:33",
-     "jogo": "GET x BAR",
-     "odd": 1.76
-    },
-    {
-     "h": "05:35",
-     "jogo": "ELC x RMA",
-     "odd": 1.76
-    }
-   ],
-   "gatilho": "time GET",
-   "alvo": {
-    "h": "05:33",
-    "jogo": "GET x BAR",
-    "odd": 1.76,
-    "unidades": 2,
-    "desde": 1795249964335
-   },
-   "iniciadoEm": 1795249362329,
-   "tiros": [
-    {
-     "h": "05:31",
-     "jogo": "CEL x ESP",
-     "odd": 1.94,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795248945438,
    "ita": 1795158777156,
-   "spa": 1795245759139,
+   "spa": 1795250080637,
    "lat": 1795244093933,
    "bra": 1795207550537
   },
@@ -3948,12 +3911,12 @@
    "tipo": "time",
    "chave": "VAL",
    "n": 13,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
-   "2026-11-21": -3.7
+   "2026-11-21": -3.2
   },
   "_obs": {}
  },
