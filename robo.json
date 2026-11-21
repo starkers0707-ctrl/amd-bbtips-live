@@ -396,7 +396,37 @@
    "mnd": 1795271142083,
    "bra": 1795272164289
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "12:26",
+     "jogo": "IND x OLI",
+     "odd": 3.18
+    },
+    {
+     "h": "12:29",
+     "jogo": "FLU x BOL",
+     "odd": 3.3
+    },
+    {
+     "h": "12:32",
+     "jogo": "PAR x MEN",
+     "odd": 3.36
+    }
+   ],
+   "gatilho": "seq RRGGR",
+   "alvo": {
+    "h": "12:26",
+    "jogo": "IND x OLI",
+    "odd": 3.18,
+    "unidades": 1,
+    "desde": 1795274501296
+   },
+   "iniciadoEm": 1795274501296
+  },
   "cooldown": {
    "mnd": 1795271142083,
    "lat": 1795270350887,
@@ -406,10 +436,10 @@
    "bra": 1795272164289
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":05",
+   "tipo": "seq",
+   "chave": "RRGGR",
    "n": 8,
-   "start": 6
+   "start": 1
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -419,12 +449,24 @@
  },
  "o25": {
   "saldo": -3.6,
-  "ciclos": 9937,
+  "ciclos": 9939,
   "greens": 48,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 9883,
+  "descartes": 9885,
   "historico": [
+   {
+    "quando": "2026-11-21T15:21:27.791Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T15:21:27.788Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T15:21:24.995Z",
     "resultado": "GREEN_OBS",
@@ -4012,18 +4054,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T14:21:32.691Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T14:21:32.688Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4162,10 +4192,6 @@
    "eng": {
     "desde": 1795273419784,
     "gatilho": "coluna :20"
-   },
-   "spa": {
-    "desde": 1795274484995,
-    "gatilho": "time VAL"
    }
   }
  },
