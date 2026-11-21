@@ -466,12 +466,24 @@
  },
  "o25": {
   "saldo": 0.7,
-  "ciclos": 11271,
+  "ciclos": 11273,
   "greens": 53,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 11212,
+  "descartes": 11214,
   "historico": [
+   {
+    "quando": "2026-11-21T17:45:18.094Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T17:45:18.091Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :46) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T17:45:18.088Z",
     "resultado": "GREEN_OBS",
@@ -4059,18 +4071,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :42) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T16:33:42.282Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.91) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T16:33:42.193Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :42) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4079,8 +4079,8 @@
   },
   "ciclo": {
    "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "14:44",
@@ -4100,13 +4100,21 @@
    ],
    "gatilho": "coluna :46",
    "alvo": {
-    "h": "14:44",
-    "jogo": "EVE x BHA",
-    "odd": 1.94,
-    "unidades": 1,
-    "desde": 1795282896784
+    "h": "14:46",
+    "jogo": "CRY x BOU",
+    "odd": 1.91,
+    "unidades": 2,
+    "desde": 1795283130583
    },
-   "iniciadoEm": 1795282896784
+   "iniciadoEm": 1795282896784,
+   "tiros": [
+    {
+     "h": "14:44",
+     "jogo": "EVE x BHA",
+     "odd": 1.94,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -4234,10 +4242,6 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
-   },
-   "ita": {
-    "desde": 1795283118088,
-    "gatilho": "odd 1.83"
    }
   }
  },
