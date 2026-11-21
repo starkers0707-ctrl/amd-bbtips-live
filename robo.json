@@ -504,7 +504,7 @@
    "tipo": "odd",
    "chave": "3.22",
    "n": 8,
-   "start": 8
+   "start": 7
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -514,12 +514,30 @@
  },
  "o25": {
   "saldo": 6.4,
-  "ciclos": 13030,
+  "ciclos": 13033,
   "greens": 60,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 12964,
+  "descartes": 12967,
   "historico": [
+   {
+    "quando": "2026-11-21T21:58:31.821Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T21:58:12.410Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T21:58:12.321Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T21:58:08.618Z",
     "resultado": "GREEN_OBS",
@@ -4101,24 +4119,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T20:29:15.016Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T20:29:04.010Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T20:29:03.918Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
    }
   ],
   "consumidas": {},
@@ -4280,8 +4280,12 @@
     "desde": 1795209937682,
     "gatilho": "coluna :29"
    },
+   "ita": {
+    "desde": 1795298311820,
+    "gatilho": "odd 1.85"
+   },
    "spa": {
-    "desde": 1795298288618,
+    "desde": 1795298311821,
     "gatilho": "odd 1.84"
    }
   }
