@@ -219,13 +219,25 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 13,
-  "ciclos": 5778,
-  "greens": 33,
+  "saldo": 13.8,
+  "ciclos": 5780,
+  "greens": 34,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 5743,
+  "descartes": 5744,
   "historico": [
+   {
+    "quando": "2026-11-21T05:05:33.699Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "eng · TOT x LIV @1.88 (tiro 2) · gatilho: time LIV"
+   },
+   {
+    "quando": "2026-11-21T05:04:42.200Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T05:04:39.297Z",
     "resultado": "GREEN_OBS",
@@ -3813,65 +3825,16 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :38) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T22:31:19.265Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :38) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T22:31:15.966Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :38) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "spa": 1795236644564
+   "spa": 1795236644564,
+   "eng": 1795237533699
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "02:02",
-     "jogo": "CHE x BRE",
-     "odd": 1.94
-    },
-    {
-     "h": "02:04",
-     "jogo": "TOT x LIV",
-     "odd": 1.88
-    },
-    {
-     "h": "02:06",
-     "jogo": "BHA x IPS",
-     "odd": 1.85
-    }
-   ],
-   "gatilho": "time LIV",
-   "alvo": {
-    "h": "02:04",
-    "jogo": "TOT x LIV",
-    "odd": 1.88,
-    "unidades": 2,
-    "desde": 1795237440097
-   },
-   "iniciadoEm": 1795237212068,
-   "tiros": [
-    {
-     "h": "02:02",
-     "jogo": "CHE x BRE",
-     "odd": 1.94,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
-   "eng": 1795201072038,
+   "eng": 1795237533699,
    "ita": 1795158777156,
    "spa": 1795236644564,
    "lat": 1795222475076,
@@ -3886,7 +3849,7 @@
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
-   "2026-11-21": 0.8
+   "2026-11-21": 1.6
   },
   "_obs": {}
  },
@@ -3995,10 +3958,6 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
-   },
-   "spa": {
-    "desde": 1795237479297,
-    "gatilho": "odd 1.94"
    }
   }
  },
