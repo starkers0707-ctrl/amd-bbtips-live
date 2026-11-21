@@ -219,13 +219,31 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 12.2,
-  "ciclos": 5718,
-  "greens": 32,
+  "saldo": 13,
+  "ciclos": 5721,
+  "greens": 33,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 5684,
+  "descartes": 5686,
   "historico": [
+   {
+    "quando": "2026-11-21T04:50:44.565Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "spa · LEV x VIL @1.83 (tiro 1) · gatilho: odd 1.94"
+   },
+   {
+    "quando": "2026-11-21T04:50:41.072Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T04:50:20.874Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T04:50:15.969Z",
     "resultado": "GREEN_OBS",
@@ -3807,63 +3825,17 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T22:05:22.674Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T22:05:11.775Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-20T22:04:44.469Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "01:49",
-     "jogo": "LEV x VIL",
-     "odd": 1.83
-    },
-    {
-     "h": "01:51",
-     "jogo": "ATH x VAL",
-     "odd": 1.94
-    },
-    {
-     "h": "01:53",
-     "jogo": "OSA x GET",
-     "odd": 1.92
-    }
-   ],
-   "gatilho": "odd 1.94",
-   "alvo": {
-    "h": "01:49",
-    "jogo": "LEV x VIL",
-    "odd": 1.83,
-    "unidades": 1,
-    "desde": 1795236169866
-   },
-   "iniciadoEm": 1795236169866
+  "consumidas": {
+   "spa": 1795236644564
   },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795201072038,
    "ita": 1795158777156,
-   "spa": 1795208913381,
+   "spa": 1795236644564,
    "lat": 1795222475076,
    "bra": 1795207550537
   },
@@ -3871,12 +3843,12 @@
    "tipo": "odd",
    "chave": "1.94",
    "n": 9,
-   "start": 1
+   "start": 6
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
-   "2026-11-21": 0
+   "2026-11-21": 0.8
   },
   "_obs": {}
  },
@@ -3985,10 +3957,6 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
-   },
-   "spa": {
-    "desde": 1795236615969,
-    "gatilho": "odd 1.94"
    }
   }
  },
