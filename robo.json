@@ -438,13 +438,49 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": -7.1,
-  "ciclos": 9132,
-  "greens": 44,
+  "saldo": -6.2,
+  "ciclos": 9138,
+  "greens": 45,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 9082,
+  "descartes": 9087,
   "historico": [
+   {
+    "quando": "2026-11-21T14:08:13.789Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T14:08:11.286Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T14:08:11.282Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T14:07:41.690Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T14:07:41.688Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T14:07:41.685Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "eng · CRY x LIV @1.89 (tiro 1) · gatilho: coluna :08"
+   },
    {
     "quando": "2026-11-21T14:07:38.584Z",
     "resultado": "GREEN_OBS",
@@ -4008,82 +4044,17 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T13:05:03.029Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T13:05:03.026Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T13:04:55.735Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T13:04:55.733Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T13:04:55.728Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T13:04:49.031Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795268158184,
-   "ita": 1795269396185
+   "ita": 1795269396185,
+   "eng": 1795270061685
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "11:06",
-     "jogo": "CRY x LIV",
-     "odd": 1.89
-    },
-    {
-     "h": "11:08",
-     "jogo": "AST x EVE",
-     "odd": 1.92
-    },
-    {
-     "h": "11:10",
-     "jogo": "MNC x ARS",
-     "odd": 1.92
-    }
-   ],
-   "gatilho": "coluna :08",
-   "alvo": {
-    "h": "11:06",
-    "jogo": "CRY x LIV",
-    "odd": 1.89,
-    "unidades": 1,
-    "desde": 1795269611382
-   },
-   "iniciadoEm": 1795269611382
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
-   "eng": 1795263582528,
+   "eng": 1795270061685,
    "ita": 1795269396185,
    "spa": 1795268158184,
    "lat": 1795244093933,
@@ -4093,12 +4064,12 @@
    "tipo": "coluna",
    "chave": ":20",
    "n": 10,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
-   "2026-11-21": -19.3
+   "2026-11-21": -18.4
   },
   "_obs": {}
  },
@@ -4212,9 +4183,9 @@
     "desde": 1795270000794,
     "gatilho": "time VAL"
    },
-   "eng": {
-    "desde": 1795270058583,
-    "gatilho": "coluna :20"
+   "ita": {
+    "desde": 1795270093788,
+    "gatilho": "coluna :17"
    }
   }
  },
