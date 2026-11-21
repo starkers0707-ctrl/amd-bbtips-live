@@ -337,8 +337,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "09:36",
@@ -358,11 +358,11 @@
    ],
    "gatilho": "coluna :38",
    "alvo": {
-    "h": "09:38",
-    "jogo": "COL x CHL",
-    "odd": 3.36,
-    "unidades": 2,
-    "desde": 1795264661728
+    "h": "09:40",
+    "jogo": "SWE x URY",
+    "odd": 3.19,
+    "unidades": 4,
+    "desde": 1795264785139
    },
    "iniciadoEm": 1795264435137,
    "tiros": [
@@ -371,6 +371,12 @@
      "jogo": "NED x ITA",
      "odd": 3.36,
      "unidades": 1
+    },
+    {
+     "h": "09:38",
+     "jogo": "COL x CHL",
+     "odd": 3.36,
+     "unidades": 2
     }
    ]
   },
@@ -396,12 +402,54 @@
  },
  "o25": {
   "saldo": -8.8,
-  "ciclos": 8320,
+  "ciclos": 8327,
   "greens": 42,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 8272,
+  "descartes": 8279,
   "historico": [
+   {
+    "quando": "2026-11-21T12:40:20.237Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:39:49.440Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:39:49.436Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:39:45.235Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:39:45.233Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:39:39.837Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:39:39.833Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T12:39:36.738Z",
     "resultado": "GREEN_OBS",
@@ -3959,48 +4007,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:39:14.428Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:38:39.938Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:38:39.935Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:38:36.534Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:38:36.531Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:38:24.234Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:38:24.231Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4136,9 +4142,9 @@
     "desde": 1795209937682,
     "gatilho": "coluna :29"
    },
-   "spa": {
-    "desde": 1795264776737,
-    "gatilho": "time VAL"
+   "ita": {
+    "desde": 1795264820236,
+    "gatilho": "odd 1.85"
    }
   }
  },
