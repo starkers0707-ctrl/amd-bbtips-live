@@ -299,12 +299,18 @@
  },
  "o25": {
   "saldo": 2.7,
-  "ciclos": 7141,
+  "ciclos": 7142,
   "greens": 39,
   "redsCiclo": 4,
   "aborts": 0,
-  "descartes": 7098,
+  "descartes": 7099,
   "historico": [
+   {
+    "quando": "2026-11-21T10:37:23.530Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T10:37:09.727Z",
     "resultado": "GREEN_OBS",
@@ -3898,12 +3904,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T08:47:15.830Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4038,9 +4038,9 @@
     "desde": 1795209937682,
     "gatilho": "coluna :29"
    },
-   "spa": {
-    "desde": 1795257429727,
-    "gatilho": "time GET"
+   "ita": {
+    "desde": 1795257443530,
+    "gatilho": "odd 1.85"
    }
   }
  },
@@ -4115,10 +4115,10 @@
    "lat": 1795253094628
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "PAR",
-   "n": 13,
-   "start": 4
+   "tipo": "placar",
+   "chave": "empate 1-1",
+   "n": 16,
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
