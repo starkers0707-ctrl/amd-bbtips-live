@@ -466,12 +466,18 @@
  },
  "o25": {
   "saldo": -0.2,
-  "ciclos": 10996,
+  "ciclos": 10997,
   "greens": 52,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 10938,
+  "descartes": 10939,
   "historico": [
+   {
+    "quando": "2026-11-21T17:18:42.889Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :32) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T17:18:31.195Z",
     "resultado": "GREEN_OBS",
@@ -4065,20 +4071,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T16:07:14.895Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "ita": 1795277918290,
    "eng": 1795279294584,
    "spa": 1795280084084
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "14:21",
+     "jogo": "UDI x NAP",
+     "odd": 1.85
+    },
+    {
+     "h": "14:23",
+     "jogo": "SAS x TOR",
+     "odd": 1.95
+    },
+    {
+     "h": "14:25",
+     "jogo": "BOL x LEC",
+     "odd": 1.91
+    }
+   ],
+   "gatilho": "odd 1.85",
+   "alvo": {
+    "h": "14:21",
+    "jogo": "UDI x NAP",
+    "odd": 1.85,
+    "unidades": 1,
+    "desde": 1795281522884
+   },
+   "iniciadoEm": 1795281522884
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795279294584,
@@ -4088,10 +4117,10 @@
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "VAL",
-   "n": 34,
-   "start": 5
+   "tipo": "odd",
+   "chave": "1.85",
+   "n": 16,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -4215,7 +4244,7 @@
     "gatilho": "odd 1.85"
    },
    "eng": {
-    "desde": 1795281511195,
+    "desde": 1795281522889,
     "gatilho": "coluna :32"
    }
   }
