@@ -267,8 +267,8 @@
   },
   "ciclo": {
    "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "06:35",
@@ -288,13 +288,21 @@
    ],
    "gatilho": "time PAR",
    "alvo": {
-    "h": "06:35",
-    "jogo": "ATL x FLU",
-    "odd": 3.36,
-    "unidades": 1,
-    "desde": 1795252950131
+    "h": "06:38",
+    "jogo": "PAL x PAR",
+    "odd": 3.35,
+    "unidades": 2,
+    "desde": 1795253804934
    },
-   "iniciadoEm": 1795252950131
+   "iniciadoEm": 1795252950131,
+   "tiros": [
+    {
+     "h": "06:35",
+     "jogo": "ATL x FLU",
+     "odd": 3.36,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795250376237,
@@ -308,7 +316,7 @@
    "tipo": "time",
    "chave": "PAR",
    "n": 10,
-   "start": 1
+   "start": 6
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -318,12 +326,18 @@
  },
  "o25": {
   "saldo": 9,
-  "ciclos": 6758,
+  "ciclos": 6759,
   "greens": 38,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6717,
+  "descartes": 6718,
   "historico": [
+   {
+    "quando": "2026-11-21T09:36:42.132Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T09:36:14.727Z",
     "resultado": "GREEN_OBS",
@@ -3917,12 +3931,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:45:46.931Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
    }
   ],
   "consumidas": {},
@@ -4083,10 +4091,6 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
-   },
-   "spa": {
-    "desde": 1795253774727,
-    "gatilho": "time GET"
    }
   }
  },
