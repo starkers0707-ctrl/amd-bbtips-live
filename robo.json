@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 3.7,
-  "ciclos": 37,
-  "greens": 17,
+  "saldo": 6.9,
+  "ciclos": 38,
+  "greens": 18,
   "redsCiclo": 7,
   "aborts": 0,
   "descartes": 13,
   "historico": [
+   {
+    "quando": "2026-11-21T08:39:36.238Z",
+    "resultado": "GREEN",
+    "unidades": 3.2,
+    "detalhe": "mnd · POL x BEL @2.55 (tiro 3) · gatilho: placar 0-0"
+   },
    {
     "quando": "2026-11-21T08:32:44.238Z",
     "resultado": "RED_CICLO",
@@ -232,55 +238,12 @@
   ],
   "consumidas": {
    "lat": 1795248396735,
-   "spa": 1795249964237
+   "spa": 1795249964237,
+   "mnd": 1795250376237
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "05:34",
-     "jogo": "WAL x COL",
-     "odd": 3.3
-    },
-    {
-     "h": "05:36",
-     "jogo": "MEX x GER",
-     "odd": 3.37
-    },
-    {
-     "h": "05:38",
-     "jogo": "POL x BEL",
-     "odd": 2.55
-    }
-   ],
-   "gatilho": "placar 0-0",
-   "alvo": {
-    "h": "05:38",
-    "jogo": "POL x BEL",
-    "odd": 2.55,
-    "unidades": 4,
-    "desde": 1795250260338
-   },
-   "iniciadoEm": 1795249994330,
-   "tiros": [
-    {
-     "h": "05:34",
-     "jogo": "WAL x COL",
-     "odd": 3.3,
-     "unidades": 1
-    },
-    {
-     "h": "05:36",
-     "jogo": "MEX x GER",
-     "odd": 3.37,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
-   "mnd": 1795224861868,
+   "mnd": 1795250376237,
    "lat": 1795248396735,
    "eng": 1795238988205,
    "spa": 1795249964237,
@@ -295,18 +258,24 @@
   },
   "dias": {
    "2026-11-20": 4.3,
-   "2026-11-21": -0.6
+   "2026-11-21": 2.6
   },
   "_obs": {}
  },
  "o25": {
   "saldo": 9,
-  "ciclos": 6499,
+  "ciclos": 6500,
   "greens": 38,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6458,
+  "descartes": 6459,
   "historico": [
+   {
+    "quando": "2026-11-21T08:39:14.441Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T08:39:10.736Z",
     "resultado": "GREEN_OBS",
@@ -3900,12 +3869,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:45:12.227Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4043,10 +4006,6 @@
    "eng": {
     "desde": 1795248222235,
     "gatilho": "time COV"
-   },
-   "spa": {
-    "desde": 1795250350735,
-    "gatilho": "time VAL"
    }
   }
  },
