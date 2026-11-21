@@ -464,12 +464,18 @@
  },
  "o25": {
   "saldo": 5.6,
-  "ciclos": 12512,
+  "ciclos": 12513,
   "greens": 59,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 12447,
+  "descartes": 12448,
   "historico": [
+   {
+    "quando": "2026-11-21T20:46:12.212Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T20:46:09.220Z",
     "resultado": "GREEN_OBS",
@@ -4063,12 +4069,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T19:09:24.490Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4076,8 +4076,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "17:45",
@@ -4097,13 +4097,21 @@
    ],
    "gatilho": "coluna :47",
    "alvo": {
-    "h": "17:45",
-    "jogo": "ESP x MLG",
-    "odd": 1.92,
-    "unidades": 1,
-    "desde": 1795293159014
+    "h": "17:47",
+    "jogo": "LEV x CEL",
+    "odd": 1.91,
+    "unidades": 2,
+    "desde": 1795293992516
    },
-   "iniciadoEm": 1795293159014
+   "iniciadoEm": 1795293159014,
+   "tiros": [
+    {
+     "h": "17:45",
+     "jogo": "ESP x MLG",
+     "odd": 1.92,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -4231,10 +4239,6 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
-   },
-   "spa": {
-    "desde": 1795293969220,
-    "gatilho": "coluna :47"
    }
   }
  },
