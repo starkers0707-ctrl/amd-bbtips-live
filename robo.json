@@ -3948,8 +3948,8 @@
   },
   "ciclo": {
    "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "08:43",
@@ -3969,13 +3969,27 @@
    ],
    "gatilho": "time ROM",
    "alvo": {
-    "h": "08:43",
-    "jogo": "NAP x LEC",
-    "odd": 1.84,
-    "unidades": 1,
-    "desde": 1795260881630
+    "h": "08:47",
+    "jogo": "BOL x GEN",
+    "odd": 1.93,
+    "unidades": 4,
+    "desde": 1795261649234
    },
-   "iniciadoEm": 1795260881630
+   "iniciadoEm": 1795260881630,
+   "tiros": [
+    {
+     "h": "08:43",
+     "jogo": "NAP x LEC",
+     "odd": 1.84,
+     "unidades": 1
+    },
+    {
+     "h": "08:45",
+     "jogo": "ROM x PAR",
+     "odd": 1.88,
+     "unidades": 2
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -3986,10 +4000,10 @@
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "ROM",
-   "n": 18,
-   "start": 1
+   "tipo": "odd",
+   "chave": "1.92",
+   "n": 14,
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -4104,9 +4118,13 @@
     "desde": 1795209937682,
     "gatilho": "coluna :29"
    },
+   "spa": {
+    "desde": 1795261482636,
+    "gatilho": "time DLC"
+   },
    "ita": {
-    "desde": 1795261482633,
-    "gatilho": "time ROM"
+    "desde": 1795261487339,
+    "gatilho": "odd 1.92"
    }
   }
  },
