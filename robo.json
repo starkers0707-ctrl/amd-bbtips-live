@@ -254,7 +254,37 @@
    "eng": 1795251209337,
    "ita": 1795251757035
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "06:26",
+     "jogo": "BOC x THI",
+     "odd": 3.11
+    },
+    {
+     "h": "06:29",
+     "jogo": "ATC x IND",
+     "odd": 3.36
+    },
+    {
+     "h": "06:20",
+     "jogo": "RIV x ARG",
+     "odd": 3.34
+    }
+   ],
+   "gatilho": "odd 3.36",
+   "alvo": {
+    "h": "06:26",
+    "jogo": "BOC x THI",
+    "odd": 3.11,
+    "unidades": 1,
+    "desde": 1795252009335
+   },
+   "iniciadoEm": 1795252009335
+  },
   "cooldown": {
    "mnd": 1795250376237,
    "lat": 1795248396735,
@@ -264,10 +294,10 @@
    "bra": 1795173185038
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "GRRG",
+   "tipo": "time",
+   "chave": "FLU",
    "n": 8,
-   "start": 1
+   "start": 8
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -277,12 +307,18 @@
  },
  "o25": {
   "saldo": 9,
-  "ciclos": 6600,
+  "ciclos": 6601,
   "greens": 38,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6559,
+  "descartes": 6560,
   "historico": [
+   {
+    "quando": "2026-11-21T09:08:44.131Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T09:00:36.927Z",
     "resultado": "GREEN_OBS",
@@ -3876,12 +3912,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time GET) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T07:28:09.136Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time COV) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4047,17 +4077,45 @@
     "detalhe": "cam · alvo sem fechamento em 15min antes da 1a aposta"
    }
   ],
-  "consumidas": {
-   "lat": 1795248396934
+  "consumidas": {},
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "06:17",
+     "jogo": "IND x MEN",
+     "odd": 1.69
+    },
+    {
+     "h": "06:20",
+     "jogo": "RIV x ARG",
+     "odd": 1.69
+    },
+    {
+     "h": "06:23",
+     "jogo": "VAL x CIO",
+     "odd": 1.72
+    }
+   ],
+   "gatilho": "time ARG",
+   "alvo": {
+    "h": "06:17",
+    "jogo": "IND x MEN",
+    "odd": 1.69,
+    "unidades": 1,
+    "desde": 1795252009631
+   },
+   "iniciadoEm": 1795252009631
   },
-  "ciclo": null,
   "cooldown": {
    "lat": 1795248396934
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "PAR",
-   "n": 8,
+   "tipo": "placar",
+   "chave": "empate 1-1",
+   "n": 11,
    "start": 1
   },
   "dias": {
