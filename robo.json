@@ -392,8 +392,8 @@
   },
   "ciclo": {
    "liga": "bra",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "11:35",
@@ -413,13 +413,21 @@
    ],
    "gatilho": "seq RRRGR",
    "alvo": {
-    "h": "11:35",
-    "jogo": "CUI x CRM",
-    "odd": 3.17,
-    "unidades": 1,
-    "desde": 1795271443390
+    "h": "11:38",
+    "jogo": "NAC x TFG",
+    "odd": 3.28,
+    "unidades": 2,
+    "desde": 1795271804490
    },
-   "iniciadoEm": 1795271443390
+   "iniciadoEm": 1795271443390,
+   "tiros": [
+    {
+     "h": "11:35",
+     "jogo": "CUI x CRM",
+     "odd": 3.17,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795271142083,
@@ -4211,10 +4219,6 @@
    "bra": {
     "desde": 1795209937682,
     "gatilho": "coluna :29"
-   },
-   "spa": {
-    "desde": 1795271784389,
-    "gatilho": "odd 1.91"
    }
   }
  },
