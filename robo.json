@@ -364,12 +364,18 @@
  },
  "o25": {
   "saldo": -2.7,
-  "ciclos": 7951,
+  "ciclos": 7952,
   "greens": 41,
   "redsCiclo": 5,
   "aborts": 0,
-  "descartes": 7905,
+  "descartes": 7906,
   "historico": [
+   {
+    "quando": "2026-11-21T12:04:36.033Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :18) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T12:04:22.032Z",
     "resultado": "GREEN_OBS",
@@ -3963,12 +3969,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T10:57:16.535Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -3977,8 +3977,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "09:01",
@@ -3998,11 +3998,11 @@
    ],
    "gatilho": "time GET",
    "alvo": {
-    "h": "09:03",
-    "jogo": "ATH x GET",
-    "odd": 1.93,
-    "unidades": 2,
-    "desde": 1795262562828
+    "h": "09:05",
+    "jogo": "LEV x OSA",
+    "odd": 1.95,
+    "unidades": 4,
+    "desde": 1795262676029
    },
    "iniciadoEm": 1795261759837,
    "tiros": [
@@ -4011,6 +4011,12 @@
      "jogo": "RAY x VIL",
      "odd": 1.86,
      "unidades": 1
+    },
+    {
+     "h": "09:03",
+     "jogo": "ATH x GET",
+     "odd": 1.93,
+     "unidades": 2
     }
    ]
   },
@@ -4026,7 +4032,7 @@
    "tipo": "time",
    "chave": "VAL",
    "n": 23,
-   "start": 7
+   "start": 6
   },
   "dias": {
    "2026-11-19": -7,
@@ -4150,7 +4156,7 @@
     "gatilho": "coluna :17"
    },
    "eng": {
-    "desde": 1795262662032,
+    "desde": 1795262676033,
     "gatilho": "coluna :18"
    }
   }
