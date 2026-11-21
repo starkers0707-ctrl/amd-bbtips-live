@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 2.6,
-  "ciclos": 28,
-  "greens": 12,
+  "saldo": 4.3,
+  "ciclos": 29,
+  "greens": 13,
   "redsCiclo": 5,
   "aborts": 0,
   "descartes": 11,
   "historico": [
+   {
+    "quando": "2026-11-21T01:34:21.868Z",
+    "resultado": "GREEN",
+    "unidades": 1.7,
+    "detalhe": "mnd · SWE x FRA @2.66 (tiro 1) · gatilho: seq GGRRG"
+   },
    {
     "quando": "2026-11-21T01:33:50.173Z",
     "resultado": "GREEN_OBS",
@@ -176,10 +182,12 @@
     "detalhe": "mnd · POL x ENG @3.07 (tiro 2) · gatilho: placar 1-0 / 0-1"
    }
   ],
-  "consumidas": {},
+  "consumidas": {
+   "mnd": 1795224861868
+  },
   "ciclo": null,
   "cooldown": {
-   "mnd": 1795186689228,
+   "mnd": 1795224861868,
    "lat": 1795174070472,
    "eng": 1795177422374,
    "spa": 1795187107235,
@@ -188,19 +196,14 @@
   },
   "_gatilhoAtual": {
    "tipo": "seq",
-   "chave": "GRGRR",
-   "n": 9,
+   "chave": "GGRRG",
+   "n": 8,
    "start": 1
   },
   "dias": {
-   "2026-11-20": 2.6
+   "2026-11-20": 4.3
   },
-  "_obs": {
-   "mnd": {
-    "desde": 1795224830173,
-    "gatilho": "seq GGRRG"
-   }
-  }
+  "_obs": {}
  },
  "o25": {
   "saldo": 12.2,
