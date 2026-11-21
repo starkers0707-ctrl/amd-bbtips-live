@@ -440,9 +440,7 @@
     "detalhe": "mnd · POL x ENG @3.07 (tiro 2) · gatilho: placar 1-0 / 0-1"
    }
   ],
-  "consumidas": {
-   "lat": 1795281158283
-  },
+  "consumidas": {},
   "ciclo": null,
   "cooldown": {
    "mnd": 1795271142083,
@@ -466,12 +464,24 @@
  },
  "o25": {
   "saldo": 1.4,
-  "ciclos": 11411,
+  "ciclos": 11413,
   "greens": 54,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 11351,
+  "descartes": 11353,
   "historico": [
+   {
+    "quando": "2026-11-21T18:12:18.782Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T18:12:14.091Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T18:12:14.084Z",
     "resultado": "DESCARTADO",
@@ -4059,55 +4069,13 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T16:49:40.887Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T16:49:37.293Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ita": 1795281766286,
    "eng": 1795283379393
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "15:13",
-     "jogo": "VAL x ALV",
-     "odd": 1.95
-    },
-    {
-     "h": "15:15",
-     "jogo": "ATH x RMA",
-     "odd": 1.77
-    },
-    {
-     "h": "15:17",
-     "jogo": "OSA x GET",
-     "odd": 1.92
-    }
-   ],
-   "gatilho": "coluna :15",
-   "alvo": {
-    "h": "15:13",
-    "jogo": "VAL x ALV",
-    "odd": 1.95,
-    "unidades": 1,
-    "desde": 1795283830788
-   },
-   "iniciadoEm": 1795283830788
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795283379393,
@@ -4127,7 +4095,12 @@
    "2026-11-20": 19.2,
    "2026-11-21": -10.8
   },
-  "_obs": {}
+  "_obs": {
+   "spa": {
+    "desde": 1795284738690,
+    "gatilho": "odd 1.84"
+   }
+  }
  },
  "o25b": {
   "saldo": -8.6,
