@@ -236,8 +236,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "05:34",
@@ -257,11 +257,11 @@
    ],
    "gatilho": "placar 0-0",
    "alvo": {
-    "h": "05:36",
-    "jogo": "MEX x GER",
-    "odd": 3.37,
-    "unidades": 2,
-    "desde": 1795250137938
+    "h": "05:38",
+    "jogo": "POL x BEL",
+    "odd": 2.55,
+    "unidades": 4,
+    "desde": 1795250260338
    },
    "iniciadoEm": 1795249994330,
    "tiros": [
@@ -270,6 +270,12 @@
      "jogo": "WAL x COL",
      "odd": 3.3,
      "unidades": 1
+    },
+    {
+     "h": "05:36",
+     "jogo": "MEX x GER",
+     "odd": 3.37,
+     "unidades": 2
     }
    ]
   },
@@ -295,12 +301,24 @@
  },
  "o25": {
   "saldo": 9,
-  "ciclos": 6491,
+  "ciclos": 6493,
   "greens": 38,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6450,
+  "descartes": 6452,
   "historico": [
+   {
+    "quando": "2026-11-21T08:38:13.832Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T08:37:40.432Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T08:37:37.126Z",
     "resultado": "GREEN_OBS",
@@ -3888,18 +3906,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:43:51.633Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:43:49.131Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4039,7 +4045,7 @@
     "gatilho": "time COV"
    },
    "spa": {
-    "desde": 1795250257125,
+    "desde": 1795250293832,
     "gatilho": "time VAL"
    }
   }
