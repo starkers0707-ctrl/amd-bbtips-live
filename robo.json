@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 15.4,
-  "ciclos": 33,
+  "saldo": 8.4,
+  "ciclos": 34,
   "greens": 16,
-  "redsCiclo": 5,
+  "redsCiclo": 6,
   "aborts": 0,
   "descartes": 12,
   "historico": [
+   {
+    "quando": "2026-11-21T07:08:41.532Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "spa · ciclo perdido (3 tiros) · gatilho: time VAL"
+   },
    {
     "quando": "2026-11-21T05:38:41.002Z",
     "resultado": "GREEN",
@@ -206,69 +212,27 @@
     "detalhe": "mnd · POL x ENG @3.07 (tiro 2) · gatilho: placar 1-0 / 0-1"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "04:03",
-     "jogo": "OSA x VAL",
-     "odd": 3.32
-    },
-    {
-     "h": "04:05",
-     "jogo": "CEL x RAY",
-     "odd": 3.37
-    },
-    {
-     "h": "04:07",
-     "jogo": "ATM x BAR",
-     "odd": 3.17
-    }
-   ],
-   "gatilho": "time VAL",
-   "alvo": {
-    "h": "04:07",
-    "jogo": "ATM x BAR",
-    "odd": 3.17,
-    "unidades": 4,
-    "desde": 1795244794537
-   },
-   "iniciadoEm": 1795243993031,
-   "tiros": [
-    {
-     "h": "04:03",
-     "jogo": "OSA x VAL",
-     "odd": 3.32,
-     "unidades": 1
-    },
-    {
-     "h": "04:05",
-     "jogo": "CEL x RAY",
-     "odd": 3.37,
-     "unidades": 2
-    }
-   ]
+  "consumidas": {
+   "spa": 1795244921532
   },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795224861868,
    "lat": 1795174070472,
    "eng": 1795238988205,
-   "spa": 1795239521002,
+   "spa": 1795244921532,
    "ita": 1795177845275,
    "bra": 1795173185038
   },
   "_gatilhoAtual": {
    "tipo": "time",
    "chave": "VAL",
-   "n": 9,
-   "start": 6
+   "n": 10,
+   "start": 5
   },
   "dias": {
    "2026-11-20": 4.3,
-   "2026-11-21": 11.1
+   "2026-11-21": 4.1
   },
   "_obs": {}
  },
