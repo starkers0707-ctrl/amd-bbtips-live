@@ -244,12 +244,24 @@
  },
  "o25": {
   "saldo": 8.5,
-  "ciclos": 6370,
+  "ciclos": 6372,
   "greens": 36,
   "redsCiclo": 3,
   "aborts": 0,
-  "descartes": 6331,
+  "descartes": 6333,
   "historico": [
+   {
+    "quando": "2026-11-21T08:11:36.633Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T08:11:33.035Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T08:11:20.032Z",
     "resultado": "GREEN_OBS",
@@ -3837,18 +3849,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:03:40.201Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T05:03:37.006Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -3856,8 +3856,8 @@
   },
   "ciclo": {
    "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "05:10",
@@ -3877,13 +3877,21 @@
    ],
    "gatilho": "time COV",
    "alvo": {
-    "h": "05:10",
-    "jogo": "NOT x COV",
-    "odd": 1.94,
-    "unidades": 1,
-    "desde": 1795248591434
+    "h": "05:12",
+    "jogo": "MNC x SUN",
+    "odd": 1.89,
+    "unidades": 2,
+    "desde": 1795248693029
    },
-   "iniciadoEm": 1795248591434
+   "iniciadoEm": 1795248591434,
+   "tiros": [
+    {
+     "h": "05:10",
+     "jogo": "NOT x COV",
+     "odd": 1.94,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -4017,7 +4025,7 @@
     "gatilho": "time COV"
    },
    "spa": {
-    "desde": 1795248680032,
+    "desde": 1795248696633,
     "gatilho": "time DLC"
    }
   }
