@@ -473,7 +473,37 @@
   "consumidas": {
    "lat": 1795301131715
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "19:52",
+     "jogo": "BOU x LIV",
+     "odd": 3.35
+    },
+    {
+     "h": "19:54",
+     "jogo": "IPS x FUL",
+     "odd": 3.08
+    },
+    {
+     "h": "19:56",
+     "jogo": "EVE x HUL",
+     "odd": 3.21
+    }
+   ],
+   "gatilho": "seq GGGRR",
+   "alvo": {
+    "h": "19:52",
+    "jogo": "BOU x LIV",
+    "odd": 3.35,
+    "unidades": 1,
+    "desde": 1795301399414
+   },
+   "iniciadoEm": 1795301399414
+  },
   "cooldown": {
    "mnd": 1795271142083,
    "lat": 1795301131715,
@@ -484,8 +514,8 @@
   },
   "_gatilhoAtual": {
    "tipo": "seq",
-   "chave": "RRGGR",
-   "n": 9,
+   "chave": "GGGRR",
+   "n": 8,
    "start": 1
   },
   "dias": {
@@ -4244,10 +4274,6 @@
    "ita": {
     "desde": 1795299751813,
     "gatilho": "coluna :25"
-   },
-   "spa": {
-    "desde": 1795301202219,
-    "gatilho": "coluna :47"
    }
   }
  },
