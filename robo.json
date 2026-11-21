@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 12.2,
-  "ciclos": 56,
-  "greens": 24,
+  "saldo": 14.4,
+  "ciclos": 57,
+  "greens": 25,
   "redsCiclo": 10,
   "aborts": 0,
   "descartes": 22,
   "historico": [
+   {
+    "quando": "2026-11-21T13:35:50.387Z",
+    "resultado": "GREEN",
+    "unidades": 2.2,
+    "detalhe": "ita · FRO x TOR @3.2 (tiro 1) · gatilho: odd 3.3"
+   },
    {
     "quando": "2026-11-21T13:22:26.032Z",
     "resultado": "RED_CICLO",
@@ -345,47 +351,17 @@
    }
   ],
   "consumidas": {
-   "lat": 1795264429833,
    "mnd": 1795264908333,
-   "bra": 1795267346031
+   "bra": 1795267346031,
+   "ita": 1795268150386
   },
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "10:33",
-     "jogo": "FRO x TOR",
-     "odd": 3.2
-    },
-    {
-     "h": "10:35",
-     "jogo": "MIL x SAS",
-     "odd": 3.3
-    },
-    {
-     "h": "10:37",
-     "jogo": "MON x ROM",
-     "odd": 3.01
-    }
-   ],
-   "gatilho": "odd 3.3",
-   "alvo": {
-    "h": "10:33",
-    "jogo": "FRO x TOR",
-    "odd": 3.2,
-    "unidades": 1,
-    "desde": 1795267355326
-   },
-   "iniciadoEm": 1795267355326
-  },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795264908333,
    "lat": 1795264429833,
    "eng": 1795255657530,
    "spa": 1795249964237,
-   "ita": 1795251757035,
+   "ita": 1795268150386,
    "bra": 1795267346031
   },
   "_gatilhoAtual": {
@@ -396,7 +372,7 @@
   },
   "dias": {
    "2026-11-20": 4.3,
-   "2026-11-21": 7.9
+   "2026-11-21": 10.1
   },
   "_obs": {}
  },
