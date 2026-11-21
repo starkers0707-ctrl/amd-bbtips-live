@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 22.5,
-  "ciclos": 53,
-  "greens": 23,
+  "saldo": 26.2,
+  "ciclos": 54,
+  "greens": 24,
   "redsCiclo": 8,
   "aborts": 0,
   "descartes": 22,
   "historico": [
+   {
+    "quando": "2026-11-21T12:33:49.833Z",
+    "resultado": "GREEN",
+    "unidades": 3.7,
+    "detalhe": "lat · PAR x BOL @3.37 (tiro 2) · gatilho: time PAR"
+   },
    {
     "quando": "2026-11-21T12:17:36.638Z",
     "resultado": "GREEN_OBS",
@@ -327,75 +333,128 @@
    }
   ],
   "consumidas": {
-   "bra": 1795261002034
+   "bra": 1795261002034,
+   "lat": 1795264429833
   },
   "ciclo": {
-   "liga": "lat",
-   "degrau": 1,
-   "apostado": 1,
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
    "plano": [
     {
-     "h": "09:29",
-     "jogo": "IND x BAR",
-     "odd": 3.09
+     "h": "09:36",
+     "jogo": "NED x ITA",
+     "odd": 3.36
     },
     {
-     "h": "09:32",
-     "jogo": "PAR x BOL",
-     "odd": 3.37
+     "h": "09:38",
+     "jogo": "COL x CHL",
+     "odd": 3.36
     },
     {
-     "h": "09:35",
-     "jogo": "COL x MEN",
-     "odd": 3.11
+     "h": "09:40",
+     "jogo": "SWE x URY",
+     "odd": 3.19
     }
    ],
-   "gatilho": "time PAR",
+   "gatilho": "coluna :38",
    "alvo": {
-    "h": "09:32",
-    "jogo": "PAR x BOL",
-    "odd": 3.37,
-    "unidades": 2,
-    "desde": 1795264245537
+    "h": "09:36",
+    "jogo": "NED x ITA",
+    "odd": 3.36,
+    "unidades": 1,
+    "desde": 1795264435137
    },
-   "iniciadoEm": 1795263456729,
-   "tiros": [
-    {
-     "h": "09:29",
-     "jogo": "IND x BAR",
-     "odd": 3.09,
-     "unidades": 1
-    }
-   ]
+   "iniciadoEm": 1795264435137
   },
   "cooldown": {
    "mnd": 1795250376237,
-   "lat": 1795258652040,
+   "lat": 1795264429833,
    "eng": 1795255657530,
    "spa": 1795249964237,
    "ita": 1795251757035,
    "bra": 1795261002034
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "PAR",
-   "n": 15,
-   "start": 3
+   "tipo": "coluna",
+   "chave": ":38",
+   "n": 8,
+   "start": 1
   },
   "dias": {
    "2026-11-20": 4.3,
-   "2026-11-21": 18.2
+   "2026-11-21": 21.9
   },
   "_obs": {}
  },
  "o25": {
   "saldo": -8.8,
-  "ciclos": 8256,
+  "ciclos": 8266,
   "greens": 42,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 8208,
+  "descartes": 8218,
   "historico": [
+   {
+    "quando": "2026-11-21T12:34:27.427Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:34:27.337Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:34:22.230Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:34:22.139Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:33:59.632Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:33:59.626Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:33:55.235Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:33:55.232Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:33:49.933Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-21T12:33:49.927Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
    {
     "quando": "2026-11-21T12:33:45.135Z",
     "resultado": "GREEN_OBS",
@@ -3935,66 +3994,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:33:17.833Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:33:17.830Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:33:12.929Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:33:12.835Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:32:40.527Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:32:40.437Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:32:36.339Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:32:36.335Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:32:22.537Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T11:32:22.534Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time ROM) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4131,7 +4130,7 @@
     "gatilho": "coluna :29"
    },
    "spa": {
-    "desde": 1795264425135,
+    "desde": 1795264467427,
     "gatilho": "time VAL"
    }
   }
