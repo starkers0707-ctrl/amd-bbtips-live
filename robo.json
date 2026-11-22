@@ -546,12 +546,24 @@
  },
  "o25": {
   "saldo": 7.9,
-  "ciclos": 15240,
+  "ciclos": 15242,
   "greens": 72,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 15161,
+  "descartes": 15163,
   "historico": [
+   {
+    "quando": "2026-11-22T05:05:18.514Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T05:04:44.221Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T05:04:37.820Z",
     "resultado": "GREEN_OBS",
@@ -4139,18 +4151,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T01:40:54.513Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T01:40:54.509Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4286,7 +4286,7 @@
     "gatilho": "coluna :29"
    },
    "ita": {
-    "desde": 1795323877819,
+    "desde": 1795323918514,
     "gatilho": "time CAG"
    }
   }
@@ -4331,15 +4331,45 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "02:07",
+     "jogo": "LEV x OSA",
+     "odd": 1.7
+    },
+    {
+     "h": "02:09",
+     "jogo": "MLG x RST",
+     "odd": 1.68
+    },
+    {
+     "h": "02:11",
+     "jogo": "RMA x RSO",
+     "odd": 1.81
+    }
+   ],
+   "gatilho": "placar 0-0",
+   "alvo": {
+    "h": "02:07",
+    "jogo": "LEV x OSA",
+    "odd": 1.7,
+    "unidades": 1,
+    "desde": 1795323877921
+   },
+   "iniciadoEm": 1795323877921
+  },
   "cooldown": {
    "lat": 1795258320133,
    "eng": 1795257582328
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "PAR",
-   "n": 13,
+   "tipo": "placar",
+   "chave": "0-0",
+   "n": 8,
    "start": 1
   },
   "dias": {
