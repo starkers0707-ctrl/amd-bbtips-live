@@ -4147,7 +4147,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "01:57",
+     "jogo": "MIL x UDI",
+     "odd": 1.91
+    },
+    {
+     "h": "01:59",
+     "jogo": "CAG x ROM",
+     "odd": 1.84
+    },
+    {
+     "h": "02:01",
+     "jogo": "LEC x COM",
+     "odd": 1.82
+    }
+   ],
+   "gatilho": "time CAG",
+   "alvo": {
+    "h": "01:57",
+    "jogo": "MIL x UDI",
+    "odd": 1.91,
+    "unidades": 1,
+    "desde": 1795323277420
+   },
+   "iniciadoEm": 1795323277420
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795311103614,
@@ -4157,9 +4187,9 @@
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.83",
-   "n": 20,
+   "tipo": "time",
+   "chave": "CAG",
+   "n": 8,
    "start": 1
   },
   "dias": {
