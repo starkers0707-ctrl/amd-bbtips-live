@@ -568,13 +568,49 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 10.6,
-  "ciclos": 15625,
-  "greens": 75,
+  "saldo": 11.5,
+  "ciclos": 15631,
+  "greens": 76,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 15543,
+  "descartes": 15548,
   "historico": [
+   {
+    "quando": "2026-11-22T07:34:52.813Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T07:34:52.710Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time COV) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T07:34:51.918Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "mnd · DEN x POL @1.93 (tiro 1) · gatilho: time GER"
+   },
+   {
+    "quando": "2026-11-22T07:34:41.520Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T07:34:41.518Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time COV) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T07:34:33.510Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T07:34:33.422Z",
     "resultado": "GREEN_OBS",
@@ -4138,68 +4174,64 @@
     "resultado": "GREEN",
     "unidades": 0.9,
     "detalhe": "spa · ESP x MLG @1.92 (tiro 1) · gatilho: coluna :47"
-   },
-   {
-    "quando": "2026-11-22T02:20:24.918Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :25) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T02:20:19.813Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :25) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T02:20:14.213Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :25) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T02:20:00.218Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :25) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T02:19:54.912Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.8) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T02:19:54.820Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :25) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ita": 1795331927310,
-   "spa": 1795332873416
+   "spa": 1795332873416,
+   "mnd": 1795332891918
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:48",
+     "jogo": "NEW x BRE",
+     "odd": 1.93
+    },
+    {
+     "h": "04:50",
+     "jogo": "BOU x COV",
+     "odd": 1.92
+    },
+    {
+     "h": "04:52",
+     "jogo": "IPS x LEE",
+     "odd": 1.84
+    }
+   ],
+   "gatilho": "time COV",
+   "alvo": {
+    "h": "04:48",
+    "jogo": "NEW x BRE",
+    "odd": 1.93,
+    "unidades": 1,
+    "desde": 1795332908716
+   },
+   "iniciadoEm": 1795332908716
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795311103614,
    "ita": 1795331927310,
    "spa": 1795332873416,
    "lat": 1795244093933,
-   "bra": 1795207550537
+   "bra": 1795207550537,
+   "mnd": 1795332891918
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "GER",
-   "n": 13,
-   "start": 3
+   "chave": "COV",
+   "n": 11,
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
-   "2026-11-22": 3.6
+   "2026-11-22": 4.5
   },
   "_obs": {}
  },
@@ -4322,10 +4354,6 @@
    "ita": {
     "desde": 1795331722115,
     "gatilho": "time CAG"
-   },
-   "eng": {
-    "desde": 1795332873422,
-    "gatilho": "time COV"
    }
   }
  },
@@ -4441,7 +4469,7 @@
    "tipo": "time",
    "chave": "RMA",
    "n": 13,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
