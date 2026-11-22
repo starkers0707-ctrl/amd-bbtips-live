@@ -2416,8 +2416,10 @@ function iniciaVavadaKiron() {
     avisaClientes(liga);
   };
   vavadaKiron.iniciar(aoReceber);
+  // Com a memoria do GitHub carregada (>=200 jogos em cada liga) nao precisa varrer a API.
+  const memoriaCheia = () => ["eng", "ita", "spa", "mnd", "bra", "lat"].every(l => ((store[l] || {}).gamesAll || []).length >= 200);
   if (process.env.VAVADA_HISTORICO !== "0" && typeof vavadaKiron.recuperarHistorico === "function")
-    setTimeout(() => vavadaKiron.recuperarHistorico(aoReceber, Number(process.env.VAVADA_HISTORICO_HORAS || 24), (liga, id) => ((store[liga] || {}).gamesAll || []).some(g => g && g.id === `vavada:${liga}:${id}`)), 20000);
+    setTimeout(() => memoriaCheia() ? console.log("[vavada-hist] memoria do GitHub ja tem o historico: sem varredura") : vavadaKiron.recuperarHistorico(aoReceber, Number(process.env.VAVADA_HISTORICO_HORAS || 24), (liga, id) => ((store[liga] || {}).gamesAll || []).some(g => g && g.id === `vavada:${liga}:${id}`)), 20000);
 }
 const esperaVavada = setInterval(() => {
   if (!vavadaKiron) return;

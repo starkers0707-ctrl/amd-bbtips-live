@@ -400,9 +400,17 @@ export async function recuperarHistorico(onLiga, horas = 24, jaTem = null) {
     const limite = Date.now() - horas * 3600000;
     const cache = new Map();
     const PARALELO = Math.max(1, Math.min(8, Number(process.env.VAVADA_BACKFILL_PARALELO || 4)));
+    // guarda so o essencial (o detalhe completo tem ~15 KB e estourava a memoria)
     const busca = async id => {
       const det = await detalhePorId(id);
-      const v = { champ: Number(det?.champ?.id || 0), det };
+      const champ = Number(det?.champ?.id || 0);
+      const liga = ligaDoChamp[champ];
+      let jogo = null, t = NaN;
+      if (liga && det) {
+        t = Date.parse(det.startDate || "");
+        jogo = parseDetail(det, { id, name: det.name, startDate: det.startDate }, liga);
+      }
+      const v = { champ, ok: !!det, t, jogo };
       cache.set(id, v);
       return v;
     };
@@ -415,7 +423,7 @@ export async function recuperarHistorico(onLiga, horas = 24, jaTem = null) {
         await Promise.all(ids.slice(i, i + PARALELO).map(busca));
         await espera(PAUSA);
       }
-      while (cache.size > 4000) cache.delete(cache.keys().next().value);
+      while (cache.size > 1500) cache.delete(cache.keys().next().value);
       return cache.get(id) || busca(id);
     };
     const maisVelho = {}, pend = {}, lido = new Set(), repetidos = {};
@@ -430,12 +438,13 @@ export async function recuperarHistorico(onLiga, horas = 24, jaTem = null) {
     const pega = (id, v) => {
       if (lido.has(id)) return;
       lido.add(id);
+      if (lido.size > 20000) lido.clear();
       const liga = ligaDoChamp[v.champ];
-      if (!liga || !v.det) return;
-      const t = Date.parse(v.det.startDate || "");
+      if (!liga || !v.ok) return;
+      const t = v.t;
       if (Number.isFinite(t)) maisVelho[liga] = Math.min(maisVelho[liga], t);
       if (!(t >= limite)) return;
-      const g = parseDetail(v.det, { id, name: v.det.name, startDate: v.det.startDate }, liga);
+      const g = v.jogo;
       if (!g || g.a == null) return;
       pend[liga].push(g);
       backfillEstado.feitos++; backfillEstado.porLiga[liga].jogos++; backfillEstado.porLiga[liga].ate = g.inicio;
@@ -446,7 +455,7 @@ export async function recuperarHistorico(onLiga, horas = 24, jaTem = null) {
     let vazios = 0;
     while (ligas.some(l => maisVelho[l] >= limite) && vazios < 3000) {
       const v = await le(id);
-      if (!v.det) vazios++; else vazios = 0;
+      if (!v.ok) vazios++; else vazios = 0;
       if (ligaDoChamp[v.champ]) {
         let a = id, b = id;
         while (ligaDoChamp[(await le(a - 1)).champ] === ligaDoChamp[v.champ]) a--;
