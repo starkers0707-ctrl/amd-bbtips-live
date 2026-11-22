@@ -614,12 +614,18 @@
  },
  "o25": {
   "saldo": 16.8,
-  "ciclos": 16629,
+  "ciclos": 16630,
   "greens": 82,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 16540,
+  "descartes": 16541,
   "historico": [
+   {
+    "quando": "2026-11-22T09:43:07.160Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T09:42:55.960Z",
     "resultado": "GREEN_OBS",
@@ -4213,12 +4219,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T08:20:23.314Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time BRE) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4377,9 +4377,9 @@
     "desde": 1795340573266,
     "gatilho": "time ELC"
    },
-   "eng": {
-    "desde": 1795340575960,
-    "gatilho": "time BRE"
+   "bra": {
+    "desde": 1795340587160,
+    "gatilho": "placar acima de 1-0 (2-0)"
    }
   }
  },
