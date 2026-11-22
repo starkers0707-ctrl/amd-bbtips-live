@@ -775,13 +775,49 @@
   }
  },
  "o25": {
-  "saldo": 31.7,
-  "ciclos": 29123,
+  "saldo": 24.7,
+  "ciclos": 29129,
   "greens": 118,
-  "redsCiclo": 9,
+  "redsCiclo": 10,
   "aborts": 0,
-  "descartes": 28996,
+  "descartes": 29001,
   "historico": [
+   {
+    "quando": "2026-11-22T23:08:52.747Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T23:08:52.742Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T23:08:52.735Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "ame · ciclo perdido (3 tiros) · gatilho: seq RGRGG"
+   },
+   {
+    "quando": "2026-11-22T23:08:37.834Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T23:08:37.828Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T23:08:37.111Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T23:08:37.099Z",
     "resultado": "GREEN_OBS",
@@ -4345,94 +4381,15 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:28:47.318Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :30) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:28:47.314Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:28:45.278Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :30) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:28:45.270Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:28:32.026Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :30) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:28:32.023Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
    }
   ],
   "consumidas": {
    "mnd": 1795386457308,
    "cam": 1795387638383,
-   "spa": 1795388110617
+   "spa": 1795388110617,
+   "ame": 1795388932735
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "20:01",
-     "jogo": "La Plata x Buenos Aires",
-     "odd": 2.38
-    },
-    {
-     "h": "20:04",
-     "jogo": "Porto Alegre x Belo Horizonte",
-     "odd": 2.23
-    },
-    {
-     "h": "20:07",
-     "jogo": "Sao Paulo x Guayaquil",
-     "odd": 2.25
-    }
-   ],
-   "gatilho": "seq RGRGG",
-   "alvo": {
-    "h": "20:07",
-    "jogo": "Sao Paulo x Guayaquil",
-    "odd": 2.25,
-    "unidades": 4,
-    "desde": 1795388738265
-   },
-   "iniciadoEm": 1795388253886,
-   "tiros": [
-    {
-     "h": "20:01",
-     "jogo": "La Plata x Buenos Aires",
-     "odd": 2.38,
-     "unidades": 1
-    },
-    {
-     "h": "20:04",
-     "jogo": "Porto Alegre x Belo Horizonte",
-     "odd": 2.23,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795387638383,
    "eng": 1795383709617,
@@ -4441,7 +4398,7 @@
    "lat": 1795361275805,
    "bra": 1795380169712,
    "mnd": 1795386457308,
-   "ame": 1795384649420
+   "ame": 1795388932735
   },
   "_gatilhoAtual": {
    "tipo": "seq",
@@ -4453,7 +4410,7 @@
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
-   "2026-11-22": 24.7
+   "2026-11-22": 17.7
   },
   "_obs": {}
  },
@@ -4634,9 +4591,9 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
-   "spa": {
-    "desde": 1795388917099,
-    "gatilho": "coluna :17"
+   "mnd": {
+    "desde": 1795388932747,
+    "gatilho": "odd 1.81"
    }
   }
  },
