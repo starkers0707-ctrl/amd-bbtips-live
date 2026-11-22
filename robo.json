@@ -764,12 +764,18 @@
  },
  "o25": {
   "saldo": 36.8,
-  "ciclos": 28368,
+  "ciclos": 28369,
   "greens": 116,
   "redsCiclo": 8,
   "aborts": 0,
-  "descartes": 28244,
+  "descartes": 28245,
   "historico": [
+   {
+    "quando": "2026-11-22T22:20:41.014Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T22:20:35.418Z",
     "resultado": "GREEN_OBS",
@@ -4363,12 +4369,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:54:25.317Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4566,9 +4566,9 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
-   "cam": {
-    "desde": 1795386035417,
-    "gatilho": "odd 2.4"
+   "mnd": {
+    "desde": 1795386041014,
+    "gatilho": "coluna :26"
    }
   }
  },
@@ -4935,8 +4935,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "19:18",
@@ -4956,13 +4956,21 @@
    ],
    "gatilho": "odd 2.11",
    "alvo": {
-    "h": "19:18",
-    "jogo": "Netherlands x Italy",
-    "odd": 2.07,
-    "unidades": 1,
-    "desde": 1795385695209
+    "h": "19:21",
+    "jogo": "England x Uruguay",
+    "odd": 2.11,
+    "unidades": 2,
+    "desde": 1795386035512
    },
-   "iniciadoEm": 1795385695209
+   "iniciadoEm": 1795385695209,
+   "tiros": [
+    {
+     "h": "19:18",
+     "jogo": "Netherlands x Italy",
+     "odd": 2.07,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795331214015,
