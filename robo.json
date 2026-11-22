@@ -665,12 +665,36 @@
  },
  "o25": {
   "saldo": 24,
-  "ciclos": 20050,
+  "ciclos": 20054,
   "greens": 91,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 19952,
+  "descartes": 19956,
   "historico": [
+   {
+    "quando": "2026-11-22T13:00:49.860Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T13:00:49.855Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T13:00:13.256Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T13:00:13.166Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.92) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T13:00:13.164Z",
     "resultado": "GREEN_OBS",
@@ -4246,30 +4270,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:29:35.362Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:29:35.358Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:29:23.067Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time CIO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:29:23.063Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4335,7 +4335,7 @@
    "tipo": "odd",
    "chave": "1.95",
    "n": 9,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -4465,12 +4465,8 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
-   "bra": {
-    "desde": 1795352254255,
-    "gatilho": "odd 1.95"
-   },
    "eng": {
-    "desde": 1795352413164,
+    "desde": 1795352449860,
     "gatilho": "time IPS"
    }
   }
