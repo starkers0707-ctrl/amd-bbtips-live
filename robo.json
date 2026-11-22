@@ -610,12 +610,36 @@
  },
  "o25": {
   "saldo": 15,
-  "ciclos": 16528,
+  "ciclos": 16532,
   "greens": 80,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 16441,
+  "descartes": 16445,
   "historico": [
+   {
+    "quando": "2026-11-22T09:31:07.459Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho placar 1-0 / 0-1) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T09:31:04.761Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time BRE) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T09:31:01.962Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time BRE) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T09:30:59.361Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time BRE) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T09:30:14.459Z",
     "resultado": "GREEN_OBS",
@@ -4191,30 +4215,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T08:08:39.018Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T08:08:30.017Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T08:08:13.815Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T08:08:05.011Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4222,7 +4222,37 @@
    "mnd": 1795337378261,
    "eng": 1795337614165
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "06:35",
+     "jogo": "CUI x ZEI",
+     "odd": 1.72
+    },
+    {
+     "h": "06:38",
+     "jogo": "PAL x FOR",
+     "odd": 1.94
+    },
+    {
+     "h": "06:41",
+     "jogo": "GAM x THI",
+     "odd": 1.95
+    }
+   ],
+   "gatilho": "placar 1-0 / 0-1",
+   "alvo": {
+    "h": "06:35",
+    "jogo": "CUI x ZEI",
+    "odd": 1.72,
+    "unidades": 1,
+    "desde": 1795339867456
+   },
+   "iniciadoEm": 1795339867456
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795337614165,
@@ -4233,9 +4263,9 @@
    "mnd": 1795337378261
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "IPS",
-   "n": 14,
+   "tipo": "placar",
+   "chave": "1-0 / 0-1",
+   "n": 10,
    "start": 1
   },
   "dias": {
@@ -4365,16 +4395,12 @@
   },
   "_obs": {
    "bra": {
-    "desde": 1795209937682,
-    "gatilho": "coluna :29"
+    "desde": 1795339867459,
+    "gatilho": "placar 1-0 / 0-1"
    },
    "ita": {
     "desde": 1795331722115,
     "gatilho": "time CAG"
-   },
-   "eng": {
-    "desde": 1795339814459,
-    "gatilho": "time BRE"
    }
   }
  },
