@@ -675,13 +675,55 @@
   }
  },
  "o25": {
-  "saldo": 25.5,
-  "ciclos": 20925,
-  "greens": 93,
+  "saldo": 26.4,
+  "ciclos": 20932,
+  "greens": 94,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 20825,
+  "descartes": 20831,
   "historico": [
+   {
+    "quando": "2026-11-22T13:52:02.761Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time CIO) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T13:52:02.758Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T13:52:02.756Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T13:52:02.667Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "lat · NAC x THI @1.87 (tiro 1) · gatilho: time CIO"
+   },
+   {
+    "quando": "2026-11-22T13:51:59.564Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T13:51:59.562Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T13:51:22.461Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T13:51:22.458Z",
     "resultado": "GREEN_OBS",
@@ -4239,105 +4281,34 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T13:16:17.457Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T13:16:05.468Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time CIO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T13:16:05.466Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T13:16:05.464Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T13:16:05.461Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T13:16:02.381Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time CIO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T13:16:02.377Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
    }
   ],
   "consumidas": {
    "bra": 1795353154360,
-   "spa": 1795353638464
+   "spa": 1795353638464,
+   "lat": 1795355522667
   },
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "10:50",
-     "jogo": "NAC x THI",
-     "odd": 1.87
-    },
-    {
-     "h": "10:53",
-     "jogo": "CIO x RIV",
-     "odd": 1.94
-    },
-    {
-     "h": "10:56",
-     "jogo": "ATC x ATL",
-     "odd": 1.95
-    }
-   ],
-   "gatilho": "time CIO",
-   "alvo": {
-    "h": "10:50",
-    "jogo": "NAC x THI",
-    "odd": 1.87,
-    "unidades": 1,
-    "desde": 1795354777169
-   },
-   "iniciadoEm": 1795354777169
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795351415355,
    "ita": 1795331927310,
    "spa": 1795353638464,
-   "lat": 1795351176565,
+   "lat": 1795355522667,
    "bra": 1795353154360,
    "mnd": 1795341815561
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "CIO",
-   "n": 13,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":05",
+   "n": 10,
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
-   "2026-11-22": 18.5
+   "2026-11-22": 19.4
   },
   "_obs": {}
  },
@@ -4464,10 +4435,6 @@
    "lat": {
     "desde": 1795354950663,
     "gatilho": "time CIO"
-   },
-   "bra": {
-    "desde": 1795355482458,
-    "gatilho": "odd 1.95"
    }
   }
  },
