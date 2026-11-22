@@ -68,7 +68,7 @@ app.set("trust proxy", 1);
 const PORT = process.env.PORT || 3000;
 // libera CORS pra extensao no caramelo conseguir mandar a curva
 // ===== BLINDAGEM ANTI-SCRAPING: so o proprio site consome a API =====
-const ORIGENS_OK = (process.env.ORIGENS_OK || "https://amdlive.com.br,https://www.amdlive.com.br,https://amd-virtual-live.onrender.com,https://amd-bbtips-live.onrender.com").split(",").map(x => x.trim()).filter(Boolean);
+const ORIGENS_OK = (process.env.ORIGENS_OK || "https://amdlive.com.br,https://www.amdlive.com.br,https://amdlive.squareweb.app,https://amd-virtual-live.onrender.com,https://amd-bbtips-live.onrender.com").split(",").map(x => x.trim()).filter(Boolean);
 app.use((req, res, next) => {
   const origin = req.headers.origin || "";
   const p = req.path;
@@ -91,7 +91,8 @@ app.use((req, res, next) => {
     const ref = (req.headers.referer || req.headers.origin || "");
     // bloqueia SO quando o referer aponta claramente para OUTRO site (scraping via browser de terceiro).
     // Sem referer (navegacao direta, app instalado, reload) e permitido - a protecao real e o codigo de acesso.
-    const deOutroSite = ref && !ORIGENS_OK.some(o => ref.startsWith(o));
+    const proprio = req.headers.host ? ["https://" + req.headers.host, "http://" + req.headers.host] : [];
+    const deOutroSite = ref && !ORIGENS_OK.concat(proprio).some(o => ref.startsWith(o));
     if (deOutroSite) return res.status(403).json({ erro: "acesso restrito ao aplicativo" });
   }
   next();
