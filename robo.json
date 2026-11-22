@@ -524,12 +524,36 @@
  },
  "o25": {
   "saldo": 5.4,
-  "ciclos": 14863,
+  "ciclos": 14867,
   "greens": 69,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 14787,
+  "descartes": 14791,
   "historico": [
+   {
+    "quando": "2026-11-22T02:05:37.816Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T02:05:25.211Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T02:05:25.122Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.8) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T02:05:19.622Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T02:05:19.617Z",
     "resultado": "GREEN_OBS",
@@ -4105,30 +4129,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T01:06:14.312Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T01:06:10.113Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T01:06:10.023Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T01:05:40.718Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4269,8 +4269,12 @@
     "gatilho": "odd 1.83"
    },
    "eng": {
-    "desde": 1795313119616,
+    "desde": 1795313137815,
     "gatilho": "odd 1.8"
+   },
+   "spa": {
+    "desde": 1795313137816,
+    "gatilho": "coluna :17"
    }
   }
  },
