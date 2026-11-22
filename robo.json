@@ -675,13 +675,61 @@
   }
  },
  "o25": {
-  "saldo": 26.4,
-  "ciclos": 20990,
-  "greens": 94,
+  "saldo": 27.3,
+  "ciclos": 20998,
+  "greens": 95,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 20889,
+  "descartes": 20896,
   "historico": [
+   {
+    "quando": "2026-11-22T13:55:31.460Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :05) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T13:55:31.255Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T13:55:31.061Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T13:55:31.058Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T13:55:31.056Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "eng · TOT x LEE @1.93 (tiro 1) · gatilho: time IPS"
+   },
+   {
+    "quando": "2026-11-22T13:55:19.461Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :05) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T13:55:19.457Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T13:55:19.369Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T13:55:19.365Z",
     "resultado": "GREEN_OBS",
@@ -4233,95 +4281,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time CIO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T13:20:17.269Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T13:20:17.264Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T13:20:12.963Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time CIO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T13:20:12.960Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T13:20:12.957Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T13:20:00.863Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time CIO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T13:20:00.859Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T13:20:00.856Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
    }
   ],
   "consumidas": {
    "bra": 1795353154360,
    "spa": 1795353638464,
-   "lat": 1795355522667
+   "lat": 1795355522667,
+   "eng": 1795355731056
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "10:54",
-     "jogo": "TOT x LEE",
-     "odd": 1.93
-    },
-    {
-     "h": "10:56",
-     "jogo": "FUL x IPS",
-     "odd": 1.86
-    },
-    {
-     "h": "10:58",
-     "jogo": "MNU x CHE",
-     "odd": 1.91
-    }
-   ],
-   "gatilho": "time IPS",
-   "alvo": {
-    "h": "10:54",
-    "jogo": "TOT x LEE",
-    "odd": 1.93,
-    "unidades": 1,
-    "desde": 1795355525667
-   },
-   "iniciadoEm": 1795355525667
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
-   "eng": 1795351415355,
+   "eng": 1795355731056,
    "ita": 1795331927310,
    "spa": 1795353638464,
    "lat": 1795355522667,
@@ -4332,13 +4303,13 @@
    "tipo": "time",
    "chave": "IPS",
    "n": 28,
-   "start": 1
+   "start": 6
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
-   "2026-11-22": 19.4
+   "2026-11-22": 20.3
   },
   "_obs": {}
  },
@@ -4462,9 +4433,9 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
-   "bra": {
-    "desde": 1795355719365,
-    "gatilho": "odd 1.95"
+   "lat": {
+    "desde": 1795355731460,
+    "gatilho": "coluna :05"
    }
   }
  },
