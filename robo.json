@@ -764,12 +764,24 @@
  },
  "o25": {
   "saldo": 36.8,
-  "ciclos": 28478,
+  "ciclos": 28480,
   "greens": 116,
   "redsCiclo": 8,
   "aborts": 0,
-  "descartes": 28354,
+  "descartes": 28356,
   "historico": [
+   {
+    "quando": "2026-11-22T22:26:01.890Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :30) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T22:26:01.885Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T22:25:45.233Z",
     "resultado": "GREEN_OBS",
@@ -4357,18 +4369,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:58:50.317Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:58:46.912Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.54) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4574,20 +4574,26 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
-   "mnd": {
-    "desde": 1795386345232,
-    "gatilho": "coluna :30"
+   "cam": {
+    "desde": 1795386345238,
+    "gatilho": "odd 2.4"
    }
   }
  },
  "ambas": {
-  "saldo": 1.8,
-  "ciclos": 58,
+  "saldo": -5.2,
+  "ciclos": 59,
   "greens": 26,
-  "redsCiclo": 2,
+  "redsCiclo": 3,
   "aborts": 0,
   "descartes": 30,
   "historico": [
+   {
+    "quando": "2026-11-22T22:26:01.915Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "cop · ciclo perdido (3 tiros) · gatilho: odd 2.11"
+   },
    {
     "quando": "2026-11-22T22:14:49.330Z",
     "resultado": "GREEN",
@@ -4939,60 +4945,18 @@
   ],
   "consumidas": {
    "bra": 1795383404717,
-   "cam": 1795385689330
+   "cam": 1795385689330,
+   "cop": 1795386361915
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "19:18",
-     "jogo": "Netherlands x Italy",
-     "odd": 2.07
-    },
-    {
-     "h": "19:21",
-     "jogo": "England x Uruguay",
-     "odd": 2.11
-    },
-    {
-     "h": "19:24",
-     "jogo": "Germany x Belgium",
-     "odd": 1.97
-    }
-   ],
-   "gatilho": "odd 2.11",
-   "alvo": {
-    "h": "19:24",
-    "jogo": "Germany x Belgium",
-    "odd": 1.97,
-    "unidades": 4,
-    "desde": 1795386197021
-   },
-   "iniciadoEm": 1795385695209,
-   "tiros": [
-    {
-     "h": "19:18",
-     "jogo": "Netherlands x Italy",
-     "odd": 2.07,
-     "unidades": 1
-    },
-    {
-     "h": "19:21",
-     "jogo": "England x Uruguay",
-     "odd": 2.11,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795257582328,
    "spa": 1795364566793,
    "bra": 1795383404717,
    "mnd": 1795372058521,
-   "cam": 1795385689330
+   "cam": 1795385689330,
+   "cop": 1795386361915
   },
   "_gatilhoAtual": {
    "tipo": "odd",
@@ -5003,7 +4967,7 @@
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
-   "2026-11-22": -0.2
+   "2026-11-22": -7.2
   },
   "_obs": {}
  }
