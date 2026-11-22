@@ -785,12 +785,18 @@
  },
  "o25": {
   "saldo": 42.8,
-  "ciclos": 27744,
+  "ciclos": 27745,
   "greens": 115,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 27622,
+  "descartes": 27623,
   "historico": [
+   {
+    "quando": "2026-11-22T21:52:55.617Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T21:52:35.911Z",
     "resultado": "GREEN_OBS",
@@ -4384,12 +4390,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:17:29.818Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4397,8 +4397,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "18:49",
@@ -4418,11 +4418,11 @@
    ],
    "gatilho": "coluna :51",
    "alvo": {
-    "h": "18:51",
-    "jogo": "BET x DLC",
-    "odd": 1.91,
-    "unidades": 2,
-    "desde": 1795384258817
+    "h": "18:53",
+    "jogo": "RSO x LEV",
+    "odd": 1.95,
+    "unidades": 4,
+    "desde": 1795384375613
    },
    "iniciadoEm": 1795383712321,
    "tiros": [
@@ -4431,6 +4431,12 @@
      "jogo": "ATH x RAY",
      "odd": 1.93,
      "unidades": 1
+    },
+    {
+     "h": "18:51",
+     "jogo": "BET x DLC",
+     "odd": 1.91,
+     "unidades": 2
     }
    ]
   },
@@ -4617,9 +4623,9 @@
     "desde": 1795384204420,
     "gatilho": "coluna :52"
    },
-   "cam": {
-    "desde": 1795384355911,
-    "gatilho": "odd 2.45"
+   "spa": {
+    "desde": 1795384375617,
+    "gatilho": "odd 1.85"
    }
   }
  },
