@@ -776,12 +776,18 @@
  },
  "o25": {
   "saldo": 24.7,
-  "ciclos": 29129,
+  "ciclos": 29130,
   "greens": 118,
   "redsCiclo": 10,
   "aborts": 0,
-  "descartes": 29001,
+  "descartes": 29002,
   "historico": [
+   {
+    "quando": "2026-11-22T23:09:03.657Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T23:08:52.747Z",
     "resultado": "GREEN_OBS",
@@ -4375,12 +4381,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :30) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:29:03.706Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4415,13 +4415,19 @@
   "_obs": {}
  },
  "o25b": {
-  "saldo": -13.7,
-  "ciclos": 16,
+  "saldo": -20.7,
+  "ciclos": 17,
   "greens": 8,
-  "redsCiclo": 3,
+  "redsCiclo": 4,
   "aborts": 0,
   "descartes": 5,
   "historico": [
+   {
+    "quando": "2026-11-22T23:08:52.756Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "ame · ciclo perdido (3 tiros) · gatilho: seq RGRGG"
+   },
    {
     "quando": "2026-11-22T21:57:29.518Z",
     "resultado": "GREEN",
@@ -4519,52 +4525,10 @@
     "detalhe": "cam · ciclo perdido (3 tiros) · gatilho: placar 0-0"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "20:01",
-     "jogo": "La Plata x Buenos Aires",
-     "odd": 2.38
-    },
-    {
-     "h": "20:04",
-     "jogo": "Porto Alegre x Belo Horizonte",
-     "odd": 2.23
-    },
-    {
-     "h": "20:07",
-     "jogo": "Sao Paulo x Guayaquil",
-     "odd": 2.25
-    }
-   ],
-   "gatilho": "seq RGRGG",
-   "alvo": {
-    "h": "20:07",
-    "jogo": "Sao Paulo x Guayaquil",
-    "odd": 2.25,
-    "unidades": 4,
-    "desde": 1795388738283
-   },
-   "iniciadoEm": 1795388253902,
-   "tiros": [
-    {
-     "h": "20:01",
-     "jogo": "La Plata x Buenos Aires",
-     "odd": 2.38,
-     "unidades": 1
-    },
-    {
-     "h": "20:04",
-     "jogo": "Porto Alegre x Belo Horizonte",
-     "odd": 2.23,
-     "unidades": 2
-    }
-   ]
+  "consumidas": {
+   "ame": 1795388932755
   },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462862,
    "eng": 1795148138958,
@@ -4573,7 +4537,7 @@
    "lat": 1795151235764,
    "bra": 1795172482647,
    "mnd": 1795337015063,
-   "ame": 1795384649517
+   "ame": 1795388932755
   },
   "_gatilhoAtual": {
    "tipo": "seq",
@@ -4584,16 +4548,16 @@
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": -1.6,
-   "2026-11-22": -5.1
+   "2026-11-22": -12.1
   },
   "_obs": {
    "ita": {
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
-   "mnd": {
-    "desde": 1795388932747,
-    "gatilho": "odd 1.81"
+   "spa": {
+    "desde": 1795388943656,
+    "gatilho": "coluna :17"
    }
   }
  },
