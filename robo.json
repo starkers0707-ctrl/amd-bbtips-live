@@ -785,12 +785,18 @@
  },
  "o25": {
   "saldo": 35.8,
-  "ciclos": 27773,
+  "ciclos": 27774,
   "greens": 115,
   "redsCiclo": 8,
   "aborts": 0,
-  "descartes": 27650,
+  "descartes": 27651,
   "historico": [
+   {
+    "quando": "2026-11-22T21:54:29.409Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.54) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T21:54:29.320Z",
     "resultado": "GREEN_OBS",
@@ -4384,12 +4390,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :44) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:20:18.813Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4398,8 +4398,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "18:52",
@@ -4419,13 +4419,21 @@
    ],
    "gatilho": "odd 2.02",
    "alvo": {
-    "h": "18:52",
-    "jogo": "Agua Branca x Lima",
-    "odd": 2.07,
-    "unidades": 1,
-    "desde": 1795384397214
+    "h": "18:55",
+    "jogo": "Belo Horizonte x Sao Paulo",
+    "odd": 2.02,
+    "unidades": 2,
+    "desde": 1795384475724
    },
-   "iniciadoEm": 1795384397214
+   "iniciadoEm": 1795384397214,
+   "tiros": [
+    {
+     "h": "18:52",
+     "jogo": "Agua Branca x Lima",
+     "odd": 2.07,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -4438,9 +4446,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "odd",
-   "chave": "2.02",
-   "n": 10,
-   "start": 1
+   "chave": "2.54",
+   "n": 14,
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -4609,10 +4617,6 @@
    "mnd": {
     "desde": 1795384204420,
     "gatilho": "coluna :52"
-   },
-   "spa": {
-    "desde": 1795384469320,
-    "gatilho": "odd 1.85"
    }
   }
  },
