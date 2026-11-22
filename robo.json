@@ -4358,7 +4358,45 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 1,
+   "apostado": 1,
+   "plano": [
+    {
+     "h": "04:02",
+     "jogo": "OLI x MEN",
+     "odd": 1.76
+    },
+    {
+     "h": "04:05",
+     "jogo": "PAR x BOC",
+     "odd": 1.69
+    },
+    {
+     "h": "04:08",
+     "jogo": "IND x THI",
+     "odd": 1.75
+    }
+   ],
+   "gatilho": "odd 1.69",
+   "alvo": {
+    "h": "04:05",
+    "jogo": "PAR x BOC",
+    "odd": 1.69,
+    "unidades": 2,
+    "desde": 1795331029613
+   },
+   "iniciadoEm": 1795330389226,
+   "tiros": [
+    {
+     "h": "04:02",
+     "jogo": "OLI x MEN",
+     "odd": 1.76,
+     "unidades": 1
+    }
+   ]
+  },
   "cooldown": {
    "lat": 1795326702315,
    "eng": 1795257582328,
@@ -4367,7 +4405,7 @@
   "_gatilhoAtual": {
    "tipo": "odd",
    "chave": "1.69",
-   "n": 8,
+   "n": 10,
    "start": 1
   },
   "dias": {
