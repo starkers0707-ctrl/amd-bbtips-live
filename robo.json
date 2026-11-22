@@ -592,13 +592,25 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 13.3,
-  "ciclos": 16249,
-  "greens": 78,
+  "saldo": 14.2,
+  "ciclos": 16251,
+  "greens": 79,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 16164,
+  "descartes": 16165,
   "historico": [
+   {
+    "quando": "2026-11-22T08:49:38.264Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time BRE) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T08:49:38.262Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "mnd · DEN x MEX @1.93 (tiro 1) · gatilho: time ARG"
+   },
    {
     "quando": "2026-11-22T08:49:35.065Z",
     "resultado": "GREEN_OBS",
@@ -4186,55 +4198,13 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho time COV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T07:37:39.721Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T07:37:31.121Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "eng": 1795333802416,
-   "spa": 1795336953258
+   "spa": 1795336953258,
+   "mnd": 1795337378261
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "05:48",
-     "jogo": "DEN x MEX",
-     "odd": 1.93
-    },
-    {
-     "h": "05:50",
-     "jogo": "BRA x ARG",
-     "odd": 1.87
-    },
-    {
-     "h": "05:52",
-     "jogo": "COL x ENG",
-     "odd": 1.87
-    }
-   ],
-   "gatilho": "time ARG",
-   "alvo": {
-    "h": "05:48",
-    "jogo": "DEN x MEX",
-    "odd": 1.93,
-    "unidades": 1,
-    "desde": 1795336955962
-   },
-   "iniciadoEm": 1795336955962
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795333802416,
@@ -4242,19 +4212,19 @@
    "spa": 1795336953258,
    "lat": 1795244093933,
    "bra": 1795207550537,
-   "mnd": 1795332891918
+   "mnd": 1795337378261
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "ARG",
-   "n": 12,
+   "chave": "COL",
+   "n": 11,
    "start": 1
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
-   "2026-11-22": 6.3
+   "2026-11-22": 7.2
   },
   "_obs": {}
  },
@@ -4387,10 +4357,6 @@
    "spa": {
     "desde": 1795337319259,
     "gatilho": "time ELC"
-   },
-   "eng": {
-    "desde": 1795337375065,
-    "gatilho": "time BRE"
    }
   }
  },
