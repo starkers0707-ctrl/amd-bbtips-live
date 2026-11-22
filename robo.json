@@ -4418,7 +4418,37 @@
    "ame": 1795388932735,
    "mnd": 1795390533015
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "21:21",
+     "jogo": "Switzerland x England",
+     "odd": 2.54
+    },
+    {
+     "h": "21:24",
+     "jogo": "Mexico x Argentina",
+     "odd": 2.05
+    },
+    {
+     "h": "21:27",
+     "jogo": "Belgium x Netherlands",
+     "odd": 2.18
+    }
+   ],
+   "gatilho": "odd 2.05",
+   "alvo": {
+    "h": "21:21",
+    "jogo": "Switzerland x England",
+    "odd": 2.54,
+    "unidades": 1,
+    "desde": 1795391891398
+   },
+   "iniciadoEm": 1795391891398
+  },
   "cooldown": {
    "cam": 1795387638383,
    "eng": 1795383709617,
@@ -4430,10 +4460,10 @@
    "ame": 1795388932735
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":50",
-   "n": 18,
-   "start": 6
+   "tipo": "odd",
+   "chave": "2.05",
+   "n": 11,
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
@@ -5044,8 +5074,8 @@
   },
   "_gatilhoAtual": {
    "tipo": "seq",
-   "chave": "RGGGG",
-   "n": 10,
+   "chave": "RGRR",
+   "n": 24,
    "start": 1
   },
   "dias": {
@@ -5053,11 +5083,6 @@
    "2026-11-21": 2,
    "2026-11-22": -12.6
   },
-  "_obs": {
-   "cop": {
-    "desde": 1795391758368,
-    "gatilho": "seq RGRR"
-   }
-  }
+  "_obs": {}
  }
 }
