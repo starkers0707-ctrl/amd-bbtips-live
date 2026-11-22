@@ -785,13 +785,49 @@
   }
  },
  "o25": {
-  "saldo": 42,
-  "ciclos": 27610,
-  "greens": 114,
+  "saldo": 42.8,
+  "ciclos": 27616,
+  "greens": 115,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 27489,
+  "descartes": 27494,
   "historico": [
+   {
+    "quando": "2026-11-22T21:41:49.714Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.45) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T21:41:49.710Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T21:41:49.620Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :44) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T21:41:49.617Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "eng · LIV x HUL @1.83 (tiro 1) · gatilho: odd 1.83"
+   },
+   {
+    "quando": "2026-11-22T21:41:31.812Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.45) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T21:41:31.809Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T21:41:31.721Z",
     "resultado": "GREEN_OBS",
@@ -4355,81 +4391,46 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:03:42.815Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:03:40.517Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:03:22.812Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:03:22.720Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:03:19.610Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:03:19.515Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "bra": 1795380169712
+   "bra": 1795380169712,
+   "eng": 1795383709617
   },
   "ciclo": {
-   "liga": "eng",
+   "liga": "spa",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "18:40",
-     "jogo": "LIV x HUL",
-     "odd": 1.83
+     "h": "18:49",
+     "jogo": "ATH x RAY",
+     "odd": 1.93
     },
     {
-     "h": "18:42",
-     "jogo": "EVE x MNC",
-     "odd": 1.83
+     "h": "18:51",
+     "jogo": "BET x DLC",
+     "odd": 1.91
     },
     {
-     "h": "18:44",
-     "jogo": "AST x TOT",
-     "odd": 1.89
+     "h": "18:53",
+     "jogo": "RSO x LEV",
+     "odd": 1.95
     }
    ],
-   "gatilho": "odd 1.83",
+   "gatilho": "coluna :51",
    "alvo": {
-    "h": "18:40",
-    "jogo": "LIV x HUL",
-    "odd": 1.83,
+    "h": "18:49",
+    "jogo": "ATH x RAY",
+    "odd": 1.93,
     "unidades": 1,
-    "desde": 1795383501512
+    "desde": 1795383712321
    },
-   "iniciadoEm": 1795383501512
+   "iniciadoEm": 1795383712321
   },
   "cooldown": {
    "cam": 1795142462857,
-   "eng": 1795378544719,
+   "eng": 1795383709617,
    "ita": 1795331927310,
    "spa": 1795379798415,
    "lat": 1795361275805,
@@ -4446,7 +4447,7 @@
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
-   "2026-11-22": 35
+   "2026-11-22": 35.8
   },
   "_obs": {}
  },
@@ -4599,10 +4600,6 @@
    "ita": {
     "desde": 1795331722115,
     "gatilho": "time CAG"
-   },
-   "eng": {
-    "desde": 1795383691721,
-    "gatilho": "odd 1.83"
    }
   }
  },
