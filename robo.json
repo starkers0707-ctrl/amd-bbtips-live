@@ -742,12 +742,30 @@
  },
  "o25": {
   "saldo": 37.9,
-  "ciclos": 26009,
+  "ciclos": 26012,
   "greens": 109,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 25893,
+  "descartes": 25896,
   "historico": [
+   {
+    "quando": "2026-11-22T19:41:13.313Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :44) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T19:40:34.309Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T19:40:34.219Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :44) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T19:40:31.310Z",
     "resultado": "GREEN_OBS",
@@ -4329,24 +4347,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T18:55:27.415Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T18:55:27.321Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T18:55:08.219Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4535,9 +4535,9 @@
     "desde": 1795376376211,
     "gatilho": "odd 1.81"
    },
-   "spa": {
-    "desde": 1795376431309,
-    "gatilho": "odd 1.82"
+   "bra": {
+    "desde": 1795376473313,
+    "gatilho": "coluna :44"
    }
   }
  },
@@ -4827,7 +4827,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "16:44",
+     "jogo": "ATC x MEN",
+     "odd": 1.68
+    },
+    {
+     "h": "16:47",
+     "jogo": "GOI x CRM",
+     "odd": 1.68
+    },
+    {
+     "h": "16:50",
+     "jogo": "GAM x PAR",
+     "odd": 1.67
+    }
+   ],
+   "gatilho": "time MEN",
+   "alvo": {
+    "h": "16:44",
+    "jogo": "ATC x MEN",
+    "odd": 1.68,
+    "unidades": 1,
+    "desde": 1795376431319
+   },
+   "iniciadoEm": 1795376431319
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795257582328,
