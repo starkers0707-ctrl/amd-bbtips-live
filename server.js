@@ -5403,6 +5403,6 @@ app.get("/robots.txt", (req, res) => { res.type("text/plain").send("User-agent: 
   app.get("/", (req, res) => res.sendFile(join(__dirname, "public", "index.html")));
   app.get("/index.html", (req, res) => res.sendFile(join(__dirname, "public", "index.html")));
 
-  app.listen(PORT, () => console.log("AMD Live rodando na porta " + PORT));
+  app.listen(PORT, process.env.HOST || undefined, () => console.log("AMD Live rodando na porta " + PORT));
 
 import("./vavada-kiron.mjs").then(m => { vavadaKiron = m; iniciaVavadaKiron(); });
