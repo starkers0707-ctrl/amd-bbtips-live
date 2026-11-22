@@ -524,12 +524,30 @@
  },
  "o25": {
   "saldo": 6.3,
-  "ciclos": 15138,
+  "ciclos": 15141,
   "greens": 70,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 15061,
+  "descartes": 15064,
   "historico": [
+   {
+    "quando": "2026-11-22T02:48:14.016Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T02:48:14.013Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "ita · alvo sem fechamento em 15min antes da 1a aposta"
+   },
+   {
+    "quando": "2026-11-22T02:48:07.218Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T02:47:52.620Z",
     "resultado": "GREEN_OBS",
@@ -4111,60 +4129,12 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T01:30:35.420Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T01:30:35.418Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.79) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T01:30:35.415Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795314557112
   },
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "23:49",
-     "jogo": "FIO x COM",
-     "odd": 1.84
-    },
-    {
-     "h": "23:51",
-     "jogo": "VEN x SAS",
-     "odd": 1.83
-    },
-    {
-     "h": "23:53",
-     "jogo": "MIL x ROM",
-     "odd": 1.94
-    }
-   ],
-   "gatilho": "odd 1.83",
-   "alvo": {
-    "h": "23:49",
-    "jogo": "FIO x COM",
-    "odd": 1.84,
-    "unidades": 1,
-    "desde": 1795314792013
-   },
-   "iniciadoEm": 1795314792013
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795311103614,
@@ -4293,7 +4263,7 @@
     "gatilho": "coluna :29"
    },
    "ita": {
-    "desde": 1795315672619,
+    "desde": 1795315694016,
     "gatilho": "odd 1.83"
    }
   }
