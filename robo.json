@@ -741,13 +741,49 @@
   }
  },
  "o25": {
-  "saldo": 37.9,
-  "ciclos": 26030,
-  "greens": 109,
+  "saldo": 38.7,
+  "ciclos": 26036,
+  "greens": 110,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 25914,
+  "descartes": 25919,
   "historico": [
+   {
+    "quando": "2026-11-22T19:42:40.012Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T19:42:37.819Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T19:42:37.816Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T19:42:34.817Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T19:42:34.815Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T19:42:34.812Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "bra · VIT x ZEI @1.75 (tiro 1) · gatilho: coluna :44"
+   },
    {
     "quando": "2026-11-22T19:42:23.922Z",
     "resultado": "GREEN_OBS",
@@ -4311,86 +4347,21 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T18:57:41.621Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T18:57:41.618Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T18:57:38.522Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T18:57:38.516Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T18:57:10.219Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T18:57:10.215Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
    }
   ],
   "consumidas": {
    "mnd": 1795373388318,
-   "spa": 1795375245116
+   "spa": 1795375245116,
+   "bra": 1795376554812
   },
-  "ciclo": {
-   "liga": "bra",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "16:41",
-     "jogo": "VIT x ZEI",
-     "odd": 1.75
-    },
-    {
-     "h": "16:44",
-     "jogo": "ATC x MEN",
-     "odd": 1.91
-    },
-    {
-     "h": "16:47",
-     "jogo": "GOI x CRM",
-     "odd": 1.87
-    }
-   ],
-   "gatilho": "coluna :44",
-   "alvo": {
-    "h": "16:41",
-    "jogo": "VIT x ZEI",
-    "odd": 1.75,
-    "unidades": 1,
-    "desde": 1795375672015
-   },
-   "iniciadoEm": 1795375672015
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795372779922,
    "ita": 1795331927310,
    "spa": 1795375245116,
    "lat": 1795361275805,
-   "bra": 1795372063417,
+   "bra": 1795376554812,
    "mnd": 1795373388318
   },
   "_gatilhoAtual": {
@@ -4403,7 +4374,7 @@
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
-   "2026-11-22": 30.9
+   "2026-11-22": 31.7
   },
   "_obs": {}
  },
@@ -4531,9 +4502,9 @@
     "desde": 1795373641711,
     "gatilho": "odd 1.83"
    },
-   "mnd": {
-    "desde": 1795376543922,
-    "gatilho": "odd 1.81"
+   "spa": {
+    "desde": 1795376560012,
+    "gatilho": "coluna :51"
    }
   }
  },
