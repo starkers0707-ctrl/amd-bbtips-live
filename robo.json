@@ -743,7 +743,37 @@
   "consumidas": {
    "lat": 1795387530746
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "20:38",
+     "jogo": "CRO x MEX",
+     "odd": 3.35
+    },
+    {
+     "h": "20:40",
+     "jogo": "POR x WAL",
+     "odd": 3.19
+    },
+    {
+     "h": "20:42",
+     "jogo": "SPA x COL",
+     "odd": 3.35
+    }
+   ],
+   "gatilho": "odd 3.19",
+   "alvo": {
+    "h": "20:38",
+    "jogo": "CRO x MEX",
+    "odd": 3.35,
+    "unidades": 1,
+    "desde": 1795389724646
+   },
+   "iniciadoEm": 1795389724646
+  },
   "cooldown": {
    "mnd": 1795360900511,
    "lat": 1795387530746,
@@ -753,10 +783,10 @@
    "bra": 1795277376896
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "GRGRR",
-   "n": 16,
-   "start": 1
+   "tipo": "odd",
+   "chave": "3.19",
+   "n": 8,
+   "start": 8
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -4556,8 +4586,8 @@
     "gatilho": "time CAG"
    },
    "spa": {
-    "desde": 1795389389479,
-    "gatilho": "coluna :17"
+    "desde": 1795389663325,
+    "gatilho": "odd 1.76"
    }
   }
  },
@@ -4991,7 +5021,7 @@
    "tipo": "coluna",
    "chave": ":33",
    "n": 20,
-   "start": 5
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
