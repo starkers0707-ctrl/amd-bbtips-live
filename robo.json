@@ -1,12 +1,18 @@
 {
  "o35": {
   "saldo": 5.3,
-  "ciclos": 93,
+  "ciclos": 94,
   "greens": 34,
   "redsCiclo": 17,
   "aborts": 0,
-  "descartes": 42,
+  "descartes": 43,
   "historico": [
+   {
+    "quando": "2026-11-22T09:12:08.155Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "ita · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-22T08:07:13.614Z",
     "resultado": "GREEN",
@@ -567,37 +573,7 @@
    }
   ],
   "consumidas": {},
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "06:13",
-     "jogo": "UDI x INT",
-     "odd": 3.03
-    },
-    {
-     "h": "06:15",
-     "jogo": "JUV x BOL",
-     "odd": 3.35
-    },
-    {
-     "h": "06:17",
-     "jogo": "COM x CAG",
-     "odd": 3.22
-    }
-   ],
-   "gatilho": "odd 3.35",
-   "alvo": {
-    "h": "06:13",
-    "jogo": "UDI x INT",
-    "odd": 3.03,
-    "unidades": 1,
-    "desde": 1795337825760
-   },
-   "iniciadoEm": 1795337825760
-  },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795320705213,
    "lat": 1795334833613,
@@ -621,12 +597,18 @@
  },
  "o25": {
   "saldo": 15,
-  "ciclos": 16393,
+  "ciclos": 16394,
   "greens": 80,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 16306,
+  "descartes": 16307,
   "historico": [
+   {
+    "quando": "2026-11-22T09:12:08.161Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time BRE) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T09:11:40.169Z",
     "resultado": "GREEN_OBS",
@@ -4220,12 +4202,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T07:55:04.715Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time BRE) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4383,9 +4359,9 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
-   "spa": {
-    "desde": 1795338700169,
-    "gatilho": "time ELC"
+   "eng": {
+    "desde": 1795338728161,
+    "gatilho": "time BRE"
    }
   }
  },
