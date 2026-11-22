@@ -764,12 +764,42 @@
  },
  "o25": {
   "saldo": 36.8,
-  "ciclos": 28241,
+  "ciclos": 28246,
   "greens": 116,
   "redsCiclo": 8,
   "aborts": 0,
-  "descartes": 28117,
+  "descartes": 28122,
   "historico": [
+   {
+    "quando": "2026-11-22T22:14:55.112Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T22:14:55.108Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T22:14:49.311Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.54) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T22:14:49.230Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T22:14:49.226Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T22:14:49.216Z",
     "resultado": "GREEN_OBS",
@@ -4339,36 +4369,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.45) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:45:28.715Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:45:25.813Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.45) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:45:25.809Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:45:05.017Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.45) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:45:05.014Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4566,24 +4566,26 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
-   "cam": {
-    "desde": 1795384783116,
-    "gatilho": "odd 2.54"
-   },
-   "bra": {
-    "desde": 1795385689216,
-    "gatilho": "coluna :20"
+   "spa": {
+    "desde": 1795385695112,
+    "gatilho": "coluna :17"
    }
   }
  },
  "ambas": {
-  "saldo": 0.9,
-  "ciclos": 57,
-  "greens": 25,
+  "saldo": 1.8,
+  "ciclos": 58,
+  "greens": 26,
   "redsCiclo": 2,
   "aborts": 0,
   "descartes": 30,
   "historico": [
+   {
+    "quando": "2026-11-22T22:14:49.330Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "cam · Turin x City @1.85 (tiro 1) · gatilho: odd 2.1"
+   },
    {
     "quando": "2026-11-22T22:12:03.212Z",
     "resultado": "GREEN_OBS",
@@ -4928,45 +4930,17 @@
    }
   ],
   "consumidas": {
-   "bra": 1795383404717
+   "bra": 1795383404717,
+   "cam": 1795385689330
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "19:12",
-     "jogo": "Turin x City",
-     "odd": 1.85
-    },
-    {
-     "h": "19:15",
-     "jogo": "Milan x Chelsea",
-     "odd": 2.1
-    },
-    {
-     "h": "19:18",
-     "jogo": "Celtic x Porto",
-     "odd": 2.14
-    }
-   ],
-   "gatilho": "odd 2.1",
-   "alvo": {
-    "h": "19:12",
-    "jogo": "Turin x City",
-    "odd": 1.85,
-    "unidades": 1,
-    "desde": 1795385233522
-   },
-   "iniciadoEm": 1795385233522
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795257582328,
    "spa": 1795364566793,
    "bra": 1795383404717,
-   "mnd": 1795372058521
+   "mnd": 1795372058521,
+   "cam": 1795385689330
   },
   "_gatilhoAtual": {
    "tipo": "odd",
@@ -4977,7 +4951,7 @@
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
-   "2026-11-22": -1.1
+   "2026-11-22": -0.2
   },
   "_obs": {}
  }
