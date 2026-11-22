@@ -1,12 +1,18 @@
 {
  "o35": {
   "saldo": 4.2,
-  "ciclos": 122,
+  "ciclos": 123,
   "greens": 46,
   "redsCiclo": 22,
   "aborts": 0,
-  "descartes": 54,
+  "descartes": 55,
   "historico": [
+   {
+    "quando": "2026-11-22T23:37:10.473Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "mnd · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-22T22:45:30.747Z",
     "resultado": "GREEN",
@@ -743,37 +749,7 @@
   "consumidas": {
    "lat": 1795387530746
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "20:38",
-     "jogo": "CRO x MEX",
-     "odd": 3.35
-    },
-    {
-     "h": "20:40",
-     "jogo": "POR x WAL",
-     "odd": 3.19
-    },
-    {
-     "h": "20:42",
-     "jogo": "SPA x COL",
-     "odd": 3.35
-    }
-   ],
-   "gatilho": "odd 3.19",
-   "alvo": {
-    "h": "20:38",
-    "jogo": "CRO x MEX",
-    "odd": 3.35,
-    "unidades": 1,
-    "desde": 1795389724646
-   },
-   "iniciadoEm": 1795389724646
-  },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795360900511,
    "lat": 1795387530746,
@@ -806,12 +782,18 @@
  },
  "o25": {
   "saldo": 17.7,
-  "ciclos": 29402,
+  "ciclos": 29403,
   "greens": 118,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 29273,
+  "descartes": 29274,
   "historico": [
+   {
+    "quando": "2026-11-22T23:37:10.510Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T23:36:36.196Z",
     "resultado": "GREEN_OBS",
@@ -4405,12 +4387,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:47:18.383Z",
-    "resultado": "RED_CICLO",
-    "unidades": -7,
-    "detalhe": "cam · ciclo perdido (3 tiros) · gatilho: odd 2.4"
    }
   ],
   "consumidas": {
@@ -4590,7 +4566,7 @@
     "gatilho": "odd 1.81"
    },
    "spa": {
-    "desde": 1795390596196,
+    "desde": 1795390630510,
     "gatilho": "odd 1.76"
    }
   }
