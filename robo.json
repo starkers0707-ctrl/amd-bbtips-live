@@ -593,12 +593,24 @@
  },
  "o25": {
   "saldo": 12.4,
-  "ciclos": 16146,
+  "ciclos": 16148,
   "greens": 77,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 16062,
+  "descartes": 16064,
   "historico": [
+   {
+    "quando": "2026-11-22T08:34:40.768Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T08:34:29.559Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T08:34:29.556Z",
     "resultado": "GREEN_OBS",
@@ -4186,26 +4198,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T07:26:23.212Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time BRE) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T07:26:15.111Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "spa": 1795332873416,
    "mnd": 1795332891918,
    "eng": 1795333802416
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "05:41",
+     "jogo": "ATM x ESP",
+     "odd": 1.9
+    },
+    {
+     "h": "05:43",
+     "jogo": "LEV x ELC",
+     "odd": 1.94
+    },
+    {
+     "h": "05:45",
+     "jogo": "CEL x MLG",
+     "odd": 1.88
+    }
+   ],
+   "gatilho": "time ELC",
+   "alvo": {
+    "h": "05:41",
+    "jogo": "ATM x ESP",
+    "odd": 1.9,
+    "unidades": 1,
+    "desde": 1795336480764
+   },
+   "iniciadoEm": 1795336480764
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795333802416,
@@ -4217,9 +4246,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "BRE",
-   "n": 11,
-   "start": 2
+   "chave": "ELC",
+   "n": 12,
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -4378,7 +4407,7 @@
     "gatilho": "time CAG"
    },
    "eng": {
-    "desde": 1795336469556,
+    "desde": 1795336480768,
     "gatilho": "time IPS"
    }
   }
