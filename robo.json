@@ -712,12 +712,24 @@
  },
  "o25": {
   "saldo": 32.7,
-  "ciclos": 23801,
+  "ciclos": 23803,
   "greens": 102,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 23692,
+  "descartes": 23694,
   "historico": [
+   {
+    "quando": "2026-11-22T16:54:51.672Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T16:54:40.365Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T16:54:36.968Z",
     "resultado": "GREEN_OBS",
@@ -4305,18 +4317,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T16:09:40.696Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T16:09:40.693Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4469,19 +4469,25 @@
     "gatilho": "time CAG"
    },
    "bra": {
-    "desde": 1795366476968,
+    "desde": 1795366491672,
     "gatilho": "odd 1.94"
    }
   }
  },
  "ambas": {
-  "saldo": -2.7,
-  "ciclos": 39,
-  "greens": 20,
+  "saldo": -1.9,
+  "ciclos": 40,
+  "greens": 21,
   "redsCiclo": 2,
   "aborts": 0,
   "descartes": 17,
   "historico": [
+   {
+    "quando": "2026-11-22T16:54:37.064Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "bra · ATC x THI @1.76 (tiro 1) · gatilho: seq RRGGG"
+   },
    {
     "quando": "2026-11-22T16:28:06.193Z",
     "resultado": "GREEN",
@@ -4719,56 +4725,27 @@
   ],
   "consumidas": {
    "spa": 1795364566793,
-   "mnd": 1795364886193
+   "mnd": 1795364886193,
+   "bra": 1795366477063
   },
-  "ciclo": {
-   "liga": "bra",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "13:53",
-     "jogo": "ATC x THI",
-     "odd": 1.76
-    },
-    {
-     "h": "13:56",
-     "jogo": "GAM x PAU",
-     "odd": 1.67
-    },
-    {
-     "h": "13:59",
-     "jogo": "PAL x CUI",
-     "odd": 1.81
-    }
-   ],
-   "gatilho": "seq RRGGG",
-   "alvo": {
-    "h": "13:53",
-    "jogo": "ATC x THI",
-    "odd": 1.76,
-    "unidades": 1,
-    "desde": 1795366129863
-   },
-   "iniciadoEm": 1795366129863
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795257582328,
    "spa": 1795364566793,
-   "bra": 1795362528706,
+   "bra": 1795366477063,
    "mnd": 1795364886193
   },
   "_gatilhoAtual": {
    "tipo": "time",
    "chave": "MEN",
    "n": 16,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
-   "2026-11-22": -4.7
+   "2026-11-22": -3.9
   },
   "_obs": {}
  }
