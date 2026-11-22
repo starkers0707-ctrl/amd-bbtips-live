@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": -1.8,
-  "ciclos": 88,
-  "greens": 32,
+  "saldo": 1.9,
+  "ciclos": 89,
+  "greens": 33,
   "redsCiclo": 17,
   "aborts": 0,
   "descartes": 39,
   "historico": [
+   {
+    "quando": "2026-11-22T07:22:53.520Z",
+    "resultado": "GREEN",
+    "unidades": 3.7,
+    "detalhe": "ita · FIO x TOR @3.35 (tiro 2) · gatilho: odd 3.35"
+   },
    {
     "quando": "2026-11-22T07:10:36.012Z",
     "resultado": "GREEN_OBS",
@@ -536,52 +542,16 @@
     "detalhe": "mnd · POL x ENG @3.07 (tiro 2) · gatilho: placar 1-0 / 0-1"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "04:19",
-     "jogo": "ATA x COM",
-     "odd": 3.31
-    },
-    {
-     "h": "04:21",
-     "jogo": "FIO x TOR",
-     "odd": 3.35
-    },
-    {
-     "h": "04:23",
-     "jogo": "FRO x MON",
-     "odd": 3.29
-    }
-   ],
-   "gatilho": "odd 3.35",
-   "alvo": {
-    "h": "04:21",
-    "jogo": "FIO x TOR",
-    "odd": 3.35,
-    "unidades": 2,
-    "desde": 1795332063017
-   },
-   "iniciadoEm": 1795331444324,
-   "tiros": [
-    {
-     "h": "04:19",
-     "jogo": "ATA x COM",
-     "odd": 3.31,
-     "unidades": 1
-    }
-   ]
+  "consumidas": {
+   "ita": 1795332173520
   },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795320705213,
    "lat": 1795324906518,
    "eng": 1795326103522,
    "spa": 1795323557921,
-   "ita": 1795307194712,
+   "ita": 1795332173520,
    "bra": 1795277376896
   },
   "_gatilhoAtual": {
@@ -593,18 +563,24 @@
   "dias": {
    "2026-11-20": 4.3,
    "2026-11-21": 11.3,
-   "2026-11-22": -17.4
+   "2026-11-22": -13.7
   },
   "_obs": {}
  },
  "o25": {
   "saldo": 9.7,
-  "ciclos": 15515,
+  "ciclos": 15516,
   "greens": 74,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 15434,
+  "descartes": 15435,
   "historico": [
+   {
+    "quando": "2026-11-22T07:22:45.911Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T07:22:29.623Z",
     "resultado": "GREEN_OBS",
@@ -4198,12 +4174,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.8) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T02:10:49.915Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4252,7 +4222,7 @@
    "tipo": "time",
    "chave": "ELC",
    "n": 8,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -4375,10 +4345,6 @@
    "eng": {
     "desde": 1795331975016,
     "gatilho": "time COV"
-   },
-   "spa": {
-    "desde": 1795332149622,
-    "gatilho": "time ELC"
    }
   }
  },
