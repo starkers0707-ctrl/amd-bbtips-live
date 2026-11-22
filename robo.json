@@ -736,13 +736,25 @@
   }
  },
  "o25": {
-  "saldo": 36.2,
-  "ciclos": 25330,
-  "greens": 107,
+  "saldo": 37.1,
+  "ciclos": 25332,
+  "greens": 108,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 25216,
+  "descartes": 25217,
   "historico": [
+   {
+    "quando": "2026-11-22T18:49:48.318Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "mnd · URY x CHL @1.91 (tiro 1) · gatilho: odd 1.89"
+   },
+   {
+    "quando": "2026-11-22T18:49:32.516Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T18:49:32.514Z",
     "resultado": "GREEN_OBS",
@@ -4330,55 +4342,14 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T18:11:38.260Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T18:11:38.258Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
    }
   ],
   "consumidas": {
    "bra": 1795372063417,
-   "eng": 1795372779922
+   "eng": 1795372779922,
+   "mnd": 1795373388318
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "15:48",
-     "jogo": "URY x CHL",
-     "odd": 1.91
-    },
-    {
-     "h": "15:50",
-     "jogo": "SPA x WAL",
-     "odd": 1.89
-    },
-    {
-     "h": "15:52",
-     "jogo": "ITA x MEX",
-     "odd": 1.94
-    }
-   ],
-   "gatilho": "odd 1.89",
-   "alvo": {
-    "h": "15:48",
-    "jogo": "URY x CHL",
-    "odd": 1.91,
-    "unidades": 1,
-    "desde": 1795372782720
-   },
-   "iniciadoEm": 1795372782720
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795372779922,
@@ -4386,7 +4357,7 @@
    "spa": 1795369475514,
    "lat": 1795361275805,
    "bra": 1795372063417,
-   "mnd": 1795368337072
+   "mnd": 1795373388318
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
@@ -4398,7 +4369,7 @@
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
-   "2026-11-22": 29.2
+   "2026-11-22": 30.1
   },
   "_obs": {}
  },
@@ -4525,10 +4496,6 @@
    "mnd": {
     "desde": 1795372901219,
     "gatilho": "odd 1.89"
-   },
-   "bra": {
-    "desde": 1795373372513,
-    "gatilho": "odd 1.95"
    }
   }
  },
