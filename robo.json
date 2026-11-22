@@ -806,12 +806,24 @@
  },
  "o25": {
   "saldo": 24.7,
-  "ciclos": 29306,
+  "ciclos": 29308,
   "greens": 118,
   "redsCiclo": 10,
   "aborts": 0,
-  "descartes": 29178,
+  "descartes": 29180,
   "historico": [
+   {
+    "quando": "2026-11-22T23:28:05.996Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T23:27:38.407Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T23:27:31.738Z",
     "resultado": "GREEN_OBS",
@@ -4399,18 +4411,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:41:06.138Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:41:06.127Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4418,7 +4418,37 @@
    "spa": 1795388110617,
    "ame": 1795388932735
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "20:30",
+     "jogo": "NED x ENG",
+     "odd": 1.88
+    },
+    {
+     "h": "20:32",
+     "jogo": "BRA x COL",
+     "odd": 1.81
+    },
+    {
+     "h": "20:34",
+     "jogo": "FRA x URY",
+     "odd": 1.85
+    }
+   ],
+   "gatilho": "odd 1.81",
+   "alvo": {
+    "h": "20:30",
+    "jogo": "NED x ENG",
+    "odd": 1.88,
+    "unidades": 1,
+    "desde": 1795390085986
+   },
+   "iniciadoEm": 1795390085986
+  },
   "cooldown": {
    "cam": 1795387638383,
    "eng": 1795383709617,
@@ -4430,9 +4460,9 @@
    "ame": 1795388932735
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "RGGGR",
-   "n": 13,
+   "tipo": "odd",
+   "chave": "1.81",
+   "n": 15,
    "start": 1
   },
   "dias": {
@@ -4583,6 +4613,10 @@
    "ita": {
     "desde": 1795331722115,
     "gatilho": "time CAG"
+   },
+   "spa": {
+    "desde": 1795390085996,
+    "gatilho": "odd 1.76"
    }
   }
  },
