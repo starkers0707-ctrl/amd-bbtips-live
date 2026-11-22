@@ -664,13 +664,31 @@
   }
  },
  "o25": {
-  "saldo": 24,
-  "ciclos": 20250,
-  "greens": 91,
+  "saldo": 24.7,
+  "ciclos": 20253,
+  "greens": 92,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 20152,
+  "descartes": 20154,
   "historico": [
+   {
+    "quando": "2026-11-22T13:12:34.360Z",
+    "resultado": "GREEN",
+    "unidades": 0.7,
+    "detalhe": "bra · JUV x GAM @1.93 (tiro 3) · gatilho: odd 1.95"
+   },
+   {
+    "quando": "2026-11-22T13:12:14.758Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T13:12:14.756Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T13:12:14.668Z",
     "resultado": "GREEN_OBS",
@@ -4252,96 +4270,35 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :44) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:40:10.964Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:40:10.961Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :44) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:39:51.155Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795349678564,
    "lat": 1795351176565,
-   "eng": 1795351415355
+   "eng": 1795351415355,
+   "bra": 1795353154360
   },
-  "ciclo": {
-   "liga": "bra",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "10:05",
-     "jogo": "GRM x GOI",
-     "odd": 1.89
-    },
-    {
-     "h": "10:08",
-     "jogo": "PAU x GTN",
-     "odd": 1.95
-    },
-    {
-     "h": "10:11",
-     "jogo": "JUV x GAM",
-     "odd": 1.93
-    }
-   ],
-   "gatilho": "odd 1.95",
-   "alvo": {
-    "h": "10:11",
-    "jogo": "JUV x GAM",
-    "odd": 1.93,
-    "unidades": 4,
-    "desde": 1795352294759
-   },
-   "iniciadoEm": 1795352271166,
-   "tiros": [
-    {
-     "h": "10:05",
-     "jogo": "GRM x GOI",
-     "odd": 1.89,
-     "unidades": 1
-    },
-    {
-     "h": "10:08",
-     "jogo": "PAU x GTN",
-     "odd": 1.95,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795351415355,
    "ita": 1795331927310,
    "spa": 1795349678564,
    "lat": 1795351176565,
-   "bra": 1795348670564,
+   "bra": 1795353154360,
    "mnd": 1795341815561
   },
   "_gatilhoAtual": {
    "tipo": "odd",
    "chave": "1.94",
    "n": 9,
-   "start": 8
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
-   "2026-11-22": 17
+   "2026-11-22": 17.7
   },
   "_obs": {}
  },
@@ -4468,10 +4425,6 @@
    "lat": {
     "desde": 1795352614761,
     "gatilho": "time PER"
-   },
-   "bra": {
-    "desde": 1795353134668,
-    "gatilho": "odd 1.94"
    }
   }
  },
