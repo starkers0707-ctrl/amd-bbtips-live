@@ -778,12 +778,30 @@
  },
  "o25": {
   "saldo": 42,
-  "ciclos": 27546,
+  "ciclos": 27549,
   "greens": 114,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 27425,
+  "descartes": 27428,
   "historico": [
+   {
+    "quando": "2026-11-22T21:39:30.111Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :44) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T21:39:22.314Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.45) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T21:39:22.311Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T21:39:22.309Z",
     "resultado": "GREEN_OBS",
@@ -4365,24 +4383,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T20:57:11.915Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T20:57:08.611Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T20:57:08.520Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4580,7 +4580,7 @@
    "tipo": "odd",
    "chave": "2.02",
    "n": 10,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -4592,9 +4592,9 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
-   "eng": {
-    "desde": 1795383562224,
-    "gatilho": "odd 1.83"
+   "bra": {
+    "desde": 1795383570111,
+    "gatilho": "coluna :44"
    }
   }
  },
@@ -4970,7 +4970,7 @@
    "tipo": "odd",
    "chave": "2.1",
    "n": 8,
-   "start": 7
+   "start": 6
   },
   "dias": {
    "2026-11-20": 0,
