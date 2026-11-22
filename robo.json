@@ -776,12 +776,18 @@
  },
  "o25": {
   "saldo": 30.7,
-  "ciclos": 28896,
+  "ciclos": 28897,
   "greens": 117,
   "redsCiclo": 9,
   "aborts": 0,
-  "descartes": 28770,
+  "descartes": 28771,
   "historico": [
+   {
+    "quando": "2026-11-22T22:55:01.324Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T22:54:36.477Z",
     "resultado": "GREEN_OBS",
@@ -4375,12 +4381,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:16:57.219Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4388,7 +4388,37 @@
    "mnd": 1795386457308,
    "cam": 1795387638383
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "20:11",
+     "jogo": "DLC x ATH",
+     "odd": 1.95
+    },
+    {
+     "h": "20:13",
+     "jogo": "VIL x RST",
+     "odd": 1.86
+    },
+    {
+     "h": "20:15",
+     "jogo": "ELC x OSA",
+     "odd": 1.95
+    }
+   ],
+   "gatilho": "coluna :13",
+   "alvo": {
+    "h": "20:11",
+    "jogo": "DLC x ATH",
+    "odd": 1.95,
+    "unidades": 1,
+    "desde": 1795388101315
+   },
+   "iniciadoEm": 1795388101315
+  },
   "cooldown": {
    "cam": 1795387638383,
    "eng": 1795383709617,
@@ -4400,10 +4430,10 @@
    "ame": 1795384649420
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.54",
-   "n": 15,
-   "start": 2
+   "tipo": "coluna",
+   "chave": ":13",
+   "n": 18,
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
@@ -4548,9 +4578,9 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
-   "cam": {
-    "desde": 1795388076477,
-    "gatilho": "odd 2.54"
+   "spa": {
+    "desde": 1795388101324,
+    "gatilho": "coluna :13"
    }
   }
  },
