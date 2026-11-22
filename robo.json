@@ -620,12 +620,36 @@
  },
  "o25": {
   "saldo": 20.9,
-  "ciclos": 18571,
+  "ciclos": 18575,
   "greens": 87,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 18477,
+  "descartes": 18481,
   "historico": [
+   {
+    "quando": "2026-11-22T11:31:35.756Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time GTN) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T11:31:15.358Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T11:31:15.267Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T11:31:15.264Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time GTN) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T11:31:11.965Z",
     "resultado": "GREEN_OBS",
@@ -4201,30 +4225,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time GTN) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T11:05:19.459Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T11:05:19.457Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.91) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T11:05:19.371Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T11:05:19.368Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time GTN) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4409,6 +4409,10 @@
    "spa": {
     "desde": 1795346910769,
     "gatilho": "odd 1.92"
+   },
+   "bra": {
+    "desde": 1795347095756,
+    "gatilho": "time GTN"
    }
   }
  },
