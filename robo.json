@@ -592,13 +592,19 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 14.2,
-  "ciclos": 16270,
-  "greens": 79,
+  "saldo": 15,
+  "ciclos": 16271,
+  "greens": 80,
   "redsCiclo": 7,
   "aborts": 0,
   "descartes": 16184,
   "historico": [
+   {
+    "quando": "2026-11-22T08:53:34.165Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "eng · ARS x CRY @1.81 (tiro 1) · gatilho: time BRE"
+   },
    {
     "quando": "2026-11-22T08:53:23.262Z",
     "resultado": "GREEN_OBS",
@@ -4192,52 +4198,17 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho time COV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T07:39:35.019Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795336953258,
-   "mnd": 1795337378261
+   "mnd": 1795337378261,
+   "eng": 1795337614165
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "05:52",
-     "jogo": "ARS x CRY",
-     "odd": 1.81
-    },
-    {
-     "h": "05:54",
-     "jogo": "BRE x TOT",
-     "odd": 1.93
-    },
-    {
-     "h": "05:56",
-     "jogo": "BHA x MNC",
-     "odd": 1.85
-    }
-   ],
-   "gatilho": "time BRE",
-   "alvo": {
-    "h": "05:52",
-    "jogo": "ARS x CRY",
-    "odd": 1.81,
-    "unidades": 1,
-    "desde": 1795337406657
-   },
-   "iniciadoEm": 1795337406657
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
-   "eng": 1795333802416,
+   "eng": 1795337614165,
    "ita": 1795331927310,
    "spa": 1795336953258,
    "lat": 1795244093933,
@@ -4246,7 +4217,7 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "BRE",
+   "chave": "IPS",
    "n": 14,
    "start": 1
   },
@@ -4254,7 +4225,7 @@
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
-   "2026-11-22": 7.2
+   "2026-11-22": 8
   },
   "_obs": {}
  },
@@ -4387,10 +4358,6 @@
    "spa": {
     "desde": 1795337319259,
     "gatilho": "time ELC"
-   },
-   "eng": {
-    "desde": 1795337603262,
-    "gatilho": "time BRE"
    }
   }
  },
