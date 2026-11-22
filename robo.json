@@ -4317,13 +4317,19 @@
   }
  },
  "ambas": {
-  "saldo": 2,
-  "ciclos": 5,
-  "greens": 4,
+  "saldo": 2.2,
+  "ciclos": 6,
+  "greens": 5,
   "redsCiclo": 0,
   "aborts": 0,
   "descartes": 1,
   "historico": [
+   {
+    "quando": "2026-11-22T05:12:49.717Z",
+    "resultado": "GREEN",
+    "unidades": 0.2,
+    "detalhe": "spa · RMA x RSO @1.81 (tiro 3) · gatilho: placar 0-0"
+   },
    {
     "quando": "2026-11-21T10:52:00.134Z",
     "resultado": "GREEN",
@@ -4355,55 +4361,14 @@
     "detalhe": "cam · alvo sem fechamento em 15min antes da 1a aposta"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "02:07",
-     "jogo": "LEV x OSA",
-     "odd": 1.7
-    },
-    {
-     "h": "02:09",
-     "jogo": "MLG x RST",
-     "odd": 1.68
-    },
-    {
-     "h": "02:11",
-     "jogo": "RMA x RSO",
-     "odd": 1.81
-    }
-   ],
-   "gatilho": "placar 0-0",
-   "alvo": {
-    "h": "02:11",
-    "jogo": "RMA x RSO",
-    "odd": 1.81,
-    "unidades": 4,
-    "desde": 1795324245714
-   },
-   "iniciadoEm": 1795323877921,
-   "tiros": [
-    {
-     "h": "02:07",
-     "jogo": "LEV x OSA",
-     "odd": 1.7,
-     "unidades": 1
-    },
-    {
-     "h": "02:09",
-     "jogo": "MLG x RST",
-     "odd": 1.68,
-     "unidades": 2
-    }
-   ]
+  "consumidas": {
+   "spa": 1795324369716
   },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795258320133,
-   "eng": 1795257582328
+   "eng": 1795257582328,
+   "spa": 1795324369716
   },
   "_gatilhoAtual": {
    "tipo": "placar",
@@ -4413,7 +4378,8 @@
   },
   "dias": {
    "2026-11-20": 0,
-   "2026-11-21": 2
+   "2026-11-21": 2,
+   "2026-11-22": 0.2
   }
  }
 }
