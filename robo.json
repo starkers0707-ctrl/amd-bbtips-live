@@ -607,10 +607,10 @@
    "bra": 1795277376896
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "3.35",
-   "n": 12,
-   "start": 3
+   "tipo": "placar",
+   "chave": "acima de 1-0 (2-0)",
+   "n": 10,
+   "start": 1
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -621,12 +621,30 @@
  },
  "o25": {
   "saldo": 15,
-  "ciclos": 16372,
+  "ciclos": 16375,
   "greens": 80,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 16285,
+  "descartes": 16288,
   "historico": [
+   {
+    "quando": "2026-11-22T09:08:32.066Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T09:08:29.163Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T09:07:29.861Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time BRE) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T09:07:10.462Z",
     "resultado": "GREEN_OBS",
@@ -4208,24 +4226,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho time BRE) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T07:53:01.212Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T07:53:01.117Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time BRE) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T07:52:53.215Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time BRE) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4383,8 +4383,12 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
+   "eng": {
+    "desde": 1795338461160,
+    "gatilho": "time BRE"
+   },
    "spa": {
-    "desde": 1795338393866,
+    "desde": 1795338512066,
     "gatilho": "time ELC"
    }
   }
