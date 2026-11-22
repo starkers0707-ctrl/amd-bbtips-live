@@ -748,12 +748,30 @@
  },
  "o25": {
   "saldo": 42,
-  "ciclos": 27370,
+  "ciclos": 27373,
   "greens": 114,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 27249,
+  "descartes": 27252,
   "historico": [
+   {
+    "quando": "2026-11-22T21:31:20.512Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :44) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T21:30:47.815Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T21:30:47.811Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T21:30:47.722Z",
     "resultado": "GREEN_OBS",
@@ -4335,24 +4353,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T20:38:22.721Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T20:38:22.717Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :44) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T20:38:19.614Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4534,19 +4534,25 @@
     "gatilho": "time CAG"
    },
    "bra": {
-    "desde": 1795383047722,
+    "desde": 1795383080512,
     "gatilho": "coluna :44"
    }
   }
  },
  "ambas": {
   "saldo": 0.2,
-  "ciclos": 49,
+  "ciclos": 50,
   "greens": 24,
   "redsCiclo": 2,
   "aborts": 0,
-  "descartes": 23,
+  "descartes": 24,
   "historico": [
+   {
+    "quando": "2026-11-22T21:30:48.008Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "bra · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-22T21:15:39.120Z",
     "resultado": "GREEN_OBS",
@@ -4843,37 +4849,7 @@
    }
   ],
   "consumidas": {},
-  "ciclo": {
-   "liga": "bra",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "18:32",
-     "jogo": "ZEI x CRM",
-     "odd": 1.77
-    },
-    {
-     "h": "18:35",
-     "jogo": "ATC x GAM",
-     "odd": 1.74
-    },
-    {
-     "h": "18:38",
-     "jogo": "THI x JUV",
-     "odd": 1.7
-    }
-   ],
-   "gatilho": "odd 1.74",
-   "alvo": {
-    "h": "18:32",
-    "jogo": "ZEI x CRM",
-    "odd": 1.77,
-    "unidades": 1,
-    "desde": 1795382141622
-   },
-   "iniciadoEm": 1795382141622
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795257582328,
