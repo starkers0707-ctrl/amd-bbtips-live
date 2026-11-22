@@ -818,12 +818,36 @@
  },
  "o25": {
   "saldo": 17.7,
-  "ciclos": 29428,
+  "ciclos": 29432,
   "greens": 118,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 29299,
+  "descartes": 29303,
   "historico": [
+   {
+    "quando": "2026-11-22T23:40:07.084Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGRR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T23:40:07.075Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T23:39:32.876Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGRR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T23:39:32.871Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T23:39:32.378Z",
     "resultado": "GREEN_OBS",
@@ -4399,30 +4423,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:50:03.996Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:50:03.467Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:50:03.462Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:50:02.967Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.54) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4596,6 +4596,10 @@
    "ita": {
     "desde": 1795331722115,
     "gatilho": "time CAG"
+   },
+   "cam": {
+    "desde": 1795390807083,
+    "gatilho": "seq RRGRR"
    }
   }
  },
