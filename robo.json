@@ -764,12 +764,24 @@
  },
  "o25": {
   "saldo": 36.8,
-  "ciclos": 28428,
+  "ciclos": 28430,
   "greens": 116,
   "redsCiclo": 8,
   "aborts": 0,
-  "descartes": 28304,
+  "descartes": 28306,
   "historico": [
+   {
+    "quando": "2026-11-22T22:23:19.321Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T22:23:17.008Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.4) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T22:23:17.001Z",
     "resultado": "GREEN_OBS",
@@ -4357,18 +4369,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:56:45.619Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:56:45.616Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4571,7 +4571,7 @@
     "gatilho": "coluna :39"
    },
    "mnd": {
-    "desde": 1795386197000,
+    "desde": 1795386199321,
     "gatilho": "coluna :26"
    }
   }
@@ -4939,8 +4939,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "19:18",
@@ -4960,11 +4960,11 @@
    ],
    "gatilho": "odd 2.11",
    "alvo": {
-    "h": "19:21",
-    "jogo": "England x Uruguay",
-    "odd": 2.11,
-    "unidades": 2,
-    "desde": 1795386035512
+    "h": "19:24",
+    "jogo": "Germany x Belgium",
+    "odd": 1.97,
+    "unidades": 4,
+    "desde": 1795386197021
    },
    "iniciadoEm": 1795385695209,
    "tiros": [
@@ -4973,6 +4973,12 @@
      "jogo": "Netherlands x Italy",
      "odd": 2.07,
      "unidades": 1
+    },
+    {
+     "h": "19:21",
+     "jogo": "England x Uruguay",
+     "odd": 2.11,
+     "unidades": 2
     }
    ]
   },
