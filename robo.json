@@ -806,12 +806,24 @@
  },
  "o25": {
   "saldo": 24.7,
-  "ciclos": 29336,
+  "ciclos": 29338,
   "greens": 118,
   "redsCiclo": 10,
   "aborts": 0,
-  "descartes": 29208,
+  "descartes": 29210,
   "historico": [
+   {
+    "quando": "2026-11-22T23:30:10.995Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGRR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T23:30:10.988Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T23:30:08.893Z",
     "resultado": "GREEN_OBS",
@@ -4399,18 +4411,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:43:08.629Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:43:08.619Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4619,7 +4619,7 @@
     "gatilho": "odd 1.81"
    },
    "cam": {
-    "desde": 1795390208893,
+    "desde": 1795390210994,
     "gatilho": "seq RRGRR"
    }
   }
@@ -5020,7 +5020,37 @@
   "consumidas": {
    "ame": 1795387537535
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "20:33",
+     "jogo": "Porto x Paris",
+     "odd": 2
+    },
+    {
+     "h": "20:36",
+     "jogo": "Celtic x Benfica",
+     "odd": 1.92
+    },
+    {
+     "h": "20:39",
+     "jogo": "Amsterdam x Rome",
+     "odd": 2.05
+    }
+   ],
+   "gatilho": "coluna :33",
+   "alvo": {
+    "h": "20:33",
+    "jogo": "Porto x Paris",
+    "odd": 2,
+    "unidades": 1,
+    "desde": 1795390208905
+   },
+   "iniciadoEm": 1795390208905
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795257582328,
