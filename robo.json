@@ -525,13 +525,49 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 11.2,
-  "ciclos": 14438,
+  "saldo": 4.2,
+  "ciclos": 14444,
   "greens": 67,
-  "redsCiclo": 6,
+  "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 14365,
+  "descartes": 14370,
   "historico": [
+   {
+    "quando": "2026-11-22T01:20:39.921Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.75) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T01:20:39.920Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T01:20:39.916Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "spa · ciclo perdido (3 tiros) · gatilho: coluna :17"
+   },
+   {
+    "quando": "2026-11-22T01:20:35.814Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.75) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T01:20:35.810Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T01:20:23.414Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.75) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T01:20:23.410Z",
     "resultado": "GREEN_OBS",
@@ -4095,95 +4131,17 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T00:02:11.720Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.75) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T00:02:11.714Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T00:01:34.418Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T00:01:34.416Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.75) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T00:01:34.413Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T00:01:13.218Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "22:15",
-     "jogo": "RAY x VAL",
-     "odd": 1.94
-    },
-    {
-     "h": "22:17",
-     "jogo": "CEL x ESP",
-     "odd": 1.94
-    },
-    {
-     "h": "22:19",
-     "jogo": "GET x VIL",
-     "odd": 1.87
-    }
-   ],
-   "gatilho": "coluna :17",
-   "alvo": {
-    "h": "22:19",
-    "jogo": "GET x VIL",
-    "odd": 1.87,
-    "unidades": 4,
-    "desde": 1795310321813
-   },
-   "iniciadoEm": 1795309951323,
-   "tiros": [
-    {
-     "h": "22:15",
-     "jogo": "RAY x VAL",
-     "odd": 1.94,
-     "unidades": 1
-    },
-    {
-     "h": "22:17",
-     "jogo": "CEL x ESP",
-     "odd": 1.94,
-     "unidades": 2
-    }
-   ]
+  "consumidas": {
+   "spa": 1795310439916
   },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795305570820,
    "ita": 1795306754913,
-   "spa": 1795305051223,
+   "spa": 1795310439916,
    "lat": 1795244093933,
    "bra": 1795207550537
   },
@@ -4196,7 +4154,7 @@
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
-   "2026-11-21": -1
+   "2026-11-21": -8
   },
   "_obs": {}
  },
@@ -4306,9 +4264,9 @@
     "desde": 1795209937682,
     "gatilho": "coluna :29"
    },
-   "ita": {
-    "desde": 1795310423409,
-    "gatilho": "odd 1.83"
+   "eng": {
+    "desde": 1795310439921,
+    "gatilho": "odd 1.75"
    }
   }
  },
