@@ -507,7 +507,45 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 1,
+   "apostado": 1,
+   "plano": [
+    {
+     "h": "01:06",
+     "jogo": "BEL x URY",
+     "odd": 2.99
+    },
+    {
+     "h": "01:08",
+     "jogo": "ENG x CRO",
+     "odd": 3.32
+    },
+    {
+     "h": "01:10",
+     "jogo": "FRA x COL",
+     "odd": 2.93
+    }
+   ],
+   "gatilho": "placar goleada (3+)",
+   "alvo": {
+    "h": "01:08",
+    "jogo": "ENG x CRO",
+    "odd": 3.32,
+    "unidades": 2,
+    "desde": 1795320468113
+   },
+   "iniciadoEm": 1795320259215,
+   "tiros": [
+    {
+     "h": "01:06",
+     "jogo": "BEL x URY",
+     "odd": 2.99,
+     "unidades": 1
+    }
+   ]
+  },
   "cooldown": {
    "mnd": 1795271142083,
    "lat": 1795301131715,
@@ -517,9 +555,9 @@
    "bra": 1795277376896
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "3.22",
-   "n": 10,
+   "tipo": "placar",
+   "chave": "goleada (3+)",
+   "n": 12,
    "start": 1
   },
   "dias": {
@@ -527,12 +565,7 @@
    "2026-11-21": 11.3,
    "2026-11-22": 0
   },
-  "_obs": {
-   "mnd": {
-    "desde": 1795320252510,
-    "gatilho": "placar goleada (3+)"
-   }
-  }
+  "_obs": {}
  },
  "o25": {
   "saldo": 7,
