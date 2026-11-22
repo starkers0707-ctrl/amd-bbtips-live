@@ -737,12 +737,18 @@
  },
  "o25": {
   "saldo": 37.1,
-  "ciclos": 25409,
+  "ciclos": 25410,
   "greens": 108,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 25294,
+  "descartes": 25295,
   "historico": [
+   {
+    "quando": "2026-11-22T18:55:08.219Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T18:55:08.211Z",
     "resultado": "GREEN_OBS",
@@ -4336,12 +4342,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T18:15:44.518Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4349,7 +4349,37 @@
    "eng": 1795372779922,
    "mnd": 1795373388318
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "16:11",
+     "jogo": "BAR x VIL",
+     "odd": 1.9
+    },
+    {
+     "h": "16:13",
+     "jogo": "RAY x RST",
+     "odd": 1.93
+    },
+    {
+     "h": "16:15",
+     "jogo": "ALV x MLG",
+     "odd": 1.93
+    }
+   ],
+   "gatilho": "coluna :13",
+   "alvo": {
+    "h": "16:11",
+    "jogo": "BAR x VIL",
+    "odd": 1.9,
+    "unidades": 1,
+    "desde": 1795373727318
+   },
+   "iniciadoEm": 1795373727318
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795372779922,
@@ -4361,9 +4391,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":49",
+   "chave": ":13",
    "n": 14,
-   "start": 1
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
@@ -4496,10 +4526,6 @@
    "eng": {
     "desde": 1795373641711,
     "gatilho": "odd 1.83"
-   },
-   "bra": {
-    "desde": 1795373708211,
-    "gatilho": "odd 1.95"
    }
   }
  },
