@@ -497,8 +497,8 @@
   "consumidas": {},
   "ciclo": {
    "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "21:21",
@@ -518,13 +518,27 @@
    ],
    "gatilho": "odd 3.22",
    "alvo": {
-    "h": "21:21",
-    "jogo": "FIO x UDI",
-    "odd": 3.33,
-    "unidades": 1,
-    "desde": 1795306366012
+    "h": "21:25",
+    "jogo": "PAR x GEN",
+    "odd": 3.36,
+    "unidades": 4,
+    "desde": 1795306990922
    },
-   "iniciadoEm": 1795306366012
+   "iniciadoEm": 1795306366012,
+   "tiros": [
+    {
+     "h": "21:21",
+     "jogo": "FIO x UDI",
+     "odd": 3.33,
+     "unidades": 1
+    },
+    {
+     "h": "21:23",
+     "jogo": "ROM x TOR",
+     "odd": 3.22,
+     "unidades": 2
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795271142083,
@@ -548,12 +562,24 @@
  },
  "o25": {
   "saldo": 11.2,
-  "ciclos": 14004,
+  "ciclos": 14006,
   "greens": 67,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 13931,
+  "descartes": 13933,
   "historico": [
+   {
+    "quando": "2026-11-22T00:23:11.918Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T00:22:42.609Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T00:22:38.609Z",
     "resultado": "GREEN_OBS",
@@ -4141,18 +4167,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T22:58:11.621Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T22:58:07.412Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4289,7 +4303,7 @@
     "gatilho": "coluna :29"
    },
    "ita": {
-    "desde": 1795306958609,
+    "desde": 1795306991918,
     "gatilho": "odd 1.83"
    }
   }
