@@ -593,12 +593,24 @@
  },
  "o25": {
   "saldo": 13.3,
-  "ciclos": 16232,
+  "ciclos": 16234,
   "greens": 78,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 16147,
+  "descartes": 16149,
   "historico": [
+   {
+    "quando": "2026-11-22T08:47:34.166Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time BRE) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T08:47:22.962Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T08:47:22.961Z",
     "resultado": "GREEN_OBS",
@@ -4186,18 +4198,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T07:35:15.911Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time COV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T07:35:08.814Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time DLC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4245,9 +4245,9 @@
    "mnd": 1795332891918
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "RRRG",
-   "n": 8,
+   "tipo": "time",
+   "chave": "ARG",
+   "n": 12,
    "start": 1
   },
   "dias": {
@@ -4385,7 +4385,7 @@
     "gatilho": "time CAG"
    },
    "eng": {
-    "desde": 1795337242960,
+    "desde": 1795337254166,
     "gatilho": "time BRE"
    }
   }
