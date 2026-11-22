@@ -776,12 +776,24 @@
  },
  "o25": {
   "saldo": 37.7,
-  "ciclos": 28779,
+  "ciclos": 28781,
   "greens": 117,
   "redsCiclo": 8,
   "aborts": 0,
-  "descartes": 28654,
+  "descartes": 28656,
   "historico": [
+   {
+    "quando": "2026-11-22T22:46:03.269Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T22:45:37.524Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.54) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T22:45:37.519Z",
     "resultado": "GREEN_OBS",
@@ -4369,18 +4381,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:12:40.610Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:12:40.522Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4593,19 +4593,25 @@
     "gatilho": "time CAG"
    },
    "spa": {
-    "desde": 1795387537518,
+    "desde": 1795387563269,
     "gatilho": "coluna :51"
    }
   }
  },
  "ambas": {
-  "saldo": -5.2,
-  "ciclos": 61,
-  "greens": 26,
+  "saldo": -4.3,
+  "ciclos": 62,
+  "greens": 27,
   "redsCiclo": 3,
   "aborts": 0,
   "descartes": 32,
   "historico": [
+   {
+    "quando": "2026-11-22T22:45:37.535Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "ame · Belo Horizonte x Buenos Aires @1.92 (tiro 1) · gatilho: odd 1.87"
+   },
    {
     "quando": "2026-11-22T22:41:06.647Z",
     "resultado": "GREEN_OBS",
@@ -4975,39 +4981,10 @@
   ],
   "consumidas": {
    "cam": 1795385689330,
-   "cop": 1795386361915
+   "cop": 1795386361915,
+   "ame": 1795387537535
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "19:43",
-     "jogo": "Belo Horizonte x Buenos Aires",
-     "odd": 1.92
-    },
-    {
-     "h": "19:46",
-     "jogo": "La Boca x Asuncion",
-     "odd": 1.87
-    },
-    {
-     "h": "19:49",
-     "jogo": "La Plata x Belo Horizonte",
-     "odd": 1.93
-    }
-   ],
-   "gatilho": "odd 1.87",
-   "alvo": {
-    "h": "19:43",
-    "jogo": "Belo Horizonte x Buenos Aires",
-    "odd": 1.92,
-    "unidades": 1,
-    "desde": 1795387267089
-   },
-   "iniciadoEm": 1795387267089
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795257582328,
@@ -5015,7 +4992,8 @@
    "bra": 1795383404717,
    "mnd": 1795372058521,
    "cam": 1795385689330,
-   "cop": 1795386361915
+   "cop": 1795386361915,
+   "ame": 1795387537535
   },
   "_gatilhoAtual": {
    "tipo": "odd",
@@ -5026,7 +5004,7 @@
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
-   "2026-11-22": -7.2
+   "2026-11-22": -6.3
   },
   "_obs": {}
  }
