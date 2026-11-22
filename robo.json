@@ -591,12 +591,24 @@
  },
  "o25": {
   "saldo": 9.7,
-  "ciclos": 15504,
+  "ciclos": 15506,
   "greens": 74,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 15423,
+  "descartes": 15425,
   "historico": [
+   {
+    "quando": "2026-11-22T07:20:54.723Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T07:20:39.224Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T07:20:31.613Z",
     "resultado": "GREEN_OBS",
@@ -4184,18 +4196,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T02:09:46.426Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T02:09:46.422Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.8) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4244,7 +4244,7 @@
    "tipo": "time",
    "chave": "ELC",
    "n": 8,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-19": -7,
@@ -4369,7 +4369,7 @@
     "gatilho": "time COV"
    },
    "spa": {
-    "desde": 1795332031612,
+    "desde": 1795332054723,
     "gatilho": "time ELC"
    }
   }
