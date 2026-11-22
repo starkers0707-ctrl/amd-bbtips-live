@@ -526,12 +526,30 @@
  },
  "o25": {
   "saldo": 11.2,
-  "ciclos": 14342,
+  "ciclos": 14345,
   "greens": 67,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 14269,
+  "descartes": 14272,
   "historico": [
+   {
+    "quando": "2026-11-22T01:12:31.415Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T01:12:18.722Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T01:12:18.721Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.75) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T01:12:18.719Z",
     "resultado": "GREEN_OBS",
@@ -4113,30 +4131,42 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T23:44:11.111Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T23:44:11.021Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-21T23:44:07.222Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ita": 1795306754913
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "22:15",
+     "jogo": "RAY x VAL",
+     "odd": 1.94
+    },
+    {
+     "h": "22:17",
+     "jogo": "CEL x ESP",
+     "odd": 1.94
+    },
+    {
+     "h": "22:19",
+     "jogo": "GET x VIL",
+     "odd": 1.87
+    }
+   ],
+   "gatilho": "coluna :17",
+   "alvo": {
+    "h": "22:15",
+    "jogo": "RAY x VAL",
+    "odd": 1.94,
+    "unidades": 1,
+    "desde": 1795309951323
+   },
+   "iniciadoEm": 1795309951323
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795305570820,
@@ -4265,7 +4295,7 @@
     "gatilho": "coluna :29"
    },
    "ita": {
-    "desde": 1795309938719,
+    "desde": 1795309951415,
     "gatilho": "odd 1.83"
    }
   }
