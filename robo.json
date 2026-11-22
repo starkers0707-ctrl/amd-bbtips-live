@@ -537,7 +537,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:19",
+     "jogo": "ATA x COM",
+     "odd": 3.31
+    },
+    {
+     "h": "04:21",
+     "jogo": "FIO x TOR",
+     "odd": 3.35
+    },
+    {
+     "h": "04:23",
+     "jogo": "FRO x MON",
+     "odd": 3.29
+    }
+   ],
+   "gatilho": "odd 3.35",
+   "alvo": {
+    "h": "04:19",
+    "jogo": "ATA x COM",
+    "odd": 3.31,
+    "unidades": 1,
+    "desde": 1795331444324
+   },
+   "iniciadoEm": 1795331444324
+  },
   "cooldown": {
    "mnd": 1795320705213,
    "lat": 1795324906518,
@@ -547,22 +577,17 @@
    "bra": 1795277376896
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "RRRRR",
-   "n": 9,
-   "start": 1
+   "tipo": "odd",
+   "chave": "3.35",
+   "n": 8,
+   "start": 2
   },
   "dias": {
    "2026-11-20": 4.3,
    "2026-11-21": 11.3,
    "2026-11-22": -17.4
   },
-  "_obs": {
-   "ita": {
-    "desde": 1795331436012,
-    "gatilho": "odd 3.35"
-   }
-  }
+  "_obs": {}
  },
  "o25": {
   "saldo": 8.8,
@@ -4174,7 +4199,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:17",
+     "jogo": "CAG x UDI",
+     "odd": 1.93
+    },
+    {
+     "h": "04:19",
+     "jogo": "ATA x COM",
+     "odd": 1.91
+    },
+    {
+     "h": "04:21",
+     "jogo": "FIO x TOR",
+     "odd": 1.94
+    }
+   ],
+   "gatilho": "time CAG",
+   "alvo": {
+    "h": "04:17",
+    "jogo": "CAG x UDI",
+    "odd": 1.93,
+    "unidades": 1,
+    "desde": 1795331721417
+   },
+   "iniciadoEm": 1795331721417
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795311103614,
@@ -4184,10 +4239,10 @@
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.91",
-   "n": 9,
-   "start": 2
+   "tipo": "time",
+   "chave": "CAG",
+   "n": 11,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
