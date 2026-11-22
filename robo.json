@@ -776,12 +776,18 @@
  },
  "o25": {
   "saldo": 24.7,
-  "ciclos": 29217,
+  "ciclos": 29218,
   "greens": 118,
   "redsCiclo": 10,
   "aborts": 0,
-  "descartes": 29089,
+  "descartes": 29090,
   "historico": [
+   {
+    "quando": "2026-11-22T23:15:04.993Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T23:15:02.427Z",
     "resultado": "GREEN_OBS",
@@ -4375,12 +4381,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:36:06.721Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :50) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4554,6 +4554,10 @@
    "ita": {
     "desde": 1795331722115,
     "gatilho": "time CAG"
+   },
+   "spa": {
+    "desde": 1795389304993,
+    "gatilho": "coluna :17"
    }
   }
  },
@@ -4942,7 +4946,37 @@
    "cop": 1795386361915,
    "ame": 1795387537535
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "20:30",
+     "jogo": "Turin x Madrid",
+     "odd": 1.85
+    },
+    {
+     "h": "20:33",
+     "jogo": "Porto x Paris",
+     "odd": 2
+    },
+    {
+     "h": "20:36",
+     "jogo": "Celtic x Benfica",
+     "odd": 1.92
+    }
+   ],
+   "gatilho": "coluna :33",
+   "alvo": {
+    "h": "20:30",
+    "jogo": "Turin x Madrid",
+    "odd": 1.85,
+    "unidades": 1,
+    "desde": 1795389302469
+   },
+   "iniciadoEm": 1795389302469
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795257582328,
@@ -4954,10 +4988,10 @@
    "ame": 1795387537535
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.87",
-   "n": 9,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":33",
+   "n": 20,
+   "start": 5
   },
   "dias": {
    "2026-11-20": 0,
