@@ -784,13 +784,25 @@
   }
  },
  "o25": {
-  "saldo": 42.8,
-  "ciclos": 27745,
+  "saldo": 35.8,
+  "ciclos": 27747,
   "greens": 115,
-  "redsCiclo": 7,
+  "redsCiclo": 8,
   "aborts": 0,
-  "descartes": 27623,
+  "descartes": 27624,
   "historico": [
+   {
+    "quando": "2026-11-22T21:53:14.228Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "spa · ciclo perdido (3 tiros) · gatilho: coluna :51"
+   },
+   {
+    "quando": "2026-11-22T21:52:55.620Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.45) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T21:52:55.617Z",
     "resultado": "GREEN_OBS",
@@ -4378,73 +4390,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:17:42.216Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:17:29.821Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "eng": 1795383709617
+   "eng": 1795383709617,
+   "spa": 1795384394228
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "18:49",
-     "jogo": "ATH x RAY",
-     "odd": 1.93
-    },
-    {
-     "h": "18:51",
-     "jogo": "BET x DLC",
-     "odd": 1.91
-    },
-    {
-     "h": "18:53",
-     "jogo": "RSO x LEV",
-     "odd": 1.95
-    }
-   ],
-   "gatilho": "coluna :51",
-   "alvo": {
-    "h": "18:53",
-    "jogo": "RSO x LEV",
-    "odd": 1.95,
-    "unidades": 4,
-    "desde": 1795384375613
-   },
-   "iniciadoEm": 1795383712321,
-   "tiros": [
-    {
-     "h": "18:49",
-     "jogo": "ATH x RAY",
-     "odd": 1.93,
-     "unidades": 1
-    },
-    {
-     "h": "18:51",
-     "jogo": "BET x DLC",
-     "odd": 1.91,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795383709617,
    "ita": 1795331927310,
-   "spa": 1795379798415,
+   "spa": 1795384394228,
    "lat": 1795361275805,
    "bra": 1795380169712,
    "mnd": 1795377222114
@@ -4459,7 +4416,7 @@
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
-   "2026-11-22": 35.8
+   "2026-11-22": 28.8
   },
   "_obs": {}
  },
@@ -4622,10 +4579,6 @@
    "mnd": {
     "desde": 1795384204420,
     "gatilho": "coluna :52"
-   },
-   "spa": {
-    "desde": 1795384375617,
-    "gatilho": "odd 1.85"
    }
   }
  },
