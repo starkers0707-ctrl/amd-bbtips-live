@@ -1,12 +1,18 @@
 {
  "o35": {
   "saldo": 7.6,
-  "ciclos": 125,
+  "ciclos": 126,
   "greens": 47,
   "redsCiclo": 22,
   "aborts": 0,
-  "descartes": 56,
+  "descartes": 57,
   "historico": [
+   {
+    "quando": "2026-11-22T23:48:33.609Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho seq RRGRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T23:45:33.443Z",
     "resultado": "GREEN",
@@ -761,7 +767,37 @@
   "consumidas": {
    "mnd": 1795391133443
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "20:51",
+     "jogo": "LAZ x MIL",
+     "odd": 3.28
+    },
+    {
+     "h": "20:53",
+     "jogo": "BOL x PAR",
+     "odd": 3.35
+    },
+    {
+     "h": "20:55",
+     "jogo": "MON x CAG",
+     "odd": 3.33
+    }
+   ],
+   "gatilho": "seq RRGRG",
+   "alvo": {
+    "h": "20:51",
+    "jogo": "LAZ x MIL",
+    "odd": 3.28,
+    "unidades": 1,
+    "desde": 1795391314145
+   },
+   "iniciadoEm": 1795391314145
+  },
   "cooldown": {
    "mnd": 1795391133443,
    "lat": 1795387530746,
@@ -771,9 +807,9 @@
    "bra": 1795277376896
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "3.19",
-   "n": 8,
+   "tipo": "seq",
+   "chave": "RRGRG",
+   "n": 17,
    "start": 1
   },
   "dias": {
@@ -794,12 +830,18 @@
  },
  "o25": {
   "saldo": 17.7,
-  "ciclos": 29500,
+  "ciclos": 29501,
   "greens": 118,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 29371,
+  "descartes": 29372,
   "historico": [
+   {
+    "quando": "2026-11-22T23:48:33.679Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T23:48:24.780Z",
     "resultado": "GREEN_OBS",
@@ -4393,12 +4435,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:55:10.622Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4571,10 +4607,6 @@
    "ita": {
     "desde": 1795331722115,
     "gatilho": "time CAG"
-   },
-   "mnd": {
-    "desde": 1795391304779,
-    "gatilho": "coluna :56"
    }
   }
  },
