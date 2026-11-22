@@ -695,13 +695,61 @@
   }
  },
  "o25": {
-  "saldo": 23.1,
-  "ciclos": 19701,
-  "greens": 90,
+  "saldo": 24,
+  "ciclos": 19709,
+  "greens": 91,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 19604,
+  "descartes": 19611,
   "historico": [
+   {
+    "quando": "2026-11-22T12:43:35.361Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :49) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T12:43:35.359Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T12:43:35.357Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T12:43:35.356Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "eng · CRY x TOT @1.94 (tiro 1) · gatilho: coluna :44"
+   },
+   {
+    "quando": "2026-11-22T12:43:32.358Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time PER) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T12:43:32.355Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :49) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T12:43:32.269Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T12:43:32.265Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T12:43:12.659Z",
     "resultado": "GREEN_OBS",
@@ -4253,95 +4301,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time CIO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:07:35.667Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.92) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:07:35.665Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:07:35.662Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:07:32.576Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time CIO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:07:32.568Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.92) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:07:32.564Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:07:32.556Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:07:12.457Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time CIO) — liga REARMADA"
    }
   ],
   "consumidas": {
    "bra": 1795348670564,
    "spa": 1795349678564,
-   "lat": 1795351176565
+   "lat": 1795351176565,
+   "eng": 1795351415355
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "09:42",
-     "jogo": "CRY x TOT",
-     "odd": 1.94
-    },
-    {
-     "h": "09:44",
-     "jogo": "HUL x BOU",
-     "odd": 1.8
-    },
-    {
-     "h": "09:46",
-     "jogo": "MNC x EVE",
-     "odd": 1.87
-    }
-   ],
-   "gatilho": "coluna :44",
-   "alvo": {
-    "h": "09:42",
-    "jogo": "CRY x TOT",
-    "odd": 1.94,
-    "unidades": 1,
-    "desde": 1795351187964
-   },
-   "iniciadoEm": 1795351187964
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
-   "eng": 1795346146168,
+   "eng": 1795351415355,
    "ita": 1795331927310,
    "spa": 1795349678564,
    "lat": 1795351176565,
@@ -4352,13 +4323,13 @@
    "tipo": "time",
    "chave": "IPS",
    "n": 24,
-   "start": 8
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
-   "2026-11-22": 16.1
+   "2026-11-22": 17
   },
   "_obs": {}
  },
@@ -4482,9 +4453,9 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
-   "lat": {
-    "desde": 1795351392659,
-    "gatilho": "time PER"
+   "spa": {
+    "desde": 1795351415361,
+    "gatilho": "coluna :49"
    }
   }
  },
