@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 6.2,
-  "ciclos": 109,
-  "greens": 39,
+  "saldo": 8.6,
+  "ciclos": 110,
+  "greens": 40,
   "redsCiclo": 19,
   "aborts": 0,
   "descartes": 51,
   "historico": [
+   {
+    "quando": "2026-11-22T15:21:40.512Z",
+    "resultado": "GREEN",
+    "unidades": 2.4,
+    "detalhe": "mnd · SWI x WAL @3.36 (tiro 1) · gatilho: coluna :22"
+   },
    {
     "quando": "2026-11-22T14:24:57.563Z",
     "resultado": "GREEN",
@@ -663,41 +669,12 @@
    }
   ],
   "consumidas": {
-   "lat": 1795357497562
+   "lat": 1795357497562,
+   "mnd": 1795360900511
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "12:20",
-     "jogo": "SWI x WAL",
-     "odd": 3.36
-    },
-    {
-     "h": "12:22",
-     "jogo": "DEN x ARG",
-     "odd": 3.33
-    },
-    {
-     "h": "12:24",
-     "jogo": "POL x MEX",
-     "odd": 3.21
-    }
-   ],
-   "gatilho": "coluna :22",
-   "alvo": {
-    "h": "12:20",
-    "jogo": "SWI x WAL",
-    "odd": 3.36,
-    "unidades": 1,
-    "desde": 1795360217704
-   },
-   "iniciadoEm": 1795360217704
-  },
+  "ciclo": null,
   "cooldown": {
-   "mnd": 1795356588456,
+   "mnd": 1795360900511,
    "lat": 1795357497562,
    "eng": 1795326103522,
    "spa": 1795323557921,
@@ -713,7 +690,7 @@
   "dias": {
    "2026-11-20": 4.3,
    "2026-11-21": 11.3,
-   "2026-11-22": -9.4
+   "2026-11-22": -7
   },
   "_obs": {
    "bra": {
