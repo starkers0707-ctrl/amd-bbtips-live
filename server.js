@@ -2558,9 +2558,12 @@ app.get("/api/status", (req, res) => {
 // Cache da grade: varias abas/clientes pedem a mesma liga a cada poucos
 // segundos; so recalcula quando a liga recebe jogo novo (store[liga] troca).
 const gradeCache = new Map();
+let gradeCacheBytes = 0;
 app.get("/api/grade", (req, res, next) => {
   const liga = String(req.query.liga || "ita").toLowerCase();
-  const st = store[liga], k = req.originalUrl;
+  const q = req.query || {};
+  // chave sem o "_=" anti-cache dos clientes (cada pedido virava uma entrada nova e estourava a memoria)
+  const st = store[liga], k = [liga, q.horas, q.mkt, q.n, q.compacto, q.dia].join("|");
   const c = gradeCache.get(k);
   if (c && c.st === st && Date.now() - c.ts < 20000) { res.type("application/json"); return res.send(c.body); }
   const orig = res.json.bind(res);
@@ -2568,8 +2571,13 @@ app.get("/api/grade", (req, res, next) => {
     try {
       const body = JSON.stringify(b);
       if ((res.statusCode || 200) === 200) {
+        const velho = gradeCache.get(k);
+        if (velho) { gradeCacheBytes -= velho.body.length; gradeCache.delete(k); }
         gradeCache.set(k, { st, ts: Date.now(), body });
-        if (gradeCache.size > 300) gradeCache.delete(gradeCache.keys().next().value);
+        gradeCacheBytes += body.length;
+        while (gradeCache.size && (gradeCache.size > 60 || gradeCacheBytes > 30e6)) {
+          const [k0, e0] = gradeCache.entries().next().value; gradeCache.delete(k0); gradeCacheBytes -= e0.body.length;
+        }
       }
       res.type("application/json");
       return res.send(body);
