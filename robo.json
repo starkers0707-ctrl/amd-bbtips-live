@@ -742,12 +742,24 @@
  },
  "o25": {
   "saldo": 33.6,
-  "ciclos": 24066,
+  "ciclos": 24068,
   "greens": 103,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 23956,
+  "descartes": 23958,
   "historico": [
+   {
+    "quando": "2026-11-22T17:20:23.273Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :44) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T17:19:44.366Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :44) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T17:19:40.767Z",
     "resultado": "GREEN_OBS",
@@ -4335,18 +4347,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T16:24:45.889Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T16:24:45.797Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4354,7 +4354,37 @@
    "eng": 1795366070068,
    "bra": 1795367048374
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "14:24",
+     "jogo": "NED x BEL",
+     "odd": 1.72
+    },
+    {
+     "h": "14:26",
+     "jogo": "CRO x URY",
+     "odd": 1.92
+    },
+    {
+     "h": "14:28",
+     "jogo": "BRA x ITA",
+     "odd": 1.85
+    }
+   ],
+   "gatilho": "coluna :26",
+   "alvo": {
+    "h": "14:24",
+    "jogo": "NED x BEL",
+    "odd": 1.72,
+    "unidades": 1,
+    "desde": 1795367984274
+   },
+   "iniciadoEm": 1795367984274
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795366070068,
@@ -4365,9 +4395,9 @@
    "mnd": 1795341815561
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.94",
-   "n": 19,
+   "tipo": "coluna",
+   "chave": ":26",
+   "n": 13,
    "start": 2
   },
   "dias": {
@@ -4498,8 +4528,12 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
+   "mnd": {
+    "desde": 1795367984465,
+    "gatilho": "coluna :26"
+   },
    "bra": {
-    "desde": 1795367980767,
+    "desde": 1795368023273,
     "gatilho": "coluna :44"
    }
   }
