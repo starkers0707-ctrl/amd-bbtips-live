@@ -610,12 +610,36 @@
  },
  "o25": {
   "saldo": 15,
-  "ciclos": 16564,
+  "ciclos": 16568,
   "greens": 80,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 16477,
+  "descartes": 16481,
   "historico": [
+   {
+    "quando": "2026-11-22T09:38:29.261Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T09:38:18.055Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T09:38:15.559Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T09:38:12.361Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T09:38:08.958Z",
     "resultado": "GREEN_OBS",
@@ -4191,30 +4215,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T08:12:31.114Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T08:12:15.010Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T08:12:05.913Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T08:12:05.820Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time BRE) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4271,10 +4271,10 @@
    "mnd": 1795337378261
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "1-0 / 0-1",
-   "n": 10,
-   "start": 1
+   "tipo": "time",
+   "chave": "GRM",
+   "n": 8,
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
@@ -4406,8 +4406,12 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
+   "bra": {
+    "desde": 1795340297965,
+    "gatilho": "time GRM"
+   },
    "eng": {
-    "desde": 1795340288957,
+    "desde": 1795340309261,
     "gatilho": "time IPS"
    }
   }
@@ -4508,7 +4512,37 @@
   "consumidas": {
    "spa": 1795338037255
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "07:02",
+     "jogo": "VIT x JUV",
+     "odd": 1.68
+    },
+    {
+     "h": "07:05",
+     "jogo": "FOR x GRM",
+     "odd": 1.71
+    },
+    {
+     "h": "07:08",
+     "jogo": "PAR x CRM",
+     "odd": 1.81
+    }
+   ],
+   "gatilho": "time GRM",
+   "alvo": {
+    "h": "07:02",
+    "jogo": "VIT x JUV",
+    "odd": 1.68,
+    "unidades": 1,
+    "desde": 1795340298064
+   },
+   "iniciadoEm": 1795340298064
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795257582328,
@@ -4516,9 +4550,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "SEV",
-   "n": 11,
-   "start": 3
+   "chave": "GRM",
+   "n": 8,
+   "start": 8
   },
   "dias": {
    "2026-11-20": 0,
