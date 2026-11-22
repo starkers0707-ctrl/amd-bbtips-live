@@ -806,12 +806,18 @@
  },
  "o25": {
   "saldo": 17.7,
-  "ciclos": 29392,
+  "ciclos": 29393,
   "greens": 118,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 29263,
+  "descartes": 29264,
   "historico": [
+   {
+    "quando": "2026-11-22T23:36:07.026Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T23:35:36.995Z",
     "resultado": "GREEN_OBS",
@@ -4405,12 +4411,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:46:37.132Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4590,7 +4590,7 @@
     "gatilho": "odd 1.81"
    },
    "spa": {
-    "desde": 1795390536995,
+    "desde": 1795390567026,
     "gatilho": "odd 1.76"
    }
   }
@@ -4993,8 +4993,8 @@
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "20:33",
@@ -5014,13 +5014,21 @@
    ],
    "gatilho": "coluna :33",
    "alvo": {
-    "h": "20:33",
-    "jogo": "Porto x Paris",
-    "odd": 2,
-    "unidades": 1,
-    "desde": 1795390208905
+    "h": "20:36",
+    "jogo": "Celtic x Benfica",
+    "odd": 1.92,
+    "unidades": 2,
+    "desde": 1795390537008
    },
-   "iniciadoEm": 1795390208905
+   "iniciadoEm": 1795390208905,
+   "tiros": [
+    {
+     "h": "20:33",
+     "jogo": "Porto x Paris",
+     "odd": 2,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795331214015,
