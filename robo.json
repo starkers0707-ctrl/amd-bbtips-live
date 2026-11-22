@@ -818,12 +818,18 @@
  },
  "o25": {
   "saldo": 17.7,
-  "ciclos": 29443,
+  "ciclos": 29444,
   "greens": 118,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 29314,
+  "descartes": 29315,
   "historico": [
+   {
+    "quando": "2026-11-22T23:41:08.506Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T23:40:52.369Z",
     "resultado": "GREEN_OBS",
@@ -4417,12 +4423,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:51:30.829Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.54) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4596,21 +4596,23 @@
    "ita": {
     "desde": 1795331722115,
     "gatilho": "time CAG"
-   },
-   "mnd": {
-    "desde": 1795390852368,
-    "gatilho": "coluna :56"
    }
   }
  },
  "ambas": {
-  "saldo": -4.3,
-  "ciclos": 64,
+  "saldo": -11.3,
+  "ciclos": 65,
   "greens": 27,
-  "redsCiclo": 3,
+  "redsCiclo": 4,
   "aborts": 0,
   "descartes": 34,
   "historico": [
+   {
+    "quando": "2026-11-22T23:40:52.383Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "cam · ciclo perdido (3 tiros) · gatilho: coluna :33"
+   },
    {
     "quando": "2026-11-22T23:30:05.801Z",
     "resultado": "GREEN_OBS",
@@ -4997,52 +4999,39 @@
    }
   ],
   "consumidas": {
-   "ame": 1795387537535
+   "ame": 1795387537535,
+   "cam": 1795390852383
   },
   "ciclo": {
-   "liga": "cam",
-   "degrau": 2,
-   "apostado": 3,
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
    "plano": [
     {
-     "h": "20:33",
-     "jogo": "Porto x Paris",
-     "odd": 2
+     "h": "20:52",
+     "jogo": "CHL x FRA",
+     "odd": 1.68
     },
     {
-     "h": "20:36",
-     "jogo": "Celtic x Benfica",
-     "odd": 1.92
+     "h": "20:54",
+     "jogo": "BRA x ARG",
+     "odd": 1.78
     },
     {
-     "h": "20:39",
-     "jogo": "Amsterdam x Rome",
-     "odd": 2.05
+     "h": "20:56",
+     "jogo": "ITA x COL",
+     "odd": 1.71
     }
    ],
-   "gatilho": "coluna :33",
+   "gatilho": "odd 1.78",
    "alvo": {
-    "h": "20:39",
-    "jogo": "Amsterdam x Rome",
-    "odd": 2.05,
-    "unidades": 4,
-    "desde": 1795390687060
+    "h": "20:52",
+    "jogo": "CHL x FRA",
+    "odd": 1.68,
+    "unidades": 1,
+    "desde": 1795390868520
    },
-   "iniciadoEm": 1795390208905,
-   "tiros": [
-    {
-     "h": "20:33",
-     "jogo": "Porto x Paris",
-     "odd": 2,
-     "unidades": 1
-    },
-    {
-     "h": "20:36",
-     "jogo": "Celtic x Benfica",
-     "odd": 1.92,
-     "unidades": 2
-    }
-   ]
+   "iniciadoEm": 1795390868520
   },
   "cooldown": {
    "lat": 1795331214015,
@@ -5050,7 +5039,7 @@
    "spa": 1795364566793,
    "bra": 1795383404717,
    "mnd": 1795372058521,
-   "cam": 1795385689330,
+   "cam": 1795390852383,
    "cop": 1795386361915,
    "ame": 1795387537535
   },
@@ -5063,7 +5052,7 @@
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
-   "2026-11-22": -6.3
+   "2026-11-22": -13.3
   },
   "_obs": {}
  }
