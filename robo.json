@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 15.6,
-  "ciclos": 83,
+  "saldo": 8.6,
+  "ciclos": 84,
   "greens": 31,
-  "redsCiclo": 14,
+  "redsCiclo": 15,
   "aborts": 0,
   "descartes": 38,
   "historico": [
+   {
+    "quando": "2026-11-22T04:11:45.213Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "mnd · ciclo perdido (3 tiros) · gatilho: placar goleada (3+)"
+   },
    {
     "quando": "2026-11-22T04:04:12.512Z",
     "resultado": "GREEN_OBS",
@@ -506,54 +512,12 @@
     "detalhe": "mnd · POL x ENG @3.07 (tiro 2) · gatilho: placar 1-0 / 0-1"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "01:06",
-     "jogo": "BEL x URY",
-     "odd": 2.99
-    },
-    {
-     "h": "01:08",
-     "jogo": "ENG x CRO",
-     "odd": 3.32
-    },
-    {
-     "h": "01:10",
-     "jogo": "FRA x COL",
-     "odd": 2.93
-    }
-   ],
-   "gatilho": "placar goleada (3+)",
-   "alvo": {
-    "h": "01:10",
-    "jogo": "FRA x COL",
-    "odd": 2.93,
-    "unidades": 4,
-    "desde": 1795320579722
-   },
-   "iniciadoEm": 1795320259215,
-   "tiros": [
-    {
-     "h": "01:06",
-     "jogo": "BEL x URY",
-     "odd": 2.99,
-     "unidades": 1
-    },
-    {
-     "h": "01:08",
-     "jogo": "ENG x CRO",
-     "odd": 3.32,
-     "unidades": 2
-    }
-   ]
+  "consumidas": {
+   "mnd": 1795320705213
   },
+  "ciclo": null,
   "cooldown": {
-   "mnd": 1795271142083,
+   "mnd": 1795320705213,
    "lat": 1795301131715,
    "eng": 1795301867713,
    "spa": 1795249964237,
@@ -569,7 +533,7 @@
   "dias": {
    "2026-11-20": 4.3,
    "2026-11-21": 11.3,
-   "2026-11-22": 0
+   "2026-11-22": -7
   },
   "_obs": {}
  },
