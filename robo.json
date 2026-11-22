@@ -770,7 +770,7 @@
    "tipo": "odd",
    "chave": "5.06",
    "n": 9,
-   "start": 7
+   "start": 6
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -786,12 +786,36 @@
  },
  "o25": {
   "saldo": 42.8,
-  "ciclos": 27616,
+  "ciclos": 27620,
   "greens": 115,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 27494,
+  "descartes": 27498,
   "historico": [
+   {
+    "quando": "2026-11-22T21:41:56.418Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :44) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T21:41:52.412Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.45) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T21:41:52.409Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T21:41:52.323Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :44) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T21:41:49.714Z",
     "resultado": "GREEN_OBS",
@@ -4367,30 +4391,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:04:11.222Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:04:08.622Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:03:49.115Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:03:44.917Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4600,6 +4600,10 @@
    "ita": {
     "desde": 1795331722115,
     "gatilho": "time CAG"
+   },
+   "bra": {
+    "desde": 1795383716418,
+    "gatilho": "coluna :44"
    }
   }
  },
