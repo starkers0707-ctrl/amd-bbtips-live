@@ -764,12 +764,18 @@
  },
  "o25": {
   "saldo": 36.8,
-  "ciclos": 28441,
+  "ciclos": 28442,
   "greens": 116,
   "redsCiclo": 8,
   "aborts": 0,
-  "descartes": 28317,
+  "descartes": 28318,
   "historico": [
+   {
+    "quando": "2026-11-22T22:24:15.105Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T22:24:07.718Z",
     "resultado": "GREEN_OBS",
@@ -4363,12 +4369,6 @@
     "resultado": "GREEN",
     "unidades": 1,
     "detalhe": "ame · Belo Horizonte x Sao Paulo @2.02 (tiro 2) · gatilho: odd 2.02"
-   },
-   {
-    "quando": "2026-11-22T21:57:23.514Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.54) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4570,9 +4570,9 @@
     "desde": 1795386149576,
     "gatilho": "coluna :39"
    },
-   "cam": {
-    "desde": 1795386247717,
-    "gatilho": "odd 2.4"
+   "mnd": {
+    "desde": 1795386255105,
+    "gatilho": "coluna :26"
    }
   }
  },
