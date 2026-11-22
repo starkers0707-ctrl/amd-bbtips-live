@@ -522,7 +522,37 @@
    "mnd": 1795320705213,
    "spa": 1795323557921
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "02:14",
+     "jogo": "RAC x OLI",
+     "odd": 3.34
+    },
+    {
+     "h": "02:17",
+     "jogo": "BOC x PAR",
+     "odd": 3.36
+    },
+    {
+     "h": "02:20",
+     "jogo": "ARG x COL",
+     "odd": 3.18
+    }
+   ],
+   "gatilho": "placar 1-0 / 0-1",
+   "alvo": {
+    "h": "02:14",
+    "jogo": "RAC x OLI",
+    "odd": 3.34,
+    "unidades": 1,
+    "desde": 1795324192018
+   },
+   "iniciadoEm": 1795324192018
+  },
   "cooldown": {
    "mnd": 1795320705213,
    "lat": 1795301131715,
@@ -532,8 +562,8 @@
    "bra": 1795277376896
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "RRRRR",
+   "tipo": "placar",
+   "chave": "1-0 / 0-1",
    "n": 8,
    "start": 1
   },
