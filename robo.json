@@ -593,12 +593,18 @@
  },
  "o25": {
   "saldo": 12.4,
-  "ciclos": 16094,
+  "ciclos": 16095,
   "greens": 77,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 16010,
+  "descartes": 16011,
   "historico": [
+   {
+    "quando": "2026-11-22T08:28:42.856Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T08:28:30.657Z",
     "resultado": "GREEN_OBS",
@@ -4192,12 +4198,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T07:18:47.311Z",
-    "resultado": "GREEN",
-    "unidades": 0.9,
-    "detalhe": "ita · CAG x UDI @1.93 (tiro 1) · gatilho: time CAG"
    }
   ],
   "consumidas": {
@@ -4316,10 +4316,38 @@
     "detalhe": "cam · ciclo perdido (3 tiros) · gatilho: placar 0-0"
    }
   ],
-  "consumidas": {
-   "mnd": 1795332493110
+  "consumidas": {},
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "05:38",
+     "jogo": "WAL x DEN",
+     "odd": 1.9
+    },
+    {
+     "h": "05:40",
+     "jogo": "BRA x GER",
+     "odd": 1.82
+    },
+    {
+     "h": "05:42",
+     "jogo": "SWE x ARG",
+     "odd": 1.85
+    }
+   ],
+   "gatilho": "time GER",
+   "alvo": {
+    "h": "05:38",
+    "jogo": "WAL x DEN",
+    "odd": 1.9,
+    "unidades": 1,
+    "desde": 1795336110759
+   },
+   "iniciadoEm": 1795336110759
   },
-  "ciclo": null,
   "cooldown": {
    "cam": 1795142462862,
    "eng": 1795148138958,
@@ -4332,8 +4360,8 @@
   "_gatilhoAtual": {
    "tipo": "time",
    "chave": "GER",
-   "n": 12,
-   "start": 6
+   "n": 15,
+   "start": 5
   },
   "dias": {
    "2026-11-19": -7,
@@ -4349,9 +4377,9 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
-   "spa": {
-    "desde": 1795336110657,
-    "gatilho": "time DLC"
+   "eng": {
+    "desde": 1795336122855,
+    "gatilho": "time IPS"
    }
   }
  },
