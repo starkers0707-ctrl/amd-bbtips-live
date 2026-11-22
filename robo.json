@@ -665,12 +665,30 @@
  },
  "o25": {
   "saldo": 24,
-  "ciclos": 20010,
+  "ciclos": 20013,
   "greens": 91,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 19912,
+  "descartes": 19915,
   "historico": [
+   {
+    "quando": "2026-11-22T12:57:51.261Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.92) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T12:57:51.258Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.92) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T12:57:51.256Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time IPS) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T12:57:48.557Z",
     "resultado": "GREEN_OBS",
@@ -4252,24 +4270,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:27:42.555Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:27:42.467Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T12:27:42.464Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4279,8 +4279,8 @@
   },
   "ciclo": {
    "liga": "bra",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "10:05",
@@ -4300,13 +4300,21 @@
    ],
    "gatilho": "odd 1.95",
    "alvo": {
-    "h": "10:05",
-    "jogo": "GRM x GOI",
-    "odd": 1.89,
-    "unidades": 1,
-    "desde": 1795352271166
+    "h": "10:08",
+    "jogo": "PAU x GTN",
+    "odd": 1.95,
+    "unidades": 2,
+    "desde": 1795352291955
    },
-   "iniciadoEm": 1795352271166
+   "iniciadoEm": 1795352271166,
+   "tiros": [
+    {
+     "h": "10:05",
+     "jogo": "GRM x GOI",
+     "odd": 1.89,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795142462857,
