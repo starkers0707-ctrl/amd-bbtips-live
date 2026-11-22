@@ -718,13 +718,19 @@
   }
  },
  "o25": {
-  "saldo": 34.3,
-  "ciclos": 24383,
-  "greens": 104,
+  "saldo": 34.6,
+  "ciclos": 24384,
+  "greens": 105,
   "redsCiclo": 7,
   "aborts": 0,
   "descartes": 24272,
   "historico": [
+   {
+    "quando": "2026-11-22T17:44:35.515Z",
+    "resultado": "GREEN",
+    "unidades": 0.3,
+    "detalhe": "spa · SEV x VIL @1.83 (tiro 3) · gatilho: coluna :39"
+   },
    {
     "quando": "2026-11-22T17:40:35.774Z",
     "resultado": "GREEN_OBS",
@@ -4318,69 +4324,20 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T16:51:53.066Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
    "eng": 1795366070068,
    "bra": 1795367048374,
-   "mnd": 1795368337072
+   "mnd": 1795368337072,
+   "spa": 1795369475514
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "14:37",
-     "jogo": "RSO x ALV",
-     "odd": 1.95
-    },
-    {
-     "h": "14:39",
-     "jogo": "RST x ATM",
-     "odd": 1.84
-    },
-    {
-     "h": "14:41",
-     "jogo": "SEV x VIL",
-     "odd": 1.83
-    }
-   ],
-   "gatilho": "coluna :39",
-   "alvo": {
-    "h": "14:41",
-    "jogo": "SEV x VIL",
-    "odd": 1.83,
-    "unidades": 4,
-    "desde": 1795369259869
-   },
-   "iniciadoEm": 1795368365271,
-   "tiros": [
-    {
-     "h": "14:37",
-     "jogo": "RSO x ALV",
-     "odd": 1.95,
-     "unidades": 1
-    },
-    {
-     "h": "14:39",
-     "jogo": "RST x ATM",
-     "odd": 1.84,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795366070068,
    "ita": 1795331927310,
-   "spa": 1795364444587,
+   "spa": 1795369475514,
    "lat": 1795361275805,
    "bra": 1795367048374,
    "mnd": 1795368337072
@@ -4389,13 +4346,13 @@
    "tipo": "odd",
    "chave": "1.82",
    "n": 8,
-   "start": 8
+   "start": 5
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
-   "2026-11-22": 27.3
+   "2026-11-22": 27.6
   },
   "_obs": {}
  },
