@@ -526,12 +526,24 @@
  },
  "o25": {
   "saldo": 4.2,
-  "ciclos": 14444,
+  "ciclos": 14446,
   "greens": 67,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 14370,
+  "descartes": 14372,
   "historico": [
+   {
+    "quando": "2026-11-22T01:21:09.419Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.75) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T01:21:09.416Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T01:20:39.921Z",
     "resultado": "GREEN_OBS",
@@ -4119,24 +4131,42 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.75) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T00:02:16.012Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T00:02:11.812Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795310439916
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "22:25",
+     "jogo": "INT x VEN",
+     "odd": 1.65
+    },
+    {
+     "h": "22:27",
+     "jogo": "GEN x COM",
+     "odd": 1.83
+    },
+    {
+     "h": "22:29",
+     "jogo": "CAG x MIL",
+     "odd": 1.85
+    }
+   ],
+   "gatilho": "odd 1.83",
+   "alvo": {
+    "h": "22:25",
+    "jogo": "INT x VEN",
+    "odd": 1.65,
+    "unidades": 1,
+    "desde": 1795310469412
+   },
+   "iniciadoEm": 1795310469412
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795305570820,
@@ -4265,7 +4295,7 @@
     "gatilho": "coluna :29"
    },
    "eng": {
-    "desde": 1795310439921,
+    "desde": 1795310469419,
     "gatilho": "odd 1.75"
    }
   }
