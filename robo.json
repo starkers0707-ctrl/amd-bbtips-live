@@ -748,12 +748,24 @@
  },
  "o25": {
   "saldo": 42,
-  "ciclos": 27386,
+  "ciclos": 27388,
   "greens": 114,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 27265,
+  "descartes": 27267,
   "historico": [
+   {
+    "quando": "2026-11-22T21:32:18.519Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :44) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T21:32:03.925Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T21:32:03.916Z",
     "resultado": "GREEN_OBS",
@@ -4341,18 +4353,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T20:39:35.510Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T20:39:35.320Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :44) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4507,7 +4507,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "18:45",
+     "jogo": "France x England",
+     "odd": 2.25
+    },
+    {
+     "h": "18:48",
+     "jogo": "Mexico x Brazil",
+     "odd": 2.05
+    },
+    {
+     "h": "18:51",
+     "jogo": "Portugal x Belgium",
+     "odd": 2.24
+    }
+   ],
+   "gatilho": "odd 2.05",
+   "alvo": {
+    "h": "18:45",
+    "jogo": "France x England",
+    "odd": 2.25,
+    "unidades": 1,
+    "desde": 1795383124023
+   },
+   "iniciadoEm": 1795383124023
+  },
   "cooldown": {
    "cam": 1795142462862,
    "eng": 1795148138958,
@@ -4518,10 +4548,10 @@
    "mnd": 1795337015063
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "ARG",
-   "n": 11,
-   "start": 2
+   "tipo": "odd",
+   "chave": "2.05",
+   "n": 10,
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -4533,9 +4563,9 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
-   "eng": {
-    "desde": 1795383123916,
-    "gatilho": "odd 1.83"
+   "bra": {
+    "desde": 1795383138519,
+    "gatilho": "coluna :44"
    }
   }
  },
@@ -4895,9 +4925,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "odd",
-   "chave": "1.74",
-   "n": 11,
-   "start": 1
+   "chave": "1.85",
+   "n": 8,
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
