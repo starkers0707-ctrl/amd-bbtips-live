@@ -614,12 +614,24 @@
  },
  "o25": {
   "saldo": 17.7,
-  "ciclos": 16954,
+  "ciclos": 16956,
   "greens": 83,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 16864,
+  "descartes": 16866,
   "historico": [
+   {
+    "quando": "2026-11-22T10:03:52.861Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T10:03:49.764Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T10:03:38.557Z",
     "resultado": "GREEN_OBS",
@@ -4207,18 +4219,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T09:05:17.956Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time BRE) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T09:05:15.467Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ELC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4267,10 +4267,10 @@
    "mnd": 1795341815561
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "GGRRR",
-   "n": 8,
-   "start": 1
+   "tipo": "time",
+   "chave": "IPS",
+   "n": 17,
+   "start": 5
   },
   "dias": {
    "2026-11-19": -7,
@@ -4407,6 +4407,10 @@
    "spa": {
     "desde": 1795341784275,
     "gatilho": "odd 1.92"
+   },
+   "bra": {
+    "desde": 1795341832861,
+    "gatilho": "time PAL"
    }
   }
  },
@@ -4524,7 +4528,37 @@
   "consumidas": {
    "bra": 1795341818668
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "07:05",
+     "jogo": "SEV x RMA",
+     "odd": 1.67
+    },
+    {
+     "h": "07:07",
+     "jogo": "ATH x LEV",
+     "odd": 1.7
+    },
+    {
+     "h": "07:09",
+     "jogo": "RSO x VIL",
+     "odd": 1.68
+    }
+   ],
+   "gatilho": "time SEV",
+   "alvo": {
+    "h": "07:05",
+    "jogo": "SEV x RMA",
+    "odd": 1.67,
+    "unidades": 1,
+    "desde": 1795341829858
+   },
+   "iniciadoEm": 1795341829858
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795257582328,
