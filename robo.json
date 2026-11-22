@@ -776,12 +776,18 @@
  },
  "o25": {
   "saldo": 31.7,
-  "ciclos": 28941,
+  "ciclos": 28942,
   "greens": 118,
   "redsCiclo": 9,
   "aborts": 0,
-  "descartes": 28814,
+  "descartes": 28815,
   "historico": [
+   {
+    "quando": "2026-11-22T22:57:33.892Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T22:57:07.734Z",
     "resultado": "GREEN_OBS",
@@ -4375,21 +4381,44 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:18:53.309Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.54) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "ame": 1795384649420,
    "mnd": 1795386457308,
    "cam": 1795387638383,
    "spa": 1795388110617
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "20:01",
+     "jogo": "La Plata x Buenos Aires",
+     "odd": 2.38
+    },
+    {
+     "h": "20:04",
+     "jogo": "Porto Alegre x Belo Horizonte",
+     "odd": 2.23
+    },
+    {
+     "h": "20:07",
+     "jogo": "Sao Paulo x Guayaquil",
+     "odd": 2.25
+    }
+   ],
+   "gatilho": "seq RGRGG",
+   "alvo": {
+    "h": "20:01",
+    "jogo": "La Plata x Buenos Aires",
+    "odd": 2.38,
+    "unidades": 1,
+    "desde": 1795388253886
+   },
+   "iniciadoEm": 1795388253886
+  },
   "cooldown": {
    "cam": 1795387638383,
    "eng": 1795383709617,
@@ -4401,10 +4430,10 @@
    "ame": 1795384649420
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":13",
-   "n": 18,
-   "start": 8
+   "tipo": "seq",
+   "chave": "RGRGG",
+   "n": 9,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -4553,9 +4582,9 @@
     "desde": 1795388190827,
     "gatilho": "coluna :13"
    },
-   "cam": {
-    "desde": 1795388227734,
-    "gatilho": "odd 2.74"
+   "mnd": {
+    "desde": 1795388253892,
+    "gatilho": "odd 1.81"
    }
   }
  },
