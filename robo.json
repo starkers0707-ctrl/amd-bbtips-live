@@ -4390,8 +4390,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "20:01",
@@ -4411,13 +4411,21 @@
    ],
    "gatilho": "seq RGRGG",
    "alvo": {
-    "h": "20:01",
-    "jogo": "La Plata x Buenos Aires",
-    "odd": 2.38,
-    "unidades": 1,
-    "desde": 1795388253886
+    "h": "20:04",
+    "jogo": "Porto Alegre x Belo Horizonte",
+    "odd": 2.23,
+    "unidades": 2,
+    "desde": 1795388572337
    },
-   "iniciadoEm": 1795388253886
+   "iniciadoEm": 1795388253886,
+   "tiros": [
+    {
+     "h": "20:01",
+     "jogo": "La Plata x Buenos Aires",
+     "odd": 2.38,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795387638383,
@@ -4431,8 +4439,8 @@
   },
   "_gatilhoAtual": {
    "tipo": "seq",
-   "chave": "RGRGG",
-   "n": 9,
+   "chave": "RGGGR",
+   "n": 13,
    "start": 1
   },
   "dias": {
@@ -4609,10 +4617,6 @@
    "cam": {
     "desde": 1795388328885,
     "gatilho": "odd 2.74"
-   },
-   "mnd": {
-    "desde": 1795388556734,
-    "gatilho": "odd 1.81"
    }
   }
  },
