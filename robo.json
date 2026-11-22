@@ -764,12 +764,24 @@
  },
  "o25": {
   "saldo": 36.8,
-  "ciclos": 28473,
+  "ciclos": 28475,
   "greens": 116,
   "redsCiclo": 8,
   "aborts": 0,
-  "descartes": 28349,
+  "descartes": 28351,
   "historico": [
+   {
+    "quando": "2026-11-22T22:25:37.051Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :30) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T22:25:37.047Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T22:25:27.745Z",
     "resultado": "GREEN_OBS",
@@ -4357,18 +4369,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:58:29.818Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T21:58:29.816Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4378,8 +4378,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "19:24",
@@ -4399,13 +4399,21 @@
    ],
    "gatilho": "coluna :26",
    "alvo": {
-    "h": "19:24",
-    "jogo": "COL x CRO",
-    "odd": 1.93,
-    "unidades": 1,
-    "desde": 1795385560520
+    "h": "19:26",
+    "jogo": "POR x SPA",
+    "odd": 1.94,
+    "unidades": 2,
+    "desde": 1795386337040
    },
-   "iniciadoEm": 1795385560520
+   "iniciadoEm": 1795385560520,
+   "tiros": [
+    {
+     "h": "19:24",
+     "jogo": "COL x CRO",
+     "odd": 1.93,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795142462857,
@@ -4566,9 +4574,9 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
-   "cam": {
-    "desde": 1795386327745,
-    "gatilho": "odd 2.4"
+   "mnd": {
+    "desde": 1795386337051,
+    "gatilho": "coluna :30"
    }
   }
  },
