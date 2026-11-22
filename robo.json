@@ -4134,7 +4134,37 @@
   "consumidas": {
    "eng": 1795311103614
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "23:45",
+     "jogo": "ESP x MLG",
+     "odd": 1.92
+    },
+    {
+     "h": "23:47",
+     "jogo": "RAY x GET",
+     "odd": 1.95
+    },
+    {
+     "h": "23:49",
+     "jogo": "LEV x BET",
+     "odd": 1.89
+    }
+   ],
+   "gatilho": "coluna :47",
+   "alvo": {
+    "h": "23:45",
+    "jogo": "ESP x MLG",
+    "odd": 1.92,
+    "unidades": 1,
+    "desde": 1795314551715
+   },
+   "iniciadoEm": 1795314551715
+  },
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795311103614,
@@ -4144,10 +4174,10 @@
    "bra": 1795207550537
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.79",
-   "n": 8,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":47",
+   "n": 22,
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
