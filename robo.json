@@ -523,13 +523,19 @@
   "_obs": {}
  },
  "o25": {
-  "saldo": 5.4,
-  "ciclos": 15031,
-  "greens": 69,
+  "saldo": 6.3,
+  "ciclos": 15032,
+  "greens": 70,
   "redsCiclo": 7,
   "aborts": 0,
   "descartes": 14955,
   "historico": [
+   {
+    "quando": "2026-11-22T02:29:17.113Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "spa · ESP x MLG @1.92 (tiro 1) · gatilho: coluna :47"
+   },
    {
     "quando": "2026-11-22T02:20:24.918Z",
     "resultado": "GREEN_OBS",
@@ -4123,53 +4129,17 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.75) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T01:19:36.521Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "eng": 1795311103614
+   "spa": 1795314557112
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "23:45",
-     "jogo": "ESP x MLG",
-     "odd": 1.92
-    },
-    {
-     "h": "23:47",
-     "jogo": "RAY x GET",
-     "odd": 1.95
-    },
-    {
-     "h": "23:49",
-     "jogo": "LEV x BET",
-     "odd": 1.89
-    }
-   ],
-   "gatilho": "coluna :47",
-   "alvo": {
-    "h": "23:45",
-    "jogo": "ESP x MLG",
-    "odd": 1.92,
-    "unidades": 1,
-    "desde": 1795314551715
-   },
-   "iniciadoEm": 1795314551715
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795142462857,
    "eng": 1795311103614,
    "ita": 1795310795115,
-   "spa": 1795310439916,
+   "spa": 1795314557112,
    "lat": 1795244093933,
    "bra": 1795207550537
   },
@@ -4182,7 +4152,7 @@
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
-   "2026-11-21": -6.8
+   "2026-11-21": -5.9
   },
   "_obs": {}
  },
@@ -4295,6 +4265,10 @@
    "ita": {
     "desde": 1795314038819,
     "gatilho": "coluna :25"
+   },
+   "spa": {
+    "desde": 1795314551813,
+    "gatilho": "coluna :47"
    }
   }
  },
