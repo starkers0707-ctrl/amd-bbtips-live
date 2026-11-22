@@ -786,7 +786,7 @@
    "tipo": "odd",
    "chave": "3.19",
    "n": 8,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -806,12 +806,18 @@
  },
  "o25": {
   "saldo": 24.7,
-  "ciclos": 29376,
+  "ciclos": 29377,
   "greens": 118,
   "redsCiclo": 10,
   "aborts": 0,
-  "descartes": 29248,
+  "descartes": 29249,
   "historico": [
+   {
+    "quando": "2026-11-22T23:33:36.668Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T23:33:27.376Z",
     "resultado": "GREEN_OBS",
@@ -4405,12 +4411,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:45:35.376Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4420,8 +4420,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "20:30",
@@ -4441,11 +4441,11 @@
    ],
    "gatilho": "odd 1.81",
    "alvo": {
-    "h": "20:32",
-    "jogo": "BRA x COL",
-    "odd": 1.81,
-    "unidades": 2,
-    "desde": 1795390293765
+    "h": "20:34",
+    "jogo": "FRA x URY",
+    "odd": 1.85,
+    "unidades": 4,
+    "desde": 1795390417142
    },
    "iniciadoEm": 1795390085986,
    "tiros": [
@@ -4454,6 +4454,12 @@
      "jogo": "NED x ENG",
      "odd": 1.88,
      "unidades": 1
+    },
+    {
+     "h": "20:32",
+     "jogo": "BRA x COL",
+     "odd": 1.81,
+     "unidades": 2
     }
    ]
   },
@@ -4471,7 +4477,7 @@
    "tipo": "coluna",
    "chave": ":50",
    "n": 18,
-   "start": 8
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -4625,10 +4631,6 @@
    "mnd": {
     "desde": 1795390086000,
     "gatilho": "odd 1.81"
-   },
-   "spa": {
-    "desde": 1795390407375,
-    "gatilho": "odd 1.76"
    }
   }
  },
