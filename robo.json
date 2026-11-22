@@ -776,12 +776,24 @@
  },
  "o25": {
   "saldo": 31.7,
-  "ciclos": 29068,
+  "ciclos": 29070,
   "greens": 118,
   "redsCiclo": 9,
   "aborts": 0,
-  "descartes": 28941,
+  "descartes": 28943,
   "historico": [
+   {
+    "quando": "2026-11-22T23:06:04.227Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-22T23:06:04.221Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T23:05:38.279Z",
     "resultado": "GREEN_OBS",
@@ -4369,18 +4381,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:25:18.930Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.4) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:25:18.925Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4565,8 +4565,8 @@
   "consumidas": {},
   "ciclo": {
    "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "20:01",
@@ -4586,11 +4586,11 @@
    ],
    "gatilho": "seq RGRGG",
    "alvo": {
-    "h": "20:04",
-    "jogo": "Porto Alegre x Belo Horizonte",
-    "odd": 2.23,
-    "unidades": 2,
-    "desde": 1795388572348
+    "h": "20:07",
+    "jogo": "Sao Paulo x Guayaquil",
+    "odd": 2.25,
+    "unidades": 4,
+    "desde": 1795388738283
    },
    "iniciadoEm": 1795388253902,
    "tiros": [
@@ -4599,6 +4599,12 @@
      "jogo": "La Plata x Buenos Aires",
      "odd": 2.38,
      "unidades": 1
+    },
+    {
+     "h": "20:04",
+     "jogo": "Porto Alegre x Belo Horizonte",
+     "odd": 2.23,
+     "unidades": 2
     }
    ]
   },
@@ -4628,9 +4634,9 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
-   "cam": {
-    "desde": 1795388738279,
-    "gatilho": "odd 2.74"
+   "mnd": {
+    "desde": 1795388764227,
+    "gatilho": "odd 1.81"
    }
   }
  },
