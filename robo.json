@@ -807,12 +807,18 @@
  },
  "o25": {
   "saldo": 17.7,
-  "ciclos": 29542,
+  "ciclos": 29543,
   "greens": 118,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 29413,
+  "descartes": 29414,
   "historico": [
+   {
+    "quando": "2026-11-22T23:54:08.067Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
+   },
    {
     "quando": "2026-11-22T23:53:33.984Z",
     "resultado": "GREEN_OBS",
@@ -4406,12 +4412,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T22:57:33.897Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.74) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4584,21 +4584,23 @@
    "ita": {
     "desde": 1795331722115,
     "gatilho": "time CAG"
-   },
-   "mnd": {
-    "desde": 1795391613984,
-    "gatilho": "coluna :56"
    }
   }
  },
  "ambas": {
-  "saldo": -11.3,
-  "ciclos": 65,
-  "greens": 27,
+  "saldo": -10.6,
+  "ciclos": 66,
+  "greens": 28,
   "redsCiclo": 4,
   "aborts": 0,
   "descartes": 34,
   "historico": [
+   {
+    "quando": "2026-11-22T23:53:33.996Z",
+    "resultado": "GREEN",
+    "unidades": 0.7,
+    "detalhe": "mnd · CHL x FRA @1.68 (tiro 1) · gatilho: odd 1.78"
+   },
    {
     "quando": "2026-11-22T23:40:52.383Z",
     "resultado": "RED_CICLO",
@@ -4991,45 +4993,46 @@
    }
   ],
   "consumidas": {
-   "cam": 1795390852383
+   "cam": 1795390852383,
+   "mnd": 1795391613996
   },
   "ciclo": {
-   "liga": "mnd",
+   "liga": "ame",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "20:52",
-     "jogo": "CHL x FRA",
-     "odd": 1.68
+     "h": "21:01",
+     "jogo": "Belo Horizonte x Santiago",
+     "odd": 2.02
     },
     {
-     "h": "20:54",
-     "jogo": "BRA x ARG",
-     "odd": 1.78
+     "h": "21:04",
+     "jogo": "Guayaquil x Lima",
+     "odd": 2
     },
     {
-     "h": "20:56",
-     "jogo": "ITA x COL",
-     "odd": 1.71
+     "h": "21:07",
+     "jogo": "Belo Horizonte x Asuncion",
+     "odd": 1.93
     }
    ],
-   "gatilho": "odd 1.78",
+   "gatilho": "seq RGGGG",
    "alvo": {
-    "h": "20:52",
-    "jogo": "CHL x FRA",
-    "odd": 1.68,
+    "h": "21:01",
+    "jogo": "Belo Horizonte x Santiago",
+    "odd": 2.02,
     "unidades": 1,
-    "desde": 1795390868520
+    "desde": 1795391648127
    },
-   "iniciadoEm": 1795390868520
+   "iniciadoEm": 1795391648127
   },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795257582328,
    "spa": 1795364566793,
    "bra": 1795383404717,
-   "mnd": 1795372058521,
+   "mnd": 1795391613996,
    "cam": 1795390852383,
    "cop": 1795386361915,
    "ame": 1795387537535
@@ -5043,7 +5046,7 @@
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
-   "2026-11-22": -13.3
+   "2026-11-22": -12.6
   },
   "_obs": {}
  }
