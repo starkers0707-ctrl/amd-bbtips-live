@@ -5502,7 +5502,7 @@ app.get("/api/admin/limpar-erro", (req, res) => {
 });
 app.get("/robots.txt", (req, res) => { res.type("text/plain").send("User-agent: *\nDisallow: /\n"); });
 
-  app.use(express.static(join(__dirname, "public")));
+  app.use(express.static(join(__dirname, "public"), { setHeaders: (res, p) => { if (p.endsWith(".html")) res.setHeader("Cache-Control", "no-cache"); } }));
   // Render deve abrir o painel diretamente na raiz; manter fallback explícito
   // evita 404 quando o middleware está atrás de alguma configuração de rota.
   app.get("/", (req, res) => res.sendFile(join(__dirname, "public", "index.html")));
