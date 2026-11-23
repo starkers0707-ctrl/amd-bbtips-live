@@ -4663,7 +4663,37 @@
    "ita": 1795474973200,
    "cam": 1795475247707
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "20:07",
+     "jogo": "OSA x RAY",
+     "odd": 1.92
+    },
+    {
+     "h": "20:09",
+     "jogo": "VIL x BET",
+     "odd": 1.93
+    },
+    {
+     "h": "20:11",
+     "jogo": "CEL x ESP",
+     "odd": 1.94
+    }
+   ],
+   "gatilho": "coluna :09",
+   "alvo": {
+    "h": "20:07",
+    "jogo": "OSA x RAY",
+    "odd": 1.92,
+    "unidades": 1,
+    "desde": 1795475249772
+   },
+   "iniciadoEm": 1795475249772
+  },
   "cooldown": {
    "cam": 1795475247707,
    "eng": 1795383709617,
@@ -4676,9 +4706,9 @@
    "cop": 1795470795073
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":11",
-   "n": 19,
+   "tipo": "seq",
+   "chave": "GRRRG",
+   "n": 13,
    "start": 1
   },
   "dias": {
@@ -4841,10 +4871,6 @@
    "ame": {
     "desde": 1795475146151,
     "gatilho": "odd 2.1"
-   },
-   "lat": {
-    "desde": 1795475247715,
-    "gatilho": "coluna :11"
    }
   }
  },
