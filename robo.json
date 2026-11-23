@@ -879,12 +879,18 @@
  },
  "o25": {
   "saldo": 27.6,
-  "ciclos": 35910,
+  "ciclos": 35911,
   "greens": 138,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 35759,
+  "descartes": 35760,
   "historico": [
+   {
+    "quando": "2026-11-23T09:18:16.685Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq GGRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T09:18:12.160Z",
     "resultado": "GREEN_OBS",
@@ -4478,12 +4484,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:40:04.949Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Rio de Janeiro) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4693,7 +4693,7 @@
     "gatilho": "time VAL"
    },
    "mnd": {
-    "desde": 1795425492160,
+    "desde": 1795425496685,
     "gatilho": "seq GGRG"
    }
   }
@@ -5342,7 +5342,37 @@
    "cam": 1795424142901,
    "ame": 1795425485395
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "06:20",
+     "jogo": "FLU x MEN",
+     "odd": 1.67
+    },
+    {
+     "h": "06:23",
+     "jogo": "ZEI x CUI",
+     "odd": 1.84
+    },
+    {
+     "h": "06:26",
+     "jogo": "VIT x THI",
+     "odd": 1.68
+    }
+   ],
+   "gatilho": "odd 1.67",
+   "alvo": {
+    "h": "06:20",
+    "jogo": "FLU x MEN",
+    "odd": 1.67,
+    "unidades": 1,
+    "desde": 1795425492189
+   },
+   "iniciadoEm": 1795425492189
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -5354,9 +5384,9 @@
    "ame": 1795425485395
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "GRRG",
-   "n": 12,
+   "tipo": "odd",
+   "chave": "1.67",
+   "n": 9,
    "start": 1
   },
   "dias": {
