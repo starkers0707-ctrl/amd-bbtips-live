@@ -879,12 +879,18 @@
  },
  "o25": {
   "saldo": 27.6,
-  "ciclos": 35909,
+  "ciclos": 35910,
   "greens": 138,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 35758,
+  "descartes": 35759,
   "historico": [
+   {
+    "quando": "2026-11-23T09:18:12.160Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq GGRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T09:18:05.377Z",
     "resultado": "GREEN_OBS",
@@ -4478,12 +4484,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho time Rio de Janeiro) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:40:04.944Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4693,19 +4693,25 @@
     "gatilho": "time VAL"
    },
    "mnd": {
-    "desde": 1795425485376,
+    "desde": 1795425492160,
     "gatilho": "seq GGRG"
    }
   }
  },
  "ambas": {
-  "saldo": -3.1,
-  "ciclos": 104,
-  "greens": 46,
+  "saldo": -2.3,
+  "ciclos": 105,
+  "greens": 47,
   "redsCiclo": 5,
   "aborts": 0,
   "descartes": 53,
   "historico": [
+   {
+    "quando": "2026-11-23T09:18:05.395Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "ame · Medellin x Asuncion @1.88 (tiro 2) · gatilho: time Penarol"
+   },
    {
     "quando": "2026-11-23T09:10:57.948Z",
     "resultado": "GREEN_OBS",
@@ -5333,47 +5339,10 @@
   ],
   "consumidas": {
    "mnd": 1795422573955,
-   "cam": 1795424142901
+   "cam": 1795424142901,
+   "ame": 1795425485395
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "06:13",
-     "jogo": "Buenos Aires x Penarol",
-     "odd": 2.07
-    },
-    {
-     "h": "06:16",
-     "jogo": "Medellin x Asuncion",
-     "odd": 1.88
-    },
-    {
-     "h": "06:19",
-     "jogo": "Lima x Santos",
-     "odd": 1.88
-    }
-   ],
-   "gatilho": "time Penarol",
-   "alvo": {
-    "h": "06:16",
-    "jogo": "Medellin x Asuncion",
-    "odd": 1.88,
-    "unidades": 2,
-    "desde": 1795425307954
-   },
-   "iniciadoEm": 1795425057952,
-   "tiros": [
-    {
-     "h": "06:13",
-     "jogo": "Buenos Aires x Penarol",
-     "odd": 2.07,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -5382,19 +5351,19 @@
    "mnd": 1795422573955,
    "cam": 1795424142901,
    "cop": 1795394431546,
-   "ame": 1795420966365
+   "ame": 1795425485395
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "Penarol",
-   "n": 13,
-   "start": 2
+   "tipo": "seq",
+   "chave": "GRRG",
+   "n": 12,
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
-   "2026-11-23": 9.1
+   "2026-11-23": 9.9
   },
   "_obs": {}
  }
