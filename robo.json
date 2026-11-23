@@ -811,13 +811,31 @@
   }
  },
  "o25": {
-  "saldo": 20,
-  "ciclos": 30358,
-  "greens": 120,
+  "saldo": 21.4,
+  "ciclos": 30361,
+  "greens": 121,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 30227,
+  "descartes": 30229,
   "historico": [
+   {
+    "quando": "2026-11-23T00:57:04.458Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T00:57:04.449Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T00:57:04.438Z",
+    "resultado": "GREEN",
+    "unidades": 1.4,
+    "detalhe": "ame · Avellaneda x Penarol @2.18 (tiro 2) · gatilho: coluna :55"
+   },
    {
     "quando": "2026-11-23T00:56:30.885Z",
     "resultado": "GREEN_OBS",
@@ -4399,69 +4417,14 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T00:17:30.272Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T00:17:29.802Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T00:17:04.142Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
    }
   ],
   "consumidas": {
    "cam": 1795393348527,
-   "spa": 1795393713853
+   "spa": 1795393713853,
+   "ame": 1795395424437
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "21:52",
-     "jogo": "Guayaquil x Medellin",
-     "odd": 2.3
-    },
-    {
-     "h": "21:55",
-     "jogo": "Avellaneda x Penarol",
-     "odd": 2.18
-    },
-    {
-     "h": "21:58",
-     "jogo": "Montevideo x Itaquera",
-     "odd": 2.45
-    }
-   ],
-   "gatilho": "coluna :55",
-   "alvo": {
-    "h": "21:55",
-    "jogo": "Avellaneda x Penarol",
-    "odd": 2.18,
-    "unidades": 2,
-    "desde": 1795395229208
-   },
-   "iniciadoEm": 1795394627997,
-   "tiros": [
-    {
-     "h": "21:52",
-     "jogo": "Guayaquil x Medellin",
-     "odd": 2.3,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795393348527,
    "eng": 1795383709617,
@@ -4470,7 +4433,7 @@
    "lat": 1795361275805,
    "bra": 1795380169712,
    "mnd": 1795390533015,
-   "ame": 1795388932735
+   "ame": 1795395424437
   },
   "_gatilhoAtual": {
    "tipo": "odd",
@@ -4482,7 +4445,7 @@
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
-   "2026-11-22": 13
+   "2026-11-22": 14.4
   },
   "_obs": {}
  },
@@ -4626,7 +4589,7 @@
     "gatilho": "time CAG"
    },
    "cam": {
-    "desde": 1795395390885,
+    "desde": 1795395424457,
     "gatilho": "seq RRRRG"
    }
   }
