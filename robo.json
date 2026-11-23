@@ -1029,12 +1029,24 @@
  },
  "o25": {
   "saldo": -3.2,
-  "ciclos": 60617,
+  "ciclos": 60619,
   "greens": 171,
   "redsCiclo": 22,
   "aborts": 0,
-  "descartes": 60424,
+  "descartes": 60426,
   "historico": [
+   {
+    "quando": "2026-11-23T20:01:05.679Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :14) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T20:01:04.959Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "cam · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-23T20:00:05.927Z",
     "resultado": "GREEN_OBS",
@@ -4622,18 +4634,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T19:49:01.257Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T19:49:01.248Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :14) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4641,37 +4641,7 @@
    "cop": 1795461211344,
    "ita": 1795462113149
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "17:03",
-     "jogo": "City x Barcelona",
-     "odd": 2.18
-    },
-    {
-     "h": "17:06",
-     "jogo": "Benfica x Turin",
-     "odd": 2.04
-    },
-    {
-     "h": "17:09",
-     "jogo": "Dortmund x Madrid",
-     "odd": 2.3
-    }
-   ],
-   "gatilho": "coluna :06",
-   "alvo": {
-    "h": "17:03",
-    "jogo": "City x Barcelona",
-    "odd": 2.18,
-    "unidades": 1,
-    "desde": 1795463116338
-   },
-   "iniciadoEm": 1795463116338
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795457105777,
    "eng": 1795383709617,
@@ -4840,6 +4810,10 @@
    "mnd": {
     "desde": 1795464005926,
     "gatilho": "coluna :10"
+   },
+   "bra": {
+    "desde": 1795464065679,
+    "gatilho": "coluna :14"
    }
   }
  },
