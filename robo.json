@@ -880,12 +880,30 @@
  },
  "o25": {
   "saldo": 27.6,
-  "ciclos": 35790,
+  "ciclos": 35793,
   "greens": 138,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 35639,
+  "descartes": 35642,
   "historico": [
+   {
+    "quando": "2026-11-23T09:10:57.936Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T09:10:57.926Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T09:10:45.850Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T09:10:45.840Z",
     "resultado": "GREEN_OBS",
@@ -4467,24 +4485,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time ARG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:36:09.344Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Rio de Janeiro) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:36:09.339Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:36:09.335Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time ARG) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4663,21 +4663,29 @@
    "lat": {
     "desde": 1795424635836,
     "gatilho": "time VAL"
-   },
-   "mnd": {
-    "desde": 1795425045840,
-    "gatilho": "time SPA"
    }
   }
  },
  "ambas": {
   "saldo": -3.1,
-  "ciclos": 102,
+  "ciclos": 104,
   "greens": 46,
   "redsCiclo": 5,
   "aborts": 0,
-  "descartes": 51,
+  "descartes": 53,
   "historico": [
+   {
+    "quando": "2026-11-23T09:10:57.948Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.01) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T09:10:45.881Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "cop · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-23T08:55:42.901Z",
     "resultado": "GREEN",
@@ -5296,35 +5304,35 @@
    "cam": 1795424142901
   },
   "ciclo": {
-   "liga": "cop",
+   "liga": "ame",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "06:12",
-     "jogo": "Colombia x France",
-     "odd": 2.15
+     "h": "06:13",
+     "jogo": "Buenos Aires x Penarol",
+     "odd": 2.07
     },
     {
-     "h": "06:15",
-     "jogo": "Brazil x Wales",
-     "odd": 2.01
+     "h": "06:16",
+     "jogo": "Medellin x Asuncion",
+     "odd": 1.88
     },
     {
-     "h": "06:18",
-     "jogo": "Switzerland x Spain",
-     "odd": 2.26
+     "h": "06:19",
+     "jogo": "Lima x Santos",
+     "odd": 1.88
     }
    ],
-   "gatilho": "odd 2.01",
+   "gatilho": "time Penarol",
    "alvo": {
-    "h": "06:12",
-    "jogo": "Colombia x France",
-    "odd": 2.15,
+    "h": "06:13",
+    "jogo": "Buenos Aires x Penarol",
+    "odd": 2.07,
     "unidades": 1,
-    "desde": 1795424145173
+    "desde": 1795425057952
    },
-   "iniciadoEm": 1795424145173
+   "iniciadoEm": 1795425057952
   },
   "cooldown": {
    "lat": 1795331214015,
