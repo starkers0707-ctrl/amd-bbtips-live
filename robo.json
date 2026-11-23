@@ -857,12 +857,18 @@
  },
  "o25": {
   "saldo": 37.4,
-  "ciclos": 33457,
+  "ciclos": 33458,
   "greens": 133,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 33313,
+  "descartes": 33314,
   "historico": [
+   {
+    "quando": "2026-11-23T07:28:37.438Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T07:28:34.683Z",
     "resultado": "GREEN_OBS",
@@ -4456,12 +4462,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:09:41.903Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4471,8 +4471,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "04:27",
@@ -4492,11 +4492,11 @@
    ],
    "gatilho": "time MLG",
    "alvo": {
-    "h": "04:29",
-    "jogo": "RST x MLG",
-    "odd": 1.94,
-    "unidades": 2,
-    "desde": 1795418914667
+    "h": "04:31",
+    "jogo": "VIL x RSO",
+    "odd": 1.89,
+    "unidades": 4,
+    "desde": 1795418917432
    },
    "iniciadoEm": 1795418428445,
    "tiros": [
@@ -4505,6 +4505,12 @@
      "jogo": "OSA x ATM",
      "odd": 1.84,
      "unidades": 1
+    },
+    {
+     "h": "04:29",
+     "jogo": "RST x MLG",
+     "odd": 1.94,
+     "unidades": 2
     }
    ]
   },
@@ -4677,9 +4683,9 @@
     "desde": 1795418287190,
     "gatilho": "placar acima de 1-0 (2-0)"
    },
-   "cop": {
-    "desde": 1795418914682,
-    "gatilho": "time Argentina"
+   "spa": {
+    "desde": 1795418917438,
+    "gatilho": "time MLG"
    }
   }
  },
