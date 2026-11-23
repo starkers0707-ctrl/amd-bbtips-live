@@ -115,3 +115,14 @@
 
 @keyframes tcFlash{0%{box-shadow:0 0 0 3px #00f278}100%{box-shadow:0 0 0 0 transparent}}
 .tc-flash{animation:tcFlash 2.4s ease-out}
+
+.tc-dest{position:relative}
+.tg-menu{position:absolute;right:0;top:34px;z-index:30;display:flex;flex-direction:column;gap:6px;width:min(420px,92vw);padding:12px;border:1px solid #00b963;border-radius:10px;background:#04161d;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.tg-menu button{border:1px solid #153946;border-radius:8px;padding:11px 12px;background:#061f27;color:#e9fff6;font:inherit;font-size:14px;font-weight:700;text-align:left;cursor:pointer}
+.tg-menu button:hover{border-color:#00b963}
+.tg-menu button.red{color:#ff8a9a}
+.tg-menu b{color:#f3fbfa}.tg-menu ol{margin:4px 0;padding-left:18px;color:#bcd6dc;font-size:13px;font-weight:500}
+.tg-menu small{color:#83b7c8;font-weight:500}
+.tg-cmd{display:flex;gap:8px;align-items:center}.tg-cmd code{flex:1;padding:10px;border-radius:6px;background:#021118;color:#75ffb8;font-size:15px;overflow-wrap:anywhere}
+.tg-cmd button{text-align:center}
+.tg-menu .tg-close{text-align:center}

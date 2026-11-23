@@ -275,14 +275,16 @@
     setTimeout(function(){box.remove();},12000);
   }
   var tgQueue=Promise.resolve();
-  function sendTelegram(text){
-    tgQueue=tgQueue.then(function(){return fetch('/api/telegram/enviar',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({texto:text})}).catch(function(){});});
+  function sendTelegram(text,canal){
+    tgQueue=tgQueue.then(function(){return fetch('/api/telegram/enviar',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({texto:text,canal:canal||''})}).catch(function(){});});
     return tgQueue;
   }
   function robotById(id){return read(ROBOTS_KEY).find(function(r){return String(r.id)===String(id);})||{};}
   async function notify(title,body,key,destino) {
     destino=destino||'todos';
-    if(destino!=='site')sendTelegram(title+'\n'+body.split(' · ').join('\n'));
+    var msg=title+'\n'+body.split(' · ').join('\n');
+    if(destino.indexOf('canal:')===0)sendTelegram(msg,destino.slice(6));
+    else if(destino!=='site')sendTelegram(msg);
     if(destino==='telegram'){try{window.dispatchEvent(new CustomEvent('amd:manual-entry',{detail:{title:title,body:body,key:key,at:new Date().toISOString()}}));}catch(_){}return;}
     panelToast(title,body);
     try{window.dispatchEvent(new CustomEvent('amd:manual-entry',{detail:{title:title,body:body,key:key,at:new Date().toISOString()}}));}catch(_){}

@@ -760,7 +760,9 @@
     q('#rbScoreB').value = robot.scoreB == null ? '' : String(robot.scoreB);
     q('#rbEntryMarket').value = robot.entryMarket || 'Over 2.5';
     q('#rbShots').value = String(robot.shots || 3);
+    q('#rbDestino').dataset.want = robot.destino || 'todos';
     q('#rbDestino').value = robot.destino || 'todos';
+    if (window.AMDTelegram) window.AMDTelegram.refresh();
     q('#rbActive').checked = !!robot.active;
     patternCells = {};
     (robot.pattern || []).forEach(function (position) { if (position && position.key) patternCells[position.key] = position; });
