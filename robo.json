@@ -827,12 +827,24 @@
  },
  "o25": {
   "saldo": 35.9,
-  "ciclos": 32437,
+  "ciclos": 32439,
   "greens": 132,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32294,
+  "descartes": 32296,
   "historico": [
+   {
+    "quando": "2026-11-23T06:40:30.964Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:40:30.961Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Argentina) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T06:40:30.958Z",
     "resultado": "GREEN_OBS",
@@ -4420,18 +4432,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:48:50.685Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:48:37.395Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4439,7 +4439,37 @@
    "ame": 1795415390732,
    "cam": 1795416030942
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "03:48",
+     "jogo": "France x Italy",
+     "odd": 2.49
+    },
+    {
+     "h": "03:51",
+     "jogo": "Mexico x Argentina",
+     "odd": 2.05
+    },
+    {
+     "h": "03:54",
+     "jogo": "England x Belgium",
+     "odd": 2.18
+    }
+   ],
+   "gatilho": "time Argentina",
+   "alvo": {
+    "h": "03:48",
+    "jogo": "France x Italy",
+    "odd": 2.49,
+    "unidades": 1,
+    "desde": 1795416033115
+   },
+   "iniciadoEm": 1795416033115
+  },
   "cooldown": {
    "cam": 1795416030942,
    "eng": 1795383709617,
@@ -4455,7 +4485,7 @@
    "tipo": "time",
    "chave": "Argentina",
    "n": 9,
-   "start": 1
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -4600,12 +4630,7 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {
-   "cam": {
-    "desde": 1795416030957,
-    "gatilho": "time Chelsea"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": -7.7,
