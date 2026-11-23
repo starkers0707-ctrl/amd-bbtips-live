@@ -4418,7 +4418,6 @@
    }
   ],
   "consumidas": {
-   "mnd": 1795406731600,
    "cop": 1795409729383
   },
   "ciclo": null,
@@ -4598,13 +4597,19 @@
   }
  },
  "ambas": {
-  "saldo": -11.9,
-  "ciclos": 81,
-  "greens": 35,
+  "saldo": -11.2,
+  "ciclos": 82,
+  "greens": 36,
   "redsCiclo": 5,
   "aborts": 0,
   "descartes": 41,
   "historico": [
+   {
+    "quando": "2026-11-23T04:58:02.468Z",
+    "resultado": "GREEN",
+    "unidades": 0.7,
+    "detalhe": "eng · IPS x MNC @1.68 (tiro 1) · gatilho: time ARS"
+   },
    {
     "quando": "2026-11-23T04:24:33.861Z",
     "resultado": "GREEN",
@@ -5093,42 +5098,13 @@
    }
   ],
   "consumidas": {
-   "spa": 1795407873861
+   "spa": 1795407873861,
+   "eng": 1795409882468
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "02:00",
-     "jogo": "IPS x MNC",
-     "odd": 1.68
-    },
-    {
-     "h": "02:02",
-     "jogo": "ARS x CHE",
-     "odd": 1.79
-    },
-    {
-     "h": "02:04",
-     "jogo": "NOT x FUL",
-     "odd": 1.69
-    }
-   ],
-   "gatilho": "time ARS",
-   "alvo": {
-    "h": "02:00",
-    "jogo": "IPS x MNC",
-    "odd": 1.68,
-    "unidades": 1,
-    "desde": 1795409881265
-   },
-   "iniciadoEm": 1795409881265
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
-   "eng": 1795257582328,
+   "eng": 1795409882468,
    "spa": 1795407873861,
    "bra": 1795383404717,
    "mnd": 1795401453910,
@@ -5146,7 +5122,7 @@
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
-   "2026-11-23": 0.3
+   "2026-11-23": 1
   },
   "_obs": {}
  }
