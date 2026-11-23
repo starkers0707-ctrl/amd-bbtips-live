@@ -1025,12 +1025,24 @@
  },
  "o25": {
   "saldo": 11.7,
-  "ciclos": 54653,
+  "ciclos": 54655,
   "greens": 165,
   "redsCiclo": 19,
   "aborts": 0,
-  "descartes": 54469,
+  "descartes": 54471,
   "historico": [
+   {
+    "quando": "2026-11-23T17:34:52.190Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :48) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T17:34:52.186Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :45) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T17:34:39.025Z",
     "resultado": "GREEN_OBS",
@@ -4618,18 +4630,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T17:13:52.513Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T17:13:52.510Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4837,20 +4837,26 @@
     "desde": 1795454982557,
     "gatilho": "odd 2.05"
    },
-   "bra": {
-    "desde": 1795455279025,
-    "gatilho": "coluna :59"
+   "mnd": {
+    "desde": 1795455292190,
+    "gatilho": "coluna :48"
    }
   }
  },
  "ambas": {
-  "saldo": 9.5,
-  "ciclos": 154,
-  "greens": 72,
+  "saldo": 10.5,
+  "ciclos": 155,
+  "greens": 73,
   "redsCiclo": 6,
   "aborts": 0,
   "descartes": 76,
   "historico": [
+   {
+    "quando": "2026-11-23T17:34:39.063Z",
+    "resultado": "GREEN",
+    "unidades": 1,
+    "detalhe": "cop · Germany x France @2.01 (tiro 1) · gatilho: coluna :36"
+   },
    {
     "quando": "2026-11-23T17:28:07.446Z",
     "resultado": "GREEN_OBS",
@@ -5779,39 +5785,10 @@
   "consumidas": {
    "cam": 1795451883262,
    "ame": 1795452449016,
-   "bra": 1795453964346
+   "bra": 1795453964346,
+   "cop": 1795455279063
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "14:33",
-     "jogo": "Germany x France",
-     "odd": 2.01
-    },
-    {
-     "h": "14:36",
-     "jogo": "Italy x Denmark",
-     "odd": 2.19
-    },
-    {
-     "h": "14:39",
-     "jogo": "Spain x Croatia",
-     "odd": 2.17
-    }
-   ],
-   "gatilho": "coluna :36",
-   "alvo": {
-    "h": "14:33",
-    "jogo": "Germany x France",
-    "odd": 2.01,
-    "unidades": 1,
-    "desde": 1795454889210
-   },
-   "iniciadoEm": 1795454889210
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -5819,12 +5796,12 @@
    "bra": 1795453964346,
    "mnd": 1795450275601,
    "cam": 1795451883262,
-   "cop": 1795450273930,
+   "cop": 1795455279063,
    "ame": 1795452449016
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":36",
+   "tipo": "seq",
+   "chave": "RGGG",
    "n": 14,
    "start": 1
   },
@@ -5832,7 +5809,7 @@
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
-   "2026-11-23": 21.7
+   "2026-11-23": 22.7
   },
   "_obs": {}
  }
