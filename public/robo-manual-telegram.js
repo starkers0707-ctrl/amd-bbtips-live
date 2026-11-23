@@ -96,6 +96,7 @@
     canais.forEach(function (c) {
       html += '<div class="tg-item"><i>✓</i><div><b>' + esc(c.nome) + '</b><small>' + (c.tipo === 'channel' ? 'Canal conectado' : 'Grupo conectado') + '</small></div><button type="button" data-a="rm" data-id="' + esc(c.id) + '" title="Remover">🗑</button></div>';
     });
+    html += '<button type="button" class="tg-add" data-a="teste">🧪 Enviar teste para o Destino escolhido</button>';
     var cheio = canais.length >= max;
     html += '<button type="button" class="tg-add blue" data-a="grupo"' + (cheio ? ' disabled' : '') + '>👥 Adicionar grupo</button>' +
       '<button type="button" class="tg-add" data-a="canal"' + (cheio ? ' disabled' : '') + '>📢 Adicionar canal</button>';
@@ -108,6 +109,7 @@
       else if (a === 'grupo' || a === 'canal') adicionar(a);
       else if (a === 'sair') desconectar('');
       else if (a === 'rm') desconectar(b.dataset.id);
+      else if (a === 'teste') testar();
     });
   }
 
