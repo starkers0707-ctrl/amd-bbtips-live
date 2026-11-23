@@ -785,8 +785,8 @@
   "consumidas": {},
   "ciclo": {
    "liga": "eng",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "02:36",
@@ -806,11 +806,11 @@
    ],
    "gatilho": "seq GRGR",
    "alvo": {
-    "h": "02:38",
-    "jogo": "BRE x MNC",
-    "odd": 3.17,
-    "unidades": 2,
-    "desde": 1795412247707
+    "h": "02:40",
+    "jogo": "LIV x BOU",
+    "odd": 3.37,
+    "unidades": 4,
+    "desde": 1795412364148
    },
    "iniciadoEm": 1795412017222,
    "tiros": [
@@ -819,6 +819,12 @@
      "jogo": "SUN x AST",
      "odd": 3.31,
      "unidades": 1
+    },
+    {
+     "h": "02:38",
+     "jogo": "BRE x MNC",
+     "odd": 3.17,
+     "unidades": 2
     }
    ]
   },
@@ -831,9 +837,9 @@
    "bra": 1795277376896
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "GRGR",
-   "n": 9,
+   "tipo": "placar",
+   "chave": "empate 1-1",
+   "n": 8,
    "start": 1
   },
   "dias": {
@@ -4513,10 +4519,10 @@
    "cop": 1795409729383
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "PER",
-   "n": 9,
-   "start": 5
+   "tipo": "placar",
+   "chave": "acima de 1-0 (2-0)",
+   "n": 8,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -4667,8 +4673,8 @@
     "gatilho": "odd 2.74"
    },
    "mnd": {
-    "desde": 1795408767402,
-    "gatilho": "odd 1.94"
+    "desde": 1795412267142,
+    "gatilho": "placar acima de 1-0 (2-0)"
    },
    "ame": {
     "desde": 1795410914479,
@@ -5236,7 +5242,7 @@
    "tipo": "time",
    "chave": "SEV",
    "n": 8,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
