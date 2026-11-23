@@ -940,13 +940,37 @@
   }
  },
  "o25": {
-  "saldo": 26,
-  "ciclos": 38855,
+  "saldo": 19,
+  "ciclos": 38859,
   "greens": 144,
-  "redsCiclo": 14,
+  "redsCiclo": 15,
   "aborts": 0,
-  "descartes": 38697,
+  "descartes": 38700,
   "historico": [
+   {
+    "quando": "2026-11-23T11:05:57.446Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T11:05:57.441Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time GOI) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T11:05:57.429Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "ame · ciclo perdido (3 tiros) · gatilho: time Medellin"
+   },
+   {
+    "quando": "2026-11-23T11:05:33.571Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T11:05:33.567Z",
     "resultado": "GREEN_OBS",
@@ -4522,82 +4546,15 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:49:03.120Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:49:03.116Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:49:03.110Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:49:03.104Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795428513187,
    "bra": 1795429298876,
-   "lat": 1795430751845
+   "lat": 1795430751845,
+   "ame": 1795431957428
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "07:58",
-     "jogo": "Buenos Aires x Lima",
-     "odd": 2.18
-    },
-    {
-     "h": "08:01",
-     "jogo": "Medellin x Porto Alegre",
-     "odd": 2.38
-    },
-    {
-     "h": "08:04",
-     "jogo": "Buenos Aires x Guayaquil",
-     "odd": 2.4
-    }
-   ],
-   "gatilho": "time Medellin",
-   "alvo": {
-    "h": "08:04",
-    "jogo": "Buenos Aires x Guayaquil",
-    "odd": 2.4,
-    "unidades": 4,
-    "desde": 1795431774947
-   },
-   "iniciadoEm": 1795430752599,
-   "tiros": [
-    {
-     "h": "07:58",
-     "jogo": "Buenos Aires x Lima",
-     "odd": 2.18,
-     "unidades": 1
-    },
-    {
-     "h": "08:01",
-     "jogo": "Medellin x Porto Alegre",
-     "odd": 2.38,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795416030942,
    "eng": 1795383709617,
@@ -4606,21 +4563,21 @@
    "lat": 1795430751845,
    "bra": 1795429298876,
    "mnd": 1795427850123,
-   "ame": 1795426921368,
+   "ame": 1795431957428,
    "cop": 1795425800854
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
    "chave": ":31",
    "n": 8,
-   "start": 8
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
-   "2026-11-23": -1.7
+   "2026-11-23": -8.7
   },
   "_obs": {}
  },
@@ -4771,9 +4728,9 @@
     "desde": 1795431912526,
     "gatilho": "coluna :31"
    },
-   "bra": {
-    "desde": 1795431933567,
-    "gatilho": "time GOI"
+   "lat": {
+    "desde": 1795431957446,
+    "gatilho": "time NAC"
    }
   }
  },
