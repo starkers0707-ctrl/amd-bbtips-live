@@ -954,12 +954,48 @@
  },
  "o25": {
   "saldo": 24.5,
-  "ciclos": 41393,
+  "ciclos": 41399,
   "greens": 150,
   "redsCiclo": 15,
   "aborts": 0,
-  "descartes": 41228,
+  "descartes": 41234,
   "historico": [
+   {
+    "quando": "2026-11-23T12:10:39.307Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :12) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:10:39.304Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:10:39.300Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:10:39.298Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:10:39.294Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho seq GRRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:10:37.107Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T12:10:37.104Z",
     "resultado": "GREEN_OBS",
@@ -4523,42 +4559,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:56:31.015Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:56:31.011Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:56:31.007Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:56:30.037Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :58) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:56:30.032Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:56:30.027Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4761,20 +4761,26 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "cop": {
-    "desde": 1795435837104,
-    "gatilho": "coluna :36"
+   "cam": {
+    "desde": 1795435839307,
+    "gatilho": "coluna :12"
    }
   }
  },
  "ambas": {
   "saldo": -4.1,
-  "ciclos": 119,
+  "ciclos": 120,
   "greens": 55,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 58,
+  "descartes": 59,
   "historico": [
+   {
+    "quando": "2026-11-23T12:10:37.130Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "mnd · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-23T12:06:05.493Z",
     "resultado": "GREEN_OBS",
@@ -5495,37 +5501,7 @@
    "cop": 1795434093757,
    "bra": 1795434720516
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "09:10",
-     "jogo": "URY x BEL",
-     "odd": 1.67
-    },
-    {
-     "h": "09:12",
-     "jogo": "SPA x POL",
-     "odd": 1.77
-    },
-    {
-     "h": "09:14",
-     "jogo": "ITA x GER",
-     "odd": 1.71
-    }
-   ],
-   "gatilho": "time SPA",
-   "alvo": {
-    "h": "09:10",
-    "jogo": "URY x BEL",
-    "odd": 1.67,
-    "unidades": 1,
-    "desde": 1795434932486
-   },
-   "iniciadoEm": 1795434932486
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
