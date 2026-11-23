@@ -1031,12 +1031,30 @@
  },
  "o25": {
   "saldo": 1.5,
-  "ciclos": 58223,
+  "ciclos": 58226,
   "greens": 169,
   "redsCiclo": 21,
   "aborts": 0,
-  "descartes": 58033,
+  "descartes": 58036,
   "historico": [
+   {
+    "quando": "2026-11-23T18:57:12.086Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T18:56:45.796Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T18:56:45.792Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T18:56:45.787Z",
     "resultado": "GREEN_OBS",
@@ -4618,24 +4636,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :59) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T18:46:37.696Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T18:46:32.040Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :58) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T18:46:32.035Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho seq GRRRG) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4646,7 +4646,37 @@
    "spa": 1795459478535,
    "ame": 1795460205759
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "15:59",
+     "jogo": "NAC x PAU",
+     "odd": 1.89
+    },
+    {
+     "h": "16:02",
+     "jogo": "PAR x ATC",
+     "odd": 1.91
+    },
+    {
+     "h": "16:05",
+     "jogo": "FOR x VIT",
+     "odd": 1.87
+    }
+   ],
+   "gatilho": "coluna :59",
+   "alvo": {
+    "h": "15:59",
+    "jogo": "NAC x PAU",
+    "odd": 1.89,
+    "unidades": 1,
+    "desde": 1795460232075
+   },
+   "iniciadoEm": 1795460232075
+  },
   "cooldown": {
    "cam": 1795457105777,
    "eng": 1795383709617,
@@ -4812,9 +4842,9 @@
     "desde": 1795460089606,
     "gatilho": "time FRO"
    },
-   "lat": {
-    "desde": 1795460205787,
-    "gatilho": "odd 1.89"
+   "spa": {
+    "desde": 1795460232085,
+    "gatilho": "coluna :09"
    }
   }
  },
@@ -5859,9 +5889,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":14",
-   "n": 12,
-   "start": 5
+   "chave": ":06",
+   "n": 16,
+   "start": 2
   },
   "dias": {
    "2026-11-20": 0,
