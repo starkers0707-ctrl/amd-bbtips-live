@@ -1037,12 +1037,36 @@
  },
  "o25": {
   "saldo": -12.7,
-  "ciclos": 64538,
+  "ciclos": 64542,
   "greens": 176,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 64338,
+  "descartes": 64342,
   "historico": [
+   {
+    "quando": "2026-11-23T21:42:22.949Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "cop · alvo sem fechamento em 15min antes da 1a aposta"
+   },
+   {
+    "quando": "2026-11-23T21:42:05.124Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T21:42:05.120Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T21:42:05.113Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T21:42:04.415Z",
     "resultado": "GREEN_OBS",
@@ -4618,30 +4642,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:23:31.289Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :43) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:23:31.286Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:23:31.278Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:23:13.732Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :43) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4854,10 +4854,6 @@
    "cam": {
     "desde": 1795470006358,
     "gatilho": "coluna :06"
-   },
-   "cop": {
-    "desde": 1795470124415,
-    "gatilho": "odd 2.39"
    }
   }
  },
