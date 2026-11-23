@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 21.7,
-  "ciclos": 140,
-  "greens": 54,
+  "saldo": 25.1,
+  "ciclos": 141,
+  "greens": 55,
   "redsCiclo": 24,
   "aborts": 0,
   "descartes": 62,
   "historico": [
+   {
+    "quando": "2026-11-23T10:03:51.299Z",
+    "resultado": "GREEN",
+    "unidades": 3.4,
+    "detalhe": "lat · PER x NAC @3.2 (tiro 2) · gatilho: time NAC"
+   },
    {
     "quando": "2026-11-23T09:46:01.478Z",
     "resultado": "GREEN",
@@ -849,50 +855,13 @@
    }
   ],
   "consumidas": {
-   "eng": 1795427161477
+   "eng": 1795427161477,
+   "lat": 1795428231299
   },
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "06:59",
-     "jogo": "RIV x COL",
-     "odd": 3.27
-    },
-    {
-     "h": "07:02",
-     "jogo": "PER x NAC",
-     "odd": 3.2
-    },
-    {
-     "h": "07:05",
-     "jogo": "ATC x PAR",
-     "odd": 3.25
-    }
-   ],
-   "gatilho": "time NAC",
-   "alvo": {
-    "h": "07:02",
-    "jogo": "PER x NAC",
-    "odd": 3.2,
-    "unidades": 2,
-    "desde": 1795428034381
-   },
-   "iniciadoEm": 1795427497895,
-   "tiros": [
-    {
-     "h": "06:59",
-     "jogo": "RIV x COL",
-     "odd": 3.27,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795391133443,
-   "lat": 1795423889493,
+   "lat": 1795428231299,
    "eng": 1795427161477,
    "spa": 1795323557921,
    "ita": 1795418429136,
@@ -902,13 +871,13 @@
    "tipo": "time",
    "chave": "NAC",
    "n": 13,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-20": 4.3,
    "2026-11-21": 11.3,
    "2026-11-22": -12.7,
-   "2026-11-23": 18.8
+   "2026-11-23": 22.2
   },
   "_obs": {
    "bra": {
@@ -923,12 +892,42 @@
  },
  "o25": {
   "saldo": 31.3,
-  "ciclos": 36831,
+  "ciclos": 36836,
   "greens": 142,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 36676,
+  "descartes": 36681,
   "historico": [
+   {
+    "quando": "2026-11-23T10:03:51.841Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq GGRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:03:51.319Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:03:51.313Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq GGRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:03:50.612Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq GGRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:03:49.856Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T10:03:15.575Z",
     "resultado": "GREEN_OBS",
@@ -4498,36 +4497,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:37:30.634Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:37:14.633Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:37:14.627Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:37:12.475Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:37:12.469Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4732,13 +4701,9 @@
     "desde": 1795426412297,
     "gatilho": "placar 1-0 / 0-1"
    },
-   "lat": {
-    "desde": 1795427849401,
-    "gatilho": "time NAC"
-   },
    "mnd": {
-    "desde": 1795428195575,
-    "gatilho": "time SPA"
+    "desde": 1795428231841,
+    "gatilho": "seq GGRG"
    }
   }
  },
