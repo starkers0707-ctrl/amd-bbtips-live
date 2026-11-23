@@ -1025,12 +1025,30 @@
  },
  "o25": {
   "saldo": 11.7,
-  "ciclos": 54572,
+  "ciclos": 54575,
   "greens": 165,
   "redsCiclo": 19,
   "aborts": 0,
-  "descartes": 54388,
+  "descartes": 54391,
   "historico": [
+   {
+    "quando": "2026-11-23T17:32:13.857Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :59) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T17:32:13.852Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :48) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T17:32:12.941Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :53) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T17:31:41.474Z",
     "resultado": "GREEN_OBS",
@@ -4612,24 +4630,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T17:12:35.793Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T17:12:09.747Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T17:12:09.745Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4680,10 +4680,10 @@
    "cop": 1795453488626
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.05",
+   "tipo": "coluna",
+   "chave": ":48",
    "n": 13,
-   "start": 4
+   "start": 6
   },
   "dias": {
    "2026-11-19": -7,
@@ -4838,8 +4838,8 @@
     "gatilho": "odd 2.05"
    },
    "bra": {
-    "desde": 1795455101473,
-    "gatilho": "coluna :53"
+    "desde": 1795455133857,
+    "gatilho": "coluna :59"
    }
   }
  },
