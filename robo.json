@@ -827,12 +827,24 @@
  },
  "o25": {
   "saldo": 35.9,
-  "ciclos": 32543,
+  "ciclos": 32545,
   "greens": 132,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32400,
+  "descartes": 32402,
   "historico": [
+   {
+    "quando": "2026-11-23T06:48:16.035Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:48:16.031Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.93) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T06:47:49.601Z",
     "resultado": "GREEN_OBS",
@@ -4420,18 +4432,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T04:05:02.187Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T04:04:53.479Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4631,20 +4631,26 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "cop": {
-    "desde": 1795416469601,
-    "gatilho": "time Argentina"
+   "mnd": {
+    "desde": 1795416496035,
+    "gatilho": "time SWE"
    }
   }
  },
  "ambas": {
   "saldo": -7.7,
-  "ciclos": 89,
+  "ciclos": 90,
   "greens": 40,
   "redsCiclo": 5,
   "aborts": 0,
-  "descartes": 44,
+  "descartes": 45,
   "historico": [
+   {
+    "quando": "2026-11-23T06:47:49.614Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time SEV) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T06:47:05.915Z",
     "resultado": "DESCARTADO",
@@ -5181,11 +5187,40 @@
    }
   ],
   "consumidas": {
-   "mnd": 1795412856148,
    "ame": 1795414127660,
    "cam": 1795415506086
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:16",
+     "jogo": "ITA x MEX",
+     "odd": 1.69
+    },
+    {
+     "h": "04:18",
+     "jogo": "DEN x ARG",
+     "odd": 1.69
+    },
+    {
+     "h": "04:20",
+     "jogo": "CRO x BEL",
+     "odd": 1.68
+    }
+   ],
+   "gatilho": "time DEN",
+   "alvo": {
+    "h": "04:16",
+    "jogo": "ITA x MEX",
+    "odd": 1.69,
+    "unidades": 1,
+    "desde": 1795416469633
+   },
+   "iniciadoEm": 1795416469633
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -5198,9 +5233,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "SEV",
-   "n": 9,
-   "start": 3
+   "chave": "DEN",
+   "n": 10,
+   "start": 6
   },
   "dias": {
    "2026-11-20": 0,
