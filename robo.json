@@ -1062,13 +1062,49 @@
   }
  },
  "o25": {
-  "saldo": 11.7,
-  "ciclos": 56004,
-  "greens": 165,
+  "saldo": 12.9,
+  "ciclos": 56010,
+  "greens": 166,
   "redsCiclo": 19,
   "aborts": 0,
-  "descartes": 55820,
+  "descartes": 55825,
   "historico": [
+   {
+    "quando": "2026-11-23T18:05:05.798Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T18:05:05.792Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :14) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T18:05:05.786Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T18:05:05.783Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T18:05:05.777Z",
+    "resultado": "GREEN",
+    "unidades": 1.2,
+    "detalhe": "cam · Rome x Celtic @2.17 (tiro 1) · gatilho: coluna :06"
+   },
+   {
+    "quando": "2026-11-23T18:05:03.676Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T18:05:03.672Z",
     "resultado": "GREEN_OBS",
@@ -4632,81 +4668,46 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :10) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T17:53:12.511Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T17:53:07.061Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T17:53:07.058Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T17:53:07.055Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :11) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T17:53:07.052Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho seq GGGG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T17:53:07.048Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :10) — liga REARMADA"
    }
   ],
   "consumidas": {
    "bra": 1795453964311,
-   "spa": 1795454913637
+   "spa": 1795454913637,
+   "cam": 1795457105777
   },
   "ciclo": {
-   "liga": "cam",
+   "liga": "ita",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "15:03",
-     "jogo": "Rome x Celtic",
-     "odd": 2.17
-    },
-    {
-     "h": "15:06",
-     "jogo": "Barcelona x Chelsea",
-     "odd": 2.48
+     "h": "15:07",
+     "jogo": "LAZ x ATA",
+     "odd": 1.93
     },
     {
      "h": "15:09",
-     "jogo": "Benfica x Liverpool",
-     "odd": 2.1
+     "jogo": "TOR x VEN",
+     "odd": 1.89
+    },
+    {
+     "h": "15:11",
+     "jogo": "MON x JUV",
+     "odd": 1.81
     }
    ],
-   "gatilho": "coluna :06",
+   "gatilho": "odd 1.89",
    "alvo": {
-    "h": "15:03",
-    "jogo": "Rome x Celtic",
-    "odd": 2.17,
+    "h": "15:07",
+    "jogo": "LAZ x ATA",
+    "odd": 1.93,
     "unidades": 1,
-    "desde": 1795456746055
+    "desde": 1795457110066
    },
-   "iniciadoEm": 1795456746055
+   "iniciadoEm": 1795457110066
   },
   "cooldown": {
-   "cam": 1795447543070,
+   "cam": 1795457105777,
    "eng": 1795383709617,
    "ita": 1795421791233,
    "spa": 1795454913637,
@@ -4727,7 +4728,7 @@
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
-   "2026-11-23": -16
+   "2026-11-23": -14.8
   },
   "_obs": {}
  },
@@ -4873,10 +4874,6 @@
    "lat": {
     "desde": 1795457015205,
     "gatilho": "odd 1.89"
-   },
-   "cam": {
-    "desde": 1795457103672,
-    "gatilho": "coluna :06"
    }
   }
  },
