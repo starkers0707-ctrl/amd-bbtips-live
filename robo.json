@@ -915,12 +915,30 @@
  },
  "o25": {
   "saldo": 30.7,
-  "ciclos": 36678,
+  "ciclos": 36681,
   "greens": 141,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 36524,
+  "descartes": 36527,
   "historico": [
+   {
+    "quando": "2026-11-23T09:55:57.233Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T09:55:57.225Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T09:55:57.218Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T09:55:32.475Z",
     "resultado": "GREEN_OBS",
@@ -4502,24 +4520,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:28:13.877Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:28:13.871Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:28:11.631Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4722,10 +4722,6 @@
    "bra": {
     "desde": 1795426412297,
     "gatilho": "placar 1-0 / 0-1"
-   },
-   "ame": {
-    "desde": 1795427732474,
-    "gatilho": "time Medellin"
    }
   }
  },
@@ -5381,12 +5377,41 @@
    }
   ],
   "consumidas": {
-   "cam": 1795424142901,
    "ame": 1795425485395,
    "bra": 1795425707015,
    "mnd": 1795426413727
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "07:06",
+     "jogo": "Madrid x Rome",
+     "odd": 1.92
+    },
+    {
+     "h": "07:09",
+     "jogo": "Paris x Turin",
+     "odd": 1.83
+    },
+    {
+     "h": "07:12",
+     "jogo": "Dortmund x Porto",
+     "odd": 2.28
+    }
+   ],
+   "gatilho": "time Turin",
+   "alvo": {
+    "h": "07:06",
+    "jogo": "Madrid x Rome",
+    "odd": 1.92,
+    "unidades": 1,
+    "desde": 1795427757265
+   },
+   "iniciadoEm": 1795427757265
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -5399,9 +5424,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "SPA",
-   "n": 12,
-   "start": 1
+   "chave": "Turin",
+   "n": 21,
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
