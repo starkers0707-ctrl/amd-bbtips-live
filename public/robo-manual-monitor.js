@@ -16,7 +16,7 @@
     'Over 0.5':'odd_over_0.5','Over 1.5':'odd_over_1.5','Over 2.5':'odd_over_2.5','Over 3.5':'odd_over_3.5',
     'Under 0.5':'odd_under_0.5','Under 1.5':'odd_under_1.5','Under 2.5':'odd_under_2.5','Under 3.5':'odd_under_3.5',
     'Ambas Marcam (Sim)':'odd_ambas_sim','Ambas Marcam (Não)':'odd_ambas_nao',
-    'Casa FT':'odd_resultado_final_casa','Empate FT':'odd_resultado_final_empate','Fora FT':'odd_resultado_final_fora'
+    '5+ Gols':'odd_total_gols_extatos_5','Casa FT':'odd_resultado_final_casa','Empate FT':'odd_resultado_final_empate','Fora FT':'odd_resultado_final_fora'
   };
   var style=document.createElement('style');style.textContent='.manual-live-entry{position:fixed;right:20px;top:76px;z-index:2147482000;display:flex;flex-direction:column;gap:5px;max-width:480px;padding:16px 18px;border:2px solid #00f278;border-radius:12px;background:#031b14;color:#fff;box-shadow:0 0 30px rgba(0,242,120,.35);font-family:Inter,system-ui,sans-serif}.manual-live-entry b{color:#00f278;font-size:15px}.manual-live-entry span{color:#b9d9cf;font-size:13px}';document.head.appendChild(style);
   function read(key) { try { var value=JSON.parse(localStorage.getItem(key)||'[]'); return Array.isArray(value)?value:[]; } catch (_) { return []; } }
@@ -107,6 +107,8 @@
     if(position.market&&!marketMatches(position.market,game))return false;
     if(hasMinuteRule(position)&&!minuteMatches(position,game.minuto))return false;
     if(position.odd){var key=ODD_KEYS[position.market],odd=key&&game.odds&&Number(game.odds[key]);if(!odd||odd.toFixed(2)!==Number(position.odd).toFixed(2))return false;}
+    var oMin=Number(position.oddMin)||0,oMax=Number(position.oddMax)||0;
+    if(oMin||oMax){var k2=ODD_KEYS[position.market],o2=k2&&game.odds&&Number(game.odds[k2]);if(!o2)return false;if(oMin&&o2<oMin)return false;if(oMax&&o2>oMax)return false;}
     return true;
   }
   function matchingRow(robot, completed) {
@@ -129,6 +131,40 @@
     var match=matchingRow(robot,completed);if(!match)return null;
     var activated=Date.parse(robot.activatedAt||robot.updatedAt||'')||0;
     return timeValue(match.trigger)>activated?match:null;
+  }
+  /* Metricas que somam pontos: calculadas na linha (% de acerto em janela de 20)
+     do mercado da entrada, com os jogos reais da liga. */
+  var COMPANION={'Over 0.5':'Over 1.5','Over 1.5':'Ambas Marcam (Sim)','Over 2.5':'Over 1.5','Over 3.5':'Over 2.5','Ambas Marcam (Sim)':'Over 2.5','Under 2.5':'Under 3.5','Under 1.5':'Under 2.5','Under 3.5':'Under 2.5'};
+  function lineSeries(all,market,win){
+    var done=all.filter(function(g){return g.resultado_ft;}).sort(function(a,b){return orderValue(a)-orderValue(b);});
+    var hits=done.map(function(g){return marketMatches(market,g)?1:0;}),out=[],sum=0;
+    for(var i=0;i<hits.length;i++){sum+=hits[i];if(i>=win)sum-=hits[i-win];if(i>=win-1)out.push(sum/win*100);}
+    return {line:out,hits:hits};
+  }
+  function ema(arr,n){var k=2/(n+1),e=arr[0],res=[];for(var i=0;i<arr.length;i++){e=i?arr[i]*k+e*(1-k):arr[i];res.push(e);}return res;}
+  function rising(line,back){var n=line.length;return n>back&&line[n-1]>line[n-1-back];}
+  function metricState(robot,data,league,market){
+    var s=lineSeries(data[league]||[],market,20),line=s.line,n=line.length;
+    if(n<12)return null;
+    var avg=s.hits.reduce(function(a,b){return a+b;},0)/s.hits.length*100;
+    var m=ema(line,6),l=ema(line,18),gains=0,losses=0;
+    for(var i=Math.max(1,n-14);i<n;i++){var d=line[i]-line[i-1];if(d>0)gains+=d;else losses-=d;}
+    var rsi=gains+losses?100*gains/(gains+losses):50;
+    var up=rising(line,5),others=false;
+    Object.keys(data).forEach(function(other){if(other===league)return;var o=lineSeries(data[other]||[],market,20).line;if(o.length>6&&!rising(o,5))others=true;});
+    var comp=COMPANION[market]||'Over 2.5',cl=lineSeries(data[league]||[],comp,20).line;
+    return {subida:up,media:line[n-1]>avg,macd:m[n-1]-l[n-1]>0,rsi:rsi>=45&&rsi<=70,ligas:up&&others,confirmacao:rising(cl,5),
+      linha:Math.round(line[n-1]),mediaHist:Math.round(avg)};
+  }
+  function metricsPass(robot,data,league,market){
+    var rules=(robot.metrics||[]).filter(function(r){return r.use;}),threshold=Number(robot.threshold);
+    if(!rules.length||!threshold)return {ok:true,text:''};
+    var st=metricState(robot,data,league,market);
+    if(!st)return {ok:true,text:'métricas: poucos jogos'};
+    var max=0,pts=0,mandatoryFail=false;
+    rules.forEach(function(r){max+=Number(r.weight)||0;var hit=!!st[r.key]===!!r.expected;if(hit)pts+=Number(r.weight)||0;else if(r.key==='subida'&&r.expected)mandatoryFail=true;});
+    var pct=max?Math.round(pts/max*100):0;
+    return {ok:!mandatoryFail&&pct>=threshold,pct:pct,text:'métricas '+pct+'/100 · linha '+st.linha+'% (média '+st.mediaHist+'%)'};
   }
   function hasOpenCycle(signals, robotId, league) {
     return signals.some(function(signal){
@@ -186,7 +222,7 @@
     signal.timeA=game.time_a||'?';signal.timeB=game.time_b||'?';signal.score='';signal.awaitingNext=false;
   }
   function reconcileSignals(signals,data) {
-    var changed=false,followUps=[];
+    var changed=false,followUps=[];followUps.resolved=[];
     signals.forEach(function(signal){
       var maximum=Math.max(1,Number(signal.shots||1)),all=data[signal.league||'copa']||[];
       if(signal.status!=='PENDENTE')return;
@@ -212,8 +248,8 @@
         signal.attempts.sort(function(a,b){return Number(a.number)-Number(b.number);});
         signal.score=game.resultado_ft||((game.gols_a||0)+'-'+(game.gols_b||0));
         signal.lastResolvedGameSlot=game.slot_em||game.criado_em||'';changed=true;
-        if(paid){signal.status='GREEN';signal.winningShot=current;signal.resolvedAt=new Date().toISOString();break;}
-        if(current>=maximum){signal.status='RED';signal.resolvedAt=new Date().toISOString();break;}
+        if(paid){signal.status='GREEN';signal.winningShot=current;signal.resolvedAt=new Date().toISOString();followUps.resolved.push(signal);break;}
+        if(current>=maximum){signal.status='RED';signal.resolvedAt=new Date().toISOString();followUps.resolved.push(signal);break;}
         var next=nextShotGame(all,game);
         if(!next){signal.awaitingNext=true;signal.currentShot=current+1;signal.gameId='';signal.gameSlot='';
           signal.timeA='?';signal.timeB='?';signal.score='';break;}
@@ -238,7 +274,16 @@
     box.innerHTML='<b>'+title.replace(/[<>]/g,'')+'</b><span>'+body.replace(/[<>]/g,'')+'</span>';document.body.appendChild(box);
     setTimeout(function(){box.remove();},12000);
   }
-  async function notify(title,body,key) {
+  var tgQueue=Promise.resolve();
+  function sendTelegram(text){
+    tgQueue=tgQueue.then(function(){return fetch('/api/telegram/enviar',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({texto:text})}).catch(function(){});});
+    return tgQueue;
+  }
+  function robotById(id){return read(ROBOTS_KEY).find(function(r){return String(r.id)===String(id);})||{};}
+  async function notify(title,body,key,destino) {
+    destino=destino||'todos';
+    if(destino!=='site')sendTelegram(title+'\n'+body.split(' · ').join('\n'));
+    if(destino==='telegram'){try{window.dispatchEvent(new CustomEvent('amd:manual-entry',{detail:{title:title,body:body,key:key,at:new Date().toISOString()}}));}catch(_){}return;}
     panelToast(title,body);
     try{window.dispatchEvent(new CustomEvent('amd:manual-entry',{detail:{title:title,body:body,key:key,at:new Date().toISOString()}}));}catch(_){}
     if(!('Notification' in root)||Notification.permission!=='granted')return;
@@ -267,7 +312,13 @@
         var followHour=gameHour({hora:followSignal.gameHour,minuto:followSignal.gameMinute,slot_em:followSignal.gameSlot});
         var followBody=String(followSignal.league||'copa').toUpperCase()+' · '+followSignal.market+' · '+
           followSignal.timeA+' x '+followSignal.timeB+' · TIRO '+follow.shot+'/'+Math.max(1,Number(followSignal.shots||1))+' · jogo '+followHour;
-        await notify('🤖 '+(followSignal.robotName||'Robô manual')+' · PRÓXIMO TIRO',followBody,followSignal.key+'-tiro-'+follow.shot);
+        await notify('🤖 '+(followSignal.robotName||'Robô manual')+' · PRÓXIMO TIRO',followBody,followSignal.key+'-tiro-'+follow.shot,robotById(followSignal.robotId).destino);
+      }
+      var resolved=followUps.resolved||[];
+      for(var ri=0;ri<resolved.length;ri++){
+        var rs=resolved[ri],green=rs.status==='GREEN';
+        var rBody=String(rs.league||'').toUpperCase()+' · '+rs.market+' · '+rs.timeA+' x '+rs.timeB+' · placar '+(rs.score||'?')+(green?' · tiro '+(rs.winningShot||1):'');
+        await notify((green?'✅ GREEN':'❌ RED')+' · '+(rs.robotName||'Robô manual'),rBody,rs.key+'-res',robotById(rs.robotId).destino);
       }
       for(var i=0;i<robots.length;i++){
         var robot=robots[i],robotLeagueList=robotLeagues(robot);
@@ -279,13 +330,15 @@
             if(hasOpenCycle(signals,robot.id,robotLeague))continue;
             var match=eligibleMatch(robot,all);if(!match)continue;
           var upcoming=nextGame(all,match.trigger);if(!upcoming)continue;
+          var entryMk=match.entry.entryMarket||robot.entryMarket||match.entry.market||'Over 2.5';
+          var mp=metricsPass(robot,data,robotLeague,entryMk);if(!mp.ok)continue;
           var key=[robot.id,robotLeague,match.row,gameKey(match.trigger),upcoming.id||upcoming.slot_em].join('|');if(sentSet[key])continue;
           sentSet[key]=true;sent.unshift(key);sent=sent.slice(0,500);localStorage.setItem(SENT_KEY,JSON.stringify(sent));
           var market=match.entry.entryMarket||robot.entryMarket||match.entry.market||'Entrada';var maximum=Math.max(1,Number(robot.shots||1));
           var entryHour=gameHour(upcoming);
-          var body=robotLeague.toUpperCase()+' · '+market+' · '+(upcoming.time_a||'?')+' x '+(upcoming.time_b||'?')+' · TIRO 1/'+maximum+' · jogo '+entryHour;
+          var body=robotLeague.toUpperCase()+' · '+market+' · '+(upcoming.time_a||'?')+' x '+(upcoming.time_b||'?')+' · TIRO 1/'+maximum+' · jogo '+entryHour+(mp.text?' · '+mp.text:'');
           saveSignal({id:key,key:key,robotId:robot.id,robotName:robot.name||'Robô manual',league:robotLeague,market:market,shots:maximum,currentShot:1,attempts:[],cycleVersion:2,timeA:upcoming.time_a||'?',timeB:upcoming.time_b||'?',gameId:upcoming.id||'',gameSlot:upcoming.slot_em||upcoming.criado_em||'',gameHour:upcoming.hora,gameMinute:upcoming.minuto,status:'PENDENTE',sentAt:new Date().toISOString(),score:''});
-          await notify('🤖 '+(robot.name||'Robô manual')+' · ENTRADA',body,key);
+          await notify('🤖 '+(robot.name||'Robô manual')+' · ENTRADA',body,key,robot.destino);
         }
       }
     }catch(_){}finally{running=false;}

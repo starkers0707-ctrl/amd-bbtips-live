@@ -231,7 +231,9 @@
       scoreResult: q('#rbScoreResult').value,
       scoreA: q('#rbScoreA').value,
       scoreB: q('#rbScoreB').value,
-      odd: q('#rbOdd').value
+      odd: q('#rbOdd').value,
+      oddMin: q('#rbOddMin').value,
+      oddMax: q('#rbOddMax').value
     };
   }
 
@@ -269,6 +271,8 @@
     else q('#rbTeamA').value = '';
     if (qa('option', q('#rbTeamB')).some(function (o) { return o.value === position.teamB; })) q('#rbTeamB').value = position.teamB || '';
     else q('#rbTeamB').value = '';
+    q('#rbOddMin').value = position.oddMin || '';
+    q('#rbOddMax').value = position.oddMax || '';
     fillOdds(position.odd || '');
     updateMinuteVisibility();
     loadingPatternCell = false;
@@ -645,6 +649,7 @@
       scoreB: q('#rbScoreB').value,
       odd: q('#rbOdd').value,
       oddLabel: q('#rbOdd').selectedOptions[0] ? q('#rbOdd').selectedOptions[0].textContent : '',
+      destino: q('#rbDestino').value || 'todos',
       entryMarket: q('#rbEntryMarket').value,
       shots: Number(q('#rbShots').value || 1),
       active: q('#rbActive').checked,
@@ -709,6 +714,9 @@
     q('#rbScoreB').value = '';
     q('#rbEntryMarket').value = 'Over 2.5';
     q('#rbShots').value = '3';
+    q('#rbDestino').value = 'todos';
+    q('#rbOddMin').value = '';
+    q('#rbOddMax').value = '';
     q('#rbActive').checked = false;
     patternCells = {}; selectedPatternKey = ''; renderPatternGrid();
     qa('.metric-card').forEach(function (card, index) {
@@ -748,6 +756,7 @@
     q('#rbScoreB').value = robot.scoreB == null ? '' : String(robot.scoreB);
     q('#rbEntryMarket').value = robot.entryMarket || 'Over 2.5';
     q('#rbShots').value = String(robot.shots || 3);
+    q('#rbDestino').value = robot.destino || 'todos';
     q('#rbActive').checked = !!robot.active;
     patternCells = {};
     (robot.pattern || []).forEach(function (position) { if (position && position.key) patternCells[position.key] = position; });

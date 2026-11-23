@@ -308,6 +308,103 @@ const isAdmin = req => {
   return !!((ADMIN_KEY && igualSeguro(recebido, ADMIN_KEY)) ||
     (CODIGO_MESTRE && igualSeguro(recebido.toUpperCase(), CODIGO_MESTRE)));
 };
+// ===== Telegram: avisos dos robos manuais =====
+// Cada acesso (codigo) liga o proprio chat pelo link t.me/<bot>?start=<token>.
+const TG_TOKEN = (String(process.env.TELEGRAM_BOT_TOKEN || "").match(/\d{6,}:[A-Za-z0-9_-]{30,}/) || [""])[0];
+const TG_FILE = "telegram.json";
+let tgChats = {}, tgSha = null, tgBot = "", tgOffset = 0;
+const tgPendentes = new Map(), tgTaxa = new Map();
+function tgApi(metodo, corpo, ms = 20000) {
+  return fetch(`https://api.telegram.org/bot${TG_TOKEN}/${metodo}`, { method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(corpo || {}), signal: AbortSignal.timeout(ms) }).then(r => r.json()).catch(e => ({ ok: false, description: e.message }));
+}
+async function tgCarrega() {
+  if (!GH_T) return;
+  try {
+    const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${TG_FILE}?ref=${GH_BRANCH}`, { headers: ghHead() });
+    if (r.ok) { const j = await r.json(); tgSha = j.sha; tgChats = JSON.parse(Buffer.from(j.content, "base64").toString()) || {}; }
+  } catch (e) {}
+}
+async function tgSalva(tentativa = 0) {
+  if (!GH_T) return;
+  try {
+    const body = { message: "telegram", content: Buffer.from(JSON.stringify(tgChats)).toString("base64"), branch: GH_BRANCH };
+    if (tgSha) body.sha = tgSha;
+    const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${TG_FILE}`, { method: "PUT", headers: { ...ghHead(), "Content-Type": "application/json" }, body: JSON.stringify(body) });
+    if (r.ok) { tgSha = (await r.json()).content.sha; return; }
+    if ((r.status === 409 || r.status === 422) && tentativa < 2) {
+      const g = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${TG_FILE}?ref=${GH_BRANCH}`, { headers: ghHead() });
+      tgSha = g.ok ? (await g.json()).sha : null; return tgSalva(tentativa + 1);
+    }
+    console.log("[telegram] falha ao salvar chats: HTTP " + r.status);
+  } catch (e) { console.log("[telegram] falha ao salvar chats:", e.message); }
+}
+function tgDono(req) {
+  const s = sessaoValida(req);
+  const cod = String((s && s.codigo) || req.headers["x-acesso"] || "").toUpperCase().trim();
+  return cod ? createHmac("sha256", "amd-telegram").update(cod).digest("hex").slice(0, 24) : "";
+}
+async function tgLoop() {
+  if (!TG_TOKEN) { console.log("[telegram] TELEGRAM_BOT_TOKEN ausente: avisos so no site"); return; }
+  await tgCarrega();
+  const me = await tgApi("getMe");
+  if (!me.ok) { console.log("[telegram] token invalido:", me.description); return; }
+  tgBot = me.result.username; console.log(`[telegram] bot @${tgBot} ativo, ${Object.keys(tgChats).length} chats`);
+  await tgApi("deleteWebhook");
+  for (;;) {
+    const r = await tgApi("getUpdates", { offset: tgOffset, timeout: 45, allowed_updates: ["message"] }, 60000);
+    if (!r.ok) { await new Promise(ok => setTimeout(ok, 10000)); continue; }
+    for (const u of r.result || []) {
+      tgOffset = u.update_id + 1;
+      const m = u.message; if (!m || !m.text) continue;
+      const chat = m.chat.id, ini = m.text.match(/^\/start(?:\s+(\S+))?/);
+      if (ini) {
+        const p = ini[1] && tgPendentes.get(ini[1]);
+        if (p && p.ate > Date.now()) {
+          tgPendentes.delete(ini[1]);
+          tgChats[p.dono] = { chat, nome: [m.from?.first_name, m.from?.last_name].filter(Boolean).join(" "), desde: Date.now() };
+          tgSalva();
+          tgApi("sendMessage", { chat_id: chat, text: "✅ Conectado ao AMD Live.\nOs avisos dos seus robôs vão chegar aqui. Para desligar, envie /sair." });
+        } else tgApi("sendMessage", { chat_id: chat, text: "Para conectar: AMD Live → Criar robô → Destino → botão +." });
+      } else if (/^\/sair/.test(m.text)) {
+        for (const [k, v] of Object.entries(tgChats)) if (v.chat === chat) delete tgChats[k];
+        tgSalva(); tgApi("sendMessage", { chat_id: chat, text: "Desconectado. Você não vai mais receber avisos aqui." });
+      }
+    }
+  }
+}
+app.get("/api/telegram/status", (req, res) => {
+  const d = tgChats[tgDono(req)];
+  res.json({ configurado: !!(TG_TOKEN && tgBot), bot: tgBot, conectado: !!d, nome: d ? d.nome : "" });
+});
+app.post("/api/telegram/vincular", (req, res) => {
+  const dono = tgDono(req);
+  if (!dono) return res.status(401).json({ erro: "login necessario" });
+  if (!TG_TOKEN || !tgBot) return res.status(503).json({ erro: "Telegram nao configurado no servidor" });
+  for (const [k, v] of tgPendentes) if (v.ate < Date.now()) tgPendentes.delete(k);
+  const token = randomBytes(9).toString("base64url");
+  tgPendentes.set(token, { dono, ate: Date.now() + 15 * 60000 });
+  res.json({ link: `https://t.me/${tgBot}?start=${token}` });
+});
+app.post("/api/telegram/desvincular", (req, res) => {
+  const dono = tgDono(req);
+  if (dono && tgChats[dono]) { delete tgChats[dono]; tgSalva(); }
+  res.json({ ok: true });
+});
+app.post("/api/telegram/enviar", async (req, res) => {
+  const dono = tgDono(req), d = tgChats[dono];
+  if (!d || !TG_TOKEN) return res.status(404).json({ erro: "telegram nao conectado" });
+  const agora = Date.now(), t = (tgTaxa.get(dono) || []).filter(x => agora - x < 60000);
+  if (t.length >= 20) return res.status(429).json({ erro: "muitos avisos por minuto" });
+  t.push(agora); tgTaxa.set(dono, t);
+  const texto = String((req.body || {}).texto || "").slice(0, 1000);
+  if (!texto) return res.status(400).json({ erro: "texto vazio" });
+  const r = await tgApi("sendMessage", { chat_id: d.chat, text: texto, disable_web_page_preview: true });
+  if (!r.ok && /blocked|chat not found|deactivated/i.test(r.description || "")) { delete tgChats[dono]; tgSalva(); }
+  res.status(r.ok ? 200 : 502).json({ ok: !!r.ok });
+});
+setTimeout(() => tgLoop().catch(e => console.log("[telegram] parou:", e.message)), 5000);
+
 app.use("/api/admin", (req, res, next) => {
   const espera = loginBloqueado(req);
   if (espera) { res.setHeader("Retry-After", String(espera)); return res.status(429).json({ erro: "muitas tentativas; aguarde" }); }
