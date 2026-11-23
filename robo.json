@@ -1006,13 +1006,49 @@
   }
  },
  "o25": {
-  "saldo": 18.8,
-  "ciclos": 49905,
-  "greens": 159,
+  "saldo": 21,
+  "ciclos": 49911,
+  "greens": 160,
   "redsCiclo": 17,
   "aborts": 0,
-  "descartes": 49729,
+  "descartes": 49734,
   "historico": [
+   {
+    "quando": "2026-11-23T15:25:43.097Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.47) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T15:25:43.092Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T15:25:43.086Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T15:25:43.079Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :27) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T15:25:43.070Z",
+    "resultado": "GREEN",
+    "unidades": 2.2,
+    "detalhe": "cam · Benfica x United @2.3 (tiro 3) · gatilho: coluna :21"
+   },
+   {
+    "quando": "2026-11-23T15:25:37.126Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T15:25:37.122Z",
     "resultado": "GREEN_OBS",
@@ -4576,97 +4612,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho seq RRRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:09:32.700Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.47) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:09:32.698Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:09:32.695Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:09:32.037Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho seq RRRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:09:32.034Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.47) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:09:32.031Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
    }
   ],
   "consumidas": {
    "lat": 1795444251997,
    "bra": 1795444950861,
    "spa": 1795446038437,
-   "cop": 1795446669199
+   "cop": 1795446669199,
+   "cam": 1795447543070
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "12:18",
-     "jogo": "Amsterdam x Dortmund",
-     "odd": 2.74
-    },
-    {
-     "h": "12:21",
-     "jogo": "Madrid x Milan",
-     "odd": 2.2
-    },
-    {
-     "h": "12:24",
-     "jogo": "Benfica x United",
-     "odd": 2.3
-    }
-   ],
-   "gatilho": "coluna :21",
-   "alvo": {
-    "h": "12:24",
-    "jogo": "Benfica x United",
-    "odd": 2.3,
-    "unidades": 4,
-    "desde": 1795447362372
-   },
-   "iniciadoEm": 1795446672062,
-   "tiros": [
-    {
-     "h": "12:18",
-     "jogo": "Amsterdam x Dortmund",
-     "odd": 2.74,
-     "unidades": 1
-    },
-    {
-     "h": "12:21",
-     "jogo": "Madrid x Milan",
-     "odd": 2.2,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
-   "cam": 1795432255029,
+   "cam": 1795447543070,
    "eng": 1795383709617,
    "ita": 1795421791233,
    "spa": 1795446038437,
@@ -4687,7 +4644,7 @@
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
-   "2026-11-23": -8.9
+   "2026-11-23": -6.7
   },
   "_obs": {}
  },
@@ -4829,10 +4786,6 @@
    "cam": {
     "desde": 1795447512834,
     "gatilho": "odd 2.47"
-   },
-   "cop": {
-    "desde": 1795447537122,
-    "gatilho": "coluna :36"
    }
   }
  },
