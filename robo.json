@@ -1007,12 +1007,24 @@
  },
  "o25": {
   "saldo": 15,
-  "ciclos": 51556,
+  "ciclos": 51558,
   "greens": 161,
   "redsCiclo": 18,
   "aborts": 0,
-  "descartes": 51377,
+  "descartes": 51379,
   "historico": [
+   {
+    "quando": "2026-11-23T16:07:28.165Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T16:07:28.151Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :11) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T16:07:28.146Z",
     "resultado": "GREEN_OBS",
@@ -4600,18 +4612,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:53:09.256Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :11) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:53:09.252Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4622,8 +4622,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "13:04",
@@ -4643,11 +4643,11 @@
    ],
    "gatilho": "coluna :06",
    "alvo": {
-    "h": "13:06",
-    "jogo": "ENG x POR",
-    "odd": 1.95,
-    "unidades": 2,
-    "desde": 1795449698848
+    "h": "13:08",
+    "jogo": "CRO x SWE",
+    "odd": 1.92,
+    "unidades": 4,
+    "desde": 1795450053331
    },
    "iniciadoEm": 1795449303430,
    "tiros": [
@@ -4656,6 +4656,12 @@
      "jogo": "BRA x SPA",
      "odd": 1.88,
      "unidades": 1
+    },
+    {
+     "h": "13:06",
+     "jogo": "ENG x POR",
+     "odd": 1.95,
+     "unidades": 2
     }
    ]
   },
@@ -4827,10 +4833,6 @@
    "cam": {
     "desde": 1795449528659,
     "gatilho": "coluna :03"
-   },
-   "bra": {
-    "desde": 1795450048146,
-    "gatilho": "coluna :14"
    }
   }
  },
