@@ -977,12 +977,30 @@
  },
  "o25": {
   "saldo": 24.5,
-  "ciclos": 42406,
+  "ciclos": 42409,
   "greens": 150,
   "redsCiclo": 15,
   "aborts": 0,
-  "descartes": 42241,
+  "descartes": 42244,
   "historico": [
+   {
+    "quando": "2026-11-23T12:32:06.689Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:32:02.489Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho seq RRGRR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:32:02.485Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T12:32:02.481Z",
     "resultado": "GREEN_OBS",
@@ -4564,24 +4582,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :21) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T12:17:59.272Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T12:17:59.268Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T12:17:59.264Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4797,9 +4797,9 @@
     "desde": 1795437037726,
     "gatilho": "odd 1.89"
    },
-   "bra": {
-    "desde": 1795437122481,
-    "gatilho": "time PAR"
+   "mnd": {
+    "desde": 1795437126688,
+    "gatilho": "time SPA"
    }
   }
  },
@@ -5557,12 +5557,41 @@
    }
   ],
   "consumidas": {
-   "cam": 1795433521138,
    "cop": 1795434093757,
    "bra": 1795434720516,
    "ame": 1795436971603
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "09:36",
+     "jogo": "United x Madrid",
+     "odd": 2.01
+    },
+    {
+     "h": "09:39",
+     "jogo": "Celtic x Turin",
+     "odd": 1.91
+    },
+    {
+     "h": "09:42",
+     "jogo": "Benfica x City",
+     "odd": 1.85
+    }
+   ],
+   "gatilho": "time Turin",
+   "alvo": {
+    "h": "09:36",
+    "jogo": "United x Madrid",
+    "odd": 2.01,
+    "unidades": 1,
+    "desde": 1795437122507
+   },
+   "iniciadoEm": 1795437122507
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -5574,9 +5603,9 @@
    "ame": 1795436971603
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "GGRRG",
-   "n": 8,
+   "tipo": "time",
+   "chave": "Turin",
+   "n": 29,
    "start": 1
   },
   "dias": {
