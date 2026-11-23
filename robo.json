@@ -1047,12 +1047,18 @@
  },
  "o25": {
   "saldo": -4.2,
-  "ciclos": 66846,
+  "ciclos": 66847,
   "greens": 184,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 66638,
+  "descartes": 66639,
   "historico": [
+   {
+    "quando": "2026-11-23T23:20:03.219Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.78) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T23:19:49.913Z",
     "resultado": "GREEN_OBS",
@@ -4646,12 +4652,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho seq RRRGG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:52:15.199Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4866,19 +4866,25 @@
     "gatilho": "odd 2.1"
    },
    "mnd": {
-    "desde": 1795475989913,
+    "desde": 1795476003219,
     "gatilho": "odd 1.78"
    }
   }
  },
  "ambas": {
-  "saldo": -6.1,
-  "ciclos": 190,
-  "greens": 80,
+  "saldo": -5.2,
+  "ciclos": 191,
+  "greens": 81,
   "redsCiclo": 9,
   "aborts": 0,
   "descartes": 101,
   "historico": [
+   {
+    "quando": "2026-11-23T23:19:49.958Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "cop · Argentina x France @1.93 (tiro 2) · gatilho: odd 1.93"
+   },
    {
     "quando": "2026-11-23T23:05:33.251Z",
     "resultado": "RED_CICLO",
@@ -6023,47 +6029,10 @@
   "consumidas": {
    "ame": 1795472609954,
    "cam": 1795474208815,
-   "mnd": 1795475133250
+   "mnd": 1795475133250,
+   "cop": 1795475989958
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "20:15",
-     "jogo": "England x Brazil",
-     "odd": 1.88
-    },
-    {
-     "h": "20:18",
-     "jogo": "Argentina x France",
-     "odd": 1.93
-    },
-    {
-     "h": "20:21",
-     "jogo": "Croatia x Wales",
-     "odd": 2.19
-    }
-   ],
-   "gatilho": "odd 1.93",
-   "alvo": {
-    "h": "20:18",
-    "jogo": "Argentina x France",
-    "odd": 1.93,
-    "unidades": 2,
-    "desde": 1795475793731
-   },
-   "iniciadoEm": 1795475146163,
-   "tiros": [
-    {
-     "h": "20:15",
-     "jogo": "England x Brazil",
-     "odd": 1.88,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -6071,20 +6040,20 @@
    "bra": 1795468716738,
    "mnd": 1795475133250,
    "cam": 1795474208815,
-   "cop": 1795470795101,
+   "cop": 1795475989958,
    "ame": 1795472609954
   },
   "_gatilhoAtual": {
    "tipo": "odd",
    "chave": "1.93",
    "n": 9,
-   "start": 8
+   "start": 7
   },
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
-   "2026-11-23": 6.1
+   "2026-11-23": 7
   },
   "_obs": {}
  }
