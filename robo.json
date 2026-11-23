@@ -912,12 +912,30 @@
  },
  "o25": {
   "saldo": 26,
-  "ciclos": 38520,
+  "ciclos": 38523,
   "greens": 144,
   "redsCiclo": 14,
   "aborts": 0,
-  "descartes": 38362,
+  "descartes": 38365,
   "historico": [
+   {
+    "quando": "2026-11-23T10:55:37.395Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:55:37.392Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time GOI) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:55:37.388Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T10:55:29.096Z",
     "resultado": "GREEN_OBS",
@@ -4499,24 +4517,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:39:31.984Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:39:31.979Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:39:31.028Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4725,9 +4725,9 @@
     "desde": 1795430561830,
     "gatilho": "seq RRRRR"
    },
-   "ame": {
-    "desde": 1795431329095,
-    "gatilho": "time Medellin"
+   "lat": {
+    "desde": 1795431337395,
+    "gatilho": "time NAC"
    }
   }
  },
@@ -5417,7 +5417,37 @@
    "bra": 1795430752639,
    "mnd": 1795431328259
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "07:58",
+     "jogo": "Buenos Aires x Lima",
+     "odd": 2.04
+    },
+    {
+     "h": "08:01",
+     "jogo": "Medellin x Porto Alegre",
+     "odd": 2.05
+    },
+    {
+     "h": "08:04",
+     "jogo": "Buenos Aires x Guayaquil",
+     "odd": 2.11
+    }
+   ],
+   "gatilho": "time Porto Alegre",
+   "alvo": {
+    "h": "07:58",
+    "jogo": "Buenos Aires x Lima",
+    "odd": 2.04,
+    "unidades": 1,
+    "desde": 1795431329112
+   },
+   "iniciadoEm": 1795431329112
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
