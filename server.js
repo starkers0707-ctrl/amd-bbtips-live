@@ -527,6 +527,35 @@ app.post("/api/robos/sync", (req, res) => {
   res.json({ ok: true, robos: lista.length });
 });
 
+app.get("/api/robos/estado", async (req, res) => {
+  const dono = tgDono(req);
+  if (!dono) return res.status(401).json({ erro: "login necessario" });
+  const st = robosDono[dono] || {}, tg = tgChats[dono] || {};
+  const robots = (st.robots || []).filter(r => r);
+  const out = [];
+  for (const r of robots) {
+    const info = { nome: r.name, ativo: !!r.active, destino: r.destino || "todos", ligas: RM ? RM.robotLeagues(r) : [], limiar: Number(r.threshold) || 0, ligasAgora: {} };
+    if (RM && r.active) for (const l of info.ligas) {
+      try {
+        const all = await gradeInterna(l);
+        const m = RM.eligibleMatch(r, all);
+        const mk = (r.pattern || []).find(p => p.markType === "entry");
+        const mp = RM.metricsPass(r, { [l]: all }, l, (mk && (mk.entryMarket || mk.market)) || r.entryMarket || "Over 2.5");
+        info.ligasAgora[l] = { jogos: all.filter(g => g.resultado_ft).length, padraoAgora: !!m, metricas: mp.text || (mp.ok ? "desligadas" : ""), metricasOk: mp.ok };
+      } catch (e) { info.ligasAgora[l] = { erro: e.message }; }
+    }
+    out.push(info);
+  }
+  res.json({ telegramPrivado: !!tg.chat, canais: (tg.canais || []).map(c => c.nome), robos: out, entradas: (st.signals || []).slice(0, 10).map(s => ({ robo: s.robotName, liga: s.league, jogo: s.timeA + " x " + s.timeB, status: s.status, em: s.sentAt })) });
+});
+app.post("/api/robos/teste", async (req, res) => {
+  const dono = tgDono(req);
+  if (!dono) return res.status(401).json({ erro: "login necessario" });
+  const robots = ((robosDono[dono] || {}).robots || []).filter(r => r && r.active);
+  if (!robots.length) return res.status(404).json({ erro: "nenhum robo ativo no servidor" });
+  for (const r of robots) await tgEnviaDono(dono, r.destino, `🧪 TESTE · ${r.name || "Robô manual"}\nSe chegou aqui, este robô vai avisar neste chat quando o padrão aparecer.\nLigas: ${(RM ? RM.robotLeagues(r) : []).join(", ").toUpperCase()}`);
+  res.json({ ok: true, robos: robots.length });
+});
 async function gradeInterna(liga) {
   const chave = CODIGO_MESTRE || ADMIN_KEY;
   const r = await fetch(`http://127.0.0.1:${PORT}/api/grade?liga=${liga}&horas=6&compacto=1&_=${Date.now()}`, { headers: { "x-acesso": chave }, signal: AbortSignal.timeout(20000) });
