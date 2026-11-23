@@ -1037,12 +1037,30 @@
  },
  "o25": {
   "saldo": -13.6,
-  "ciclos": 63917,
+  "ciclos": 63920,
   "greens": 175,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 63718,
+  "descartes": 63721,
   "historico": [
+   {
+    "quando": "2026-11-23T21:22:42.627Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :43) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T21:22:42.617Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T21:22:42.606Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T21:22:42.597Z",
     "resultado": "RED_CICLO",
@@ -4624,24 +4642,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:05:03.056Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.32) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:05:03.051Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:05:03.049Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4651,7 +4651,37 @@
    "cam": 1795468242626,
    "spa": 1795468962596
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "18:29",
+     "jogo": "PAL x RAC",
+     "odd": 1.93
+    },
+    {
+     "h": "18:32",
+     "jogo": "COL x ATL",
+     "odd": 1.86
+    },
+    {
+     "h": "18:35",
+     "jogo": "ATC x BAR",
+     "odd": 1.84
+    }
+   ],
+   "gatilho": "odd 1.86",
+   "alvo": {
+    "h": "18:29",
+    "jogo": "PAL x RAC",
+    "odd": 1.93,
+    "unidades": 1,
+    "desde": 1795468966096
+   },
+   "iniciadoEm": 1795468966096
+  },
   "cooldown": {
    "cam": 1795468242626,
    "eng": 1795383709617,
