@@ -1007,12 +1007,60 @@
  },
  "o25": {
   "saldo": 15,
-  "ciclos": 51323,
+  "ciclos": 51331,
   "greens": 161,
   "redsCiclo": 18,
   "aborts": 0,
-  "descartes": 51144,
+  "descartes": 51152,
   "historico": [
+   {
+    "quando": "2026-11-23T16:01:38.865Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :11) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T16:01:38.861Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T16:01:38.858Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T16:01:38.855Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T16:01:29.070Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T16:01:29.061Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :11) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T16:01:29.058Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T16:01:29.053Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T16:01:29.050Z",
     "resultado": "GREEN_OBS",
@@ -4564,54 +4612,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:48:17.691Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:48:08.732Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :58) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:48:08.728Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.47) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:48:08.725Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:48:08.722Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:48:08.717Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:48:07.847Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :58) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:48:07.841Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.47) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4622,8 +4622,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "13:04",
@@ -4643,13 +4643,21 @@
    ],
    "gatilho": "coluna :06",
    "alvo": {
-    "h": "13:04",
-    "jogo": "BRA x SPA",
-    "odd": 1.88,
-    "unidades": 1,
-    "desde": 1795449303430
+    "h": "13:06",
+    "jogo": "ENG x POR",
+    "odd": 1.95,
+    "unidades": 2,
+    "desde": 1795449698848
    },
-   "iniciadoEm": 1795449303430
+   "iniciadoEm": 1795449303430,
+   "tiros": [
+    {
+     "h": "13:04",
+     "jogo": "BRA x SPA",
+     "odd": 1.88,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795447543070,
@@ -4820,9 +4828,9 @@
     "desde": 1795449528659,
     "gatilho": "coluna :03"
    },
-   "spa": {
-    "desde": 1795449689049,
-    "gatilho": "coluna :09"
+   "lat": {
+    "desde": 1795449698865,
+    "gatilho": "coluna :11"
    }
   }
  },
