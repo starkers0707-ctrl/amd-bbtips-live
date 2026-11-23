@@ -912,12 +912,18 @@
  },
  "o25": {
   "saldo": 26,
-  "ciclos": 38783,
+  "ciclos": 38784,
   "greens": 144,
   "redsCiclo": 14,
   "aborts": 0,
-  "descartes": 38625,
+  "descartes": 38626,
   "historico": [
+   {
+    "quando": "2026-11-23T11:02:32.050Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T11:02:32.047Z",
     "resultado": "GREEN_OBS",
@@ -4511,12 +4517,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:47:03.010Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4526,8 +4526,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "07:58",
@@ -4547,11 +4547,11 @@
    ],
    "gatilho": "time Medellin",
    "alvo": {
-    "h": "08:01",
-    "jogo": "Medellin x Porto Alegre",
-    "odd": 2.38,
-    "unidades": 2,
-    "desde": 1795431581237
+    "h": "08:04",
+    "jogo": "Buenos Aires x Guayaquil",
+    "odd": 2.4,
+    "unidades": 4,
+    "desde": 1795431774947
    },
    "iniciadoEm": 1795430752599,
    "tiros": [
@@ -4560,6 +4560,12 @@
      "jogo": "Buenos Aires x Lima",
      "odd": 2.18,
      "unidades": 1
+    },
+    {
+     "h": "08:01",
+     "jogo": "Medellin x Porto Alegre",
+     "odd": 2.38,
+     "unidades": 2
     }
    ]
   },
@@ -4731,10 +4737,6 @@
    "spa": {
     "desde": 1795430561830,
     "gatilho": "seq RRRRR"
-   },
-   "lat": {
-    "desde": 1795431752047,
-    "gatilho": "time NAC"
    }
   }
  },
