@@ -124,12 +124,18 @@
     }
     return null;
   }
+  /* A grade marca o horario de Brasilia como se fosse UTC (3h atras do
+     relogio real). Detecta isso pelos proprios jogos e corrige o "agora". */
+  function clockShift(all){
+    var max=0;(all||[]).forEach(function(g){var t=Date.parse(g&&g.slot_em||g&&g.criado_em||'')||0;if(t>max)max=t;});
+    return max&&Date.now()-max>90*60000?3*3600000:0;
+  }
   function eligibleMatch(robot, all) {
     var completed=all.filter(function(g){return g.resultado_ft;})
       .sort(function(a,b){return orderValue(b)-orderValue(a);});
     if(!completed.length)return null;
     var match=matchingRow(robot,completed);if(!match)return null;
-    var activated=Date.parse(robot.activatedAt||robot.updatedAt||'')||0;
+    var activated=(Date.parse(robot.activatedAt||robot.updatedAt||'')||0)-clockShift(all);
     return timeValue(match.trigger)>activated?match:null;
   }
   /* Metricas que somam pontos: calculadas na linha (% de acerto em janela de 20)
@@ -173,7 +179,7 @@
     });
   }
   function pendingAfter(all, previous, nowValue) {
-    var previousTime=slotValue(previous),nowTime=Number(nowValue)||Date.now();
+    var previousTime=slotValue(previous),nowTime=(Number(nowValue)||Date.now())-clockShift(all);
     return all.filter(function(game){var slot=slotValue(game);return !game.resultado_ft&&slot>previousTime&&slot>nowTime;})
       .sort(function(a,b){return slotValue(a)-slotValue(b);});
   }
@@ -370,7 +376,7 @@
     if(Notification.permission==='default')return Notification.requestPermission();
     return Notification.permission;
   }
-  root.AMDManualMonitor={metricsPass:metricsPass,gameKey:gameKey,tick:tick,enable:enable,robotLeagues:robotLeagues,marketMatches:marketMatches,positionMatches:positionMatches,matchingRow:matchingRow,eligibleMatch:eligibleMatch,nextGame:nextGame,nextShotGame:nextShotGame,reconcileSignals:reconcileSignals,hasOpenCycle:hasOpenCycle,gameHour:gameHour,isLeader:isLeader};
+  root.AMDManualMonitor={clockShift:clockShift,metricsPass:metricsPass,gameKey:gameKey,tick:tick,enable:enable,robotLeagues:robotLeagues,marketMatches:marketMatches,positionMatches:positionMatches,matchingRow:matchingRow,eligibleMatch:eligibleMatch,nextGame:nextGame,nextShotGame:nextShotGame,reconcileSignals:reconcileSignals,hasOpenCycle:hasOpenCycle,gameHour:gameHour,isLeader:isLeader};
   root.addEventListener('pagehide',releaseLeadership);
   timer=setInterval(tick,15000);setTimeout(tick,1500);
 })(window);
