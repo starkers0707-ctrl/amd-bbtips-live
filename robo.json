@@ -912,12 +912,24 @@
  },
  "o25": {
   "saldo": 26,
-  "ciclos": 38698,
+  "ciclos": 38700,
   "greens": 144,
   "redsCiclo": 14,
   "aborts": 0,
-  "descartes": 38540,
+  "descartes": 38542,
   "historico": [
+   {
+    "quando": "2026-11-23T11:00:03.126Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:59:41.255Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T10:59:41.251Z",
     "resultado": "GREEN_OBS",
@@ -4505,18 +4517,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:44:05.291Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:44:05.284Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4732,9 +4732,9 @@
     "desde": 1795430561830,
     "gatilho": "seq RRRRR"
    },
-   "lat": {
-    "desde": 1795431581251,
-    "gatilho": "time NAC"
+   "mnd": {
+    "desde": 1795431603125,
+    "gatilho": "time SPA"
    }
   }
  },
@@ -5426,8 +5426,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "07:58",
@@ -5447,13 +5447,21 @@
    ],
    "gatilho": "time Porto Alegre",
    "alvo": {
-    "h": "07:58",
-    "jogo": "Buenos Aires x Lima",
-    "odd": 2.04,
-    "unidades": 1,
-    "desde": 1795431329112
+    "h": "08:01",
+    "jogo": "Medellin x Porto Alegre",
+    "odd": 2.05,
+    "unidades": 2,
+    "desde": 1795431581267
    },
-   "iniciadoEm": 1795431329112
+   "iniciadoEm": 1795431329112,
+   "tiros": [
+    {
+     "h": "07:58",
+     "jogo": "Buenos Aires x Lima",
+     "odd": 2.04,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795331214015,
@@ -5469,7 +5477,7 @@
    "tipo": "time",
    "chave": "Porto Alegre",
    "n": 15,
-   "start": 1
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
