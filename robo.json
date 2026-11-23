@@ -829,12 +829,24 @@
  },
  "o25": {
   "saldo": 31.4,
-  "ciclos": 32221,
+  "ciclos": 32223,
   "greens": 130,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32080,
+  "descartes": 32082,
   "historico": [
+   {
+    "quando": "2026-11-23T06:22:03.105Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:22:00.642Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Argentina) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T06:22:00.638Z",
     "resultado": "GREEN_OBS",
@@ -4422,18 +4434,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:25:00.839Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:24:45.473Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4635,9 +4635,9 @@
     "desde": 1795414668971,
     "gatilho": "time Belo Horizonte"
    },
-   "cam": {
-    "desde": 1795414920638,
-    "gatilho": "seq RRGR"
+   "mnd": {
+    "desde": 1795414923105,
+    "gatilho": "time SWE"
    }
   }
  },
