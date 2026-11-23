@@ -785,8 +785,8 @@
   "consumidas": {},
   "ciclo": {
    "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "02:36",
@@ -806,13 +806,21 @@
    ],
    "gatilho": "seq GRGR",
    "alvo": {
-    "h": "02:36",
-    "jogo": "SUN x AST",
-    "odd": 3.31,
-    "unidades": 1,
-    "desde": 1795412017222
+    "h": "02:38",
+    "jogo": "BRE x MNC",
+    "odd": 3.17,
+    "unidades": 2,
+    "desde": 1795412247707
    },
-   "iniciadoEm": 1795412017222
+   "iniciadoEm": 1795412017222,
+   "tiros": [
+    {
+     "h": "02:36",
+     "jogo": "SUN x AST",
+     "odd": 3.31,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795391133443,
@@ -4508,7 +4516,7 @@
    "tipo": "time",
    "chave": "PER",
    "n": 9,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-19": -7,
@@ -4665,6 +4673,10 @@
    "ame": {
     "desde": 1795410914479,
     "gatilho": "placar acima de 1-0 (2-0)"
+   },
+   "lat": {
+    "desde": 1795412040615,
+    "gatilho": "time PER"
    }
   }
  },
@@ -5224,7 +5236,7 @@
    "tipo": "time",
    "chave": "SEV",
    "n": 8,
-   "start": 4
+   "start": 2
   },
   "dias": {
    "2026-11-20": 0,
