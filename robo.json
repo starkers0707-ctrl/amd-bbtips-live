@@ -1055,12 +1055,54 @@
  },
  "o25": {
   "saldo": -3.6,
-  "ciclos": 67156,
+  "ciclos": 67163,
   "greens": 185,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 66947,
+  "descartes": 66954,
   "historico": [
+   {
+    "quando": "2026-11-23T23:42:16.929Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T23:42:16.919Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T23:42:15.056Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T23:42:15.046Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T23:42:03.889Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T23:42:03.879Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T23:42:01.734Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T23:42:01.706Z",
     "resultado": "GREEN_OBS",
@@ -4618,48 +4660,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:01:35.438Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.1) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:01:35.435Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:01:35.432Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :11) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:01:35.428Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :10) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:01:35.425Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:01:34.801Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.1) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:01:34.798Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4877,9 +4877,9 @@
     "desde": 1795477186420,
     "gatilho": "coluna :52"
    },
-   "ita": {
-    "desde": 1795477321706,
-    "gatilho": "coluna :57"
+   "cam": {
+    "desde": 1795477336928,
+    "gatilho": "coluna :06"
    }
   }
  },
@@ -6051,8 +6051,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "20:40",
@@ -6072,13 +6072,21 @@
    ],
    "gatilho": "odd 1.84",
    "alvo": {
-    "h": "20:40",
-    "jogo": "Itaquera x Penarol",
-    "odd": 2.11,
-    "unidades": 1,
-    "desde": 1795477001183
+    "h": "20:43",
+    "jogo": "Belo Horizonte x Agua Branca",
+    "odd": 1.84,
+    "unidades": 2,
+    "desde": 1795477321779
    },
-   "iniciadoEm": 1795477001183
+   "iniciadoEm": 1795477001183,
+   "tiros": [
+    {
+     "h": "20:40",
+     "jogo": "Itaquera x Penarol",
+     "odd": 2.11,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795331214015,
