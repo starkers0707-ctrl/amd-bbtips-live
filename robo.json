@@ -924,12 +924,36 @@
  },
  "o25": {
   "saldo": 24.3,
-  "ciclos": 37320,
+  "ciclos": 37324,
   "greens": 142,
   "redsCiclo": 14,
   "aborts": 0,
-  "descartes": 37164,
+  "descartes": 37168,
   "historico": [
+   {
+    "quando": "2026-11-23T10:21:09.339Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:20:35.163Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:20:35.160Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:20:35.157Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T10:20:35.154Z",
     "resultado": "GREEN_OBS",
@@ -4505,30 +4529,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho seq GGRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:57:30.810Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:57:30.804Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq GGRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:57:30.139Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:57:30.131Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq GGRG) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4738,9 +4738,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "bra": {
-    "desde": 1795429235154,
-    "gatilho": "time GOI"
+   "mnd": {
+    "desde": 1795429269339,
+    "gatilho": "odd 1.88"
    }
   }
  },
@@ -5451,7 +5451,7 @@
    "tipo": "time",
    "chave": "Porto Alegre",
    "n": 12,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
