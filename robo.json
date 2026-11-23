@@ -937,7 +937,7 @@
    "tipo": "coluna",
    "chave": ":14",
    "n": 8,
-   "start": 7
+   "start": 6
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -954,12 +954,36 @@
  },
  "o25": {
   "saldo": 24.5,
-  "ciclos": 40914,
+  "ciclos": 40918,
   "greens": 150,
   "redsCiclo": 15,
   "aborts": 0,
-  "descartes": 40749,
+  "descartes": 40753,
   "historico": [
+   {
+    "quando": "2026-11-23T11:59:36.474Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T11:59:19.408Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T11:59:19.404Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T11:59:19.400Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T11:59:19.397Z",
     "resultado": "GREEN_OBS",
@@ -4535,30 +4559,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :58) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:45:49.292Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:45:49.289Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:45:49.284Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:45:48.721Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :58) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4736,9 +4736,9 @@
     "desde": 1795434406859,
     "gatilho": "coluna :03"
    },
-   "mnd": {
-    "desde": 1795435159396,
-    "gatilho": "time SPA"
+   "spa": {
+    "desde": 1795435176474,
+    "gatilho": "coluna :09"
    }
   }
  },
