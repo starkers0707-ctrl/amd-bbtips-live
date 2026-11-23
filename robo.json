@@ -1068,7 +1068,7 @@
    "tipo": "odd",
    "chave": "2.96",
    "n": 9,
-   "start": 7
+   "start": 6
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -1085,12 +1085,18 @@
  },
  "o25": {
   "saldo": -2.6,
-  "ciclos": 67337,
+  "ciclos": 67338,
   "greens": 186,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 67127,
+  "descartes": 67128,
   "historico": [
+   {
+    "quando": "2026-11-23T23:52:41.880Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T23:50:15.683Z",
     "resultado": "GREEN_OBS",
@@ -4684,12 +4690,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :11) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:11:28.800Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :11) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4699,7 +4699,37 @@
    "mnd": 1795476452713,
    "ame": 1795477489418
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "21:15",
+     "jogo": "Denmark x Wales",
+     "odd": 2.46
+    },
+    {
+     "h": "21:18",
+     "jogo": "Spain x France",
+     "odd": 2.39
+    },
+    {
+     "h": "21:21",
+     "jogo": "Croatia x USA",
+     "odd": 2.31
+    }
+   ],
+   "gatilho": "odd 2.39",
+   "alvo": {
+    "h": "21:15",
+    "jogo": "Denmark x Wales",
+    "odd": 2.46,
+    "unidades": 1,
+    "desde": 1795477961864
+   },
+   "iniciadoEm": 1795477961864
+  },
   "cooldown": {
    "cam": 1795475247707,
    "eng": 1795383709617,
@@ -4713,9 +4743,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "odd",
-   "chave": "2.02",
-   "n": 10,
-   "start": 1
+   "chave": "2.39",
+   "n": 15,
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -4875,8 +4905,12 @@
     "gatilho": "coluna :06"
    },
    "ita": {
-    "desde": 1795477815682,
+    "desde": 1795477833715,
     "gatilho": "coluna :57"
+   },
+   "cop": {
+    "desde": 1795477961879,
+    "gatilho": "odd 2.39"
    }
   }
  },
@@ -6048,7 +6082,6 @@
    }
   ],
   "consumidas": {
-   "cam": 1795474208815,
    "mnd": 1795475133250,
    "cop": 1795475989958,
    "ame": 1795477489501
