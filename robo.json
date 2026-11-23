@@ -1037,12 +1037,24 @@
  },
  "o25": {
   "saldo": -11.8,
-  "ciclos": 64807,
+  "ciclos": 64809,
   "greens": 177,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 64606,
+  "descartes": 64608,
   "historico": [
+   {
+    "quando": "2026-11-23T21:50:15.218Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T21:50:15.212Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T21:50:05.901Z",
     "resultado": "GREEN_OBS",
@@ -4630,18 +4642,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:32:35.542Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :43) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:32:35.536Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4652,8 +4652,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "18:48",
@@ -4673,13 +4673,21 @@
    ],
    "gatilho": "odd 2.39",
    "alvo": {
-    "h": "18:48",
-    "jogo": "Uruguay x Germany",
-    "odd": 2.55,
-    "unidades": 1,
-    "desde": 1795470276844
+    "h": "18:51",
+    "jogo": "Portugal x Spain",
+    "odd": 2.39,
+    "unidades": 2,
+    "desde": 1795470615207
    },
-   "iniciadoEm": 1795470276844
+   "iniciadoEm": 1795470276844,
+   "tiros": [
+    {
+     "h": "18:48",
+     "jogo": "Uruguay x Germany",
+     "odd": 2.55,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795468242626,
@@ -4693,10 +4701,10 @@
    "cop": 1795461211344
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.39",
-   "n": 13,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":14",
+   "n": 15,
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -4851,9 +4859,9 @@
     "desde": 1795470427680,
     "gatilho": "coluna :14"
    },
-   "cop": {
-    "desde": 1795470605901,
-    "gatilho": "odd 2.39"
+   "lat": {
+    "desde": 1795470615218,
+    "gatilho": "odd 1.89"
    }
   }
  },
