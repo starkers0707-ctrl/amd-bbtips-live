@@ -1036,13 +1036,25 @@
   }
  },
  "o25": {
-  "saldo": -6.6,
-  "ciclos": 63915,
+  "saldo": -13.6,
+  "ciclos": 63917,
   "greens": 175,
-  "redsCiclo": 23,
+  "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 63717,
+  "descartes": 63718,
   "historico": [
+   {
+    "quando": "2026-11-23T21:22:42.597Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "spa · ciclo perdido (3 tiros) · gatilho: coluna :21"
+   },
+   {
+    "quando": "2026-11-23T21:22:34.810Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :43) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T21:22:34.806Z",
     "resultado": "GREEN_OBS",
@@ -4630,76 +4642,21 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:05:03.046Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:05:03.041Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :14) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ame": 1795466140405,
    "ita": 1795466317439,
    "mnd": 1795466854695,
-   "cam": 1795468242626
+   "cam": 1795468242626,
+   "spa": 1795468962596
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "18:19",
-     "jogo": "BET x VIL",
-     "odd": 1.9
-    },
-    {
-     "h": "18:21",
-     "jogo": "SEV x ALV",
-     "odd": 1.95
-    },
-    {
-     "h": "18:23",
-     "jogo": "ELC x OSA",
-     "odd": 1.95
-    }
-   ],
-   "gatilho": "coluna :21",
-   "alvo": {
-    "h": "18:23",
-    "jogo": "ELC x OSA",
-    "odd": 1.95,
-    "unidades": 4,
-    "desde": 1795468954795
-   },
-   "iniciadoEm": 1795468261222,
-   "tiros": [
-    {
-     "h": "18:19",
-     "jogo": "BET x VIL",
-     "odd": 1.9,
-     "unidades": 1
-    },
-    {
-     "h": "18:21",
-     "jogo": "SEV x ALV",
-     "odd": 1.95,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795468242626,
    "eng": 1795383709617,
    "ita": 1795466317439,
-   "spa": 1795459478535,
+   "spa": 1795468962596,
    "lat": 1795464933142,
    "bra": 1795460809775,
    "mnd": 1795466854695,
@@ -4717,7 +4674,7 @@
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
-   "2026-11-23": -34.3
+   "2026-11-23": -41.3
   },
   "_obs": {
    "cam": {
@@ -4864,10 +4821,6 @@
    "mnd": {
     "desde": 1795468111342,
     "gatilho": "coluna :10"
-   },
-   "lat": {
-    "desde": 1795468954806,
-    "gatilho": "odd 1.86"
    }
   }
  },
