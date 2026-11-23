@@ -55,7 +55,7 @@
     var r = await fetch('/api/historico?liga=' + encodeURIComponent(liga), { credentials: 'same-origin', cache: 'no-store' });
     if (!r.ok) throw new Error('HTTP ' + r.status);
     var j = await r.json();
-    var jogos = (j.jogos || []).map(function (x) { return { t: Number(x[0]), a: Number(x[1]), b: Number(x[2]) }; })
+    var jogos = (j.jogos || []).map(function (x) { return { t: typeof x[0] === 'number' ? x[0] : Date.parse(x[0]), a: Number(x[1]), b: Number(x[2]) }; })
       .filter(function (g) { return Number.isFinite(g.t) && Number.isFinite(g.a) && Number.isFinite(g.b); })
       .sort(function (x, y) { return x.t - y.t; });
     cache[liga] = { t: Date.now(), jogos: jogos };
