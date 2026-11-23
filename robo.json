@@ -1037,12 +1037,30 @@
  },
  "o25": {
   "saldo": -12.7,
-  "ciclos": 64262,
+  "ciclos": 64265,
   "greens": 176,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 64062,
+  "descartes": 64065,
   "historico": [
+   {
+    "quando": "2026-11-23T21:34:06.147Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T21:34:04.064Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :43) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T21:34:04.057Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T21:34:04.040Z",
     "resultado": "GREEN_OBS",
@@ -4624,24 +4642,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:13:09.727Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:13:09.718Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :21) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:13:09.711Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4849,9 +4849,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "lat": {
-    "desde": 1795469644040,
-    "gatilho": "odd 1.86"
+   "ita": {
+    "desde": 1795469646147,
+    "gatilho": "time FRO"
    }
   }
  },
@@ -5965,7 +5965,37 @@
   "consumidas": {
    "bra": 1795468716738
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "18:36",
+     "jogo": "United x Amsterdam",
+     "odd": 2.31
+    },
+    {
+     "h": "18:39",
+     "jogo": "Milan x Liverpool",
+     "odd": 1.96
+    },
+    {
+     "h": "18:42",
+     "jogo": "Celtic x Paris",
+     "odd": 1.88
+    }
+   ],
+   "gatilho": "seq RGRRG",
+   "alvo": {
+    "h": "18:36",
+    "jogo": "United x Amsterdam",
+    "odd": 2.31,
+    "unidades": 1,
+    "desde": 1795469644079
+   },
+   "iniciadoEm": 1795469644079
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
