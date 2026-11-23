@@ -719,7 +719,10 @@
     q('#rbScoreB').value = '';
     q('#rbEntryMarket').value = 'Over 2.5';
     q('#rbShots').value = '3';
-    q('#rbDestino').value = 'todos';
+    var ultimoDestino = ''; try { ultimoDestino = localStorage.getItem('amd:robo-ultimo-destino') || ''; } catch (_) {}
+    q('#rbDestino').dataset.want = ultimoDestino || 'todos';
+    q('#rbDestino').value = ultimoDestino || 'todos';
+    if (q('#rbDestino').value !== (ultimoDestino || 'todos') && window.AMDTelegram) window.AMDTelegram.refresh();
     q('#rbOddMin').value = '';
     q('#rbOddMax').value = '';
     q('#rbActive').checked = false;

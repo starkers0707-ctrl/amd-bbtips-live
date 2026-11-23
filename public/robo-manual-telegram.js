@@ -124,6 +124,14 @@
     toast(r.ok ? 'Mensagem de teste enviada para o destino escolhido.' : 'Falhou o envio para o Telegram.');
   }
 
+  var sel = q('#rbDestino');
+  if (sel) {
+    try { var salvo = localStorage.getItem('amd:robo-ultimo-destino'); if (salvo) sel.dataset.want = salvo; } catch (_) {}
+    sel.addEventListener('change', function () {
+      sel.dataset.want = sel.value;
+      try { localStorage.setItem('amd:robo-ultimo-destino', sel.value); } catch (_) {}
+    });
+  }
   var c = q('#tgConnect'); if (c) c.addEventListener('click', abreMenu);
   var o = q('#tgOpen'); if (o) o.addEventListener('click', function (e) { e.stopPropagation(); abreMenu(); });
   var t = q('#tgTest'); if (t) t.addEventListener('click', testar);
