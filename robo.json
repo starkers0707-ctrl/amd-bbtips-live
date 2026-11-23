@@ -1037,12 +1037,54 @@
  },
  "o25": {
   "saldo": -6.6,
-  "ciclos": 63908,
+  "ciclos": 63915,
   "greens": 175,
   "redsCiclo": 23,
   "aborts": 0,
-  "descartes": 63710,
+  "descartes": 63717,
   "historico": [
+   {
+    "quando": "2026-11-23T21:22:34.806Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T21:22:34.800Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T21:22:33.307Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :43) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T21:22:33.303Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T21:22:33.295Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T21:22:20.105Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :43) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T21:22:20.100Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T21:22:20.090Z",
     "resultado": "GREEN_OBS",
@@ -4600,48 +4642,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :14) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:05:03.035Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:05:03.031Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:04:44.235Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.32) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:04:44.232Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:04:44.230Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:04:44.227Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:04:44.224Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :14) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4652,8 +4652,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "18:19",
@@ -4673,11 +4673,11 @@
    ],
    "gatilho": "coluna :21",
    "alvo": {
-    "h": "18:21",
-    "jogo": "SEV x ALV",
+    "h": "18:23",
+    "jogo": "ELC x OSA",
     "odd": 1.95,
-    "unidades": 2,
-    "desde": 1795468838097
+    "unidades": 4,
+    "desde": 1795468954795
    },
    "iniciadoEm": 1795468261222,
    "tiros": [
@@ -4686,6 +4686,12 @@
      "jogo": "BET x VIL",
      "odd": 1.9,
      "unidades": 1
+    },
+    {
+     "h": "18:21",
+     "jogo": "SEV x ALV",
+     "odd": 1.95,
+     "unidades": 2
     }
    ]
   },
@@ -4859,9 +4865,9 @@
     "desde": 1795468111342,
     "gatilho": "coluna :10"
    },
-   "ita": {
-    "desde": 1795468940090,
-    "gatilho": "time FRO"
+   "lat": {
+    "desde": 1795468954806,
+    "gatilho": "odd 1.86"
    }
   }
  },
