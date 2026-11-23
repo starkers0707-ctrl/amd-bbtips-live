@@ -951,7 +951,6 @@
    }
   ],
   "consumidas": {
-   "mnd": 1795438773554,
    "eng": 1795439853566,
    "lat": 1795442097655
   },
@@ -985,12 +984,54 @@
  },
  "o25": {
   "saldo": 22.6,
-  "ciclos": 46310,
+  "ciclos": 46317,
   "greens": 155,
   "redsCiclo": 16,
   "aborts": 0,
-  "descartes": 46139,
+  "descartes": 46146,
   "historico": [
+   {
+    "quando": "2026-11-23T14:00:07.870Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T13:59:32.009Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T13:59:32.007Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T13:59:32.004Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T13:59:32.001Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T13:59:31.999Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T13:59:30.977Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T13:59:30.974Z",
     "resultado": "GREEN_OBS",
@@ -4548,48 +4589,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:47:00.688Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:47:00.686Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:47:00.682Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:47:00.679Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:46:30.419Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:46:30.417Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:46:30.413Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4599,8 +4598,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "10:58",
@@ -4620,13 +4619,21 @@
    ],
    "gatilho": "time SPA",
    "alvo": {
-    "h": "10:58",
-    "jogo": "ENG x FRA",
-    "odd": 1.85,
-    "unidades": 1,
-    "desde": 1795442195084
+    "h": "11:00",
+    "jogo": "BRA x SPA",
+    "odd": 1.88,
+    "unidades": 2,
+    "desde": 1795442371993
    },
-   "iniciadoEm": 1795442195084
+   "iniciadoEm": 1795442195084,
+   "tiros": [
+    {
+     "h": "10:58",
+     "jogo": "ENG x FRA",
+     "odd": 1.85,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795432255029,
@@ -4793,9 +4800,9 @@
     "desde": 1795442306592,
     "gatilho": "odd 1.89"
    },
-   "cam": {
-    "desde": 1795442370974,
-    "gatilho": "coluna :03"
+   "mnd": {
+    "desde": 1795442407870,
+    "gatilho": "time SPA"
    }
   }
  },
