@@ -857,12 +857,42 @@
  },
  "o25": {
   "saldo": 31,
-  "ciclos": 33786,
+  "ciclos": 33791,
   "greens": 134,
   "redsCiclo": 12,
   "aborts": 0,
-  "descartes": 33640,
+  "descartes": 33645,
   "historico": [
+   {
+    "quando": "2026-11-23T07:44:11.095Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:44:11.092Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:44:11.087Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:44:11.084Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:44:08.863Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T07:44:08.858Z",
     "resultado": "GREEN_OBS",
@@ -4432,36 +4462,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Argentina) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:20:28.462Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:20:28.457Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time POL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:20:28.453Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:20:11.281Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Argentina) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:20:11.276Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4664,21 +4664,23 @@
    "cam": {
     "desde": 1795417126160,
     "gatilho": "time Chelsea"
-   },
-   "lat": {
-    "desde": 1795419848857,
-    "gatilho": "time NAC"
    }
   }
  },
  "ambas": {
-  "saldo": -6.3,
-  "ciclos": 96,
-  "greens": 42,
+  "saldo": -5.3,
+  "ciclos": 97,
+  "greens": 43,
   "redsCiclo": 5,
   "aborts": 0,
   "descartes": 49,
   "historico": [
+   {
+    "quando": "2026-11-23T07:44:08.881Z",
+    "resultado": "GREEN",
+    "unidades": 1,
+    "detalhe": "cam · Chelsea x Madrid @2.01 (tiro 1) · gatilho: time Turin"
+   },
    {
     "quando": "2026-11-23T07:33:05.656Z",
     "resultado": "GREEN_OBS",
@@ -5258,38 +5260,39 @@
   ],
   "consumidas": {
    "spa": 1795417719585,
-   "mnd": 1795418258105
+   "mnd": 1795418258105,
+   "cam": 1795419848880
   },
   "ciclo": {
-   "liga": "cam",
+   "liga": "ame",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "04:42",
-     "jogo": "Chelsea x Madrid",
-     "odd": 2.01
+     "h": "04:58",
+     "jogo": "La Plata x Santiago",
+     "odd": 2.1
     },
     {
-     "h": "04:45",
-     "jogo": "Turin x Liverpool",
-     "odd": 1.88
+     "h": "05:01",
+     "jogo": "Porto Alegre x Santos",
+     "odd": 2.05
     },
     {
-     "h": "04:48",
-     "jogo": "Munich x Rome",
-     "odd": 1.9
+     "h": "05:04",
+     "jogo": "Avellaneda x Bogota",
+     "odd": 1.89
     }
    ],
-   "gatilho": "time Turin",
+   "gatilho": "time Porto Alegre",
    "alvo": {
-    "h": "04:42",
-    "jogo": "Chelsea x Madrid",
-    "odd": 2.01,
+    "h": "04:58",
+    "jogo": "La Plata x Santiago",
+    "odd": 2.1,
     "unidades": 1,
-    "desde": 1795419185662
+    "desde": 1795419851109
    },
-   "iniciadoEm": 1795419185662
+   "iniciadoEm": 1795419851109
   },
   "cooldown": {
    "lat": 1795331214015,
@@ -5297,7 +5300,7 @@
    "spa": 1795417719585,
    "bra": 1795383404717,
    "mnd": 1795418258105,
-   "cam": 1795415506086,
+   "cam": 1795419848880,
    "cop": 1795394431546,
    "ame": 1795414127660
   },
@@ -5311,7 +5314,7 @@
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
-   "2026-11-23": 5.9
+   "2026-11-23": 6.9
   },
   "_obs": {}
  }
