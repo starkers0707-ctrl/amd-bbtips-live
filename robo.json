@@ -1005,12 +1005,18 @@
  },
  "o25": {
   "saldo": 8.9,
-  "ciclos": 52918,
+  "ciclos": 52919,
   "greens": 162,
   "redsCiclo": 19,
   "aborts": 0,
-  "descartes": 52737,
+  "descartes": 52738,
   "historico": [
+   {
+    "quando": "2026-11-23T16:45:02.722Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :02) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T16:44:40.709Z",
     "resultado": "GREEN_OBS",
@@ -4604,12 +4610,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T16:31:20.575Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4813,9 +4813,9 @@
     "desde": 1795452160165,
     "gatilho": "time PAR"
    },
-   "ame": {
-    "desde": 1795452280709,
-    "gatilho": "odd 2.3"
+   "mnd": {
+    "desde": 1795452302722,
+    "gatilho": "coluna :02"
    }
   }
  },
@@ -5736,8 +5736,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "13:40",
@@ -5757,11 +5757,11 @@
    ],
    "gatilho": "odd 1.96",
    "alvo": {
-    "h": "13:43",
-    "jogo": "Belo Horizonte x Medellin",
-    "odd": 1.96,
-    "unidades": 2,
-    "desde": 1795452113520
+    "h": "13:46",
+    "jogo": "Sao Paulo x Rio de Janeiro",
+    "odd": 1.81,
+    "unidades": 4,
+    "desde": 1795452280721
    },
    "iniciadoEm": 1795451887122,
    "tiros": [
@@ -5770,6 +5770,12 @@
      "jogo": "Montevideo x Santiago",
      "odd": 2.05,
      "unidades": 1
+    },
+    {
+     "h": "13:43",
+     "jogo": "Belo Horizonte x Medellin",
+     "odd": 1.96,
+     "unidades": 2
     }
    ]
   },
