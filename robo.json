@@ -1016,12 +1016,36 @@
  },
  "o25": {
   "saldo": 20.2,
-  "ciclos": 44438,
+  "ciclos": 44442,
   "greens": 153,
   "redsCiclo": 16,
   "aborts": 0,
-  "descartes": 44269,
+  "descartes": 44273,
   "historico": [
+   {
+    "quando": "2026-11-23T13:17:11.279Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :21) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T13:17:09.143Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T13:17:09.139Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :36) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T13:17:09.135Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T13:17:09.132Z",
     "resultado": "GREEN_OBS",
@@ -4597,30 +4621,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:04:32.816Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:04:32.814Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:04:32.808Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:04:32.803Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4829,20 +4829,26 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "lat": {
-    "desde": 1795439829132,
-    "gatilho": "time NAC"
+   "spa": {
+    "desde": 1795439831279,
+    "gatilho": "coluna :21"
    }
   }
  },
  "ambas": {
-  "saldo": -0.9,
-  "ciclos": 129,
-  "greens": 59,
+  "saldo": 0,
+  "ciclos": 130,
+  "greens": 60,
   "redsCiclo": 6,
   "aborts": 0,
   "descartes": 64,
   "historico": [
+   {
+    "quando": "2026-11-23T13:17:09.157Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "cop · Belgium x Argentina @1.89 (tiro 1) · gatilho: seq GGRRG"
+   },
    {
     "quando": "2026-11-23T13:09:36.509Z",
     "resultado": "GREEN",
@@ -5622,39 +5628,10 @@
    "ame": 1795436971603,
    "cam": 1795437495261,
    "mnd": 1795438049648,
-   "bra": 1795439376508
+   "bra": 1795439376508,
+   "cop": 1795439829156
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "10:15",
-     "jogo": "Belgium x Argentina",
-     "odd": 1.89
-    },
-    {
-     "h": "10:18",
-     "jogo": "Netherlands x Portugal",
-     "odd": 1.98
-    },
-    {
-     "h": "10:21",
-     "jogo": "USA x Uruguay",
-     "odd": 2.05
-    }
-   ],
-   "gatilho": "seq GGRRG",
-   "alvo": {
-    "h": "10:15",
-    "jogo": "Belgium x Argentina",
-    "odd": 1.89,
-    "unidades": 1,
-    "desde": 1795439444431
-   },
-   "iniciadoEm": 1795439444431
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -5662,20 +5639,20 @@
    "bra": 1795439376508,
    "mnd": 1795438049648,
    "cam": 1795437495261,
-   "cop": 1795434093757,
+   "cop": 1795439829156,
    "ame": 1795436971603
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
    "chave": ":36",
    "n": 10,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
-   "2026-11-23": 11.3
+   "2026-11-23": 12.2
   },
   "_obs": {}
  }
