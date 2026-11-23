@@ -1049,12 +1049,30 @@
  },
  "o25": {
   "saldo": -7,
-  "ciclos": 65769,
+  "ciclos": 65772,
   "greens": 181,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 65564,
+  "descartes": 65567,
   "historico": [
+   {
+    "quando": "2026-11-23T22:21:33.778Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T22:21:26.826Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T22:21:26.820Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T22:21:26.807Z",
     "resultado": "GREEN",
@@ -4636,24 +4654,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:02:08.105Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho seq GGGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:02:08.102Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :10) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:02:08.098Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4831,7 +4831,12 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {}
+  "_obs": {
+   "lat": {
+    "desde": 1795472493778,
+    "gatilho": "odd 1.86"
+   }
+  }
  },
  "ambas": {
   "saldo": 6.7,
@@ -5970,8 +5975,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "19:16",
@@ -5991,11 +5996,11 @@
    ],
    "gatilho": "odd 1.9",
    "alvo": {
-    "h": "19:19",
-    "jogo": "Rio de Janeiro x Asuncion",
-    "odd": 1.9,
-    "unidades": 2,
-    "desde": 1795472306774
+    "h": "19:22",
+    "jogo": "Quito x Penarol",
+    "odd": 1.92,
+    "unidades": 4,
+    "desde": 1795472486839
    },
    "iniciadoEm": 1795471745752,
    "tiros": [
@@ -6004,6 +6009,12 @@
      "jogo": "Avellaneda x Sao Paulo",
      "odd": 1.85,
      "unidades": 1
+    },
+    {
+     "h": "19:19",
+     "jogo": "Rio de Janeiro x Asuncion",
+     "odd": 1.9,
+     "unidades": 2
     }
    ]
   },
