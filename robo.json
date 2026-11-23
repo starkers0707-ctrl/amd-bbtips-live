@@ -983,12 +983,18 @@
  },
  "o25": {
   "saldo": 23.2,
-  "ciclos": 47377,
+  "ciclos": 47378,
   "greens": 156,
   "redsCiclo": 16,
   "aborts": 0,
-  "descartes": 47205,
+  "descartes": 47206,
   "historico": [
+   {
+    "quando": "2026-11-23T14:26:19.103Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T14:25:39.175Z",
     "resultado": "GREEN_OBS",
@@ -4582,12 +4588,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho seq GRGRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T14:11:07.584Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4637,10 +4637,10 @@
    "cop": 1795441267126
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.05",
-   "n": 9,
-   "start": 2
+   "tipo": "time",
+   "chave": "ATC",
+   "n": 12,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -4793,6 +4793,10 @@
    "lat": {
     "desde": 1795443939175,
     "gatilho": "time NAC"
+   },
+   "bra": {
+    "desde": 1795443979102,
+    "gatilho": "time ATC"
    }
   }
  },
