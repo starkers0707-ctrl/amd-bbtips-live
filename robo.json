@@ -827,12 +827,42 @@
  },
  "o25": {
   "saldo": 37.4,
-  "ciclos": 32565,
+  "ciclos": 32570,
   "greens": 133,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32421,
+  "descartes": 32426,
   "historico": [
+   {
+    "quando": "2026-11-23T06:50:02.150Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Chelsea) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:50:02.144Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:50:02.140Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.93) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:49:47.942Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RGRR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:49:47.935Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T06:49:47.929Z",
     "resultado": "GREEN_OBS",
@@ -4402,36 +4432,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T04:12:27.895Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T04:12:10.255Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T04:12:09.625Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T04:11:35.596Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T04:11:33.980Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4440,7 +4440,37 @@
    "cam": 1795416030942,
    "cop": 1795416587921
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:15",
+     "jogo": "ATM x ELC",
+     "odd": 1.89
+    },
+    {
+     "h": "04:17",
+     "jogo": "CEL x RST",
+     "odd": 1.93
+    },
+    {
+     "h": "04:19",
+     "jogo": "ATH x BAR",
+     "odd": 1.72
+    }
+   ],
+   "gatilho": "odd 1.93",
+   "alvo": {
+    "h": "04:15",
+    "jogo": "ATM x ELC",
+    "odd": 1.89,
+    "unidades": 1,
+    "desde": 1795416602131
+   },
+   "iniciadoEm": 1795416602131
+  },
   "cooldown": {
    "cam": 1795416030942,
    "eng": 1795383709617,
@@ -4602,9 +4632,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "spa": {
-    "desde": 1795416587929,
-    "gatilho": "odd 1.93"
+   "cam": {
+    "desde": 1795416602149,
+    "gatilho": "time Chelsea"
    }
   }
  },
