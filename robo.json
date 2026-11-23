@@ -1,12 +1,18 @@
 {
  "o35": {
   "saldo": 2.9,
-  "ciclos": 128,
+  "ciclos": 129,
   "greens": 48,
   "redsCiclo": 23,
   "aborts": 0,
-  "descartes": 57,
+  "descartes": 58,
   "historico": [
+   {
+    "quando": "2026-11-23T05:33:36.610Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho seq GRGR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T00:42:32.074Z",
     "resultado": "RED_CICLO",
@@ -777,7 +783,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "02:36",
+     "jogo": "SUN x AST",
+     "odd": 3.31
+    },
+    {
+     "h": "02:38",
+     "jogo": "BRE x MNC",
+     "odd": 3.17
+    },
+    {
+     "h": "02:40",
+     "jogo": "LIV x BOU",
+     "odd": 3.37
+    }
+   ],
+   "gatilho": "seq GRGR",
+   "alvo": {
+    "h": "02:36",
+    "jogo": "SUN x AST",
+    "odd": 3.31,
+    "unidades": 1,
+    "desde": 1795412017222
+   },
+   "iniciadoEm": 1795412017222
+  },
   "cooldown": {
    "mnd": 1795391133443,
    "lat": 1795394552074,
@@ -788,14 +824,15 @@
   },
   "_gatilhoAtual": {
    "tipo": "seq",
-   "chave": "GRGRR",
-   "n": 17,
+   "chave": "GRGR",
+   "n": 9,
    "start": 1
   },
   "dias": {
    "2026-11-20": 4.3,
    "2026-11-21": 11.3,
-   "2026-11-22": -12.7
+   "2026-11-22": -12.7,
+   "2026-11-23": 0
   },
   "_obs": {
    "bra": {
@@ -5157,7 +5194,7 @@
    "tipo": "time",
    "chave": "SEV",
    "n": 8,
-   "start": 7
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
