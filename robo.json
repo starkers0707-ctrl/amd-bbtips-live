@@ -871,12 +871,54 @@
  },
  "o25": {
   "saldo": 37.4,
-  "ciclos": 32761,
+  "ciclos": 32768,
   "greens": 133,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32617,
+  "descartes": 32624,
   "historico": [
+   {
+    "quando": "2026-11-23T07:05:11.650Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:05:10.938Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:05:10.934Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:05:10.241Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:05:10.236Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:05:10.228Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "spa · alvo sem fechamento em 15min antes da 1a aposta"
+   },
+   {
+    "quando": "2026-11-23T07:05:01.482Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T07:05:01.478Z",
     "resultado": "GREEN_OBS",
@@ -4434,48 +4476,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T05:52:32.599Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T05:52:19.220Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T05:52:06.312Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T05:52:05.446Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T05:52:04.969Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T05:52:02.886Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T05:52:00.788Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4489,30 +4489,30 @@
    "apostado": 0,
    "plano": [
     {
-     "h": "04:15",
-     "jogo": "ATM x ELC",
-     "odd": 1.89
-    },
-    {
-     "h": "04:17",
-     "jogo": "CEL x RST",
-     "odd": 1.93
-    },
-    {
      "h": "04:19",
      "jogo": "ATH x BAR",
      "odd": 1.72
+    },
+    {
+     "h": "04:21",
+     "jogo": "BET x MLG",
+     "odd": 1.86
+    },
+    {
+     "h": "04:23",
+     "jogo": "SEV x VAL",
+     "odd": 1.93
     }
    ],
-   "gatilho": "odd 1.93",
+   "gatilho": "time MLG",
    "alvo": {
-    "h": "04:15",
-    "jogo": "ATM x ELC",
-    "odd": 1.89,
+    "h": "04:19",
+    "jogo": "ATH x BAR",
+    "odd": 1.72,
     "unidades": 1,
-    "desde": 1795416602131
+    "desde": 1795417510928
    },
-   "iniciadoEm": 1795416602131
+   "iniciadoEm": 1795417510928
   },
   "cooldown": {
    "cam": 1795416030942,
@@ -4680,7 +4680,7 @@
     "gatilho": "time Chelsea"
    },
    "spa": {
-    "desde": 1795417501478,
+    "desde": 1795417511649,
     "gatilho": "time MLG"
    }
   }
