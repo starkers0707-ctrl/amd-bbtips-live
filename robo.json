@@ -829,12 +829,18 @@
  },
  "o25": {
   "saldo": 30.8,
-  "ciclos": 32141,
+  "ciclos": 32142,
   "greens": 129,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32001,
+  "descartes": 32002,
   "historico": [
+   {
+    "quando": "2026-11-23T05:49:01.137Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T05:49:01.129Z",
     "resultado": "DESCARTADO",
@@ -4428,12 +4434,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho seq RRGGG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:17:07.046Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.74) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4441,35 +4441,35 @@
    "ita": 1795411227807
   },
   "ciclo": {
-   "liga": "lat",
+   "liga": "mnd",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "02:53",
-     "jogo": "BOL x ATL",
-     "odd": 1.93
+     "h": "02:52",
+     "jogo": "CRO x FRA",
+     "odd": 1.77
+    },
+    {
+     "h": "02:54",
+     "jogo": "BEL x SWE",
+     "odd": 1.66
     },
     {
      "h": "02:56",
-     "jogo": "RAC x PER",
-     "odd": 1.87
-    },
-    {
-     "h": "02:59",
-     "jogo": "OLI x FLU",
-     "odd": 1.9
+     "jogo": "CHL x NED",
+     "odd": 1.91
     }
    ],
-   "gatilho": "time PER",
+   "gatilho": "time SWE",
    "alvo": {
-    "h": "02:53",
-    "jogo": "BOL x ATL",
-    "odd": 1.93,
+    "h": "02:52",
+    "jogo": "CRO x FRA",
+    "odd": 1.77,
     "unidades": 1,
-    "desde": 1795412040604
+    "desde": 1795412942747
    },
-   "iniciadoEm": 1795412040604
+   "iniciadoEm": 1795412942747
   },
   "cooldown": {
    "cam": 1795399483010,
