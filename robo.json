@@ -829,12 +829,18 @@
  },
  "o25": {
   "saldo": 31.4,
-  "ciclos": 32175,
+  "ciclos": 32176,
   "greens": 130,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32034,
+  "descartes": 32035,
   "historico": [
+   {
+    "quando": "2026-11-23T06:08:47.639Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T05:57:29.348Z",
     "resultado": "GREEN",
@@ -4428,19 +4434,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:19:14.428Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.74) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ita": 1795411227807,
    "mnd": 1795413449347
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "03:22",
+     "jogo": "Santiago x Porto Alegre",
+     "odd": 2.45
+    },
+    {
+     "h": "03:25",
+     "jogo": "Itaquera x Belo Horizonte",
+     "odd": 2.18
+    },
+    {
+     "h": "03:28",
+     "jogo": "Guayaquil x Avellaneda",
+     "odd": 2.23
+    }
+   ],
+   "gatilho": "time Belo Horizonte",
+   "alvo": {
+    "h": "03:22",
+    "jogo": "Santiago x Porto Alegre",
+    "odd": 2.45,
+    "unidades": 1,
+    "desde": 1795414127618
+   },
+   "iniciadoEm": 1795414127618
+  },
   "cooldown": {
    "cam": 1795399483010,
    "eng": 1795383709617,
@@ -4454,9 +4484,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "SWE",
+   "chave": "Belo Horizonte",
    "n": 8,
-   "start": 1
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -4607,8 +4637,8 @@
     "gatilho": "odd 2.74"
    },
    "ame": {
-    "desde": 1795410914479,
-    "gatilho": "placar acima de 1-0 (2-0)"
+    "desde": 1795414127638,
+    "gatilho": "time Belo Horizonte"
    }
   }
  },
@@ -5180,7 +5210,7 @@
    "tipo": "time",
    "chave": "Montevideo",
    "n": 8,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
