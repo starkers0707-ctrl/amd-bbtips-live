@@ -829,12 +829,24 @@
  },
  "o25": {
   "saldo": 31.4,
-  "ciclos": 32266,
+  "ciclos": 32268,
   "greens": 130,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32125,
+  "descartes": 32127,
   "historico": [
+   {
+    "quando": "2026-11-23T06:29:03.139Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:28:45.936Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T06:28:45.930Z",
     "resultado": "GREEN_OBS",
@@ -4422,18 +4434,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:30:30.813Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:30:30.120Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4654,7 +4654,7 @@
     "gatilho": "time Argentina"
    },
    "mnd": {
-    "desde": 1795415325930,
+    "desde": 1795415343139,
     "gatilho": "time SWE"
    }
   }
@@ -5190,8 +5190,8 @@
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "03:27",
@@ -5211,13 +5211,21 @@
    ],
    "gatilho": "time Chelsea",
    "alvo": {
-    "h": "03:27",
-    "jogo": "Milan x Chelsea",
-    "odd": 2.1,
-    "unidades": 1,
-    "desde": 1795415014072
+    "h": "03:30",
+    "jogo": "Liverpool x Benfica",
+    "odd": 1.95,
+    "unidades": 2,
+    "desde": 1795415325950
    },
-   "iniciadoEm": 1795415014072
+   "iniciadoEm": 1795415014072,
+   "tiros": [
+    {
+     "h": "03:27",
+     "jogo": "Milan x Chelsea",
+     "odd": 2.1,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795331214015,
@@ -5233,7 +5241,7 @@
    "tipo": "time",
    "chave": "Chelsea",
    "n": 8,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
