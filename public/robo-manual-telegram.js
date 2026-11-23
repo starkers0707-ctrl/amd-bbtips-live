@@ -32,7 +32,7 @@
       txt = estado.conectado ? 'conectado' + (estado.nome ? ' (' + estado.nome + ')' : '') : 'seu Telegram não está conectado';
       var n = (estado.canais || []).length;
       if (n) txt += ' · ' + n + (n === 1 ? ' canal/grupo' : ' canais/grupos');
-      txt += ' · clique no + para conectar';
+      
     }
     ['#tgStatus', '#tgStatus2'].forEach(function (id) { var el = q(id); if (el) el.textContent = 'Telegram: ' + txt; });
     var badge = q('#tgBadge'); if (badge) badge.textContent = String(1 + (estado.conectado ? 1 : 0) + (estado.canais || []).length);
@@ -123,10 +123,11 @@
   }
 
   var c = q('#tgConnect'); if (c) c.addEventListener('click', abreMenu);
+  var o = q('#tgOpen'); if (o) o.addEventListener('click', function (e) { e.stopPropagation(); abreMenu(); });
   var t = q('#tgTest'); if (t) t.addEventListener('click', testar);
   document.addEventListener('click', function (e) {
     var m = q('#tgMenu');
-    if (m && e.composedPath().indexOf(m) < 0 && e.target.id !== 'tgConnect') fechaMenu();
+    if (m && e.composedPath().indexOf(m) < 0 && e.target.id !== 'tgConnect' && e.target.id !== 'tgOpen') fechaMenu();
   });
   window.AMDTelegram = { refresh: status };
   status();
