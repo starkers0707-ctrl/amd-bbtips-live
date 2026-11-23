@@ -13,7 +13,7 @@
   function signalDetails(signal) {
     var maximum = Math.max(1, Number(signal.shots || 1));
     var current = Math.max(1, Number(signal.winningShot || signal.currentShot || 1));
-    var gameAt = signal.gameSlot ? new Date(signal.gameSlot).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : 'horário aguardando';
+    var gameAt = signal.gameSlot ? new Date(signal.gameSlot).toLocaleString('pt-BR', { timeZone: 'UTC', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : 'horário aguardando'; /* a grade grava o horario de Brasilia marcado como UTC */
     var attempts = (Array.isArray(signal.attempts) ? signal.attempts : []).map(function (attempt) {
       return 'T' + attempt.number + ' ' + attempt.status + (attempt.score ? ' ' + attempt.score : '');
     }).join(' → ');

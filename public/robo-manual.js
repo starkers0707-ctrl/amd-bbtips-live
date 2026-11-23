@@ -183,7 +183,7 @@
       title.textContent = (signal.robotName || 'Robô manual') + ' · ' + (signal.market || 'Entrada');
       var maximum = Math.max(1, Number(signal.shots || 1));
       var current = Math.max(1, Number(signal.winningShot || signal.currentShot || 1));
-      var gameAt = signal.gameSlot ? new Date(signal.gameSlot).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : 'horário aguardando';
+      var gameAt = signal.gameSlot ? new Date(signal.gameSlot).toLocaleString('pt-BR', { timeZone: 'UTC', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : 'horário aguardando'; /* a grade grava o horario de Brasilia marcado como UTC */
       var attemptList = Array.isArray(signal.attempts) ? signal.attempts : [];
       text.textContent = String(signal.league || 'copa').toUpperCase() + ' · ' + (signal.timeA || '?') + ' x ' + (signal.timeB || '?') +
         ' · TIRO ' + current + '/' + maximum + ' · jogo ' + gameAt + (signal.score ? ' · placar ' + signal.score : '');
