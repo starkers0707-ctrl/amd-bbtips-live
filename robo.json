@@ -829,12 +829,18 @@
  },
  "o25": {
   "saldo": 31.4,
-  "ciclos": 32203,
+  "ciclos": 32204,
   "greens": 130,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32062,
+  "descartes": 32063,
   "historico": [
+   {
+    "quando": "2026-11-23T06:19:45.477Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T06:17:00.442Z",
     "resultado": "GREEN_OBS",
@@ -4428,12 +4434,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:22:35.985Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4486,7 +4486,7 @@
    "tipo": "time",
    "chave": "Belo Horizonte",
    "n": 8,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -4633,11 +4633,11 @@
   },
   "_obs": {
    "cam": {
-    "desde": 1795400384479,
-    "gatilho": "odd 2.74"
+    "desde": 1795414785477,
+    "gatilho": "seq RRGR"
    },
    "ame": {
-    "desde": 1795414620442,
+    "desde": 1795414668971,
     "gatilho": "time Belo Horizonte"
    }
   }
