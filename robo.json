@@ -805,17 +805,39 @@
    "cam": {
     "desde": 1795384819317,
     "gatilho": "odd 5.06"
+   },
+   "lat": {
+    "desde": 1795411471572,
+    "gatilho": "seq RRRR"
    }
   }
  },
  "o25": {
   "saldo": 30.8,
-  "ciclos": 32102,
+  "ciclos": 32105,
   "greens": 129,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 31962,
+  "descartes": 31965,
   "historico": [
+   {
+    "quando": "2026-11-23T05:24:32.225Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T05:24:31.586Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T05:24:30.876Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T05:24:29.500Z",
     "resultado": "GREEN_OBS",
@@ -4397,24 +4419,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.74) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:15:38.302Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:15:37.726Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho seq RRGGG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:15:37.722Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.74) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4594,10 +4598,6 @@
    "ame": {
     "desde": 1795410914479,
     "gatilho": "placar acima de 1-0 (2-0)"
-   },
-   "ita": {
-    "desde": 1795411469499,
-    "gatilho": "placar 1-0 / 0-1"
    }
   }
  },
@@ -5109,7 +5109,6 @@
    }
   ],
   "consumidas": {
-   "spa": 1795407873861,
    "eng": 1795409882468,
    "cam": 1795411406700
   },
