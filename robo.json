@@ -892,12 +892,30 @@
  },
  "o25": {
   "saldo": 31.3,
-  "ciclos": 36910,
+  "ciclos": 36913,
   "greens": 142,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 36755,
+  "descartes": 36758,
   "historico": [
+   {
+    "quando": "2026-11-23T10:08:13.411Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:08:13.405Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:08:06.848Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T10:08:06.842Z",
     "resultado": "GREEN_OBS",
@@ -4479,24 +4497,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:42:07.304Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:42:07.297Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:42:01.389Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho seq RRRR) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4714,10 +4714,6 @@
    "bra": {
     "desde": 1795426412297,
     "gatilho": "placar 1-0 / 0-1"
-   },
-   "mnd": {
-    "desde": 1795428486842,
-    "gatilho": "time SPA"
    }
   }
  },
@@ -5379,8 +5375,8 @@
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "07:06",
@@ -5400,13 +5396,21 @@
    ],
    "gatilho": "time Turin",
    "alvo": {
-    "h": "07:06",
-    "jogo": "Madrid x Rome",
-    "odd": 1.92,
-    "unidades": 1,
-    "desde": 1795427757265
+    "h": "07:09",
+    "jogo": "Paris x Turin",
+    "odd": 1.83,
+    "unidades": 2,
+    "desde": 1795428493430
    },
-   "iniciadoEm": 1795427757265
+   "iniciadoEm": 1795427757265,
+   "tiros": [
+    {
+     "h": "07:06",
+     "jogo": "Madrid x Rome",
+     "odd": 1.92,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795331214015,
