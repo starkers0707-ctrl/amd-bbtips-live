@@ -892,12 +892,24 @@
  },
  "o25": {
   "saldo": 31.3,
-  "ciclos": 36846,
+  "ciclos": 36848,
   "greens": 142,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 36691,
+  "descartes": 36693,
   "historico": [
+   {
+    "quando": "2026-11-23T10:04:28.259Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq GGRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:04:17.584Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T10:04:17.580Z",
     "resultado": "GREEN_OBS",
@@ -4485,18 +4497,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:38:13.026Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:38:12.362Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4507,8 +4507,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "07:03",
@@ -4528,13 +4528,21 @@
    ],
    "gatilho": "seq GRGR",
    "alvo": {
-    "h": "07:03",
-    "jogo": "VAL x MLG",
-    "odd": 1.9,
-    "unidades": 1,
-    "desde": 1795428035164
+    "h": "07:05",
+    "jogo": "ATM x RST",
+    "odd": 1.88,
+    "unidades": 2,
+    "desde": 1795428268250
    },
-   "iniciadoEm": 1795428035164
+   "iniciadoEm": 1795428035164,
+   "tiros": [
+    {
+     "h": "07:03",
+     "jogo": "VAL x MLG",
+     "odd": 1.9,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795416030942,
@@ -4702,7 +4710,7 @@
     "gatilho": "placar 1-0 / 0-1"
    },
    "mnd": {
-    "desde": 1795428257580,
+    "desde": 1795428268258,
     "gatilho": "seq GGRG"
    }
   }
