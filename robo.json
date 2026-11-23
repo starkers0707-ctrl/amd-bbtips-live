@@ -1005,12 +1005,36 @@
  },
  "o25": {
   "saldo": 8.9,
-  "ciclos": 53025,
+  "ciclos": 53029,
   "greens": 162,
   "redsCiclo": 19,
   "aborts": 0,
-  "descartes": 52844,
+  "descartes": 52848,
   "historico": [
+   {
+    "quando": "2026-11-23T16:47:28.989Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :02) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T16:47:13.568Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T16:47:13.565Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T16:47:13.562Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.47) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T16:47:13.560Z",
     "resultado": "GREEN_OBS",
@@ -4586,30 +4610,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T16:34:03.295Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :48) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T16:34:03.290Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :45) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T16:34:01.161Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T16:34:01.157Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4663,7 +4663,7 @@
    "tipo": "odd",
    "chave": "2.3",
    "n": 9,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -4813,9 +4813,9 @@
     "desde": 1795452160165,
     "gatilho": "time PAR"
    },
-   "lat": {
-    "desde": 1795452433560,
-    "gatilho": "odd 1.89"
+   "mnd": {
+    "desde": 1795452448988,
+    "gatilho": "coluna :02"
    }
   }
  },
