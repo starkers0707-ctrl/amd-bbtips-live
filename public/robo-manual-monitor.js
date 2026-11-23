@@ -183,11 +183,12 @@
     return all.filter(function(game){var slot=slotValue(game);return !game.resultado_ft&&slot>previousTime&&slot>nowTime;})
       .sort(function(a,b){return slotValue(a)-slotValue(b);});
   }
-  function nextGame(all, trigger, nowValue) {
-    var pending=pendingAfter(all,trigger,nowValue);
-    /* pending[0] e o jogo corrente. Sem uma segunda linha, aguarde a proxima
-       atualizacao em vez de enviar uma entrada no fim da partida. */
-    return pending.length>1?pending[1]:null;
+  function nextGame(all, trigger) {
+    /* A entrada e o jogo logo depois do gatilho (os pulos ja sao contados no
+       quadro). Se esse jogo ja terminou, o sinal ficou velho: nao envia. */
+    var t=slotValue(trigger);
+    var after=all.filter(function(game){return slotValue(game)>t;}).sort(function(a,b){return slotValue(a)-slotValue(b);});
+    return after.length&&!after[0].resultado_ft?after[0]:null;
   }
   function slotValue(game) { return Date.parse(game&&game.slot_em||game&&game.criado_em||'')||0; }
   function nextShotGame(all, previous) {
@@ -197,10 +198,8 @@
       gameSlot:previous&&previous.slot_em||previous&&previous.criado_em||''
     },game)&&slotValue(game)>previousTime;})
       .sort(function(a,b){return slotValue(a)-slotValue(b);});
-    var pending=after.filter(function(game){return !game.resultado_ft;});
-    if(pending.length>1)return pending[1];
-    /* Mantem a conciliacao de ciclos antigos que ja possuem resultados. */
-    return after.filter(function(game){return !!game.resultado_ft;})[0]||null;
+    /* Tiros seguidos: o proximo tiro e sempre o jogo logo depois do anterior. */
+    return after[0]||null;
   }
   function gameHour(game) {
     var hour=Number(game&&game.hora),minute=Number(game&&game.minuto);
