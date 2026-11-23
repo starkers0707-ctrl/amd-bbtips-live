@@ -5101,7 +5101,37 @@
    "spa": 1795407873861,
    "eng": 1795409882468
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "02:21",
+     "jogo": "Chelsea x Celtic",
+     "odd": 2.17
+    },
+    {
+     "h": "02:24",
+     "jogo": "Amsterdam x Turin",
+     "odd": 2.04
+    },
+    {
+     "h": "02:27",
+     "jogo": "United x Rome",
+     "odd": 2.04
+    }
+   ],
+   "gatilho": "time Turin",
+   "alvo": {
+    "h": "02:21",
+    "jogo": "Chelsea x Celtic",
+    "odd": 2.17,
+    "unidades": 1,
+    "desde": 1795410728219
+   },
+   "iniciadoEm": 1795410728219
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -5114,9 +5144,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "ARS",
+   "chave": "Turin",
    "n": 8,
-   "start": 1
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
