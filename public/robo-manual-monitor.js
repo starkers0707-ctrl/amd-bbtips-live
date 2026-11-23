@@ -283,8 +283,8 @@
   async function notify(title,body,key,destino) {
     destino=destino||'todos';
     var msg=title+'\n'+body.split(' · ').join('\n');
-    if(destino.indexOf('canal:')===0)sendTelegram(msg,destino.slice(6));
-    else if(destino!=='site')sendTelegram(msg);
+    /* O Telegram agora e enviado pelo servidor (funciona com o PC desligado). */
+    void msg;
     if(destino==='telegram'){try{window.dispatchEvent(new CustomEvent('amd:manual-entry',{detail:{title:title,body:body,key:key,at:new Date().toISOString()}}));}catch(_){}return;}
     panelToast(title,body);
     try{window.dispatchEvent(new CustomEvent('amd:manual-entry',{detail:{title:title,body:body,key:key,at:new Date().toISOString()}}));}catch(_){}
@@ -292,7 +292,17 @@
     var options={body:body,tag:'amd-manual-'+key,renotify:true,requireInteraction:true,data:{url:'/robos.html'}};
     try{if('serviceWorker' in navigator){var reg=await navigator.serviceWorker.register('/sw-alertas.js');await reg.showNotification(title,options);return;}new Notification(title,options);}catch(_){}
   }
+  var lastSync='';
+  function syncRobots(){
+    try{
+      var robots=read(ROBOTS_KEY),body=JSON.stringify({robots:robots});
+      if(body===lastSync)return;
+      fetch('/api/robos/sync',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:body})
+        .then(function(r){if(r.ok)lastSync=body;}).catch(function(){});
+    }catch(_){}
+  }
   async function tick() {
+    syncRobots();
     if(running||!await isLeader())return;running=true;
     try{
       var robots=read(ROBOTS_KEY).filter(function(r){return r.active&&Array.isArray(r.pattern);});
@@ -350,7 +360,7 @@
     if(Notification.permission==='default')return Notification.requestPermission();
     return Notification.permission;
   }
-  root.AMDManualMonitor={tick:tick,enable:enable,robotLeagues:robotLeagues,marketMatches:marketMatches,positionMatches:positionMatches,matchingRow:matchingRow,eligibleMatch:eligibleMatch,nextGame:nextGame,nextShotGame:nextShotGame,reconcileSignals:reconcileSignals,hasOpenCycle:hasOpenCycle,gameHour:gameHour,isLeader:isLeader};
+  root.AMDManualMonitor={metricsPass:metricsPass,gameKey:gameKey,tick:tick,enable:enable,robotLeagues:robotLeagues,marketMatches:marketMatches,positionMatches:positionMatches,matchingRow:matchingRow,eligibleMatch:eligibleMatch,nextGame:nextGame,nextShotGame:nextShotGame,reconcileSignals:reconcileSignals,hasOpenCycle:hasOpenCycle,gameHour:gameHour,isLeader:isLeader};
   root.addEventListener('pagehide',releaseLeadership);
   timer=setInterval(tick,15000);setTimeout(tick,1500);
 })(window);

@@ -467,6 +467,135 @@ app.post("/api/telegram/enviar", async (req, res) => {
 });
 setTimeout(() => tgLoop().catch(e => console.log("[telegram] parou:", e.message)), 5000);
 
+// ===== ROBOS MANUAIS NO SERVIDOR =====
+// O navegador sincroniza os robos de cada acesso; o servidor vigia a grade e
+// manda no Telegram mesmo com o PC/celular desligado. Usa exatamente a mesma
+// logica do monitor do navegador (public/robo-manual-monitor.js).
+const ROBOS_FILE = "robos.json";
+let robosDono = {}, robosSha = null, robosSujo = false;
+let RM = null;
+try {
+  const vm = require("vm");
+  const mem = new Map();
+  const sandbox = {
+    localStorage: { getItem: k => (mem.has(k) ? mem.get(k) : null), setItem: (k, v) => mem.set(k, String(v)), removeItem: k => mem.delete(k) },
+    crypto: { randomUUID: () => randomBytes(16).toString("hex") },
+    addEventListener() {}, dispatchEvent() {}, CustomEvent: function () {}, setInterval() { return 0; }, setTimeout() { return 0; },
+    navigator: {}, Notification: undefined, console,
+    document: { createElement: () => ({ setAttribute() {}, appendChild() {}, remove() {} }), head: { appendChild() {} }, body: { appendChild() {} } }
+  };
+  sandbox.window = sandbox;
+  vm.createContext(sandbox);
+  vm.runInContext(require("fs").readFileSync(join(__dirname, "public", "robo-manual-monitor.js"), "utf8"), sandbox);
+  RM = sandbox.AMDManualMonitor;
+  console.log("[robos] monitor do servidor carregado");
+} catch (e) { console.log("[robos] monitor do servidor indisponivel:", e.message); }
+
+async function robosCarrega() {
+  if (!GH_T) return;
+  try {
+    const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${ROBOS_FILE}?ref=${GH_BRANCH}`, { headers: { ...ghHead(), Accept: "application/vnd.github.raw" } });
+    if (r.ok) robosDono = JSON.parse(await r.text()) || {};
+    const m = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${ROBOS_FILE}?ref=${GH_BRANCH}`, { headers: ghHead(), method: "GET" });
+    if (m.ok) { const j = await m.json().catch(() => ({})); robosSha = j.sha || null; }
+  } catch (e) {}
+}
+async function robosSalva(tentativa = 0) {
+  if (!GH_T || !robosSujo) return;
+  robosSujo = false;
+  try {
+    const body = { message: "robos", content: Buffer.from(JSON.stringify(robosDono)).toString("base64"), branch: GH_BRANCH };
+    if (robosSha) body.sha = robosSha;
+    const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${ROBOS_FILE}`, { method: "PUT", headers: { ...ghHead(), "Content-Type": "application/json" }, body: JSON.stringify(body) });
+    if (r.ok) { robosSha = (await r.json()).content.sha; return; }
+    robosSujo = true;
+    if ((r.status === 409 || r.status === 422) && tentativa < 2) {
+      const g = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${ROBOS_FILE}?ref=${GH_BRANCH}`, { headers: ghHead() });
+      robosSha = g.ok ? (await g.json()).sha : null; return robosSalva(tentativa + 1);
+    }
+  } catch (e) { robosSujo = true; }
+}
+setInterval(() => robosSalva(), 60000);
+
+app.post("/api/robos/sync", (req, res) => {
+  const dono = tgDono(req);
+  if (!dono) return res.status(401).json({ erro: "login necessario" });
+  const lista = Array.isArray((req.body || {}).robots) ? req.body.robots.slice(0, 60) : [];
+  if (JSON.stringify(lista).length > 400000) return res.status(413).json({ erro: "robos grandes demais" });
+  const d = robosDono[dono] || (robosDono[dono] = { signals: [], sent: [] });
+  d.robots = lista; d.atualizado = Date.now(); robosSujo = true;
+  res.json({ ok: true, robos: lista.length });
+});
+
+async function gradeInterna(liga) {
+  const chave = CODIGO_MESTRE || ADMIN_KEY;
+  const r = await fetch(`http://127.0.0.1:${PORT}/api/grade?liga=${liga}&horas=6&compacto=1&_=${Date.now()}`, { headers: { "x-acesso": chave }, signal: AbortSignal.timeout(20000) });
+  if (!r.ok) throw new Error("grade " + liga + " HTTP " + r.status);
+  return (await r.json()).partidas || [];
+}
+async function tgEnviaDono(dono, destino, texto) {
+  const d = tgChats[dono]; if (!d || !TG_TOKEN || destino === "site") return;
+  const alvo = String(destino || "").startsWith("canal:") ? ((d.canais || []).find(c => String(c.chat) === destino.slice(6)) || {}).chat : d.chat;
+  if (!alvo) return;
+  const r = await tgApi("sendMessage", { chat_id: alvo, text: texto, disable_web_page_preview: true });
+  if (!r.ok) console.log("[robos] telegram falhou:", r.description);
+}
+let robosRodando = false;
+async function robosTick() {
+  if (!RM || robosRodando) return;
+  robosRodando = true;
+  try {
+    const donos = Object.keys(robosDono).filter(k => tgChats[k] && ((robosDono[k].robots || []).some(r => r && r.active && (r.destino || "todos") !== "site") || (robosDono[k].signals || []).some(s => s.status === "PENDENTE")));
+    if (!donos.length) return;
+    const ligas = new Set();
+    for (const k of donos) {
+      for (const r of robosDono[k].robots || []) if (r && r.active) RM.robotLeagues(r).forEach(l => ligas.add(l));
+      for (const s of robosDono[k].signals || []) if (s.status === "PENDENTE") ligas.add(s.league || "copa");
+    }
+    const data = {};
+    await Promise.all([...ligas].map(async l => { try { data[l] = await gradeInterna(l); } catch (e) { data[l] = []; } }));
+    for (const dono of donos) {
+      const st = robosDono[dono]; st.signals = st.signals || []; st.sent = st.sent || [];
+      const robots = (st.robots || []).filter(r => r && r.active && Array.isArray(r.pattern));
+      const porId = id => (st.robots || []).find(r => String(r.id) === String(id)) || {};
+      const follow = RM.reconcileSignals(st.signals, data) || [];
+      for (const f of follow) {
+        const s = f.signal, h = RM.gameHour({ hora: s.gameHour, minuto: s.gameMinute, slot_em: s.gameSlot });
+        await tgEnviaDono(dono, porId(s.robotId).destino, `🤖 ${s.robotName || "Robô manual"} · PRÓXIMO TIRO\n${String(s.league || "").toUpperCase()}\n${s.market}\n${s.timeA} x ${s.timeB}\nTIRO ${f.shot}/${Math.max(1, Number(s.shots || 1))}\njogo ${h}`);
+        robosSujo = true;
+      }
+      for (const s of follow.resolved || []) {
+        const g = s.status === "GREEN";
+        await tgEnviaDono(dono, porId(s.robotId).destino, `${g ? "✅ GREEN" : "❌ RED"} · ${s.robotName || "Robô manual"}\n${String(s.league || "").toUpperCase()}\n${s.market}\n${s.timeA} x ${s.timeB}\nplacar ${s.score || "?"}${g ? "\ntiro " + (s.winningShot || 1) : ""}`);
+        robosSujo = true;
+      }
+      for (const robot of robots) {
+        for (const liga of RM.robotLeagues(robot)) {
+          const all = data[liga] || [];
+          if (RM.hasOpenCycle(st.signals, robot.id, liga)) continue;
+          const match = RM.eligibleMatch(robot, all); if (!match) continue;
+          const up = RM.nextGame(all, match.trigger); if (!up) continue;
+          const mk = match.entry.entryMarket || robot.entryMarket || match.entry.market || "Over 2.5";
+          const mp = RM.metricsPass(robot, data, liga, mk); if (!mp.ok) continue;
+          const key = [robot.id, liga, match.row, RM.gameKey(match.trigger), up.id || up.slot_em].join("|");
+          if (st.sent.includes(key)) continue;
+          st.sent.unshift(key); st.sent = st.sent.slice(0, 300);
+          const max = Math.max(1, Number(robot.shots || 1));
+          st.signals.unshift({ id: key, key, robotId: robot.id, robotName: robot.name || "Robô manual", league: liga, market: mk, shots: max, currentShot: 1, attempts: [], cycleVersion: 2,
+            timeA: up.time_a || "?", timeB: up.time_b || "?", gameId: up.id || "", gameSlot: up.slot_em || up.criado_em || "", gameHour: up.hora, gameMinute: up.minuto, status: "PENDENTE", sentAt: new Date().toISOString(), score: "" });
+          st.signals = st.signals.slice(0, 200);
+          robosSujo = true;
+          await tgEnviaDono(dono, robot.destino, `🤖 ${robot.name || "Robô manual"} · ENTRADA\n${liga.toUpperCase()}\n${mk}\n${up.time_a || "?"} x ${up.time_b || "?"}\nTIRO 1/${max}\njogo ${RM.gameHour(up)}${mp.text ? "\n" + mp.text : ""}`);
+          console.log(`[robos] entrada ${robot.name} ${liga} ${mk} ${up.time_a} x ${up.time_b}`);
+        }
+      }
+    }
+  } catch (e) { console.log("[robos] erro:", e.message); }
+  finally { robosRodando = false; }
+}
+setTimeout(() => { robosCarrega().then(() => setInterval(robosTick, 15000)); }, 8000);
+
+
 app.use("/api/admin", (req, res, next) => {
   const espera = loginBloqueado(req);
   if (espera) { res.setHeader("Retry-After", String(espera)); return res.status(429).json({ erro: "muitas tentativas; aguarde" }); }
