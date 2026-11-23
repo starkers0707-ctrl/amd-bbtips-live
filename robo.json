@@ -827,12 +827,18 @@
  },
  "o25": {
   "saldo": 37.4,
-  "ciclos": 32728,
+  "ciclos": 32729,
   "greens": 133,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32584,
+  "descartes": 32585,
   "historico": [
+   {
+    "quando": "2026-11-23T07:03:06.603Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T07:02:49.914Z",
     "resultado": "GREEN_OBS",
@@ -4426,12 +4432,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T05:47:09.810Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4635,20 +4635,26 @@
     "desde": 1795417126160,
     "gatilho": "time Chelsea"
    },
-   "mnd": {
-    "desde": 1795417369914,
-    "gatilho": "time SWE"
+   "spa": {
+    "desde": 1795417386603,
+    "gatilho": "time MLG"
    }
   }
  },
  "ambas": {
   "saldo": -7.7,
-  "ciclos": 90,
+  "ciclos": 91,
   "greens": 40,
   "redsCiclo": 5,
   "aborts": 0,
-  "descartes": 45,
+  "descartes": 46,
   "historico": [
+   {
+    "quando": "2026-11-23T07:02:49.952Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "mnd · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-23T06:47:49.614Z",
     "resultado": "GREEN_OBS",
@@ -5194,37 +5200,7 @@
    "ame": 1795414127660,
    "cam": 1795415506086
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "04:16",
-     "jogo": "ITA x MEX",
-     "odd": 1.69
-    },
-    {
-     "h": "04:18",
-     "jogo": "DEN x ARG",
-     "odd": 1.69
-    },
-    {
-     "h": "04:20",
-     "jogo": "CRO x BEL",
-     "odd": 1.68
-    }
-   ],
-   "gatilho": "time DEN",
-   "alvo": {
-    "h": "04:16",
-    "jogo": "ITA x MEX",
-    "odd": 1.69,
-    "unidades": 1,
-    "desde": 1795416469633
-   },
-   "iniciadoEm": 1795416469633
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
