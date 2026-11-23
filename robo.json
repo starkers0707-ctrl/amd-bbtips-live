@@ -1024,13 +1024,43 @@
   }
  },
  "o25": {
-  "saldo": 10.9,
-  "ciclos": 54477,
-  "greens": 164,
+  "saldo": 11.7,
+  "ciclos": 54482,
+  "greens": 165,
   "redsCiclo": 19,
   "aborts": 0,
-  "descartes": 54294,
+  "descartes": 54298,
   "historico": [
+   {
+    "quando": "2026-11-23T17:28:34.213Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :45) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T17:28:33.650Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T17:28:33.647Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T17:28:33.642Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :45) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T17:28:33.637Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "spa · RMA x BET @1.89 (tiro 2) · gatilho: odd 1.89"
+   },
    {
     "quando": "2026-11-23T17:28:13.493Z",
     "resultado": "GREEN_OBS",
@@ -4600,86 +4630,49 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T17:10:38.921Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :14) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T17:10:38.918Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T17:10:38.915Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T17:10:30.633Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T17:10:30.631Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
    }
   ],
   "consumidas": {
    "cop": 1795453488626,
-   "bra": 1795453964311
+   "bra": 1795453964311,
+   "spa": 1795454913637
   },
   "ciclo": {
-   "liga": "spa",
-   "degrau": 1,
-   "apostado": 1,
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
    "plano": [
     {
-     "h": "14:25",
-     "jogo": "VIL x SEV",
-     "odd": 1.87
+     "h": "14:43",
+     "jogo": "Buenos Aires x Santiago",
+     "odd": 2.32
     },
     {
-     "h": "14:27",
-     "jogo": "RMA x BET",
-     "odd": 1.89
+     "h": "14:46",
+     "jogo": "Santos x La Boca",
+     "odd": 2.05
     },
     {
-     "h": "14:29",
-     "jogo": "ALV x VAL",
-     "odd": 1.92
+     "h": "14:49",
+     "jogo": "Sao Paulo x Agua Branca",
+     "odd": 2.06
     }
    ],
-   "gatilho": "odd 1.89",
+   "gatilho": "odd 2.05",
    "alvo": {
-    "h": "14:27",
-    "jogo": "RMA x BET",
-    "odd": 1.89,
-    "unidades": 2,
-    "desde": 1795454795478
+    "h": "14:43",
+    "jogo": "Buenos Aires x Santiago",
+    "odd": 2.32,
+    "unidades": 1,
+    "desde": 1795454914206
    },
-   "iniciadoEm": 1795453965106,
-   "tiros": [
-    {
-     "h": "14:25",
-     "jogo": "VIL x SEV",
-     "odd": 1.87,
-     "unidades": 1
-    }
-   ]
+   "iniciadoEm": 1795454914206
   },
   "cooldown": {
    "cam": 1795447543070,
    "eng": 1795383709617,
    "ita": 1795421791233,
-   "spa": 1795450359599,
+   "spa": 1795454913637,
    "lat": 1795444251997,
    "bra": 1795453964311,
    "mnd": 1795450172953,
@@ -4697,7 +4690,7 @@
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
-   "2026-11-23": -16.8
+   "2026-11-23": -16
   },
   "_obs": {}
  },
@@ -4841,12 +4834,8 @@
     "gatilho": "odd 2.47"
    },
    "spa": {
-    "desde": 1795454832172,
+    "desde": 1795454914213,
     "gatilho": "coluna :45"
-   },
-   "ame": {
-    "desde": 1795454893492,
-    "gatilho": "odd 2.05"
    }
   }
  },
