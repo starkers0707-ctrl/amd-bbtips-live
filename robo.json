@@ -879,12 +879,30 @@
  },
  "o25": {
   "saldo": 29.7,
-  "ciclos": 36204,
+  "ciclos": 36207,
   "greens": 140,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 36051,
+  "descartes": 36054,
   "historico": [
+   {
+    "quando": "2026-11-23T09:35:31.183Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T09:35:31.179Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T09:35:30.327Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T09:35:30.321Z",
     "resultado": "GREEN_OBS",
@@ -4466,24 +4484,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:01:07.617Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:01:07.613Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq GGGG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:01:06.896Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4494,8 +4494,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "06:34",
@@ -4515,13 +4515,21 @@
    ],
    "gatilho": "seq RRRR",
    "alvo": {
-    "h": "06:34",
-    "jogo": "Buenos Aires x Itaquera",
-    "odd": 2.4,
-    "unidades": 1,
-    "desde": 1795426208265
+    "h": "06:37",
+    "jogo": "Santos x Belo Horizonte",
+    "odd": 2.05,
+    "unidades": 2,
+    "desde": 1795426540511
    },
-   "iniciadoEm": 1795426208265
+   "iniciadoEm": 1795426208265,
+   "tiros": [
+    {
+     "h": "06:34",
+     "jogo": "Buenos Aires x Itaquera",
+     "odd": 2.4,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795416030942,
@@ -4691,10 +4699,6 @@
    "bra": {
     "desde": 1795426412297,
     "gatilho": "placar 1-0 / 0-1"
-   },
-   "mnd": {
-    "desde": 1795426530320,
-    "gatilho": "odd 1.88"
    }
   }
  },
