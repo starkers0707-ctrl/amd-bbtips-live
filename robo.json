@@ -984,12 +984,60 @@
  },
  "o25": {
   "saldo": 23.2,
-  "ciclos": 46395,
+  "ciclos": 46403,
   "greens": 156,
   "redsCiclo": 16,
   "aborts": 0,
-  "descartes": 46223,
+  "descartes": 46231,
   "historico": [
+   {
+    "quando": "2026-11-23T14:02:09.338Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T14:02:09.336Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T14:02:09.334Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T14:02:09.331Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T14:02:03.671Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T14:02:03.667Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T14:02:03.664Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T14:02:03.659Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T14:01:34.090Z",
     "resultado": "GREEN_OBS",
@@ -4541,54 +4589,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:49:30.047Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:49:30.044Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:49:29.403Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:49:29.401Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:49:29.399Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:49:29.396Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:49:11.803Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:49:11.800Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4796,17 +4796,27 @@
    "mnd": {
     "desde": 1795442493380,
     "gatilho": "time SPA"
+   },
+   "cop": {
+    "desde": 1795442529338,
+    "gatilho": "coluna :03"
    }
   }
  },
  "ambas": {
   "saldo": 0,
-  "ciclos": 133,
+  "ciclos": 134,
   "greens": 60,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 67,
+  "descartes": 68,
   "historico": [
+   {
+    "quando": "2026-11-23T14:02:03.696Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Turin) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T14:00:07.922Z",
     "resultado": "DESCARTADO",
@@ -5663,11 +5673,6 @@
    "2026-11-22": -14.2,
    "2026-11-23": 12.2
   },
-  "_obs": {
-   "cam": {
-    "desde": 1795442408753,
-    "gatilho": "time Turin"
-   }
-  }
+  "_obs": {}
  }
 }
