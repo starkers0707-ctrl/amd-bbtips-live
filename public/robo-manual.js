@@ -4,7 +4,7 @@
   var ROBOTS_KEY = 'amd:robos-manuais:v2';
   var HISTORY_KEY = 'amd:robos-manuais-historico:v2';
   var SIGNALS_KEY = 'amd:robos-manuais-sinais:v2';
-  var PROFILE_TARGETS = { agressivo: 50, equilibrado: 65, cauteloso: 80 };
+  var PROFILE_TARGETS = { desligado: 0, agressivo: 50, equilibrado: 65, cauteloso: 80 };
   var ODD_LABELS = {
     'odd_over_0.5': 'Over 0.5', 'odd_over_1.5': 'Over 1.5',
     'odd_over_2.5': 'Over 2.5', 'odd_over_3.5': 'Over 3.5',
@@ -707,8 +707,8 @@
     q('#rbName').value = '';
     setSelectedLeagues(['eng']);
     q('#rbJoin').value = 'all';
-    q('#rbProfile').value = 'equilibrado';
-    q('#rbThreshold').value = '65';
+    q('#rbProfile').value = 'desligado';
+    q('#rbThreshold').value = '0';
     q('#rbMarket').value = 'Over 2.5';
     q('#rbMinuteOp').value = 'any';
     q('#rbMinuteFrom').value = '15';
@@ -745,7 +745,7 @@
     setSelectedLeagues(robotLeagues(robot));
     q('#rbJoin').value = robot.join || 'all';
     q('#rbProfile').value = robot.profile || 'equilibrado';
-    q('#rbThreshold').value = String(robot.threshold || 65);
+    q('#rbThreshold').value = String(robot.threshold == null ? 65 : robot.threshold);
     q('#rbMarket').value = robot.market || 'Over 2.5';
     var legacyDefaultMinute = robot.minuteConfigured == null &&
       (robot.minuteOp || 'equal') === 'equal' && String(robot.minuteFrom == null ? 15 : robot.minuteFrom) === '15' &&
@@ -969,7 +969,7 @@
       renderPreview();
     });
     q('#rbProfile').addEventListener('change', function () {
-      q('#rbThreshold').value = String(PROFILE_TARGETS[q('#rbProfile').value] || 65);
+      var alvo = PROFILE_TARGETS[q('#rbProfile').value]; q('#rbThreshold').value = String(alvo == null ? 65 : alvo);
       renderPreview();
     });
     qa('input,select', q('.builder-grid')).forEach(function (el) {
