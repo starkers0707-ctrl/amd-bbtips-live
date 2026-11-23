@@ -1029,12 +1029,54 @@
  },
  "o25": {
   "saldo": -3.2,
-  "ciclos": 59729,
+  "ciclos": 59736,
   "greens": 171,
   "redsCiclo": 22,
   "aborts": 0,
-  "descartes": 59536,
+  "descartes": 59543,
   "historico": [
+   {
+    "quando": "2026-11-23T19:42:33.795Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T19:42:33.783Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :45) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T19:42:33.774Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T19:42:13.774Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.32) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T19:42:13.770Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T19:42:13.767Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T19:42:13.757Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :45) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T19:42:13.752Z",
     "resultado": "GREEN_OBS",
@@ -4592,48 +4634,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T19:23:09.298Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T19:23:09.295Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.4) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T19:23:09.287Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T19:23:08.568Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T19:23:08.565Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.4) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T19:23:08.557Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T19:23:07.877Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4843,9 +4843,9 @@
     "desde": 1795462889740,
     "gatilho": "coluna :48"
    },
-   "ita": {
-    "desde": 1795462933752,
-    "gatilho": "coluna :57"
+   "cam": {
+    "desde": 1795462953794,
+    "gatilho": "coluna :06"
    }
   }
  },
@@ -5879,7 +5879,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "17:03",
+     "jogo": "Colombia x England",
+     "odd": 2.09
+    },
+    {
+     "h": "17:06",
+     "jogo": "Mexico x Netherlands",
+     "odd": 1.88
+    },
+    {
+     "h": "17:09",
+     "jogo": "Brazil x Wales",
+     "odd": 2.01
+    }
+   ],
+   "gatilho": "coluna :06",
+   "alvo": {
+    "h": "17:03",
+    "jogo": "Colombia x England",
+    "odd": 2.09,
+    "unidades": 1,
+    "desde": 1795462933790
+   },
+   "iniciadoEm": 1795462933790
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -5902,6 +5932,11 @@
    "2026-11-22": -14.2,
    "2026-11-23": 17.1
   },
-  "_obs": {}
+  "_obs": {
+   "cam": {
+    "desde": 1795462933787,
+    "gatilho": "odd 2.02"
+   }
+  }
  }
 }
