@@ -918,12 +918,18 @@
  },
  "o25": {
   "saldo": 20.1,
-  "ciclos": 39684,
+  "ciclos": 39685,
   "greens": 145,
   "redsCiclo": 15,
   "aborts": 0,
-  "descartes": 39524,
+  "descartes": 39525,
   "historico": [
+   {
+    "quando": "2026-11-23T11:27:32.888Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T11:27:30.776Z",
     "resultado": "GREEN_OBS",
@@ -4517,12 +4523,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.91) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:13:04.922Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4738,9 +4738,9 @@
     "desde": 1795433013721,
     "gatilho": "time SPA"
    },
-   "ame": {
-    "desde": 1795433250776,
-    "gatilho": "coluna :31"
+   "spa": {
+    "desde": 1795433252888,
+    "gatilho": "odd 1.89"
    }
   }
  },
