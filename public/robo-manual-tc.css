@@ -112,3 +112,6 @@
 .bp-pct{font-size:30px;font-weight:900;color:#00f278}
 .bp-use{border:0;border-radius:8px;padding:12px 16px;background:#00f278;color:#00130a;font-weight:800;cursor:pointer}
 @media (max-width:1000px){.bp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.bp-card{grid-template-columns:1fr auto}.bp-rank{display:none}.bp-go button{min-width:0;width:100%}}
+
+@keyframes tcFlash{0%{box-shadow:0 0 0 3px #00f278}100%{box-shadow:0 0 0 0 transparent}}
+.tc-flash{animation:tcFlash 2.4s ease-out}

@@ -694,7 +694,11 @@
     else resetForm(true);
     renderSaved();
     var savedPanel = q('#savedList') && q('#savedList').closest('details');
-    if (savedPanel) savedPanel.open = true;
+    if (savedPanel) {
+      savedPanel.open = true;
+      savedPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      savedPanel.classList.remove('tc-flash'); void savedPanel.offsetWidth; savedPanel.classList.add('tc-flash');
+    }
     showToast(robot.active ? 'Robô salvo e ATIVO. Ele já está vigiando novas entradas.' : 'Robô salvo como DESATIVADO.');
   }
 
