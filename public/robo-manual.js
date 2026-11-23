@@ -708,8 +708,8 @@
     q('#rbName').value = '';
     setSelectedLeagues(['eng']);
     q('#rbJoin').value = 'all';
-    q('#rbProfile').value = 'desligado';
-    q('#rbThreshold').value = '0';
+    q('#rbProfile').value = 'equilibrado';
+    q('#rbThreshold').value = '65';
     q('#rbMarket').value = 'Over 2.5';
     q('#rbMinuteOp').value = 'any';
     q('#rbMinuteFrom').value = '15';

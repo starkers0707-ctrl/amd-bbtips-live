@@ -527,6 +527,13 @@ app.post("/api/robos/sync", (req, res) => {
   res.json({ ok: true, robos: lista.length });
 });
 
+app.get("/api/robos/sinais", (req, res) => {
+  const dono = tgDono(req);
+  if (!dono) return res.status(401).json({ erro: "login necessario" });
+  res.setHeader("Cache-Control", "no-store");
+  const robots = (robosDono[dono] || {}).robots || [];
+  res.json({ sinais: ((robosDono[dono] || {}).signals || []).slice(0, 100).map(x => { const c = { ...x }; delete c.tg; c.destino = ((robots.find(r => String(r.id) === String(x.robotId)) || {}).destino) || "todos"; return c; }) });
+});
 app.get("/api/robos/estado", async (req, res) => {
   const dono = tgDono(req);
   if (!dono) return res.status(401).json({ erro: "login necessario" });
@@ -621,7 +628,7 @@ async function robosTick() {
   if (!RM || robosRodando) return;
   robosRodando = true;
   try {
-    const donos = Object.keys(robosDono).filter(k => tgChats[k] && ((robosDono[k].robots || []).some(r => r && r.active && (r.destino || "todos") !== "site") || (robosDono[k].signals || []).some(s => s.status === "PENDENTE")));
+    const donos = Object.keys(robosDono).filter(k => (robosDono[k].robots || []).some(r => r && r.active) || (robosDono[k].signals || []).some(s => s.status === "PENDENTE"));
     if (!donos.length) return;
     const ligas = new Set();
     for (const k of donos) {

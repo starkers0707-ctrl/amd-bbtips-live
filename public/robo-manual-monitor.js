@@ -298,16 +298,6 @@
     try{if('serviceWorker' in navigator){var reg=await navigator.serviceWorker.register('/sw-alertas.js');await reg.showNotification(title,options);return;}new Notification(title,options);}catch(_){}
   }
   var lastSync='';
-  /* Robos criados antes de 23/11 vinham com as metricas ligadas (limiar 65)
-     sem o usuario escolher. Isso barrava quase todas as entradas. */
-  function migraMetricas(){
-    try{
-      var robots=read(ROBOTS_KEY),mudou=false;
-      robots.forEach(function(r){if(r&&!r.metricasEscolhidas){r.threshold=0;r.profile='desligado';r.metricasEscolhidas=true;mudou=true;}});
-      if(mudou){localStorage.setItem(ROBOTS_KEY,JSON.stringify(robots));try{root.dispatchEvent(new CustomEvent('amd:manual-status-changed'));}catch(_){}}
-    }catch(_){}
-  }
-  migraMetricas();
   function syncRobots(){
     try{
       var robots=read(ROBOTS_KEY),body=JSON.stringify({robots:robots});
@@ -316,58 +306,31 @@
         .then(function(r){if(r.ok)lastSync=body;}).catch(function(){});
     }catch(_){}
   }
+  /* O servidor e o unico que decide as entradas (mesma regra, com metricas).
+     O navegador so mostra no site e notifica o que o servidor registrou. */
+  var STATE_KEY='amd:robos-manuais-vistos:v3';
+  function readObj(key){try{var v=JSON.parse(localStorage.getItem(key)||'{}');return v&&typeof v==='object'?v:{};}catch(_){return {};}}
   async function tick() {
     syncRobots();
     if(running||!await isLeader())return;running=true;
     try{
-      var robots=read(ROBOTS_KEY).filter(function(r){return r.active&&Array.isArray(r.pattern);});
-      var sent=read(SENT_KEY),sentSet={};sent.forEach(function(k){sentSet[k]=true;});
-      var signals=read(SIGNALS_KEY);
-      var leagues={};robots.forEach(function(r){robotLeagues(r).forEach(function(league){leagues[league]=true;});});
-      signals.forEach(function(signal){if(signal.status==='PENDENTE')leagues[signal.league||'copa']=true;});
-      var data={};await Promise.all(Object.keys(leagues).map(async function(league){
-        if(root.AMDGradeTabs&&typeof root.AMDGradeTabs.request==='function'){
-          var shared=await root.AMDGradeTabs.request({liga:league,horas:6,compacto:true,maxAgeMs:7000});
-          data[league]=(shared&&shared.partidas)||[];return;
-        }
-        var response=await fetch('/api/grade?liga='+encodeURIComponent(league)+'&horas=6&compacto=1&_='+Date.now(),{cache:'no-store',credentials:'same-origin'});
-        if(response.ok)data[league]=(await response.json()).partidas||[];
-      }));
-      var followUps=reconcileSignals(signals,data);
-      for(var fi=0;fi<followUps.length;fi++){
-        var follow=followUps[fi],followSignal=follow.signal;
-        var followHour=gameHour({hora:followSignal.gameHour,minuto:followSignal.gameMinute,slot_em:followSignal.gameSlot});
-        var followBody=String(followSignal.league||'copa').toUpperCase()+' · '+followSignal.market+' · '+
-          followSignal.timeA+' x '+followSignal.timeB+' · TIRO '+follow.shot+'/'+Math.max(1,Number(followSignal.shots||1))+' · jogo '+followHour;
-        await notify('🤖 '+(followSignal.robotName||'Robô manual')+' · PRÓXIMO TIRO',followBody,followSignal.key+'-tiro-'+follow.shot,robotById(followSignal.robotId).destino);
+      var r=await fetch('/api/robos/sinais?_='+Date.now(),{credentials:'same-origin',cache:'no-store'});
+      if(!r.ok)return;
+      var sinais=(await r.json()).sinais||[];
+      localStorage.setItem(SIGNALS_KEY,JSON.stringify(sinais));
+      try{root.dispatchEvent(new CustomEvent('amd:manual-status-changed'));}catch(_){}
+      var vistos=readObj(STATE_KEY),primeira=!Object.keys(vistos).length,novos={};
+      for(var i=0;i<sinais.length;i++){
+        var s=sinais[i],estado=s.status+'|'+(s.currentShot||1);novos[s.key]=estado;
+        if(primeira||vistos[s.key]===estado||s.destino==='telegram'||String(s.destino||'').indexOf('canal:')===0)continue;
+        var liga=String(s.league||'').toUpperCase(),max=Math.max(1,Number(s.shots||1));
+        var titulo,corpo;
+        if(s.status==='GREEN'){titulo='🟩 GREEN · '+(s.robotName||'Robô');corpo=liga+' · '+s.market+' · '+s.timeA+' x '+s.timeB+' · placar '+(s.score||'?');}
+        else if(s.status==='RED'){titulo='🟥 RED · '+(s.robotName||'Robô');corpo=liga+' · '+s.market+' · '+s.timeA+' x '+s.timeB+' · placar '+(s.score||'?');}
+        else{titulo='🤖 '+(s.robotName||'Robô')+(Number(s.currentShot||1)>1?' · PRÓXIMO TIRO':' · ENTRADA');corpo=liga+' · '+s.market+' · '+s.timeA+' x '+s.timeB+' · TIRO '+(s.currentShot||1)+'/'+max+' · jogo '+gameHour({hora:s.gameHour,minuto:s.gameMinute,slot_em:s.gameSlot});}
+        await notify(titulo,corpo,s.key+'-'+estado,'site');
       }
-      var resolved=followUps.resolved||[];
-      for(var ri=0;ri<resolved.length;ri++){
-        var rs=resolved[ri],green=rs.status==='GREEN';
-        var rBody=String(rs.league||'').toUpperCase()+' · '+rs.market+' · '+rs.timeA+' x '+rs.timeB+' · placar '+(rs.score||'?')+(green?' · tiro '+(rs.winningShot||1):'');
-        await notify((green?'✅ GREEN':'❌ RED')+' · '+(rs.robotName||'Robô manual'),rBody,rs.key+'-res',robotById(rs.robotId).destino);
-      }
-      for(var i=0;i<robots.length;i++){
-        var robot=robots[i],robotLeagueList=robotLeagues(robot);
-          for(var li=0;li<robotLeagueList.length;li++){
-            var robotLeague=robotLeagueList[li],all=data[robotLeague]||[];
-            /* Um robo e uma liga formam um unico ciclo. Os tiros seguintes
-               pertencem a essa mesma entrada; nunca abra outro sinal enquanto
-               o ciclo atual ainda estiver aguardando resultado. */
-            if(hasOpenCycle(signals,robot.id,robotLeague))continue;
-            var match=eligibleMatch(robot,all);if(!match)continue;
-          var upcoming=nextGame(all,match.trigger);if(!upcoming)continue;
-          var entryMk=match.entry.entryMarket||robot.entryMarket||match.entry.market||'Over 2.5';
-          var mp=metricsPass(robot,data,robotLeague,entryMk);if(!mp.ok)continue;
-          var key=[robot.id,robotLeague,match.row,gameKey(match.trigger),upcoming.id||upcoming.slot_em].join('|');if(sentSet[key])continue;
-          sentSet[key]=true;sent.unshift(key);sent=sent.slice(0,500);localStorage.setItem(SENT_KEY,JSON.stringify(sent));
-          var market=match.entry.entryMarket||robot.entryMarket||match.entry.market||'Entrada';var maximum=Math.max(1,Number(robot.shots||1));
-          var entryHour=gameHour(upcoming);
-          var body=robotLeague.toUpperCase()+' · '+market+' · '+(upcoming.time_a||'?')+' x '+(upcoming.time_b||'?')+' · TIRO 1/'+maximum+' · jogo '+entryHour+(mp.text?' · '+mp.text:'');
-          saveSignal({id:key,key:key,robotId:robot.id,robotName:robot.name||'Robô manual',league:robotLeague,market:market,shots:maximum,currentShot:1,attempts:[],cycleVersion:2,timeA:upcoming.time_a||'?',timeB:upcoming.time_b||'?',gameId:upcoming.id||'',gameSlot:upcoming.slot_em||upcoming.criado_em||'',gameHour:upcoming.hora,gameMinute:upcoming.minuto,status:'PENDENTE',sentAt:new Date().toISOString(),score:''});
-          await notify('🤖 '+(robot.name||'Robô manual')+' · ENTRADA',body,key,robot.destino);
-        }
-      }
+      localStorage.setItem(STATE_KEY,JSON.stringify(novos));
     }catch(_){}finally{running=false;}
   }
   async function enable() {
