@@ -917,12 +917,18 @@
  },
  "o25": {
   "saldo": 29.7,
-  "ciclos": 36283,
+  "ciclos": 36284,
   "greens": 140,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 36130,
+  "descartes": 36131,
   "historico": [
+   {
+    "quando": "2026-11-23T09:40:13.655Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T09:40:11.517Z",
     "resultado": "GREEN_OBS",
@@ -4516,12 +4522,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:04:33.111Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4587,10 +4587,10 @@
    "cop": 1795425800854
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "RRRR",
-   "n": 11,
-   "start": 1
+   "tipo": "time",
+   "chave": "Medellin",
+   "n": 10,
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -4744,9 +4744,9 @@
     "desde": 1795426412297,
     "gatilho": "placar 1-0 / 0-1"
    },
-   "lat": {
-    "desde": 1795426811516,
-    "gatilho": "time NAC"
+   "mnd": {
+    "desde": 1795426813654,
+    "gatilho": "time SPA"
    }
   }
  },
