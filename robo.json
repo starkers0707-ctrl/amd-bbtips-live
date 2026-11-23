@@ -880,12 +880,18 @@
  },
  "o25": {
   "saldo": 27.6,
-  "ciclos": 35888,
+  "ciclos": 35889,
   "greens": 138,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 35737,
+  "descartes": 35738,
   "historico": [
+   {
+    "quando": "2026-11-23T09:16:05.865Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T09:16:01.721Z",
     "resultado": "GREEN_OBS",
@@ -4479,12 +4485,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho time Rio de Janeiro) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:39:14.526Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4694,9 +4694,9 @@
     "desde": 1795424635836,
     "gatilho": "time VAL"
    },
-   "cop": {
-    "desde": 1795425361721,
-    "gatilho": "seq RRGR"
+   "mnd": {
+    "desde": 1795425365864,
+    "gatilho": "time SPA"
    }
   }
  },
