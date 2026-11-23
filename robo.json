@@ -1007,12 +1007,48 @@
  },
  "o25": {
   "saldo": 22,
-  "ciclos": 50439,
+  "ciclos": 50445,
   "greens": 161,
   "redsCiclo": 17,
   "aborts": 0,
-  "descartes": 50261,
+  "descartes": 50267,
   "historico": [
+   {
+    "quando": "2026-11-23T15:41:08.608Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T15:41:08.602Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :45) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T15:41:03.837Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :43) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T15:41:03.832Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T15:41:03.824Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T15:41:03.821Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T15:41:03.814Z",
     "resultado": "GREEN_OBS",
@@ -4576,42 +4612,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :36) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:24:27.301Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:24:27.293Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :25) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:24:11.924Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:24:11.919Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :36) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:24:11.915Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:24:11.906Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :25) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4817,20 +4817,26 @@
     "desde": 1795448078758,
     "gatilho": "odd 2.47"
    },
-   "spa": {
-    "desde": 1795448463814,
-    "gatilho": "coluna :45"
+   "bra": {
+    "desde": 1795448468608,
+    "gatilho": "time VIT"
    }
   }
  },
  "ambas": {
   "saldo": 5.6,
-  "ciclos": 140,
+  "ciclos": 141,
   "greens": 66,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 68,
+  "descartes": 69,
   "historico": [
+   {
+    "quando": "2026-11-23T15:41:03.882Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "bra · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-23T15:25:43.133Z",
     "resultado": "GREEN",
@@ -5675,37 +5681,7 @@
   "consumidas": {
    "cam": 1795447543132
   },
-  "ciclo": {
-   "liga": "bra",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "12:47",
-     "jogo": "BAH x GAM",
-     "odd": 1.8
-    },
-    {
-     "h": "12:50",
-     "jogo": "CRM x VIT",
-     "odd": 1.76
-    },
-    {
-     "h": "12:53",
-     "jogo": "ZEI x MEN",
-     "odd": 1.68
-    }
-   ],
-   "gatilho": "time VIT",
-   "alvo": {
-    "h": "12:47",
-    "jogo": "BAH x GAM",
-    "odd": 1.8,
-    "unidades": 1,
-    "desde": 1795447545284
-   },
-   "iniciadoEm": 1795447545284
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
