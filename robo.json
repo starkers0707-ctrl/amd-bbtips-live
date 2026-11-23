@@ -857,12 +857,42 @@
  },
  "o25": {
   "saldo": 31.9,
-  "ciclos": 34180,
+  "ciclos": 34185,
   "greens": 135,
   "redsCiclo": 12,
   "aborts": 0,
-  "descartes": 34033,
+  "descartes": 34038,
   "historico": [
+   {
+    "quando": "2026-11-23T07:59:34.249Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time ATL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:59:34.245Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:59:34.241Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time LEV) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:59:14.991Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time ATL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:59:14.986Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T07:59:14.982Z",
     "resultado": "GREEN_OBS",
@@ -4432,36 +4462,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:35:06.796Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:35:06.792Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Argentina) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:35:06.781Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:35:04.605Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:35:04.600Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Argentina) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4668,21 +4668,29 @@
    "ame": {
     "desde": 1795420635947,
     "gatilho": "time Belo Horizonte"
-   },
-   "spa": {
-    "desde": 1795420754981,
-    "gatilho": "time LEV"
    }
   }
  },
  "ambas": {
   "saldo": -5.3,
-  "ciclos": 97,
+  "ciclos": 99,
   "greens": 43,
   "redsCiclo": 5,
   "aborts": 0,
-  "descartes": 49,
+  "descartes": 51,
   "historico": [
+   {
+    "quando": "2026-11-23T07:59:34.261Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Porto Alegre) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:59:15.016Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "ame · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-23T07:44:08.881Z",
     "resultado": "GREEN",
@@ -5271,37 +5279,7 @@
    "mnd": 1795418258105,
    "cam": 1795419848880
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "04:58",
-     "jogo": "La Plata x Santiago",
-     "odd": 2.1
-    },
-    {
-     "h": "05:01",
-     "jogo": "Porto Alegre x Santos",
-     "odd": 2.05
-    },
-    {
-     "h": "05:04",
-     "jogo": "Avellaneda x Bogota",
-     "odd": 1.89
-    }
-   ],
-   "gatilho": "time Porto Alegre",
-   "alvo": {
-    "h": "04:58",
-    "jogo": "La Plata x Santiago",
-    "odd": 2.1,
-    "unidades": 1,
-    "desde": 1795419851109
-   },
-   "iniciadoEm": 1795419851109
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -5324,6 +5302,11 @@
    "2026-11-22": -14.2,
    "2026-11-23": 6.9
   },
-  "_obs": {}
+  "_obs": {
+   "ame": {
+    "desde": 1795420774261,
+    "gatilho": "time Porto Alegre"
+   }
+  }
  }
 }
