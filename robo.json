@@ -812,12 +812,18 @@
  },
  "o25": {
   "saldo": 20,
-  "ciclos": 30330,
+  "ciclos": 30331,
   "greens": 120,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 30199,
+  "descartes": 30200,
   "historico": [
+   {
+    "quando": "2026-11-23T00:54:02.378Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T00:53:49.219Z",
     "resultado": "GREEN_OBS",
@@ -4411,12 +4417,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T00:15:12.006Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4628,6 +4628,10 @@
    "cam": {
     "desde": 1795395000447,
     "gatilho": "seq RRRRR"
+   },
+   "mnd": {
+    "desde": 1795395242377,
+    "gatilho": "odd 1.83"
    }
   }
  },
@@ -5058,7 +5062,37 @@
    "ame": 1795392178567,
    "cop": 1795394431546
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "22:02",
+     "jogo": "CHL x URY",
+     "odd": 1.68
+    },
+    {
+     "h": "22:04",
+     "jogo": "BRA x CRO",
+     "odd": 1.81
+    },
+    {
+     "h": "22:06",
+     "jogo": "MEX x GER",
+     "odd": 1.71
+    }
+   ],
+   "gatilho": "coluna :04",
+   "alvo": {
+    "h": "22:02",
+    "jogo": "CHL x URY",
+    "odd": 1.68,
+    "unidades": 1,
+    "desde": 1795395229265
+   },
+   "iniciadoEm": 1795395229265
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795257582328,
@@ -5070,10 +5104,10 @@
    "ame": 1795392178567
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "GRGRR",
-   "n": 13,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":04",
+   "n": 21,
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
