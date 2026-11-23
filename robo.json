@@ -923,12 +923,18 @@
  },
  "o25": {
   "saldo": 31.3,
-  "ciclos": 36803,
+  "ciclos": 36804,
   "greens": 142,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 36648,
+  "descartes": 36649,
   "historico": [
+   {
+    "quando": "2026-11-23T10:01:59.989Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho seq GRGR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T10:01:44.435Z",
     "resultado": "GREEN_OBS",
@@ -4522,12 +4528,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:35:30.321Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4736,9 +4736,9 @@
     "desde": 1795427849401,
     "gatilho": "time NAC"
    },
-   "ame": {
-    "desde": 1795428104435,
-    "gatilho": "time Medellin"
+   "spa": {
+    "desde": 1795428119989,
+    "gatilho": "seq GRGR"
    }
   }
  },
@@ -5442,8 +5442,8 @@
   "_gatilhoAtual": {
    "tipo": "time",
    "chave": "Turin",
-   "n": 21,
-   "start": 2
+   "n": 22,
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
