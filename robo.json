@@ -826,13 +826,43 @@
   }
  },
  "o25": {
-  "saldo": 35.9,
-  "ciclos": 32560,
-  "greens": 132,
+  "saldo": 37.4,
+  "ciclos": 32565,
+  "greens": 133,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32417,
+  "descartes": 32421,
   "historico": [
+   {
+    "quando": "2026-11-23T06:49:47.929Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.93) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:49:47.921Z",
+    "resultado": "GREEN",
+    "unidades": 1.5,
+    "detalhe": "cop · France x Italy @2.49 (tiro 1) · gatilho: time Argentina"
+   },
+   {
+    "quando": "2026-11-23T06:49:05.556Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Argentina) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:49:05.553Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RGRR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:49:05.548Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T06:49:05.545Z",
     "resultado": "GREEN_OBS",
@@ -4402,74 +4432,15 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T04:11:33.371Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T04:11:15.651Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T04:11:07.111Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T04:11:06.337Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T04:11:05.539Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
    }
   ],
   "consumidas": {
    "mnd": 1795413449347,
    "ame": 1795415390732,
-   "cam": 1795416030942
+   "cam": 1795416030942,
+   "cop": 1795416587921
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "03:48",
-     "jogo": "France x Italy",
-     "odd": 2.49
-    },
-    {
-     "h": "03:51",
-     "jogo": "Mexico x Argentina",
-     "odd": 2.05
-    },
-    {
-     "h": "03:54",
-     "jogo": "England x Belgium",
-     "odd": 2.18
-    }
-   ],
-   "gatilho": "time Argentina",
-   "alvo": {
-    "h": "03:48",
-    "jogo": "France x Italy",
-    "odd": 2.49,
-    "unidades": 1,
-    "desde": 1795416033115
-   },
-   "iniciadoEm": 1795416033115
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795416030942,
    "eng": 1795383709617,
@@ -4479,20 +4450,20 @@
    "bra": 1795380169712,
    "mnd": 1795413449347,
    "ame": 1795415390732,
-   "cop": 1795409729383
+   "cop": 1795416587921
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "Argentina",
-   "n": 10,
-   "start": 1
+   "tipo": "odd",
+   "chave": "1.93",
+   "n": 8,
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
-   "2026-11-23": 8.2
+   "2026-11-23": 9.7
   },
   "_obs": {}
  },
@@ -4632,7 +4603,7 @@
   },
   "_obs": {
    "spa": {
-    "desde": 1795416545545,
+    "desde": 1795416587929,
     "gatilho": "odd 1.93"
    }
   }
