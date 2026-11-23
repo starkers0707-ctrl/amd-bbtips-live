@@ -966,12 +966,36 @@
  },
  "o25": {
   "saldo": 24.5,
-  "ciclos": 41498,
+  "ciclos": 41502,
   "greens": 150,
   "redsCiclo": 15,
   "aborts": 0,
-  "descartes": 41333,
+  "descartes": 41337,
   "historico": [
+   {
+    "quando": "2026-11-23T12:12:31.425Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:12:31.421Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho seq RRRGG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:12:22.541Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:12:22.538Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :36) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T12:12:22.535Z",
     "resultado": "GREEN_OBS",
@@ -4547,30 +4571,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:59:08.866Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:59:08.862Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:59:08.858Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:59:08.854Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4776,9 +4776,9 @@
     "desde": 1795435890342,
     "gatilho": "time SPA"
    },
-   "cam": {
-    "desde": 1795435942535,
-    "gatilho": "coluna :21"
+   "bra": {
+    "desde": 1795435951425,
+    "gatilho": "time PAR"
    }
   }
  },
