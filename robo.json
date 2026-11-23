@@ -809,13 +809,19 @@
   }
  },
  "o25": {
-  "saldo": 28.6,
-  "ciclos": 32001,
-  "greens": 127,
+  "saldo": 29.9,
+  "ciclos": 32002,
+  "greens": 128,
   "redsCiclo": 11,
   "aborts": 0,
   "descartes": 31863,
   "historico": [
+   {
+    "quando": "2026-11-23T04:55:29.385Z",
+    "resultado": "GREEN",
+    "unidades": 1.3,
+    "detalhe": "cop · Portugal x France @2.32 (tiro 1) · gatilho: placar 1-0 / 0-1"
+   },
    {
     "quando": "2026-11-23T04:52:37.996Z",
     "resultado": "GREEN_OBS",
@@ -4409,48 +4415,13 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.74) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:09:34.813Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "mnd": 1795406731600
+   "mnd": 1795406731600,
+   "cop": 1795409729383
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "01:54",
-     "jogo": "Portugal x France",
-     "odd": 2.32
-    },
-    {
-     "h": "01:57",
-     "jogo": "USA x Switzerland",
-     "odd": 2.47
-    },
-    {
-     "h": "02:00",
-     "jogo": "Argentina x Belgium",
-     "odd": 2.12
-    }
-   ],
-   "gatilho": "placar 1-0 / 0-1",
-   "alvo": {
-    "h": "01:54",
-    "jogo": "Portugal x France",
-    "odd": 2.32,
-    "unidades": 1,
-    "desde": 1795409416308
-   },
-   "iniciadoEm": 1795409416308
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795399483010,
    "eng": 1795383709617,
@@ -4459,7 +4430,8 @@
    "lat": 1795361275805,
    "bra": 1795380169712,
    "mnd": 1795406731600,
-   "ame": 1795400659327
+   "ame": 1795400659327,
+   "cop": 1795409729383
   },
   "_gatilhoAtual": {
    "tipo": "placar",
@@ -4472,7 +4444,7 @@
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
-   "2026-11-23": 0.9
+   "2026-11-23": 2.2
   },
   "_obs": {}
  },
@@ -4622,10 +4594,6 @@
    "mnd": {
     "desde": 1795408767402,
     "gatilho": "odd 1.94"
-   },
-   "cop": {
-    "desde": 1795409557995,
-    "gatilho": "placar 1-0 / 0-1"
    }
   }
  },
