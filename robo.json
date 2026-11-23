@@ -5112,7 +5112,37 @@
    "eng": 1795409882468,
    "cam": 1795411406700
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "02:41",
+     "jogo": "CEL x BET",
+     "odd": 1.69
+    },
+    {
+     "h": "02:43",
+     "jogo": "ESP x SEV",
+     "odd": 1.7
+    },
+    {
+     "h": "02:45",
+     "jogo": "GET x MLG",
+     "odd": 1.76
+    }
+   ],
+   "gatilho": "time SEV",
+   "alvo": {
+    "h": "02:41",
+    "jogo": "CEL x BET",
+    "odd": 1.69,
+    "unidades": 1,
+    "desde": 1795411627427
+   },
+   "iniciadoEm": 1795411627427
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -5125,9 +5155,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "Turin",
+   "chave": "SEV",
    "n": 8,
-   "start": 4
+   "start": 7
   },
   "dias": {
    "2026-11-20": 0,
