@@ -829,12 +829,24 @@
  },
  "o25": {
   "saldo": 31.4,
-  "ciclos": 32235,
+  "ciclos": 32237,
   "greens": 130,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32094,
+  "descartes": 32096,
   "historico": [
+   {
+    "quando": "2026-11-23T06:23:34.043Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Chelsea) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:23:34.038Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T06:23:04.666Z",
     "resultado": "GREEN_OBS",
@@ -4422,18 +4434,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:26:29.379Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:26:28.560Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4441,8 +4441,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "03:22",
@@ -4462,13 +4462,21 @@
    ],
    "gatilho": "time Belo Horizonte",
    "alvo": {
-    "h": "03:22",
-    "jogo": "Santiago x Porto Alegre",
-    "odd": 2.45,
-    "unidades": 1,
-    "desde": 1795414127618
+    "h": "03:25",
+    "jogo": "Itaquera x Belo Horizonte",
+    "odd": 2.18,
+    "unidades": 2,
+    "desde": 1795415014027
    },
-   "iniciadoEm": 1795414127618
+   "iniciadoEm": 1795414127618,
+   "tiros": [
+    {
+     "h": "03:22",
+     "jogo": "Santiago x Porto Alegre",
+     "odd": 2.45,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795399483010,
@@ -4485,7 +4493,7 @@
    "tipo": "time",
    "chave": "Belo Horizonte",
    "n": 8,
-   "start": 1
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -4638,10 +4646,6 @@
    "cop": {
     "desde": 1795414982550,
     "gatilho": "time Argentina"
-   },
-   "cam": {
-    "desde": 1795414984666,
-    "gatilho": "time Chelsea"
    }
   }
  },
@@ -5171,11 +5175,40 @@
    }
   ],
   "consumidas": {
-   "cam": 1795411406700,
    "mnd": 1795412856148,
    "ame": 1795414127660
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "03:27",
+     "jogo": "Milan x Chelsea",
+     "odd": 2.1
+    },
+    {
+     "h": "03:30",
+     "jogo": "Liverpool x Benfica",
+     "odd": 1.95
+    },
+    {
+     "h": "03:33",
+     "jogo": "Paris x Rome",
+     "odd": 1.85
+    }
+   ],
+   "gatilho": "time Chelsea",
+   "alvo": {
+    "h": "03:27",
+    "jogo": "Milan x Chelsea",
+    "odd": 2.1,
+    "unidades": 1,
+    "desde": 1795415014072
+   },
+   "iniciadoEm": 1795415014072
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -5188,7 +5221,7 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "Montevideo",
+   "chave": "Chelsea",
    "n": 8,
    "start": 1
   },
