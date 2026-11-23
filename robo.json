@@ -862,12 +862,36 @@
  },
  "o25": {
   "saldo": 32.9,
-  "ciclos": 34921,
+  "ciclos": 34925,
   "greens": 136,
   "redsCiclo": 12,
   "aborts": 0,
-  "descartes": 34773,
+  "descartes": 34777,
   "historico": [
+   {
+    "quando": "2026-11-23T08:23:33.617Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:23:33.612Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:23:33.608Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time ARG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:23:32.891Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T08:23:32.886Z",
     "resultado": "GREEN_OBS",
@@ -4443,30 +4467,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time ATL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:05:00.400Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.93) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:05:00.395Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time BOL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:04:31.913Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:04:31.909Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time ATL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4477,8 +4477,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "05:19",
@@ -4498,11 +4498,11 @@
    ],
    "gatilho": "time Belo Horizonte",
    "alvo": {
-    "h": "05:22",
-    "jogo": "Sao Paulo x Belo Horizonte",
-    "odd": 2,
-    "unidades": 2,
-    "desde": 1795422077062
+    "h": "05:25",
+    "jogo": "Santiago x Montevideo",
+    "odd": 2.37,
+    "unidades": 4,
+    "desde": 1795422241991
    },
    "iniciadoEm": 1795421816922,
    "tiros": [
@@ -4511,6 +4511,12 @@
      "jogo": "Asuncion x Itaquera",
      "odd": 2.23,
      "unidades": 1
+    },
+    {
+     "h": "05:22",
+     "jogo": "Sao Paulo x Belo Horizonte",
+     "odd": 2,
+     "unidades": 2
     }
    ]
   },
@@ -4526,9 +4532,9 @@
    "cop": 1795416587921
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "Belo Horizonte",
-   "n": 11,
+   "tipo": "placar",
+   "chave": "acima de 1-0 (2-0)",
+   "n": 12,
    "start": 1
   },
   "dias": {
@@ -4678,10 +4684,6 @@
    "cam": {
     "desde": 1795417126160,
     "gatilho": "time Chelsea"
-   },
-   "lat": {
-    "desde": 1795422212886,
-    "gatilho": "time NAC"
    }
   }
  },
@@ -5351,7 +5353,7 @@
    "tipo": "time",
    "chave": "DEN",
    "n": 13,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
