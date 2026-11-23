@@ -829,12 +829,24 @@
  },
  "o25": {
   "saldo": 33.3,
-  "ciclos": 32316,
+  "ciclos": 32318,
   "greens": 131,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32174,
+  "descartes": 32176,
   "historico": [
+   {
+    "quando": "2026-11-23T06:32:05.807Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:32:05.802Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.93) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T06:31:48.214Z",
     "resultado": "GREEN_OBS",
@@ -4422,18 +4434,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:34:33.512Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :50) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:34:33.509Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4636,9 +4636,9 @@
     "desde": 1795414982550,
     "gatilho": "time Argentina"
    },
-   "ame": {
-    "desde": 1795415508214,
-    "gatilho": "time Belo Horizonte"
+   "mnd": {
+    "desde": 1795415525806,
+    "gatilho": "time SWE"
    }
   }
  },
@@ -5184,7 +5184,37 @@
    "ame": 1795414127660,
    "cam": 1795415506086
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:07",
+     "jogo": "ELC x BET",
+     "odd": 1.68
+    },
+    {
+     "h": "04:09",
+     "jogo": "RSO x SEV",
+     "odd": 1.7
+    },
+    {
+     "h": "04:11",
+     "jogo": "RMA x OSA",
+     "odd": 1.82
+    }
+   ],
+   "gatilho": "time SEV",
+   "alvo": {
+    "h": "04:07",
+    "jogo": "ELC x BET",
+    "odd": 1.68,
+    "unidades": 1,
+    "desde": 1795415508228
+   },
+   "iniciadoEm": 1795415508228
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -5197,9 +5227,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "Turin",
-   "n": 13,
-   "start": 7
+   "chave": "SEV",
+   "n": 9,
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
