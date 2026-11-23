@@ -829,12 +829,18 @@
  },
  "o25": {
   "saldo": 31.4,
-  "ciclos": 32176,
+  "ciclos": 32177,
   "greens": 130,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32035,
+  "descartes": 32036,
   "historico": [
+   {
+    "quando": "2026-11-23T06:09:15.198Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T06:08:47.639Z",
     "resultado": "GREEN_OBS",
@@ -4428,12 +4434,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.74) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:19:29.116Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.82) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4637,19 +4637,25 @@
     "gatilho": "odd 2.74"
    },
    "ame": {
-    "desde": 1795414127638,
+    "desde": 1795414155197,
     "gatilho": "time Belo Horizonte"
    }
   }
  },
  "ambas": {
-  "saldo": -9.6,
-  "ciclos": 85,
-  "greens": 38,
+  "saldo": -8.6,
+  "ciclos": 86,
+  "greens": 39,
   "redsCiclo": 5,
   "aborts": 0,
   "descartes": 42,
   "historico": [
+   {
+    "quando": "2026-11-23T06:08:47.661Z",
+    "resultado": "GREEN",
+    "unidades": 1,
+    "detalhe": "ame · Porto Alegre x Avellaneda @2.01 (tiro 1) · gatilho: time Montevideo"
+   },
    {
     "quando": "2026-11-23T05:47:36.149Z",
     "resultado": "GREEN",
@@ -5163,39 +5169,10 @@
   ],
   "consumidas": {
    "cam": 1795411406700,
-   "mnd": 1795412856148
+   "mnd": 1795412856148,
+   "ame": 1795414127660
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "03:07",
-     "jogo": "Porto Alegre x Avellaneda",
-     "odd": 2.01
-    },
-    {
-     "h": "03:10",
-     "jogo": "Montevideo x Bogota",
-     "odd": 2
-    },
-    {
-     "h": "03:13",
-     "jogo": "Avellaneda x Santiago",
-     "odd": 1.95
-    }
-   ],
-   "gatilho": "time Montevideo",
-   "alvo": {
-    "h": "03:07",
-    "jogo": "Porto Alegre x Avellaneda",
-    "odd": 2.01,
-    "unidades": 1,
-    "desde": 1795413601158
-   },
-   "iniciadoEm": 1795413601158
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -5204,7 +5181,7 @@
    "mnd": 1795412856148,
    "cam": 1795411406700,
    "cop": 1795394431546,
-   "ame": 1795398447464
+   "ame": 1795414127660
   },
   "_gatilhoAtual": {
    "tipo": "time",
@@ -5216,7 +5193,7 @@
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
-   "2026-11-23": 2.6
+   "2026-11-23": 3.6
   },
   "_obs": {}
  }
