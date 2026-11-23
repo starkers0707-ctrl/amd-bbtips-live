@@ -880,12 +880,30 @@
  },
  "o25": {
   "saldo": 27.6,
-  "ciclos": 35620,
+  "ciclos": 35623,
   "greens": 138,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 35469,
+  "descartes": 35472,
   "historico": [
+   {
+    "quando": "2026-11-23T09:01:59.040Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T09:01:59.034Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq GGGG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T09:01:34.455Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T09:01:34.449Z",
     "resultado": "GREEN_OBS",
@@ -4467,24 +4485,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:27:59.588Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:27:59.584Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time ARG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:27:57.017Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4536,10 +4536,10 @@
    "cop": 1795416587921
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "RRRGR",
-   "n": 8,
-   "start": 1
+   "tipo": "time",
+   "chave": "VAL",
+   "n": 11,
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -4685,9 +4685,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "cam": {
-    "desde": 1795424494449,
-    "gatilho": "seq RRRGR"
+   "lat": {
+    "desde": 1795424519039,
+    "gatilho": "time VAL"
    }
   }
  },
