@@ -812,12 +812,36 @@
  },
  "o25": {
   "saldo": 22.3,
-  "ciclos": 30922,
+  "ciclos": 30926,
   "greens": 122,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 30789,
+  "descartes": 30793,
   "historico": [
+   {
+    "quando": "2026-11-23T01:37:36.151Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:37:36.142Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:37:11.101Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho seq RGRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:37:11.094Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T01:37:11.091Z",
     "resultado": "GREEN_OBS",
@@ -4393,30 +4417,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :55) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T00:53:17.658Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :55) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T00:53:07.571Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :55) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T00:53:06.496Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :55) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T00:53:05.987Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :55) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4465,9 +4465,9 @@
    "ame": 1795395424437
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.05",
-   "n": 12,
+   "tipo": "seq",
+   "chave": "RRRRR",
+   "n": 13,
    "start": 1
   },
   "dias": {
@@ -4625,9 +4625,9 @@
     "desde": 1795397705750,
     "gatilho": "odd 2.05"
    },
-   "spa": {
-    "desde": 1795397831090,
-    "gatilho": "coluna :39"
+   "mnd": {
+    "desde": 1795397856150,
+    "gatilho": "odd 1.83"
    }
   }
  },
