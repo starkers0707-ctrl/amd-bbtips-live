@@ -857,12 +857,30 @@
  },
  "o25": {
   "saldo": 38,
-  "ciclos": 33655,
+  "ciclos": 33658,
   "greens": 134,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 33510,
+  "descartes": 33513,
   "historico": [
+   {
+    "quando": "2026-11-23T07:37:40.255Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:37:29.549Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:37:29.542Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T07:37:28.661Z",
     "resultado": "GREEN_OBS",
@@ -4444,24 +4462,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Argentina) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:16:34.516Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:16:34.511Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time POR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:16:34.507Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4471,8 +4471,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "04:36",
@@ -4492,13 +4492,21 @@
    ],
    "gatilho": "time POL",
    "alvo": {
-    "h": "04:36",
-    "jogo": "NED x SWI",
-    "odd": 1.94,
-    "unidades": 1,
-    "desde": 1795419150179
+    "h": "04:38",
+    "jogo": "BRA x POL",
+    "odd": 1.74,
+    "unidades": 2,
+    "desde": 1795419449536
    },
-   "iniciadoEm": 1795419150179
+   "iniciadoEm": 1795419150179,
+   "tiros": [
+    {
+     "h": "04:36",
+     "jogo": "NED x SWI",
+     "odd": 1.94,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795416030942,
@@ -4673,9 +4681,9 @@
     "desde": 1795419425687,
     "gatilho": "time NAC"
    },
-   "ame": {
-    "desde": 1795419448660,
-    "gatilho": "time Medellin"
+   "spa": {
+    "desde": 1795419460254,
+    "gatilho": "time MLG"
    }
   }
  },
