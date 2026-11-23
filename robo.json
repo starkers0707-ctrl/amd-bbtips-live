@@ -807,12 +807,18 @@
  },
  "o25": {
   "saldo": 17.7,
-  "ciclos": 29778,
+  "ciclos": 29779,
   "greens": 118,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 29649,
+  "descartes": 29650,
   "historico": [
+   {
+    "quando": "2026-11-23T00:19:58.713Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T00:19:44.571Z",
     "resultado": "GREEN_OBS",
@@ -4406,12 +4412,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T23:12:19.491Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4419,8 +4419,8 @@
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "21:15",
@@ -4440,11 +4440,11 @@
    ],
    "gatilho": "seq RRRRG",
    "alvo": {
-    "h": "21:18",
-    "jogo": "Madrid x Rome",
-    "odd": 2.07,
-    "unidades": 2,
-    "desde": 1795392987501
+    "h": "21:21",
+    "jogo": "Turin x Liverpool",
+    "odd": 2.11,
+    "unidades": 4,
+    "desde": 1795393198701
    },
    "iniciadoEm": 1795392819620,
    "tiros": [
@@ -4453,6 +4453,12 @@
      "jogo": "Milan x Amsterdam",
      "odd": 2.56,
      "unidades": 1
+    },
+    {
+     "h": "21:18",
+     "jogo": "Madrid x Rome",
+     "odd": 2.07,
+     "unidades": 2
     }
    ]
   },
@@ -4624,7 +4630,7 @@
     "gatilho": "odd 1.77"
    },
    "cop": {
-    "desde": 1795393184571,
+    "desde": 1795393198712,
     "gatilho": "odd 2.05"
    }
   }
