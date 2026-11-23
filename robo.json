@@ -810,12 +810,42 @@
  },
  "o25": {
   "saldo": 23,
-  "ciclos": 31084,
+  "ciclos": 31089,
   "greens": 123,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 30950,
+  "descartes": 30955,
   "historico": [
+   {
+    "quando": "2026-11-23T01:47:27.426Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :55) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:47:27.416Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:47:13.052Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho seq RGRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:47:13.045Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:47:12.434Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho seq RGRRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T01:47:12.427Z",
     "resultado": "GREEN_OBS",
@@ -4385,36 +4415,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T01:09:04.331Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T01:08:35.564Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T01:08:34.769Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T01:08:34.298Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T01:08:08.573Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4593,21 +4593,23 @@
    "cop": {
     "desde": 1795397705750,
     "gatilho": "odd 2.05"
-   },
-   "mnd": {
-    "desde": 1795398432426,
-    "gatilho": "odd 1.83"
    }
   }
  },
  "ambas": {
-  "saldo": -15,
-  "ciclos": 74,
-  "greens": 31,
+  "saldo": -14,
+  "ciclos": 75,
+  "greens": 32,
   "redsCiclo": 5,
   "aborts": 0,
   "descartes": 38,
   "historico": [
+   {
+    "quando": "2026-11-23T01:47:27.465Z",
+    "resultado": "GREEN",
+    "unidades": 1,
+    "detalhe": "ame · Bogota x Santiago @1.98 (tiro 1) · gatilho: seq RRGGR"
+   },
    {
     "quando": "2026-11-23T01:34:18.701Z",
     "resultado": "GREEN",
@@ -5055,39 +5057,10 @@
   ],
   "consumidas": {
    "mnd": 1795395814364,
-   "cam": 1795397658700
+   "cam": 1795397658700,
+   "ame": 1795398447464
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "22:46",
-     "jogo": "Bogota x Santiago",
-     "odd": 1.98
-    },
-    {
-     "h": "22:49",
-     "jogo": "La Boca x Sao Paulo",
-     "odd": 1.82
-    },
-    {
-     "h": "22:52",
-     "jogo": "Agua Branca x Buenos Aires",
-     "odd": 1.93
-    }
-   ],
-   "gatilho": "seq RRGGR",
-   "alvo": {
-    "h": "22:46",
-    "jogo": "Bogota x Santiago",
-    "odd": 1.98,
-    "unidades": 1,
-    "desde": 1795398144790
-   },
-   "iniciadoEm": 1795398144790
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795257582328,
@@ -5096,7 +5069,7 @@
    "mnd": 1795395814364,
    "cam": 1795397658700,
    "cop": 1795394431546,
-   "ame": 1795392178567
+   "ame": 1795398447464
   },
   "_gatilhoAtual": {
    "tipo": "seq",
@@ -5107,7 +5080,7 @@
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
-   "2026-11-22": -17
+   "2026-11-22": -16
   },
   "_obs": {}
  }
