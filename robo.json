@@ -880,12 +880,30 @@
  },
  "o25": {
   "saldo": 27.6,
-  "ciclos": 35873,
+  "ciclos": 35876,
   "greens": 138,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 35722,
+  "descartes": 35725,
   "historico": [
+   {
+    "quando": "2026-11-23T09:15:32.291Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T09:15:32.288Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T09:15:32.279Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T09:15:07.942Z",
     "resultado": "GREEN_OBS",
@@ -4467,24 +4485,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:38:47.987Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time ARG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:38:43.206Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Rio de Janeiro) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:38:43.201Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4695,7 +4695,7 @@
     "gatilho": "time VAL"
    },
    "ame": {
-    "desde": 1795425307942,
+    "desde": 1795425332291,
     "gatilho": "placar acima de 1-0 (2-0)"
    }
   }
@@ -5339,8 +5339,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "06:13",
@@ -5360,13 +5360,21 @@
    ],
    "gatilho": "time Penarol",
    "alvo": {
-    "h": "06:13",
-    "jogo": "Buenos Aires x Penarol",
-    "odd": 2.07,
-    "unidades": 1,
-    "desde": 1795425057952
+    "h": "06:16",
+    "jogo": "Medellin x Asuncion",
+    "odd": 1.88,
+    "unidades": 2,
+    "desde": 1795425307954
    },
-   "iniciadoEm": 1795425057952
+   "iniciadoEm": 1795425057952,
+   "tiros": [
+    {
+     "h": "06:13",
+     "jogo": "Buenos Aires x Penarol",
+     "odd": 2.07,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795331214015,
@@ -5382,7 +5390,7 @@
    "tipo": "time",
    "chave": "Penarol",
    "n": 13,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-20": 0,
