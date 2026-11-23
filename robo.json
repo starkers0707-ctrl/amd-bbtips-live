@@ -912,12 +912,54 @@
  },
  "o25": {
   "saldo": 26,
-  "ciclos": 38453,
+  "ciclos": 38460,
   "greens": 144,
   "redsCiclo": 14,
   "aborts": 0,
-  "descartes": 38295,
+  "descartes": 38302,
   "historico": [
+   {
+    "quando": "2026-11-23T10:53:52.190Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:53:52.183Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time GOI) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:53:36.976Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:53:36.974Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:53:36.971Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:53:36.967Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time GOI) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:53:36.183Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T10:53:36.180Z",
     "resultado": "GREEN_OBS",
@@ -4475,48 +4517,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:38:08.674Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:38:08.671Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:38:08.667Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:38:08.664Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:38:08.660Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:38:07.687Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:38:07.682Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4571,7 +4571,7 @@
    "tipo": "time",
    "chave": "Medellin",
    "n": 12,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -4729,9 +4729,9 @@
     "desde": 1795431216172,
     "gatilho": "time SPA"
    },
-   "cop": {
-    "desde": 1795431216180,
-    "gatilho": "coluna :03"
+   "lat": {
+    "desde": 1795431232190,
+    "gatilho": "time NAC"
    }
   }
  },
@@ -5416,8 +5416,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "07:50",
@@ -5437,11 +5437,11 @@
    ],
    "gatilho": "time SPA",
    "alvo": {
-    "h": "07:52",
-    "jogo": "POR x SPA",
+    "h": "07:54",
+    "jogo": "SWI x POL",
     "odd": 1.72,
-    "unidades": 2,
-    "desde": 1795431097766
+    "unidades": 4,
+    "desde": 1795431216197
    },
    "iniciadoEm": 1795430753431,
    "tiros": [
@@ -5450,6 +5450,12 @@
      "jogo": "CRO x SWE",
      "odd": 1.75,
      "unidades": 1
+    },
+    {
+     "h": "07:52",
+     "jogo": "POR x SPA",
+     "odd": 1.72,
+     "unidades": 2
     }
    ]
   },
