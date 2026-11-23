@@ -954,12 +954,54 @@
  },
  "o25": {
   "saldo": 24.5,
-  "ciclos": 41399,
+  "ciclos": 41406,
   "greens": 150,
   "redsCiclo": 15,
   "aborts": 0,
-  "descartes": 41234,
+  "descartes": 41241,
   "historico": [
+   {
+    "quando": "2026-11-23T12:10:49.439Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :12) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:10:49.435Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:10:49.430Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:10:49.426Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:10:49.421Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho seq RRRGG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:10:39.312Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:10:39.310Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :36) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T12:10:39.307Z",
     "resultado": "GREEN_OBS",
@@ -4517,48 +4559,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:56:52.725Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:56:52.720Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:56:52.715Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:56:52.708Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:56:31.028Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :58) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:56:31.025Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:56:31.020Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4762,19 +4762,25 @@
   },
   "_obs": {
    "cam": {
-    "desde": 1795435839307,
+    "desde": 1795435849439,
     "gatilho": "coluna :12"
    }
   }
  },
  "ambas": {
   "saldo": -4.1,
-  "ciclos": 120,
+  "ciclos": 121,
   "greens": 55,
   "redsCiclo": 6,
   "aborts": 0,
-  "descartes": 59,
+  "descartes": 60,
   "historico": [
+   {
+    "quando": "2026-11-23T12:10:39.321Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T12:10:37.130Z",
     "resultado": "DESCARTADO",
@@ -5501,7 +5507,37 @@
    "cop": 1795434093757,
    "bra": 1795434720516
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "09:28",
+     "jogo": "Lima x La Boca",
+     "odd": 1.82
+    },
+    {
+     "h": "09:31",
+     "jogo": "Buenos Aires x Avellaneda",
+     "odd": 1.96
+    },
+    {
+     "h": "09:34",
+     "jogo": "La Boca x Penarol",
+     "odd": 1.93
+    }
+   ],
+   "gatilho": "odd 1.96",
+   "alvo": {
+    "h": "09:28",
+    "jogo": "Lima x La Boca",
+    "odd": 1.82,
+    "unidades": 1,
+    "desde": 1795435839328
+   },
+   "iniciadoEm": 1795435839328
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
