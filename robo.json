@@ -1049,12 +1049,18 @@
  },
  "o25": {
   "saldo": -8,
-  "ciclos": 65720,
+  "ciclos": 65721,
   "greens": 180,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 65516,
+  "descartes": 65517,
   "historico": [
+   {
+    "quando": "2026-11-23T22:18:50.850Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T22:18:26.759Z",
     "resultado": "GREEN_OBS",
@@ -4648,12 +4654,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:00:48.452Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4864,10 +4864,6 @@
    "lat": {
     "desde": 1795472158727,
     "gatilho": "odd 1.89"
-   },
-   "cop": {
-    "desde": 1795472306758,
-    "gatilho": "odd 2.39"
    }
   }
  },
@@ -6009,8 +6005,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "19:16",
@@ -6030,13 +6026,21 @@
    ],
    "gatilho": "odd 1.9",
    "alvo": {
-    "h": "19:16",
-    "jogo": "Avellaneda x Sao Paulo",
-    "odd": 1.85,
-    "unidades": 1,
-    "desde": 1795471745752
+    "h": "19:19",
+    "jogo": "Rio de Janeiro x Asuncion",
+    "odd": 1.9,
+    "unidades": 2,
+    "desde": 1795472306774
    },
-   "iniciadoEm": 1795471745752
+   "iniciadoEm": 1795471745752,
+   "tiros": [
+    {
+     "h": "19:16",
+     "jogo": "Avellaneda x Sao Paulo",
+     "odd": 1.85,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795331214015,
