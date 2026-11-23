@@ -935,13 +935,49 @@
   }
  },
  "o25": {
-  "saldo": 25.1,
-  "ciclos": 38151,
-  "greens": 143,
+  "saldo": 26,
+  "ciclos": 38157,
+  "greens": 144,
   "redsCiclo": 14,
   "aborts": 0,
-  "descartes": 37994,
+  "descartes": 37999,
   "historico": [
+   {
+    "quando": "2026-11-23T10:45:51.856Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:45:51.845Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "lat · RAC x ARG @1.93 (tiro 1) · gatilho: time NAC"
+   },
+   {
+    "quando": "2026-11-23T10:45:51.124Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:45:51.120Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:45:51.116Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:45:51.110Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T10:45:20.053Z",
     "resultado": "GREEN_OBS",
@@ -4505,86 +4541,21 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:27:30.377Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:27:30.372Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:27:30.368Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time GOI) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:27:30.364Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:27:12.647Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:27:12.641Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
    }
   ],
   "consumidas": {
    "mnd": 1795427850123,
    "spa": 1795428513187,
-   "bra": 1795429298876
+   "bra": 1795429298876,
+   "lat": 1795430751845
   },
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "07:44",
-     "jogo": "RAC x ARG",
-     "odd": 1.93
-    },
-    {
-     "h": "07:47",
-     "jogo": "THI x NAC",
-     "odd": 1.83
-    },
-    {
-     "h": "07:50",
-     "jogo": "OLI x IND",
-     "odd": 1.9
-    }
-   ],
-   "gatilho": "time NAC",
-   "alvo": {
-    "h": "07:44",
-    "jogo": "RAC x ARG",
-    "odd": 1.93,
-    "unidades": 1,
-    "desde": 1795430343765
-   },
-   "iniciadoEm": 1795430343765
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795416030942,
    "eng": 1795383709617,
    "ita": 1795421791233,
    "spa": 1795428513187,
-   "lat": 1795425808484,
+   "lat": 1795430751845,
    "bra": 1795429298876,
    "mnd": 1795427850123,
    "ame": 1795426921368,
@@ -4601,7 +4572,7 @@
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
-   "2026-11-23": -2.6
+   "2026-11-23": -1.7
   },
   "_obs": {}
  },
@@ -4752,9 +4723,9 @@
     "desde": 1795430706303,
     "gatilho": "time Medellin"
    },
-   "cop": {
-    "desde": 1795430720053,
-    "gatilho": "coluna :03"
+   "mnd": {
+    "desde": 1795430751855,
+    "gatilho": "time SPA"
    }
   }
  },
