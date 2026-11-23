@@ -5528,6 +5528,78 @@ function versaoApp() {
   return _versaoApp;
 }
 // Historico compacto para o Testador de padroes (calculo no navegador).
+// ===== AMD ML (Over 3.5): memoria de padroes por liga =====
+// Compara cada jogo futuro com jogos passados parecidos (mesma faixa de odd,
+// mesma coluna/minuto, mesmos times, momento do grafico) e mede quanto isso
+// muda a chance em relacao a odd. Brier e calculado andando para frente
+// (cada previsao so usa jogos anteriores), contra a referencia da propria odd.
+const mlCache = new Map();
+function mlStatus(liga) {
+  const st = store[liga] || {};
+  const ga = (st.gamesAll || []).filter(g => g && g.inicio && g.a != null && g.b != null);
+  const up = (st.upcomingRaw || []).filter(u => u);
+  const chave = liga + ":" + ga.length + ":" + (ga.length ? ga[ga.length - 1].inicio : "") + ":" + up.length;
+  const c = mlCache.get(liga); if (c && c.chave === chave) return c.dados;
+  const MIN = 100, hit = g => (Number(g.a) + Number(g.b)) >= 4;
+  const odd = g => Number((g.odds || {}).o35) || 0;
+  const minuto = g => { const t = new Date(g.inicio); return Number.isFinite(t.getTime()) ? t.getUTCMinutes() : -1; };
+  const norm = v => String(v || "").trim().toLowerCase();
+  function prever(hist, alvo, linha) {
+    const o = odd(alvo); if (!(o > 1)) return null;
+    const imp = Math.min(0.95, 1 / o / 1.06); // tira a margem aproximada da casa
+    const viz = hist.filter(g => odd(g) > 1 && Math.abs(odd(g) - o) <= Math.max(0.2, o * 0.08)).slice(-300);
+    const vTaxa = viz.length ? viz.filter(hit).length / viz.length : imp;
+    const mi = minuto(alvo), col = hist.filter(g => minuto(g) === mi).slice(-60);
+    const cTaxa = col.length ? col.filter(hit).length / col.length : imp;
+    const ts = [norm(alvo.casa), norm(alvo.fora)].filter(Boolean);
+    const tim = ts.length ? hist.filter(g => ts.includes(norm(g.casa)) || ts.includes(norm(g.fora))).slice(-60) : [];
+    const tTaxa = tim.length ? tim.filter(hit).length / tim.length : imp;
+    const w = (n, k) => n / (n + k);
+    let p = imp;
+    p += w(viz.length, 120) * (vTaxa - imp) * 0.6;
+    p += w(col.length, 80) * (cTaxa - imp) * 0.25;
+    p += w(tim.length, 80) * (tTaxa - imp) * 0.15;
+    p = Math.max(0.01, Math.min(0.97, p));
+    return { p, imp, o, viz, vTaxa, col, cTaxa, tim, tTaxa };
+  }
+  // linha do grafico: % de Over 3.5 nos ultimos 20
+  const linha = []; for (let i = 0; i < ga.length; i++) { const j = ga.slice(Math.max(0, i - 19), i + 1); linha.push(j.filter(hit).length / j.length); }
+  const ema = (arr, n) => { const k = 2 / (n + 1); let e = arr[0] || 0; return arr.map((v, i) => (e = i ? v * k + e * (1 - k) : v)); };
+  const e6 = ema(linha, 6), e18 = ema(linha, 18), L = linha.length - 1;
+  const media = ga.length ? ga.filter(hit).length / ga.length : 0;
+  const zona = L < 0 ? "—" : linha[L] > media + 0.05 ? "acima" : linha[L] < media - 0.05 ? "abaixo" : "na média";
+  const direcao = L < 5 ? "—" : linha[L] > linha[L - 5] ? "subindo" : linha[L] < linha[L - 5] ? "caindo" : "lateral";
+  const macd = L < 0 ? 0 : (e6[L] - e18[L]) * 100;
+  // Brier andando para frente nos ultimos 200 jogos
+  let bM = 0, bR = 0, nB = 0;
+  for (let i = Math.max(MIN, ga.length - 200); i < ga.length; i++) {
+    const pr = prever(ga.slice(0, i), ga[i], linha); if (!pr) continue;
+    const y = hit(ga[i]) ? 1 : 0; bM += (pr.p - y) ** 2; bR += (pr.imp - y) ** 2; nB++;
+  }
+  const brier = nB >= 30 ? bM / nB : null, brierRef = nB >= 30 ? bR / nB : null;
+  const supera = brier != null && brier < brierRef;
+  const pronto = ga.length >= MIN;
+  const candidatos = up.slice(0, 8).map(u => {
+    const pr = prever(ga, u, linha); if (!pr) return null;
+    const margem = pr.p - pr.imp, ev = pr.p * pr.o - 1;
+    const qualifica = pronto && supera && margem >= 0.05 && pr.viz.length >= 40 && ev > 0;
+    const nivel = qualifica ? "confirmado" : (pronto && margem >= 0.02 && ev > 0 ? "antecipado" : "neutro");
+    const h = u.horario || (() => { const t = new Date(u.inicio); return Number.isFinite(t.getTime()) ? t.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", timeZone: "America/Sao_Paulo" }) : "—"; })();
+    return { jogo: `${u.casa || "?"} x ${u.fora || "?"}`, horario: h, probabilidade: pr.p, margem, odd: pr.o, qualifica, nivel,
+      contexto: { padroes_amostra: pr.viz.length, padroes_taxa: pr.vTaxa, padroes_similaridade: pr.viz.length ? 1 - Math.min(1, Math.abs(pr.vTaxa - pr.imp)) : 0,
+        padroes_limite: pr.imp + 0.05, zona, direcao, macd, score: Math.round(pr.p * 100), coluna_taxa: pr.cTaxa, coluna_amostra: pr.col.length,
+        times_taxa: pr.tTaxa, times_amostra: pr.tim.length, site_ev: ev, ml_nivel: nivel } };
+  }).filter(Boolean);
+  const dados = { liga, pronto, padroes: ga.length, minimo_rotulos: MIN, progresso: Math.min(100, Math.round(ga.length / MIN * 100)),
+    brier, brier_referencia: brierRef, supera_referencia: supera, candidatos };
+  mlCache.set(liga, { chave, dados });
+  return dados;
+}
+app.get("/api/ml/status", (req, res) => {
+  const liga = String(req.query.liga || "eng").toLowerCase();
+  try { res.setHeader("Cache-Control", "no-store"); res.json(mlStatus(liga)); }
+  catch (e) { res.status(500).json({ erro: e.message }); }
+});
 app.get("/api/historico", (req, res) => {
   const liga = String(req.query.liga || "eng").toLowerCase();
   const ga = ((store[liga] || {}).gamesAll || []).filter(g => g && g.inicio && g.a != null);
