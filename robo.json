@@ -1049,12 +1049,24 @@
  },
  "o25": {
   "saldo": -7,
-  "ciclos": 65952,
+  "ciclos": 65954,
   "greens": 181,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 65747,
+  "descartes": 65749,
   "historico": [
+   {
+    "quando": "2026-11-23T22:38:11.119Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "lat · alvo sem fechamento em 15min antes da 1a aposta"
+   },
+   {
+    "quando": "2026-11-23T22:37:50.483Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T22:37:50.478Z",
     "resultado": "GREEN_OBS",
@@ -4642,18 +4654,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:06:38.195Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:06:38.192Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4709,7 +4709,7 @@
    "tipo": "odd",
    "chave": "1.86",
    "n": 13,
-   "start": 4
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -4859,12 +4859,7 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {
-   "mnd": {
-    "desde": 1795473470477,
-    "gatilho": "coluna :52"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": -0.3,
