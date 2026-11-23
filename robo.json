@@ -892,12 +892,42 @@
  },
  "o25": {
   "saldo": 31.3,
-  "ciclos": 36879,
+  "ciclos": 36884,
   "greens": 142,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 36724,
+  "descartes": 36729,
   "historico": [
+   {
+    "quando": "2026-11-23T10:06:51.912Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:06:51.290Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:06:51.286Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:06:50.504Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:06:50.497Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T10:06:17.947Z",
     "resultado": "GREEN_OBS",
@@ -4467,36 +4497,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:40:13.655Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:40:11.517Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:40:11.510Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:40:10.883Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:40:10.879Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4507,8 +4507,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "07:03",
@@ -4528,11 +4528,11 @@
    ],
    "gatilho": "seq GRGR",
    "alvo": {
-    "h": "07:05",
-    "jogo": "ATM x RST",
-    "odd": 1.88,
-    "unidades": 2,
-    "desde": 1795428268250
+    "h": "07:07",
+    "jogo": "BET x ATH",
+    "odd": 1.92,
+    "unidades": 4,
+    "desde": 1795428410487
    },
    "iniciadoEm": 1795428035164,
    "tiros": [
@@ -4541,6 +4541,12 @@
      "jogo": "VAL x MLG",
      "odd": 1.9,
      "unidades": 1
+    },
+    {
+     "h": "07:05",
+     "jogo": "ATM x RST",
+     "odd": 1.88,
+     "unidades": 2
     }
    ]
   },
@@ -4709,9 +4715,9 @@
     "desde": 1795426412297,
     "gatilho": "placar 1-0 / 0-1"
    },
-   "lat": {
-    "desde": 1795428377947,
-    "gatilho": "seq RRRG"
+   "mnd": {
+    "desde": 1795428411912,
+    "gatilho": "time SPA"
    }
   }
  },
