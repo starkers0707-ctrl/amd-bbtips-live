@@ -857,12 +857,18 @@
  },
  "o25": {
   "saldo": 31,
-  "ciclos": 33806,
+  "ciclos": 33807,
   "greens": 134,
   "redsCiclo": 12,
   "aborts": 0,
-  "descartes": 33660,
+  "descartes": 33661,
   "historico": [
+   {
+    "quando": "2026-11-23T07:45:07.235Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho seq GRGR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T07:44:57.240Z",
     "resultado": "GREEN_OBS",
@@ -4456,12 +4462,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Argentina) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:21:30.169Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4665,9 +4665,9 @@
     "desde": 1795417126160,
     "gatilho": "time Chelsea"
    },
-   "lat": {
-    "desde": 1795419897240,
-    "gatilho": "time NAC"
+   "spa": {
+    "desde": 1795419907235,
+    "gatilho": "seq GRGR"
    }
   }
  },
@@ -5312,7 +5312,7 @@
    "tipo": "time",
    "chave": "Porto Alegre",
    "n": 9,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
