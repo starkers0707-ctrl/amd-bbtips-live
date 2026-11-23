@@ -912,12 +912,36 @@
  },
  "o25": {
   "saldo": 26,
-  "ciclos": 38449,
+  "ciclos": 38453,
   "greens": 144,
   "redsCiclo": 14,
   "aborts": 0,
-  "descartes": 38291,
+  "descartes": 38295,
   "historico": [
+   {
+    "quando": "2026-11-23T10:53:36.180Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:53:36.176Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:53:36.173Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time GOI) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:53:21.461Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T10:53:21.458Z",
     "resultado": "GREEN_OBS",
@@ -4493,30 +4517,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:38:07.679Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:38:07.675Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:38:07.670Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:37:49.283Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4725,8 +4725,12 @@
     "desde": 1795430561830,
     "gatilho": "seq RRRRR"
    },
+   "mnd": {
+    "desde": 1795431216172,
+    "gatilho": "time SPA"
+   },
    "cop": {
-    "desde": 1795431201457,
+    "desde": 1795431216180,
     "gatilho": "coluna :03"
    }
   }
