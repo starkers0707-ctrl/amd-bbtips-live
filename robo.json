@@ -807,12 +807,24 @@
  },
  "o25": {
   "saldo": 17.7,
-  "ciclos": 29748,
+  "ciclos": 29750,
   "greens": 118,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 29619,
+  "descartes": 29621,
   "historico": [
+   {
+    "quando": "2026-11-23T00:16:27.509Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T00:16:16.530Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T00:16:16.523Z",
     "resultado": "GREEN_OBS",
@@ -4400,18 +4412,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T23:10:22.830Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T23:10:10.427Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4419,8 +4419,8 @@
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "21:15",
@@ -4440,13 +4440,21 @@
    ],
    "gatilho": "seq RRRRG",
    "alvo": {
-    "h": "21:15",
-    "jogo": "Milan x Amsterdam",
-    "odd": 2.56,
-    "unidades": 1,
-    "desde": 1795392819620
+    "h": "21:18",
+    "jogo": "Madrid x Rome",
+    "odd": 2.07,
+    "unidades": 2,
+    "desde": 1795392987501
    },
-   "iniciadoEm": 1795392819620
+   "iniciadoEm": 1795392819620,
+   "tiros": [
+    {
+     "h": "21:15",
+     "jogo": "Milan x Amsterdam",
+     "odd": 2.56,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795387638383,
@@ -4612,7 +4620,7 @@
     "gatilho": "time CAG"
    },
    "spa": {
-    "desde": 1795392976522,
+    "desde": 1795392987508,
     "gatilho": "odd 1.77"
    }
   }
