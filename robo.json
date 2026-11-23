@@ -4596,13 +4596,19 @@
   }
  },
  "ambas": {
-  "saldo": -12.2,
-  "ciclos": 80,
-  "greens": 34,
+  "saldo": -11.9,
+  "ciclos": 81,
+  "greens": 35,
   "redsCiclo": 5,
   "aborts": 0,
   "descartes": 41,
   "historico": [
+   {
+    "quando": "2026-11-23T04:24:33.861Z",
+    "resultado": "GREEN",
+    "unidades": 0.3,
+    "detalhe": "spa · SEV x RMA @1.67 (tiro 2) · gatilho: placar acima de 1-0 (2-0)"
+   },
    {
     "quando": "2026-11-23T02:41:32.703Z",
     "resultado": "GREEN",
@@ -5084,50 +5090,14 @@
     "detalhe": "cam · alvo sem fechamento em 15min antes da 1a aposta"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "01:21",
-     "jogo": "BAR x ESP",
-     "odd": 1.84
-    },
-    {
-     "h": "01:23",
-     "jogo": "SEV x RMA",
-     "odd": 1.67
-    },
-    {
-     "h": "01:25",
-     "jogo": "VIL x RST",
-     "odd": 1.79
-    }
-   ],
-   "gatilho": "placar acima de 1-0 (2-0)",
-   "alvo": {
-    "h": "01:23",
-    "jogo": "SEV x RMA",
-    "odd": 1.67,
-    "unidades": 2,
-    "desde": 1795407749077
-   },
-   "iniciadoEm": 1795407511326,
-   "tiros": [
-    {
-     "h": "01:21",
-     "jogo": "BAR x ESP",
-     "odd": 1.84,
-     "unidades": 1
-    }
-   ]
+  "consumidas": {
+   "spa": 1795407873861
   },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795257582328,
-   "spa": 1795364566793,
+   "spa": 1795407873861,
    "bra": 1795383404717,
    "mnd": 1795401453910,
    "cam": 1795401692702,
@@ -5143,7 +5113,8 @@
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
-   "2026-11-22": -14.2
+   "2026-11-22": -14.2,
+   "2026-11-23": 0.3
   },
   "_obs": {}
  }
