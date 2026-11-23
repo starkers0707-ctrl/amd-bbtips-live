@@ -241,7 +241,7 @@
     if (!selectedPatternKey || loadingPatternCell) return;
     var coords = selectedPatternKey.split(':');
     patternCells[selectedPatternKey] = Object.assign({ key: selectedPatternKey,
-      row: Number(coords[0]), column: Number(coords[1]) }, positionFields());
+      row: Number(coords[0]), column: Number(coords[1]) }, patternCells[selectedPatternKey] || {}, positionFields());
     renderPatternGrid();
   }
 

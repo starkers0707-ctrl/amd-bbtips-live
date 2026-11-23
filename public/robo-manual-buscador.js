@@ -26,7 +26,7 @@
     var alvo = q('#bpAlvo'), fonte = q('#rbMarket') || q('#rbEntryMarket');
     alvo.innerHTML = '';
     Array.prototype.slice.call(fonte.querySelectorAll('optgroup')).forEach(function (g) {
-      if (/tempo|Placar/i.test(g.label)) return;
+      if (/tempo|Placar|Qualquer/i.test(g.label)) return;
       var ng = document.createElement('optgroup'); ng.label = g.label;
       Array.prototype.slice.call(g.querySelectorAll('option')).forEach(function (o) {
         if (/HT|Total Gols \(FT\)|Gols Casa \(FT\)|Gols Fora \(FT\)/.test(o.textContent)) return;
@@ -55,21 +55,32 @@
     var r = await fetch('/api/historico?liga=' + encodeURIComponent(liga), { credentials: 'same-origin', cache: 'no-store' });
     if (!r.ok) throw new Error('HTTP ' + r.status);
     var j = await r.json();
-    var jogos = (j.jogos || []).map(function (x) { return { t: typeof x[0] === 'number' ? x[0] : Date.parse(x[0]), a: Number(x[1]), b: Number(x[2]) }; })
+    var jogos = (j.jogos || []).map(function (x) { return { t: typeof x[0] === 'number' ? x[0] : Date.parse(x[0]), a: Number(x[1]), b: Number(x[2]), odds: x.slice(3, 8), casa: x[8] || '', fora: x[9] || '' }; })
       .filter(function (g) { return Number.isFinite(g.t) && Number.isFinite(g.a) && Number.isFinite(g.b); })
       .sort(function (x, y) { return x.t - y.t; });
     cache[liga] = { t: Date.now(), jogos: jogos };
     return jogos;
   }
 
+  var MK_ODD = { 3: 'Over 1.5', 4: 'Over 2.5', 5: 'Over 3.5', 6: 'Ambas Marcam (Sim)', 7: '5+ Gols' };
+  function chaveBase(jg, cfg) {
+    if (cfg.base === 'odds') { var o = Number(jg.odds[cfg.oddIdx - 3]); return o > 1 ? o.toFixed(2) : null; }
+    if (cfg.base === 'times') { if (!jg.casa || !jg.fora) return null; return [jg.casa, jg.fora].sort().join(' x '); }
+    return jg.a + '-' + jg.b;
+  }
   function analisaLiga(liga, jogos, cfg) {
     var desde = Date.now() - cfg.horas * 3600000;
     var g = jogos.filter(function (x) { return x.t >= desde; });
     var n = g.length, meio = g.length ? g[Math.floor(n / 2)].t : 0, res = {};
     var hit = g.map(function (x) { return bate(cfg.alvo, x.a, x.b); });
     for (var i = cfg.k - 1; i < n; i++) {
-      var seq = [];
-      for (var s = cfg.k - 1; s >= 0; s--) seq.push(g[i - s].a + '-' + g[i - s].b);
+      var seq = [], falta = false;
+      for (var s = cfg.k - 1; s >= 0; s--) {
+        var jg = g[i - s], v = chaveBase(jg, cfg);
+        if (v == null) { falta = true; break; }
+        seq.push(v);
+      }
+      if (falta) continue;
       var chave = seq.join('|');
       for (var p = 0; p <= cfg.maxPulos; p++) {
         var ini = i + p + 1;
@@ -92,7 +103,7 @@
       horas: Number(q('#bpPeriodo').value), alvo: q('#bpAlvo').value, tiros: Number(q('#bpTiros').value),
       total: Number(q('#bpTotal').value), k: Number(q('#bpPlacares').value), maxPulos: Number(q('#bpPulos').value),
       pctIni: Number(q('#bpPctIni').value) || 0, pctFim: Number(q('#bpPctFim').value || 100), ordem: q('#bpOrdem').value,
-      min: Number(q('#bpMin').value)
+      min: Number(q('#bpMin').value), base: q('#bpBase').value, oddIdx: Number(q('#bpOddMk').value)
     };
     cfg.maxPulos = Math.min(cfg.maxPulos, 19 - cfg.k);
     var box = q('#bpResultados');
@@ -136,7 +147,7 @@
         return '<article class="bp-card">' +
           '<div class="bp-rank">#' + (i + 1) + '</div>' +
           '<div class="bp-info"><b>' + esc(NOME[r.liga] || r.liga) + '</b>' +
-          '<div class="bp-seq">' + r.seq.map(function (s) { return '<span>' + esc(s) + '</span>'; }).join('<em>→</em>') +
+          '<div class="bp-seq">' + r.seq.map(function (s) { return '<span>' + esc(cfg.base === 'odds' ? MK_ODD[cfg.oddIdx] + ' @' + s : s) + '</span>'; }).join('<em>→</em>') +
           '<em>→ ' + r.pulo + ' pulo' + (r.pulo === 1 ? '' : 's') + ' →</em><span class="alvo">' + esc(cfg.alvo) + '</span></div>' +
           '<small>' + r.win + '/' + r.n + ' · seco ' + (r.seco / r.n * 100).toFixed(0) + '% · metade recente ' + recente + ' · ' + (dif >= 0 ? '+' : '') + dif.toFixed(1) + ' p.p. sobre o acaso</small>' +
           '<div class="bp-dots">' + dots + '</div></div>' +
@@ -150,14 +161,23 @@
   function usar(r, cfg) {
     if (!r || !window.AMDManualBuilder) return;
     var cells = r.seq.map(function (s, idx) {
+      var cel = { row: 1, column: idx + 1, markType: 'pattern' };
+      if (cfg.base === 'odds') {
+        var o = Number(s);
+        return Object.assign(cel, { market: 'Qualquer resultado', oddMarket: MK_ODD[cfg.oddIdx], oddMin: (o - 0.004).toFixed(3), oddMax: (o + 0.004).toFixed(3) });
+      }
+      if (cfg.base === 'times') {
+        var t = s.split(' x ');
+        return Object.assign(cel, { market: 'Qualquer resultado', teamA: t[0], teamB: t[1], teamOrder: 'random' });
+      }
       var p = s.split('-').map(Number);
-      return { row: 1, column: idx + 1, markType: 'pattern', market: mercadoPlacar(p[0], p[1]), scoreA: String(p[0]), scoreB: String(p[1]) };
+      return Object.assign(cel, { market: mercadoPlacar(p[0], p[1]), scoreA: String(p[0]), scoreB: String(p[1]) });
     });
     var col = r.seq.length + r.pulo + 1;
     cells.push({ row: 1, column: col, markType: 'entry', market: cfg.alvo, entryMarket: cfg.alvo });
     window.AMDManualBuilder.applyPattern({
       cells: cells, leagues: [r.liga], entryMarket: cfg.alvo, shots: cfg.tiros,
-      name: (NOME[r.liga] || r.liga) + ' ' + r.seq.join(' ') + ' +' + r.pulo + ' ' + cfg.alvo
+      name: (NOME[r.liga] || r.liga) + ' ' + (cfg.base === 'odds' ? MK_ODD[cfg.oddIdx] + ' @' : '') + r.seq.join(' · ') + ' +' + r.pulo + ' ' + cfg.alvo
     });
     fechar();
     toast('Padrão colocado no quadro. Confira e clique em Criar robô.');
@@ -167,6 +187,12 @@
   function fechar() { q('#bpModal').hidden = true; document.body.style.overflow = ''; }
 
   montaFiltros();
+  function baseMudou() {
+    var b = q('#bpBase').value;
+    q('#bpOddMkWrap').hidden = b !== 'odds';
+    q('#bpPlacaresLbl').textContent = b === 'odds' ? 'Total de odds' : b === 'times' ? 'Total de confrontos' : 'Total de placares';
+  }
+  q('#bpBase').addEventListener('change', baseMudou); baseMudou();
   q('#rbBuscador').addEventListener('click', abrir);
   q('#bpClose').addEventListener('click', fechar);
   q('#bpModal').addEventListener('click', function (e) { if (e.target.id === 'bpModal') fechar(); });

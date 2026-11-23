@@ -213,6 +213,7 @@
         <div hidden id="tcHiddenMarkets">
       <label class="field wide"><span>Mercado completo</span>
             <select id="rbMarket">
+              <optgroup label="Qualquer"><option>Qualquer resultado</option></optgroup>
               <optgroup label="Over">
                 <option>Over 0.5</option><option>Over 1.5</option><option selected>Over 2.5</option><option>Over 3.5</option>
               </optgroup>
@@ -273,8 +274,9 @@
             <label><span>Entrada (Alvo)</span><select id="bpAlvo"></select></label>
             <label><span>Tiros</span><select id="bpTiros"><option value="1">1 Tiro (seco)</option><option value="2">2 Tiros (1 Gale)</option><option value="3" selected>3 Tiros (2 Gales)</option><option value="4">4 Tiros (3 Gales)</option></select></label>
             <label><span>Total de registros</span><select id="bpTotal"><option>10</option><option>20</option><option>50</option></select></label>
-            <label><span>Base</span><select id="bpBase"><option value="ft">Placares FT</option></select></label>
-            <label><span>Total de placares</span><select id="bpPlacares"><option value="1">1 placar</option><option value="2">2 placares seguidos</option></select></label>
+            <label><span>Base</span><select id="bpBase"><option value="ft">Placares FT</option><option value="ht" disabled>Placares HT (a fonte não envia o intervalo)</option><option value="odds">Odds</option><option value="times">Times</option></select></label>
+            <label id="bpOddMkWrap" hidden><span>Odd do mercado</span><select id="bpOddMk"><option value="3">Over 1.5</option><option value="4" selected>Over 2.5</option><option value="5">Over 3.5</option><option value="6">Ambas Marcam (Sim)</option><option value="7">5+ Gols</option></select></label>
+            <label><span id="bpPlacaresLbl">Total de placares</span><select id="bpPlacares"><option value="1">1 placar</option><option value="2">2 placares seguidos</option></select></label>
             <label><span>Máximo de pulos</span><select id="bpPulos"></select></label>
             <label><span>Percentual inicial</span><input id="bpPctIni" type="number" min="0" max="100" value="0"></label>
             <label><span>Percentual final</span><input id="bpPctFim" type="number" min="0" max="100" value="100"></label>
@@ -295,9 +297,9 @@
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="robos-model.js?v=20260905-2245"></script>
   <script src="grade-tab-coordinator.js?v=20260924-grade-unfreeze"></script>
-  <script src="robo-manual-monitor.js?v=20261123-srvonly"></script>
-  <script src="robo-manual.js?v=20261123-ultdest"></script>
+  <script src="robo-manual-monitor.js?v=20261123-base"></script>
+  <script src="robo-manual.js?v=20261123-base"></script>
   <script src="robo-manual-telegram.js?v=20261123-ultdest"></script>
-  <script src="robo-manual-buscador.js?v=20261123-bp2"></script>
+  <script src="robo-manual-buscador.js?v=20261123-base"></script>
 </body>
 </html>

@@ -59,6 +59,7 @@
     var total=a+b,half=scorePair(game.resultado_ht),second=total-half[0]-half[1];
     var home=a>b,away=b>a,draw=a===b,both=a>0&&b>0,match;
     switch(name){
+      case 'Qualquer resultado':return true;
       case 'Over 0.5':return total>=1;case 'Over 1.5':return total>=2;
       case 'Over 2.5':return total>=3;case 'Over 3.5':return total>=4;
       case 'Under 0.5':return total<1;case 'Under 1.5':return total<2;
@@ -108,7 +109,7 @@
     if(hasMinuteRule(position)&&!minuteMatches(position,game.minuto))return false;
     if(position.odd){var key=ODD_KEYS[position.market],odd=key&&game.odds&&Number(game.odds[key]);if(!odd||odd.toFixed(2)!==Number(position.odd).toFixed(2))return false;}
     var oMin=Number(position.oddMin)||0,oMax=Number(position.oddMax)||0;
-    if(oMin||oMax){var k2=ODD_KEYS[position.market],o2=k2&&game.odds&&Number(game.odds[k2]);if(!o2)return false;if(oMin&&o2<oMin)return false;if(oMax&&o2>oMax)return false;}
+    if(oMin||oMax){var k2=ODD_KEYS[position.oddMarket||position.market],o2=k2&&game.odds&&Number(game.odds[k2]);if(!o2)return false;if(oMin&&o2<oMin)return false;if(oMax&&o2>oMax)return false;}
     return true;
   }
   function matchingRow(robot, completed) {
