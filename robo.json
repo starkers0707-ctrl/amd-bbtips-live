@@ -1049,12 +1049,30 @@
  },
  "o25": {
   "saldo": -7,
-  "ciclos": 65971,
+  "ciclos": 65974,
   "greens": 181,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 65766,
+  "descartes": 65769,
   "historico": [
+   {
+    "quando": "2026-11-23T22:40:04.155Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T22:40:04.147Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T22:39:23.230Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T22:39:23.225Z",
     "resultado": "GREEN_OBS",
@@ -4636,24 +4654,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :10) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:07:41.968Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:07:41.960Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:07:05.734Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4663,7 +4663,37 @@
    "bra": 1795472158133,
    "ame": 1795472486807
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "20:03",
+     "jogo": "Barcelona x Dortmund",
+     "odd": 2.48
+    },
+    {
+     "h": "20:06",
+     "jogo": "Paris x Turin",
+     "odd": 2.01
+    },
+    {
+     "h": "20:09",
+     "jogo": "Porto x Celtic",
+     "odd": 2.54
+    }
+   ],
+   "gatilho": "coluna :06",
+   "alvo": {
+    "h": "20:03",
+    "jogo": "Barcelona x Dortmund",
+    "odd": 2.48,
+    "unidades": 1,
+    "desde": 1795473604130
+   },
+   "iniciadoEm": 1795473604130
+  },
   "cooldown": {
    "cam": 1795468242626,
    "eng": 1795383709617,
@@ -4676,10 +4706,10 @@
    "cop": 1795470795073
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.86",
-   "n": 13,
-   "start": 2
+   "tipo": "coluna",
+   "chave": ":06",
+   "n": 20,
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
@@ -4830,9 +4860,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "mnd": {
-    "desde": 1795473563225,
-    "gatilho": "coluna :52"
+   "lat": {
+    "desde": 1795473604154,
+    "gatilho": "odd 1.86"
    }
   }
  },
