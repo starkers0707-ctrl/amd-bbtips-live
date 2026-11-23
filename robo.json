@@ -4597,7 +4597,37 @@
    "cop": 1795441267126,
    "mnd": 1795442494069
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "11:20",
+     "jogo": "CRM x PAU",
+     "odd": 1.85
+    },
+    {
+     "h": "11:23",
+     "jogo": "VIT x NAC",
+     "odd": 1.82
+    },
+    {
+     "h": "11:26",
+     "jogo": "GRM x MEN",
+     "odd": 1.85
+    }
+   ],
+   "gatilho": "time VIT",
+   "alvo": {
+    "h": "11:20",
+    "jogo": "CRM x PAU",
+    "odd": 1.85,
+    "unidades": 1,
+    "desde": 1795442523645
+   },
+   "iniciadoEm": 1795442523645
+  },
   "cooldown": {
    "cam": 1795432255029,
    "eng": 1795383709617,
@@ -4611,7 +4641,7 @@
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":03",
+   "chave": ":06",
    "n": 11,
    "start": 1
   },
@@ -4766,10 +4796,6 @@
    "mnd": {
     "desde": 1795442493380,
     "gatilho": "time SPA"
-   },
-   "cop": {
-    "desde": 1795442494090,
-    "gatilho": "coluna :03"
    }
   }
  },
