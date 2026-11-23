@@ -1029,12 +1029,18 @@
  },
  "o25": {
   "saldo": -2.9,
-  "ciclos": 61792,
+  "ciclos": 61793,
   "greens": 172,
   "redsCiclo": 22,
   "aborts": 0,
-  "descartes": 61598,
+  "descartes": 61599,
   "historico": [
+   {
+    "quando": "2026-11-23T20:33:09.520Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T20:33:04.673Z",
     "resultado": "GREEN_OBS",
@@ -4628,12 +4634,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :14) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T20:12:04.642Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :21) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4641,8 +4641,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "17:28",
@@ -4662,11 +4662,11 @@
    ],
    "gatilho": "coluna :31",
    "alvo": {
-    "h": "17:31",
-    "jogo": "Avellaneda x Asuncion",
-    "odd": 2.05,
-    "unidades": 2,
-    "desde": 1795465787057
+    "h": "17:34",
+    "jogo": "Guayaquil x Itaquera",
+    "odd": 2.46,
+    "unidades": 4,
+    "desde": 1795465989515
    },
    "iniciadoEm": 1795464933712,
    "tiros": [
@@ -4675,6 +4675,12 @@
      "jogo": "Porto Alegre x Buenos Aires",
      "odd": 2.46,
      "unidades": 1
+    },
+    {
+     "h": "17:31",
+     "jogo": "Avellaneda x Asuncion",
+     "odd": 2.05,
+     "unidades": 2
     }
    ]
   },
@@ -4693,7 +4699,7 @@
    "tipo": "odd",
    "chave": "2.3",
    "n": 13,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -4856,9 +4862,9 @@
     "desde": 1795465787073,
     "gatilho": "odd 2.3"
    },
-   "lat": {
-    "desde": 1795465984673,
-    "gatilho": "seq RRRRG"
+   "ita": {
+    "desde": 1795465989519,
+    "gatilho": "time FRO"
    }
   }
  },
