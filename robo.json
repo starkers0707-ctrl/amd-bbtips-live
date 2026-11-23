@@ -1005,12 +1005,54 @@
  },
  "o25": {
   "saldo": 8.9,
-  "ciclos": 53052,
+  "ciclos": 53059,
   "greens": 162,
   "redsCiclo": 19,
   "aborts": 0,
-  "descartes": 52871,
+  "descartes": 52878,
   "historico": [
+   {
+    "quando": "2026-11-23T16:48:33.031Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T16:48:33.029Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T16:48:33.026Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.47) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T16:48:33.024Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T16:48:33.019Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :02) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T16:48:33.012Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "ame · alvo sem fechamento em 15min antes da 1a aposta"
+   },
+   {
+    "quando": "2026-11-23T16:48:07.084Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T16:48:07.082Z",
     "resultado": "GREEN_OBS",
@@ -4568,48 +4610,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T16:34:46.376Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :48) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T16:34:46.368Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :45) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T16:34:28.129Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T16:34:28.126Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T16:34:28.121Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T16:34:28.118Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :48) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T16:34:28.115Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :45) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4617,37 +4617,7 @@
    "mnd": 1795450172953,
    "spa": 1795450359599
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "13:52",
-     "jogo": "La Plata x Avellaneda",
-     "odd": 2.24
-    },
-    {
-     "h": "13:55",
-     "jogo": "Penarol x Buenos Aires",
-     "odd": 2.3
-    },
-    {
-     "h": "13:58",
-     "jogo": "Medellin x Guayaquil",
-     "odd": 2.3
-    }
-   ],
-   "gatilho": "odd 2.3",
-   "alvo": {
-    "h": "13:52",
-    "jogo": "La Plata x Avellaneda",
-    "odd": 2.24,
-    "unidades": 1,
-    "desde": 1795451610806
-   },
-   "iniciadoEm": 1795451610806
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795447543070,
    "eng": 1795383709617,
@@ -4813,9 +4783,9 @@
     "desde": 1795452160165,
     "gatilho": "time PAR"
    },
-   "cop": {
-    "desde": 1795452487082,
-    "gatilho": "coluna :03"
+   "ame": {
+    "desde": 1795452513031,
+    "gatilho": "odd 2.3"
    }
   }
  },
