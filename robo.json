@@ -1055,12 +1055,24 @@
  },
  "o25": {
   "saldo": -3.6,
-  "ciclos": 67061,
+  "ciclos": 67063,
   "greens": 185,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 66852,
+  "descartes": 66854,
   "historico": [
+   {
+    "quando": "2026-11-23T23:36:43.607Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T23:36:41.156Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T23:36:41.144Z",
     "resultado": "GREEN_OBS",
@@ -4648,18 +4660,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRGRR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:58:43.493Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :10) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:58:43.488Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4870,7 +4870,7 @@
     "gatilho": "coluna :33"
    },
    "mnd": {
-    "desde": 1795477001143,
+    "desde": 1795477003606,
     "gatilho": "coluna :52"
    }
   }
@@ -6041,7 +6041,37 @@
    "mnd": 1795475133250,
    "cop": 1795475989958
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "20:40",
+     "jogo": "Itaquera x Penarol",
+     "odd": 2.11
+    },
+    {
+     "h": "20:43",
+     "jogo": "Belo Horizonte x Agua Branca",
+     "odd": 1.84
+    },
+    {
+     "h": "20:46",
+     "jogo": "La Boca x Santos",
+     "odd": 1.86
+    }
+   ],
+   "gatilho": "odd 1.84",
+   "alvo": {
+    "h": "20:40",
+    "jogo": "Itaquera x Penarol",
+    "odd": 2.11,
+    "unidades": 1,
+    "desde": 1795477001183
+   },
+   "iniciadoEm": 1795477001183
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -6054,9 +6084,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "odd",
-   "chave": "1.93",
-   "n": 9,
-   "start": 7
+   "chave": "1.84",
+   "n": 8,
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
