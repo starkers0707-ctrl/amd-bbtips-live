@@ -1029,12 +1029,18 @@
  },
  "o25": {
   "saldo": -3.2,
-  "ciclos": 60470,
+  "ciclos": 60471,
   "greens": 171,
   "redsCiclo": 22,
   "aborts": 0,
-  "descartes": 60277,
+  "descartes": 60278,
   "historico": [
+   {
+    "quando": "2026-11-23T19:57:42.195Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T19:57:27.453Z",
     "resultado": "GREEN_OBS",
@@ -4628,12 +4634,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T19:45:31.263Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4841,20 +4841,26 @@
     "desde": 1795463772578,
     "gatilho": "coluna :06"
    },
-   "ame": {
-    "desde": 1795463847453,
-    "gatilho": "odd 2.32"
+   "ita": {
+    "desde": 1795463862194,
+    "gatilho": "time FRO"
    }
   }
  },
  "ambas": {
   "saldo": 4.9,
-  "ciclos": 171,
+  "ciclos": 172,
   "greens": 75,
   "redsCiclo": 7,
   "aborts": 0,
-  "descartes": 89,
+  "descartes": 90,
   "historico": [
+   {
+    "quando": "2026-11-23T19:57:27.468Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "cop · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-23T19:47:01.336Z",
     "resultado": "GREEN_OBS",
@@ -5883,37 +5889,7 @@
    }
   ],
   "consumidas": {},
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "17:03",
-     "jogo": "Colombia x England",
-     "odd": 2.09
-    },
-    {
-     "h": "17:06",
-     "jogo": "Mexico x Netherlands",
-     "odd": 1.88
-    },
-    {
-     "h": "17:09",
-     "jogo": "Brazil x Wales",
-     "odd": 2.01
-    }
-   ],
-   "gatilho": "coluna :06",
-   "alvo": {
-    "h": "17:03",
-    "jogo": "Colombia x England",
-    "odd": 2.09,
-    "unidades": 1,
-    "desde": 1795462933790
-   },
-   "iniciadoEm": 1795462933790
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
