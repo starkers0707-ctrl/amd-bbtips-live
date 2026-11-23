@@ -1029,12 +1029,30 @@
  },
  "o25": {
   "saldo": -2.9,
-  "ciclos": 61720,
+  "ciclos": 61723,
   "greens": 172,
   "redsCiclo": 22,
   "aborts": 0,
-  "descartes": 61526,
+  "descartes": 61529,
   "historico": [
+   {
+    "quando": "2026-11-23T20:29:47.062Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T20:29:34.525Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T20:29:34.516Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T20:29:33.592Z",
     "resultado": "GREEN_OBS",
@@ -4616,24 +4634,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :11) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T20:10:04.847Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T20:09:42.224Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T20:09:42.221Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4641,8 +4641,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "17:28",
@@ -4662,13 +4662,21 @@
    ],
    "gatilho": "coluna :31",
    "alvo": {
-    "h": "17:28",
-    "jogo": "Porto Alegre x Buenos Aires",
-    "odd": 2.46,
-    "unidades": 1,
-    "desde": 1795464933712
+    "h": "17:31",
+    "jogo": "Avellaneda x Asuncion",
+    "odd": 2.05,
+    "unidades": 2,
+    "desde": 1795465787057
    },
-   "iniciadoEm": 1795464933712
+   "iniciadoEm": 1795464933712,
+   "tiros": [
+    {
+     "h": "17:28",
+     "jogo": "Porto Alegre x Buenos Aires",
+     "odd": 2.46,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795457105777,
@@ -4685,7 +4693,7 @@
    "tipo": "odd",
    "chave": "2.3",
    "n": 13,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -4848,9 +4856,9 @@
     "desde": 1795465471708,
     "gatilho": "odd 1.89"
    },
-   "ame": {
-    "desde": 1795465773592,
-    "gatilho": "odd 2.3"
+   "ita": {
+    "desde": 1795465787062,
+    "gatilho": "time FRO"
    }
   }
  },
