@@ -573,6 +573,7 @@ const ROBO_LIGA_NOME = { eng: "Inglaterra", ita: "Itália", spa: "Espanha", mnd:
 const ROBO_ODD = { "Over 0.5": "odd_over_0.5", "Over 1.5": "odd_over_1.5", "Over 2.5": "odd_over_2.5", "Over 3.5": "odd_over_3.5", "Under 0.5": "odd_under_0.5", "Under 1.5": "odd_under_1.5", "Under 2.5": "odd_under_2.5", "Under 3.5": "odd_under_3.5", "Ambas Marcam (Sim)": "odd_ambas_sim", "Ambas Marcam (Não)": "odd_ambas_nao", "5+ Gols": "odd_total_gols_extatos_5", "Casa FT": "odd_resultado_final_casa", "Empate FT": "odd_resultado_final_empate", "Fora FT": "odd_resultado_final_fora" };
 const tiroNome = n => (Number(n) <= 1 ? "SG" : "G" + (Number(n) - 1));
 const hhmm = (h, m) => (Number.isFinite(Number(h)) && Number.isFinite(Number(m)) ? String(h).padStart(2, "0") + ":" + String(m).padStart(2, "0") : "--:--");
+const escH = v => String(v == null ? "" : v).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
 function textoSinal(s, st) {
   const res = (st.signals || []).filter(x => x.robotId === s.robotId && x.status !== "PENDENTE");
   const g = res.filter(x => x.status === "GREEN").length, r = res.filter(x => x.status === "RED").length;
@@ -580,20 +581,22 @@ function textoSinal(s, st) {
   const pct = g + r ? Math.round(g / (g + r) * 100) : 0;
   const max = Math.max(1, Number(s.shots || 1)), plano = Array.isArray(s.plano) ? s.plano : [];
   const tent = {}; (s.attempts || []).forEach(a => { tent[a.number] = a; });
+  const horaDe = n => (tent[n] && tent[n].gameHour) || plano[n - 1] || (n === Number(s.currentShot) ? hhmm(s.gameHour, s.gameMinute) : "--:--");
+  const agenda = [];
+  for (let n = 1; n <= max; n++) agenda.push(`⏱️ ${tiroNome(n)} <b>${escH(horaDe(n))}</b>`);
+  const result = [];
   const ultimo = s.status === "GREEN" ? Number(s.winningShot || 1) : max;
-  const linhas = [];
   for (let n = 1; n <= ultimo; n++) {
     const a = tent[n];
-    const hora = (a && a.gameHour) || plano[n - 1] || (n === Number(s.currentShot) ? hhmm(s.gameHour, s.gameMinute) : "--:--");
-    if (a) linhas.push(`${tiroNome(n)} ${hora} · ${String(a.score || "").replace("-", "–")} ${a.status === "GREEN" ? "🟩" : "🟥"}`);
-    else if (s.status === "PENDENTE" && n === Number(s.currentShot || 1)) linhas.push(`${tiroNome(n)} ${hora} · ⏳`);
-    else linhas.push(`⏱️ ${tiroNome(n)} ${hora}`);
+    if (a) result.push(`${tiroNome(n)} ${escH(horaDe(n))} · ${escH(String(a.score || "").replace("-", "–"))} ${a.status === "GREEN" ? "🟩" : "🟥"}`);
+    else if (s.status === "PENDENTE" && n === Number(s.currentShot || 1)) { result.push(`${tiroNome(n)} ${escH(horaDe(n))} · ⏳`); break; }
   }
   let topo = "";
-  if (s.status === "GREEN") topo = "🟩 GREEN " + (Number(s.winningShot || 1) <= 1 ? "no SG" : "no " + tiroNome(s.winningShot)) + "\n";
-  else if (s.status === "RED") topo = "🟥 RED\n";
+  if (s.status === "GREEN") topo = `<b>🟩 GREEN no ${tiroNome(s.winningShot || 1)}</b>\n`;
+  else if (s.status === "RED") topo = "<b>🟥 RED</b>\n";
   const odd = Number(s.odd) > 1 ? " @" + Number(s.odd).toFixed(2).replace(".", ",") : "";
-  return `${topo}🤖 ${s.robotName || "Robô"}\n🏆 ${ROBO_LIGA_NOME[s.league] || String(s.league || "").toUpperCase()} · 💚 AMD Live\n\n🎯 ${s.market}${odd}\n\n${linhas.join("\n")}\n\n✅ ${g} ❌ ${r} 🛡️ ${an} 📈 ${pct}%`;
+  return `${topo}<b>🤖 ${escH(s.robotName || "Robô")}</b>\n🏆 ${escH(ROBO_LIGA_NOME[s.league] || String(s.league || "").toUpperCase())} · 💚 AMD Live\n\n🎯 <b>${escH(s.market)}</b>${odd}\n\n${agenda.join("\n")}\n\n✅ ${g} ❌ ${r} 🛡️ ${an} 📈 ${pct}%\n\n🔗 https://amdlive.com.br` +
+    (result.length ? `\n\n${result.join("\n")}` : "");
 }
 function alvosDono(dono, destino) {
   const d = tgChats[dono]; if (!d || destino === "site") return [];
@@ -606,10 +609,10 @@ async function sinalTelegram(dono, destino, s, st) {
   for (const chat of alvosDono(dono, destino)) {
     const msg = s.tg[chat];
     if (msg) {
-      const r = await tgApi("editMessageText", { chat_id: chat, message_id: msg, text: texto, disable_web_page_preview: true });
+      const r = await tgApi("editMessageText", { chat_id: chat, message_id: msg, text: texto, parse_mode: "HTML", disable_web_page_preview: true });
       if (r.ok || /not modified/i.test(r.description || "")) continue;
     }
-    const r = await tgApi("sendMessage", { chat_id: chat, text: texto, disable_web_page_preview: true });
+    const r = await tgApi("sendMessage", { chat_id: chat, text: texto, parse_mode: "HTML", disable_web_page_preview: true });
     if (r.ok) s.tg[chat] = r.result.message_id; else console.log("[robos] telegram falhou:", r.description);
   }
 }
