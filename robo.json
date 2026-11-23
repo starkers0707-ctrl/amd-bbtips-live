@@ -891,12 +891,42 @@
  },
  "o25": {
   "saldo": 25.9,
-  "ciclos": 35056,
+  "ciclos": 35061,
   "greens": 136,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 34907,
+  "descartes": 34912,
   "historico": [
+   {
+    "quando": "2026-11-23T08:30:08.177Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:30:08.171Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time ARG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:29:33.934Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:29:33.928Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time ARG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:29:33.132Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T08:29:33.127Z",
     "resultado": "GREEN_OBS",
@@ -4466,36 +4496,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:08:06.319Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time ARG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:08:06.314Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time LEV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:08:06.308Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time BOL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:08:05.614Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:08:05.610Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4675,20 +4675,26 @@
     "desde": 1795422481693,
     "gatilho": "time Belo Horizonte"
    },
-   "mnd": {
-    "desde": 1795422573127,
-    "gatilho": "time ARG"
+   "lat": {
+    "desde": 1795422608176,
+    "gatilho": "time NAC"
    }
   }
  },
  "ambas": {
-  "saldo": -4.3,
-  "ciclos": 100,
-  "greens": 44,
+  "saldo": -3.9,
+  "ciclos": 101,
+  "greens": 45,
   "redsCiclo": 5,
   "aborts": 0,
   "descartes": 51,
   "historico": [
+   {
+    "quando": "2026-11-23T08:29:33.955Z",
+    "resultado": "GREEN",
+    "unidades": 0.4,
+    "detalhe": "mnd · DEN x GER @1.7 (tiro 2) · gatilho: time DEN"
+   },
    {
     "quando": "2026-11-23T08:02:46.365Z",
     "resultado": "GREEN",
@@ -5292,53 +5298,16 @@
   ],
   "consumidas": {
    "cam": 1795419848880,
-   "ame": 1795420966365
+   "ame": 1795420966365,
+   "mnd": 1795422573955
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "05:26",
-     "jogo": "POR x MEX",
-     "odd": 1.72
-    },
-    {
-     "h": "05:28",
-     "jogo": "DEN x GER",
-     "odd": 1.7
-    },
-    {
-     "h": "05:30",
-     "jogo": "CHL x ITA",
-     "odd": 1.68
-    }
-   ],
-   "gatilho": "time DEN",
-   "alvo": {
-    "h": "05:28",
-    "jogo": "DEN x GER",
-    "odd": 1.7,
-    "unidades": 2,
-    "desde": 1795421878872
-   },
-   "iniciadoEm": 1795421878131,
-   "tiros": [
-    {
-     "h": "05:26",
-     "jogo": "POR x MEX",
-     "odd": 1.72,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
    "spa": 1795417719585,
    "bra": 1795383404717,
-   "mnd": 1795418258105,
+   "mnd": 1795422573955,
    "cam": 1795419848880,
    "cop": 1795394431546,
    "ame": 1795420966365
@@ -5347,13 +5316,13 @@
    "tipo": "time",
    "chave": "DEN",
    "n": 13,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
-   "2026-11-23": 7.9
+   "2026-11-23": 8.3
   },
   "_obs": {}
  }
