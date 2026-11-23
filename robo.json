@@ -924,12 +924,24 @@
  },
  "o25": {
   "saldo": 25.1,
-  "ciclos": 37718,
+  "ciclos": 37720,
   "greens": 143,
   "redsCiclo": 14,
   "aborts": 0,
-  "descartes": 37561,
+  "descartes": 37563,
   "historico": [
+   {
+    "quando": "2026-11-23T10:33:30.696Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:33:30.692Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time GOI) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T10:33:15.820Z",
     "resultado": "GREEN_OBS",
@@ -4517,18 +4529,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:15:08.841Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.91) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T10:15:08.837Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RGRG) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5398,35 +5398,35 @@
    "cam": 1795428629781
   },
   "ciclo": {
-   "liga": "ame",
+   "liga": "bra",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "07:34",
-     "jogo": "La Plata x Medellin",
-     "odd": 2.04
+     "h": "07:44",
+     "jogo": "GAM x CRM",
+     "odd": 1.71
     },
     {
-     "h": "07:37",
-     "jogo": "Porto Alegre x Guayaquil",
-     "odd": 2.16
+     "h": "07:47",
+     "jogo": "GOI x BAH",
+     "odd": 1.68
     },
     {
-     "h": "07:40",
-     "jogo": "La Plata x Avellaneda",
-     "odd": 1.97
+     "h": "07:50",
+     "jogo": "CUI x PAU",
+     "odd": 1.68
     }
    ],
-   "gatilho": "time Porto Alegre",
+   "gatilho": "time GOI",
    "alvo": {
-    "h": "07:34",
-    "jogo": "La Plata x Medellin",
-    "odd": 2.04,
+    "h": "07:44",
+    "jogo": "GAM x CRM",
+    "odd": 1.71,
     "unidades": 1,
-    "desde": 1795429088881
+    "desde": 1795430010711
    },
-   "iniciadoEm": 1795429088881
+   "iniciadoEm": 1795430010711
   },
   "cooldown": {
    "lat": 1795331214015,
@@ -5440,9 +5440,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "Porto Alegre",
-   "n": 13,
-   "start": 1
+   "chave": "GOI",
+   "n": 8,
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
@@ -5450,6 +5450,11 @@
    "2026-11-22": -14.2,
    "2026-11-23": 12
   },
-  "_obs": {}
+  "_obs": {
+   "ame": {
+    "desde": 1795430010710,
+    "gatilho": "time Porto Alegre"
+   }
+  }
  }
 }
