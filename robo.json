@@ -979,12 +979,30 @@
  },
  "o25": {
   "saldo": 21.1,
-  "ciclos": 45196,
+  "ciclos": 45199,
   "greens": 154,
   "redsCiclo": 16,
   "aborts": 0,
-  "descartes": 45026,
+  "descartes": 45029,
   "historico": [
+   {
+    "quando": "2026-11-23T13:34:42.746Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T13:34:42.741Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho seq RGRGR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T13:34:40.572Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T13:34:40.567Z",
     "resultado": "GREEN_OBS",
@@ -4566,24 +4584,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:20:10.282Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :21) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:20:08.133Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:20:08.129Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :36) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4637,9 +4637,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":36",
+   "chave": ":00",
    "n": 10,
-   "start": 1
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -4789,9 +4789,9 @@
     "desde": 1795440810566,
     "gatilho": "time NAC"
    },
-   "cop": {
-    "desde": 1795440880566,
-    "gatilho": "coluna :36"
+   "mnd": {
+    "desde": 1795440882746,
+    "gatilho": "time SPA"
    }
   }
  },
