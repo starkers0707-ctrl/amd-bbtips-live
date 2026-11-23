@@ -1037,12 +1037,24 @@
  },
  "o25": {
   "saldo": -11.8,
-  "ciclos": 64809,
+  "ciclos": 64811,
   "greens": 177,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 64608,
+  "descartes": 64610,
   "historico": [
+   {
+    "quando": "2026-11-23T21:50:32.595Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T21:50:15.220Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T21:50:15.218Z",
     "resultado": "GREEN_OBS",
@@ -4630,18 +4642,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:32:36.330Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :48) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T21:32:36.325Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4859,9 +4859,9 @@
     "desde": 1795470427680,
     "gatilho": "coluna :14"
    },
-   "lat": {
-    "desde": 1795470615218,
-    "gatilho": "odd 1.89"
+   "ita": {
+    "desde": 1795470632594,
+    "gatilho": "coluna :57"
    }
   }
  },
@@ -5984,8 +5984,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "18:48",
@@ -6005,13 +6005,21 @@
    ],
    "gatilho": "odd 2.06",
    "alvo": {
-    "h": "18:48",
-    "jogo": "Uruguay x Germany",
-    "odd": 2.15,
-    "unidades": 1,
-    "desde": 1795470246231
+    "h": "18:51",
+    "jogo": "Portugal x Spain",
+    "odd": 2.06,
+    "unidades": 2,
+    "desde": 1795470615231
    },
-   "iniciadoEm": 1795470246231
+   "iniciadoEm": 1795470246231,
+   "tiros": [
+    {
+     "h": "18:48",
+     "jogo": "Uruguay x Germany",
+     "odd": 2.15,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795331214015,
