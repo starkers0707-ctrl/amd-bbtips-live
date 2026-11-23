@@ -809,13 +809,19 @@
   }
  },
  "o25": {
-  "saldo": 24.7,
-  "ciclos": 31616,
-  "greens": 124,
+  "saldo": 26.8,
+  "ciclos": 31617,
+  "greens": 125,
   "redsCiclo": 11,
   "aborts": 0,
   "descartes": 31481,
   "historico": [
+   {
+    "quando": "2026-11-23T02:24:19.327Z",
+    "resultado": "GREEN",
+    "unidades": 2.1,
+    "detalhe": "ame · Porto Alegre x La Plata @2.55 (tiro 2) · gatilho: seq RRGGG"
+   },
    {
     "quando": "2026-11-23T02:24:17.178Z",
     "resultado": "GREEN_OBS",
@@ -4409,57 +4415,14 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T01:43:03.614Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :55) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795398030356,
-   "cam": 1795399483010
+   "cam": 1795399483010,
+   "ame": 1795400659327
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "23:19",
-     "jogo": "Avellaneda x Buenos Aires",
-     "odd": 2.18
-    },
-    {
-     "h": "23:22",
-     "jogo": "Porto Alegre x La Plata",
-     "odd": 2.55
-    },
-    {
-     "h": "23:25",
-     "jogo": "Itaquera x Rio de Janeiro",
-     "odd": 2.18
-    }
-   ],
-   "gatilho": "seq RRGGG",
-   "alvo": {
-    "h": "23:22",
-    "jogo": "Porto Alegre x La Plata",
-    "odd": 2.55,
-    "unidades": 2,
-    "desde": 1795400478546
-   },
-   "iniciadoEm": 1795400118563,
-   "tiros": [
-    {
-     "h": "23:19",
-     "jogo": "Avellaneda x Buenos Aires",
-     "odd": 2.18,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795399483010,
    "eng": 1795383709617,
@@ -4468,7 +4431,7 @@
    "lat": 1795361275805,
    "bra": 1795380169712,
    "mnd": 1795395814341,
-   "ame": 1795395424437
+   "ame": 1795400659327
   },
   "_gatilhoAtual": {
    "tipo": "seq",
@@ -4480,7 +4443,7 @@
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
-   "2026-11-22": 17.7
+   "2026-11-22": 19.8
   },
   "_obs": {}
  },
@@ -4630,10 +4593,6 @@
    "cam": {
     "desde": 1795400384479,
     "gatilho": "odd 2.74"
-   },
-   "spa": {
-    "desde": 1795400657178,
-    "gatilho": "odd 1.82"
    }
   }
  },
