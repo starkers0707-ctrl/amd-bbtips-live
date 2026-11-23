@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 11.6,
-  "ciclos": 138,
-  "greens": 52,
+  "saldo": 18,
+  "ciclos": 139,
+  "greens": 53,
   "redsCiclo": 24,
   "aborts": 0,
   "descartes": 62,
   "historico": [
+   {
+    "quando": "2026-11-23T08:51:29.494Z",
+    "resultado": "GREEN",
+    "unidades": 6.4,
+    "detalhe": "lat · RIV x MEN @3.34 (tiro 3) · gatilho: time NAC"
+   },
    {
     "quando": "2026-11-23T08:40:05.661Z",
     "resultado": "GREEN_OBS",
@@ -837,56 +843,13 @@
    }
   ],
   "consumidas": {
-   "eng": 1795421878065
+   "eng": 1795421878065,
+   "lat": 1795423889493
   },
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "05:44",
-     "jogo": "ATL x ATC",
-     "odd": 3.36
-    },
-    {
-     "h": "05:47",
-     "jogo": "NAC x RAC",
-     "odd": 3.35
-    },
-    {
-     "h": "05:50",
-     "jogo": "RIV x MEN",
-     "odd": 3.34
-    }
-   ],
-   "gatilho": "time NAC",
-   "alvo": {
-    "h": "05:50",
-    "jogo": "RIV x MEN",
-    "odd": 3.34,
-    "unidades": 4,
-    "desde": 1795423743357
-   },
-   "iniciadoEm": 1795423205672,
-   "tiros": [
-    {
-     "h": "05:44",
-     "jogo": "ATL x ATC",
-     "odd": 3.36,
-     "unidades": 1
-    },
-    {
-     "h": "05:47",
-     "jogo": "NAC x RAC",
-     "odd": 3.35,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795391133443,
-   "lat": 1795418860326,
+   "lat": 1795423889493,
    "eng": 1795421878065,
    "spa": 1795323557921,
    "ita": 1795418429136,
@@ -902,7 +865,7 @@
    "2026-11-20": 4.3,
    "2026-11-21": 11.3,
    "2026-11-22": -12.7,
-   "2026-11-23": 8.7
+   "2026-11-23": 15.1
   },
   "_obs": {
    "bra": {
@@ -4575,7 +4538,7 @@
    "tipo": "time",
    "chave": "VAL",
    "n": 11,
-   "start": 8
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -5403,7 +5366,7 @@
    "tipo": "time",
    "chave": "Turin",
    "n": 19,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
