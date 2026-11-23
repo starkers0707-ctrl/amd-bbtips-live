@@ -879,12 +879,18 @@
  },
  "o25": {
   "saldo": 27.6,
-  "ciclos": 35925,
+  "ciclos": 35926,
   "greens": 138,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 35774,
+  "descartes": 35775,
   "historico": [
+   {
+    "quando": "2026-11-23T09:19:49.311Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T09:19:47.218Z",
     "resultado": "GREEN_OBS",
@@ -4478,12 +4484,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho time Rio de Janeiro) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:41:00.951Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4493,8 +4493,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "06:18",
@@ -4514,13 +4514,21 @@
    ],
    "gatilho": "seq RRGR",
    "alvo": {
-    "h": "06:18",
-    "jogo": "Switzerland x Spain",
-    "odd": 2.74,
-    "unidades": 1,
-    "desde": 1795425248561
+    "h": "06:21",
+    "jogo": "Mexico x Netherlands",
+    "odd": 2.11,
+    "unidades": 2,
+    "desde": 1795425589302
    },
-   "iniciadoEm": 1795425248561
+   "iniciadoEm": 1795425248561,
+   "tiros": [
+    {
+     "h": "06:18",
+     "jogo": "Switzerland x Spain",
+     "odd": 2.74,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795416030942,
@@ -4693,7 +4701,7 @@
     "gatilho": "time VAL"
    },
    "mnd": {
-    "desde": 1795425587218,
+    "desde": 1795425589310,
     "gatilho": "time SPA"
    }
   }
