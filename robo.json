@@ -1007,12 +1007,30 @@
  },
  "o25": {
   "saldo": 18.8,
-  "ciclos": 49701,
+  "ciclos": 49704,
   "greens": 159,
   "redsCiclo": 17,
   "aborts": 0,
-  "descartes": 49525,
+  "descartes": 49528,
   "historico": [
+   {
+    "quando": "2026-11-23T15:19:41.624Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :21) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T15:19:34.930Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T15:19:34.925Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :36) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T15:19:34.921Z",
     "resultado": "GREEN_OBS",
@@ -4594,24 +4612,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:04:09.706Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:04:03.860Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:04:03.858Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.47) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4622,8 +4622,8 @@
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "12:18",
@@ -4643,13 +4643,21 @@
    ],
    "gatilho": "coluna :21",
    "alvo": {
-    "h": "12:18",
-    "jogo": "Amsterdam x Dortmund",
-    "odd": 2.74,
-    "unidades": 1,
-    "desde": 1795446672062
+    "h": "12:21",
+    "jogo": "Madrid x Milan",
+    "odd": 2.2,
+    "unidades": 2,
+    "desde": 1795447181611
    },
-   "iniciadoEm": 1795446672062
+   "iniciadoEm": 1795446672062,
+   "tiros": [
+    {
+     "h": "12:18",
+     "jogo": "Amsterdam x Dortmund",
+     "odd": 2.74,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795432255029,
@@ -4816,8 +4824,8 @@
     "desde": 1795447125445,
     "gatilho": "time VIT"
    },
-   "cam": {
-    "desde": 1795447174921,
+   "spa": {
+    "desde": 1795447181623,
     "gatilho": "coluna :21"
    }
   }
