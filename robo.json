@@ -1049,12 +1049,18 @@
  },
  "o25": {
   "saldo": -7,
-  "ciclos": 65800,
+  "ciclos": 65801,
   "greens": 181,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 65595,
+  "descartes": 65596,
   "historico": [
+   {
+    "quando": "2026-11-23T22:23:29.938Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T22:23:26.122Z",
     "resultado": "GREEN_OBS",
@@ -4648,12 +4654,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :10) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:03:05.651Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4863,21 +4863,23 @@
    "cop": {
     "desde": 1795472562818,
     "gatilho": "odd 2.39"
-   },
-   "lat": {
-    "desde": 1795472606122,
-    "gatilho": "odd 1.86"
    }
   }
  },
  "ambas": {
-  "saldo": 6.7,
-  "ciclos": 187,
+  "saldo": -0.3,
+  "ciclos": 188,
   "greens": 79,
-  "redsCiclo": 7,
+  "redsCiclo": 8,
   "aborts": 0,
   "descartes": 101,
   "historico": [
+   {
+    "quando": "2026-11-23T22:23:29.955Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "ame · ciclo perdido (3 tiros) · gatilho: odd 1.9"
+   },
    {
     "quando": "2026-11-23T22:09:05.746Z",
     "resultado": "GREEN_OBS",
@@ -6003,53 +6005,10 @@
   ],
   "consumidas": {
    "cam": 1795470233078,
-   "cop": 1795470795101
+   "cop": 1795470795101,
+   "ame": 1795472609954
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "19:16",
-     "jogo": "Avellaneda x Sao Paulo",
-     "odd": 1.85
-    },
-    {
-     "h": "19:19",
-     "jogo": "Rio de Janeiro x Asuncion",
-     "odd": 1.9
-    },
-    {
-     "h": "19:22",
-     "jogo": "Quito x Penarol",
-     "odd": 1.92
-    }
-   ],
-   "gatilho": "odd 1.9",
-   "alvo": {
-    "h": "19:22",
-    "jogo": "Quito x Penarol",
-    "odd": 1.92,
-    "unidades": 4,
-    "desde": 1795472486839
-   },
-   "iniciadoEm": 1795471745752,
-   "tiros": [
-    {
-     "h": "19:16",
-     "jogo": "Avellaneda x Sao Paulo",
-     "odd": 1.85,
-     "unidades": 1
-    },
-    {
-     "h": "19:19",
-     "jogo": "Rio de Janeiro x Asuncion",
-     "odd": 1.9,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -6058,7 +6017,7 @@
    "mnd": 1795464698090,
    "cam": 1795470233078,
    "cop": 1795470795101,
-   "ame": 1795457356544
+   "ame": 1795472609954
   },
   "_gatilhoAtual": {
    "tipo": "odd",
@@ -6070,7 +6029,7 @@
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
-   "2026-11-23": 18.9
+   "2026-11-23": 11.9
   },
   "_obs": {}
  }
