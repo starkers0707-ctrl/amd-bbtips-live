@@ -1049,12 +1049,30 @@
  },
  "o25": {
   "saldo": -5.1,
-  "ciclos": 66744,
+  "ciclos": 66747,
   "greens": 183,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 66537,
+  "descartes": 66540,
   "historico": [
+   {
+    "quando": "2026-11-23T23:12:51.900Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :10) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T23:12:41.960Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :11) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T23:12:39.745Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :11) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T23:12:39.017Z",
     "resultado": "GREEN_OBS",
@@ -4636,24 +4654,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.1) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:50:07.273Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:50:07.269Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:50:07.264Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4664,8 +4664,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "20:07",
@@ -4685,13 +4685,21 @@
    ],
    "gatilho": "coluna :09",
    "alvo": {
-    "h": "20:07",
-    "jogo": "OSA x RAY",
-    "odd": 1.92,
-    "unidades": 1,
-    "desde": 1795475249772
+    "h": "20:09",
+    "jogo": "VIL x BET",
+    "odd": 1.93,
+    "unidades": 2,
+    "desde": 1795475561950
    },
-   "iniciadoEm": 1795475249772
+   "iniciadoEm": 1795475249772,
+   "tiros": [
+    {
+     "h": "20:07",
+     "jogo": "OSA x RAY",
+     "odd": 1.92,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795475247707,
@@ -4870,10 +4878,6 @@
    "ame": {
     "desde": 1795475146151,
     "gatilho": "odd 2.1"
-   },
-   "lat": {
-    "desde": 1795475559017,
-    "gatilho": "coluna :11"
    }
   }
  },
