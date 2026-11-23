@@ -829,12 +829,24 @@
  },
  "o25": {
   "saldo": 33.3,
-  "ciclos": 32386,
+  "ciclos": 32388,
   "greens": 131,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32244,
+  "descartes": 32246,
   "historico": [
+   {
+    "quando": "2026-11-23T06:37:19.457Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:37:19.455Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Argentina) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T06:37:19.452Z",
     "resultado": "GREEN_OBS",
@@ -4422,18 +4434,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:42:17.203Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:42:11.994Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4442,8 +4442,8 @@
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "03:33",
@@ -4463,11 +4463,11 @@
    ],
    "gatilho": "seq RRGR",
    "alvo": {
-    "h": "03:36",
-    "jogo": "Milan x Barcelona",
-    "odd": 2.31,
-    "unidades": 2,
-    "desde": 1795415670817
+    "h": "03:39",
+    "jogo": "Liverpool x United",
+    "odd": 2.4,
+    "unidades": 4,
+    "desde": 1795415865903
    },
    "iniciadoEm": 1795415415870,
    "tiros": [
@@ -4476,6 +4476,12 @@
      "jogo": "Paris x Rome",
      "odd": 2.01,
      "unidades": 1
+    },
+    {
+     "h": "03:36",
+     "jogo": "Milan x Barcelona",
+     "odd": 2.31,
+     "unidades": 2
     }
    ]
   },
@@ -4639,12 +4645,7 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {
-   "cam": {
-    "desde": 1795415839452,
-    "gatilho": "time Chelsea"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": -7.7,
