@@ -576,17 +576,24 @@ const hhmm = (h, m) => (Number.isFinite(Number(h)) && Number.isFinite(Number(m))
 function textoSinal(s, st) {
   const res = (st.signals || []).filter(x => x.robotId === s.robotId && x.status !== "PENDENTE");
   const g = res.filter(x => x.status === "GREEN").length, r = res.filter(x => x.status === "RED").length;
+  const an = res.filter(x => x.status === "ANULADO").length;
   const pct = g + r ? Math.round(g / (g + r) * 100) : 0;
-  const tentativas = (s.attempts || []).slice().sort((a, b) => a.number - b.number);
-  let topo;
-  if (s.status === "GREEN") topo = "🟩 GREEN " + (Number(s.winningShot || 1) <= 1 ? "de primeira (SG)" : "no " + tiroNome(s.winningShot));
-  else if (s.status === "RED") topo = "🟥 RED";
-  else topo = "⏳ ENTRADA · " + tiroNome(s.currentShot || 1);
-  const linhas = tentativas.map(a => `${tiroNome(a.number)} ${a.gameHour || "--:--"} · ${String(a.score || "").replace("-", "–")} ${a.status === "GREEN" ? "🟩" : "🟥"}`);
-  if (s.status === "PENDENTE" && !s.awaitingNext) linhas.push(`${tiroNome(s.currentShot || 1)} ${hhmm(s.gameHour, s.gameMinute)} · ${s.timeA} x ${s.timeB} ⏳`);
-  if (s.status === "PENDENTE" && s.awaitingNext) linhas.push(`${tiroNome(s.currentShot || 1)} · aguardando o próximo jogo ⏳`);
+  const max = Math.max(1, Number(s.shots || 1)), plano = Array.isArray(s.plano) ? s.plano : [];
+  const tent = {}; (s.attempts || []).forEach(a => { tent[a.number] = a; });
+  const ultimo = s.status === "GREEN" ? Number(s.winningShot || 1) : max;
+  const linhas = [];
+  for (let n = 1; n <= ultimo; n++) {
+    const a = tent[n];
+    const hora = (a && a.gameHour) || plano[n - 1] || (n === Number(s.currentShot) ? hhmm(s.gameHour, s.gameMinute) : "--:--");
+    if (a) linhas.push(`${tiroNome(n)} ${hora} · ${String(a.score || "").replace("-", "–")} ${a.status === "GREEN" ? "🟩" : "🟥"}`);
+    else if (s.status === "PENDENTE" && n === Number(s.currentShot || 1)) linhas.push(`${tiroNome(n)} ${hora} · ⏳`);
+    else linhas.push(`⏱️ ${tiroNome(n)} ${hora}`);
+  }
+  let topo = "";
+  if (s.status === "GREEN") topo = "🟩 GREEN " + (Number(s.winningShot || 1) <= 1 ? "no SG" : "no " + tiroNome(s.winningShot)) + "\n";
+  else if (s.status === "RED") topo = "🟥 RED\n";
   const odd = Number(s.odd) > 1 ? " @" + Number(s.odd).toFixed(2).replace(".", ",") : "";
-  return `${topo}\n🤖 ${s.robotName || "Robô"}\n🏆 ${ROBO_LIGA_NOME[s.league] || String(s.league || "").toUpperCase()} · 💚 AMD Live\n\n🎯 ${s.market}${odd}\n${linhas.join("\n")}\n\n✅ ${g}  ❌ ${r}  📈 ${pct}%`;
+  return `${topo}🤖 ${s.robotName || "Robô"}\n🏆 ${ROBO_LIGA_NOME[s.league] || String(s.league || "").toUpperCase()} · 💚 AMD Live\n\n🎯 ${s.market}${odd}\n\n${linhas.join("\n")}\n\n✅ ${g} ❌ ${r} 🛡️ ${an} 📈 ${pct}%`;
 }
 function alvosDono(dono, destino) {
   const d = tgChats[dono]; if (!d || destino === "site") return [];
@@ -641,7 +648,9 @@ async function robosTick() {
           const max = Math.max(1, Number(robot.shots || 1));
           st.signals.unshift({ id: key, key, robotId: robot.id, robotName: robot.name || "Robô manual", league: liga, market: mk, shots: max, currentShot: 1, attempts: [], cycleVersion: 2,
             timeA: up.time_a || "?", timeB: up.time_b || "?", gameId: up.id || "", gameSlot: up.slot_em || up.criado_em || "", gameHour: up.hora, gameMinute: up.minuto, status: "PENDENTE", sentAt: new Date().toISOString(), score: "",
-            odd: Number((up.odds || {})[ROBO_ODD[mk]]) || null });
+            odd: Number((up.odds || {})[ROBO_ODD[mk]]) || null,
+            plano: (() => { const t0 = Date.parse(up.slot_em || "") || 0; return all.filter(x => (Date.parse(x.slot_em || "") || 0) >= t0)
+              .sort((x, y) => Date.parse(x.slot_em) - Date.parse(y.slot_em)).slice(0, max).map(x => hhmm(x.hora, x.minuto)); })() });
           st.signals = st.signals.slice(0, 200);
           robosSujo = true;
           await sinalTelegram(dono, robot.destino, st.signals[0], st);
