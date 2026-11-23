@@ -879,12 +879,24 @@
  },
  "o25": {
   "saldo": 29.7,
-  "ciclos": 36126,
+  "ciclos": 36128,
   "greens": 140,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 35973,
+  "descartes": 35975,
   "historico": [
+   {
+    "quando": "2026-11-23T09:31:06.547Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho placar 1-0 / 0-1) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T09:31:06.544Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T09:31:04.539Z",
     "resultado": "GREEN_OBS",
@@ -4472,18 +4484,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:58:17.549Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:58:17.543Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4688,9 +4688,9 @@
     "desde": 1795426208288,
     "gatilho": "seq RRRR"
    },
-   "lat": {
-    "desde": 1795426264539,
-    "gatilho": "time NAC"
+   "bra": {
+    "desde": 1795426266547,
+    "gatilho": "placar 1-0 / 0-1"
    }
   }
  },
