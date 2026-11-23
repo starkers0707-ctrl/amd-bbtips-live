@@ -880,12 +880,30 @@
  },
  "o25": {
   "saldo": 27.6,
-  "ciclos": 35753,
+  "ciclos": 35756,
   "greens": 138,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 35602,
+  "descartes": 35605,
   "historico": [
+   {
+    "quando": "2026-11-23T09:08:37.799Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T09:08:37.787Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "lat · alvo sem fechamento em 15min antes da 1a aposta"
+   },
+   {
+    "quando": "2026-11-23T09:08:28.338Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T09:08:28.328Z",
     "resultado": "GREEN_OBS",
@@ -4467,24 +4485,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:34:30.129Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:34:30.124Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:34:26.919Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4493,37 +4493,7 @@
    "spa": 1795423233049,
    "mnd": 1795424007466
   },
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "06:11",
-     "jogo": "ATC x COL",
-     "odd": 1.9
-    },
-    {
-     "h": "06:14",
-     "jogo": "MEN x VAL",
-     "odd": 1.92
-    },
-    {
-     "h": "06:05",
-     "jogo": "PER x BOC",
-     "odd": 1.83
-    }
-   ],
-   "gatilho": "time VAL",
-   "alvo": {
-    "h": "06:11",
-    "jogo": "ATC x COL",
-    "odd": 1.9,
-    "unidades": 1,
-    "desde": 1795424008409
-   },
-   "iniciadoEm": 1795424008409
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795416030942,
    "eng": 1795383709617,
@@ -4690,7 +4660,7 @@
     "gatilho": "time VAL"
    },
    "mnd": {
-    "desde": 1795424908327,
+    "desde": 1795424917799,
     "gatilho": "time SPA"
    }
   }
