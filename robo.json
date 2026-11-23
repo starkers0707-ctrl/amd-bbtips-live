@@ -806,13 +806,19 @@
   }
  },
  "o25": {
-  "saldo": 17.7,
-  "ciclos": 29797,
-  "greens": 118,
+  "saldo": 19.1,
+  "ciclos": 29798,
+  "greens": 119,
   "redsCiclo": 11,
   "aborts": 0,
   "descartes": 29668,
   "historico": [
+   {
+    "quando": "2026-11-23T00:22:28.527Z",
+    "resultado": "GREEN",
+    "unidades": 1.4,
+    "detalhe": "cam · Turin x Liverpool @2.11 (tiro 3) · gatilho: seq RRRRG"
+   },
    {
     "quando": "2026-11-23T00:22:16.858Z",
     "resultado": "GREEN_OBS",
@@ -4406,64 +4412,15 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T23:13:33.175Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "mnd": 1795390533015
+   "mnd": 1795390533015,
+   "cam": 1795393348527
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "21:15",
-     "jogo": "Milan x Amsterdam",
-     "odd": 2.56
-    },
-    {
-     "h": "21:18",
-     "jogo": "Madrid x Rome",
-     "odd": 2.07
-    },
-    {
-     "h": "21:21",
-     "jogo": "Turin x Liverpool",
-     "odd": 2.11
-    }
-   ],
-   "gatilho": "seq RRRRG",
-   "alvo": {
-    "h": "21:21",
-    "jogo": "Turin x Liverpool",
-    "odd": 2.11,
-    "unidades": 4,
-    "desde": 1795393198701
-   },
-   "iniciadoEm": 1795392819620,
-   "tiros": [
-    {
-     "h": "21:15",
-     "jogo": "Milan x Amsterdam",
-     "odd": 2.56,
-     "unidades": 1
-    },
-    {
-     "h": "21:18",
-     "jogo": "Madrid x Rome",
-     "odd": 2.07,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
-   "cam": 1795387638383,
+   "cam": 1795393348527,
    "eng": 1795383709617,
    "ita": 1795331927310,
    "spa": 1795388110617,
@@ -4482,7 +4439,7 @@
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
-   "2026-11-22": 10.7
+   "2026-11-22": 12.1
   },
   "_obs": {}
  },
@@ -4628,10 +4585,6 @@
    "spa": {
     "desde": 1795392989229,
     "gatilho": "odd 1.77"
-   },
-   "cop": {
-    "desde": 1795393336858,
-    "gatilho": "odd 2.05"
    }
   }
  },
