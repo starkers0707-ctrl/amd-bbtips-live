@@ -984,12 +984,36 @@
  },
  "o25": {
   "saldo": 23.2,
-  "ciclos": 46897,
+  "ciclos": 46901,
   "greens": 156,
   "redsCiclo": 16,
   "aborts": 0,
-  "descartes": 46725,
+  "descartes": 46729,
   "historico": [
+   {
+    "quando": "2026-11-23T14:14:01.638Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T14:14:01.634Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T14:14:01.627Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho seq RGRGR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T14:13:40.532Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T14:13:40.529Z",
     "resultado": "GREEN_OBS",
@@ -4565,30 +4589,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:59:13.357Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:59:13.355Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:59:13.352Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T13:59:13.350Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4792,9 +4792,9 @@
     "desde": 1795443127461,
     "gatilho": "coluna :36"
    },
-   "cam": {
-    "desde": 1795443220529,
-    "gatilho": "coluna :21"
+   "lat": {
+    "desde": 1795443241638,
+    "gatilho": "time NAC"
    }
   }
  },
@@ -5628,7 +5628,37 @@
    "mnd": 1795442874711,
    "cam": 1795443216192
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "11:20",
+     "jogo": "CRM x PAU",
+     "odd": 1.67
+    },
+    {
+     "h": "11:23",
+     "jogo": "VIT x NAC",
+     "odd": 1.68
+    },
+    {
+     "h": "11:26",
+     "jogo": "GRM x MEN",
+     "odd": 1.67
+    }
+   ],
+   "gatilho": "time VIT",
+   "alvo": {
+    "h": "11:20",
+    "jogo": "CRM x PAU",
+    "odd": 1.67,
+    "unidades": 1,
+    "desde": 1795443220545
+   },
+   "iniciadoEm": 1795443220545
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
