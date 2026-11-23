@@ -829,12 +829,36 @@
  },
  "o25": {
   "saldo": 33.3,
-  "ciclos": 32339,
+  "ciclos": 32343,
   "greens": 131,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32197,
+  "descartes": 32201,
   "historico": [
+   {
+    "quando": "2026-11-23T06:34:30.832Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Chelsea) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:34:30.827Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:34:30.824Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.93) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:34:04.174Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T06:34:04.169Z",
     "resultado": "GREEN_OBS",
@@ -4410,30 +4434,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :50) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:36:32.715Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:36:32.084Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :50) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:36:32.079Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:36:31.396Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :50) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4442,8 +4442,8 @@
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "03:33",
@@ -4463,13 +4463,21 @@
    ],
    "gatilho": "seq RRGR",
    "alvo": {
-    "h": "03:33",
-    "jogo": "Paris x Rome",
-    "odd": 2.01,
-    "unidades": 1,
-    "desde": 1795415415870
+    "h": "03:36",
+    "jogo": "Milan x Barcelona",
+    "odd": 2.31,
+    "unidades": 2,
+    "desde": 1795415670817
    },
-   "iniciadoEm": 1795415415870
+   "iniciadoEm": 1795415415870,
+   "tiros": [
+    {
+     "h": "03:33",
+     "jogo": "Paris x Rome",
+     "odd": 2.01,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795399483010,
@@ -4637,7 +4645,7 @@
     "gatilho": "time Argentina"
    },
    "cam": {
-    "desde": 1795415644169,
+    "desde": 1795415670831,
     "gatilho": "time Chelsea"
    }
   }
