@@ -903,12 +903,36 @@
  },
  "o25": {
   "saldo": 26.7,
-  "ciclos": 35378,
+  "ciclos": 35382,
   "greens": 137,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 35228,
+  "descartes": 35232,
   "historico": [
+   {
+    "quando": "2026-11-23T08:44:33.284Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Rio de Janeiro) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:44:10.316Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:44:09.478Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:44:08.641Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T08:44:07.765Z",
     "resultado": "GREEN_OBS",
@@ -4484,30 +4508,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time ARG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:19:13.987Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time LEV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:19:11.951Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:19:11.947Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:19:11.943Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time ARG) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4721,8 +4721,8 @@
     "gatilho": "time NAC"
    },
    "ame": {
-    "desde": 1795423447765,
-    "gatilho": "placar acima de 1-0 (2-0)"
+    "desde": 1795423473283,
+    "gatilho": "time Rio de Janeiro"
    }
   }
  },
@@ -5342,11 +5342,40 @@
    }
   ],
   "consumidas": {
-   "cam": 1795419848880,
    "ame": 1795420966365,
    "mnd": 1795422573955
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "05:54",
+     "jogo": "Munich x Paris",
+     "odd": 1.82
+    },
+    {
+     "h": "05:57",
+     "jogo": "Rome x Turin",
+     "odd": 1.84
+    },
+    {
+     "h": "06:00",
+     "jogo": "Milan x United",
+     "odd": 2.1
+    }
+   ],
+   "gatilho": "time Turin",
+   "alvo": {
+    "h": "05:54",
+    "jogo": "Munich x Paris",
+    "odd": 1.82,
+    "unidades": 1,
+    "desde": 1795423449501
+   },
+   "iniciadoEm": 1795423449501
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -5359,9 +5388,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "DEN",
-   "n": 13,
-   "start": 5
+   "chave": "Turin",
+   "n": 19,
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
