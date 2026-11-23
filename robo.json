@@ -819,7 +819,6 @@
    }
   ],
   "consumidas": {
-   "eng": 1795417891339,
    "ita": 1795418429136,
    "lat": 1795418860326
   },
@@ -857,12 +856,18 @@
  },
  "o25": {
   "saldo": 31.9,
-  "ciclos": 34566,
+  "ciclos": 34567,
   "greens": 135,
   "redsCiclo": 12,
   "aborts": 0,
-  "descartes": 34419,
+  "descartes": 34420,
   "historico": [
+   {
+    "quando": "2026-11-23T08:11:33.326Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time ARG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T08:11:14.394Z",
     "resultado": "GREEN_OBS",
@@ -4456,12 +4461,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:51:27.882Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4669,9 +4668,9 @@
     "desde": 1795421430332,
     "gatilho": "time LEV"
    },
-   "ame": {
-    "desde": 1795421474394,
-    "gatilho": "time Belo Horizonte"
+   "mnd": {
+    "desde": 1795421493326,
+    "gatilho": "time ARG"
    }
   }
  },
