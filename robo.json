@@ -891,12 +891,24 @@
  },
  "o25": {
   "saldo": 25.9,
-  "ciclos": 35145,
+  "ciclos": 35147,
   "greens": 136,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 34996,
+  "descartes": 34998,
   "historico": [
+   {
+    "quando": "2026-11-23T08:34:14.954Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:34:14.950Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T08:34:12.202Z",
     "resultado": "GREEN_OBS",
@@ -4484,18 +4496,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:11:00.571Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:11:00.564Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time ARG) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4670,9 +4670,9 @@
     "desde": 1795417126160,
     "gatilho": "time Chelsea"
    },
-   "ame": {
-    "desde": 1795422852201,
-    "gatilho": "seq RRRG"
+   "lat": {
+    "desde": 1795422854954,
+    "gatilho": "time NAC"
    }
   }
  },
