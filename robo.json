@@ -811,13 +811,55 @@
   }
  },
  "o25": {
-  "saldo": 21.4,
-  "ciclos": 30441,
-  "greens": 121,
+  "saldo": 22.3,
+  "ciclos": 30448,
+  "greens": 122,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 30309,
+  "descartes": 30315,
   "historico": [
+   {
+    "quando": "2026-11-23T01:03:34.347Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:03:34.342Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "mnd · CHL x URY @1.87 (tiro 1) · gatilho: odd 1.83"
+   },
+   {
+    "quando": "2026-11-23T01:03:33.815Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:03:33.812Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:03:33.259Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:03:33.255Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:03:19.085Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T01:03:19.081Z",
     "resultado": "GREEN_OBS",
@@ -4375,86 +4417,15 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T00:29:09.555Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :55) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T00:29:09.552Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho seq RRGRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T00:29:09.547Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T00:29:09.049Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :55) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T00:29:09.046Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho seq RRGRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T00:29:09.039Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T00:28:45.973Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :55) — liga REARMADA"
    }
   ],
   "consumidas": {
    "cam": 1795393348527,
    "spa": 1795393713853,
-   "ame": 1795395424437
+   "ame": 1795395424437,
+   "mnd": 1795395814341
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "22:02",
-     "jogo": "CHL x URY",
-     "odd": 1.87
-    },
-    {
-     "h": "22:04",
-     "jogo": "BRA x CRO",
-     "odd": 1.83
-    },
-    {
-     "h": "22:06",
-     "jogo": "MEX x GER",
-     "odd": 1.94
-    }
-   ],
-   "gatilho": "odd 1.83",
-   "alvo": {
-    "h": "22:02",
-    "jogo": "CHL x URY",
-    "odd": 1.87,
-    "unidades": 1,
-    "desde": 1795395425145
-   },
-   "iniciadoEm": 1795395425145
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795393348527,
    "eng": 1795383709617,
@@ -4462,7 +4433,7 @@
    "spa": 1795393713853,
    "lat": 1795361275805,
    "bra": 1795380169712,
-   "mnd": 1795390533015,
+   "mnd": 1795395814341,
    "ame": 1795395424437
   },
   "_gatilhoAtual": {
@@ -4475,7 +4446,7 @@
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
-   "2026-11-22": 14.4
+   "2026-11-22": 15.3
   },
   "_obs": {}
  },
@@ -4617,21 +4588,23 @@
    "ita": {
     "desde": 1795331722115,
     "gatilho": "time CAG"
-   },
-   "spa": {
-    "desde": 1795395799081,
-    "gatilho": "coluna :17"
    }
   }
  },
  "ambas": {
-  "saldo": -16.6,
-  "ciclos": 69,
-  "greens": 29,
+  "saldo": -15.9,
+  "ciclos": 70,
+  "greens": 30,
   "redsCiclo": 5,
   "aborts": 0,
   "descartes": 35,
   "historico": [
+   {
+    "quando": "2026-11-23T01:03:34.364Z",
+    "resultado": "GREEN",
+    "unidades": 0.7,
+    "detalhe": "mnd · CHL x URY @1.68 (tiro 1) · gatilho: coluna :04"
+   },
    {
     "quando": "2026-11-23T00:40:31.546Z",
     "resultado": "RED_CICLO",
@@ -5048,59 +5021,30 @@
    }
   ],
   "consumidas": {
-   "cop": 1795394431546
+   "cop": 1795394431546,
+   "mnd": 1795395814364
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "22:02",
-     "jogo": "CHL x URY",
-     "odd": 1.68
-    },
-    {
-     "h": "22:04",
-     "jogo": "BRA x CRO",
-     "odd": 1.81
-    },
-    {
-     "h": "22:06",
-     "jogo": "MEX x GER",
-     "odd": 1.71
-    }
-   ],
-   "gatilho": "coluna :04",
-   "alvo": {
-    "h": "22:02",
-    "jogo": "CHL x URY",
-    "odd": 1.68,
-    "unidades": 1,
-    "desde": 1795395229265
-   },
-   "iniciadoEm": 1795395229265
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795257582328,
    "spa": 1795364566793,
    "bra": 1795383404717,
-   "mnd": 1795391613996,
+   "mnd": 1795395814364,
    "cam": 1795390852383,
    "cop": 1795394431546,
    "ame": 1795392178567
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":04",
-   "n": 21,
-   "start": 1
+   "chave": ":20",
+   "n": 20,
+   "start": 7
   },
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
-   "2026-11-22": -18.6
+   "2026-11-22": -17.9
   },
   "_obs": {}
  }
