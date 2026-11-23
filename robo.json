@@ -829,12 +829,54 @@
  },
  "o25": {
   "saldo": 33.3,
-  "ciclos": 32281,
+  "ciclos": 32288,
   "greens": 131,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32139,
+  "descartes": 32146,
   "historico": [
+   {
+    "quando": "2026-11-23T06:30:15.898Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:30:15.893Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:30:15.887Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:30:15.878Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.93) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:29:50.765Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:29:50.758Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:29:50.752Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T06:29:50.747Z",
     "resultado": "GREEN_OBS",
@@ -4392,55 +4434,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:33:01.978Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :50) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:33:01.974Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:32:34.792Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :50) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:32:34.787Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:32:34.152Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :50) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:32:34.149Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:32:08.311Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :50) — liga REARMADA"
    }
   ],
   "consumidas": {
    "mnd": 1795413449347,
    "ame": 1795415390732
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "03:33",
+     "jogo": "Paris x Rome",
+     "odd": 2.01
+    },
+    {
+     "h": "03:36",
+     "jogo": "Milan x Barcelona",
+     "odd": 2.31
+    },
+    {
+     "h": "03:39",
+     "jogo": "Liverpool x United",
+     "odd": 2.4
+    }
+   ],
+   "gatilho": "seq RRGR",
+   "alvo": {
+    "h": "03:33",
+    "jogo": "Paris x Rome",
+    "odd": 2.01,
+    "unidades": 1,
+    "desde": 1795415415870
+   },
+   "iniciadoEm": 1795415415870
+  },
   "cooldown": {
    "cam": 1795399483010,
    "eng": 1795383709617,
@@ -4454,9 +4484,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "Belo Horizonte",
+   "chave": "Argentina",
    "n": 8,
-   "start": 5
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -4602,17 +4632,13 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "ame": {
-    "desde": 1795414668971,
-    "gatilho": "time Belo Horizonte"
-   },
    "cop": {
     "desde": 1795414982550,
     "gatilho": "time Argentina"
    },
-   "spa": {
-    "desde": 1795415390747,
-    "gatilho": "odd 1.93"
+   "ame": {
+    "desde": 1795415415898,
+    "gatilho": "time Belo Horizonte"
    }
   }
  },
