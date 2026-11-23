@@ -4420,7 +4420,37 @@
   "consumidas": {
    "cop": 1795409729383
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "02:19",
+     "jogo": "BOL x JUV",
+     "odd": 1.9
+    },
+    {
+     "h": "02:21",
+     "jogo": "CAG x FIO",
+     "odd": 1.95
+    },
+    {
+     "h": "02:23",
+     "jogo": "MIL x ATA",
+     "odd": 1.94
+    }
+   ],
+   "gatilho": "time CAG",
+   "alvo": {
+    "h": "02:19",
+    "jogo": "BOL x JUV",
+    "odd": 1.9,
+    "unidades": 1,
+    "desde": 1795410770325
+   },
+   "iniciadoEm": 1795410770325
+  },
   "cooldown": {
    "cam": 1795399483010,
    "eng": 1795383709617,
@@ -4433,10 +4463,10 @@
    "cop": 1795409729383
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "1-0 / 0-1",
+   "tipo": "time",
+   "chave": "CAG",
    "n": 9,
-   "start": 1
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
