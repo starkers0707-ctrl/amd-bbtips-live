@@ -1029,12 +1029,30 @@
  },
  "o25": {
   "saldo": -2.9,
-  "ciclos": 61332,
+  "ciclos": 61335,
   "greens": 172,
   "redsCiclo": 22,
   "aborts": 0,
-  "descartes": 61138,
+  "descartes": 61141,
   "historico": [
+   {
+    "quando": "2026-11-23T20:16:52.011Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :21) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T20:16:52.006Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time FRO) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T20:16:48.003Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T20:16:47.990Z",
     "resultado": "GREEN_OBS",
@@ -4616,24 +4634,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :11) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T20:02:34.329Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho coluna :14) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T20:02:34.326Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :10) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T20:02:34.321Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4683,10 +4683,10 @@
    "cop": 1795461211344
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":31",
-   "n": 17,
-   "start": 5
+   "tipo": "odd",
+   "chave": "2.3",
+   "n": 13,
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -4846,7 +4846,7 @@
     "gatilho": "odd 2.39"
    },
    "spa": {
-    "desde": 1795465007990,
+    "desde": 1795465012011,
     "gatilho": "coluna :21"
    }
   }
