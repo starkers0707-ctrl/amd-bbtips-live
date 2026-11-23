@@ -829,12 +829,42 @@
  },
  "o25": {
   "saldo": 33.3,
-  "ciclos": 32311,
+  "ciclos": 32316,
   "greens": 131,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32169,
+  "descartes": 32174,
   "historico": [
+   {
+    "quando": "2026-11-23T06:31:48.214Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:31:48.209Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Chelsea) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:31:48.203Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:31:48.198Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.93) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:31:46.054Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T06:31:46.046Z",
     "resultado": "GREEN_OBS",
@@ -4404,36 +4434,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:34:32.954Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :50) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:34:32.950Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:34:32.276Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :50) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:34:32.272Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T02:34:20.853Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :50) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4486,7 +4486,7 @@
    "tipo": "time",
    "chave": "Argentina",
    "n": 8,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -4636,20 +4636,26 @@
     "desde": 1795414982550,
     "gatilho": "time Argentina"
    },
-   "cam": {
-    "desde": 1795415506046,
-    "gatilho": "time Chelsea"
+   "ame": {
+    "desde": 1795415508214,
+    "gatilho": "time Belo Horizonte"
    }
   }
  },
  "ambas": {
-  "saldo": -8.6,
-  "ciclos": 87,
-  "greens": 39,
+  "saldo": -7.7,
+  "ciclos": 88,
+  "greens": 40,
   "redsCiclo": 5,
   "aborts": 0,
   "descartes": 43,
   "historico": [
+   {
+    "quando": "2026-11-23T06:31:46.087Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "cam · Liverpool x Benfica @1.95 (tiro 2) · gatilho: time Chelsea"
+   },
    {
     "quando": "2026-11-23T06:29:46.193Z",
     "resultado": "GREEN_OBS",
@@ -5175,68 +5181,31 @@
   ],
   "consumidas": {
    "mnd": 1795412856148,
-   "ame": 1795414127660
+   "ame": 1795414127660,
+   "cam": 1795415506086
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "03:27",
-     "jogo": "Milan x Chelsea",
-     "odd": 2.1
-    },
-    {
-     "h": "03:30",
-     "jogo": "Liverpool x Benfica",
-     "odd": 1.95
-    },
-    {
-     "h": "03:33",
-     "jogo": "Paris x Rome",
-     "odd": 1.85
-    }
-   ],
-   "gatilho": "time Chelsea",
-   "alvo": {
-    "h": "03:30",
-    "jogo": "Liverpool x Benfica",
-    "odd": 1.95,
-    "unidades": 2,
-    "desde": 1795415325950
-   },
-   "iniciadoEm": 1795415014072,
-   "tiros": [
-    {
-     "h": "03:27",
-     "jogo": "Milan x Chelsea",
-     "odd": 2.1,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
    "spa": 1795407873861,
    "bra": 1795383404717,
    "mnd": 1795412856148,
-   "cam": 1795411406700,
+   "cam": 1795415506086,
    "cop": 1795394431546,
    "ame": 1795414127660
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "Chelsea",
-   "n": 8,
-   "start": 3
+   "chave": "Turin",
+   "n": 13,
+   "start": 7
   },
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
-   "2026-11-23": 3.6
+   "2026-11-23": 4.5
   },
   "_obs": {}
  }
