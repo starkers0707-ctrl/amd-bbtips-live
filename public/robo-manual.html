@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="robos.css">
   <link rel="stylesheet" href="robo-manual.css?v=20261123-tc">
-  <link rel="stylesheet" href="robo-manual-tc.css?v=20261123-verde">
+  <link rel="stylesheet" href="robo-manual-tc.css?v=20261123-bp">
 </head>
 <body class="manual-page tc-page">
   <header class="manual-topbar">
@@ -100,7 +100,8 @@
           <div class="tc-actions">
             <button id="rbPatternRemove" class="tc-btn red" type="button">Remover</button>
             <button id="rbPatternClear" class="tc-btn red" type="button">Limpar</button>
-            <button id="rbPatternSearch" class="tc-btn green" type="button">🔍 Buscar padrões</button>
+            <button id="rbBuscador" class="tc-btn green" type="button">🔍 Buscar padrões</button>
+            <button id="rbPatternSearch" type="button" hidden>últimos resultados</button>
             <button id="rbSaveActivate" class="tc-btn blue" type="button">💾 Criar robô</button>
           </div>
         </div>
@@ -261,11 +262,46 @@
     </div>
   </main>
 
+
+  <div id="bpModal" class="bp-modal" hidden>
+    <div class="bp-box" role="dialog" aria-labelledby="bpTitle">
+      <header class="bp-head">
+        <span class="bp-ico">🔍</span>
+        <div><h2 id="bpTitle">Buscador de padrões <em>FUT VIRTUAL</em></h2><p>Encontre sequências reais usando o histórico disponível.</p></div>
+        <button id="bpClose" class="bp-x" type="button" aria-label="Fechar">✕</button>
+      </header>
+      <section class="bp-filters">
+        <details open><summary>☰ Filtros da busca</summary>
+          <div class="bp-grid">
+            <label><span>Período analisado</span><select id="bpPeriodo"><option value="6">Últimas 6h</option><option value="12">Últimas 12h</option><option value="24" selected>Últimas 24h</option><option value="48">Últimas 48h</option><option value="72">Últimas 72h</option></select></label>
+            <label><span>Entrada (Alvo)</span><select id="bpAlvo"></select></label>
+            <label><span>Tiros</span><select id="bpTiros"><option value="1">1 Tiro (seco)</option><option value="2">2 Tiros (1 Gale)</option><option value="3" selected>3 Tiros (2 Gales)</option><option value="4">4 Tiros (3 Gales)</option></select></label>
+            <label><span>Total de registros</span><select id="bpTotal"><option>10</option><option>20</option><option>50</option></select></label>
+            <label><span>Base</span><select id="bpBase"><option value="ft">Placares FT</option></select></label>
+            <label><span>Total de placares</span><select id="bpPlacares"><option value="1">1 placar</option><option value="2">2 placares seguidos</option></select></label>
+            <label><span>Máximo de pulos</span><select id="bpPulos"></select></label>
+            <label><span>Percentual inicial</span><input id="bpPctIni" type="number" min="0" max="100" value="0"></label>
+            <label><span>Percentual final</span><input id="bpPctFim" type="number" min="0" max="100" value="100"></label>
+            <label><span>Ordenação</span><select id="bpOrdem"><option value="pct">Melhor %</option><option value="n">Mais ocorrências</option><option value="recente">Melhor % recente</option><option value="pulo">Menos pulos</option></select></label>
+            <label><span>Mínimo de ocorrências</span><select id="bpMin"><option>3</option><option selected>5</option><option>8</option><option>12</option></select></label>
+          </div>
+          <div class="bp-leagues"><b id="bpLigasCount">LIGAS: 0/9</b>
+            <button id="bpTodas" type="button" class="bp-all">Todas</button><button id="bpLimpar" type="button" class="bp-clear">Limpar</button>
+            <div id="bpLigas"></div>
+          </div>
+          <div class="bp-go"><button id="bpBuscar" type="button">🔍 Buscar padrões</button></div>
+        </details>
+      </section>
+      <h3 class="bp-subtitle">MELHORES SEQUÊNCIAS ENCONTRADAS</h3>
+      <div id="bpResultados" class="bp-results"><p class="bp-empty">Escolha os filtros e clique em Buscar padrões.</p></div>
+    </div>
+  </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="robos-model.js?v=20260905-2245"></script>
   <script src="grade-tab-coordinator.js?v=20260924-grade-unfreeze"></script>
   <script src="robo-manual-monitor.js?v=20261123-tc"></script>
-  <script src="robo-manual.js?v=20261123-tc"></script>
+  <script src="robo-manual.js?v=20261123-bp"></script>
   <script src="robo-manual-telegram.js?v=20261123-tc"></script>
+  <script src="robo-manual-buscador.js?v=20261123-bp"></script>
 </body>
 </html>

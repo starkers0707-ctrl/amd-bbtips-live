@@ -982,6 +982,28 @@
     });
   }
 
+  /* Usado pelo Buscador de padroes para montar o quadro com um resultado. */
+  window.AMDManualBuilder = {
+    applyPattern: function (cfg) {
+      patternCells = {};
+      (cfg.cells || []).forEach(function (cell) {
+        var key = cell.row + ':' + cell.column;
+        patternCells[key] = Object.assign({ key: key, join: 'all', teamOrder: 'random', teamA: '', teamB: '', game: '',
+          minuteConfigured: false, minuteOp: 'any', minuteFrom: '', minuteTo: '', scoreResult: '', scoreA: '', scoreB: '',
+          odd: '', oddMin: '', oddMax: '' }, cell);
+      });
+      if (cfg.leagues && cfg.leagues.length) setSelectedLeagues(cfg.leagues);
+      if (cfg.entryMarket) q('#rbEntryMarket').value = cfg.entryMarket;
+      if (cfg.shots) q('#rbShots').value = String(cfg.shots);
+      if (cfg.name && !q('#rbName').value.trim()) q('#rbName').value = cfg.name;
+      var keys = Object.keys(patternCells);
+      selectedPatternKey = keys[keys.length - 1] || '';
+      if (selectedPatternKey) applyPosition(patternCells[selectedPatternKey]);
+      renderPatternGrid(); renderPreview();
+      loadData({ teamA: '', teamB: '', game: '', odd: '' });
+    }
+  };
+
   setupPatternControls();
   populateNumbers();
   renderPatternGrid();
