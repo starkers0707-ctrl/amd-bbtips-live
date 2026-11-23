@@ -827,12 +827,36 @@
  },
  "o25": {
   "saldo": 35.9,
-  "ciclos": 32539,
+  "ciclos": 32543,
   "greens": 132,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32396,
+  "descartes": 32400,
   "historico": [
+   {
+    "quando": "2026-11-23T06:47:49.601Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Argentina) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:47:49.598Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RGRR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:47:49.591Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T06:47:49.585Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.93) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T06:47:05.898Z",
     "resultado": "GREEN_OBS",
@@ -4408,30 +4432,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T04:04:44.640Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T04:04:43.895Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T04:04:31.003Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T04:04:28.920Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4484,7 +4484,7 @@
   "_gatilhoAtual": {
    "tipo": "time",
    "chave": "Argentina",
-   "n": 9,
+   "n": 10,
    "start": 1
   },
   "dias": {
@@ -4630,7 +4630,12 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {}
+  "_obs": {
+   "cop": {
+    "desde": 1795416469601,
+    "gatilho": "time Argentina"
+   }
+  }
  },
  "ambas": {
   "saldo": -7.7,
@@ -5180,37 +5185,7 @@
    "ame": 1795414127660,
    "cam": 1795415506086
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "04:07",
-     "jogo": "ELC x BET",
-     "odd": 1.68
-    },
-    {
-     "h": "04:09",
-     "jogo": "RSO x SEV",
-     "odd": 1.7
-    },
-    {
-     "h": "04:11",
-     "jogo": "RMA x OSA",
-     "odd": 1.82
-    }
-   ],
-   "gatilho": "time SEV",
-   "alvo": {
-    "h": "04:07",
-    "jogo": "ELC x BET",
-    "odd": 1.68,
-    "unidades": 1,
-    "desde": 1795415508228
-   },
-   "iniciadoEm": 1795415508228
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
