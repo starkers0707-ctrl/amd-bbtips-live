@@ -776,9 +776,7 @@
     "detalhe": "mnd · POL x ENG @3.07 (tiro 2) · gatilho: placar 1-0 / 0-1"
    }
   ],
-  "consumidas": {
-   "lat": 1795394552074
-  },
+  "consumidas": {},
   "ciclo": null,
   "cooldown": {
    "mnd": 1795391133443,
@@ -812,12 +810,54 @@
  },
  "o25": {
   "saldo": 23,
-  "ciclos": 31004,
+  "ciclos": 31011,
   "greens": 123,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 30870,
+  "descartes": 30877,
   "historico": [
+   {
+    "quando": "2026-11-23T01:42:36.957Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :55) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:42:36.948Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:42:36.272Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :55) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:42:36.264Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:42:35.690Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :55) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:42:35.682Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T01:42:24.774Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :55) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T01:42:24.764Z",
     "resultado": "GREEN_OBS",
@@ -4375,48 +4415,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T01:01:19.786Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T01:01:03.479Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T01:01:03.476Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T01:01:03.016Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T01:01:03.012Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T01:00:36.887Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T01:00:36.883Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4596,9 +4594,9 @@
     "desde": 1795397705750,
     "gatilho": "odd 2.05"
    },
-   "mnd": {
-    "desde": 1795398144764,
-    "gatilho": "odd 1.83"
+   "ame": {
+    "desde": 1795398156956,
+    "gatilho": "coluna :55"
    }
   }
  },
@@ -5059,7 +5057,37 @@
    "mnd": 1795395814364,
    "cam": 1795397658700
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "22:46",
+     "jogo": "Bogota x Santiago",
+     "odd": 1.98
+    },
+    {
+     "h": "22:49",
+     "jogo": "La Boca x Sao Paulo",
+     "odd": 1.82
+    },
+    {
+     "h": "22:52",
+     "jogo": "Agua Branca x Buenos Aires",
+     "odd": 1.93
+    }
+   ],
+   "gatilho": "seq RRGGR",
+   "alvo": {
+    "h": "22:46",
+    "jogo": "Bogota x Santiago",
+    "odd": 1.98,
+    "unidades": 1,
+    "desde": 1795398144790
+   },
+   "iniciadoEm": 1795398144790
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795257582328,
@@ -5071,9 +5099,9 @@
    "ame": 1795392178567
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.1",
-   "n": 10,
+   "tipo": "seq",
+   "chave": "RRGGR",
+   "n": 16,
    "start": 1
   },
   "dias": {
