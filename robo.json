@@ -4418,7 +4418,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "01:04",
+     "jogo": "URY x SPA",
+     "odd": 1.94
+    },
+    {
+     "h": "01:06",
+     "jogo": "COL x POR",
+     "odd": 1.88
+    },
+    {
+     "h": "01:08",
+     "jogo": "CHL x ARG",
+     "odd": 1.87
+    }
+   ],
+   "gatilho": "placar goleada (3+)",
+   "alvo": {
+    "h": "01:04",
+    "jogo": "URY x SPA",
+    "odd": 1.94,
+    "unidades": 1,
+    "desde": 1795406521843
+   },
+   "iniciadoEm": 1795406521843
+  },
   "cooldown": {
    "cam": 1795399483010,
    "eng": 1795383709617,
@@ -4430,10 +4460,10 @@
    "ame": 1795400659327
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":17",
-   "n": 23,
-   "start": 6
+   "tipo": "placar",
+   "chave": "goleada (3+)",
+   "n": 9,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
