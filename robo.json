@@ -795,7 +795,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:08",
+     "jogo": "LIV x IPS",
+     "odd": 3.02
+    },
+    {
+     "h": "04:10",
+     "jogo": "COV x BRE",
+     "odd": 3.3
+    },
+    {
+     "h": "04:12",
+     "jogo": "NOT x BHA",
+     "odd": 3.32
+    }
+   ],
+   "gatilho": "time COV",
+   "alvo": {
+    "h": "04:08",
+    "jogo": "LIV x IPS",
+    "odd": 3.02,
+    "unidades": 1,
+    "desde": 1795417466921
+   },
+   "iniciadoEm": 1795417466921
+  },
   "cooldown": {
    "mnd": 1795391133443,
    "lat": 1795394552074,
@@ -805,10 +835,10 @@
    "bra": 1795277376896
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "empate 1-1",
+   "tipo": "time",
+   "chave": "COV",
    "n": 8,
-   "start": 1
+   "start": 2
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -833,12 +863,24 @@
  },
  "o25": {
   "saldo": 37.4,
-  "ciclos": 32751,
+  "ciclos": 32753,
   "greens": 133,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 32607,
+  "descartes": 32609,
   "historico": [
+   {
+    "quando": "2026-11-23T07:04:26.940Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:04:19.853Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T07:04:19.850Z",
     "resultado": "GREEN_OBS",
@@ -4426,18 +4468,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T05:50:15.735Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T05:50:04.393Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4642,7 +4672,7 @@
     "gatilho": "time Chelsea"
    },
    "spa": {
-    "desde": 1795417459849,
+    "desde": 1795417466940,
     "gatilho": "time MLG"
    }
   }
