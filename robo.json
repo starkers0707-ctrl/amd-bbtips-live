@@ -857,12 +857,48 @@
  },
  "o25": {
   "saldo": 37.4,
-  "ciclos": 33451,
+  "ciclos": 33457,
   "greens": 133,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 33307,
+  "descartes": 33313,
   "historico": [
+   {
+    "quando": "2026-11-23T07:28:34.683Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Argentina) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:28:34.677Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time POR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:28:34.673Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:28:33.911Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Argentina) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:28:33.904Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time POR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T07:28:33.899Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T07:28:24.272Z",
     "resultado": "GREEN_OBS",
@@ -4426,42 +4462,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time BOL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:09:41.897Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time POL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:09:41.893Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:09:41.245Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:09:41.240Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time POL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:09:41.236Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:09:40.489Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4471,8 +4471,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "04:27",
@@ -4492,13 +4492,21 @@
    ],
    "gatilho": "time MLG",
    "alvo": {
-    "h": "04:27",
-    "jogo": "OSA x ATM",
-    "odd": 1.84,
-    "unidades": 1,
-    "desde": 1795418428445
+    "h": "04:29",
+    "jogo": "RST x MLG",
+    "odd": 1.94,
+    "unidades": 2,
+    "desde": 1795418914667
    },
-   "iniciadoEm": 1795418428445
+   "iniciadoEm": 1795418428445,
+   "tiros": [
+    {
+     "h": "04:27",
+     "jogo": "OSA x ATM",
+     "odd": 1.84,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795416030942,
@@ -4670,7 +4678,7 @@
     "gatilho": "placar acima de 1-0 (2-0)"
    },
    "cop": {
-    "desde": 1795418904271,
+    "desde": 1795418914682,
     "gatilho": "time Argentina"
    }
   }
