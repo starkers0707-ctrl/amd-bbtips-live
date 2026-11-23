@@ -1002,12 +1002,30 @@
  },
  "o25": {
   "saldo": 19.3,
-  "ciclos": 43968,
+  "ciclos": 43971,
   "greens": 152,
   "redsCiclo": 16,
   "aborts": 0,
-  "descartes": 43800,
+  "descartes": 43803,
   "historico": [
+   {
+    "quando": "2026-11-23T13:08:08.289Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T13:08:08.284Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T13:07:44.466Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T13:07:44.461Z",
     "resultado": "GREEN_OBS",
@@ -4589,24 +4607,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho seq RRRGG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T12:55:32.046Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :58) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T12:55:32.042Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T12:55:32.037Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.91) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4657,9 +4657,9 @@
    "cop": 1795434093725
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.3",
-   "n": 8,
+   "tipo": "coluna",
+   "chave": ":12",
+   "n": 10,
    "start": 1
   },
   "dias": {
@@ -4810,9 +4810,9 @@
     "desde": 1795439036164,
     "gatilho": "odd 1.91"
    },
-   "cam": {
-    "desde": 1795439264461,
-    "gatilho": "odd 2.3"
+   "mnd": {
+    "desde": 1795439288289,
+    "gatilho": "time SPA"
    }
   }
  },
