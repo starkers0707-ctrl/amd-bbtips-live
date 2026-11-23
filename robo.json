@@ -1007,12 +1007,54 @@
  },
  "o25": {
   "saldo": 22,
-  "ciclos": 50671,
+  "ciclos": 50678,
   "greens": 161,
   "redsCiclo": 17,
   "aborts": 0,
-  "descartes": 50493,
+  "descartes": 50500,
   "historico": [
+   {
+    "quando": "2026-11-23T15:47:03.149Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T15:46:35.906Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :58) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T15:46:35.903Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.47) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T15:46:35.900Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T15:46:35.897Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T15:46:35.055Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :58) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T15:46:35.047Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.47) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T15:46:35.042Z",
     "resultado": "GREEN_OBS",
@@ -4570,48 +4612,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:30:04.803Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :45) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:30:03.930Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :40) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:30:03.927Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :36) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:30:03.923Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.47) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:30:03.919Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time VIT) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:30:03.913Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :45) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T15:29:47.889Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4620,7 +4620,37 @@
    "cam": 1795447543070,
    "ame": 1795447787862
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "12:50",
+     "jogo": "CRM x VIT",
+     "odd": 1.91
+    },
+    {
+     "h": "12:53",
+     "jogo": "ZEI x MEN",
+     "odd": 1.93
+    },
+    {
+     "h": "12:56",
+     "jogo": "CUI x GOI",
+     "odd": 1.92
+    }
+   ],
+   "gatilho": "time VIT",
+   "alvo": {
+    "h": "12:50",
+    "jogo": "CRM x VIT",
+    "odd": 1.91,
+    "unidades": 1,
+    "desde": 1795448795888
+   },
+   "iniciadoEm": 1795448795888
+  },
   "cooldown": {
    "cam": 1795447543070,
    "eng": 1795383709617,
@@ -4786,9 +4816,9 @@
     "desde": 1795448627347,
     "gatilho": "coluna :03"
    },
-   "lat": {
-    "desde": 1795448795042,
-    "gatilho": "odd 1.84"
+   "bra": {
+    "desde": 1795448823149,
+    "gatilho": "time VIT"
    }
   }
  },
