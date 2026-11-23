@@ -857,12 +857,30 @@
  },
  "o25": {
   "saldo": 31.9,
-  "ciclos": 34198,
+  "ciclos": 34201,
   "greens": 135,
   "redsCiclo": 12,
   "aborts": 0,
-  "descartes": 34051,
+  "descartes": 34054,
   "historico": [
+   {
+    "quando": "2026-11-23T08:00:30.830Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time LEV) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:00:28.652Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time ATL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:00:28.647Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T08:00:28.644Z",
     "resultado": "GREEN_OBS",
@@ -4444,24 +4462,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Argentina) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:35:21.901Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:35:12.520Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:35:12.517Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Argentina) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4512,10 +4512,10 @@
    "cop": 1795416587921
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "Belo Horizonte",
-   "n": 10,
-   "start": 4
+   "tipo": "seq",
+   "chave": "RRRR",
+   "n": 9,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -4670,7 +4670,7 @@
     "gatilho": "time Belo Horizonte"
    },
    "spa": {
-    "desde": 1795420828644,
+    "desde": 1795420830829,
     "gatilho": "time LEV"
    }
   }
