@@ -918,12 +918,24 @@
  },
  "o25": {
   "saldo": 21.7,
-  "ciclos": 39708,
+  "ciclos": 39710,
   "greens": 147,
   "redsCiclo": 15,
   "aborts": 0,
-  "descartes": 39546,
+  "descartes": 39548,
   "historico": [
+   {
+    "quando": "2026-11-23T11:28:02.974Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T11:28:00.905Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T11:28:00.900Z",
     "resultado": "GREEN_OBS",
@@ -4511,18 +4523,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.91) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:13:31.206Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:13:29.258Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4532,7 +4532,37 @@
    "mnd": 1795433267330,
    "bra": 1795433280877
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "08:31",
+     "jogo": "ATH x OSA",
+     "odd": 1.95
+    },
+    {
+     "h": "08:33",
+     "jogo": "ALV x BET",
+     "odd": 1.89
+    },
+    {
+     "h": "08:35",
+     "jogo": "SEV x RAY",
+     "odd": 1.93
+    }
+   ],
+   "gatilho": "odd 1.89",
+   "alvo": {
+    "h": "08:31",
+    "jogo": "ATH x OSA",
+    "odd": 1.95,
+    "unidades": 1,
+    "desde": 1795433282966
+   },
+   "iniciadoEm": 1795433282966
+  },
   "cooldown": {
    "cam": 1795432255029,
    "eng": 1795383709617,
@@ -4702,9 +4732,9 @@
     "desde": 1795433013721,
     "gatilho": "time SPA"
    },
-   "lat": {
-    "desde": 1795433280899,
-    "gatilho": "seq GRGG"
+   "spa": {
+    "desde": 1795433282974,
+    "gatilho": "odd 1.89"
    }
   }
  },
