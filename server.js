@@ -569,6 +569,43 @@ async function tgEnviaDono(dono, destino, texto) {
   const r = await tgApi("sendMessage", { chat_id: alvo, text: texto, disable_web_page_preview: true });
   if (!r.ok) console.log("[robos] telegram falhou:", r.description);
 }
+const ROBO_LIGA_NOME = { eng: "Inglaterra", ita: "Itália", spa: "Espanha", mnd: "Mundo", bra: "Brasil", lat: "América Latina", cam: "Liga dos Campeões", cop: "Copa do Mundo", ame: "América" };
+const ROBO_ODD = { "Over 0.5": "odd_over_0.5", "Over 1.5": "odd_over_1.5", "Over 2.5": "odd_over_2.5", "Over 3.5": "odd_over_3.5", "Under 0.5": "odd_under_0.5", "Under 1.5": "odd_under_1.5", "Under 2.5": "odd_under_2.5", "Under 3.5": "odd_under_3.5", "Ambas Marcam (Sim)": "odd_ambas_sim", "Ambas Marcam (Não)": "odd_ambas_nao", "5+ Gols": "odd_total_gols_extatos_5", "Casa FT": "odd_resultado_final_casa", "Empate FT": "odd_resultado_final_empate", "Fora FT": "odd_resultado_final_fora" };
+const tiroNome = n => (Number(n) <= 1 ? "SG" : "G" + (Number(n) - 1));
+const hhmm = (h, m) => (Number.isFinite(Number(h)) && Number.isFinite(Number(m)) ? String(h).padStart(2, "0") + ":" + String(m).padStart(2, "0") : "--:--");
+function textoSinal(s, st) {
+  const res = (st.signals || []).filter(x => x.robotId === s.robotId && x.status !== "PENDENTE");
+  const g = res.filter(x => x.status === "GREEN").length, r = res.filter(x => x.status === "RED").length;
+  const pct = g + r ? Math.round(g / (g + r) * 100) : 0;
+  const tentativas = (s.attempts || []).slice().sort((a, b) => a.number - b.number);
+  let topo;
+  if (s.status === "GREEN") topo = "🟩 GREEN " + (Number(s.winningShot || 1) <= 1 ? "de primeira (SG)" : "no " + tiroNome(s.winningShot));
+  else if (s.status === "RED") topo = "🟥 RED";
+  else topo = "⏳ ENTRADA · " + tiroNome(s.currentShot || 1);
+  const linhas = tentativas.map(a => `${tiroNome(a.number)} ${a.gameHour || "--:--"} · ${String(a.score || "").replace("-", "–")} ${a.status === "GREEN" ? "🟩" : "🟥"}`);
+  if (s.status === "PENDENTE" && !s.awaitingNext) linhas.push(`${tiroNome(s.currentShot || 1)} ${hhmm(s.gameHour, s.gameMinute)} · ${s.timeA} x ${s.timeB} ⏳`);
+  if (s.status === "PENDENTE" && s.awaitingNext) linhas.push(`${tiroNome(s.currentShot || 1)} · aguardando o próximo jogo ⏳`);
+  const odd = Number(s.odd) > 1 ? " @" + Number(s.odd).toFixed(2).replace(".", ",") : "";
+  return `${topo}\n🤖 ${s.robotName || "Robô"}\n🏆 ${ROBO_LIGA_NOME[s.league] || String(s.league || "").toUpperCase()} · 💚 AMD Live\n\n🎯 ${s.market}${odd}\n${linhas.join("\n")}\n\n✅ ${g}  ❌ ${r}  📈 ${pct}%`;
+}
+function alvosDono(dono, destino) {
+  const d = tgChats[dono]; if (!d || destino === "site") return [];
+  if (String(destino || "").startsWith("canal:")) { const c = (d.canais || []).find(x => String(x.chat) === destino.slice(6)); return c ? [c.chat] : []; }
+  return d.chat ? [d.chat] : [];
+}
+async function sinalTelegram(dono, destino, s, st) {
+  const texto = textoSinal(s, st);
+  s.tg = s.tg || {};
+  for (const chat of alvosDono(dono, destino)) {
+    const msg = s.tg[chat];
+    if (msg) {
+      const r = await tgApi("editMessageText", { chat_id: chat, message_id: msg, text: texto, disable_web_page_preview: true });
+      if (r.ok || /not modified/i.test(r.description || "")) continue;
+    }
+    const r = await tgApi("sendMessage", { chat_id: chat, text: texto, disable_web_page_preview: true });
+    if (r.ok) s.tg[chat] = r.result.message_id; else console.log("[robos] telegram falhou:", r.description);
+  }
+}
 let robosRodando = false;
 async function robosTick() {
   if (!RM || robosRodando) return;
@@ -588,16 +625,8 @@ async function robosTick() {
       const robots = (st.robots || []).filter(r => r && r.active && Array.isArray(r.pattern));
       const porId = id => (st.robots || []).find(r => String(r.id) === String(id)) || {};
       const follow = RM.reconcileSignals(st.signals, data) || [];
-      for (const f of follow) {
-        const s = f.signal, h = RM.gameHour({ hora: s.gameHour, minuto: s.gameMinute, slot_em: s.gameSlot });
-        await tgEnviaDono(dono, porId(s.robotId).destino, `🤖 ${s.robotName || "Robô manual"} · PRÓXIMO TIRO\n${String(s.league || "").toUpperCase()}\n${s.market}\n${s.timeA} x ${s.timeB}\nTIRO ${f.shot}/${Math.max(1, Number(s.shots || 1))}\njogo ${h}`);
-        robosSujo = true;
-      }
-      for (const s of follow.resolved || []) {
-        const g = s.status === "GREEN";
-        await tgEnviaDono(dono, porId(s.robotId).destino, `${g ? "✅ GREEN" : "❌ RED"} · ${s.robotName || "Robô manual"}\n${String(s.league || "").toUpperCase()}\n${s.market}\n${s.timeA} x ${s.timeB}\nplacar ${s.score || "?"}${g ? "\ntiro " + (s.winningShot || 1) : ""}`);
-        robosSujo = true;
-      }
+      const mexidos = new Set([...follow.map(f => f.signal), ...(follow.resolved || [])]);
+      for (const s of mexidos) { await sinalTelegram(dono, porId(s.robotId).destino, s, st); robosSujo = true; }
       for (const robot of robots) {
         for (const liga of RM.robotLeagues(robot)) {
           const all = data[liga] || [];
@@ -611,10 +640,11 @@ async function robosTick() {
           st.sent.unshift(key); st.sent = st.sent.slice(0, 300);
           const max = Math.max(1, Number(robot.shots || 1));
           st.signals.unshift({ id: key, key, robotId: robot.id, robotName: robot.name || "Robô manual", league: liga, market: mk, shots: max, currentShot: 1, attempts: [], cycleVersion: 2,
-            timeA: up.time_a || "?", timeB: up.time_b || "?", gameId: up.id || "", gameSlot: up.slot_em || up.criado_em || "", gameHour: up.hora, gameMinute: up.minuto, status: "PENDENTE", sentAt: new Date().toISOString(), score: "" });
+            timeA: up.time_a || "?", timeB: up.time_b || "?", gameId: up.id || "", gameSlot: up.slot_em || up.criado_em || "", gameHour: up.hora, gameMinute: up.minuto, status: "PENDENTE", sentAt: new Date().toISOString(), score: "",
+            odd: Number((up.odds || {})[ROBO_ODD[mk]]) || null });
           st.signals = st.signals.slice(0, 200);
           robosSujo = true;
-          await tgEnviaDono(dono, robot.destino, `🤖 ${robot.name || "Robô manual"} · ENTRADA\n${liga.toUpperCase()}\n${mk}\n${up.time_a || "?"} x ${up.time_b || "?"}\nTIRO 1/${max}\njogo ${RM.gameHour(up)}${mp.text ? "\n" + mp.text : ""}`);
+          await sinalTelegram(dono, robot.destino, st.signals[0], st);
           console.log(`[robos] entrada ${robot.name} ${liga} ${mk} ${up.time_a} x ${up.time_b}`);
         }
       }
