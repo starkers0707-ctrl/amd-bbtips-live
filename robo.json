@@ -870,7 +870,7 @@
    "tipo": "time",
    "chave": "NAC",
    "n": 10,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -891,12 +891,36 @@
  },
  "o25": {
   "saldo": 25.9,
-  "ciclos": 35122,
+  "ciclos": 35126,
   "greens": 136,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 34973,
+  "descartes": 34977,
   "historico": [
+   {
+    "quando": "2026-11-23T08:33:35.229Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:33:35.222Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time ARG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:33:29.235Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:33:29.230Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T08:33:29.225Z",
     "resultado": "GREEN_OBS",
@@ -4472,30 +4496,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:10:04.382Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:10:04.379Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time ARG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:10:04.376Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time LEV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:10:03.706Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4670,9 +4670,9 @@
     "desde": 1795417126160,
     "gatilho": "time Chelsea"
    },
-   "mnd": {
-    "desde": 1795422809225,
-    "gatilho": "time ARG"
+   "lat": {
+    "desde": 1795422815228,
+    "gatilho": "time NAC"
    }
   }
  },
