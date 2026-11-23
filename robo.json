@@ -880,12 +880,18 @@
  },
  "o25": {
   "saldo": 37.4,
-  "ciclos": 33300,
+  "ciclos": 33301,
   "greens": 133,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 33156,
+  "descartes": 33157,
   "historico": [
+   {
+    "quando": "2026-11-23T07:24:03.075Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time MLG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T07:23:37.894Z",
     "resultado": "GREEN_OBS",
@@ -4479,12 +4485,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:01:03.127Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.93) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4692,9 +4692,9 @@
     "desde": 1795418287190,
     "gatilho": "placar acima de 1-0 (2-0)"
    },
-   "cop": {
-    "desde": 1795418617894,
-    "gatilho": "time Argentina"
+   "spa": {
+    "desde": 1795418643075,
+    "gatilho": "time MLG"
    }
   }
  },
@@ -5321,7 +5321,7 @@
    "tipo": "time",
    "chave": "Penarol",
    "n": 10,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-20": 0,
