@@ -1049,12 +1049,24 @@
  },
  "o25": {
   "saldo": -6.1,
-  "ciclos": 66691,
+  "ciclos": 66693,
   "greens": 182,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 66485,
+  "descartes": 66487,
   "historico": [
+   {
+    "quando": "2026-11-23T23:06:09.216Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :11) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T23:06:08.562Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :11) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T23:05:46.146Z",
     "resultado": "GREEN_OBS",
@@ -4642,18 +4654,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:46:50.263Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T22:46:50.260Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4867,8 +4867,12 @@
     "desde": 1795475068948,
     "gatilho": "coluna :09"
    },
+   "ame": {
+    "desde": 1795475146151,
+    "gatilho": "odd 2.1"
+   },
    "lat": {
-    "desde": 1795475146146,
+    "desde": 1795475169216,
     "gatilho": "coluna :11"
    }
   }
@@ -6027,7 +6031,37 @@
    "cam": 1795474208815,
    "mnd": 1795475133250
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "20:15",
+     "jogo": "England x Brazil",
+     "odd": 1.88
+    },
+    {
+     "h": "20:18",
+     "jogo": "Argentina x France",
+     "odd": 1.93
+    },
+    {
+     "h": "20:21",
+     "jogo": "Croatia x Wales",
+     "odd": 2.19
+    }
+   ],
+   "gatilho": "odd 1.93",
+   "alvo": {
+    "h": "20:15",
+    "jogo": "England x Brazil",
+    "odd": 1.88,
+    "unidades": 1,
+    "desde": 1795475146163
+   },
+   "iniciadoEm": 1795475146163
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
