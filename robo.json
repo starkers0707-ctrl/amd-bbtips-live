@@ -1,12 +1,18 @@
 {
  "o35": {
   "saldo": 25.1,
-  "ciclos": 141,
+  "ciclos": 142,
   "greens": 55,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 62,
+  "descartes": 63,
   "historico": [
+   {
+    "quando": "2026-11-23T10:20:05.929Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho seq RRRRR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T10:03:51.299Z",
     "resultado": "GREEN",
@@ -880,10 +886,6 @@
    "2026-11-23": 22.2
   },
   "_obs": {
-   "bra": {
-    "desde": 1795427851246,
-    "gatilho": "seq RRRRR"
-   },
    "cam": {
     "desde": 1795384819317,
     "gatilho": "odd 5.06"
@@ -892,12 +894,30 @@
  },
  "o25": {
   "saldo": 24.3,
-  "ciclos": 37286,
+  "ciclos": 37289,
   "greens": 142,
   "redsCiclo": 14,
   "aborts": 0,
-  "descartes": 37130,
+  "descartes": 37133,
   "historico": [
+   {
+    "quando": "2026-11-23T10:20:05.945Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.88) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:20:03.535Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T10:20:03.529Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T10:20:03.521Z",
     "resultado": "GREEN_OBS",
@@ -4479,24 +4499,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:56:06.926Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:56:06.921Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T09:56:04.215Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Medellin) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4557,10 +4559,10 @@
    "cop": 1795425800854
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.91",
+   "tipo": "time",
+   "chave": "GOI",
    "n": 8,
-   "start": 5
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
@@ -4706,9 +4708,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "lat": {
-    "desde": 1795429203521,
-    "gatilho": "time NAC"
+   "mnd": {
+    "desde": 1795429205944,
+    "gatilho": "odd 1.88"
    }
   }
  },
