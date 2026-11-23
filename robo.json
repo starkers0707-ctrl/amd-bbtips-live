@@ -965,12 +965,36 @@
  },
  "o25": {
   "saldo": 24.5,
-  "ciclos": 41899,
+  "ciclos": 41903,
   "greens": 150,
   "redsCiclo": 15,
   "aborts": 0,
-  "descartes": 41734,
+  "descartes": 41738,
   "historico": [
+   {
+    "quando": "2026-11-23T12:19:33.140Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:19:27.704Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:19:27.698Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :21) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T12:19:27.695Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T12:19:27.689Z",
     "resultado": "GREEN_OBS",
@@ -4546,30 +4570,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T12:08:34.680Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T12:08:34.675Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :12) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T12:08:34.671Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T12:08:34.663Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time PAR) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4771,9 +4771,13 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "bra": {
-    "desde": 1795436367688,
-    "gatilho": "time PAR"
+   "cop": {
+    "desde": 1795436367703,
+    "gatilho": "coluna :36"
+   },
+   "spa": {
+    "desde": 1795436373140,
+    "gatilho": "odd 1.89"
    }
   }
  },
