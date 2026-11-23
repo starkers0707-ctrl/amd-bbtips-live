@@ -885,13 +885,55 @@
   }
  },
  "o25": {
-  "saldo": 31.9,
-  "ciclos": 34696,
-  "greens": 135,
+  "saldo": 32.9,
+  "ciclos": 34703,
+  "greens": 136,
   "redsCiclo": 12,
   "aborts": 0,
-  "descartes": 34549,
+  "descartes": 34555,
   "historico": [
+   {
+    "quando": "2026-11-23T08:16:56.939Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time ARG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:16:56.933Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time LEV) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:16:31.256Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:16:31.250Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:16:31.244Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time ARG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:16:31.240Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time LEV) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:16:31.234Z",
+    "resultado": "GREEN",
+    "unidades": 1,
+    "detalhe": "ita · MIL x COM @1.95 (tiro 1) · gatilho: time BOL"
+   },
    {
     "quando": "2026-11-23T08:16:30.418Z",
     "resultado": "GREEN_OBS",
@@ -4449,90 +4491,49 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time LEV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:56:14.554Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:56:14.547Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:56:14.544Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time LEV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:56:08.578Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:56:08.572Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SWE) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:56:08.569Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time LEV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T07:56:08.009Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795419149441,
    "mnd": 1795419692799,
-   "lat": 1795419936275
+   "lat": 1795419936275,
+   "ita": 1795421791233
   },
   "ciclo": {
-   "liga": "ita",
+   "liga": "ame",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "05:15",
-     "jogo": "MIL x COM",
-     "odd": 1.95
-    },
-    {
-     "h": "05:17",
-     "jogo": "LEC x BOL",
-     "odd": 1.88
-    },
-    {
      "h": "05:19",
-     "jogo": "FRO x ATA",
-     "odd": 1.8
+     "jogo": "Asuncion x Itaquera",
+     "odd": 2.23
+    },
+    {
+     "h": "05:22",
+     "jogo": "Sao Paulo x Belo Horizonte",
+     "odd": 2
+    },
+    {
+     "h": "05:25",
+     "jogo": "Santiago x Montevideo",
+     "odd": 2.37
     }
    ],
-   "gatilho": "time BOL",
+   "gatilho": "time Belo Horizonte",
    "alvo": {
-    "h": "05:15",
-    "jogo": "MIL x COM",
-    "odd": 1.95,
+    "h": "05:19",
+    "jogo": "Asuncion x Itaquera",
+    "odd": 2.23,
     "unidades": 1,
-    "desde": 1795421133222
+    "desde": 1795421816922
    },
-   "iniciadoEm": 1795421133222
+   "iniciadoEm": 1795421816922
   },
   "cooldown": {
    "cam": 1795416030942,
    "eng": 1795383709617,
-   "ita": 1795411227807,
+   "ita": 1795421791233,
    "spa": 1795419149441,
    "lat": 1795419936275,
    "bra": 1795380169712,
@@ -4551,7 +4552,7 @@
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
-   "2026-11-23": 4.2
+   "2026-11-23": 5.2
   },
   "_obs": {}
  },
@@ -4694,9 +4695,9 @@
     "desde": 1795417126160,
     "gatilho": "time Chelsea"
    },
-   "ame": {
-    "desde": 1795421790417,
-    "gatilho": "time Belo Horizonte"
+   "mnd": {
+    "desde": 1795421816939,
+    "gatilho": "time ARG"
    }
   }
  },
