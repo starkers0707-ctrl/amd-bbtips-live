@@ -293,6 +293,16 @@
     try{if('serviceWorker' in navigator){var reg=await navigator.serviceWorker.register('/sw-alertas.js');await reg.showNotification(title,options);return;}new Notification(title,options);}catch(_){}
   }
   var lastSync='';
+  /* Robos criados antes de 23/11 vinham com as metricas ligadas (limiar 65)
+     sem o usuario escolher. Isso barrava quase todas as entradas. */
+  function migraMetricas(){
+    try{
+      var robots=read(ROBOTS_KEY),mudou=false;
+      robots.forEach(function(r){if(r&&!r.metricasEscolhidas){r.threshold=0;r.profile='desligado';r.metricasEscolhidas=true;mudou=true;}});
+      if(mudou){localStorage.setItem(ROBOTS_KEY,JSON.stringify(robots));try{root.dispatchEvent(new CustomEvent('amd:manual-status-changed'));}catch(_){}}
+    }catch(_){}
+  }
+  migraMetricas();
   function syncRobots(){
     try{
       var robots=read(ROBOTS_KEY),body=JSON.stringify({robots:robots});

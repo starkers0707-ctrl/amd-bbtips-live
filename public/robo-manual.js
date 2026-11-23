@@ -650,6 +650,7 @@
       odd: q('#rbOdd').value,
       oddLabel: q('#rbOdd').selectedOptions[0] ? q('#rbOdd').selectedOptions[0].textContent : '',
       destino: q('#rbDestino').value || 'todos',
+      metricasEscolhidas: true,
       entryMarket: q('#rbEntryMarket').value,
       shots: Number(q('#rbShots').value || 1),
       active: q('#rbActive').checked,
