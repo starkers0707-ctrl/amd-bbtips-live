@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Testador de padrões · AMD Live</title>
+<style>
+:root{--bg:#0a0e14;--card:#121821;--line:#232d3b;--txt:#e6edf5;--mut:#8593a6;--ok:#2fd27a;--bad:#ff5d5d;--warn:#f5b342;--acc:#3aa0ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.45 system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:22px 18px 60px}
+a{color:var(--acc)}h1{font-size:20px;margin:0 0 4px}.sub{color:var(--mut);font-size:13px;margin-bottom:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+label{display:block;color:var(--mut);font-size:12px;margin-bottom:4px}
+input,select{width:100%;background:#0e141c;border:1px solid var(--line);color:var(--txt);padding:9px 10px;border-radius:9px;font:inherit}
+.btn{background:linear-gradient(135deg,#2fd27a,#20a862);color:#04130a;border:0;padding:10px 18px;border-radius:10px;font-weight:700;cursor:pointer;font:inherit;font-weight:700}
+.tabs{display:flex;gap:6px;margin-bottom:12px}.tab{padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--mut);cursor:pointer;font:inherit}
+.tab.on{background:#1b2735;color:var(--txt)}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px;border-bottom:1px solid var(--line);text-align:right}th:first-child,td:first-child{text-align:left}
+th{color:var(--mut);font-weight:600}.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+.big{font-size:15px;font-weight:700}.note{color:var(--mut);font-size:12px;margin-top:10px}
+.verd{padding:12px 14px;border-radius:10px;margin-top:12px;font-weight:600}
+.verd.ok{background:#0f2a1c;border:1px solid #1f6b42}.verd.bad{background:#2a1212;border:1px solid #6b1f1f}.verd.warn{background:#2a220e;border:1px solid #6b561f}
+.hid{display:none}
+</style></head><body><div class="wrap">
+<a href="index.html">← voltar</a>
+<h1>⚗ Testador de padrões</h1>
+<div class="sub">Testa uma leitura (sequência da grade ou cruzamento do gráfico) nos jogos reais. Divide o histórico em duas metades: <b>treino</b> (onde o padrão é "achado") e <b>teste</b> (jogos que o padrão não viu). Se for movimento real, funciona nas duas.</div>
+
+<div class="card">
+  <div class="tabs"><button class="tab on" data-t="seq">Sequência da grade</button><button class="tab" data-t="cross">Cruzamento do gráfico</button></div>
+  <div class="grid">
+    <div><label>Liga</label><select id="liga"><option value="eng">ENG</option><option value="ita">ITA</option><option value="spa">SPA</option><option value="mnd">MND</option><option value="bra">BRA</option><option value="lat">LAT</option><option value="cam">CAM</option><option value="cop">COP</option><option value="ame">AME</option><option value="todas">Todas Vavada</option></select></div>
+    <div><label>Mercado</label><select id="mkt"><option value="o25">Over 2.5</option><option value="o35">Over 3.5</option><option value="o15">Over 1.5</option><option value="ambs">Ambas Sim</option><option value="ge5">5+ gols</option></select></div>
+    <div><label>Tiros (jogos seguintes)</label><select id="tiros"><option>1</option><option>2</option><option selected>3</option></select></div>
+    <div><label>Gestão</label><select id="gale"><option value="1">Gale (recupera +1u)</option><option value="0">Valor fixo 1u</option></select></div>
+  </div>
+  <div class="grid" id="fSeq" style="margin-top:10px">
+    <div style="grid-column:span 2"><label>Sequência (G = pagou, R = não pagou, do mais antigo ao último)</label><input id="seq" value="RRR" placeholder="ex: GGRRR"></div>
+  </div>
+  <div class="grid hid" id="fCross" style="margin-top:10px">
+    <div><label>Tipo</label><select id="ctipo"><option value="golden">Golden (cruza p/ cima)</option><option value="death">Death (cruza p/ baixo)</option></select></div>
+    <div><label>Janela % (jogos)</label><input id="jan" type="number" value="30" min="5" max="300"></div>
+    <div><label>Média rápida</label><input id="m1" type="number" value="9" min="2" max="100"></div>
+    <div><label>Média lenta</label><input id="m2" type="number" value="21" min="3" max="200"></div>
+    <div><label>Só se % abaixo de (opcional)</label><input id="abaixo" type="number" placeholder="ex: 45"></div>
+  </div>
+  <div style="margin-top:14px"><button class="btn" id="go">Testar</button> <span id="st" class="note"></span></div>
+</div>
+
+<div class="card hid" id="out"></div>
+<div class="note">Os jogos da Kiron são sorteados: um padrão que só funcionou no treino é coincidência. Taxa "acaso" = o que se acertaria entrando em qualquer jogo, sem padrão.</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+let modo='seq';
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t===b));modo=b.dataset.t;$('fSeq').classList.toggle('hid',modo!=='seq');$('fCross').classList.toggle('hid',modo!=='cross');});
+const cache={};
+async function historico(liga){
+  if(cache[liga])return cache[liga];
+  const r=await fetch('/api/historico?liga='+liga,{credentials:'same-origin'});
+  if(r.status===401){location.href='login';return[]}
+  const j=await r.json();
+  return cache[liga]=(j.jogos||[]).map(x=>({t:x[0],a:x[1],b:x[2],odd:{o15:x[3],o25:x[4],o35:x[5],ambs:x[6],ge5:x[7]}})).sort((p,q)=>p.t<q.t?-1:1);
+}
+const pagou=(g,m)=>{const s=g.a+g.b;return m==='o15'?s>1:m==='o25'?s>2:m==='o35'?s>3:m==='ge5'?s>=5:(g.a>0&&g.b>0)};
+const oddPad={o15:1.3,o25:1.88,o35:3.2,ambs:1.85,ge5:6};
+function sinais(jogos,m){
+  const h=jogos.map(g=>pagou(g,m));const out=[];
+  if(modo==='seq'){
+    const seq=$('seq').value.toUpperCase().replace(/[^GR]/g,'');if(!seq)return{h,out};const k=seq.length;
+    for(let i=k;i<h.length;i++){let ok=true;for(let j=0;j<k;j++){if((h[i-k+j]?'G':'R')!==seq[j]){ok=false;break}}if(ok)out.push(i);}
+  }else{
+    const J=+$('jan').value||30,m1=+$('m1').value||9,m2=+$('m2').value||21,ab=parseFloat($('abaixo').value);
+    const pct=[];for(let i=0;i<h.length;i++){if(i<J-1){pct.push(null);continue}let s=0;for(let j=i-J+1;j<=i;j++)s+=h[j];pct.push(s/J*100)}
+    const sma=(i,n)=>{if(i-n+1<0)return null;let s=0;for(let j=i-n+1;j<=i;j++){if(pct[j]==null)return null;s+=pct[j]}return s/n};
+    for(let i=1;i<h.length;i++){const f0=sma(i-1,m1),s0=sma(i-1,m2),f1=sma(i,m1),s1=sma(i,m2);if([f0,s0,f1,s1].includes(null))continue;
+      const cr=$('ctipo').value==='golden'?(f0<=s0&&f1>s1):(f0>=s0&&f1<s1);if(!cr)continue;if(!isNaN(ab)&&pct[i]>=ab)continue;out.push(i)}
+  }
+  return{h,out};
+}
+function avalia(jogos,h,idx,m,tiros,gale){
+  let n=0,ok=0,lucro=0,saldo=0,pico=0,queda=0;let livre=0;
+  for(const i of idx){if(i<livre)continue;let perdido=0,acertou=false,k=0,j=i+1;
+    while(k<tiros&&j<h.length){const o=jogos[j].odd[m]||oddPad[m];const st=gale?(perdido+1)/(o-1):1;
+      if(h[j]){lucro+=st*(o-1);saldo+=st*(o-1);acertou=true;j++;break}perdido+=st;lucro-=st;saldo-=st;j++;k++}
+    if(k===0&&!acertou&&j>=h.length)continue;
+    n++;ok+=acertou;livre=j;pico=Math.max(pico,saldo);queda=Math.max(queda,pico-saldo)}
+  return{n,ok,lucro,queda};
+}
+$('go').onclick=async()=>{
+  const m=$('mkt').value,tiros=+$('tiros').value,gale=$('gale').value==='1',sel=$('liga').value;
+  const ligas=sel==='todas'?['eng','ita','spa','mnd','bra','lat']:[sel];
+  $('st').textContent='Carregando jogos…';
+  const linhas=[];let T={tr:{n:0,ok:0,lucro:0,queda:0},te:{n:0,ok:0,lucro:0,queda:0}},tot=0,pagos=0;
+  for(const l of ligas){const jogos=await historico(l);if(jogos.length<60)continue;
+    const {h,out}=sinais(jogos,m);tot+=h.length;pagos+=h.filter(Boolean).length;const meio=Math.floor(h.length/2);
+    const tr=avalia(jogos,h,out.filter(i=>i<meio-tiros),m,tiros,gale),te=avalia(jogos,h,out.filter(i=>i>=meio),m,tiros,gale);
+    for(const [k,r] of [['tr',tr],['te',te]]){T[k].n+=r.n;T[k].ok+=r.ok;T[k].lucro+=r.lucro;T[k].queda=Math.max(T[k].queda,r.queda)}
+    linhas.push([l.toUpperCase(),jogos.length,tr,te]);}
+  $('st').textContent='';
+  if(!tot){$('out').classList.remove('hid');$('out').innerHTML='Sem jogos suficientes nessa liga.';return}
+  const base=pagos/tot,acaso=1-Math.pow(1-base,tiros);
+  const pc=r=>r.n?(r.ok/r.n*100).toFixed(1)+'%':'—';
+  const cls=r=>!r.n?'':(r.ok/r.n>acaso+0.03?'ok':r.ok/r.n<acaso-0.03?'bad':'');
+  let html='<div class="big">Resultado</div><table><tr><th>Liga</th><th>Jogos</th><th>Treino: entradas</th><th>Treino: acerto</th><th>Treino: lucro</th><th>Teste: entradas</th><th>Teste: acerto</th><th>Teste: lucro</th></tr>';
+  const fl=x=>(x>=0?'+':'')+x.toFixed(1)+'u';
+  for(const [l,n,tr,te] of linhas)html+=`<tr><td>${l}</td><td>${n}</td><td>${tr.n}</td><td class="${cls(tr)}">${pc(tr)}</td><td class="${tr.lucro>=0?'ok':'bad'}">${fl(tr.lucro)}</td><td>${te.n}</td><td class="${cls(te)}">${pc(te)}</td><td class="${te.lucro>=0?'ok':'bad'}">${fl(te.lucro)}</td></tr>`;
+  html+=`<tr><td><b>Total</b></td><td>${tot}</td><td>${T.tr.n}</td><td class="${cls(T.tr)}"><b>${pc(T.tr)}</b></td><td class="${T.tr.lucro>=0?'ok':'bad'}"><b>${fl(T.tr.lucro)}</b></td><td>${T.te.n}</td><td class="${cls(T.te)}"><b>${pc(T.te)}</b></td><td class="${T.te.lucro>=0?'ok':'bad'}"><b>${fl(T.te.lucro)}</b></td></tr></table>`;
+  html+=`<div class="note">Acaso (entrar em qualquer jogo com ${tiros} tiro${tiros>1?'s':''}): <b>${(acaso*100).toFixed(1)}%</b> · taxa do mercado no período: ${(base*100).toFixed(1)}% · pior queda no teste: ${T.te.queda.toFixed(1)}u</div>`;
+  const rTr=T.tr.n?T.tr.ok/T.tr.n:0,rTe=T.te.n?T.te.ok/T.te.n:0;let v,c;
+  if(T.te.n<30){v='Poucas entradas no teste ('+T.te.n+'): resultado ainda não diz nada. Aumente o período ou use "Todas Vavada".';c='warn'}
+  else if(rTe>acaso+0.04&&rTr>acaso+0.04&&T.te.lucro>0&&T.tr.lucro>0){v='Funcionou nas duas metades e deu lucro. Vale acompanhar por mais dias antes de confiar.';c='ok'}
+  else if(rTr>acaso+0.04&&rTe<=acaso+0.02){v='Funcionou só no treino e voltou ao acaso no teste: é coincidência, não movimento real.';c='bad'}
+  else {v='Fica perto do acaso: o padrão não muda a chance do próximo jogo.';c='bad'}
+  html+=`<div class="verd ${c}">${v}</div>`;
+  $('out').classList.remove('hid');$('out').innerHTML=html;
+};
+</script></body></html>

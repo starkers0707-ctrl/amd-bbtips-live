@@ -5368,6 +5368,13 @@ function versaoApp() {
   } catch (e) { _versaoApp = ""; }
   return _versaoApp;
 }
+// Historico compacto para o Testador de padroes (calculo no navegador).
+app.get("/api/historico", (req, res) => {
+  const liga = String(req.query.liga || "eng").toLowerCase();
+  const ga = ((store[liga] || {}).gamesAll || []).filter(g => g && g.inicio && g.a != null);
+  const o = g => g.odds || {};
+  res.json({ liga, jogos: ga.map(g => [g.inicio, g.a, g.b, o(g).o15 || null, o(g).o25 || null, o(g).o35 || null, o(g).ambs || null, o(g).ge5 || null]) });
+});
 app.get("/api/eventos", (req, res) => {
   res.writeHead(200, {
     "Content-Type": "text/event-stream",
