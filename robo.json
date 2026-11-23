@@ -776,8 +776,8 @@
   },
   "ciclo": {
    "liga": "lat",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "21:35",
@@ -797,11 +797,11 @@
    ],
    "gatilho": "seq GRGRR",
    "alvo": {
-    "h": "21:38",
-    "jogo": "FLU x ARG",
-    "odd": 3.34,
-    "unidades": 2,
-    "desde": 1795394188295
+    "h": "21:41",
+    "jogo": "PER x VAL",
+    "odd": 3.19,
+    "unidades": 4,
+    "desde": 1795394373959
    },
    "iniciadoEm": 1795393949090,
    "tiros": [
@@ -810,6 +810,12 @@
      "jogo": "IND x NAC",
      "odd": 3.31,
      "unidades": 1
+    },
+    {
+     "h": "21:38",
+     "jogo": "FLU x ARG",
+     "odd": 3.34,
+     "unidades": 2
     }
    ]
   },
@@ -845,12 +851,54 @@
  },
  "o25": {
   "saldo": 20,
-  "ciclos": 30113,
+  "ciclos": 30120,
   "greens": 120,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 29982,
+  "descartes": 29989,
   "historico": [
+   {
+    "quando": "2026-11-23T00:40:00.858Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T00:39:35.031Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :55) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T00:39:35.025Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T00:39:34.503Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :55) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T00:39:34.498Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T00:39:33.989Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :55) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T00:39:33.980Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T00:39:33.493Z",
     "resultado": "GREEN_OBS",
@@ -4408,48 +4456,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T23:51:04.119Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T23:50:56.679Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T23:50:30.082Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T23:50:29.526Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T23:50:12.598Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T23:50:11.936Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T23:50:11.329Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4650,9 +4656,9 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
-   "ame": {
-    "desde": 1795394373493,
-    "gatilho": "coluna :55"
+   "mnd": {
+    "desde": 1795394400857,
+    "gatilho": "coluna :56"
    }
   }
  },
