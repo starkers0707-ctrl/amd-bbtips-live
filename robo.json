@@ -880,12 +880,24 @@
  },
  "o25": {
   "saldo": 27.6,
-  "ciclos": 35488,
+  "ciclos": 35490,
   "greens": 138,
   "redsCiclo": 13,
   "aborts": 0,
-  "descartes": 35337,
+  "descartes": 35339,
   "historico": [
+   {
+    "quando": "2026-11-23T08:56:08.979Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T08:56:08.975Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time VAL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T08:55:45.160Z",
     "resultado": "GREEN_OBS",
@@ -4473,18 +4485,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:22:29.589Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time ARG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T08:22:14.881Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Belo Horizonte) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4694,7 +4694,7 @@
     "gatilho": "time ARG"
    },
    "ame": {
-    "desde": 1795424145160,
+    "desde": 1795424168979,
     "gatilho": "placar acima de 1-0 (2-0)"
    }
   }
@@ -5325,7 +5325,37 @@
    "mnd": 1795422573955,
    "cam": 1795424142901
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "06:12",
+     "jogo": "Colombia x France",
+     "odd": 2.15
+    },
+    {
+     "h": "06:15",
+     "jogo": "Brazil x Wales",
+     "odd": 2.01
+    },
+    {
+     "h": "06:18",
+     "jogo": "Switzerland x Spain",
+     "odd": 2.26
+    }
+   ],
+   "gatilho": "odd 2.01",
+   "alvo": {
+    "h": "06:12",
+    "jogo": "Colombia x France",
+    "odd": 2.15,
+    "unidades": 1,
+    "desde": 1795424145173
+   },
+   "iniciadoEm": 1795424145173
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -5340,7 +5370,7 @@
    "tipo": "odd",
    "chave": "2.01",
    "n": 9,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-20": 0,
