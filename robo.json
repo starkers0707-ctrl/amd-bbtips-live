@@ -918,12 +918,24 @@
  },
  "o25": {
   "saldo": 20.1,
-  "ciclos": 39455,
+  "ciclos": 39457,
   "greens": 145,
   "redsCiclo": 15,
   "aborts": 0,
-  "descartes": 39295,
+  "descartes": 39297,
   "historico": [
+   {
+    "quando": "2026-11-23T11:21:06.986Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-23T11:20:34.957Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :31) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T11:20:34.953Z",
     "resultado": "GREEN_OBS",
@@ -4511,18 +4523,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time GOI) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T11:05:57.429Z",
-    "resultado": "RED_CICLO",
-    "unidades": -7,
-    "detalhe": "ame · ciclo perdido (3 tiros) · gatilho: time Medellin"
-   },
-   {
-    "quando": "2026-11-23T11:05:33.571Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time NAC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4723,9 +4723,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "cop": {
-    "desde": 1795432834953,
-    "gatilho": "coluna :36"
+   "spa": {
+    "desde": 1795432866986,
+    "gatilho": "odd 1.89"
    }
   }
  },
