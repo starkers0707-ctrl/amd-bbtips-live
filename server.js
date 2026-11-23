@@ -313,7 +313,20 @@ const isAdmin = req => {
 const TG_TOKEN = (String(process.env.TELEGRAM_BOT_TOKEN || "").match(/\d{6,}:[A-Za-z0-9_-]{30,}/) || [""])[0];
 const TG_FILE = "telegram.json";
 let tgChats = {}, tgSha = null, tgBot = "", tgOffset = 0;
-const tgPendentes = new Map(), tgTaxa = new Map();
+const tgPendentes = new Map(), tgTaxa = new Map(), tgPedidos = new Map(); // tgPedidos: request_id -> {dono, canal}
+const TG_MAX_DESTINOS = 5;
+function tgDireitos(canal) {
+  return { is_anonymous: false, can_manage_chat: false, can_delete_messages: false, can_manage_video_chats: false,
+    can_restrict_members: false, can_promote_members: false, can_change_info: false, can_invite_users: false,
+    can_post_stories: false, can_edit_stories: false, can_delete_stories: false, ...(canal ? { can_post_messages: true } : {}) };
+}
+function tgAdicionaDestino(dono, chat, nome, tipo) {
+  const d = tgChats[dono] || (tgChats[dono] = { chat: null, nome: "", desde: Date.now() });
+  d.canais = (d.canais || []).filter(c => c.chat !== chat);
+  if (d.canais.length >= TG_MAX_DESTINOS) return false;
+  d.canais.push({ chat, nome: nome || String(chat), tipo });
+  tgSalva(); return true;
+}
 function tgApi(metodo, corpo, ms = 20000) {
   return fetch(`https://api.telegram.org/bot${TG_TOKEN}/${metodo}`, { method: "POST", headers: { "Content-Type": "application/json" },
     body: JSON.stringify(corpo || {}), signal: AbortSignal.timeout(ms) }).then(r => r.json()).catch(e => ({ ok: false, description: e.message }));
@@ -356,23 +369,46 @@ async function tgLoop() {
     if (!r.ok) { await new Promise(ok => setTimeout(ok, 10000)); continue; }
     for (const u of r.result || []) {
       tgOffset = u.update_id + 1;
-      const m = u.message || u.channel_post; if (!m || !m.text) continue;
+      const m = u.message || u.channel_post; if (!m) continue;
+      if (m.chat_shared) {
+        const ped = tgPedidos.get(m.chat_shared.request_id);
+        if (ped && ped.ate > Date.now()) {
+          tgPedidos.delete(m.chat_shared.request_id);
+          const id = m.chat_shared.chat_id, ok = tgAdicionaDestino(ped.dono, id, m.chat_shared.title, ped.canal ? "channel" : "group");
+          tgApi("sendMessage", { chat_id: m.chat.id, reply_markup: { remove_keyboard: true },
+            text: ok ? "✅ " + (ped.canal ? "Canal" : "Grupo") + " \"" + (m.chat_shared.title || id) + "\" conectado. Escolha ele no Destino do robô." : "Limite de " + TG_MAX_DESTINOS + " destinos atingido. Remova um no site." });
+          if (ok) tgApi("sendMessage", { chat_id: id, text: "✅ Conectado ao AMD Live. Os robôs com este destino vão postar aqui." });
+        }
+        continue;
+      }
+      if (!m.text) continue;
       const chat = m.chat.id;
       const con = m.text.match(/^\/conectar(?:@\w+)?\s+(\S+)/);
       if (con) {
         const p = tgPendentes.get(con[1]);
         if (p && p.ate > Date.now() && p.canal) {
           tgPendentes.delete(con[1]);
-          const d = tgChats[p.dono] || (tgChats[p.dono] = { chat: null, nome: "", desde: Date.now() });
-          d.canais = (d.canais || []).filter(c => c.chat !== chat);
-          d.canais.push({ chat, nome: m.chat.title || m.chat.username || String(chat), tipo: m.chat.type });
-          tgSalva();
+          tgAdicionaDestino(p.dono, chat, m.chat.title || m.chat.username || String(chat), m.chat.type);
           tgApi("sendMessage", { chat_id: chat, text: "✅ Este " + (m.chat.type === "channel" ? "canal" : "grupo") + " foi conectado ao AMD Live. Os robôs com este destino vão postar aqui." });
         } else tgApi("sendMessage", { chat_id: chat, text: "Código inválido ou vencido. Gere outro no AMD Live → Criar robô → Destino → +." });
         continue;
       }
       if (m.chat.type !== "private") continue;
       const ini = m.text.match(/^\/start(?:\s+(\S+))?/);
+      const esc = ini && ini[1] && ini[1].match(/^([cg])_(.+)$/);
+      if (esc) {
+        const p = tgPendentes.get(esc[2]);
+        if (!p || p.ate < Date.now()) { tgApi("sendMessage", { chat_id: chat, text: "Link vencido. Gere outro no AMD Live → Criar robô → Destino → +." }); continue; }
+        tgPendentes.delete(esc[2]);
+        const canal = esc[1] === "c", rid = Math.floor(Math.random() * 2e9) + 1;
+        tgPedidos.set(rid, { dono: p.dono, canal, ate: Date.now() + 30 * 60000 });
+        const botao = { text: canal ? "📢 Escolher canal" : "👥 Escolher grupo",
+          request_chat: { request_id: rid, chat_is_channel: canal, request_title: true, bot_administrator_rights: tgDireitos(canal), user_administrator_rights: tgDireitos(canal) } };
+        if (!canal) { delete botao.request_chat.user_administrator_rights; }
+        tgApi("sendMessage", { chat_id: chat, text: canal ? "Toque no botão abaixo e escolha o canal. O bot entra como administrador para postar os sinais." : "Toque no botão abaixo e escolha o grupo. O bot entra no grupo para postar os sinais.",
+          reply_markup: { keyboard: [[botao]], resize_keyboard: true, one_time_keyboard: true } });
+        continue;
+      }
       if (ini) {
         const p = ini[1] && tgPendentes.get(ini[1]);
         if (p && p.ate > Date.now()) {
@@ -391,17 +427,20 @@ async function tgLoop() {
 app.get("/api/telegram/status", (req, res) => {
   const d = tgChats[tgDono(req)];
   res.json({ configurado: !!(TG_TOKEN && tgBot), bot: tgBot, conectado: !!(d && d.chat), nome: d ? d.nome : "",
-    canais: ((d && d.canais) || []).map(c => ({ id: String(c.chat), nome: c.nome, tipo: c.tipo })) });
+    canais: ((d && d.canais) || []).map(c => ({ id: String(c.chat), nome: c.nome, tipo: c.tipo })), max: TG_MAX_DESTINOS });
 });
 app.post("/api/telegram/vincular", (req, res) => {
   const dono = tgDono(req);
   if (!dono) return res.status(401).json({ erro: "login necessario" });
   if (!TG_TOKEN || !tgBot) return res.status(503).json({ erro: "Telegram nao configurado no servidor" });
   for (const [k, v] of tgPendentes) if (v.ate < Date.now()) tgPendentes.delete(k);
-  const token = randomBytes(9).toString("base64url");
-  const canal = !!(req.body && req.body.canal);
-  tgPendentes.set(token, { dono, canal, ate: Date.now() + 15 * 60000 });
-  res.json(canal ? { comando: `/conectar ${token}`, bot: tgBot } : { link: `https://t.me/${tgBot}?start=${token}` });
+  const token = randomBytes(9).toString("hex");
+  const tipo = String((req.body || {}).tipo || "");
+  const d = tgChats[dono];
+  if ((tipo === "canal" || tipo === "grupo") && d && (d.canais || []).length >= TG_MAX_DESTINOS) return res.status(400).json({ erro: "limite de " + TG_MAX_DESTINOS + " destinos" });
+  tgPendentes.set(token, { dono, canal: true, ate: Date.now() + 15 * 60000 });
+  const pre = tipo === "canal" ? "c_" : tipo === "grupo" ? "g_" : "";
+  res.json({ link: `https://t.me/${tgBot}?start=${pre}${token}`, comando: `/conectar ${token}`, bot: tgBot, max: TG_MAX_DESTINOS });
 });
 app.post("/api/telegram/desvincular", (req, res) => {
   const dono = tgDono(req);

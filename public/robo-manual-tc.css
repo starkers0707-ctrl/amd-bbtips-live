@@ -126,3 +126,18 @@
 .tg-cmd{display:flex;gap:8px;align-items:center}.tg-cmd code{flex:1;padding:10px;border-radius:6px;background:#021118;color:#75ffb8;font-size:15px;overflow-wrap:anywhere}
 .tg-cmd button{text-align:center}
 .tg-menu .tg-close{text-align:center}
+
+.tg-menu header{display:flex;flex-direction:column;gap:2px;padding-bottom:8px;border-bottom:1px solid #153946}
+.tg-menu header b{font-size:17px}.tg-menu header small{color:#83b7c8}
+.tg-tip{padding:12px;border:1px solid #6b5a12;border-radius:10px;background:#141407}
+.tg-tip b{color:#ffe66a}.tg-tip p{margin:6px 0;color:#d9e6c9;font-size:13px;font-weight:500;line-height:1.45}.tg-tip p b{color:#fff}
+.tg-list-title{margin-top:4px;color:#f3fbfa;font-weight:800;font-size:14px}
+.tg-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:#061f27}
+.tg-item>i{display:grid;place-items:center;width:34px;height:34px;border-radius:8px;background:#05291b;color:#00f278;font-style:normal;font-weight:900}
+.tg-item>div{flex:1;display:flex;flex-direction:column}.tg-item small{color:#83b7c8;font-weight:500}
+.tg-menu .tg-item button{border:0;background:none;padding:6px 8px;font-size:16px;text-align:center}
+.tg-menu .tg-item button.tg-mini{border:1px solid #00b963;color:#75ffb8;font-size:13px}
+.tg-menu .tg-add{text-align:center;font-size:16px;padding:13px}
+.tg-menu .tg-add.blue{background:#00f278;color:#00130a;border-color:#00f278}
+.tg-menu .tg-add:disabled{opacity:.45;cursor:not-allowed}
+.tg-menu{width:min(460px,94vw)}

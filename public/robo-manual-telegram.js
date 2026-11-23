@@ -67,49 +67,47 @@
     aguarda(function () { return estado.conectado; }, 'Seu Telegram foi conectado ✅');
   }
 
-  async function conectarCanal() {
-    var r = await fetch('/api/telegram/vincular', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ canal: true }) });
+  async function adicionar(tipo) {
+    var r = await fetch('/api/telegram/vincular', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ tipo: tipo }) });
     var j = await r.json().catch(function () { return {}; });
-    if (!j.comando) return toast(j.erro || 'Não foi possível gerar o código.');
+    if (!j.link) return toast(j.erro || 'Não foi possível gerar o link.');
+    window.open(j.link, '_blank', 'noopener');
     var antes = (estado.canais || []).length;
-    var box = q('#tgMenu');
-    box.innerHTML = '<b>Conectar canal ou grupo</b>' +
-      '<ol><li>No Telegram, adicione <b>@' + esc(j.bot) + '</b> como <b>administrador</b> do canal ou grupo.</li>' +
-      '<li>Poste lá esta mensagem (vale 15 min):</li></ol>' +
-      '<div class="tg-cmd"><code>' + esc(j.comando) + '</code><button type="button" id="tgCopy">Copiar</button></div>' +
-      '<small>O bot responde "✅ conectado" e o canal aparece no Destino.</small>' +
-      '<button type="button" class="tg-close" id="tgFecha">Fechar</button>';
-    q('#tgCopy').addEventListener('click', function () {
-      try { navigator.clipboard.writeText(j.comando); toast('Copiado.'); } catch (_) {}
-    });
-    q('#tgFecha').addEventListener('click', fechaMenu);
-    aguarda(function () { return (estado.canais || []).length > antes; }, 'Canal/grupo conectado ✅ — escolha ele no Destino.');
+    toast('No Telegram: aperte Iniciar e depois ' + (tipo === 'canal' ? 'Escolher canal' : 'Escolher grupo') + '. Esta tela confirma sozinha.');
+    aguarda(function () { return (estado.canais || []).length > antes; }, (tipo === 'canal' ? 'Canal' : 'Grupo') + ' conectado ✅ — escolha no Destino.');
   }
 
   async function desconectar(canal) {
     await fetch('/api/telegram/desvincular', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ canal: canal || '' }) });
-    fechaMenu(); status();
+    await status(); if (q('#tgMenu')) { fechaMenu(); abreMenu(); }
   }
 
   function fechaMenu() { var m = q('#tgMenu'); if (m) m.remove(); }
   function abreMenu() {
     if (q('#tgMenu')) return fechaMenu();
     if (!estado.configurado) return toast('O Telegram ainda não foi ligado no servidor.');
+    var max = estado.max || 5, canais = estado.canais || [];
     var box = document.createElement('div'); box.id = 'tgMenu'; box.className = 'tg-menu';
-    var html = '<button type="button" data-a="meu">✈ ' + (estado.conectado ? 'Reconectar meu Telegram' : 'Conectar meu Telegram') + '</button>' +
-      '<button type="button" data-a="canal">📢 Conectar canal ou grupo</button>';
-    if (estado.conectado) html += '<button type="button" data-a="sair" class="red">Desconectar meu Telegram</button>';
-    (estado.canais || []).forEach(function (c) {
-      html += '<button type="button" data-a="rm" data-id="' + esc(c.id) + '" class="red">Remover ' + esc(c.nome) + '</button>';
+    var html = '<header><b>✈ Destinos no Telegram</b><small>' + canais.length + ' de ' + max + ' canais/grupos</small></header>' +
+      '<div class="tg-tip"><b>Escolha onde receber os sinais</b><p>Toque em <b>Adicionar grupo</b> ou <b>Adicionar canal</b>. No Telegram, aperte <b>Iniciar</b> e depois <b>Escolher grupo</b> ou <b>Escolher canal</b>. A lista abre no próprio Telegram e esta tela confirma sozinha.</p><small>Sem copiar IDs. Só os destinos escolhidos por você ficam ligados ao seu acesso.</small></div>' +
+      '<div class="tg-list-title">Destinos conectados</div>';
+    html += '<div class="tg-item"><i>' + (estado.conectado ? '✓' : '·') + '</i><div><b>Meu Telegram (privado)</b><small>' + (estado.conectado ? 'Conectado' + (estado.nome ? ' · ' + esc(estado.nome) : '') : 'Não conectado') + '</small></div>' +
+      (estado.conectado ? '<button type="button" data-a="sair" title="Desconectar">🗑</button>' : '<button type="button" data-a="meu" class="tg-mini">Conectar</button>') + '</div>';
+    canais.forEach(function (c) {
+      html += '<div class="tg-item"><i>✓</i><div><b>' + esc(c.nome) + '</b><small>' + (c.tipo === 'channel' ? 'Canal conectado' : 'Grupo conectado') + '</small></div><button type="button" data-a="rm" data-id="' + esc(c.id) + '" title="Remover">🗑</button></div>';
     });
+    var cheio = canais.length >= max;
+    html += '<button type="button" class="tg-add blue" data-a="grupo"' + (cheio ? ' disabled' : '') + '>👥 Adicionar grupo</button>' +
+      '<button type="button" class="tg-add" data-a="canal"' + (cheio ? ' disabled' : '') + '>📢 Adicionar canal</button>';
     box.innerHTML = html;
     q('.tc-dest').appendChild(box);
     box.addEventListener('click', function (e) {
-      var b = e.target.closest('button[data-a]'); if (!b) return;
-      if (b.dataset.a === 'meu') conectarMeu();
-      else if (b.dataset.a === 'canal') conectarCanal();
-      else if (b.dataset.a === 'sair') desconectar('');
-      else if (b.dataset.a === 'rm') desconectar(b.dataset.id);
+      var b = e.target.closest('button[data-a]'); if (!b || b.disabled) return;
+      var a = b.dataset.a;
+      if (a === 'meu') conectarMeu();
+      else if (a === 'grupo' || a === 'canal') adicionar(a);
+      else if (a === 'sair') desconectar('');
+      else if (a === 'rm') desconectar(b.dataset.id);
     });
   }
 
