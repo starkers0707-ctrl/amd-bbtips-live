@@ -1055,12 +1055,18 @@
  },
  "o25": {
   "saldo": -2.6,
-  "ciclos": 67213,
+  "ciclos": 67214,
   "greens": 186,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 67003,
+  "descartes": 67004,
   "historico": [
+   {
+    "quando": "2026-11-23T23:45:06.593Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T23:44:49.462Z",
     "resultado": "GREEN_OBS",
@@ -4654,12 +4660,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:02:53.219Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.1) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4836,20 +4836,26 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "cam": {
-    "desde": 1795477489462,
-    "gatilho": "coluna :06"
+   "ita": {
+    "desde": 1795477506593,
+    "gatilho": "coluna :57"
    }
   }
  },
  "ambas": {
-  "saldo": -5.2,
-  "ciclos": 192,
-  "greens": 81,
+  "saldo": -4.5,
+  "ciclos": 193,
+  "greens": 82,
   "redsCiclo": 9,
   "aborts": 0,
   "descartes": 102,
   "historico": [
+   {
+    "quando": "2026-11-23T23:44:49.502Z",
+    "resultado": "GREEN",
+    "unidades": 0.7,
+    "detalhe": "ame · Belo Horizonte x Agua Branca @1.84 (tiro 2) · gatilho: odd 1.84"
+   },
    {
     "quando": "2026-11-23T23:36:38.784Z",
     "resultado": "GREEN_OBS",
@@ -6006,47 +6012,10 @@
   "consumidas": {
    "cam": 1795474208815,
    "mnd": 1795475133250,
-   "cop": 1795475989958
+   "cop": 1795475989958,
+   "ame": 1795477489501
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "20:40",
-     "jogo": "Itaquera x Penarol",
-     "odd": 2.11
-    },
-    {
-     "h": "20:43",
-     "jogo": "Belo Horizonte x Agua Branca",
-     "odd": 1.84
-    },
-    {
-     "h": "20:46",
-     "jogo": "La Boca x Santos",
-     "odd": 1.86
-    }
-   ],
-   "gatilho": "odd 1.84",
-   "alvo": {
-    "h": "20:43",
-    "jogo": "Belo Horizonte x Agua Branca",
-    "odd": 1.84,
-    "unidades": 2,
-    "desde": 1795477321779
-   },
-   "iniciadoEm": 1795477001183,
-   "tiros": [
-    {
-     "h": "20:40",
-     "jogo": "Itaquera x Penarol",
-     "odd": 2.11,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -6055,7 +6024,7 @@
    "mnd": 1795475133250,
    "cam": 1795474208815,
    "cop": 1795475989958,
-   "ame": 1795472609954
+   "ame": 1795477489501
   },
   "_gatilhoAtual": {
    "tipo": "odd",
@@ -6067,7 +6036,7 @@
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
-   "2026-11-23": 7
+   "2026-11-23": 7.7
   },
   "_obs": {}
  }
