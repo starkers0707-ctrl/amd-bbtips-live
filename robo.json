@@ -837,12 +837,18 @@
  },
  "o25": {
   "saldo": 20,
-  "ciclos": 30012,
+  "ciclos": 30013,
   "greens": 120,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 29881,
+  "descartes": 29882,
   "historico": [
+   {
+    "quando": "2026-11-23T00:35:35.867Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T00:35:15.982Z",
     "resultado": "GREEN_OBS",
@@ -4436,16 +4442,9 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGRR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T23:38:09.090Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "mnd": 1795390533015,
    "cam": 1795393348527,
    "spa": 1795393713853
   },
@@ -4643,9 +4642,9 @@
     "desde": 1795331722115,
     "gatilho": "time CAG"
    },
-   "ame": {
-    "desde": 1795394115982,
-    "gatilho": "coluna :55"
+   "spa": {
+    "desde": 1795394135866,
+    "gatilho": "coluna :39"
    }
   }
  },
@@ -5073,8 +5072,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "21:33",
@@ -5094,13 +5093,21 @@
    ],
    "gatilho": "seq RRGRG",
    "alvo": {
-    "h": "21:33",
-    "jogo": "Germany x Colombia",
-    "odd": 2.19,
-    "unidades": 1,
-    "desde": 1795393725983
+    "h": "21:36",
+    "jogo": "France x Italy",
+    "odd": 2.13,
+    "unidades": 2,
+    "desde": 1795394115991
    },
-   "iniciadoEm": 1795393725983
+   "iniciadoEm": 1795393725983,
+   "tiros": [
+    {
+     "h": "21:33",
+     "jogo": "Germany x Colombia",
+     "odd": 2.19,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795331214015,
@@ -5114,8 +5121,8 @@
   },
   "_gatilhoAtual": {
    "tipo": "seq",
-   "chave": "RGRGR",
-   "n": 8,
+   "chave": "GRGRR",
+   "n": 13,
    "start": 1
   },
   "dias": {
