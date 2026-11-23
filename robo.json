@@ -807,12 +807,18 @@
  },
  "o25": {
   "saldo": 19.1,
-  "ciclos": 29798,
+  "ciclos": 29799,
   "greens": 119,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 29668,
+  "descartes": 29669,
   "historico": [
+   {
+    "quando": "2026-11-23T00:22:28.536Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
+   },
    {
     "quando": "2026-11-23T00:22:28.527Z",
     "resultado": "GREEN",
@@ -4406,19 +4412,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-22T23:13:33.179Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
    }
   ],
   "consumidas": {
    "mnd": 1795390533015,
    "cam": 1795393348527
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "21:27",
+     "jogo": "RSO x DLC",
+     "odd": 1.94
+    },
+    {
+     "h": "21:39",
+     "jogo": "ESP x CEL",
+     "odd": 1.92
+    },
+    {
+     "h": "21:41",
+     "jogo": "ATH x GET",
+     "odd": 1.93
+    }
+   ],
+   "gatilho": "coluna :39",
+   "alvo": {
+    "h": "21:27",
+    "jogo": "RSO x DLC",
+    "odd": 1.94,
+    "unidades": 1,
+    "desde": 1795393350830
+   },
+   "iniciadoEm": 1795393350830
+  },
   "cooldown": {
    "cam": 1795393348527,
    "eng": 1795383709617,
