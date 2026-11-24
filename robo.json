@@ -1074,12 +1074,18 @@
  },
  "o25": {
   "saldo": -1.9,
-  "ciclos": 67881,
+  "ciclos": 67882,
   "greens": 187,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 67670,
+  "descartes": 67671,
   "historico": [
+   {
+    "quando": "2026-11-24T00:19:56.323Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T00:19:56.311Z",
     "resultado": "GREEN_OBS",
@@ -4673,12 +4679,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:47:32.600Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4688,8 +4688,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "21:18",
@@ -4709,13 +4709,21 @@
    ],
    "gatilho": "odd 2.39",
    "alvo": {
-    "h": "21:18",
-    "jogo": "Spain x France",
-    "odd": 2.39,
-    "unidades": 1,
-    "desde": 1795479522615
+    "h": "21:21",
+    "jogo": "Croatia x USA",
+    "odd": 2.31,
+    "unidades": 2,
+    "desde": 1795479598561
    },
-   "iniciadoEm": 1795479522615
+   "iniciadoEm": 1795479522615,
+   "tiros": [
+    {
+     "h": "21:18",
+     "jogo": "Spain x France",
+     "odd": 2.39,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795475247707,
@@ -4882,12 +4890,7 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {
-   "ita": {
-    "desde": 1795479596311,
-    "gatilho": "odd 1.76"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": -3.8,
@@ -6081,14 +6084,13 @@
    }
   ],
   "consumidas": {
-   "cop": 1795475989958,
    "ame": 1795477489501,
    "mnd": 1795479213322
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "21:18",
@@ -6108,13 +6110,21 @@
    ],
    "gatilho": "odd 1.95",
    "alvo": {
-    "h": "21:18",
-    "jogo": "Paris x United",
-    "odd": 1.98,
-    "unidades": 1,
-    "desde": 1795479248716
+    "h": "21:21",
+    "jogo": "Celtic x Madrid",
+    "odd": 1.95,
+    "unidades": 2,
+    "desde": 1795479596359
    },
-   "iniciadoEm": 1795479248716
+   "iniciadoEm": 1795479248716,
+   "tiros": [
+    {
+     "h": "21:18",
+     "jogo": "Paris x United",
+     "odd": 1.98,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795331214015,
@@ -6128,9 +6138,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "odd",
-   "chave": "1.95",
-   "n": 10,
-   "start": 1
+   "chave": "2.21",
+   "n": 9,
+   "start": 5
   },
   "dias": {
    "2026-11-20": 0,
