@@ -1271,12 +1271,18 @@
  },
  "o25": {
   "saldo": -27.9,
-  "ciclos": 78163,
+  "ciclos": 78164,
   "greens": 215,
   "redsCiclo": 32,
   "aborts": 0,
-  "descartes": 77916,
+  "descartes": 77917,
   "historico": [
+   {
+    "quando": "2026-11-24T12:55:46.691Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho seq RRGG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T12:55:37.616Z",
     "resultado": "GREEN_OBS",
@@ -4870,12 +4876,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.05) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T12:29:30.797Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time RAC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4931,7 +4931,7 @@
    "tipo": "time",
    "chave": "Madrid",
    "n": 24,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -5095,9 +5095,9 @@
     "desde": 1795524923560,
     "gatilho": "time ATC"
    },
-   "cam": {
-    "desde": 1795524937616,
-    "gatilho": "time Madrid"
+   "eng": {
+    "desde": 1795524946690,
+    "gatilho": "seq RRGG"
    }
   }
  },
