@@ -1169,13 +1169,37 @@
   }
  },
  "o25": {
-  "saldo": -20.5,
-  "ciclos": 75367,
-  "greens": 209,
+  "saldo": -19,
+  "ciclos": 75371,
+  "greens": 210,
   "redsCiclo": 30,
   "aborts": 0,
-  "descartes": 75128,
+  "descartes": 75131,
   "historico": [
+   {
+    "quando": "2026-11-24T11:05:38.729Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:05:38.717Z",
+    "resultado": "GREEN",
+    "unidades": 1.5,
+    "detalhe": "ame · Itaquera x Avellaneda @2.24 (tiro 2) · gatilho: odd 2.24"
+   },
+   {
+    "quando": "2026-11-24T11:05:34.352Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:05:34.348Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T11:05:34.342Z",
     "resultado": "GREEN_OBS",
@@ -4751,76 +4775,15 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T10:40:45.465Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T10:40:36.702Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T10:40:36.698Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T10:40:36.692Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
    }
   ],
   "consumidas": {
    "cam": 1795514859782,
    "eng": 1795516294394,
-   "mnd": 1795517012357
+   "mnd": 1795517012357,
+   "ame": 1795518338716
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "08:01",
-     "jogo": "Belo Horizonte x Agua Branca",
-     "odd": 2.02
-    },
-    {
-     "h": "08:04",
-     "jogo": "Itaquera x Avellaneda",
-     "odd": 2.24
-    },
-    {
-     "h": "08:07",
-     "jogo": "Porto Alegre x Santos",
-     "odd": 2.38
-    }
-   ],
-   "gatilho": "odd 2.24",
-   "alvo": {
-    "h": "08:04",
-    "jogo": "Itaquera x Avellaneda",
-    "odd": 2.24,
-    "unidades": 2,
-    "desde": 1795518158006
-   },
-   "iniciadoEm": 1795517946409,
-   "tiros": [
-    {
-     "h": "08:01",
-     "jogo": "Belo Horizonte x Agua Branca",
-     "odd": 2.02,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795514859782,
    "eng": 1795516294394,
@@ -4829,14 +4792,14 @@
    "lat": 1795483111301,
    "bra": 1795472158133,
    "mnd": 1795517012357,
-   "ame": 1795512755154,
+   "ame": 1795518338716,
    "cop": 1795479931322
   },
   "_gatilhoAtual": {
    "tipo": "odd",
    "chave": "2.24",
    "n": 10,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-19": -7,
@@ -4844,7 +4807,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -10.6
+   "2026-11-24": -9.1
   },
   "_obs": {
    "cam": {
@@ -4993,7 +4956,7 @@
     "gatilho": "odd 2.39"
    },
    "mnd": {
-    "desde": 1795518334341,
+    "desde": 1795518338729,
     "gatilho": "time SPA"
    }
   }
