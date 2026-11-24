@@ -1153,12 +1153,48 @@
  },
  "o25": {
   "saldo": -8.7,
-  "ciclos": 71455,
+  "ciclos": 71461,
   "greens": 201,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 71227,
+  "descartes": 71233,
   "historico": [
+   {
+    "quando": "2026-11-24T07:57:19.927Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:57:11.165Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Itaquera) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:57:11.160Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:57:11.151Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time GEN) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:57:11.147Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:57:10.156Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Itaquera) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T07:57:10.152Z",
     "resultado": "GREEN_OBS",
@@ -4722,42 +4758,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time LEC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:28:02.704Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:27:44.850Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time United) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:27:44.841Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time LEC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:27:44.835Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:27:44.016Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time United) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:27:44.007Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time LEC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4967,17 +4967,13 @@
     "desde": 1795479598576,
     "gatilho": "odd 2.39"
    },
-   "ame": {
-    "desde": 1795487371216,
-    "gatilho": "odd 2.02"
-   },
    "mnd": {
     "desde": 1795488687919,
     "gatilho": "coluna :52"
    },
-   "cam": {
-    "desde": 1795507030151,
-    "gatilho": "time Madrid"
+   "eng": {
+    "desde": 1795507039926,
+    "gatilho": "time MNC"
    }
   }
  },
@@ -6388,7 +6384,37 @@
    "spa": 1795506559992,
    "cop": 1795506951773
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "05:16",
+     "jogo": "Quito x Belo Horizonte",
+     "odd": 1.83
+    },
+    {
+     "h": "05:19",
+     "jogo": "Itaquera x Porto Alegre",
+     "odd": 2.19
+    },
+    {
+     "h": "05:22",
+     "jogo": "La Boca x Montevideo",
+     "odd": 1.98
+    }
+   ],
+   "gatilho": "time Itaquera",
+   "alvo": {
+    "h": "05:16",
+    "jogo": "Quito x Belo Horizonte",
+    "odd": 1.83,
+    "unidades": 1,
+    "desde": 1795507030177
+   },
+   "iniciadoEm": 1795507030177
+  },
   "cooldown": {
    "lat": 1795497681687,
    "eng": 1795493011900,
@@ -6401,9 +6427,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "Argentina",
-   "n": 10,
-   "start": 1
+   "chave": "Itaquera",
+   "n": 8,
+   "start": 6
   },
   "dias": {
    "2026-11-20": 0,
