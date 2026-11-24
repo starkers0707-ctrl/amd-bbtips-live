@@ -1079,12 +1079,18 @@
  },
  "o25": {
   "saldo": -12.8,
-  "ciclos": 68979,
+  "ciclos": 68980,
   "greens": 191,
   "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 68762,
+  "descartes": 68763,
   "historico": [
+   {
+    "quando": "2026-11-24T02:01:30.152Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T02:01:26.822Z",
     "resultado": "GREEN_OBS",
@@ -4678,12 +4684,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.78) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T01:00:14.334Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4896,21 +4896,23 @@
    "ita": {
     "desde": 1795483861299,
     "gatilho": "coluna :33"
-   },
-   "ame": {
-    "desde": 1795485686822,
-    "gatilho": "odd 2.02"
    }
   }
  },
  "ambas": {
-  "saldo": -0.3,
-  "ciclos": 205,
-  "greens": 87,
+  "saldo": 0.4,
+  "ciclos": 206,
+  "greens": 88,
   "redsCiclo": 9,
   "aborts": 0,
   "descartes": 109,
   "historico": [
+   {
+    "quando": "2026-11-24T02:01:30.167Z",
+    "resultado": "GREEN",
+    "unidades": 0.7,
+    "detalhe": "mnd · SPA x URY @1.69 (tiro 1) · gatilho: coluna :02"
+   },
    {
     "quando": "2026-11-24T01:49:57.617Z",
     "resultado": "GREEN",
@@ -6144,45 +6146,16 @@
   ],
   "consumidas": {
    "ame": 1795482148615,
-   "cam": 1795484997617
+   "cam": 1795484997617,
+   "mnd": 1795485690167
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "23:00",
-     "jogo": "SPA x URY",
-     "odd": 1.69
-    },
-    {
-     "h": "23:02",
-     "jogo": "NED x POR",
-     "odd": 1.68
-    },
-    {
-     "h": "23:04",
-     "jogo": "POL x CHL",
-     "odd": 1.69
-    }
-   ],
-   "gatilho": "coluna :02",
-   "alvo": {
-    "h": "23:00",
-    "jogo": "SPA x URY",
-    "odd": 1.69,
-    "unidades": 1,
-    "desde": 1795485002863
-   },
-   "iniciadoEm": 1795485002863
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
    "spa": 1795417719585,
    "bra": 1795468716738,
-   "mnd": 1795479213322,
+   "mnd": 1795485690167,
    "cam": 1795484997617,
    "cop": 1795480860011,
    "ame": 1795482148615
@@ -6197,7 +6170,7 @@
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
-   "2026-11-23": 11.9
+   "2026-11-23": 12.6
   },
   "_obs": {}
  }
