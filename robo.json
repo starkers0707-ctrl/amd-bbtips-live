@@ -1374,12 +1374,24 @@
  },
  "o25": {
   "saldo": -20.9,
-  "ciclos": 88882,
+  "ciclos": 88884,
   "greens": 237,
   "redsCiclo": 34,
   "aborts": 0,
-  "descartes": 88611,
+  "descartes": 88613,
   "historico": [
+   {
+    "quando": "2026-11-24T20:08:03.267Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T20:07:40.506Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T20:07:40.502Z",
     "resultado": "GREEN_OBS",
@@ -4967,18 +4979,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T19:42:35.435Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.49) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T19:42:35.428Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5186,7 +5186,7 @@
     "gatilho": "coluna :23"
    },
    "cam": {
-    "desde": 1795550860501,
+    "desde": 1795550883267,
     "gatilho": "odd 2.17"
    }
   }
@@ -6934,8 +6934,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "17:06",
@@ -6955,13 +6955,21 @@
    ],
    "gatilho": "seq RRRRR",
    "alvo": {
-    "h": "17:06",
-    "jogo": "Spain x Argentina",
-    "odd": 1.97,
-    "unidades": 1,
-    "desde": 1795550495682
+    "h": "17:09",
+    "jogo": "England x Colombia",
+    "odd": 2.12,
+    "unidades": 2,
+    "desde": 1795550860522
    },
-   "iniciadoEm": 1795550495682
+   "iniciadoEm": 1795550495682,
+   "tiros": [
+    {
+     "h": "17:06",
+     "jogo": "Spain x Argentina",
+     "odd": 1.97,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795548098506,
