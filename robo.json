@@ -1079,12 +1079,54 @@
  },
  "o25": {
   "saldo": -11.5,
-  "ciclos": 69058,
+  "ciclos": 69065,
   "greens": 192,
   "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 68840,
+  "descartes": 68847,
   "historico": [
+   {
+    "quando": "2026-11-24T02:11:10.681Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T02:11:10.674Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq GRGRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T02:11:09.552Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T02:11:09.545Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq GRGRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T02:11:08.886Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T02:11:08.877Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq GRGRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T02:10:48.099Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T02:10:48.069Z",
     "resultado": "GREEN_OBS",
@@ -4642,48 +4684,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T01:05:16.213Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T01:05:12.412Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T01:05:11.597Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T01:05:10.916Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T01:04:43.138Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T01:04:40.826Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T01:04:40.817Z",
-    "resultado": "DESCARTADO",
-    "unidades": 0,
-    "detalhe": "cam · alvo sem fechamento em 15min antes da 1a aposta"
    }
   ],
   "consumidas": {
@@ -4868,9 +4868,9 @@
     "desde": 1795483861299,
     "gatilho": "coluna :33"
    },
-   "mnd": {
-    "desde": 1795486248069,
-    "gatilho": "seq GRGRG"
+   "ame": {
+    "desde": 1795486270681,
+    "gatilho": "odd 2.02"
    }
   }
  },
@@ -6123,7 +6123,37 @@
    "cam": 1795484997617,
    "mnd": 1795485690167
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "23:33",
+     "jogo": "Colombia x Belgium",
+     "odd": 2.09
+    },
+    {
+     "h": "23:36",
+     "jogo": "Portugal x Netherlands",
+     "odd": 1.97
+    },
+    {
+     "h": "23:39",
+     "jogo": "Wales x USA",
+     "odd": 1.97
+    }
+   ],
+   "gatilho": "coluna :36",
+   "alvo": {
+    "h": "23:33",
+    "jogo": "Colombia x Belgium",
+    "odd": 2.09,
+    "unidades": 1,
+    "desde": 1795486248192
+   },
+   "iniciadoEm": 1795486248192
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -6136,9 +6166,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":02",
-   "n": 20,
-   "start": 1
+   "chave": ":36",
+   "n": 23,
+   "start": 7
   },
   "dias": {
    "2026-11-20": 0,
