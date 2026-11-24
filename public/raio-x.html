@@ -34,7 +34,7 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
 <h1>Raio-X <em>do dia</em></h1>
 <div class="sub">Só as <b>subidas</b> de hoje (média 9 acima da 21 no gráfico da base escolhida: 1 a 3 horas reage rápido, acumulado 00h é o mais lento). Mostra o que cada subida pagou e o que está puxando a subida de agora. Na queda a liga fica apagada: é hora de esperar.</div>
 <div class="bar">
-  <label>Mercado<select id="mk"><option value="o25">Over 2.5</option><option value="o35">Over 3.5</option><option value="o15">Over 1.5</option><option value="ambs">Ambas Marcam</option></select></label>
+  <label>Mercado<select id="mk"><option value="o25">Over 2.5</option><option value="o35">Over 3.5</option><option value="o15">Over 1.5</option><option value="ambs">Ambas Marcam</option><option value="ge5">5+ Gols</option></select></label>
   <label>Base do gráfico<select id="base"><option value="1">Última 1 hora</option><option value="2" selected>Últimas 2 horas</option><option value="3">Últimas 3 horas</option><option value="6">Últimas 6 horas</option><option value="12">Últimas 12 horas</option><option value="dia">00h (meia-noite até 23:59)</option></select></label>
   <label>Tiros<select id="tiros"><option value="1">1 (seco)</option><option value="2">2 tiros</option><option value="3" selected>3 tiros</option></select></label>
   <span class="upd" id="upd">carregando…</span>
@@ -46,8 +46,8 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
   var LIGAS=[['eng','Inglaterra'],['ita','Itália'],['spa','Espanha'],['mnd','Mundo'],['bra','Brasil'],['lat','América Latina'],['cam','Champions'],['cop','Copa'],['ame','América']];
   function q(s){return document.querySelector(s);}
   function esc(v){return String(v==null?'':v).replace(/[&<>"]/g,function(c){return '&#'+c.charCodeAt(0)+';';});}
-  function bate(mk,g){var a=+g.gols_a,b=+g.gols_b,t=a+b;return mk==='o15'?t>=2:mk==='o25'?t>=3:mk==='o35'?t>=4:(a>0&&b>0);}
-  var ODDK={o15:'odd_over_1.5',o25:'odd_over_2.5',o35:'odd_over_3.5',ambs:'odd_ambas_sim'};
+  function bate(mk,g){var a=+g.gols_a,b=+g.gols_b,t=a+b;return mk==='o15'?t>=2:mk==='o25'?t>=3:mk==='o35'?t>=4:mk==='ge5'?t>=5:(a>0&&b>0);}
+  var ODDK={o15:'odd_over_1.5',o25:'odd_over_2.5',o35:'odd_over_3.5',ambs:'odd_ambas_sim',ge5:'odd_total_gols_extatos_5'};
   function hm(g){return String(g.hora).padStart(2,'0')+':'+String(g.minuto).padStart(2,'0');}
   function sma(a,n){var o=[],s=0;for(var i=0;i<a.length;i++){s+=a[i];if(i>=n)s-=a[i-n];o.push(i>=n-1?s/n:null);}return o;}
   /* Entradas em ciclos seguidos dentro da subida: entra, espera o ciclo (ate X tiros) fechar e entra de novo. */
