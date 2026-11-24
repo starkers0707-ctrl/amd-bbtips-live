@@ -1374,12 +1374,18 @@
  },
  "o25": {
   "saldo": -19.2,
-  "ciclos": 89541,
+  "ciclos": 89542,
   "greens": 238,
   "redsCiclo": 34,
   "aborts": 0,
-  "descartes": 89269,
+  "descartes": 89270,
   "historico": [
+   {
+    "quando": "2026-11-24T20:32:05.813Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T20:32:03.099Z",
     "resultado": "GREEN_OBS",
@@ -4973,12 +4979,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T20:09:38.918Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4987,7 +4987,37 @@
    "lat": 1795550799609,
    "cam": 1795552323084
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "17:34",
+     "jogo": "La Plata x Avellaneda",
+     "odd": 2.24
+    },
+    {
+     "h": "17:37",
+     "jogo": "Santos x Penarol",
+     "odd": 2.24
+    },
+    {
+     "h": "17:40",
+     "jogo": "La Plata x Lima",
+     "odd": 2.24
+    }
+   ],
+   "gatilho": "odd 2.24",
+   "alvo": {
+    "h": "17:34",
+    "jogo": "La Plata x Avellaneda",
+    "odd": 2.24,
+    "unidades": 1,
+    "desde": 1795552325806
+   },
+   "iniciadoEm": 1795552325806
+  },
   "cooldown": {
    "cam": 1795552323084,
    "eng": 1795550134756,
@@ -5154,9 +5184,9 @@
     "desde": 1795552126958,
     "gatilho": "odd 2.17"
    },
-   "ame": {
-    "desde": 1795552323099,
-    "gatilho": "odd 2.24"
+   "spa": {
+    "desde": 1795552325813,
+    "gatilho": "odd 1.86"
    }
   }
  },
