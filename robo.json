@@ -1170,12 +1170,18 @@
  },
  "o25": {
   "saldo": -13.5,
-  "ciclos": 74669,
+  "ciclos": 74670,
   "greens": 209,
   "redsCiclo": 29,
   "aborts": 0,
-  "descartes": 74431,
+  "descartes": 74432,
   "historico": [
+   {
+    "quando": "2026-11-24T10:37:19.591Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T10:37:19.580Z",
     "resultado": "GREEN_OBS",
@@ -4769,21 +4775,44 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T10:02:34.832Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "mnd": 1795513053700,
    "ita": 1795513474884,
    "cam": 1795514859782,
    "eng": 1795516294394
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "07:38",
+     "jogo": "SPA x SWI",
+     "odd": 1.93
+    },
+    {
+     "h": "07:40",
+     "jogo": "FRA x CHL",
+     "odd": 1.72
+    },
+    {
+     "h": "07:42",
+     "jogo": "NED x COL",
+     "odd": 1.94
+    }
+   ],
+   "gatilho": "placar empate 1-1",
+   "alvo": {
+    "h": "07:38",
+    "jogo": "SPA x SWI",
+    "odd": 1.93,
+    "unidades": 1,
+    "desde": 1795516653805
+   },
+   "iniciadoEm": 1795516653805
+  },
   "cooldown": {
    "cam": 1795514859782,
    "eng": 1795516294394,
@@ -4796,9 +4825,9 @@
    "cop": 1795479931322
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "RRGR",
-   "n": 10,
+   "tipo": "placar",
+   "chave": "empate 1-1",
+   "n": 18,
    "start": 1
   },
   "dias": {
@@ -4958,10 +4987,6 @@
    "mnd": {
     "desde": 1795516535668,
     "gatilho": "placar empate 1-1"
-   },
-   "ita": {
-    "desde": 1795516639579,
-    "gatilho": "odd 1.95"
    }
   }
  },
