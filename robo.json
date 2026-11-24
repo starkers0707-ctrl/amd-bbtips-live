@@ -1099,12 +1099,18 @@
  },
  "o25": {
   "saldo": -14,
-  "ciclos": 70271,
+  "ciclos": 70272,
   "greens": 197,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 70047,
+  "descartes": 70048,
   "historico": [
+   {
+    "quando": "2026-11-24T05:48:01.953Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ATA) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T05:47:49.790Z",
     "resultado": "GREEN_OBS",
@@ -4698,12 +4704,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T04:36:12.569Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4893,21 +4893,29 @@
    "mnd": {
     "desde": 1795488687919,
     "gatilho": "coluna :52"
-   },
-   "ita": {
-    "desde": 1795499269790,
-    "gatilho": "time ATA"
    }
   }
  },
  "ambas": {
   "saldo": -3.6,
-  "ciclos": 215,
+  "ciclos": 217,
   "greens": 92,
   "redsCiclo": 10,
   "aborts": 0,
-  "descartes": 113,
+  "descartes": 115,
   "historico": [
+   {
+    "quando": "2026-11-24T05:48:01.979Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Asuncion) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T05:47:49.812Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "ame · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-24T05:21:21.687Z",
     "resultado": "GREEN",
@@ -6203,37 +6211,7 @@
    "mnd": 1795496979458,
    "lat": 1795497681687
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "02:55",
-     "jogo": "Sao Paulo x Rio de Janeiro",
-     "odd": 1.81
-    },
-    {
-     "h": "02:58",
-     "jogo": "Asuncion x Santos",
-     "odd": 1.88
-    },
-    {
-     "h": "03:01",
-     "jogo": "Bogota x Lima",
-     "odd": 1.92
-    }
-   ],
-   "gatilho": "time Asuncion",
-   "alvo": {
-    "h": "02:55",
-    "jogo": "Sao Paulo x Rio de Janeiro",
-    "odd": 1.81,
-    "unidades": 1,
-    "desde": 1795498362445
-   },
-   "iniciadoEm": 1795498362445
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795497681687,
    "eng": 1795493011900,
@@ -6248,7 +6226,7 @@
    "tipo": "time",
    "chave": "Asuncion",
    "n": 8,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-20": 0,
@@ -6259,8 +6237,8 @@
   },
   "_obs": {
    "ame": {
-    "desde": 1795489025881,
-    "gatilho": "coluna :58"
+    "desde": 1795499281979,
+    "gatilho": "time Asuncion"
    }
   }
  }
