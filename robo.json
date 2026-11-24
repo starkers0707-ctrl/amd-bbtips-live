@@ -1365,12 +1365,30 @@
  },
  "o25": {
   "saldo": -24.7,
-  "ciclos": 85360,
+  "ciclos": 85363,
   "greens": 226,
   "redsCiclo": 33,
   "aborts": 0,
-  "descartes": 85101,
+  "descartes": 85104,
   "historico": [
+   {
+    "quando": "2026-11-24T16:50:11.983Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:49:54.710Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:49:54.701Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T16:49:54.695Z",
     "resultado": "GREEN_OBS",
@@ -4952,24 +4970,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :28) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:24:21.317Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:24:21.313Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho seq GRRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:24:21.305Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :25) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5190,7 +5190,7 @@
     "gatilho": "odd 2.17"
    },
    "eng": {
-    "desde": 1795538994695,
+    "desde": 1795539011983,
     "gatilho": "coluna :52"
    }
   }
@@ -6859,8 +6859,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "13:48",
@@ -6880,13 +6880,21 @@
    ],
    "gatilho": "seq GRRRG",
    "alvo": {
-    "h": "13:48",
-    "jogo": "Mexico x Wales",
-    "odd": 1.96,
-    "unidades": 1,
-    "desde": 1795538618171
+    "h": "13:51",
+    "jogo": "Belgium x Spain",
+    "odd": 2.02,
+    "unidades": 2,
+    "desde": 1795538994727
    },
-   "iniciadoEm": 1795538618171
+   "iniciadoEm": 1795538618171,
+   "tiros": [
+    {
+     "h": "13:48",
+     "jogo": "Mexico x Wales",
+     "odd": 1.96,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795538549482,
@@ -6902,7 +6910,7 @@
    "tipo": "coluna",
    "chave": ":12",
    "n": 14,
-   "start": 7
+   "start": 6
   },
   "dias": {
    "2026-11-20": 0,
