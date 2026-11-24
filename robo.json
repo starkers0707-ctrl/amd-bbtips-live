@@ -1357,12 +1357,18 @@
  },
  "o25": {
   "saldo": -25.8,
-  "ciclos": 87234,
+  "ciclos": 87235,
   "greens": 232,
   "redsCiclo": 34,
   "aborts": 0,
-  "descartes": 86968,
+  "descartes": 86969,
   "historico": [
+   {
+    "quando": "2026-11-24T18:48:40.945Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T18:48:38.834Z",
     "resultado": "GREEN_OBS",
@@ -4956,12 +4962,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:21:03.928Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5138,20 +5138,26 @@
     "desde": 1795545939986,
     "gatilho": "coluna :50"
    },
-   "spa": {
-    "desde": 1795546118833,
-    "gatilho": "coluna :57"
+   "ita": {
+    "desde": 1795546120945,
+    "gatilho": "odd 1.83"
    }
   }
  },
  "ambas": {
   "saldo": -29.5,
-  "ciclos": 279,
+  "ciclos": 280,
   "greens": 114,
   "redsCiclo": 16,
   "aborts": 0,
-  "descartes": 149,
+  "descartes": 150,
   "historico": [
+   {
+    "quando": "2026-11-24T18:48:38.878Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "cop · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-24T18:33:18.460Z",
     "resultado": "GREEN_OBS",
@@ -6831,37 +6837,7 @@
    "lat": 1795542878375,
    "cam": 1795543669721
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "15:54",
-     "jogo": "USA x Colombia",
-     "odd": 2.05
-    },
-    {
-     "h": "15:57",
-     "jogo": "France x Spain",
-     "odd": 2.07
-    },
-    {
-     "h": "16:00",
-     "jogo": "Croatia x Italy",
-     "odd": 2.22
-    }
-   ],
-   "gatilho": "odd 2.07",
-   "alvo": {
-    "h": "15:54",
-    "jogo": "USA x Colombia",
-    "odd": 2.05,
-    "unidades": 1,
-    "desde": 1795545211836
-   },
-   "iniciadoEm": 1795545211836
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795542878375,
    "eng": 1795524811381,
