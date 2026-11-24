@@ -4998,7 +4998,37 @@
    "cam": 1795545089718,
    "spa": 1795548154815
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "16:28",
+     "jogo": "Porto Alegre x Guayaquil",
+     "odd": 2.55
+    },
+    {
+     "h": "16:31",
+     "jogo": "Asuncion x Quito",
+     "odd": 2.04
+    },
+    {
+     "h": "16:34",
+     "jogo": "Porto Alegre x La Boca",
+     "odd": 2.23
+    }
+   ],
+   "gatilho": "seq GRRGR",
+   "alvo": {
+    "h": "16:28",
+    "jogo": "Porto Alegre x Guayaquil",
+    "odd": 2.55,
+    "unidades": 1,
+    "desde": 1795548215374
+   },
+   "iniciadoEm": 1795548215374
+  },
   "cooldown": {
    "cam": 1795545089718,
    "eng": 1795544734030,
@@ -5011,9 +5041,9 @@
    "cop": 1795520988139
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":25",
-   "n": 15,
+   "tipo": "seq",
+   "chave": "GRRGR",
+   "n": 8,
    "start": 1
   },
   "dias": {
@@ -5161,9 +5191,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "spa": {
-    "desde": 1795548209870,
-    "gatilho": "coluna :25"
+   "cam": {
+    "desde": 1795548209879,
+    "gatilho": "coluna :30"
    }
   }
  },
@@ -6935,7 +6965,7 @@
    "tipo": "time",
    "chave": "Madrid",
    "n": 40,
-   "start": 7
+   "start": 6
   },
   "dias": {
    "2026-11-20": 0,
