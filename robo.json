@@ -1111,12 +1111,30 @@
  },
  "o25": {
   "saldo": -2.6,
-  "ciclos": 67786,
+  "ciclos": 67789,
   "greens": 186,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 67576,
+  "descartes": 67579,
   "historico": [
+   {
+    "quando": "2026-11-24T00:14:27.901Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho seq RRGRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:14:27.894Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:14:15.647Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T00:14:15.643Z",
     "resultado": "GREEN_OBS",
@@ -4698,24 +4716,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:43:32.704Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:43:31.703Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:43:31.694Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4724,8 +4724,8 @@
   },
   "ciclo": {
    "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "21:13",
@@ -4745,13 +4745,21 @@
    ],
    "gatilho": "coluna :15",
    "alvo": {
-    "h": "21:13",
-    "jogo": "LEC x BOL",
-    "odd": 1.88,
-    "unidades": 1,
-    "desde": 1795478875879
+    "h": "21:15",
+    "jogo": "SAS x LAZ",
+    "odd": 1.93,
+    "unidades": 2,
+    "desde": 1795479267889
    },
-   "iniciadoEm": 1795478875879
+   "iniciadoEm": 1795478875879,
+   "tiros": [
+    {
+     "h": "21:13",
+     "jogo": "LEC x BOL",
+     "odd": 1.88,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795475247707,
@@ -4920,7 +4928,7 @@
   },
   "_obs": {
    "lat": {
-    "desde": 1795479255643,
+    "desde": 1795479267900,
     "gatilho": "seq RRGRG"
    }
   }
