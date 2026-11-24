@@ -1162,12 +1162,30 @@
  },
  "o25": {
   "saldo": -15.3,
-  "ciclos": 74052,
+  "ciclos": 74055,
   "greens": 207,
   "redsCiclo": 29,
   "aborts": 0,
-  "descartes": 73816,
+  "descartes": 73819,
   "historico": [
+   {
+    "quando": "2026-11-24T10:01:54.721Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:01:52.616Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:01:52.609Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T10:01:52.598Z",
     "resultado": "GREEN_OBS",
@@ -4749,24 +4767,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:30:29.631Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:30:16.707Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:30:16.698Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4775,7 +4775,37 @@
    "mnd": 1795513053700,
    "ita": 1795513474884
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "07:06",
+     "jogo": "Munich x Madrid",
+     "odd": 2.07
+    },
+    {
+     "h": "07:09",
+     "jogo": "Barcelona x Liverpool",
+     "odd": 2.24
+    },
+    {
+     "h": "07:12",
+     "jogo": "Dortmund x Amsterdam",
+     "odd": 2.75
+    }
+   ],
+   "gatilho": "time Madrid",
+   "alvo": {
+    "h": "07:06",
+    "jogo": "Munich x Madrid",
+    "odd": 2.07,
+    "unidades": 1,
+    "desde": 1795514514714
+   },
+   "iniciadoEm": 1795514514714
+  },
   "cooldown": {
    "cam": 1795509994784,
    "eng": 1795511612671,
@@ -4948,7 +4978,7 @@
     "gatilho": "odd 2.39"
    },
    "ita": {
-    "desde": 1795514512598,
+    "desde": 1795514514720,
     "gatilho": "odd 1.95"
    }
   }
