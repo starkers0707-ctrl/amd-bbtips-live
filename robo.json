@@ -1163,13 +1163,31 @@
   }
  },
  "o25": {
-  "saldo": -12.7,
-  "ciclos": 72590,
-  "greens": 203,
+  "saldo": -11,
+  "ciclos": 72593,
+  "greens": 204,
   "redsCiclo": 28,
   "aborts": 0,
-  "descartes": 72359,
+  "descartes": 72361,
   "historico": [
+   {
+    "quando": "2026-11-24T08:46:34.785Z",
+    "resultado": "GREEN",
+    "unidades": 1.7,
+    "detalhe": "cam · Amsterdam x Dortmund @2.74 (tiro 1) · gatilho: seq RRGR"
+   },
+   {
+    "quando": "2026-11-24T08:46:30.198Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Itaquera) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T08:46:30.194Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T08:46:29.357Z",
     "resultado": "GREEN_OBS",
@@ -4751,64 +4769,17 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time ALV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T08:18:36.958Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T08:18:36.168Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T08:18:36.162Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ALV) — liga REARMADA"
    }
   ],
   "consumidas": {
    "eng": 1795507435335,
    "ame": 1795508431007,
-   "ita": 1795509038152
+   "ita": 1795509038152,
+   "cam": 1795509994784
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "05:45",
-     "jogo": "Amsterdam x Dortmund",
-     "odd": 2.74
-    },
-    {
-     "h": "05:48",
-     "jogo": "Madrid x Rome",
-     "odd": 2.07
-    },
-    {
-     "h": "05:51",
-     "jogo": "Porto x Milan",
-     "odd": 2.54
-    }
-   ],
-   "gatilho": "seq RRGR",
-   "alvo": {
-    "h": "05:45",
-    "jogo": "Amsterdam x Dortmund",
-    "odd": 2.74,
-    "unidades": 1,
-    "desde": 1795509668571
-   },
-   "iniciadoEm": 1795509668571
-  },
+  "ciclo": null,
   "cooldown": {
-   "cam": 1795506066906,
+   "cam": 1795509994784,
    "eng": 1795507435335,
    "ita": 1795509038152,
    "spa": 1795506270848,
@@ -4830,7 +4801,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -2.8
+   "2026-11-24": -1.1
   },
   "_obs": {
    "cam": {
@@ -4985,10 +4956,6 @@
    "eng": {
     "desde": 1795507435340,
     "gatilho": "time MNC"
-   },
-   "ame": {
-    "desde": 1795509989357,
-    "gatilho": "time Itaquera"
    }
   }
  },
