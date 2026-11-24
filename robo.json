@@ -1321,7 +1321,7 @@
    "tipo": "odd",
    "chave": "3.23",
    "n": 8,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -1339,12 +1339,30 @@
  },
  "o25": {
   "saldo": -25.7,
-  "ciclos": 84892,
+  "ciclos": 84895,
   "greens": 225,
   "redsCiclo": 33,
   "aborts": 0,
-  "descartes": 84634,
+  "descartes": 84637,
   "historico": [
+   {
+    "quando": "2026-11-24T16:30:44.616Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:30:44.025Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:30:44.019Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T16:30:14.838Z",
     "resultado": "GREEN_OBS",
@@ -4926,24 +4944,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:11:10.576Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :28) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:11:10.569Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:11:10.563Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4998,8 +4998,8 @@
   "_gatilhoAtual": {
    "tipo": "time",
    "chave": "COL",
-   "n": 25,
-   "start": 4
+   "n": 26,
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -5151,12 +5151,8 @@
     "gatilho": "coluna :59"
    },
    "lat": {
-    "desde": 1795537652033,
+    "desde": 1795537844616,
     "gatilho": "time COL"
-   },
-   "cam": {
-    "desde": 1795537814837,
-    "gatilho": "time Madrid"
    }
   }
  },
