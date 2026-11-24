@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Raio-X do dia · AMD Live</title>
+<style>
+:root{--bg:#020d12;--card:#061a22;--in:#021118;--line:#153946;--txt:#f3fbfa;--mut:#83b7c8;--ok:#00f278;--bad:#ff475f;--warn:#ffd21c}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 86% 0,rgba(0,242,120,.07),transparent 28%),var(--bg);color:var(--txt);font:14px/1.45 Inter,system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1500px;margin:0 auto;padding:20px 18px 60px}
+a{color:var(--ok);text-decoration:none;font-weight:700}
+h1{font-size:24px;margin:10px 0 4px}h1 em{font-style:normal;color:var(--ok)}
+.sub{color:var(--mut);font-size:13px;margin-bottom:16px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin-bottom:16px}
+.bar label{display:flex;flex-direction:column;gap:5px;color:var(--mut);font-size:12px;font-weight:700}
+select{background:var(--in);border:1px solid var(--line);color:var(--txt);padding:10px 12px;border-radius:8px;font:inherit;min-width:150px}
+.upd{color:var(--mut);font-size:12px;margin-left:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.card.up{border-color:#00b963;box-shadow:0 0 0 1px rgba(0,242,120,.15)}
+.card.down{opacity:.62}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.top b{font-size:17px}
+.st{padding:4px 10px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.04em}
+.st.up{background:#05291b;color:var(--ok)}.st.down{background:#2a0c13;color:#ff8a9a}.st.wait{background:#201b03;color:var(--warn)}
+.linha{color:var(--mut);font-size:12px;margin-bottom:10px}
+.box{background:var(--in);border:1px solid var(--line);border-radius:10px;padding:10px;margin-top:8px}
+.box h4{margin:0 0 6px;font-size:12px;color:var(--mut);letter-spacing:.06em}
+.nums{display:flex;gap:14px;flex-wrap:wrap}.nums div{display:flex;flex-direction:column}.nums span{color:var(--mut);font-size:11px}.nums strong{font-size:18px}
+.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+.chips{display:flex;flex-wrap:wrap;gap:5px}.chips i{font-style:normal;padding:3px 8px;border-radius:6px;background:#0b2f3a;font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:12px}td{padding:4px 2px;border-bottom:1px solid #0d2a33}td:last-child{text-align:right}
+.dots{display:flex;gap:3px;flex-wrap:wrap;margin-top:6px}.dots i{width:11px;height:11px;border-radius:3px}.dots .g{background:var(--ok)}.dots .r{background:var(--bad)}
+.vazio{color:var(--mut);font-size:12px}
+</style></head><body><div class="wrap">
+<a href="index.html">← voltar</a>
+<h1>Raio-X <em>do dia</em></h1>
+<div class="sub">Só as <b>subidas</b> de hoje (gráfico acumulado desde 00h, média 9 acima da 21 — igual ao gráfico da tela). Mostra o que cada subida pagou e o que está puxando a subida de agora. Na queda a liga fica apagada: é hora de esperar.</div>
+<div class="bar">
+  <label>Mercado<select id="mk"><option value="o25">Over 2.5</option><option value="o35">Over 3.5</option><option value="o15">Over 1.5</option><option value="ambs">Ambas Marcam</option></select></label>
+  <label>Tiros<select id="tiros"><option value="1">1 (seco)</option><option value="2">2 tiros</option><option value="3" selected>3 tiros</option></select></label>
+  <span class="upd" id="upd">carregando…</span>
+</div>
+<div class="grid" id="grid"></div>
+</div>
+<script>
+(function(){
+  var LIGAS=[['eng','Inglaterra'],['ita','Itália'],['spa','Espanha'],['mnd','Mundo'],['bra','Brasil'],['lat','América Latina'],['cam','Champions'],['cop','Copa'],['ame','América']];
+  function q(s){return document.querySelector(s);}
+  function esc(v){return String(v==null?'':v).replace(/[&<>"]/g,function(c){return '&#'+c.charCodeAt(0)+';';});}
+  function bate(mk,g){var a=+g.gols_a,b=+g.gols_b,t=a+b;return mk==='o15'?t>=2:mk==='o25'?t>=3:mk==='o35'?t>=4:(a>0&&b>0);}
+  var ODDK={o15:'odd_over_1.5',o25:'odd_over_2.5',o35:'odd_over_3.5',ambs:'odd_ambas_sim'};
+  function hm(g){return String(g.hora).padStart(2,'0')+':'+String(g.minuto).padStart(2,'0');}
+  function sma(a,n){var o=[],s=0;for(var i=0;i<a.length;i++){s+=a[i];if(i>=n)s-=a[i-n];o.push(i>=n-1?s/n:null);}return o;}
+  /* Entradas em ciclos seguidos dentro da subida: entra, espera o ciclo (ate X tiros) fechar e entra de novo. */
+  function ciclos(hit,ini,fim,tiros){
+    var out=[],i=ini;
+    while(i<=fim){var ok=false,usados=0;for(var t=1;t<=tiros&&i+t<hit.length;t++){usados=t;if(hit[i+t]){ok=true;break;}}
+      if(usados<tiros&&!ok)break; out.push({i:i,ok:ok,tiro:ok?usados:0}); i+=usados;}
+    return out;
+  }
+  async function liga(l,mk,tiros){
+    var r=await fetch('/api/grade?liga='+l+'&horas=24&compacto=1&_='+Date.now(),{credentials:'same-origin',cache:'no-store'});
+    if(!r.ok)return null;
+    var p=((await r.json()).partidas||[]).filter(function(g){return g.resultado_ft;}).sort(function(a,b){return Date.parse(a.slot_em)-Date.parse(b.slot_em);});
+    if(!p.length)return null;
+    var dia=String(p[p.length-1].slot_em).slice(0,10),h=p.filter(function(g){return String(g.slot_em).slice(0,10)===dia;});
+    var hit=h.map(function(g){return bate(mk,g)?1:0;}),s=0,line=hit.map(function(x,i){s+=x;return s/(i+1)*100;});
+    var m9=sma(line,9),m21=sma(line,21),n=h.length;
+    if(n<25)return {n:n,espera:true};
+    var fases=[],cur=null;
+    for(var i=24;i<n;i++){var up=m9[i]>m21[i];if(!cur||cur.up!==up){cur={up:up,ini:i,fim:i};fases.push(cur);}else cur.fim=i;}
+    var subidas=fases.filter(function(f){return f.up;});
+    subidas.forEach(function(f){f.cic=ciclos(hit,f.ini,f.fim,tiros);f.g=f.cic.filter(function(c){return c.ok;}).length;f.r=f.cic.length-f.g;});
+    var atual=fases[fases.length-1],L=n-1;
+    var tot={g:0,r:0};subidas.forEach(function(f){tot.g+=f.g;tot.r+=f.r;});
+    var semRed=subidas.filter(function(f){return f.cic.length&&!f.r;}).length;
+    var res={n:n,linha:line[L],m9:m9[L],m21:m21[L],subindo:atual.up,forca:m9[L]>=m9[L-1],desde:hm(h[atual.ini]),jogos:atual.fim-atual.ini+1,subidas:subidas,tot:tot,semRed:semRed};
+    if(atual.up){
+      var gs=h.slice(atual.ini),times={},cols={},odds=[];
+      gs.forEach(function(g){var ok=bate(mk,g);[g.time_a,g.time_b].forEach(function(t){var x=times[t]||(times[t]=[0,0]);x[0]++;if(ok)x[1]++;});
+        var c=':'+String(g.minuto).padStart(2,'0');var y=cols[c]||(cols[c]=[0,0]);y[0]++;if(ok)y[1]++;
+        if(ok){var o=Number((g.odds||{})[ODDK[mk]]);if(o>1)odds.push(o);}});
+      res.atualPct=gs.filter(function(g){return bate(mk,g);}).length/gs.length*100;
+      res.times=Object.entries(times).filter(function(e){return e[1][1]>=2&&e[1][1]/e[1][0]>=.6;}).sort(function(a,b){return b[1][1]-a[1][1];}).slice(0,6);
+      res.cols=Object.entries(cols).filter(function(e){return e[1][0]>=2&&e[1][1]===e[1][0];}).map(function(e){return e[0];}).slice(0,8);
+      res.odd=odds.length?odds.reduce(function(a,b){return a+b;},0)/odds.length:null;
+      res.ult=gs.slice(-15).map(function(g){return bate(mk,g)?'g':'r';});
+    }
+    return res;
+  }
+  async function roda(){
+    var mk=q('#mk').value,tiros=Number(q('#tiros').value),nomeMk=q('#mk').selectedOptions[0].textContent;
+    var dados=await Promise.all(LIGAS.map(async function(l){try{return {l:l,d:await liga(l[0],mk,tiros)};}catch(e){return {l:l,d:null};}}));
+    dados.sort(function(a,b){var ua=a.d&&a.d.subindo?1:0,ub=b.d&&b.d.subindo?1:0;if(ua!==ub)return ub-ua;
+      var pa=a.d&&a.d.tot?a.d.tot.g/Math.max(1,a.d.tot.g+a.d.tot.r):0,pb=b.d&&b.d.tot?b.d.tot.g/Math.max(1,b.d.tot.g+b.d.tot.r):0;return pb-pa;});
+    q('#grid').innerHTML=dados.map(function(x){
+      var d=x.d,nome=x.l[1];
+      if(!d)return '<article class="card down"><div class="top"><b>'+nome+'</b><span class="st wait">SEM DADOS</span></div></article>';
+      if(d.espera)return '<article class="card down"><div class="top"><b>'+nome+'</b><span class="st wait">AGUARDE</span></div><div class="linha">Só '+d.n+' jogos hoje: o gráfico ainda não formou a MM21.</div></article>';
+      var pctDia=d.tot.g+d.tot.r?Math.round(d.tot.g/(d.tot.g+d.tot.r)*100):0;
+      var st=d.subindo?(d.forca?'<span class="st up">SUBINDO</span>':'<span class="st wait">PERDENDO FORÇA</span>'):'<span class="st down">CAINDO · ESPERAR</span>';
+      var h='<article class="card '+(d.subindo?'up':'down')+'"><div class="top"><b>'+nome+'</b>'+st+'</div>'+
+        '<div class="linha">'+nomeMk+' '+d.linha.toFixed(2)+'% · MM9 '+d.m9.toFixed(2)+' · MM21 '+d.m21.toFixed(2)+' · '+d.n+' jogos hoje · '+(d.subindo?'subindo desde <b>'+d.desde+'</b> ('+d.jogos+' jogos)':'caindo desde '+d.desde)+'</div>';
+      h+='<div class="box"><h4>SUBIDAS DE HOJE · '+tiros+' TIRO'+(tiros>1?'S':'')+'</h4><div class="nums">'+
+        '<div><span>subidas</span><strong>'+d.subidas.length+'</strong></div>'+
+        '<div><span>entradas</span><strong>'+(d.tot.g+d.tot.r)+'</strong></div>'+
+        '<div><span>green</span><strong class="ok">'+d.tot.g+'</strong></div>'+
+        '<div><span>red</span><strong class="bad">'+d.tot.r+'</strong></div>'+
+        '<div><span>acerto</span><strong class="'+(pctDia>=90?'ok':pctDia>=80?'warn':'bad')+'">'+pctDia+'%</strong></div>'+
+        '<div><span>subidas sem red</span><strong>'+d.semRed+'/'+d.subidas.length+'</strong></div></div></div>';
+      if(d.subindo){
+        h+='<div class="box"><h4>SUBIDA DE AGORA · PAGANDO '+Math.round(d.atualPct)+'%</h4>'+
+          '<div class="dots">'+d.ult.map(function(c){return '<i class="'+c+'"></i>';}).join('')+'</div>'+
+          '<div style="margin-top:8px"><span class="vazio">Times puxando: </span><span class="chips">'+(d.times.length?d.times.map(function(t){return '<i>'+esc(t[0])+' '+t[1][1]+'/'+t[1][0]+'</i>';}).join(''):'<span class="vazio">—</span>')+'</span></div>'+
+          '<div style="margin-top:6px"><span class="vazio">Colunas 100%: </span><span class="chips">'+(d.cols.length?d.cols.map(function(c){return '<i>'+c+'</i>';}).join(''):'<span class="vazio">—</span>')+'</span></div>'+
+          '<div style="margin-top:6px" class="vazio">Odd média dos que pagaram: <b>'+(d.odd?d.odd.toFixed(2):'—')+'</b></div></div>';
+      }
+      var ult=d.subidas.slice(-6).reverse();
+      h+='<div class="box"><h4>ÚLTIMAS SUBIDAS</h4>'+(ult.length?'<table>'+ult.map(function(f,ix){return '<tr><td>'+(ix===0&&d.subindo?'▶ ':'')+f.cic.length+' entradas · '+(f.fim-f.ini+1)+' jogos</td><td><span class="ok">'+f.g+' G</span> · <span class="bad">'+f.r+' R</span></td></tr>';}).join('')+'</table>':'<span class="vazio">nenhuma ainda</span>')+'</div>';
+      return h+'</article>';
+    }).join('');
+    q('#upd').textContent='atualizado '+new Date().toLocaleTimeString('pt-BR')+' · atualiza a cada 30s';
+  }
+  q('#mk').addEventListener('change',roda);q('#tiros').addEventListener('change',roda);
+  roda();setInterval(roda,30000);
+})();
+</script>
+</body></html>
