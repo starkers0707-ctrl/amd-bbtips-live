@@ -1078,13 +1078,19 @@
   }
  },
  "o25": {
-  "saldo": -11.5,
-  "ciclos": 69246,
-  "greens": 192,
+  "saldo": -9.9,
+  "ciclos": 69247,
+  "greens": 193,
   "redsCiclo": 26,
   "aborts": 0,
   "descartes": 69028,
   "historico": [
+   {
+    "quando": "2026-11-24T02:31:49.898Z",
+    "resultado": "GREEN",
+    "unidades": 1.6,
+    "detalhe": "cam · Celtic x Munich @2.16 (tiro 3) · gatilho: seq GRGRG"
+   },
    {
     "quando": "2026-11-24T02:29:31.216Z",
     "resultado": "GREEN_OBS",
@@ -4678,67 +4684,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T01:35:32.109Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho seq RGRGR) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ita": 1795483952226,
    "mnd": 1795485212990,
    "spa": 1795485393162,
-   "ame": 1795485805678
+   "ame": 1795485805678,
+   "cam": 1795487509896
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "23:24",
-     "jogo": "United x Barcelona",
-     "odd": 2.47
-    },
-    {
-     "h": "23:27",
-     "jogo": "Turin x Amsterdam",
-     "odd": 2.39
-    },
-    {
-     "h": "23:30",
-     "jogo": "Celtic x Munich",
-     "odd": 2.16
-    }
-   ],
-   "gatilho": "seq GRGRG",
-   "alvo": {
-    "h": "23:30",
-    "jogo": "Celtic x Munich",
-    "odd": 2.16,
-    "unidades": 4,
-    "desde": 1795487314848
-   },
-   "iniciadoEm": 1795486822045,
-   "tiros": [
-    {
-     "h": "23:24",
-     "jogo": "United x Barcelona",
-     "odd": 2.47,
-     "unidades": 1
-    },
-    {
-     "h": "23:27",
-     "jogo": "Turin x Amsterdam",
-     "odd": 2.39,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
-   "cam": 1795475247707,
+   "cam": 1795487509896,
    "eng": 1795383709617,
    "ita": 1795483952226,
    "spa": 1795485393162,
@@ -4759,7 +4716,7 @@
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
-   "2026-11-23": -39.2
+   "2026-11-23": -37.6
   },
   "_obs": {
    "cam": {
@@ -6223,7 +6180,7 @@
    "tipo": "odd",
    "chave": "2.06",
    "n": 11,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-20": 0,
