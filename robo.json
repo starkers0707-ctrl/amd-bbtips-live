@@ -4896,13 +4896,19 @@
   }
  },
  "ambas": {
-  "saldo": -3.6,
-  "ciclos": 217,
-  "greens": 92,
+  "saldo": -2.8,
+  "ciclos": 218,
+  "greens": 93,
   "redsCiclo": 10,
   "aborts": 0,
   "descartes": 115,
   "historico": [
+   {
+    "quando": "2026-11-24T05:59:50.276Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "ame · Asuncion x Santos @1.88 (tiro 2) · gatilho: time Asuncion"
+   },
    {
     "quando": "2026-11-24T05:48:01.979Z",
     "resultado": "GREEN_OBS",
@@ -6208,47 +6214,10 @@
   ],
   "consumidas": {
    "mnd": 1795496979458,
-   "lat": 1795497681687
+   "lat": 1795497681687,
+   "ame": 1795499990275
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "02:55",
-     "jogo": "Sao Paulo x Rio de Janeiro",
-     "odd": 1.81
-    },
-    {
-     "h": "02:58",
-     "jogo": "Asuncion x Santos",
-     "odd": 1.88
-    },
-    {
-     "h": "03:01",
-     "jogo": "Bogota x Lima",
-     "odd": 1.92
-    }
-   ],
-   "gatilho": "time Asuncion",
-   "alvo": {
-    "h": "02:58",
-    "jogo": "Asuncion x Santos",
-    "odd": 1.88,
-    "unidades": 2,
-    "desde": 1795499810165
-   },
-   "iniciadoEm": 1795499282515,
-   "tiros": [
-    {
-     "h": "02:55",
-     "jogo": "Sao Paulo x Rio de Janeiro",
-     "odd": 1.81,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795497681687,
    "eng": 1795493011900,
@@ -6257,20 +6226,20 @@
    "mnd": 1795496979458,
    "cam": 1795484997617,
    "cop": 1795488040911,
-   "ame": 1795482148615
+   "ame": 1795499990275
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "Asuncion",
+   "chave": "France",
    "n": 8,
-   "start": 1
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
-   "2026-11-24": -5
+   "2026-11-24": -4.2
   },
   "_obs": {}
  }
