@@ -1074,12 +1074,24 @@
  },
  "o25": {
   "saldo": -8.9,
-  "ciclos": 67935,
+  "ciclos": 67937,
   "greens": 187,
   "redsCiclo": 25,
   "aborts": 0,
-  "descartes": 67723,
+  "descartes": 67725,
   "historico": [
+   {
+    "quando": "2026-11-24T00:25:31.329Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho seq GRRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:25:31.327Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T00:25:31.322Z",
     "resultado": "RED_CICLO",
@@ -4667,18 +4679,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:50:15.683Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:50:03.456Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4687,7 +4687,37 @@
    "ita": 1795479522033,
    "cop": 1795479931322
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "21:27",
+     "jogo": "BET x SEV",
+     "odd": 1.93
+    },
+    {
+     "h": "21:29",
+     "jogo": "VIL x BAR",
+     "odd": 1.86
+    },
+    {
+     "h": "21:31",
+     "jogo": "LEV x RST",
+     "odd": 1.95
+    }
+   ],
+   "gatilho": "seq GRRRG",
+   "alvo": {
+    "h": "21:27",
+    "jogo": "BET x SEV",
+    "odd": 1.93,
+    "unidades": 1,
+    "desde": 1795479938198
+   },
+   "iniciadoEm": 1795479938198
+  },
   "cooldown": {
    "cam": 1795475247707,
    "eng": 1795383709617,
@@ -6107,7 +6137,7 @@
    "tipo": "odd",
    "chave": "2.21",
    "n": 9,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-20": 0,
