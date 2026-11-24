@@ -1105,12 +1105,30 @@
  },
  "o25": {
   "saldo": -2.6,
-  "ciclos": 67737,
+  "ciclos": 67740,
   "greens": 186,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 67527,
+  "descartes": 67530,
   "historico": [
+   {
+    "quando": "2026-11-24T00:12:04.222Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:11:38.036Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:11:38.014Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T00:11:28.525Z",
     "resultado": "GREEN_OBS",
@@ -4692,24 +4710,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:40:43.157Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:40:43.152Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:40:43.136Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4913,7 +4913,12 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {}
+  "_obs": {
+   "ita": {
+    "desde": 1795479124222,
+    "gatilho": "odd 1.76"
+   }
+  }
  },
  "ambas": {
   "saldo": -4.5,
@@ -6146,10 +6151,10 @@
    "ame": 1795477489501
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":14",
-   "n": 20,
-   "start": 1
+   "tipo": "odd",
+   "chave": "1.95",
+   "n": 10,
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
