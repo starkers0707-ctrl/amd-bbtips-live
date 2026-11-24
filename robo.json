@@ -4908,7 +4908,37 @@
    "lat": 1795533721593,
    "cam": 1795534336119
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "12:44",
+     "jogo": "CHE x BOU",
+     "odd": 1.93
+    },
+    {
+     "h": "12:46",
+     "jogo": "BRE x SUN",
+     "odd": 1.94
+    },
+    {
+     "h": "12:48",
+     "jogo": "LEE x EVE",
+     "odd": 1.94
+    }
+   ],
+   "gatilho": "coluna :46",
+   "alvo": {
+    "h": "12:44",
+    "jogo": "CHE x BOU",
+    "odd": 1.93,
+    "unidades": 1,
+    "desde": 1795534342348
+   },
+   "iniciadoEm": 1795534342348
+  },
   "cooldown": {
    "cam": 1795534336119,
    "eng": 1795525806642,
@@ -4921,10 +4951,10 @@
    "cop": 1795520988139
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "Madrid",
-   "n": 32,
-   "start": 3
+   "tipo": "coluna",
+   "chave": ":46",
+   "n": 11,
+   "start": 6
   },
   "dias": {
    "2026-11-19": -7,
@@ -5070,12 +5100,7 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {
-   "cam": {
-    "desde": 1795533942369,
-    "gatilho": "time Madrid"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": -24.9,
