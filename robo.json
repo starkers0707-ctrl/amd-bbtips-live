@@ -1339,12 +1339,30 @@
  },
  "o25": {
   "saldo": -25.7,
-  "ciclos": 84966,
+  "ciclos": 84969,
   "greens": 225,
   "redsCiclo": 33,
   "aborts": 0,
-  "descartes": 84708,
+  "descartes": 84711,
   "historico": [
+   {
+    "quando": "2026-11-24T16:36:17.963Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:36:17.952Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :50) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:36:13.395Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T16:36:13.374Z",
     "resultado": "GREEN_OBS",
@@ -4926,24 +4944,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:14:03.530Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :19) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:14:03.524Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:13:50.874Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :28) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4995,10 +4995,10 @@
    "cop": 1795520988139
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "COL",
-   "n": 26,
-   "start": 2
+   "tipo": "odd",
+   "chave": "2.17",
+   "n": 11,
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -5149,9 +5149,9 @@
     "desde": 1795535792995,
     "gatilho": "coluna :59"
    },
-   "eng": {
-    "desde": 1795538173373,
-    "gatilho": "coluna :50"
+   "lat": {
+    "desde": 1795538177963,
+    "gatilho": "time COL"
    }
   }
  },
