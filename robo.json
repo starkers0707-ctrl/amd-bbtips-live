@@ -6161,7 +6161,37 @@
   "consumidas": {
    "mnd": 1795489417038
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "01:02",
+     "jogo": "EVE x HUL",
+     "odd": 1.77
+    },
+    {
+     "h": "01:04",
+     "jogo": "CHE x TOT",
+     "odd": 1.73
+    },
+    {
+     "h": "01:06",
+     "jogo": "BHA x BOU",
+     "odd": 1.7
+    }
+   ],
+   "gatilho": "placar goleada (3+)",
+   "alvo": {
+    "h": "01:02",
+    "jogo": "EVE x HUL",
+    "odd": 1.77,
+    "unidades": 1,
+    "desde": 1795492811143
+   },
+   "iniciadoEm": 1795492811143
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -6173,9 +6203,9 @@
    "ame": 1795482148615
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":02",
-   "n": 21,
+   "tipo": "placar",
+   "chave": "goleada (3+)",
+   "n": 11,
    "start": 1
   },
   "dias": {
