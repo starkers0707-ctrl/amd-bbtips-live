@@ -1205,13 +1205,25 @@
   }
  },
  "o25": {
-  "saldo": -19,
-  "ciclos": 75682,
+  "saldo": -26,
+  "ciclos": 75684,
   "greens": 210,
-  "redsCiclo": 30,
+  "redsCiclo": 31,
   "aborts": 0,
-  "descartes": 75442,
+  "descartes": 75443,
   "historico": [
+   {
+    "quando": "2026-11-24T11:19:55.518Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "cam · ciclo perdido (3 tiros) · gatilho: coluna :12"
+   },
+   {
+    "quando": "2026-11-24T11:19:41.950Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T11:19:41.938Z",
     "resultado": "GREEN_OBS",
@@ -4799,72 +4811,17 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T10:52:04.657Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T10:52:04.113Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
    }
   ],
   "consumidas": {
    "eng": 1795516294394,
    "mnd": 1795517012357,
-   "ame": 1795518338716
+   "ame": 1795518338716,
+   "cam": 1795519195518
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "08:12",
-     "jogo": "Porto x Benfica",
-     "odd": 2.37
-    },
-    {
-     "h": "08:15",
-     "jogo": "Munich x Milan",
-     "odd": 2.19
-    },
-    {
-     "h": "08:18",
-     "jogo": "Celtic x Paris",
-     "odd": 2.09
-    }
-   ],
-   "gatilho": "coluna :12",
-   "alvo": {
-    "h": "08:18",
-    "jogo": "Celtic x Paris",
-    "odd": 2.09,
-    "unidades": 4,
-    "desde": 1795519000065
-   },
-   "iniciadoEm": 1795518469733,
-   "tiros": [
-    {
-     "h": "08:12",
-     "jogo": "Porto x Benfica",
-     "odd": 2.37,
-     "unidades": 1
-    },
-    {
-     "h": "08:15",
-     "jogo": "Munich x Milan",
-     "odd": 2.19,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
-   "cam": 1795514859782,
+   "cam": 1795519195518,
    "eng": 1795516294394,
    "ita": 1795513474884,
    "spa": 1795506270848,
@@ -4886,7 +4843,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -9.1
+   "2026-11-24": -16.1
   },
   "_obs": {
    "cam": {
@@ -5037,10 +4994,6 @@
    "cam": {
     "desde": 1795518818100,
     "gatilho": "coluna :30"
-   },
-   "mnd": {
-    "desde": 1795519181938,
-    "gatilho": "time MEX"
    }
   }
  },
@@ -6625,7 +6578,7 @@
    "tipo": "odd",
    "chave": "2.01",
    "n": 11,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-20": 0,
