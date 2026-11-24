@@ -1074,12 +1074,24 @@
  },
  "o25": {
   "saldo": -1.9,
-  "ciclos": 67907,
+  "ciclos": 67909,
   "greens": 187,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 67696,
+  "descartes": 67698,
   "historico": [
+   {
+    "quando": "2026-11-24T00:23:06.371Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:23:05.583Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T00:22:40.663Z",
     "resultado": "GREEN_OBS",
@@ -4667,18 +4679,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:48:46.068Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:48:46.062Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.78) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4902,7 +4902,7 @@
     "gatilho": "odd 2.39"
    },
    "ita": {
-    "desde": 1795479760662,
+    "desde": 1795479786371,
     "gatilho": "odd 1.76"
    }
   }
@@ -6109,7 +6109,37 @@
    "mnd": 1795479213322,
    "cam": 1795479758430
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "21:33",
+     "jogo": "Germany x Croatia",
+     "odd": 2.11
+    },
+    {
+     "h": "21:36",
+     "jogo": "Colombia x Denmark",
+     "odd": 2.21
+    },
+    {
+     "h": "21:39",
+     "jogo": "Brazil x Belgium",
+     "odd": 1.9
+    }
+   ],
+   "gatilho": "odd 2.21",
+   "alvo": {
+    "h": "21:33",
+    "jogo": "Germany x Croatia",
+    "odd": 2.11,
+    "unidades": 1,
+    "desde": 1795479760713
+   },
+   "iniciadoEm": 1795479760713
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -6124,7 +6154,7 @@
    "tipo": "odd",
    "chave": "2.21",
    "n": 9,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
