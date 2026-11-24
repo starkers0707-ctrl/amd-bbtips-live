@@ -4953,7 +4953,37 @@
    "spa": 1795536512963,
    "ame": 1795537799887
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "13:41",
+     "jogo": "VAL x CIO",
+     "odd": 1.95
+    },
+    {
+     "h": "13:44",
+     "jogo": "COL x IND",
+     "odd": 1.86
+    },
+    {
+     "h": "13:47",
+     "jogo": "MEN x OLI",
+     "odd": 1.88
+    }
+   ],
+   "gatilho": "time COL",
+   "alvo": {
+    "h": "13:41",
+    "jogo": "VAL x CIO",
+    "odd": 1.95,
+    "unidades": 1,
+    "desde": 1795537806125
+   },
+   "iniciadoEm": 1795537806125
+  },
   "cooldown": {
    "cam": 1795534336119,
    "eng": 1795535156757,
@@ -5123,10 +5153,6 @@
    "lat": {
     "desde": 1795537652033,
     "gatilho": "time COL"
-   },
-   "cam": {
-    "desde": 1795537799909,
-    "gatilho": "time Madrid"
    }
   }
  },
