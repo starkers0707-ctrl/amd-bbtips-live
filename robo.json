@@ -1147,8 +1147,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "08:20",
@@ -1168,11 +1168,11 @@
    ],
    "gatilho": "seq RRGG",
    "alvo": {
-    "h": "08:22",
-    "jogo": "GER x ITA",
-    "odd": 3.34,
-    "unidades": 2,
-    "desde": 1795519302292
+    "h": "08:24",
+    "jogo": "URY x WAL",
+    "odd": 3.27,
+    "unidades": 4,
+    "desde": 1795519412713
    },
    "iniciadoEm": 1795519055568,
    "tiros": [
@@ -1181,6 +1181,12 @@
      "jogo": "DEN x POL",
      "odd": 3.33,
      "unidades": 1
+    },
+    {
+     "h": "08:22",
+     "jogo": "GER x ITA",
+     "odd": 3.34,
+     "unidades": 2
     }
    ]
   },
@@ -1214,12 +1220,30 @@
  },
  "o25": {
   "saldo": -26,
-  "ciclos": 75739,
+  "ciclos": 75742,
   "greens": 210,
   "redsCiclo": 31,
   "aborts": 0,
-  "descartes": 75498,
+  "descartes": 75501,
   "historico": [
+   {
+    "quando": "2026-11-24T11:23:15.878Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:23:15.870Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:23:14.920Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T11:23:14.900Z",
     "resultado": "GREEN_OBS",
@@ -4801,24 +4825,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho seq RGGG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T10:55:32.316Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T10:55:32.309Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T10:55:32.301Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho seq RGGG) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5002,10 +5008,6 @@
    "cam": {
     "desde": 1795518818100,
     "gatilho": "coluna :30"
-   },
-   "mnd": {
-    "desde": 1795519394900,
-    "gatilho": "time MEX"
    }
   }
  },
