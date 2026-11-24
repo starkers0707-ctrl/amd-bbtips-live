@@ -1162,12 +1162,30 @@
  },
  "o25": {
   "saldo": -14.2,
-  "ciclos": 74276,
+  "ciclos": 74279,
   "greens": 208,
   "redsCiclo": 29,
   "aborts": 0,
-  "descartes": 74039,
+  "descartes": 74042,
   "historico": [
+   {
+    "quando": "2026-11-24T10:11:36.127Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:11:35.259Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:11:35.249Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T10:11:08.745Z",
     "resultado": "GREEN_OBS",
@@ -4749,24 +4767,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:42:01.956Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:41:49.631Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:41:49.624Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4952,9 +4952,9 @@
     "desde": 1795514986072,
     "gatilho": "time MEX"
    },
-   "cam": {
-    "desde": 1795515068744,
-    "gatilho": "time Madrid"
+   "ita": {
+    "desde": 1795515096127,
+    "gatilho": "odd 1.95"
    }
   }
  },
@@ -6453,7 +6453,37 @@
    "eng": 1795511854835,
    "cop": 1795514137921
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "07:12",
+     "jogo": "SPA x DEN",
+     "odd": 1.72
+    },
+    {
+     "h": "07:14",
+     "jogo": "SWI x POR",
+     "odd": 1.68
+    },
+    {
+     "h": "07:16",
+     "jogo": "NED x ARG",
+     "odd": 1.68
+    }
+   ],
+   "gatilho": "time POR",
+   "alvo": {
+    "h": "07:12",
+    "jogo": "SPA x DEN",
+    "odd": 1.72,
+    "unidades": 1,
+    "desde": 1795515068763
+   },
+   "iniciadoEm": 1795515068763
+  },
   "cooldown": {
    "lat": 1795509212287,
    "eng": 1795511854835,
