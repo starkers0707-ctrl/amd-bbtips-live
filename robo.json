@@ -1333,13 +1333,19 @@
   }
  },
  "o25": {
-  "saldo": -31.7,
-  "ciclos": 85505,
-  "greens": 226,
+  "saldo": -31.1,
+  "ciclos": 85506,
+  "greens": 227,
   "redsCiclo": 34,
   "aborts": 0,
   "descartes": 85245,
   "historico": [
+   {
+    "quando": "2026-11-24T16:57:36.606Z",
+    "resultado": "GREEN",
+    "unidades": 0.6,
+    "detalhe": "eng · ARS x TOT @1.79 (tiro 2) · gatilho: coluna :54"
+   },
    {
     "quando": "2026-11-24T16:57:26.852Z",
     "resultado": "GREEN_OBS",
@@ -4933,12 +4939,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:31:14.963Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4946,50 +4946,13 @@
    "spa": 1795536512963,
    "ame": 1795537799887,
    "lat": 1795538549455,
-   "cam": 1795539173032
+   "cam": 1795539173032,
+   "eng": 1795539456606
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "13:54",
-     "jogo": "AST x BOU",
-     "odd": 1.93
-    },
-    {
-     "h": "13:56",
-     "jogo": "ARS x TOT",
-     "odd": 1.79
-    },
-    {
-     "h": "13:58",
-     "jogo": "BRE x SUN",
-     "odd": 1.94
-    }
-   ],
-   "gatilho": "coluna :54",
-   "alvo": {
-    "h": "13:56",
-    "jogo": "ARS x TOT",
-    "odd": 1.79,
-    "unidades": 2,
-    "desde": 1795539335132
-   },
-   "iniciadoEm": 1795539175504,
-   "tiros": [
-    {
-     "h": "13:54",
-     "jogo": "AST x BOU",
-     "odd": 1.93,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795539173032,
-   "eng": 1795535156757,
+   "eng": 1795539456606,
    "ita": 1795536034293,
    "spa": 1795536512963,
    "lat": 1795538549455,
@@ -5010,7 +4973,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -21.8
+   "2026-11-24": -21.2
   },
   "_obs": {}
  },
@@ -5156,10 +5119,6 @@
    "lat": {
     "desde": 1795539373801,
     "gatilho": "time COL"
-   },
-   "spa": {
-    "desde": 1795539446852,
-    "gatilho": "coluna :13"
    }
   }
  },
