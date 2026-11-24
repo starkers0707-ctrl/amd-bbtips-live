@@ -1163,13 +1163,19 @@
   }
  },
  "o25": {
-  "saldo": -8.7,
-  "ciclos": 73613,
-  "greens": 206,
+  "saldo": -8.3,
+  "ciclos": 73614,
+  "greens": 207,
   "redsCiclo": 28,
   "aborts": 0,
   "descartes": 73379,
   "historico": [
+   {
+    "quando": "2026-11-24T09:37:33.700Z",
+    "resultado": "GREEN",
+    "unidades": 0.4,
+    "detalhe": "mnd · COL x BEL @1.71 (tiro 2) · gatilho: time BEL"
+   },
    {
     "quando": "2026-11-24T09:37:19.052Z",
     "resultado": "GREEN_OBS",
@@ -4763,58 +4769,15 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho time Itaquera) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:08:35.366Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
    }
   ],
   "consumidas": {
    "cam": 1795509994784,
    "eng": 1795511612671,
-   "ame": 1795512755154
+   "ame": 1795512755154,
+   "mnd": 1795513053700
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "06:34",
-     "jogo": "SPA x WAL",
-     "odd": 1.89
-    },
-    {
-     "h": "06:36",
-     "jogo": "COL x BEL",
-     "odd": 1.71
-    },
-    {
-     "h": "06:38",
-     "jogo": "NED x ARG",
-     "odd": 1.91
-    }
-   ],
-   "gatilho": "time BEL",
-   "alvo": {
-    "h": "06:36",
-    "jogo": "COL x BEL",
-    "odd": 1.71,
-    "unidades": 2,
-    "desde": 1795512950709
-   },
-   "iniciadoEm": 1795512785036,
-   "tiros": [
-    {
-     "h": "06:34",
-     "jogo": "SPA x WAL",
-     "odd": 1.89,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795509994784,
    "eng": 1795511612671,
@@ -4822,7 +4785,7 @@
    "spa": 1795506270848,
    "lat": 1795483111301,
    "bra": 1795472158133,
-   "mnd": 1795485212990,
+   "mnd": 1795513053700,
    "ame": 1795512755154,
    "cop": 1795479931322
   },
@@ -4830,7 +4793,7 @@
    "tipo": "time",
    "chave": "BEL",
    "n": 16,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-19": -7,
@@ -4838,7 +4801,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": 1.2
+   "2026-11-24": 1.6
   },
   "_obs": {
    "cam": {
@@ -4985,10 +4948,6 @@
    "cop": {
     "desde": 1795479598576,
     "gatilho": "odd 2.39"
-   },
-   "mnd": {
-    "desde": 1795513039052,
-    "gatilho": "time BEL"
    }
   }
  },
