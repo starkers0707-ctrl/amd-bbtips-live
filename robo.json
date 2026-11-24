@@ -1077,12 +1077,24 @@
  },
  "o25": {
   "saldo": -16.1,
-  "ciclos": 69615,
+  "ciclos": 69617,
   "greens": 194,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 69394,
+  "descartes": 69396,
   "historico": [
+   {
+    "quando": "2026-11-24T04:26:44.170Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T04:26:34.401Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T04:26:33.744Z",
     "resultado": "GREEN_OBS",
@@ -4670,18 +4682,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T02:06:31.091Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T02:06:25.736Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4689,8 +4689,8 @@
   },
   "ciclo": {
    "liga": "ita",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "01:23",
@@ -4710,11 +4710,11 @@
    ],
    "gatilho": "placar goleada (3+)",
    "alvo": {
-    "h": "01:25",
-    "jogo": "MIL x BOL",
-    "odd": 1.93,
-    "unidades": 2,
-    "desde": 1795494267929
+    "h": "01:27",
+    "jogo": "GEN x FRO",
+    "odd": 1.91,
+    "unidades": 4,
+    "desde": 1795494394397
    },
    "iniciadoEm": 1795494070824,
    "tiros": [
@@ -4723,6 +4723,12 @@
      "jogo": "COM x SAS",
      "odd": 1.91,
      "unidades": 1
+    },
+    {
+     "h": "01:25",
+     "jogo": "MIL x BOL",
+     "odd": 1.93,
+     "unidades": 2
     }
    ]
   },
@@ -4910,7 +4916,7 @@
     "gatilho": "coluna :52"
    },
    "eng": {
-    "desde": 1795494393744,
+    "desde": 1795494404170,
     "gatilho": "odd 1.94"
    }
   }
