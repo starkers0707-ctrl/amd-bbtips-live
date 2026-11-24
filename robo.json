@@ -1076,13 +1076,31 @@
   }
  },
  "o25": {
-  "saldo": -9.1,
-  "ciclos": 69579,
+  "saldo": -16.1,
+  "ciclos": 69582,
   "greens": 194,
-  "redsCiclo": 26,
+  "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 69359,
+  "descartes": 69361,
   "historico": [
+   {
+    "quando": "2026-11-24T04:21:12.384Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T04:21:10.831Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho placar goleada (3+)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T04:17:47.383Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "eng · ciclo perdido (3 tiros) · gatilho: odd 1.94"
+   },
    {
     "quando": "2026-11-24T04:17:46.714Z",
     "resultado": "GREEN_OBS",
@@ -4664,75 +4682,45 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T02:02:21.972Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T02:01:35.860Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T02:01:30.152Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
    }
   ],
-  "consumidas": {},
+  "consumidas": {
+   "eng": 1795493867383
+  },
   "ciclo": {
-   "liga": "eng",
-   "degrau": 2,
-   "apostado": 3,
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
    "plano": [
     {
-     "h": "01:12",
-     "jogo": "NEW x FUL",
-     "odd": 1.94
+     "h": "01:23",
+     "jogo": "COM x SAS",
+     "odd": 1.91
     },
     {
-     "h": "01:14",
-     "jogo": "TOT x LEE",
+     "h": "01:25",
+     "jogo": "MIL x BOL",
      "odd": 1.93
     },
     {
-     "h": "01:16",
-     "jogo": "ARS x BOU",
-     "odd": 1.87
+     "h": "01:27",
+     "jogo": "GEN x FRO",
+     "odd": 1.91
     }
    ],
-   "gatilho": "odd 1.94",
+   "gatilho": "placar goleada (3+)",
    "alvo": {
-    "h": "01:16",
-    "jogo": "ARS x BOU",
-    "odd": 1.87,
-    "unidades": 4,
-    "desde": 1795493731382
+    "h": "01:23",
+    "jogo": "COM x SAS",
+    "odd": 1.91,
+    "unidades": 1,
+    "desde": 1795494070824
    },
-   "iniciadoEm": 1795493377767,
-   "tiros": [
-    {
-     "h": "01:12",
-     "jogo": "NEW x FUL",
-     "odd": 1.94,
-     "unidades": 1
-    },
-    {
-     "h": "01:14",
-     "jogo": "TOT x LEE",
-     "odd": 1.93,
-     "unidades": 2
-    }
-   ]
+   "iniciadoEm": 1795494070824
   },
   "cooldown": {
    "cam": 1795487509896,
-   "eng": 1795383709617,
+   "eng": 1795493867383,
    "ita": 1795483952226,
    "spa": 1795489711077,
    "lat": 1795483111301,
@@ -4742,10 +4730,10 @@
    "cop": 1795479931322
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.94",
-   "n": 9,
-   "start": 5
+   "tipo": "placar",
+   "chave": "goleada (3+)",
+   "n": 8,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -4753,7 +4741,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": 0.8
+   "2026-11-24": -6.2
   },
   "_obs": {
    "cam": {
@@ -4901,10 +4889,6 @@
     "desde": 1795479598576,
     "gatilho": "odd 2.39"
    },
-   "ita": {
-    "desde": 1795483861299,
-    "gatilho": "coluna :33"
-   },
    "ame": {
     "desde": 1795487371216,
     "gatilho": "odd 2.02"
@@ -4918,8 +4902,12 @@
     "gatilho": "coluna :52"
    },
    "eng": {
-    "desde": 1795493866714,
+    "desde": 1795493867387,
     "gatilho": "odd 1.94"
+   },
+   "ita": {
+    "desde": 1795494072384,
+    "gatilho": "placar goleada (3+)"
    }
   }
  },
