@@ -1297,12 +1297,36 @@
  },
  "o25": {
   "saldo": -24.9,
-  "ciclos": 79232,
+  "ciclos": 79236,
   "greens": 218,
   "redsCiclo": 32,
   "aborts": 0,
-  "descartes": 78982,
+  "descartes": 78986,
   "historico": [
+   {
+    "quando": "2026-11-24T13:36:01.354Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :46) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T13:35:36.146Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :40) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T13:35:36.143Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T13:35:36.134Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :46) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T13:35:35.556Z",
     "resultado": "GREEN_OBS",
@@ -4878,30 +4902,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:14:10.175Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:14:10.171Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho seq RGGG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:14:09.488Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:14:09.484Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5114,6 +5114,10 @@
    "lat": {
     "desde": 1795526528311,
     "gatilho": "time BOL"
+   },
+   "eng": {
+    "desde": 1795527361354,
+    "gatilho": "coluna :46"
    }
   }
  },
