@@ -1373,13 +1373,49 @@
   }
  },
  "o25": {
-  "saldo": -19.2,
-  "ciclos": 89606,
-  "greens": 238,
+  "saldo": -18,
+  "ciclos": 89612,
+  "greens": 239,
   "redsCiclo": 34,
   "aborts": 0,
-  "descartes": 89334,
+  "descartes": 89339,
   "historico": [
+   {
+    "quando": "2026-11-24T20:35:38.931Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T20:35:38.928Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.04) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T20:35:38.917Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T20:35:38.905Z",
+    "resultado": "GREEN",
+    "unidades": 1.2,
+    "detalhe": "ame · La Plata x Avellaneda @2.24 (tiro 1) · gatilho: odd 2.24"
+   },
+   {
+    "quando": "2026-11-24T20:35:15.551Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T20:35:15.547Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.04) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T20:35:15.541Z",
     "resultado": "GREEN_OBS",
@@ -4943,81 +4979,16 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T20:12:40.026Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T20:12:40.018Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T20:12:40.013Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T20:12:39.303Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T20:12:39.291Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T20:12:39.280Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
    }
   ],
   "consumidas": {
    "eng": 1795550134756,
    "ita": 1795550455039,
    "lat": 1795550799609,
-   "cam": 1795552323084
+   "cam": 1795552323084,
+   "ame": 1795552538905
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "17:34",
-     "jogo": "La Plata x Avellaneda",
-     "odd": 2.24
-    },
-    {
-     "h": "17:37",
-     "jogo": "Santos x Penarol",
-     "odd": 2.24
-    },
-    {
-     "h": "17:40",
-     "jogo": "La Plata x Lima",
-     "odd": 2.24
-    }
-   ],
-   "gatilho": "odd 2.24",
-   "alvo": {
-    "h": "17:34",
-    "jogo": "La Plata x Avellaneda",
-    "odd": 2.24,
-    "unidades": 1,
-    "desde": 1795552325806
-   },
-   "iniciadoEm": 1795552325806
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795552323084,
    "eng": 1795550134756,
@@ -5026,7 +4997,7 @@
    "lat": 1795550799609,
    "bra": 1795522714636,
    "mnd": 1795517012357,
-   "ame": 1795548594643,
+   "ame": 1795552538905,
    "cop": 1795520988139
   },
   "_gatilhoAtual": {
@@ -5041,7 +5012,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -9.3
+   "2026-11-24": -8.1
   },
   "_obs": {}
  },
@@ -5180,9 +5151,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "spa": {
-    "desde": 1795552515541,
-    "gatilho": "odd 1.86"
+   "ame": {
+    "desde": 1795552538931,
+    "gatilho": "odd 2.24"
    }
   }
  },
