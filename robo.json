@@ -1077,12 +1077,24 @@
  },
  "o25": {
   "saldo": -9.1,
-  "ciclos": 69518,
+  "ciclos": 69520,
   "greens": 194,
   "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 69298,
+  "descartes": 69300,
   "historico": [
+   {
+    "quando": "2026-11-24T04:10:01.070Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T04:09:37.773Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T03:08:31.078Z",
     "resultado": "GREEN",
@@ -4670,18 +4682,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T01:56:33.163Z",
-    "resultado": "GREEN",
-    "unidades": 0.9,
-    "detalhe": "spa · VIL x BET @1.94 (tiro 1) · gatilho: seq GRGRG"
-   },
-   {
-    "quando": "2026-11-24T01:56:32.477Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
    }
   ],
   "consumidas": {},
@@ -4902,6 +4902,10 @@
    "mnd": {
     "desde": 1795488687919,
     "gatilho": "coluna :52"
+   },
+   "eng": {
+    "desde": 1795493401069,
+    "gatilho": "odd 1.94"
    }
   }
  },
