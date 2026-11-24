@@ -1357,12 +1357,24 @@
  },
  "o25": {
   "saldo": -25.8,
-  "ciclos": 87662,
+  "ciclos": 87664,
   "greens": 232,
   "redsCiclo": 34,
   "aborts": 0,
-  "descartes": 87396,
+  "descartes": 87398,
   "historico": [
+   {
+    "quando": "2026-11-24T19:14:28.580Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :30) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T19:14:28.573Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T19:14:28.566Z",
     "resultado": "GREEN_OBS",
@@ -4950,26 +4962,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:40:36.395Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :50) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:40:32.196Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "spa": 1795544073491,
    "eng": 1795544734030,
    "cam": 1795545089718
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "16:21",
+     "jogo": "BET x SEV",
+     "odd": 1.92
+    },
+    {
+     "h": "16:23",
+     "jogo": "LEV x VIL",
+     "odd": 1.83
+    },
+    {
+     "h": "16:25",
+     "jogo": "ATH x GET",
+     "odd": 1.93
+    }
+   ],
+   "gatilho": "coluna :23",
+   "alvo": {
+    "h": "16:21",
+    "jogo": "BET x SEV",
+    "odd": 1.92,
+    "unidades": 1,
+    "desde": 1795547678030
+   },
+   "iniciadoEm": 1795547678030
+  },
   "cooldown": {
    "cam": 1795545089718,
    "eng": 1795544734030,
@@ -4982,10 +5011,10 @@
    "cop": 1795520988139
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "GRRG",
-   "n": 11,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":23",
+   "n": 15,
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -5131,16 +5160,7 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {
-   "spa": {
-    "desde": 1795547574608,
-    "gatilho": "coluna :23"
-   },
-   "eng": {
-    "desde": 1795547668565,
-    "gatilho": "coluna :26"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": -28.5,
