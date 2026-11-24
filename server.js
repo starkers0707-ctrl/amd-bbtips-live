@@ -521,18 +521,27 @@ app.post("/api/robos/sync", (req, res) => {
   const dono = tgDono(req);
   if (!dono) return res.status(401).json({ erro: "login necessario" });
   const lista = Array.isArray((req.body || {}).robots) ? req.body.robots.slice(0, 60) : [];
+  if (!lista.length && ((robosDono[dono] || {}).robots || []).length && !(req.body || {}).vazioOk) return res.json({ ok: true, ignorado: "lista vazia" });
   if (JSON.stringify(lista).length > 400000) return res.status(413).json({ erro: "robos grandes demais" });
   const d = robosDono[dono] || (robosDono[dono] = { signals: [], sent: [] });
   d.robots = lista; d.atualizado = Date.now(); robosSujo = true;
   res.json({ ok: true, robos: lista.length });
 });
 
+let MONITOR_V = "";
+try { MONITOR_V = (require("fs").readFileSync(join(__dirname, "public", "robo-manual-monitor.js"), "utf8").match(/MONITOR_V='([^']+)'/) || [])[1] || ""; } catch (e) {}
+app.get("/api/robos/lista", (req, res) => {
+  const dono = tgDono(req);
+  if (!dono) return res.status(401).json({ erro: "login necessario" });
+  res.setHeader("Cache-Control", "no-store");
+  res.json({ robots: (robosDono[dono] || {}).robots || [] });
+});
 app.get("/api/robos/sinais", (req, res) => {
   const dono = tgDono(req);
   if (!dono) return res.status(401).json({ erro: "login necessario" });
   res.setHeader("Cache-Control", "no-store");
   const robots = (robosDono[dono] || {}).robots || [];
-  res.json({ sinais: ((robosDono[dono] || {}).signals || []).slice(0, 100).map(x => { const c = { ...x }; delete c.tg; c.destino = ((robots.find(r => String(r.id) === String(x.robotId)) || {}).destino) || "todos"; return c; }) });
+  res.json({ v: MONITOR_V, sinais: ((robosDono[dono] || {}).signals || []).slice(0, 100).map(x => { const c = { ...x }; delete c.tg; c.destino = ((robots.find(r => String(r.id) === String(x.robotId)) || {}).destino) || "todos"; return c; }) });
 });
 app.get("/api/robos/estado", async (req, res) => {
   const dono = tgDono(req);

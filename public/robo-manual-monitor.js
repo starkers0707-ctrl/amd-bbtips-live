@@ -179,9 +179,12 @@
   }
   function metricsPass(robot,data,league,market){
     var rules=(robot.metrics||[]).filter(function(r){return r.use;}),threshold=Number(robot.threshold);
-    if(!rules.length||!threshold)return {ok:true,text:''};
     var st=metricState(robot,data,league,market);
     if(!st)return {ok:false,pct:0,text:'métricas: poucos jogos no dia (gráfico acumulado ainda sem MM21)'};
+    /* Trava obrigatoria para todo robo: nunca entra com o grafico do mercado da
+       entrada caindo (ex.: Over caindo = Under subindo). */
+    if(!st.subida)return {ok:false,pct:0,text:'gráfico de '+market+' caindo ('+st.linha+'% · MM21 '+st.mediaHist+'%)'};
+    if(!rules.length||!threshold)return {ok:true,text:'gráfico '+st.linha+'% subindo'};
     var max=0,pts=0,mandatoryFail=false;
     rules.forEach(function(r){max+=Number(r.weight)||0;var hit=!!st[r.key]===!!r.expected;if(hit)pts+=Number(r.weight)||0;else if(r.key==='subida'&&r.expected)mandatoryFail=true;});
     var pct=max?Math.round(pts/max*100):0;
@@ -311,10 +314,23 @@
     var options={body:body,tag:'amd-manual-'+key,renotify:true,requireInteraction:true,data:{url:'/robos.html'}};
     try{if('serviceWorker' in navigator){var reg=await navigator.serviceWorker.register('/sw-alertas.js');await reg.showNotification(title,options);return;}new Notification(title,options);}catch(_){}
   }
+  var MONITOR_V='20261123-v3';
   var lastSync='';
+  function pullRobots(){
+    return fetch('/api/robos/lista?_='+Date.now(),{credentials:'same-origin',cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){
+      var lista=j&&Array.isArray(j.robots)?j.robots:[];
+      if(lista.length&&!read(ROBOTS_KEY).length){
+        localStorage.setItem(ROBOTS_KEY,JSON.stringify(lista));
+        try{root.dispatchEvent(new CustomEvent('amd:robos-sincronizados'));}catch(_){}
+      }
+    }).catch(function(){});
+  }
   function syncRobots(){
     try{
-      var robots=read(ROBOTS_KEY),body=JSON.stringify({robots:robots});
+      var robots=read(ROBOTS_KEY);
+      /* Aparelho novo / lista vazia: puxa os robos do servidor em vez de apagar os de la. */
+      if(!robots.length&&localStorage.getItem('amd:robos-vazio-ok')!=='1'){pullRobots();return;}
+      var body=JSON.stringify({robots:robots,vazioOk:!robots.length});
       if(body===lastSync)return;
       fetch('/api/robos/sync',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:body})
         .then(function(r){if(r.ok)lastSync=body;}).catch(function(){});
@@ -330,7 +346,8 @@
     try{
       var r=await fetch('/api/robos/sinais?_='+Date.now(),{credentials:'same-origin',cache:'no-store'});
       if(!r.ok)return;
-      var sinais=(await r.json()).sinais||[];
+      var resp=await r.json(),sinais=resp.sinais||[];
+      if(resp.v&&resp.v!==MONITOR_V){try{if(sessionStorage.getItem('amd:monitor-recarregou')!==resp.v){sessionStorage.setItem('amd:monitor-recarregou',resp.v);location.reload();return;}}catch(_){}}
       localStorage.setItem(SIGNALS_KEY,JSON.stringify(sinais));
       try{root.dispatchEvent(new CustomEvent('amd:manual-status-changed'));}catch(_){}
       var vistos=readObj(STATE_KEY),primeira=!Object.keys(vistos).length,novos={};

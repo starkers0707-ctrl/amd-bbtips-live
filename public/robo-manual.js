@@ -698,6 +698,7 @@
     if (index >= 0) robots[index] = robot;
     else robots.unshift(robot);
     writeJson(ROBOTS_KEY, robots.slice(0, 100));
+    try { localStorage.setItem('amd:robos-vazio-ok', '0'); } catch (_) {}
     /* Um robo recem-criado nao deve deixar o formulario preso ao ID salvo.
        Antes, o proximo Salvar substituia esse robo em vez de acrescentar outro.
        Somente o fluxo iniciado pelo botao Editar continua ligado ao mesmo ID. */
@@ -803,6 +804,7 @@
   function deleteRobot(id) {
     var robots = readJson(ROBOTS_KEY).filter(function (item) { return item.id !== id; });
     writeJson(ROBOTS_KEY, robots);
+    try { localStorage.setItem('amd:robos-vazio-ok', robots.length ? '0' : '1'); } catch (_) {}
     if (editingId === id) editingId = '';
     renderSaved();
     showToast('Robô removido.');
@@ -1035,6 +1037,7 @@
   renderSignals();
   window.addEventListener('amd:manual-entry', renderSignals);
   window.addEventListener('amd:manual-status-changed', renderSignals);
+  window.addEventListener('amd:robos-sincronizados', function () { renderSaved(); });
   window.addEventListener('storage', function (event) { if (event.key === SIGNALS_KEY || event.key === ROBOTS_KEY) { renderSignals(); renderSaved(); } });
   renderPreview();
   loadData();
