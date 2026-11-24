@@ -1319,7 +1319,37 @@
   "consumidas": {
    "bra": 1795544148811
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "15:25",
+     "jogo": "ELC x SEV",
+     "odd": 3.37
+    },
+    {
+     "h": "15:27",
+     "jogo": "DLC x RSO",
+     "odd": 3.35
+    },
+    {
+     "h": "15:29",
+     "jogo": "BAR x RST",
+     "odd": 2.78
+    }
+   ],
+   "gatilho": "seq RRGRG",
+   "alvo": {
+    "h": "15:25",
+    "jogo": "ELC x SEV",
+    "odd": 3.37,
+    "unidades": 1,
+    "desde": 1795544547718
+   },
+   "iniciadoEm": 1795544547718
+  },
   "cooldown": {
    "mnd": 1795536330753,
    "lat": 1795522898324,
@@ -1329,8 +1359,8 @@
    "bra": 1795544148811
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "3.35",
+   "tipo": "seq",
+   "chave": "RRGRG",
    "n": 10,
    "start": 1
   },
@@ -1350,12 +1380,24 @@
  },
  "o25": {
   "saldo": -28.2,
-  "ciclos": 86678,
+  "ciclos": 86680,
   "greens": 230,
   "redsCiclo": 34,
   "aborts": 0,
-  "descartes": 86414,
+  "descartes": 86416,
   "historico": [
+   {
+    "quando": "2026-11-24T18:22:27.739Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :25) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T18:22:27.734Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T18:22:18.067Z",
     "resultado": "GREEN_OBS",
@@ -4943,18 +4985,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:02:11.802Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:02:11.795Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5155,9 +5185,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "ame": {
-    "desde": 1795544538067,
-    "gatilho": "odd 2.24"
+   "spa": {
+    "desde": 1795544547738,
+    "gatilho": "coluna :25"
    }
   }
  },
