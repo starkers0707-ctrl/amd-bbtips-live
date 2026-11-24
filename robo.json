@@ -1183,12 +1183,18 @@
  },
  "o25": {
   "saldo": -26,
-  "ciclos": 75776,
+  "ciclos": 75777,
   "greens": 210,
   "redsCiclo": 31,
   "aborts": 0,
-  "descartes": 75535,
+  "descartes": 75536,
   "historico": [
+   {
+    "quando": "2026-11-24T11:25:31.601Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :28) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T11:25:30.805Z",
     "resultado": "GREEN_OBS",
@@ -4782,12 +4788,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T10:57:16.957Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4796,7 +4796,37 @@
    "ame": 1795518338716,
    "cam": 1795519195518
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "08:48",
+     "jogo": "Italy x France",
+     "odd": 2.47
+    },
+    {
+     "h": "08:51",
+     "jogo": "England x Germany",
+     "odd": 2.24
+    },
+    {
+     "h": "08:54",
+     "jogo": "Brazil x Belgium",
+     "odd": 2.12
+    }
+   ],
+   "gatilho": "coluna :51",
+   "alvo": {
+    "h": "08:48",
+    "jogo": "Italy x France",
+    "odd": 2.47,
+    "unidades": 1,
+    "desde": 1795519543552
+   },
+   "iniciadoEm": 1795519543552
+  },
   "cooldown": {
    "cam": 1795519195518,
    "eng": 1795516294394,
@@ -4809,10 +4839,10 @@
    "cop": 1795479931322
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "RRRR",
-   "n": 10,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":51",
+   "n": 8,
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
