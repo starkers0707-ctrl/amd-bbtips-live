@@ -1162,12 +1162,24 @@
  },
  "o25": {
   "saldo": -14.2,
-  "ciclos": 74370,
+  "ciclos": 74372,
   "greens": 208,
   "redsCiclo": 29,
   "aborts": 0,
-  "descartes": 74133,
+  "descartes": 74135,
   "historico": [
+   {
+    "quando": "2026-11-24T10:18:12.501Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:18:05.356Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T10:18:04.506Z",
     "resultado": "GREEN_OBS",
@@ -4755,18 +4767,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:46:31.744Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:46:20.195Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4948,7 +4948,7 @@
     "gatilho": "odd 2.39"
    },
    "mnd": {
-    "desde": 1795515484505,
+    "desde": 1795515492500,
     "gatilho": "time MEX"
    }
   }
@@ -6454,7 +6454,37 @@
    "cop": 1795514137921,
    "mnd": 1795515327438
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "07:34",
+     "jogo": "IPS x MNC",
+     "odd": 1.68
+    },
+    {
+     "h": "07:36",
+     "jogo": "LEE x COV",
+     "odd": 1.72
+    },
+    {
+     "h": "07:38",
+     "jogo": "CRY x TOT",
+     "odd": 1.71
+    }
+   ],
+   "gatilho": "odd 1.72",
+   "alvo": {
+    "h": "07:34",
+    "jogo": "IPS x MNC",
+    "odd": 1.68,
+    "unidades": 1,
+    "desde": 1795515484537
+   },
+   "iniciadoEm": 1795515484537
+  },
   "cooldown": {
    "lat": 1795509212287,
    "eng": 1795511854835,
@@ -6466,10 +6496,10 @@
    "ame": 1795510421878
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "ITA",
-   "n": 16,
-   "start": 7
+   "tipo": "odd",
+   "chave": "1.72",
+   "n": 13,
+   "start": 8
   },
   "dias": {
    "2026-11-20": 0,
