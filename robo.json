@@ -1297,12 +1297,30 @@
  },
  "o25": {
   "saldo": -24.9,
-  "ciclos": 79271,
+  "ciclos": 79274,
   "greens": 218,
   "redsCiclo": 32,
   "aborts": 0,
-  "descartes": 79021,
+  "descartes": 79024,
   "historico": [
+   {
+    "quando": "2026-11-24T13:37:13.223Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :46) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T13:37:13.220Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "lat · alvo sem fechamento em 15min antes da 1a aposta"
+   },
+   {
+    "quando": "2026-11-24T13:37:06.891Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :40) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T13:37:06.887Z",
     "resultado": "GREEN_OBS",
@@ -4884,24 +4902,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho seq RGGG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:15:22.174Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:15:22.170Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:15:22.164Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :17) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4909,37 +4909,7 @@
    "eng": 1795525806642,
    "ita": 1795526432378
   },
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "10:41",
-     "jogo": "NAC x PER",
-     "odd": 1.9
-    },
-    {
-     "h": "10:44",
-     "jogo": "BOL x ARG",
-     "odd": 1.94
-    },
-    {
-     "h": "10:47",
-     "jogo": "FLU x RAC",
-     "odd": 1.88
-    }
-   ],
-   "gatilho": "time BOL",
-   "alvo": {
-    "h": "10:41",
-    "jogo": "NAC x PER",
-    "odd": 1.9,
-    "unidades": 1,
-    "desde": 1795526528286
-   },
-   "iniciadoEm": 1795526528286
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795525685704,
    "eng": 1795525806642,
@@ -5111,9 +5081,9 @@
     "desde": 1795523879541,
     "gatilho": "coluna :51"
    },
-   "cam": {
-    "desde": 1795527426887,
-    "gatilho": "seq RRRRG"
+   "eng": {
+    "desde": 1795527433223,
+    "gatilho": "coluna :46"
    }
   }
  },
