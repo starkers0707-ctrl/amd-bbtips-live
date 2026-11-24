@@ -1410,12 +1410,18 @@
  },
  "o25": {
   "saldo": -32.6,
-  "ciclos": 93367,
+  "ciclos": 93368,
   "greens": 245,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 93085,
+  "descartes": 93086,
   "historico": [
+   {
+    "quando": "2026-11-24T23:36:04.067Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T23:34:44.613Z",
     "resultado": "GREEN_OBS",
@@ -5009,12 +5015,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:56:09.310Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5071,10 +5071,10 @@
    "cop": 1795556284523
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.81",
-   "n": 8,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":54",
+   "n": 19,
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
@@ -5220,16 +5220,27 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {}
+  "_obs": {
+   "eng": {
+    "desde": 1795563364067,
+    "gatilho": "coluna :54"
+   }
+  }
  },
  "ambas": {
   "saldo": -21.1,
-  "ciclos": 299,
+  "ciclos": 300,
   "greens": 123,
   "redsCiclo": 16,
   "aborts": 0,
-  "descartes": 160,
+  "descartes": 161,
   "historico": [
+   {
+    "quando": "2026-11-24T23:35:10.183Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :56) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T23:35:09.405Z",
     "resultado": "DESCARTADO",
@@ -7034,30 +7045,30 @@
    "apostado": 0,
    "plano": [
     {
-     "h": "20:44",
-     "jogo": "PER x RIV",
-     "odd": 1.68
+     "h": "20:53",
+     "jogo": "BOL x RAC",
+     "odd": 1.69
     },
     {
-     "h": "20:47",
-     "jogo": "NAC x ARG",
-     "odd": 1.71
+     "h": "20:56",
+     "jogo": "PAR x MEN",
+     "odd": 1.74
     },
     {
-     "h": "20:50",
-     "jogo": "CIO x IND",
-     "odd": 1.71
+     "h": "21:02",
+     "jogo": "BOC x ATC",
+     "odd": 1.75
     }
    ],
-   "gatilho": "coluna :47",
+   "gatilho": "coluna :56",
    "alvo": {
-    "h": "20:44",
-    "jogo": "PER x RIV",
-    "odd": 1.68,
+    "h": "20:53",
+    "jogo": "BOL x RAC",
+    "odd": 1.69,
     "unidades": 1,
-    "desde": 1795562407583
+    "desde": 1795563310894
    },
-   "iniciadoEm": 1795562407583
+   "iniciadoEm": 1795563310894
   },
   "cooldown": {
    "lat": 1795557631018,
