@@ -1063,8 +1063,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "02:30",
@@ -1084,13 +1084,21 @@
    ],
    "gatilho": "placar 0-0",
    "alvo": {
-    "h": "02:30",
-    "jogo": "CRO x WAL",
-    "odd": 3.33,
-    "unidades": 1,
-    "desde": 1795498055612
+    "h": "02:32",
+    "jogo": "URY x MEX",
+    "odd": 3.37,
+    "unidades": 2,
+    "desde": 1795498296350
    },
-   "iniciadoEm": 1795498055612
+   "iniciadoEm": 1795498055612,
+   "tiros": [
+    {
+     "h": "02:30",
+     "jogo": "CRO x WAL",
+     "odd": 3.33,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795479336021,
@@ -1103,7 +1111,7 @@
   "_gatilhoAtual": {
    "tipo": "placar",
    "chave": "0-0",
-   "n": 9,
+   "n": 10,
    "start": 1
   },
   "dias": {
@@ -1122,12 +1130,24 @@
  },
  "o25": {
   "saldo": -14.6,
-  "ciclos": 70134,
+  "ciclos": 70136,
   "greens": 196,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 69911,
+  "descartes": 69913,
   "historico": [
+   {
+    "quando": "2026-11-24T05:31:36.366Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ATA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T05:31:36.362Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time FUL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T05:31:27.402Z",
     "resultado": "GREEN_OBS",
@@ -4715,18 +4735,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T04:12:08.068Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T04:12:06.412Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4947,7 +4955,7 @@
     "gatilho": "coluna :52"
    },
    "ita": {
-    "desde": 1795498287402,
+    "desde": 1795498296366,
     "gatilho": "time ATA"
    }
   }
