@@ -1170,12 +1170,30 @@
  },
  "o25": {
   "saldo": -19,
-  "ciclos": 75584,
+  "ciclos": 75587,
   "greens": 210,
   "redsCiclo": 30,
   "aborts": 0,
-  "descartes": 75344,
+  "descartes": 75347,
   "historico": [
+   {
+    "quando": "2026-11-24T11:13:37.702Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:13:37.696Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :30) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:13:37.689Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T11:13:28.055Z",
     "resultado": "GREEN_OBS",
@@ -4757,24 +4775,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T10:47:35.415Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T10:47:35.410Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T10:47:35.404Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4784,8 +4784,8 @@
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "08:12",
@@ -4805,13 +4805,21 @@
    ],
    "gatilho": "coluna :12",
    "alvo": {
-    "h": "08:12",
-    "jogo": "Porto x Benfica",
-    "odd": 2.37,
-    "unidades": 1,
-    "desde": 1795518469733
+    "h": "08:15",
+    "jogo": "Munich x Milan",
+    "odd": 2.19,
+    "unidades": 2,
+    "desde": 1795518818080
    },
-   "iniciadoEm": 1795518469733
+   "iniciadoEm": 1795518469733,
+   "tiros": [
+    {
+     "h": "08:12",
+     "jogo": "Porto x Benfica",
+     "odd": 2.37,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795514859782,
@@ -4828,7 +4836,7 @@
    "tipo": "coluna",
    "chave": ":30",
    "n": 8,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -4983,10 +4991,6 @@
    "cop": {
     "desde": 1795479598576,
     "gatilho": "odd 2.39"
-   },
-   "ame": {
-    "desde": 1795518808055,
-    "gatilho": "odd 2.24"
    }
   }
  },
