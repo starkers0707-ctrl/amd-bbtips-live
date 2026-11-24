@@ -1076,13 +1076,19 @@
   }
  },
  "o25": {
-  "saldo": -9.9,
-  "ciclos": 69517,
-  "greens": 193,
+  "saldo": -9.1,
+  "ciclos": 69518,
+  "greens": 194,
   "redsCiclo": 26,
   "aborts": 0,
   "descartes": 69298,
   "historico": [
+   {
+    "quando": "2026-11-24T03:08:31.078Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "spa · VAL x RST @1.95 (tiro 3) · gatilho: odd 1.89"
+   },
    {
     "quando": "2026-11-24T03:02:03.116Z",
     "resultado": "GREEN_OBS",
@@ -4676,67 +4682,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T01:56:05.410Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "cam": 1795487509896
+   "cam": 1795487509896,
+   "spa": 1795489711077
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "00:03",
-     "jogo": "BAR x ESP",
-     "odd": 1.77
-    },
-    {
-     "h": "00:05",
-     "jogo": "CEL x MLG",
-     "odd": 1.89
-    },
-    {
-     "h": "00:07",
-     "jogo": "VAL x RST",
-     "odd": 1.95
-    }
-   ],
-   "gatilho": "odd 1.89",
-   "alvo": {
-    "h": "00:07",
-    "jogo": "VAL x RST",
-    "odd": 1.95,
-    "unidades": 4,
-    "desde": 1795489592602
-   },
-   "iniciadoEm": 1795488998449,
-   "tiros": [
-    {
-     "h": "00:03",
-     "jogo": "BAR x ESP",
-     "odd": 1.77,
-     "unidades": 1
-    },
-    {
-     "h": "00:05",
-     "jogo": "CEL x MLG",
-     "odd": 1.89,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795487509896,
    "eng": 1795383709617,
    "ita": 1795483952226,
-   "spa": 1795485393162,
+   "spa": 1795489711077,
    "lat": 1795483111301,
    "bra": 1795472158133,
    "mnd": 1795485212990,
@@ -4755,7 +4712,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": 0
+   "2026-11-24": 0.8
   },
   "_obs": {
    "cam": {
