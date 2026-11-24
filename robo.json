@@ -1189,7 +1189,37 @@
    "bra": 1795520646471,
    "lat": 1795522898324
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "09:41",
+     "jogo": "GET x VAL",
+     "odd": 3.37
+    },
+    {
+     "h": "09:43",
+     "jogo": "RSO x RMA",
+     "odd": 2.97
+    },
+    {
+     "h": "09:45",
+     "jogo": "ALV x ESP",
+     "odd": 3.35
+    }
+   ],
+   "gatilho": "coluna :43",
+   "alvo": {
+    "h": "09:41",
+    "jogo": "GET x VAL",
+    "odd": 3.37,
+    "unidades": 1,
+    "desde": 1795523112519
+   },
+   "iniciadoEm": 1795523112519
+  },
   "cooldown": {
    "mnd": 1795519531578,
    "lat": 1795522898324,
@@ -1199,10 +1229,10 @@
    "bra": 1795520646471
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "RIV",
-   "n": 10,
-   "start": 4
+   "tipo": "coluna",
+   "chave": ":43",
+   "n": 8,
+   "start": 8
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -1220,12 +1250,18 @@
  },
  "o25": {
   "saldo": -21.8,
-  "ciclos": 77383,
+  "ciclos": 77384,
   "greens": 214,
   "redsCiclo": 31,
   "aborts": 0,
-  "descartes": 77138,
+  "descartes": 77139,
   "historico": [
+   {
+    "quando": "2026-11-24T12:25:12.539Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T12:25:09.225Z",
     "resultado": "GREEN_OBS",
@@ -4819,12 +4855,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time TFG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T12:11:39.293Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :18) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5043,9 +5073,9 @@
     "desde": 1795523032895,
     "gatilho": "coluna :28"
    },
-   "cam": {
-    "desde": 1795523109225,
-    "gatilho": "coluna :30"
+   "eng": {
+    "desde": 1795523112539,
+    "gatilho": "coluna :26"
    }
   }
  },
