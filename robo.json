@@ -1410,12 +1410,24 @@
  },
  "o25": {
   "saldo": -32.6,
-  "ciclos": 93322,
+  "ciclos": 93324,
   "greens": 245,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 93040,
+  "descartes": 93042,
   "historico": [
+   {
+    "quando": "2026-11-24T23:29:01.051Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T23:28:55.907Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T23:28:55.900Z",
     "resultado": "DESCARTADO",
@@ -5003,53 +5015,41 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:54:12.167Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:54:12.156Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ame": 1795561403616
   },
   "ciclo": {
-   "liga": "cam",
+   "liga": "spa",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "20:27",
-     "jogo": "Paris x Milan",
-     "odd": 2.12
-    },
-    {
-     "h": "20:30",
-     "jogo": "Amsterdam x Barcelona",
-     "odd": 2.54
-    },
-    {
      "h": "20:33",
-     "jogo": "Dortmund x Liverpool",
-     "odd": 2.38
+     "jogo": "BET x RAY",
+     "odd": 1.94
+    },
+    {
+     "h": "20:35",
+     "jogo": "BAR x CEL",
+     "odd": 1.81
+    },
+    {
+     "h": "20:37",
+     "jogo": "DLC x ATH",
+     "odd": 1.93
     }
    ],
-   "gatilho": "coluna :30",
+   "gatilho": "odd 1.81",
    "alvo": {
-    "h": "20:27",
-    "jogo": "Paris x Milan",
-    "odd": 2.12,
+    "h": "20:33",
+    "jogo": "BET x RAY",
+    "odd": 1.94,
     "unidades": 1,
-    "desde": 1795562032554
+    "desde": 1795562941042
    },
-   "iniciadoEm": 1795562032554
+   "iniciadoEm": 1795562941042
   },
   "cooldown": {
    "cam": 1795558424565,
@@ -5212,7 +5212,12 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {}
+  "_obs": {
+   "spa": {
+    "desde": 1795562941051,
+    "gatilho": "odd 1.81"
+   }
+  }
  },
  "ambas": {
   "saldo": -21.1,
