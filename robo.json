@@ -1,12 +1,18 @@
 {
  "o35": {
   "saldo": 30.6,
-  "ciclos": 179,
+  "ciclos": 180,
   "greens": 67,
   "redsCiclo": 29,
   "aborts": 0,
-  "descartes": 83,
+  "descartes": 84,
   "historico": [
+   {
+    "quando": "2026-11-24T06:43:04.147Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 3.36) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T06:42:23.184Z",
     "resultado": "DESCARTADO",
@@ -1109,6 +1115,10 @@
    "cam": {
     "desde": 1795384819317,
     "gatilho": "odd 5.06"
+   },
+   "eng": {
+    "desde": 1795502584146,
+    "gatilho": "odd 3.36"
    }
   }
  },
@@ -4907,10 +4917,6 @@
    "mnd": {
     "desde": 1795488687919,
     "gatilho": "coluna :52"
-   },
-   "cam": {
-    "desde": 1795502543219,
-    "gatilho": "time United"
    }
   }
  },
