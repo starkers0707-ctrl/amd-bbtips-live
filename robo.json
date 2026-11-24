@@ -1153,12 +1153,54 @@
  },
  "o25": {
   "saldo": -8.7,
-  "ciclos": 71544,
+  "ciclos": 71551,
   "greens": 201,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 71316,
+  "descartes": 71323,
   "historico": [
+   {
+    "quando": "2026-11-24T07:59:39.921Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:59:39.908Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time GEN) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:59:39.900Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:59:31.390Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Itaquera) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:59:31.386Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:59:31.373Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time GEN) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:59:31.367Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T07:59:30.408Z",
     "resultado": "GREEN_OBS",
@@ -4716,48 +4758,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time LEC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:31:35.655Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:31:34.944Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:31:34.933Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time LEC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:31:34.927Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:31:20.999Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:31:20.989Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time LEC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:31:20.985Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4767,8 +4767,8 @@
   },
   "ciclo": {
    "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "04:58",
@@ -4788,13 +4788,21 @@
    ],
    "gatilho": "time MNC",
    "alvo": {
-    "h": "04:58",
-    "jogo": "LEE x TOT",
-    "odd": 1.95,
-    "unidades": 1,
-    "desde": 1795506292697
+    "h": "05:00",
+    "jogo": "COV x MNC",
+    "odd": 1.79,
+    "unidades": 2,
+    "desde": 1795507171362
    },
-   "iniciadoEm": 1795506292697
+   "iniciadoEm": 1795506292697,
+   "tiros": [
+    {
+     "h": "04:58",
+     "jogo": "LEE x TOT",
+     "odd": 1.95,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795506066906,
@@ -4811,7 +4819,7 @@
    "tipo": "time",
    "chave": "Itaquera",
    "n": 8,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-19": -7,
@@ -4971,9 +4979,9 @@
     "desde": 1795488687919,
     "gatilho": "coluna :52"
    },
-   "ame": {
-    "desde": 1795507170408,
-    "gatilho": "time Itaquera"
+   "cam": {
+    "desde": 1795507179920,
+    "gatilho": "time Madrid"
    }
   }
  },
