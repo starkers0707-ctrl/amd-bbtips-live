@@ -1164,12 +1164,18 @@
  },
  "o25": {
   "saldo": -11,
-  "ciclos": 72628,
+  "ciclos": 72629,
   "greens": 204,
   "redsCiclo": 28,
   "aborts": 0,
-  "descartes": 72396,
+  "descartes": 72397,
   "historico": [
+   {
+    "quando": "2026-11-24T08:51:04.359Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Itaquera) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T08:50:53.468Z",
     "resultado": "GREEN_OBS",
@@ -4763,12 +4769,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time ALV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T08:20:14.137Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4958,7 +4958,7 @@
     "gatilho": "time MNC"
    },
    "ame": {
-    "desde": 1795510253468,
+    "desde": 1795510264359,
     "gatilho": "time Itaquera"
    }
   }
@@ -6400,8 +6400,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "05:46",
@@ -6421,11 +6421,11 @@
    ],
    "gatilho": "time Asuncion",
    "alvo": {
-    "h": "05:49",
-    "jogo": "Porto Alegre x Asuncion",
-    "odd": 2.04,
-    "unidades": 2,
-    "desde": 1795510058645
+    "h": "05:52",
+    "jogo": "Sao Paulo x Medellin",
+    "odd": 1.92,
+    "unidades": 4,
+    "desde": 1795510253506
    },
    "iniciadoEm": 1795509213115,
    "tiros": [
@@ -6434,6 +6434,12 @@
      "jogo": "Santos x Belo Horizonte",
      "odd": 1.85,
      "unidades": 1
+    },
+    {
+     "h": "05:49",
+     "jogo": "Porto Alegre x Asuncion",
+     "odd": 2.04,
+     "unidades": 2
     }
    ]
   },
@@ -6448,10 +6454,10 @@
    "ame": 1795499990275
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.68",
-   "n": 8,
-   "start": 3
+   "tipo": "time",
+   "chave": "Asuncion",
+   "n": 13,
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
