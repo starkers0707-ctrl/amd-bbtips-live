@@ -1153,12 +1153,24 @@
  },
  "o25": {
   "saldo": -8.7,
-  "ciclos": 71359,
+  "ciclos": 71361,
   "greens": 201,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 71131,
+  "descartes": 71133,
   "historico": [
+   {
+    "quando": "2026-11-24T07:53:07.069Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time GEN) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:52:51.146Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T07:52:51.136Z",
     "resultado": "GREEN_OBS",
@@ -4746,18 +4758,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:24:02.861Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:24:02.848Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time LEC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4980,7 +4980,7 @@
     "gatilho": "time MNC"
    },
    "ita": {
-    "desde": 1795506771136,
+    "desde": 1795506787069,
     "gatilho": "time GEN"
    }
   }
@@ -6387,8 +6387,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "04:51",
@@ -6408,13 +6408,21 @@
    ],
    "gatilho": "time Argentina",
    "alvo": {
-    "h": "04:51",
-    "jogo": "Argentina x Italy",
-    "odd": 2.02,
-    "unidades": 1,
-    "desde": 1795506566125
+    "h": "04:54",
+    "jogo": "Wales x Portugal",
+    "odd": 2.05,
+    "unidades": 2,
+    "desde": 1795506771161
    },
-   "iniciadoEm": 1795506566125
+   "iniciadoEm": 1795506566125,
+   "tiros": [
+    {
+     "h": "04:51",
+     "jogo": "Argentina x Italy",
+     "odd": 2.02,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795497681687,
