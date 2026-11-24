@@ -1150,12 +1150,18 @@
  },
  "o25": {
   "saldo": -12.7,
-  "ciclos": 72264,
+  "ciclos": 72265,
   "greens": 203,
   "redsCiclo": 28,
   "aborts": 0,
-  "descartes": 72033,
+  "descartes": 72034,
   "historico": [
+   {
+    "quando": "2026-11-24T08:33:03.309Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T08:32:49.944Z",
     "resultado": "GREEN_OBS",
@@ -4749,12 +4755,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time GEN) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T08:03:23.128Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4952,9 +4952,9 @@
     "desde": 1795508745913,
     "gatilho": "time Madrid"
    },
-   "spa": {
-    "desde": 1795509169943,
-    "gatilho": "time ALV"
+   "ita": {
+    "desde": 1795509183309,
+    "gatilho": "odd 1.95"
    }
   }
  },
@@ -6432,7 +6432,7 @@
    "tipo": "time",
    "chave": "Asuncion",
    "n": 12,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
