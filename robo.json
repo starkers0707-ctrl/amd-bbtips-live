@@ -1098,12 +1098,18 @@
  },
  "o25": {
   "saldo": -14,
-  "ciclos": 70318,
+  "ciclos": 70319,
   "greens": 197,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 70094,
+  "descartes": 70095,
   "historico": [
+   {
+    "quando": "2026-11-24T06:10:49.633Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T06:10:47.491Z",
     "resultado": "GREEN_OBS",
@@ -4697,12 +4703,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T04:51:02.536Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4922,10 +4922,6 @@
    "mnd": {
     "desde": 1795488687919,
     "gatilho": "coluna :52"
-   },
-   "cam": {
-    "desde": 1795500647491,
-    "gatilho": "time Madrid"
    }
   }
  },
@@ -6252,8 +6248,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "03:09",
@@ -6273,13 +6269,21 @@
    ],
    "gatilho": "time France",
    "alvo": {
-    "h": "03:09",
-    "jogo": "Mexico x Germany",
-    "odd": 1.92,
-    "unidades": 1,
-    "desde": 1795500016783
+    "h": "03:12",
+    "jogo": "Croatia x France",
+    "odd": 2.1,
+    "unidades": 2,
+    "desde": 1795500649653
    },
-   "iniciadoEm": 1795500016783
+   "iniciadoEm": 1795500016783,
+   "tiros": [
+    {
+     "h": "03:09",
+     "jogo": "Mexico x Germany",
+     "odd": 1.92,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795497681687,
@@ -6292,10 +6296,10 @@
    "ame": 1795499990275
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "goleada (3+)",
-   "n": 9,
-   "start": 1
+   "tipo": "time",
+   "chave": "France",
+   "n": 8,
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
