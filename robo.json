@@ -1,12 +1,18 @@
 {
  "o35": {
   "saldo": 32.7,
-  "ciclos": 197,
+  "ciclos": 198,
   "greens": 72,
   "redsCiclo": 31,
   "aborts": 0,
-  "descartes": 94,
+  "descartes": 95,
   "historico": [
+   {
+    "quando": "2026-11-24T12:40:12.736Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "spa · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-24T12:28:06.368Z",
     "resultado": "GREEN_OBS",
@@ -1255,12 +1261,18 @@
  },
  "o25": {
   "saldo": -27.9,
-  "ciclos": 77934,
+  "ciclos": 77935,
   "greens": 215,
   "redsCiclo": 32,
   "aborts": 0,
-  "descartes": 77687,
+  "descartes": 77688,
   "historico": [
+   {
+    "quando": "2026-11-24T12:40:06.236Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :46) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T12:40:05.394Z",
     "resultado": "GREEN_OBS",
@@ -4854,12 +4866,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T12:24:04.993Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time RAY) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5079,10 +5085,6 @@
    "cam": {
     "desde": 1795523969148,
     "gatilho": "time Madrid"
-   },
-   "eng": {
-    "desde": 1795524005393,
-    "gatilho": "coluna :46"
    }
   }
  },
