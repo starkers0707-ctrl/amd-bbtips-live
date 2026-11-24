@@ -1063,8 +1063,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "02:30",
@@ -1084,11 +1084,11 @@
    ],
    "gatilho": "placar 0-0",
    "alvo": {
-    "h": "02:32",
-    "jogo": "URY x MEX",
+    "h": "02:34",
+    "jogo": "ENG x SPA",
     "odd": 3.37,
-    "unidades": 2,
-    "desde": 1795498296350
+    "unidades": 4,
+    "desde": 1795498412961
    },
    "iniciadoEm": 1795498055612,
    "tiros": [
@@ -1097,6 +1097,12 @@
      "jogo": "CRO x WAL",
      "odd": 3.33,
      "unidades": 1
+    },
+    {
+     "h": "02:32",
+     "jogo": "URY x MEX",
+     "odd": 3.37,
+     "unidades": 2
     }
    ]
   },
@@ -1130,12 +1136,18 @@
  },
  "o25": {
   "saldo": -14.6,
-  "ciclos": 70160,
+  "ciclos": 70161,
   "greens": 196,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 69937,
+  "descartes": 69938,
   "historico": [
+   {
+    "quando": "2026-11-24T05:33:32.992Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time FUL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T05:33:11.350Z",
     "resultado": "GREEN_OBS",
@@ -4729,12 +4741,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T04:15:17.327Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4954,9 +4960,9 @@
     "desde": 1795488687919,
     "gatilho": "coluna :52"
    },
-   "ita": {
-    "desde": 1795498391349,
-    "gatilho": "time ATA"
+   "eng": {
+    "desde": 1795498412991,
+    "gatilho": "time FUL"
    }
   }
  },
