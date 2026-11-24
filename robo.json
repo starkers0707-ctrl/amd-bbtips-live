@@ -1153,12 +1153,18 @@
  },
  "o25": {
   "saldo": -11,
-  "ciclos": 71040,
+  "ciclos": 71041,
   "greens": 199,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 70814,
+  "descartes": 70815,
   "historico": [
+   {
+    "quando": "2026-11-24T07:35:33.849Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T07:35:08.245Z",
     "resultado": "GREEN_OBS",
@@ -4752,12 +4758,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho time United) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T06:49:24.251Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time United) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4977,9 +4977,9 @@
     "desde": 1795488687919,
     "gatilho": "coluna :52"
    },
-   "cam": {
-    "desde": 1795505708244,
-    "gatilho": "time United"
+   "eng": {
+    "desde": 1795505733849,
+    "gatilho": "time MNC"
    }
   }
  },
@@ -6409,7 +6409,7 @@
    "tipo": "time",
    "chave": "Argentina",
    "n": 10,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
