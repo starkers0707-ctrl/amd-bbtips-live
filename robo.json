@@ -1079,12 +1079,18 @@
  },
  "o25": {
   "saldo": -14.6,
-  "ciclos": 68865,
+  "ciclos": 68866,
   "greens": 189,
   "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 68650,
+  "descartes": 68651,
   "historico": [
+   {
+    "quando": "2026-11-24T01:50:02.840Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T01:49:57.586Z",
     "resultado": "GREEN_OBS",
@@ -4678,12 +4684,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:55:07.087Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -6144,7 +6144,37 @@
    "ame": 1795482148615,
    "cam": 1795484997617
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "23:00",
+     "jogo": "SPA x URY",
+     "odd": 1.69
+    },
+    {
+     "h": "23:02",
+     "jogo": "NED x POR",
+     "odd": 1.68
+    },
+    {
+     "h": "23:04",
+     "jogo": "POL x CHL",
+     "odd": 1.69
+    }
+   ],
+   "gatilho": "coluna :02",
+   "alvo": {
+    "h": "23:00",
+    "jogo": "SPA x URY",
+    "odd": 1.69,
+    "unidades": 1,
+    "desde": 1795485002863
+   },
+   "iniciadoEm": 1795485002863
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
