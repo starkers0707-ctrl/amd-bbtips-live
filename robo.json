@@ -1072,13 +1072,49 @@
   }
  },
  "o25": {
-  "saldo": -8.9,
-  "ciclos": 67977,
+  "saldo": -15.9,
+  "ciclos": 67983,
   "greens": 187,
-  "redsCiclo": 25,
+  "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 67765,
+  "descartes": 67770,
   "historico": [
+   {
+    "quando": "2026-11-24T00:31:06.225Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :33) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:31:05.554Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :33) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:30:31.211Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :33) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:30:31.206Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "spa · ciclo perdido (3 tiros) · gatilho: seq GRRRG"
+   },
+   {
+    "quando": "2026-11-24T00:30:30.450Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :33) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:30:29.851Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :33) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T00:30:29.001Z",
     "resultado": "GREEN_OBS",
@@ -4642,93 +4678,20 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.78) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:56:04.414Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:55:33.065Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:55:33.058Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.78) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:55:33.052Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:55:30.850Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:55:30.844Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.78) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ame": 1795477489418,
    "ita": 1795479522033,
-   "cop": 1795479931322
+   "cop": 1795479931322,
+   "spa": 1795480231205
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "21:27",
-     "jogo": "BET x SEV",
-     "odd": 1.93
-    },
-    {
-     "h": "21:29",
-     "jogo": "VIL x BAR",
-     "odd": 1.86
-    },
-    {
-     "h": "21:31",
-     "jogo": "LEV x RST",
-     "odd": 1.95
-    }
-   ],
-   "gatilho": "seq GRRRG",
-   "alvo": {
-    "h": "21:29",
-    "jogo": "VIL x BAR",
-    "odd": 1.86,
-    "unidades": 2,
-    "desde": 1795480137191
-   },
-   "iniciadoEm": 1795479938198,
-   "tiros": [
-    {
-     "h": "21:27",
-     "jogo": "BET x SEV",
-     "odd": 1.93,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795475247707,
    "eng": 1795383709617,
    "ita": 1795479522033,
-   "spa": 1795475573176,
+   "spa": 1795480231205,
    "lat": 1795468981819,
    "bra": 1795472158133,
    "mnd": 1795476452713,
@@ -4746,7 +4709,7 @@
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
-   "2026-11-23": -36.6
+   "2026-11-23": -43.6
   },
   "_obs": {
    "cam": {
@@ -4895,7 +4858,7 @@
     "gatilho": "odd 2.39"
    },
    "ita": {
-    "desde": 1795480229001,
+    "desde": 1795480266225,
     "gatilho": "coluna :33"
    }
   }
