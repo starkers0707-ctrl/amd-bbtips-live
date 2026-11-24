@@ -32,10 +32,11 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
 </style></head><body><div class="wrap">
 <a href="index.html">← voltar</a>
 <h1>Raio-X <em>do dia</em></h1>
-<div class="sub">Só as <b>subidas</b> de hoje (média 9 acima da 21 no gráfico da base escolhida: 1 a 3 horas reage rápido, acumulado 00h é o mais lento). Mostra o que cada subida pagou e o que está puxando a subida de agora. Na queda a liga fica apagada: é hora de esperar.</div>
+<div class="sub">Só as <b>subidas</b> de hoje (média rápida acima da lenta no gráfico da base escolhida: 1 a 3 horas reage rápido, acumulado 00h é o mais lento). Mostra o que cada subida pagou e o que está puxando a subida de agora. Na queda a liga fica apagada: é hora de esperar.</div>
 <div class="bar">
   <label>Mercado<select id="mk"><option value="o25">Over 2.5</option><option value="o35">Over 3.5</option><option value="o15">Over 1.5</option><option value="ambs">Ambas Marcam</option><option value="ge5">5+ Gols</option></select></label>
   <label>Base do gráfico<select id="base"><option value="1">Última 1 hora</option><option value="2" selected>Últimas 2 horas</option><option value="3">Últimas 3 horas</option><option value="6">Últimas 6 horas</option><option value="12">Últimas 12 horas</option><option value="dia">00h (meia-noite até 23:59)</option></select></label>
+  <label>Médias<select id="mm"><option value="3,9">Rápida (MM3 x MM9)</option><option value="5,13" selected>Média (MM5 x MM13)</option><option value="9,21">Lenta (MM9 x MM21)</option></select></label>
   <label>Entradas<select id="filtro"><option value="sem">Sem filtro (todas da subida)</option><option value="com">Com filtro (3 bases · coluna · time)</option></select></label>
   <label>Tiros<select id="tiros"><option value="1">1 (seco)</option><option value="2">2 tiros</option><option value="3" selected>3 tiros</option></select></label>
   <span class="upd" id="upd">carregando…</span>
@@ -64,7 +65,7 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
      seca (0 de 3 naquele minuto) nem time frio (0 de 3 dele). */
   function serieJanela(p,mk,horas){var hits=p.map(function(g){return bate(mk,g)?1:0;}),ts=p.map(function(g){return Date.parse(g.slot_em);}),W=horas*3600000,s=0,j=0;
     return hits.map(function(x,i){s+=x;while(ts[j]<=ts[i]-W){s-=hits[j];j++;}return s/(i-j+1);});}
-  function sobeEm(line,i){if(i<24)return false;var a=sma(line.slice(0,i+1),9),b=sma(line.slice(0,i+1),21),k=i;return a[k]>b[k]&&a[k]>=a[k-1];}
+  function sobeEm(line,i){if(i<ML+3)return false;var a=sma(line.slice(0,i+1),MR),b=sma(line.slice(0,i+1),ML),k=i;return a[k]>b[k]&&a[k]>=a[k-1];}
   function montaFiltro(p,h,mk,tiros){
     var off=p.length-h.length,w1=serieJanela(p,mk,1),w2=serieJanela(p,mk,2),s=0,dia=h.map(function(g){s+=bate(mk,g)?1:0;return s;}).map(function(v,i){return v/(i+1);});
     function frio(gi,time){var c=0,n=0;for(var k=gi-1;k>=0&&n<3;k--){var g=p[k];if(g.time_a===time||g.time_b===time){n++;if(bate(mk,g))c++;}}return n>=3&&c===0;}
@@ -77,6 +78,7 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
       return true;
     };
   }
+  var MR=5,ML=13;
   async function liga(l,mk,tiros,base,filtro){
     var r=await fetch('/api/grade?liga='+l+'&horas=24&compacto=1&_='+Date.now(),{credentials:'same-origin',cache:'no-store'});
     if(!r.ok)return null;
@@ -94,10 +96,10 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
       line=hit.map(function(x,i){s+=x;while(ts[j]<=ts[i]-Wms){s-=hit[j];j++;}return s/(i-j+1)*100;});
       var corte=pre.length;h=h.slice(corte);hit=hit.slice(corte);line=line.slice(corte);
     }
-    var m9=sma(line,9),m21=sma(line,21),n=h.length;
-    if(n<25)return {n:n,espera:true};
+    var m9=sma(line,MR),m21=sma(line,ML),n=h.length;
+    if(n<ML+4)return {n:n,espera:true};
     var fases=[],cur=null;
-    for(var i=24;i<n;i++){var up=m9[i]>m21[i];if(!cur||cur.up!==up){cur={up:up,ini:i,fim:i};fases.push(cur);}else cur.fim=i;}
+    for(var i=ML+3;i<n;i++){var up=m9[i]>m21[i];if(!cur||cur.up!==up){cur={up:up,ini:i,fim:i};fases.push(cur);}else cur.fim=i;}
     var subidas=fases.filter(function(f){return f.up;});
     var passa=filtro==='com'?montaFiltro(p,p.filter(function(g){return String(g.slot_em).slice(0,10)===dia;}),mk,tiros):null;
     subidas.forEach(function(f){f.cic=ciclos(hit,f.ini,f.fim,tiros,passa);f.g=f.cic.filter(function(c){return c.ok;}).length;f.r=f.cic.length-f.g;});
@@ -119,6 +121,7 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
     return res;
   }
   async function roda(){
+    var mm=q('#mm').value.split(',');MR=Number(mm[0]);ML=Number(mm[1]);
     var mk=q('#mk').value,tiros=Number(q('#tiros').value),base=q('#base').value,filtro=q('#filtro').value,nomeMk=q('#mk').selectedOptions[0].textContent;
     var dados=await Promise.all(LIGAS.map(async function(l){try{return {l:l,d:await liga(l[0],mk,tiros,base,filtro)};}catch(e){return {l:l,d:null};}}));
     dados.sort(function(a,b){var ua=a.d&&a.d.subindo?1:0,ub=b.d&&b.d.subindo?1:0;if(ua!==ub)return ub-ua;
@@ -130,7 +133,7 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
       var pctDia=d.tot.g+d.tot.r?Math.round(d.tot.g/(d.tot.g+d.tot.r)*100):0;
       var st=d.subindo?(d.forca?'<span class="st up">SUBINDO</span>':'<span class="st wait">PERDENDO FORÇA</span>'):'<span class="st down">CAINDO · ESPERAR</span>';
       var h='<article class="card '+(d.subindo?'up':'down')+'"><div class="top"><b>'+nome+'</b>'+st+'</div>'+
-        '<div class="linha">'+nomeMk+' '+d.linha.toFixed(2)+'% · MM9 '+d.m9.toFixed(2)+' · MM21 '+d.m21.toFixed(2)+' · '+(d.subindo?'subindo desde <b>'+d.desde+'</b> ('+d.jogos+' j)':'caindo desde '+d.desde)+'</div>';
+        '<div class="linha">'+nomeMk+' '+d.linha.toFixed(2)+'% · MM'+MR+' '+d.m9.toFixed(2)+' · MM'+ML+' '+d.m21.toFixed(2)+' · '+(d.subindo?'subindo desde <b>'+d.desde+'</b> ('+d.jogos+' j)':'caindo desde '+d.desde)+'</div>';
       h+='<div class="box"><h4>SUBIDAS DE HOJE · '+tiros+' TIRO'+(tiros>1?'S':'')+(filtro==='com'?' · COM FILTRO':'')+'</h4><div class="nums">'+
         '<div><span>subidas</span><strong>'+d.subidas.length+'</strong></div>'+
         '<div><span>entradas</span><strong>'+(d.tot.g+d.tot.r)+'</strong></div>'+
@@ -151,7 +154,7 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
     }).join('');
     q('#upd').textContent='atualizado '+new Date().toLocaleTimeString('pt-BR')+' · atualiza a cada 30s';
   }
-  q('#mk').addEventListener('change',roda);q('#base').addEventListener('change',roda);q('#filtro').addEventListener('change',roda);q('#tiros').addEventListener('change',roda);
+  q('#mk').addEventListener('change',roda);q('#base').addEventListener('change',roda);q('#filtro').addEventListener('change',roda);q('#mm').addEventListener('change',roda);q('#tiros').addEventListener('change',roda);
   roda();setInterval(roda,30000);
 })();
 </script>
