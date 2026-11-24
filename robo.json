@@ -1086,12 +1086,24 @@
  },
  "o25": {
   "saldo": -15.5,
-  "ciclos": 69918,
+  "ciclos": 69920,
   "greens": 195,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 69696,
+  "descartes": 69698,
   "historico": [
+   {
+    "quando": "2026-11-24T05:16:05.049Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ATA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T05:16:05.043Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time FUL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T05:15:32.603Z",
     "resultado": "GREEN_OBS",
@@ -4679,18 +4691,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T02:40:07.079Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T02:40:07.076Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4882,7 +4882,7 @@
     "gatilho": "coluna :52"
    },
    "ita": {
-    "desde": 1795497332603,
+    "desde": 1795497365049,
     "gatilho": "time ATA"
    }
   }
@@ -6183,7 +6183,37 @@
   "consumidas": {
    "mnd": 1795496979458
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "02:20",
+     "jogo": "BAR x PER",
+     "odd": 1.68
+    },
+    {
+     "h": "02:23",
+     "jogo": "RAC x COL",
+     "odd": 1.83
+    },
+    {
+     "h": "02:26",
+     "jogo": "ARG x RIV",
+     "odd": 1.71
+    }
+   ],
+   "gatilho": "placar 1-0 / 0-1",
+   "alvo": {
+    "h": "02:20",
+    "jogo": "BAR x PER",
+    "odd": 1.68,
+    "unidades": 1,
+    "desde": 1795497332620
+   },
+   "iniciadoEm": 1795497332620
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795493011900,
@@ -6197,7 +6227,7 @@
   "_gatilhoAtual": {
    "tipo": "placar",
    "chave": "1-0 / 0-1",
-   "n": 10,
+   "n": 11,
    "start": 1
   },
   "dias": {
