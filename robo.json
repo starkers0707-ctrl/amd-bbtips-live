@@ -1424,12 +1424,30 @@
  },
  "o25": {
   "saldo": -21.4,
-  "ciclos": 91257,
+  "ciclos": 91260,
   "greens": 242,
   "redsCiclo": 35,
   "aborts": 0,
-  "descartes": 90980,
+  "descartes": 90983,
   "historico": [
+   {
+    "quando": "2026-11-24T21:42:06.624Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T21:42:03.427Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T21:42:03.423Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T21:42:03.415Z",
     "resultado": "GREEN",
@@ -5011,24 +5029,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:15:27.854Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:15:23.489Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.64) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:15:23.485Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5037,7 +5037,37 @@
    "cop": 1795556284523,
    "ame": 1795556523403
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "18:55",
+     "jogo": "ATA x MIL",
+     "odd": 1.91
+    },
+    {
+     "h": "18:57",
+     "jogo": "JUV x ROM",
+     "odd": 1.94
+    },
+    {
+     "h": "18:59",
+     "jogo": "GEN x SAS",
+     "odd": 1.92
+    }
+   ],
+   "gatilho": "coluna :57",
+   "alvo": {
+    "h": "18:55",
+    "jogo": "ATA x MIL",
+    "odd": 1.91,
+    "unidades": 1,
+    "desde": 1795556526617
+   },
+   "iniciadoEm": 1795556526617
+  },
   "cooldown": {
    "cam": 1795552323084,
    "eng": 1795555531159,
@@ -5203,6 +5233,10 @@
    "spa": {
     "desde": 1795556431394,
     "gatilho": "coluna :57"
+   },
+   "eng": {
+    "desde": 1795556526624,
+    "gatilho": "coluna :54"
    }
   }
  },
