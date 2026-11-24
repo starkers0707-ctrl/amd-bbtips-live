@@ -1128,12 +1128,18 @@
  },
  "o25": {
   "saldo": -14,
-  "ciclos": 70335,
+  "ciclos": 70336,
   "greens": 197,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 70111,
+  "descartes": 70112,
   "historico": [
+   {
+    "quando": "2026-11-24T06:14:02.954Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T06:13:49.228Z",
     "resultado": "GREEN_OBS",
@@ -4727,12 +4733,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T04:53:02.135Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4785,7 +4785,7 @@
    "tipo": "time",
    "chave": "Madrid",
    "n": 8,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -4954,7 +4954,7 @@
     "gatilho": "coluna :52"
    },
    "cam": {
-    "desde": 1795500829228,
+    "desde": 1795500842954,
     "gatilho": "time Madrid"
    }
   }
@@ -6282,8 +6282,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "03:09",
@@ -6303,11 +6303,11 @@
    ],
    "gatilho": "time France",
    "alvo": {
-    "h": "03:12",
-    "jogo": "Croatia x France",
-    "odd": 2.1,
-    "unidades": 2,
-    "desde": 1795500649653
+    "h": "03:15",
+    "jogo": "Colombia x Netherlands",
+    "odd": 2.09,
+    "unidades": 4,
+    "desde": 1795500829262
    },
    "iniciadoEm": 1795500016783,
    "tiros": [
@@ -6316,6 +6316,12 @@
      "jogo": "Mexico x Germany",
      "odd": 1.92,
      "unidades": 1
+    },
+    {
+     "h": "03:12",
+     "jogo": "Croatia x France",
+     "odd": 2.1,
+     "unidades": 2
     }
    ]
   },
@@ -6333,7 +6339,7 @@
    "tipo": "time",
    "chave": "France",
    "n": 8,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
