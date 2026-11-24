@@ -1371,12 +1371,24 @@
  },
  "o25": {
   "saldo": -31.7,
-  "ciclos": 85435,
+  "ciclos": 85437,
   "greens": 226,
   "redsCiclo": 34,
   "aborts": 0,
-  "descartes": 85175,
+  "descartes": 85177,
   "historico": [
+   {
+    "quando": "2026-11-24T16:53:02.836Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:53:02.830Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T16:52:55.522Z",
     "resultado": "GREEN_OBS",
@@ -4964,18 +4976,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :28) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:26:36.049Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:26:36.047Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5182,9 +5182,9 @@
     "desde": 1795538979305,
     "gatilho": "odd 2.17"
    },
-   "lat": {
-    "desde": 1795539175522,
-    "gatilho": "time COL"
+   "ita": {
+    "desde": 1795539182836,
+    "gatilho": "coluna :57"
    }
   }
  },
@@ -6852,8 +6852,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "13:48",
@@ -6873,11 +6873,11 @@
    ],
    "gatilho": "seq GRRRG",
    "alvo": {
-    "h": "13:51",
-    "jogo": "Belgium x Spain",
-    "odd": 2.02,
-    "unidades": 2,
-    "desde": 1795538994727
+    "h": "13:54",
+    "jogo": "USA x Croatia",
+    "odd": 2.01,
+    "unidades": 4,
+    "desde": 1795539175539
    },
    "iniciadoEm": 1795538618171,
    "tiros": [
@@ -6886,6 +6886,12 @@
      "jogo": "Mexico x Wales",
      "odd": 1.96,
      "unidades": 1
+    },
+    {
+     "h": "13:51",
+     "jogo": "Belgium x Spain",
+     "odd": 2.02,
+     "unidades": 2
     }
    ]
   },
@@ -6903,7 +6909,7 @@
    "tipo": "coluna",
    "chave": ":12",
    "n": 14,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-20": 0,
