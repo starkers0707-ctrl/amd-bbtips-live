@@ -1271,12 +1271,18 @@
  },
  "o25": {
   "saldo": -31,
-  "ciclos": 80607,
+  "ciclos": 80608,
   "greens": 219,
   "redsCiclo": 33,
   "aborts": 0,
-  "descartes": 80355,
+  "descartes": 80356,
   "historico": [
+   {
+    "quando": "2026-11-24T14:13:54.802Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :18) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T14:13:52.687Z",
     "resultado": "GREEN_OBS",
@@ -4870,12 +4876,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:56:02.983Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5093,20 +5093,26 @@
     "desde": 1795529585768,
     "gatilho": "coluna :17"
    },
-   "ame": {
-    "desde": 1795529632686,
-    "gatilho": "coluna :25"
+   "eng": {
+    "desde": 1795529634801,
+    "gatilho": "coluna :18"
    }
   }
  },
  "ambas": {
-  "saldo": -27.5,
-  "ciclos": 269,
-  "greens": 108,
+  "saldo": -26.6,
+  "ciclos": 270,
+  "greens": 109,
   "redsCiclo": 15,
   "aborts": 0,
   "descartes": 146,
   "historico": [
+   {
+    "quando": "2026-11-24T14:13:52.701Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "cop · Wales x Argentina @1.96 (tiro 2) · gatilho: coluna :12"
+   },
    {
     "quando": "2026-11-24T13:57:46.648Z",
     "resultado": "GREEN",
@@ -6724,47 +6730,10 @@
   ],
   "consumidas": {
    "bra": 1795526496634,
-   "lat": 1795528666647
+   "lat": 1795528666647,
+   "cop": 1795529632700
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "11:09",
-     "jogo": "Netherlands x France",
-     "odd": 1.97
-    },
-    {
-     "h": "11:12",
-     "jogo": "Wales x Argentina",
-     "odd": 1.96
-    },
-    {
-     "h": "11:15",
-     "jogo": "Uruguay x USA",
-     "odd": 2.07
-    }
-   ],
-   "gatilho": "coluna :12",
-   "alvo": {
-    "h": "11:12",
-    "jogo": "Wales x Argentina",
-    "odd": 1.96,
-    "unidades": 2,
-    "desde": 1795529437795
-   },
-   "iniciadoEm": 1795528684123,
-   "tiros": [
-    {
-     "h": "11:09",
-     "jogo": "Netherlands x France",
-     "odd": 1.97,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795528666648,
    "eng": 1795524811381,
@@ -6772,21 +6741,21 @@
    "bra": 1795526496634,
    "mnd": 1795515327438,
    "cam": 1795505142768,
-   "cop": 1795524059818,
+   "cop": 1795529632700,
    "ame": 1795510421878
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":15",
+   "chave": ":36",
    "n": 11,
-   "start": 1
+   "start": 6
   },
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
-   "2026-11-24": -28.9
+   "2026-11-24": -28
   },
   "_obs": {}
  }
