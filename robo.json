@@ -1385,13 +1385,37 @@
   }
  },
  "o25": {
-  "saldo": -24.9,
-  "ciclos": 87961,
-  "greens": 233,
+  "saldo": -23.4,
+  "ciclos": 87965,
+  "greens": 234,
   "redsCiclo": 34,
   "aborts": 0,
-  "descartes": 87694,
+  "descartes": 87697,
   "historico": [
+   {
+    "quando": "2026-11-24T19:29:54.673Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :33) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T19:29:54.658Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T19:29:54.644Z",
+    "resultado": "GREEN",
+    "unidades": 1.5,
+    "detalhe": "ame · Porto Alegre x Guayaquil @2.55 (tiro 1) · gatilho: seq GRRGR"
+   },
+   {
+    "quando": "2026-11-24T19:29:29.678Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :33) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T19:29:29.671Z",
     "resultado": "GREEN_OBS",
@@ -4967,67 +4991,14 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:55:43.127Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:55:38.475Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:55:38.463Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:55:38.455Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
    }
   ],
   "consumidas": {
    "cam": 1795545089718,
-   "spa": 1795548154815
+   "spa": 1795548154815,
+   "ame": 1795548594643
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "16:28",
-     "jogo": "Porto Alegre x Guayaquil",
-     "odd": 2.55
-    },
-    {
-     "h": "16:31",
-     "jogo": "Asuncion x Quito",
-     "odd": 2.04
-    },
-    {
-     "h": "16:34",
-     "jogo": "Porto Alegre x La Boca",
-     "odd": 2.23
-    }
-   ],
-   "gatilho": "seq GRRGR",
-   "alvo": {
-    "h": "16:28",
-    "jogo": "Porto Alegre x Guayaquil",
-    "odd": 2.55,
-    "unidades": 1,
-    "desde": 1795548215374
-   },
-   "iniciadoEm": 1795548215374
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795545089718,
    "eng": 1795544734030,
@@ -5036,7 +5007,7 @@
    "lat": 1795538549455,
    "bra": 1795522714636,
    "mnd": 1795517012357,
-   "ame": 1795543567162,
+   "ame": 1795548594643,
    "cop": 1795520988139
   },
   "_gatilhoAtual": {
@@ -5051,7 +5022,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -15
+   "2026-11-24": -13.5
   },
   "_obs": {}
  },
@@ -5194,9 +5165,9 @@
     "desde": 1795548216962,
     "gatilho": "coluna :26"
    },
-   "spa": {
-    "desde": 1795548569671,
-    "gatilho": "coluna :39"
+   "cam": {
+    "desde": 1795548594672,
+    "gatilho": "coluna :33"
    }
   }
  },
