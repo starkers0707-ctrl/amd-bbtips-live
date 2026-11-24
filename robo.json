@@ -1152,13 +1152,43 @@
   }
  },
  "o25": {
-  "saldo": -11,
-  "ciclos": 71122,
-  "greens": 199,
+  "saldo": -9.7,
+  "ciclos": 71127,
+  "greens": 200,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 70896,
+  "descartes": 70900,
   "historico": [
+   {
+    "quando": "2026-11-24T07:41:11.289Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time United) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:41:06.918Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time United) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:41:06.907Z",
+    "resultado": "GREEN",
+    "unidades": 1.3,
+    "detalhe": "cam · Munich x United @2.33 (tiro 1) · gatilho: time United"
+   },
+   {
+    "quando": "2026-11-24T07:41:05.495Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time United) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:41:04.608Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time United) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T07:41:03.758Z",
     "resultado": "GREEN_OBS",
@@ -4728,74 +4758,45 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:08:34.187Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:08:33.376Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:08:15.704Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:08:14.820Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:08:09.264Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "ita": 1795504474248
+   "ita": 1795504474248,
+   "cam": 1795506066906
   },
   "ciclo": {
-   "liga": "cam",
+   "liga": "spa",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "04:39",
-     "jogo": "Munich x United",
-     "odd": 2.33
-    },
-    {
-     "h": "04:42",
-     "jogo": "Turin x Dortmund",
-     "odd": 2.32
+     "h": "04:43",
+     "jogo": "SEV x DLC",
+     "odd": 1.95
     },
     {
      "h": "04:45",
-     "jogo": "Amsterdam x Rome",
-     "odd": 2.37
+     "jogo": "ALV x RAY",
+     "odd": 1.92
+    },
+    {
+     "h": "04:47",
+     "jogo": "LEV x RSO",
+     "odd": 1.93
     }
    ],
-   "gatilho": "time United",
+   "gatilho": "time RAY",
    "alvo": {
-    "h": "04:39",
-    "jogo": "Munich x United",
-    "odd": 2.33,
+    "h": "04:43",
+    "jogo": "SEV x DLC",
+    "odd": 1.95,
     "unidades": 1,
-    "desde": 1795505826034
+    "desde": 1795506071276
    },
-   "iniciadoEm": 1795505826034
+   "iniciadoEm": 1795506071276
   },
   "cooldown": {
-   "cam": 1795502088857,
+   "cam": 1795506066906,
    "eng": 1795498175148,
    "ita": 1795504474248,
    "spa": 1795489711077,
@@ -4807,9 +4808,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "United",
-   "n": 10,
-   "start": 2
+   "chave": "RAY",
+   "n": 12,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -4817,7 +4818,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -1.1
+   "2026-11-24": 0.2
   },
   "_obs": {
    "cam": {
@@ -4982,7 +4983,7 @@
     "gatilho": "time LEC"
    },
    "cam": {
-    "desde": 1795506063757,
+    "desde": 1795506071289,
     "gatilho": "time United"
    }
   }
@@ -6398,6 +6399,11 @@
    "2026-11-23": 13.6,
    "2026-11-24": -9.7
   },
-  "_obs": {}
+  "_obs": {
+   "cop": {
+    "desde": 1795506063770,
+    "gatilho": "seq RRRR"
+   }
+  }
  }
 }
