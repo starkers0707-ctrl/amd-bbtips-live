@@ -1073,12 +1073,24 @@
  },
  "o25": {
   "saldo": -15.9,
-  "ciclos": 68459,
+  "ciclos": 68461,
   "greens": 187,
   "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 68246,
+  "descartes": 68248,
   "historico": [
+   {
+    "quando": "2026-11-24T01:04:43.138Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T01:04:40.826Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T01:04:40.817Z",
     "resultado": "DESCARTADO",
@@ -4666,18 +4678,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:19:07.204Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:18:57.447Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4685,37 +4685,7 @@
    "cop": 1795479931322,
    "spa": 1795480231205
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "22:03",
-     "jogo": "Liverpool x Amsterdam",
-     "odd": 2.49
-    },
-    {
-     "h": "22:06",
-     "jogo": "Benfica x Madrid",
-     "odd": 2.04
-    },
-    {
-     "h": "22:09",
-     "jogo": "United x Chelsea",
-     "odd": 2.65
-    }
-   ],
-   "gatilho": "coluna :06",
-   "alvo": {
-    "h": "22:03",
-    "jogo": "Liverpool x Amsterdam",
-    "odd": 2.49,
-    "unidades": 1,
-    "desde": 1795481375556
-   },
-   "iniciadoEm": 1795481375556
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795475247707,
    "eng": 1795383709617,
@@ -4885,6 +4855,10 @@
    "cop": {
     "desde": 1795479598576,
     "gatilho": "odd 2.39"
+   },
+   "ita": {
+    "desde": 1795482283138,
+    "gatilho": "coluna :15"
    }
   }
  },
