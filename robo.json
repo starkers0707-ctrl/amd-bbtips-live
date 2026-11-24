@@ -1122,12 +1122,18 @@
  },
  "o25": {
   "saldo": -14.6,
-  "ciclos": 70104,
+  "ciclos": 70105,
   "greens": 196,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 69881,
+  "descartes": 69882,
   "historico": [
+   {
+    "quando": "2026-11-24T05:29:57.028Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time FUL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T05:29:35.162Z",
     "resultado": "GREEN_OBS",
@@ -4721,18 +4727,42 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRGRR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T03:00:35.680Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRGRR) — liga REARMADA"
    }
   ],
   "consumidas": {
    "eng": 1795498175148
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "02:37",
+     "jogo": "INT x COM",
+     "odd": 1.92
+    },
+    {
+     "h": "02:39",
+     "jogo": "FRO x ATA",
+     "odd": 1.79
+    },
+    {
+     "h": "02:41",
+     "jogo": "JUV x LEC",
+     "odd": 1.87
+    }
+   ],
+   "gatilho": "time ATA",
+   "alvo": {
+    "h": "02:37",
+    "jogo": "INT x COM",
+    "odd": 1.92,
+    "unidades": 1,
+    "desde": 1795498197020
+   },
+   "iniciadoEm": 1795498197020
+  },
   "cooldown": {
    "cam": 1795487509896,
    "eng": 1795498175148,
@@ -4916,9 +4946,9 @@
     "desde": 1795488687919,
     "gatilho": "coluna :52"
    },
-   "ita": {
-    "desde": 1795498175162,
-    "gatilho": "time ATA"
+   "eng": {
+    "desde": 1795498197028,
+    "gatilho": "time FUL"
    }
   }
  },
