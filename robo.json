@@ -1162,12 +1162,18 @@
  },
  "o25": {
   "saldo": -11.8,
-  "ciclos": 70460,
+  "ciclos": 70461,
   "greens": 198,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 70235,
+  "descartes": 70236,
   "historico": [
+   {
+    "quando": "2026-11-24T07:00:07.431Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T07:00:03.174Z",
     "resultado": "GREEN_OBS",
@@ -4761,12 +4767,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T05:08:27.875Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4955,6 +4955,10 @@
    "mnd": {
     "desde": 1795488687919,
     "gatilho": "coluna :52"
+   },
+   "cam": {
+    "desde": 1795503607430,
+    "gatilho": "time Madrid"
    }
   }
  },
@@ -6351,9 +6355,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "Madrid",
+   "chave": "Asuncion",
    "n": 10,
-   "start": 7
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
