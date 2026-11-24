@@ -1150,12 +1150,18 @@
  },
  "o25": {
   "saldo": -11.8,
-  "ciclos": 70439,
+  "ciclos": 70440,
   "greens": 198,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 70214,
+  "descartes": 70215,
   "historico": [
+   {
+    "quando": "2026-11-24T06:49:08.899Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time United) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T06:48:19.400Z",
     "resultado": "GREEN_OBS",
@@ -4749,12 +4755,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T05:05:51.072Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4943,21 +4943,29 @@
    "mnd": {
     "desde": 1795488687919,
     "gatilho": "coluna :52"
-   },
-   "cam": {
-    "desde": 1795502899400,
-    "gatilho": "time United"
    }
   }
  },
  "ambas": {
   "saldo": -9.8,
-  "ciclos": 221,
+  "ciclos": 223,
   "greens": 93,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 117,
+  "descartes": 119,
   "historico": [
+   {
+    "quando": "2026-11-24T06:49:08.927Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Rome) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T06:48:19.415Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "cam · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-24T06:33:07.254Z",
     "resultado": "GREEN_OBS",
@@ -6289,37 +6297,7 @@
    "ame": 1795499990275,
    "cop": 1795501009716
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "03:48",
-     "jogo": "Chelsea x Munich",
-     "odd": 2
-    },
-    {
-     "h": "03:51",
-     "jogo": "United x Milan",
-     "odd": 2.12
-    },
-    {
-     "h": "03:54",
-     "jogo": "City x Barcelona",
-     "odd": 1.93
-    }
-   ],
-   "gatilho": "time United",
-   "alvo": {
-    "h": "03:48",
-    "jogo": "Chelsea x Munich",
-    "odd": 2,
-    "unidades": 1,
-    "desde": 1795501987260
-   },
-   "iniciadoEm": 1795501987260
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795497681687,
    "eng": 1795493011900,
@@ -6331,10 +6309,10 @@
    "ame": 1795499990275
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "Rome",
-   "n": 8,
-   "start": 6
+   "tipo": "odd",
+   "chave": "1.77",
+   "n": 11,
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
@@ -6343,6 +6321,11 @@
    "2026-11-23": 13.6,
    "2026-11-24": -11.2
   },
-  "_obs": {}
+  "_obs": {
+   "cam": {
+    "desde": 1795502948927,
+    "gatilho": "time Rome"
+   }
+  }
  }
 }
