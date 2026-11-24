@@ -1,12 +1,18 @@
 {
  "o35": {
   "saldo": 30.6,
-  "ciclos": 176,
+  "ciclos": 177,
   "greens": 67,
   "redsCiclo": 29,
   "aborts": 0,
-  "descartes": 80,
+  "descartes": 81,
   "historico": [
+   {
+    "quando": "2026-11-24T06:27:07.097Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "eng · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-24T05:35:31.922Z",
     "resultado": "RED_CICLO",
@@ -1067,37 +1073,7 @@
   "consumidas": {
    "mnd": 1795498531922
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "04:02",
-     "jogo": "EVE x NOT",
-     "odd": 3.36
-    },
-    {
-     "h": "04:04",
-     "jogo": "ARS x MNC",
-     "odd": 3.38
-    },
-    {
-     "h": "04:06",
-     "jogo": "CRY x FUL",
-     "odd": 3.33
-    }
-   ],
-   "gatilho": "odd 3.36",
-   "alvo": {
-    "h": "04:02",
-    "jogo": "EVE x NOT",
-    "odd": 3.36,
-    "unidades": 1,
-    "desde": 1795500726038
-   },
-   "iniciadoEm": 1795500726038
-  },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795498531922,
    "lat": 1795442097655,
@@ -1128,12 +1104,18 @@
  },
  "o25": {
   "saldo": -14,
-  "ciclos": 70372,
+  "ciclos": 70373,
   "greens": 197,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 70148,
+  "descartes": 70149,
   "historico": [
+   {
+    "quando": "2026-11-24T06:27:07.124Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T06:27:04.902Z",
     "resultado": "GREEN_OBS",
@@ -4727,12 +4709,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T04:57:33.861Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4954,7 +4930,7 @@
     "gatilho": "coluna :52"
    },
    "cam": {
-    "desde": 1795501624901,
+    "desde": 1795501627123,
     "gatilho": "time Madrid"
    }
   }
