@@ -35,8 +35,8 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
 <div class="sub">Só as <b>subidas</b> de hoje (média rápida acima da lenta no gráfico da base escolhida: 1 a 3 horas reage rápido, acumulado 00h é o mais lento). Mostra o que cada subida pagou e o que está puxando a subida de agora. Na queda a liga fica apagada: é hora de esperar.</div>
 <div class="bar">
   <label>Mercado<select id="mk"><option value="o25">Over 2.5</option><option value="o35">Over 3.5</option><option value="o15">Over 1.5</option><option value="ambs">Ambas Marcam</option><option value="ge5">5+ Gols</option></select></label>
-  <label>Base do gráfico<select id="base"><option value="1">Última 1 hora</option><option value="2" selected>Últimas 2 horas</option><option value="3">Últimas 3 horas</option><option value="6">Últimas 6 horas</option><option value="12">Últimas 12 horas</option><option value="dia">00h (meia-noite até 23:59)</option></select></label>
-  <label>Médias<select id="mm"><option value="3,9">Rápida (MM3 x MM9)</option><option value="5,13" selected>Média (MM5 x MM13)</option><option value="9,21">Lenta (MM9 x MM21)</option></select></label>
+  <label>Base do gráfico<select id="base"><option value="1">Última 1 hora</option><option value="2">Últimas 2 horas</option><option value="3">Últimas 3 horas</option><option value="6">Últimas 6 horas</option><option value="12">Últimas 12 horas</option><option value="dia" selected>00h (meia-noite até 23:59)</option></select></label>
+  <label>Médias<select id="mm"><option value="3,9">Rápida (MM3 x MM9)</option><option value="5,13">Média (MM5 x MM13)</option><option value="9,21" selected>Lenta (MM9 x MM21) · igual ao gráfico e ao robô</option></select></label>
   <label>Entradas<select id="filtro"><option value="sem">Sem filtro (todas da subida)</option><option value="com">Com filtro (3 bases · coluna · time)</option></select></label>
   <label>Tiros<select id="tiros"><option value="1">1 (seco)</option><option value="2">2 tiros</option><option value="3" selected>3 tiros</option></select></label>
   <span class="upd" id="upd">carregando…</span>
@@ -78,7 +78,7 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
       return true;
     };
   }
-  var MR=5,ML=13;
+  var MR=9,ML=21;
   async function liga(l,mk,tiros,base,filtro){
     var r=await fetch('/api/grade?liga='+l+'&horas=24&compacto=1&_='+Date.now(),{credentials:'same-origin',cache:'no-store'});
     if(!r.ok)return null;
@@ -106,7 +106,11 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
     var atual=fases[fases.length-1],L=n-1;
     var tot={g:0,r:0};subidas.forEach(function(f){tot.g+=f.g;tot.r+=f.r;});
     var semRed=subidas.filter(function(f){return f.cic.length&&!f.r;}).length;
-    var res={n:n,linha:line[L],m9:m9[L],m21:m21[L],subindo:atual.up,forca:m9[L]>=m9[L-1],desde:hm(h[atual.ini]),jogos:atual.fim-atual.ini+1,subidas:subidas,tot:tot,semRed:semRed};
+    var hojeArr=p.filter(function(g){return String(g.slot_em).slice(0,10)===dia;}),sd=0;
+    var acum=hojeArr.map(function(g,i){sd+=bate(mk,g)?1:0;return sd/(i+1);});
+    var b1=sobeEm(serieJanela(p,mk,1),p.length-1),b2=sobeEm(serieJanela(p,mk,2),p.length-1),b0=sobeEm(acum,acum.length-1);
+    var todas=b1&&b2&&b0;
+    var res={b1:b1,b2:b2,b0:b0,todas:todas,n:n,linha:line[L],m9:m9[L],m21:m21[L],subindo:atual.up,forca:m9[L]>=m9[L-1],desde:hm(h[atual.ini]),jogos:atual.fim-atual.ini+1,subidas:subidas,tot:tot,semRed:semRed};
     if(atual.up){
       var gs=h.slice(atual.ini),times={},cols={},odds=[];
       gs.forEach(function(g){var ok=bate(mk,g);[g.time_a,g.time_b].forEach(function(t){var x=times[t]||(times[t]=[0,0]);x[0]++;if(ok)x[1]++;});
@@ -124,15 +128,17 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
     var mm=q('#mm').value.split(',');MR=Number(mm[0]);ML=Number(mm[1]);
     var mk=q('#mk').value,tiros=Number(q('#tiros').value),base=q('#base').value,filtro=q('#filtro').value,nomeMk=q('#mk').selectedOptions[0].textContent;
     var dados=await Promise.all(LIGAS.map(async function(l){try{return {l:l,d:await liga(l[0],mk,tiros,base,filtro)};}catch(e){return {l:l,d:null};}}));
-    dados.sort(function(a,b){var ua=a.d&&a.d.subindo?1:0,ub=b.d&&b.d.subindo?1:0;if(ua!==ub)return ub-ua;
+    dados.sort(function(a,b){var ua=a.d&&a.d.todas?1:0,ub=b.d&&b.d.todas?1:0;if(ua!==ub)return ub-ua;
       var pa=a.d&&a.d.tot?a.d.tot.g/Math.max(1,a.d.tot.g+a.d.tot.r):0,pb=b.d&&b.d.tot?b.d.tot.g/Math.max(1,b.d.tot.g+b.d.tot.r):0;return pb-pa;});
     q('#grid').innerHTML=dados.map(function(x){
       var d=x.d,nome=x.l[1];
       if(!d)return '<article class="card down"><div class="top"><b>'+nome+'</b><span class="st wait">SEM DADOS</span></div></article>';
       if(d.espera)return '<article class="card down"><div class="top"><b>'+nome+'</b><span class="st wait">AGUARDE</span></div><div class="linha">Só '+d.n+' jogos hoje: o gráfico ainda não formou a MM21.</div></article>';
       var pctDia=d.tot.g+d.tot.r?Math.round(d.tot.g/(d.tot.g+d.tot.r)*100):0;
-      var st=d.subindo?(d.forca?'<span class="st up">SUBINDO</span>':'<span class="st wait">PERDENDO FORÇA</span>'):'<span class="st down">CAINDO · ESPERAR</span>';
-      var h='<article class="card '+(d.subindo?'up':'down')+'"><div class="top"><b>'+nome+'</b>'+st+'</div>'+
+      var nb=(d.b1?1:0)+(d.b2?1:0)+(d.b0?1:0);
+      var st=d.todas?'<span class="st up">SUBINDO (3 BASES)</span>':nb?'<span class="st wait">DIVERGENTE · ESPERAR</span>':'<span class="st down">CAINDO · ESPERAR</span>';
+      var bases='<div class="linha">'+[['1h',d.b1],['2h',d.b2],['00h',d.b0]].map(function(b){return '<b class="'+(b[1]?'ok':'bad')+'">'+b[0]+' '+(b[1]?'▲':'▼')+'</b>';}).join(' · ')+'</div>';
+      var h='<article class="card '+(d.todas?'up':'down')+'"><div class="top"><b>'+nome+'</b>'+st+'</div>'+bases+
         '<div class="linha">'+nomeMk+' '+d.linha.toFixed(2)+'% · MM'+MR+' '+d.m9.toFixed(2)+' · MM'+ML+' '+d.m21.toFixed(2)+' · '+(d.subindo?'subindo desde <b>'+d.desde+'</b> ('+d.jogos+' j)':'caindo desde '+d.desde)+'</div>';
       h+='<div class="box"><h4>SUBIDAS DE HOJE · '+tiros+' TIRO'+(tiros>1?'S':'')+(filtro==='com'?' · COM FILTRO':'')+'</h4><div class="nums">'+
         '<div><span>subidas</span><strong>'+d.subidas.length+'</strong></div>'+
@@ -141,7 +147,7 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
         '<div><span>red</span><strong class="bad">'+d.tot.r+'</strong></div>'+
         '<div><span>acerto</span><strong class="'+(pctDia>=90?'ok':pctDia>=80?'warn':'bad')+'">'+pctDia+'%</strong></div>'+
         '<div><span>sem red</span><strong>'+d.semRed+'/'+d.subidas.length+'</strong></div></div></div>';
-      if(d.subindo){
+      if(d.subindo&&d.todas){
         h+='<div class="box"><h4>SUBIDA DE AGORA · PAGANDO '+Math.round(d.atualPct)+'%</h4>'+
           '<div class="dots">'+d.ult.map(function(c){return '<i class="'+c+'"></i>';}).join('')+'</div>'+
           '<div style="margin-top:8px"><span class="vazio">Times puxando: </span><span class="chips">'+(d.times.length?d.times.map(function(t){return '<i>'+esc(t[0])+' '+t[1][1]+'/'+t[1][0]+'</i>';}).join(''):'<span class="vazio">—</span>')+'</span></div>'+
