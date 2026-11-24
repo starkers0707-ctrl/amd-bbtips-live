@@ -4785,7 +4785,7 @@
    "tipo": "time",
    "chave": "Madrid",
    "n": 8,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -4954,19 +4954,25 @@
     "gatilho": "coluna :52"
    },
    "cam": {
-    "desde": 1795500981346,
+    "desde": 1795501007604,
     "gatilho": "time Madrid"
    }
   }
  },
  "ambas": {
-  "saldo": -2.8,
-  "ciclos": 218,
+  "saldo": -9.8,
+  "ciclos": 219,
   "greens": 93,
-  "redsCiclo": 10,
+  "redsCiclo": 11,
   "aborts": 0,
   "descartes": 115,
   "historico": [
+   {
+    "quando": "2026-11-24T06:16:49.716Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "cop · ciclo perdido (3 tiros) · gatilho: time France"
+   },
    {
     "quando": "2026-11-24T05:59:50.276Z",
     "resultado": "GREEN",
@@ -6278,53 +6284,10 @@
   ],
   "consumidas": {
    "lat": 1795497681687,
-   "ame": 1795499990275
+   "ame": 1795499990275,
+   "cop": 1795501009716
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "03:09",
-     "jogo": "Mexico x Germany",
-     "odd": 1.92
-    },
-    {
-     "h": "03:12",
-     "jogo": "Croatia x France",
-     "odd": 2.1
-    },
-    {
-     "h": "03:15",
-     "jogo": "Colombia x Netherlands",
-     "odd": 2.09
-    }
-   ],
-   "gatilho": "time France",
-   "alvo": {
-    "h": "03:15",
-    "jogo": "Colombia x Netherlands",
-    "odd": 2.09,
-    "unidades": 4,
-    "desde": 1795500829262
-   },
-   "iniciadoEm": 1795500016783,
-   "tiros": [
-    {
-     "h": "03:09",
-     "jogo": "Mexico x Germany",
-     "odd": 1.92,
-     "unidades": 1
-    },
-    {
-     "h": "03:12",
-     "jogo": "Croatia x France",
-     "odd": 2.1,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795497681687,
    "eng": 1795493011900,
@@ -6332,21 +6295,21 @@
    "bra": 1795468716738,
    "mnd": 1795496979458,
    "cam": 1795484997617,
-   "cop": 1795488040911,
+   "cop": 1795501009716,
    "ame": 1795499990275
   },
   "_gatilhoAtual": {
    "tipo": "time",
    "chave": "France",
    "n": 8,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
-   "2026-11-24": -4.2
+   "2026-11-24": -11.2
   },
   "_obs": {}
  }
