@@ -1151,13 +1151,37 @@
   }
  },
  "o25": {
-  "saldo": -15.7,
-  "ciclos": 72033,
-  "greens": 201,
+  "saldo": -13.6,
+  "ciclos": 72037,
+  "greens": 202,
   "redsCiclo": 28,
   "aborts": 0,
-  "descartes": 71804,
+  "descartes": 71807,
   "historico": [
+   {
+    "quando": "2026-11-24T08:20:31.019Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ALV) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T08:20:31.013Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T08:20:31.007Z",
+    "resultado": "GREEN",
+    "unidades": 2.1,
+    "detalhe": "ame · Itaquera x Porto Alegre @2.57 (tiro 2) · gatilho: time Itaquera"
+   },
+   {
+    "quando": "2026-11-24T08:20:16.316Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T08:20:16.308Z",
     "resultado": "GREEN_OBS",
@@ -4733,76 +4757,15 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:56:07.800Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:56:07.788Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time GEN) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:56:07.782Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:56:06.805Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
    }
   ],
   "consumidas": {
    "cam": 1795506066906,
    "spa": 1795506270848,
-   "eng": 1795507435335
+   "eng": 1795507435335,
+   "ame": 1795508431007
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "05:16",
-     "jogo": "Quito x Belo Horizonte",
-     "odd": 1.99
-    },
-    {
-     "h": "05:19",
-     "jogo": "Itaquera x Porto Alegre",
-     "odd": 2.57
-    },
-    {
-     "h": "05:22",
-     "jogo": "La Boca x Montevideo",
-     "odd": 2.19
-    }
-   ],
-   "gatilho": "time Itaquera",
-   "alvo": {
-    "h": "05:19",
-    "jogo": "Itaquera x Porto Alegre",
-    "odd": 2.57,
-    "unidades": 2,
-    "desde": 1795508277089
-   },
-   "iniciadoEm": 1795507436138,
-   "tiros": [
-    {
-     "h": "05:16",
-     "jogo": "Quito x Belo Horizonte",
-     "odd": 1.99,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795506066906,
    "eng": 1795507435335,
@@ -4811,7 +4774,7 @@
    "lat": 1795483111301,
    "bra": 1795472158133,
    "mnd": 1795485212990,
-   "ame": 1795485805678,
+   "ame": 1795508431007,
    "cop": 1795479931322
   },
   "_gatilhoAtual": {
@@ -4826,7 +4789,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -5.8
+   "2026-11-24": -3.7
   },
   "_obs": {
    "cam": {
@@ -4987,7 +4950,7 @@
     "gatilho": "time Itaquera"
    },
    "spa": {
-    "desde": 1795508416307,
+    "desde": 1795508431018,
     "gatilho": "time ALV"
    }
   }
