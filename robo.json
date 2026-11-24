@@ -1100,13 +1100,19 @@
   }
  },
  "o25": {
-  "saldo": -15.3,
-  "ciclos": 68626,
-  "greens": 188,
+  "saldo": -14.6,
+  "ciclos": 68627,
+  "greens": 189,
   "redsCiclo": 26,
   "aborts": 0,
   "descartes": 68412,
   "historico": [
+   {
+    "quando": "2026-11-24T01:32:32.227Z",
+    "resultado": "GREEN",
+    "unidades": 0.7,
+    "detalhe": "ita · FRO x NAP @1.71 (tiro 1) · gatilho: coluna :33"
+   },
    {
     "quando": "2026-11-24T01:20:09.646Z",
     "resultado": "GREEN_OBS",
@@ -4700,52 +4706,17 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:40:21.725Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "lat": 1795483111301
+   "lat": 1795483111301,
+   "ita": 1795483952226
   },
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "22:31",
-     "jogo": "FRO x NAP",
-     "odd": 1.71
-    },
-    {
-     "h": "22:33",
-     "jogo": "FIO x VEN",
-     "odd": 1.9
-    },
-    {
-     "h": "22:35",
-     "jogo": "PAR x LEC",
-     "odd": 1.94
-    }
-   ],
-   "gatilho": "coluna :33",
-   "alvo": {
-    "h": "22:31",
-    "jogo": "FRO x NAP",
-    "odd": 1.71,
-    "unidades": 1,
-    "desde": 1795483145989
-   },
-   "iniciadoEm": 1795483145989
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795475247707,
    "eng": 1795383709617,
-   "ita": 1795479522033,
+   "ita": 1795483952226,
    "spa": 1795480231205,
    "lat": 1795483111301,
    "bra": 1795472158133,
@@ -4757,14 +4728,14 @@
    "tipo": "coluna",
    "chave": ":33",
    "n": 21,
-   "start": 6
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
-   "2026-11-23": -43
+   "2026-11-23": -42.3
   },
   "_obs": {
    "cam": {
@@ -4911,6 +4882,10 @@
    "cop": {
     "desde": 1795479598576,
     "gatilho": "odd 2.39"
+   },
+   "ita": {
+    "desde": 1795483861299,
+    "gatilho": "coluna :33"
    }
   }
  },
@@ -6184,7 +6159,7 @@
    "tipo": "odd",
    "chave": "1.88",
    "n": 15,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-20": 0,
