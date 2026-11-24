@@ -172,6 +172,12 @@
     var col=all.filter(function(g){return g.resultado_ft&&Number(g.minuto)===mi;}).sort(function(a,b){return orderValue(b)-orderValue(a);}).slice(0,3);
     return col.length>=3&&!col.some(function(g){return marketMatches(market,g);});
   }
+  /* Time frio = nenhum Over nos ultimos 3 jogos dele nesta liga. */
+  function teamCold(all,market,team){
+    if(!team)return false;var t=normalized(team);
+    var js=all.filter(function(g){return g.resultado_ft&&(normalized(g.time_a)===t||normalized(g.time_b)===t);}).sort(function(a,b){return orderValue(b)-orderValue(a);}).slice(0,3);
+    return js.length>=3&&!js.some(function(g){return marketMatches(market,g);});
+  }
   function sma(arr,n){var out=[],s=0;for(var i=0;i<arr.length;i++){s+=arr[i];if(i>=n)s-=arr[i-n];out.push(i>=n-1?s/n:null);}return out;}
   function ema(arr,n){var k=2/(n+1),e=arr[0],res=[];for(var i=0;i<arr.length;i++){e=i?arr[i]*k+e*(1-k):arr[i];res.push(e);}return res;}
   function rising(line,back){var n=line.length;return n>back&&line[n-1]>line[n-1-back];}
@@ -200,7 +206,14 @@
     /* As tres bases precisam subir juntas: 1h, 2h e 00h. */
     var u1=lineUp(windowLine(data[league]||[],market,1)),u2=lineUp(windowLine(data[league]||[],market,2));
     if(u1===false||u2===false)return {ok:false,pct:0,text:'bases discordam (1h '+(u1?'sobe':'cai')+' · 2h '+(u2?'sobe':'cai')+')'};
-    if(columnBad(data[league]||[],market,entryGame))return {ok:false,pct:0,text:'coluna :'+String(entryGame.minuto).padStart(2,'0')+' ruim (0 de 3)'};
+    /* Confere os jogos de TODOS os tiros (entryGame pode ser a lista dos tiros). */
+    var tiros=Array.isArray(entryGame)?entryGame:(entryGame?[entryGame]:[]),nomes=['SG','G1','G2','G3','G4'];
+    for(var ti=0;ti<tiros.length;ti++){
+      var jg=tiros[ti],all=data[league]||[];
+      if(columnBad(all,market,jg))return {ok:false,pct:0,text:nomes[ti]+' na coluna :'+String(jg.minuto).padStart(2,'0')+' ruim (0 de 3)'};
+      if(teamCold(all,market,jg.time_a))return {ok:false,pct:0,text:nomes[ti]+' com '+jg.time_a+' frio (0 de 3)'};
+      if(teamCold(all,market,jg.time_b))return {ok:false,pct:0,text:nomes[ti]+' com '+jg.time_b+' frio (0 de 3)'};
+    }
     if(!rules.length||!threshold)return {ok:true,text:'1h, 2h e 00h subindo'};
     var max=0,pts=0,mandatoryFail=false;
     rules.forEach(function(r){max+=Number(r.weight)||0;var hit=!!st[r.key]===!!r.expected;if(hit)pts+=Number(r.weight)||0;else if(r.key==='subida'&&r.expected)mandatoryFail=true;});
@@ -331,7 +344,7 @@
     var options={body:body,tag:'amd-manual-'+key,renotify:true,requireInteraction:true,data:{url:'/robos.html'}};
     try{if('serviceWorker' in navigator){var reg=await navigator.serviceWorker.register('/sw-alertas.js');await reg.showNotification(title,options);return;}new Notification(title,options);}catch(_){}
   }
-  var MONITOR_V='20261123-v4';
+  var MONITOR_V='20261124-v5';
   var lastSync='';
   function pullRobots(){
     return fetch('/api/robos/lista?_='+Date.now(),{credentials:'same-origin',cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){
@@ -386,7 +399,7 @@
     if(Notification.permission==='default')return Notification.requestPermission();
     return Notification.permission;
   }
-  root.AMDManualMonitor={clockShift:clockShift,metricsPass:metricsPass,gameKey:gameKey,tick:tick,enable:enable,robotLeagues:robotLeagues,marketMatches:marketMatches,positionMatches:positionMatches,matchingRow:matchingRow,eligibleMatch:eligibleMatch,nextGame:nextGame,nextShotGame:nextShotGame,reconcileSignals:reconcileSignals,hasOpenCycle:hasOpenCycle,gameHour:gameHour,isLeader:isLeader};
+  root.AMDManualMonitor={teamCold:teamCold,columnBad:columnBad,clockShift:clockShift,metricsPass:metricsPass,gameKey:gameKey,tick:tick,enable:enable,robotLeagues:robotLeagues,marketMatches:marketMatches,positionMatches:positionMatches,matchingRow:matchingRow,eligibleMatch:eligibleMatch,nextGame:nextGame,nextShotGame:nextShotGame,reconcileSignals:reconcileSignals,hasOpenCycle:hasOpenCycle,gameHour:gameHour,isLeader:isLeader};
   root.addEventListener('pagehide',releaseLeadership);
   timer=setInterval(tick,15000);setTimeout(tick,1500);
 })(window);

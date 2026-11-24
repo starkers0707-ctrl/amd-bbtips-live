@@ -660,7 +660,9 @@ async function robosTick() {
           const match = RM.eligibleMatch(robot, all); if (!match) continue;
           const up = RM.nextGame(all, match.trigger, match.skip); if (!up) continue;
           const mk = match.entry.entryMarket || robot.entryMarket || match.entry.market || "Over 2.5";
-          const mp = RM.metricsPass(robot, data, liga, mk, up); if (!mp.ok) continue;
+          const nTiros = Math.max(1, Number(robot.shots || 1)), t0 = Date.parse(up.slot_em || "") || 0;
+          const jogosTiros = all.filter(x => (Date.parse(x.slot_em || "") || 0) >= t0).sort((x, y) => Date.parse(x.slot_em) - Date.parse(y.slot_em)).slice(0, nTiros);
+          const mp = RM.metricsPass(robot, data, liga, mk, jogosTiros); if (!mp.ok) continue;
           const key = [robot.id, liga, match.row, RM.gameKey(match.trigger), up.id || up.slot_em].join("|");
           if (st.sent.includes(key)) continue;
           // Robos iguais (mesma liga, mercado, gatilho, jogo e destino) mandam uma vez so.
