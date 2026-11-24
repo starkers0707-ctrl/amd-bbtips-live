@@ -1079,7 +1079,37 @@
   "consumidas": {
    "mnd": 1795498531922
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:02",
+     "jogo": "EVE x NOT",
+     "odd": 3.36
+    },
+    {
+     "h": "04:04",
+     "jogo": "ARS x MNC",
+     "odd": 3.38
+    },
+    {
+     "h": "04:06",
+     "jogo": "CRY x FUL",
+     "odd": 3.33
+    }
+   ],
+   "gatilho": "odd 3.36",
+   "alvo": {
+    "h": "04:02",
+    "jogo": "EVE x NOT",
+    "odd": 3.36,
+    "unidades": 1,
+    "desde": 1795501640309
+   },
+   "iniciadoEm": 1795501640309
+  },
   "cooldown": {
    "mnd": 1795498531922,
    "lat": 1795442097655,
@@ -4934,10 +4964,6 @@
    "mnd": {
     "desde": 1795488687919,
     "gatilho": "coluna :52"
-   },
-   "cam": {
-    "desde": 1795501638230,
-    "gatilho": "time Madrid"
    }
   }
  },
