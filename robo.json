@@ -1371,12 +1371,36 @@
  },
  "o25": {
   "saldo": -31.7,
-  "ciclos": 85431,
+  "ciclos": 85435,
   "greens": 226,
   "redsCiclo": 34,
   "aborts": 0,
-  "descartes": 85171,
+  "descartes": 85175,
   "historico": [
+   {
+    "quando": "2026-11-24T16:52:55.522Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:52:55.513Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:52:55.508Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:52:53.047Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T16:52:53.040Z",
     "resultado": "GREEN_OBS",
@@ -4952,30 +4976,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:26:34.977Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :28) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:26:34.974Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:26:34.969Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:26:20.779Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :28) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4985,7 +4985,37 @@
    "lat": 1795538549455,
    "cam": 1795539173032
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "13:54",
+     "jogo": "AST x BOU",
+     "odd": 1.93
+    },
+    {
+     "h": "13:56",
+     "jogo": "ARS x TOT",
+     "odd": 1.79
+    },
+    {
+     "h": "13:58",
+     "jogo": "BRE x SUN",
+     "odd": 1.94
+    }
+   ],
+   "gatilho": "coluna :54",
+   "alvo": {
+    "h": "13:54",
+    "jogo": "AST x BOU",
+    "odd": 1.93,
+    "unidades": 1,
+    "desde": 1795539175504
+   },
+   "iniciadoEm": 1795539175504
+  },
   "cooldown": {
    "cam": 1795539173032,
    "eng": 1795535156757,
@@ -4998,9 +5028,9 @@
    "cop": 1795520988139
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.17",
-   "n": 11,
+   "tipo": "coluna",
+   "chave": ":54",
+   "n": 12,
    "start": 1
   },
   "dias": {
@@ -5152,9 +5182,9 @@
     "desde": 1795538979305,
     "gatilho": "odd 2.17"
    },
-   "ita": {
-    "desde": 1795539173039,
-    "gatilho": "coluna :57"
+   "lat": {
+    "desde": 1795539175522,
+    "gatilho": "time COL"
    }
   }
  },
