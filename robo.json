@@ -1079,12 +1079,30 @@
  },
  "o25": {
   "saldo": -14.6,
-  "ciclos": 68753,
+  "ciclos": 68756,
   "greens": 189,
   "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 68538,
+  "descartes": 68541,
   "historico": [
+   {
+    "quando": "2026-11-24T01:42:31.987Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T01:42:31.976Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T01:42:28.623Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T01:42:28.042Z",
     "resultado": "GREEN_OBS",
@@ -4666,24 +4684,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:48:05.985Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:48:05.300Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:47:34.357Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4733,10 +4733,10 @@
    "cop": 1795479931322
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":52",
-   "n": 21,
-   "start": 3
+   "tipo": "odd",
+   "chave": "2.02",
+   "n": 11,
+   "start": 6
   },
   "dias": {
    "2026-11-19": -7,
@@ -4898,10 +4898,6 @@
    "ame": {
     "desde": 1795484345222,
     "gatilho": "odd 2.02"
-   },
-   "mnd": {
-    "desde": 1795484548042,
-    "gatilho": "coluna :52"
    }
   }
  },
