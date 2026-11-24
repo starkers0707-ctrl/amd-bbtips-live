@@ -1231,12 +1231,36 @@
  },
  "o25": {
   "saldo": -23.6,
-  "ciclos": 76595,
+  "ciclos": 76599,
   "greens": 212,
   "redsCiclo": 31,
   "aborts": 0,
-  "descartes": 76352,
+  "descartes": 76356,
   "historico": [
+   {
+    "quando": "2026-11-24T12:05:50.815Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T12:05:50.805Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho seq RGGG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T12:05:38.452Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T12:05:38.449Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T12:05:38.440Z",
     "resultado": "GREEN_OBS",
@@ -4812,34 +4836,9 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :40) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:37:18.499Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:37:18.496Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:37:18.486Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:37:14.715Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :40) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "ame": 1795518338716,
    "cam": 1795519195518,
    "cop": 1795520988139,
    "lat": 1795521837745
@@ -4887,10 +4886,10 @@
    "cop": 1795520988139
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "TFG",
-   "n": 10,
-   "start": 4
+   "tipo": "odd",
+   "chave": "2.24",
+   "n": 12,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -5050,9 +5049,9 @@
     "desde": 1795521662657,
     "gatilho": "time TFG"
    },
-   "eng": {
-    "desde": 1795521938439,
-    "gatilho": "seq RGGG"
+   "lat": {
+    "desde": 1795521950814,
+    "gatilho": "time BOL"
    }
   }
  },
