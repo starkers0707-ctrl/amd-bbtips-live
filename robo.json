@@ -1073,12 +1073,24 @@
  },
  "o25": {
   "saldo": -15.9,
-  "ciclos": 68000,
+  "ciclos": 68002,
   "greens": 187,
   "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 67787,
+  "descartes": 67789,
   "historico": [
+   {
+    "quando": "2026-11-24T00:34:59.463Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:34:36.410Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T00:34:35.445Z",
     "resultado": "GREEN_OBS",
@@ -4666,18 +4678,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.78) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:56:29.398Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:56:29.387Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.78) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4886,10 +4886,6 @@
    "cop": {
     "desde": 1795479598576,
     "gatilho": "odd 2.39"
-   },
-   "mnd": {
-    "desde": 1795480475444,
-    "gatilho": "coluna :52"
    }
   }
  },
@@ -6097,8 +6093,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "21:33",
@@ -6118,13 +6114,21 @@
    ],
    "gatilho": "odd 2.21",
    "alvo": {
-    "h": "21:33",
-    "jogo": "Germany x Croatia",
-    "odd": 2.11,
-    "unidades": 1,
-    "desde": 1795479760713
+    "h": "21:36",
+    "jogo": "Colombia x Denmark",
+    "odd": 2.21,
+    "unidades": 2,
+    "desde": 1795480499541
    },
-   "iniciadoEm": 1795479760713
+   "iniciadoEm": 1795479760713,
+   "tiros": [
+    {
+     "h": "21:33",
+     "jogo": "Germany x Croatia",
+     "odd": 2.11,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795331214015,
@@ -6140,7 +6144,7 @@
    "tipo": "odd",
    "chave": "1.93",
    "n": 11,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
