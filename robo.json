@@ -1265,12 +1265,30 @@
  },
  "o25": {
   "saldo": -31,
-  "ciclos": 80530,
+  "ciclos": 80533,
   "greens": 219,
   "redsCiclo": 33,
   "aborts": 0,
-  "descartes": 80278,
+  "descartes": 80281,
   "historico": [
+   {
+    "quando": "2026-11-24T14:10:39.859Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T14:10:37.772Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :25) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T14:10:37.768Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T14:10:37.761Z",
     "resultado": "GREEN_OBS",
@@ -4852,24 +4870,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho seq GGGRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:54:17.433Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:54:17.431Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time RAC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:54:17.425Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5088,7 +5088,7 @@
     "gatilho": "odd 1.85"
    },
    "spa": {
-    "desde": 1795529437761,
+    "desde": 1795529439859,
     "gatilho": "coluna :13"
    }
   }
@@ -6722,8 +6722,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "11:09",
@@ -6743,13 +6743,21 @@
    ],
    "gatilho": "coluna :12",
    "alvo": {
-    "h": "11:09",
-    "jogo": "Netherlands x France",
-    "odd": 1.97,
-    "unidades": 1,
-    "desde": 1795528684123
+    "h": "11:12",
+    "jogo": "Wales x Argentina",
+    "odd": 1.96,
+    "unidades": 2,
+    "desde": 1795529437795
    },
-   "iniciadoEm": 1795528684123
+   "iniciadoEm": 1795528684123,
+   "tiros": [
+    {
+     "h": "11:09",
+     "jogo": "Netherlands x France",
+     "odd": 1.97,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795528666648,
@@ -6763,7 +6771,7 @@
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":12",
+   "chave": ":15",
    "n": 11,
    "start": 1
   },
