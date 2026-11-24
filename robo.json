@@ -1097,12 +1097,24 @@
  },
  "o25": {
   "saldo": -2.6,
-  "ciclos": 67735,
+  "ciclos": 67737,
   "greens": 186,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 67525,
+  "descartes": 67527,
   "historico": [
+   {
+    "quando": "2026-11-24T00:11:28.525Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:11:28.511Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T00:11:22.930Z",
     "resultado": "GREEN_OBS",
@@ -4690,18 +4702,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:40:40.934Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:40:40.929Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4907,19 +4907,25 @@
   },
   "_obs": {
    "cop": {
-    "desde": 1795479082930,
+    "desde": 1795479088524,
     "gatilho": "odd 2.39"
    }
   }
  },
  "ambas": {
   "saldo": -4.5,
-  "ciclos": 194,
+  "ciclos": 195,
   "greens": 82,
   "redsCiclo": 9,
   "aborts": 0,
-  "descartes": 103,
+  "descartes": 104,
   "historico": [
+   {
+    "quando": "2026-11-24T00:11:22.943Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "cam · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-24T00:05:35.252Z",
     "resultado": "GREEN_OBS",
@@ -6089,37 +6095,7 @@
    "cop": 1795475989958,
    "ame": 1795477489501
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "21:18",
-     "jogo": "Paris x United",
-     "odd": 1.98
-    },
-    {
-     "h": "21:21",
-     "jogo": "Celtic x Madrid",
-     "odd": 1.95
-    },
-    {
-     "h": "21:24",
-     "jogo": "Amsterdam x Dortmund",
-     "odd": 2.26
-    }
-   ],
-   "gatilho": "odd 1.95",
-   "alvo": {
-    "h": "21:18",
-    "jogo": "Paris x United",
-    "odd": 1.98,
-    "unidades": 1,
-    "desde": 1795478175152
-   },
-   "iniciadoEm": 1795478175152
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
