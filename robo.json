@@ -1152,12 +1152,24 @@
  },
  "o25": {
   "saldo": -13.6,
-  "ciclos": 72183,
+  "ciclos": 72185,
   "greens": 202,
   "redsCiclo": 28,
   "aborts": 0,
-  "descartes": 71953,
+  "descartes": 71955,
   "historico": [
+   {
+    "quando": "2026-11-24T08:28:03.357Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time ALV) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T08:28:03.353Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T08:28:01.148Z",
     "resultado": "GREEN_OBS",
@@ -4745,18 +4757,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time GEN) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T08:00:35.606Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T08:00:34.800Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Itaquera) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4987,12 +4987,18 @@
  },
  "ambas": {
   "saldo": -6.7,
-  "ciclos": 235,
+  "ciclos": 236,
   "greens": 97,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 127,
+  "descartes": 128,
   "historico": [
+   {
+    "quando": "2026-11-24T08:28:03.380Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Asuncion) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T08:28:01.175Z",
     "resultado": "DESCARTADO",
@@ -6409,35 +6415,35 @@
    "cop": 1795506951773
   },
   "ciclo": {
-   "liga": "ame",
+   "liga": "lat",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "05:28",
-     "jogo": "Lima x La Plata",
-     "odd": 1.97
+     "h": "05:32",
+     "jogo": "MEN x PER",
+     "odd": 1.75
     },
     {
-     "h": "05:31",
-     "jogo": "Asuncion x Avellaneda",
-     "odd": 1.84
+     "h": "05:35",
+     "jogo": "CIO x THI",
+     "odd": 1.77
     },
     {
-     "h": "05:34",
-     "jogo": "Agua Branca x Montevideo",
-     "odd": 2.04
+     "h": "05:38",
+     "jogo": "NAC x IND",
+     "odd": 1.73
     }
    ],
-   "gatilho": "time Asuncion",
+   "gatilho": "placar 1-0 / 0-1",
    "alvo": {
-    "h": "05:28",
-    "jogo": "Lima x La Plata",
-    "odd": 1.97,
+    "h": "05:32",
+    "jogo": "MEN x PER",
+    "odd": 1.75,
     "unidades": 1,
-    "desde": 1795507970902
+    "desde": 1795508883384
    },
-   "iniciadoEm": 1795507970902
+   "iniciadoEm": 1795508883384
   },
   "cooldown": {
    "lat": 1795497681687,
@@ -6450,9 +6456,9 @@
    "ame": 1795499990275
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "Asuncion",
-   "n": 12,
+   "tipo": "placar",
+   "chave": "1-0 / 0-1",
+   "n": 21,
    "start": 1
   },
   "dias": {
