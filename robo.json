@@ -1099,12 +1099,18 @@
  },
  "o25": {
   "saldo": -14.6,
-  "ciclos": 70215,
+  "ciclos": 70216,
   "greens": 196,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 69992,
+  "descartes": 69993,
   "historico": [
+   {
+    "quando": "2026-11-24T05:38:14.880Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ATA) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T05:38:13.794Z",
     "resultado": "GREEN_OBS",
@@ -4698,12 +4704,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T04:26:34.401Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4711,8 +4711,8 @@
   },
   "ciclo": {
    "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "02:37",
@@ -4732,13 +4732,21 @@
    ],
    "gatilho": "time ATA",
    "alvo": {
-    "h": "02:37",
-    "jogo": "INT x COM",
-    "odd": 1.92,
-    "unidades": 1,
-    "desde": 1795498197020
+    "h": "02:39",
+    "jogo": "FRO x ATA",
+    "odd": 1.79,
+    "unidades": 2,
+    "desde": 1795498711565
    },
-   "iniciadoEm": 1795498197020
+   "iniciadoEm": 1795498197020,
+   "tiros": [
+    {
+     "h": "02:37",
+     "jogo": "INT x COM",
+     "odd": 1.92,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795487509896,
@@ -4755,7 +4763,7 @@
    "tipo": "time",
    "chave": "ATA",
    "n": 9,
-   "start": 1
+   "start": 5
   },
   "dias": {
    "2026-11-19": -7,
@@ -4922,10 +4930,6 @@
    "mnd": {
     "desde": 1795488687919,
     "gatilho": "coluna :52"
-   },
-   "ita": {
-    "desde": 1795498693793,
-    "gatilho": "time ATA"
    }
   }
  },
