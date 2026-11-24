@@ -1074,12 +1074,24 @@
  },
  "o25": {
   "saldo": -8.9,
-  "ciclos": 67964,
+  "ciclos": 67966,
   "greens": 187,
   "redsCiclo": 25,
   "aborts": 0,
-  "descartes": 67752,
+  "descartes": 67754,
   "historico": [
+   {
+    "quando": "2026-11-24T00:28:57.196Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :33) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:28:56.494Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :33) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T00:28:42.068Z",
     "resultado": "GREEN_OBS",
@@ -4667,18 +4679,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:54:34.888Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.78) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:54:34.875Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4688,8 +4688,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "21:27",
@@ -4709,13 +4709,21 @@
    ],
    "gatilho": "seq GRRRG",
    "alvo": {
-    "h": "21:27",
-    "jogo": "BET x SEV",
-    "odd": 1.93,
-    "unidades": 1,
-    "desde": 1795479938198
+    "h": "21:29",
+    "jogo": "VIL x BAR",
+    "odd": 1.86,
+    "unidades": 2,
+    "desde": 1795480137191
    },
-   "iniciadoEm": 1795479938198
+   "iniciadoEm": 1795479938198,
+   "tiros": [
+    {
+     "h": "21:27",
+     "jogo": "BET x SEV",
+     "odd": 1.93,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795475247707,
@@ -4888,7 +4896,7 @@
     "gatilho": "odd 2.39"
    },
    "ita": {
-    "desde": 1795480122068,
+    "desde": 1795480137195,
     "gatilho": "coluna :33"
    }
   }
