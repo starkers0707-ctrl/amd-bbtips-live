@@ -1212,12 +1212,30 @@
  },
  "o25": {
   "saldo": -26,
-  "ciclos": 76084,
+  "ciclos": 76087,
   "greens": 210,
   "redsCiclo": 31,
   "aborts": 0,
-  "descartes": 75843,
+  "descartes": 75846,
   "historico": [
+   {
+    "quando": "2026-11-24T11:41:04.924Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:40:46.624Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :58) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:40:46.621Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T11:40:46.617Z",
     "resultado": "GREEN_OBS",
@@ -4799,24 +4817,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :12) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:10:08.274Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:10:08.257Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho seq RRGG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:10:07.321Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4824,7 +4824,37 @@
    "ame": 1795518338716,
    "cam": 1795519195518
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "08:48",
+     "jogo": "Italy x France",
+     "odd": 2.47
+    },
+    {
+     "h": "08:51",
+     "jogo": "England x Germany",
+     "odd": 2.24
+    },
+    {
+     "h": "08:54",
+     "jogo": "Brazil x Belgium",
+     "odd": 2.12
+    }
+   ],
+   "gatilho": "coluna :51",
+   "alvo": {
+    "h": "08:48",
+    "jogo": "Italy x France",
+    "odd": 2.47,
+    "unidades": 1,
+    "desde": 1795520464909
+   },
+   "iniciadoEm": 1795520464909
+  },
   "cooldown": {
    "cam": 1795519195518,
    "eng": 1795516294394,
@@ -4993,7 +5023,7 @@
   },
   "_obs": {
    "cam": {
-    "desde": 1795520446617,
+    "desde": 1795520464924,
     "gatilho": "time Madrid"
    }
   }
