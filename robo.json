@@ -1164,12 +1164,30 @@
  },
  "o25": {
   "saldo": -10.2,
-  "ciclos": 73211,
+  "ciclos": 73214,
   "greens": 205,
   "redsCiclo": 28,
   "aborts": 0,
-  "descartes": 72978,
+  "descartes": 72981,
   "historico": [
+   {
+    "quando": "2026-11-24T09:17:35.579Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T09:17:34.822Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T09:17:34.811Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T09:17:08.434Z",
     "resultado": "GREEN_OBS",
@@ -4751,24 +4769,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho time Itaquera) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T08:49:07.295Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Itaquera) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T08:49:06.392Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Itaquera) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T08:49:04.828Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Itaquera) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4957,20 +4957,26 @@
     "desde": 1795511491430,
     "gatilho": "time Itaquera"
    },
-   "cam": {
-    "desde": 1795511828434,
-    "gatilho": "time Madrid"
+   "ita": {
+    "desde": 1795511855578,
+    "gatilho": "odd 1.95"
    }
   }
  },
  "ambas": {
-  "saldo": -11.5,
-  "ciclos": 241,
-  "greens": 100,
+  "saldo": -11,
+  "ciclos": 242,
+  "greens": 101,
   "redsCiclo": 12,
   "aborts": 0,
   "descartes": 129,
   "historico": [
+   {
+    "quando": "2026-11-24T09:17:34.836Z",
+    "resultado": "GREEN",
+    "unidades": 0.5,
+    "detalhe": "eng · MNC x AST @1.73 (tiro 2) · gatilho: odd 1.73"
+   },
    {
     "quando": "2026-11-24T09:09:40.867Z",
     "resultado": "GREEN",
@@ -6422,50 +6428,13 @@
    "lat": 1795509212287,
    "ame": 1795510421878,
    "mnd": 1795511038215,
-   "bra": 1795511380866
+   "bra": 1795511380866,
+   "eng": 1795511854835
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "06:14",
-     "jogo": "CRY x BOU",
-     "odd": 1.69
-    },
-    {
-     "h": "06:16",
-     "jogo": "MNC x AST",
-     "odd": 1.73
-    },
-    {
-     "h": "06:18",
-     "jogo": "NEW x IPS",
-     "odd": 1.78
-    }
-   ],
-   "gatilho": "odd 1.73",
-   "alvo": {
-    "h": "06:16",
-    "jogo": "MNC x AST",
-    "odd": 1.73,
-    "unidades": 2,
-    "desde": 1795511738542
-   },
-   "iniciadoEm": 1795511381596,
-   "tiros": [
-    {
-     "h": "06:14",
-     "jogo": "CRY x BOU",
-     "odd": 1.69,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795509212287,
-   "eng": 1795493011900,
+   "eng": 1795511854835,
    "spa": 1795506559992,
    "bra": 1795511380866,
    "mnd": 1795511038215,
@@ -6477,14 +6446,14 @@
    "tipo": "odd",
    "chave": "1.73",
    "n": 9,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
-   "2026-11-24": -12.9
+   "2026-11-24": -12.4
   },
   "_obs": {}
  }
