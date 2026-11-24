@@ -4690,7 +4690,37 @@
    "lat": 1795483111301,
    "ita": 1795483952226
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "22:52",
+     "jogo": "SWI x ENG",
+     "odd": 1.87
+    },
+    {
+     "h": "22:54",
+     "jogo": "WAL x CHL",
+     "odd": 1.94
+    },
+    {
+     "h": "22:56",
+     "jogo": "BEL x DEN",
+     "odd": 1.76
+    }
+   ],
+   "gatilho": "coluna :52",
+   "alvo": {
+    "h": "22:52",
+    "jogo": "SWI x ENG",
+    "odd": 1.87,
+    "unidades": 1,
+    "desde": 1795484986341
+   },
+   "iniciadoEm": 1795484986341
+  },
   "cooldown": {
    "cam": 1795475247707,
    "eng": 1795383709617,
@@ -4703,10 +4733,10 @@
    "cop": 1795479931322
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.02",
-   "n": 11,
-   "start": 4
+   "tipo": "coluna",
+   "chave": ":52",
+   "n": 21,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
