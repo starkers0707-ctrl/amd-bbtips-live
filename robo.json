@@ -1402,12 +1402,54 @@
  },
  "o25": {
   "saldo": -34.5,
-  "ciclos": 92276,
+  "ciclos": 92283,
   "greens": 243,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 91996,
+  "descartes": 92003,
   "historico": [
+   {
+    "quando": "2026-11-24T22:25:41.022Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.64) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T22:25:41.019Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :30) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T22:25:34.410Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.64) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T22:25:34.407Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :30) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T22:25:33.624Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.64) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T22:25:33.618Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :30) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T22:25:33.601Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T22:25:11.611Z",
     "resultado": "GREEN_OBS",
@@ -4965,48 +5007,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:05:37.009Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:05:36.369Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:05:18.302Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:05:09.965Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:05:08.693Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:05:08.081Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:05:06.376Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5016,7 +5016,37 @@
    "cam": 1795558424565,
    "spa": 1795558949660
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "19:26",
+     "jogo": "CRY x COV",
+     "odd": 1.94
+    },
+    {
+     "h": "19:28",
+     "jogo": "LIV x HUL",
+     "odd": 1.82
+    },
+    {
+     "h": "19:30",
+     "jogo": "BRE x AST",
+     "odd": 1.91
+    }
+   ],
+   "gatilho": "coluna :26",
+   "alvo": {
+    "h": "19:26",
+    "jogo": "CRY x COV",
+    "odd": 1.94,
+    "unidades": 1,
+    "desde": 1795559133587
+   },
+   "iniciadoEm": 1795559133587
+  },
   "cooldown": {
    "cam": 1795558424565,
    "eng": 1795555531159,
@@ -5030,7 +5060,7 @@
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":23",
+   "chave": ":26",
    "n": 18,
    "start": 1
   },
@@ -5186,6 +5216,10 @@
    "ame": {
     "desde": 1795559049090,
     "gatilho": "odd 2.2"
+   },
+   "cop": {
+    "desde": 1795559141022,
+    "gatilho": "odd 2.64"
    }
   }
  },
