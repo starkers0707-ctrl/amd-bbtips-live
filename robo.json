@@ -1410,12 +1410,36 @@
  },
  "o25": {
   "saldo": -33.6,
-  "ciclos": 92784,
+  "ciclos": 92788,
   "greens": 244,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 92503,
+  "descartes": 92507,
   "historico": [
+   {
+    "quando": "2026-11-24T22:57:32.701Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T22:57:32.696Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho seq GRGRR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T22:57:32.038Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T22:57:32.017Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "ame · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-24T22:57:05.720Z",
     "resultado": "GREEN_OBS",
@@ -4991,30 +5015,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:22:29.674Z",
-    "resultado": "RED_CICLO",
-    "unidades": -7,
-    "detalhe": "spa · ciclo perdido (3 tiros) · gatilho: odd 1.84"
-   },
-   {
-    "quando": "2026-11-24T22:22:12.019Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.2) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:22:12.016Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.64) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:22:12.013Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :30) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5028,11 +5028,6 @@
    "apostado": 0,
    "plano": [
     {
-     "h": "19:58",
-     "jogo": "Itaquera x La Plata",
-     "odd": 2.48
-    },
-    {
      "h": "20:01",
      "jogo": "Belo Horizonte x Lima",
      "odd": 2.02
@@ -5041,17 +5036,22 @@
      "h": "20:04",
      "jogo": "Quito x Santiago",
      "odd": 2.17
+    },
+    {
+     "h": "20:07",
+     "jogo": "Buenos Aires x Asuncion",
+     "odd": 2.18
     }
    ],
    "gatilho": "odd 2.02",
    "alvo": {
-    "h": "19:58",
-    "jogo": "Itaquera x La Plata",
-    "odd": 2.48,
+    "h": "20:01",
+    "jogo": "Belo Horizonte x Lima",
+    "odd": 2.02,
     "unidades": 1,
-    "desde": 1795560126341
+    "desde": 1795561052679
    },
-   "iniciadoEm": 1795560126341
+   "iniciadoEm": 1795561052679
   },
   "cooldown": {
    "cam": 1795558424565,
@@ -5220,7 +5220,7 @@
     "gatilho": "odd 2.64"
    },
    "ame": {
-    "desde": 1795561025719,
+    "desde": 1795561052701,
     "gatilho": "odd 2.02"
    }
   }
