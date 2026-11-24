@@ -4694,8 +4694,8 @@
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "23:24",
@@ -4715,13 +4715,21 @@
    ],
    "gatilho": "seq GRGRG",
    "alvo": {
-    "h": "23:24",
-    "jogo": "United x Barcelona",
-    "odd": 2.47,
-    "unidades": 1,
-    "desde": 1795486822045
+    "h": "23:27",
+    "jogo": "Turin x Amsterdam",
+    "odd": 2.39,
+    "unidades": 2,
+    "desde": 1795487162760
    },
-   "iniciadoEm": 1795486822045
+   "iniciadoEm": 1795486822045,
+   "tiros": [
+    {
+     "h": "23:24",
+     "jogo": "United x Barcelona",
+     "odd": 2.47,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795475247707,
@@ -4736,8 +4744,8 @@
   },
   "_gatilhoAtual": {
    "tipo": "seq",
-   "chave": "GRGRG",
-   "n": 9,
+   "chave": "GRGRR",
+   "n": 10,
    "start": 1
   },
   "dias": {
@@ -4896,21 +4904,23 @@
    "ita": {
     "desde": 1795483861299,
     "gatilho": "coluna :33"
-   },
-   "ame": {
-    "desde": 1795487151146,
-    "gatilho": "odd 2.02"
    }
   }
  },
  "ambas": {
   "saldo": 0.4,
-  "ciclos": 206,
+  "ciclos": 207,
   "greens": 88,
   "redsCiclo": 9,
   "aborts": 0,
-  "descartes": 109,
+  "descartes": 110,
   "historico": [
+   {
+    "quando": "2026-11-24T02:25:51.191Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "cop · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-24T02:01:30.167Z",
     "resultado": "GREEN",
@@ -6152,37 +6162,7 @@
    "cam": 1795484997617,
    "mnd": 1795485690167
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "23:33",
-     "jogo": "Colombia x Belgium",
-     "odd": 2.09
-    },
-    {
-     "h": "23:36",
-     "jogo": "Portugal x Netherlands",
-     "odd": 1.97
-    },
-    {
-     "h": "23:39",
-     "jogo": "Wales x USA",
-     "odd": 1.97
-    }
-   ],
-   "gatilho": "coluna :36",
-   "alvo": {
-    "h": "23:33",
-    "jogo": "Colombia x Belgium",
-    "odd": 2.09,
-    "unidades": 1,
-    "desde": 1795486248192
-   },
-   "iniciadoEm": 1795486248192
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -6197,7 +6177,7 @@
    "tipo": "odd",
    "chave": "2.06",
    "n": 11,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
