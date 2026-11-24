@@ -1176,12 +1176,30 @@
  },
  "o25": {
   "saldo": -11,
-  "ciclos": 70732,
+  "ciclos": 70735,
   "greens": 199,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 70506,
+  "descartes": 70509,
   "historico": [
+   {
+    "quando": "2026-11-24T07:23:06.683Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:22:54.954Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:22:54.945Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time LEC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T07:22:54.938Z",
     "resultado": "GREEN_OBS",
@@ -4763,24 +4781,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time ATA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T05:31:36.362Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time FUL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T05:31:27.402Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time ATA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T05:31:27.398Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time FUL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5002,7 +5002,7 @@
     "gatilho": "coluna :52"
    },
    "eng": {
-    "desde": 1795504974937,
+    "desde": 1795504986683,
     "gatilho": "time MNC"
    }
   }
@@ -6377,8 +6377,8 @@
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "04:21",
@@ -6398,13 +6398,21 @@
    ],
    "gatilho": "time Madrid",
    "alvo": {
-    "h": "04:21",
-    "jogo": "Dortmund x United",
-    "odd": 2.21,
-    "unidades": 1,
-    "desde": 1795504749673
+    "h": "04:24",
+    "jogo": "Liverpool x Madrid",
+    "odd": 1.89,
+    "unidades": 2,
+    "desde": 1795504974978
    },
-   "iniciadoEm": 1795504749673
+   "iniciadoEm": 1795504749673,
+   "tiros": [
+    {
+     "h": "04:21",
+     "jogo": "Dortmund x United",
+     "odd": 2.21,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795497681687,
@@ -6420,7 +6428,7 @@
    "tipo": "time",
    "chave": "Madrid",
    "n": 10,
-   "start": 1
+   "start": 2
   },
   "dias": {
    "2026-11-20": 0,
