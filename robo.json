@@ -1090,12 +1090,30 @@
  },
  "o25": {
   "saldo": -15.5,
-  "ciclos": 69950,
+  "ciclos": 69953,
   "greens": 195,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 69728,
+  "descartes": 69731,
   "historico": [
+   {
+    "quando": "2026-11-24T05:18:04.846Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time FUL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T05:18:04.194Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ATA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T05:18:04.185Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time FUL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T05:17:38.094Z",
     "resultado": "GREEN_OBS",
@@ -4677,31 +4695,42 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T02:42:20.308Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T02:42:11.523Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T02:42:11.517Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.89) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "eng": 1795493867383,
    "ita": 1795494511795
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "02:26",
+     "jogo": "CRY x EVE",
+     "odd": 1.94
+    },
+    {
+     "h": "02:28",
+     "jogo": "LIV x FUL",
+     "odd": 1.94
+    },
+    {
+     "h": "02:30",
+     "jogo": "BOU x CHE",
+     "odd": 1.94
+    }
+   ],
+   "gatilho": "time FUL",
+   "alvo": {
+    "h": "02:26",
+    "jogo": "CRY x EVE",
+    "odd": 1.94,
+    "unidades": 1,
+    "desde": 1795497484179
+   },
+   "iniciadoEm": 1795497484179
+  },
   "cooldown": {
    "cam": 1795487509896,
    "eng": 1795493867383,
@@ -4714,10 +4743,10 @@
    "cop": 1795479931322
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "goleada (3+)",
+   "tipo": "time",
+   "chave": "FUL",
    "n": 8,
-   "start": 1
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -4885,9 +4914,9 @@
     "desde": 1795488687919,
     "gatilho": "coluna :52"
    },
-   "ita": {
-    "desde": 1795497458094,
-    "gatilho": "time ATA"
+   "eng": {
+    "desde": 1795497484846,
+    "gatilho": "time FUL"
    }
   }
  },
