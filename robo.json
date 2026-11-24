@@ -1213,7 +1213,7 @@
    "tipo": "time",
    "chave": "RIV",
    "n": 8,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -1231,12 +1231,42 @@
  },
  "o25": {
   "saldo": -24.5,
-  "ciclos": 76387,
+  "ciclos": 76392,
   "greens": 211,
   "redsCiclo": 31,
   "aborts": 0,
-  "descartes": 76145,
+  "descartes": 76150,
   "historico": [
+   {
+    "quando": "2026-11-24T11:57:31.912Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:57:31.909Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:57:31.578Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:57:31.574Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:57:31.570Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T11:57:18.582Z",
     "resultado": "GREEN_OBS",
@@ -4806,36 +4836,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :28) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:26:36.639Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:26:35.769Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :28) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:26:35.763Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:26:09.796Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :28) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:26:09.793Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4894,8 +4894,8 @@
    "cop": 1795520988139
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "RAC",
+   "tipo": "placar",
+   "chave": "empate 1-1",
    "n": 14,
    "start": 1
   },
@@ -5049,9 +5049,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "ame": {
-    "desde": 1795521438582,
-    "gatilho": "odd 2.24"
+   "cam": {
+    "desde": 1795521451912,
+    "gatilho": "time Madrid"
    }
   }
  },
@@ -6621,7 +6621,37 @@
   "consumidas": {
    "cop": 1795519905683
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "09:17",
+     "jogo": "RAC x BOC",
+     "odd": 1.7
+    },
+    {
+     "h": "09:20",
+     "jogo": "NAC x CIO",
+     "odd": 1.71
+    },
+    {
+     "h": "09:23",
+     "jogo": "THI x FLU",
+     "odd": 1.68
+    }
+   ],
+   "gatilho": "coluna :20",
+   "alvo": {
+    "h": "09:17",
+    "jogo": "RAC x BOC",
+    "odd": 1.7,
+    "unidades": 1,
+    "desde": 1795521438599
+   },
+   "iniciadoEm": 1795521438599
+  },
   "cooldown": {
    "lat": 1795509212287,
    "eng": 1795516789061,
@@ -6636,7 +6666,7 @@
    "tipo": "coluna",
    "chave": ":20",
    "n": 8,
-   "start": 7
+   "start": 6
   },
   "dias": {
    "2026-11-20": 0,
