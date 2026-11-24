@@ -1077,12 +1077,24 @@
  },
  "o25": {
   "saldo": -9.9,
-  "ciclos": 69513,
+  "ciclos": 69515,
   "greens": 193,
   "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 69294,
+  "descartes": 69296,
   "historico": [
+   {
+    "quando": "2026-11-24T03:01:44.875Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRGRR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T03:01:34.337Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRGRR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T03:01:33.430Z",
     "resultado": "GREEN_OBS",
@@ -4670,18 +4682,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T01:55:59.186Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T01:55:41.449Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4907,7 +4907,7 @@
     "gatilho": "coluna :52"
    },
    "cam": {
-    "desde": 1795489293430,
+    "desde": 1795489304875,
     "gatilho": "seq GRGRR"
    }
   }
@@ -6188,10 +6188,39 @@
    }
   ],
   "consumidas": {
-   "mnd": 1795485690167,
    "cop": 1795488040911
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "00:02",
+     "jogo": "FRA x SWI",
+     "odd": 1.84
+    },
+    {
+     "h": "00:04",
+     "jogo": "MEX x ARG",
+     "odd": 1.68
+    },
+    {
+     "h": "00:06",
+     "jogo": "POL x NED",
+     "odd": 1.69
+    }
+   ],
+   "gatilho": "coluna :02",
+   "alvo": {
+    "h": "00:02",
+    "jogo": "FRA x SWI",
+    "odd": 1.84,
+    "unidades": 1,
+    "desde": 1795489293455
+   },
+   "iniciadoEm": 1795489293455
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -6204,8 +6233,8 @@
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":58",
-   "n": 22,
+   "chave": ":02",
+   "n": 21,
    "start": 1
   },
   "dias": {
