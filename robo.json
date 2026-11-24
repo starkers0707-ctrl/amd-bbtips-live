@@ -1370,13 +1370,49 @@
   }
  },
  "o25": {
-  "saldo": -24.7,
-  "ciclos": 85425,
+  "saldo": -31.7,
+  "ciclos": 85431,
   "greens": 226,
-  "redsCiclo": 33,
+  "redsCiclo": 34,
   "aborts": 0,
-  "descartes": 85166,
+  "descartes": 85171,
   "historico": [
+   {
+    "quando": "2026-11-24T16:52:53.040Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:52:53.036Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:52:53.033Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "cam · ciclo perdido (3 tiros) · gatilho: seq RRRRG"
+   },
+   {
+    "quando": "2026-11-24T16:52:36.281Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:52:36.273Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:52:36.269Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T16:52:35.622Z",
     "resultado": "GREEN_OBS",
@@ -4940,97 +4976,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :28) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:26:20.775Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:26:20.772Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:26:18.388Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :28) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:26:18.384Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:26:18.380Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:26:16.006Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :28) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ita": 1795536034293,
    "spa": 1795536512963,
    "ame": 1795537799887,
-   "lat": 1795538549455
+   "lat": 1795538549455,
+   "cam": 1795539173032
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "13:45",
-     "jogo": "Munich x Turin",
-     "odd": 2.07
-    },
-    {
-     "h": "13:48",
-     "jogo": "Celtic x United",
-     "odd": 2.45
-    },
-    {
-     "h": "13:51",
-     "jogo": "Amsterdam x Chelsea",
-     "odd": 2.74
-    }
-   ],
-   "gatilho": "seq RRRRG",
-   "alvo": {
-    "h": "13:51",
-    "jogo": "Amsterdam x Chelsea",
-    "odd": 2.74,
-    "unidades": 4,
-    "desde": 1795538979274
-   },
-   "iniciadoEm": 1795538550119,
-   "tiros": [
-    {
-     "h": "13:45",
-     "jogo": "Munich x Turin",
-     "odd": 2.07,
-     "unidades": 1
-    },
-    {
-     "h": "13:48",
-     "jogo": "Celtic x United",
-     "odd": 2.45,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
-   "cam": 1795534336119,
+   "cam": 1795539173032,
    "eng": 1795535156757,
    "ita": 1795536034293,
    "spa": 1795536512963,
@@ -5044,7 +5001,7 @@
    "tipo": "odd",
    "chave": "2.17",
    "n": 11,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -5052,7 +5009,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -14.8
+   "2026-11-24": -21.8
   },
   "_obs": {}
  },
@@ -5195,9 +5152,9 @@
     "desde": 1795538979305,
     "gatilho": "odd 2.17"
    },
-   "lat": {
-    "desde": 1795539155621,
-    "gatilho": "time COL"
+   "ita": {
+    "desde": 1795539173039,
+    "gatilho": "coluna :57"
    }
   }
  },
