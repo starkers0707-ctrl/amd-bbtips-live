@@ -1412,12 +1412,24 @@
  },
  "o25": {
   "saldo": -24.1,
-  "ciclos": 90994,
+  "ciclos": 90996,
   "greens": 240,
   "redsCiclo": 35,
   "aborts": 0,
-  "descartes": 90719,
+  "descartes": 90721,
   "historico": [
+   {
+    "quando": "2026-11-24T21:27:30.528Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T21:27:13.596Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T21:27:12.686Z",
     "resultado": "GREEN_OBS",
@@ -5005,18 +5017,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:01:34.038Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho seq GGRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:01:34.029Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5223,19 +5223,31 @@
     "gatilho": "odd 2.64"
    },
    "cam": {
-    "desde": 1795555632685,
+    "desde": 1795555650528,
     "gatilho": "odd 2.17"
    }
   }
  },
  "ambas": {
   "saldo": -24.8,
-  "ciclos": 292,
+  "ciclos": 294,
   "greens": 119,
   "redsCiclo": 16,
   "aborts": 0,
-  "descartes": 157,
+  "descartes": 159,
   "historico": [
+   {
+    "quando": "2026-11-24T21:27:13.611Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.1) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T21:27:12.698Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "cam · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-24T20:54:30.214Z",
     "resultado": "GREEN",
@@ -6992,37 +7004,7 @@
   "consumidas": {
    "lat": 1795553670204
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "18:33",
-     "jogo": "Liverpool x Madrid",
-     "odd": 1.89
-    },
-    {
-     "h": "18:36",
-     "jogo": "Rome x Barcelona",
-     "odd": 1.92
-    },
-    {
-     "h": "18:39",
-     "jogo": "Celtic x Chelsea",
-     "odd": 2.1
-    }
-   ],
-   "gatilho": "coluna :36",
-   "alvo": {
-    "h": "18:33",
-    "jogo": "Liverpool x Madrid",
-    "odd": 1.89,
-    "unidades": 1,
-    "desde": 1795554728740
-   },
-   "iniciadoEm": 1795554728740
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795553670204,
    "eng": 1795524811381,
