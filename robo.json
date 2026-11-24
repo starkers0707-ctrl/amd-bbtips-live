@@ -1409,13 +1409,25 @@
   }
  },
  "o25": {
-  "saldo": -32.6,
-  "ciclos": 93371,
-  "greens": 245,
+  "saldo": -32,
+  "ciclos": 93373,
+  "greens": 246,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 93089,
+  "descartes": 93090,
   "historico": [
+   {
+    "quando": "2026-11-24T23:36:32.459Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T23:36:32.455Z",
+    "resultado": "GREEN",
+    "unidades": 0.6,
+    "detalhe": "spa · BAR x CEL @1.81 (tiro 2) · gatilho: odd 1.81"
+   },
    {
     "quando": "2026-11-24T23:36:23.496Z",
     "resultado": "GREEN_OBS",
@@ -5003,67 +5015,48 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:56:10.657Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:56:10.056Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "ame": 1795561403616
+   "ame": 1795561403616,
+   "spa": 1795563392445
   },
   "ciclo": {
-   "liga": "spa",
-   "degrau": 1,
-   "apostado": 1,
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
    "plano": [
     {
-     "h": "20:33",
-     "jogo": "BET x RAY",
+     "h": "20:52",
+     "jogo": "SUN x HUL",
+     "odd": 1.86
+    },
+    {
+     "h": "20:54",
+     "jogo": "BRE x NOT",
      "odd": 1.94
     },
     {
-     "h": "20:35",
-     "jogo": "BAR x CEL",
-     "odd": 1.81
-    },
-    {
-     "h": "20:37",
-     "jogo": "DLC x ATH",
+     "h": "20:56",
+     "jogo": "BHA x TOT",
      "odd": 1.93
     }
    ],
-   "gatilho": "odd 1.81",
+   "gatilho": "coluna :54",
    "alvo": {
-    "h": "20:35",
-    "jogo": "BAR x CEL",
-    "odd": 1.81,
-    "unidades": 2,
-    "desde": 1795563297859
+    "h": "20:52",
+    "jogo": "SUN x HUL",
+    "odd": 1.86,
+    "unidades": 1,
+    "desde": 1795563393046
    },
-   "iniciadoEm": 1795562941042,
-   "tiros": [
-    {
-     "h": "20:33",
-     "jogo": "BET x RAY",
-     "odd": 1.94,
-     "unidades": 1
-    }
-   ]
+   "iniciadoEm": 1795563393046
   },
   "cooldown": {
    "cam": 1795558424565,
    "eng": 1795559254294,
    "ita": 1795557394497,
-   "spa": 1795558949660,
+   "spa": 1795563392445,
    "lat": 1795550799609,
    "bra": 1795522714636,
    "mnd": 1795517012357,
@@ -5082,7 +5075,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -22.7
+   "2026-11-24": -22.1
   },
   "_obs": {}
  },
@@ -5220,12 +5213,7 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {
-   "eng": {
-    "desde": 1795563383496,
-    "gatilho": "coluna :54"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": -21.1,
