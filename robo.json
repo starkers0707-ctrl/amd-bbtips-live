@@ -1039,8 +1039,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "21:10",
@@ -1060,13 +1060,21 @@
    ],
    "gatilho": "odd 2.96",
    "alvo": {
-    "h": "21:10",
-    "jogo": "SPA x BEL",
-    "odd": 2.96,
-    "unidades": 1,
-    "desde": 1795478885209
+    "h": "21:12",
+    "jogo": "SWI x ITA",
+    "odd": 3.31,
+    "unidades": 2,
+    "desde": 1795479097978
    },
-   "iniciadoEm": 1795478885209
+   "iniciadoEm": 1795478885209,
+   "tiros": [
+    {
+     "h": "21:10",
+     "jogo": "SPA x BEL",
+     "odd": 2.96,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795468655452,
@@ -4905,21 +4913,22 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {
-   "cop": {
-    "desde": 1795479088524,
-    "gatilho": "odd 2.39"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": -4.5,
-  "ciclos": 195,
+  "ciclos": 196,
   "greens": 82,
   "redsCiclo": 9,
   "aborts": 0,
-  "descartes": 104,
+  "descartes": 105,
   "historico": [
+   {
+    "quando": "2026-11-24T00:11:28.544Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T00:11:22.943Z",
     "resultado": "DESCARTADO",
@@ -6095,7 +6104,37 @@
    "cop": 1795475989958,
    "ame": 1795477489501
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "21:12",
+     "jogo": "SWI x ITA",
+     "odd": 1.68
+    },
+    {
+     "h": "21:14",
+     "jogo": "WAL x FRA",
+     "odd": 1.67
+    },
+    {
+     "h": "21:16",
+     "jogo": "CHL x GER",
+     "odd": 1.68
+    }
+   ],
+   "gatilho": "coluna :14",
+   "alvo": {
+    "h": "21:12",
+    "jogo": "SWI x ITA",
+    "odd": 1.68,
+    "unidades": 1,
+    "desde": 1795479088553
+   },
+   "iniciadoEm": 1795479088553
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -6107,10 +6146,10 @@
    "ame": 1795477489501
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.95",
-   "n": 10,
-   "start": 3
+   "tipo": "coluna",
+   "chave": ":14",
+   "n": 20,
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
