@@ -1356,13 +1356,19 @@
   }
  },
  "o25": {
-  "saldo": -27.2,
-  "ciclos": 86846,
-  "greens": 231,
+  "saldo": -25.8,
+  "ciclos": 86847,
+  "greens": 232,
   "redsCiclo": 34,
   "aborts": 0,
   "descartes": 86581,
   "historico": [
+   {
+    "quando": "2026-11-24T18:31:29.718Z",
+    "resultado": "GREEN",
+    "unidades": 1.4,
+    "detalhe": "cam · Rome x Porto @2.38 (tiro 1) · gatilho: coluna :30"
+   },
    {
     "quando": "2026-11-24T18:31:17.278Z",
     "resultado": "GREEN_OBS",
@@ -4956,53 +4962,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:07:23.742Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ita": 1795542989537,
    "ame": 1795543567162,
    "spa": 1795544073491,
-   "eng": 1795544734030
+   "eng": 1795544734030,
+   "cam": 1795545089718
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "15:30",
-     "jogo": "Rome x Porto",
-     "odd": 2.38
-    },
-    {
-     "h": "15:33",
-     "jogo": "Liverpool x Milan",
-     "odd": 2.25
-    },
-    {
-     "h": "15:36",
-     "jogo": "City x Chelsea",
-     "odd": 2.32
-    }
-   ],
-   "gatilho": "coluna :30",
-   "alvo": {
-    "h": "15:30",
-    "jogo": "Rome x Porto",
-    "odd": 2.38,
-    "unidades": 1,
-    "desde": 1795544734713
-   },
-   "iniciadoEm": 1795544734713
-  },
+  "ciclo": null,
   "cooldown": {
-   "cam": 1795539173032,
+   "cam": 1795545089718,
    "eng": 1795544734030,
    "ita": 1795542989537,
    "spa": 1795544073491,
@@ -5013,9 +4984,9 @@
    "cop": 1795520988139
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":33",
-   "n": 15,
+   "tipo": "seq",
+   "chave": "GRRG",
+   "n": 11,
    "start": 1
   },
   "dias": {
@@ -5024,7 +4995,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -17.3
+   "2026-11-24": -15.9
   },
   "_obs": {}
  },
@@ -5166,10 +5137,6 @@
    "eng": {
     "desde": 1795544614258,
     "gatilho": "coluna :26"
-   },
-   "cam": {
-    "desde": 1795545077278,
-    "gatilho": "coluna :33"
    }
   }
  },
