@@ -1198,13 +1198,19 @@
   }
  },
  "o25": {
-  "saldo": -26,
-  "ciclos": 76275,
-  "greens": 210,
+  "saldo": -24.5,
+  "ciclos": 76276,
+  "greens": 211,
   "redsCiclo": 31,
   "aborts": 0,
   "descartes": 76034,
   "historico": [
+   {
+    "quando": "2026-11-24T11:49:48.139Z",
+    "resultado": "GREEN",
+    "unidades": 1.5,
+    "detalhe": "cop · Italy x France @2.47 (tiro 1) · gatilho: coluna :51"
+   },
    {
     "quando": "2026-11-24T11:49:45.989Z",
     "resultado": "GREEN_OBS",
@@ -4798,49 +4804,14 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:19:16.580Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ame": 1795518338716,
-   "cam": 1795519195518
+   "cam": 1795519195518,
+   "cop": 1795520988139
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "08:48",
-     "jogo": "Italy x France",
-     "odd": 2.47
-    },
-    {
-     "h": "08:51",
-     "jogo": "England x Germany",
-     "odd": 2.24
-    },
-    {
-     "h": "08:54",
-     "jogo": "Brazil x Belgium",
-     "odd": 2.12
-    }
-   ],
-   "gatilho": "coluna :51",
-   "alvo": {
-    "h": "08:48",
-    "jogo": "Italy x France",
-    "odd": 2.47,
-    "unidades": 1,
-    "desde": 1795520464909
-   },
-   "iniciadoEm": 1795520464909
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795519195518,
    "eng": 1795516294394,
@@ -4850,13 +4821,13 @@
    "bra": 1795472158133,
    "mnd": 1795517012357,
    "ame": 1795518338716,
-   "cop": 1795479931322
+   "cop": 1795520988139
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":51",
-   "n": 8,
-   "start": 1
+   "tipo": "time",
+   "chave": "RAC",
+   "n": 14,
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -4864,7 +4835,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -16.1
+   "2026-11-24": -14.6
   },
   "_obs": {
    "cam": {
@@ -5015,10 +4986,6 @@
    "cam": {
     "desde": 1795520820337,
     "gatilho": "time Madrid"
-   },
-   "ame": {
-    "desde": 1795520985989,
-    "gatilho": "odd 2.24"
    }
   }
  },
