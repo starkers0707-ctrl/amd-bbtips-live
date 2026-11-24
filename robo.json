@@ -1153,12 +1153,30 @@
  },
  "o25": {
   "saldo": -8.7,
-  "ciclos": 71424,
+  "ciclos": 71427,
   "greens": 201,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 71196,
+  "descartes": 71199,
   "historico": [
+   {
+    "quando": "2026-11-24T07:56:05.032Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time GEN) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:56:05.027Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:55:51.751Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T07:55:51.737Z",
     "resultado": "GREEN_OBS",
@@ -4740,24 +4758,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:26:30.732Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time United) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:26:30.724Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time LEC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:26:30.715Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time MNC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4976,19 +4976,25 @@
     "gatilho": "coluna :52"
    },
    "ita": {
-    "desde": 1795506951737,
+    "desde": 1795506965032,
     "gatilho": "time GEN"
    }
   }
  },
  "ambas": {
-  "saldo": -7.8,
-  "ciclos": 231,
-  "greens": 96,
+  "saldo": -6.7,
+  "ciclos": 232,
+  "greens": 97,
   "redsCiclo": 11,
   "aborts": 0,
   "descartes": 124,
   "historico": [
+   {
+    "quando": "2026-11-24T07:55:51.773Z",
+    "resultado": "GREEN",
+    "unidades": 1.1,
+    "detalhe": "cop · Wales x Portugal @2.05 (tiro 2) · gatilho: time Argentina"
+   },
    {
     "quando": "2026-11-24T07:49:19.992Z",
     "resultado": "GREEN",
@@ -6379,47 +6385,10 @@
   "consumidas": {
    "bra": 1795503818021,
    "cam": 1795505142768,
-   "spa": 1795506559992
+   "spa": 1795506559992,
+   "cop": 1795506951773
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "04:51",
-     "jogo": "Argentina x Italy",
-     "odd": 2.02
-    },
-    {
-     "h": "04:54",
-     "jogo": "Wales x Portugal",
-     "odd": 2.05
-    },
-    {
-     "h": "04:57",
-     "jogo": "Uruguay x Denmark",
-     "odd": 2.23
-    }
-   ],
-   "gatilho": "time Argentina",
-   "alvo": {
-    "h": "04:54",
-    "jogo": "Wales x Portugal",
-    "odd": 2.05,
-    "unidades": 2,
-    "desde": 1795506771161
-   },
-   "iniciadoEm": 1795506566125,
-   "tiros": [
-    {
-     "h": "04:51",
-     "jogo": "Argentina x Italy",
-     "odd": 2.02,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795497681687,
    "eng": 1795493011900,
@@ -6427,7 +6396,7 @@
    "bra": 1795503818021,
    "mnd": 1795496979458,
    "cam": 1795505142768,
-   "cop": 1795501009716,
+   "cop": 1795506951773,
    "ame": 1795499990275
   },
   "_gatilhoAtual": {
@@ -6441,7 +6410,7 @@
    "2026-11-21": 2,
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
-   "2026-11-24": -9.2
+   "2026-11-24": -8.1
   },
   "_obs": {}
  }
