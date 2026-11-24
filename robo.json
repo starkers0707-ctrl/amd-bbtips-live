@@ -1079,12 +1079,18 @@
  },
  "o25": {
   "saldo": -13.7,
-  "ciclos": 68890,
+  "ciclos": 68891,
   "greens": 190,
   "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 68674,
+  "descartes": 68675,
   "historico": [
+   {
+    "quando": "2026-11-24T01:53:32.997Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho seq GRGRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T01:53:32.990Z",
     "resultado": "GREEN",
@@ -4678,12 +4684,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:56:11.017Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.78) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4691,7 +4691,37 @@
    "ita": 1795483952226,
    "mnd": 1795485212990
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "22:55",
+     "jogo": "VIL x BET",
+     "odd": 1.94
+    },
+    {
+     "h": "22:57",
+     "jogo": "ATH x BAR",
+     "odd": 1.72
+    },
+    {
+     "h": "22:59",
+     "jogo": "RMA x VAL",
+     "odd": 1.84
+    }
+   ],
+   "gatilho": "seq GRGRG",
+   "alvo": {
+    "h": "22:55",
+    "jogo": "VIL x BET",
+    "odd": 1.94,
+    "unidades": 1,
+    "desde": 1795485227015
+   },
+   "iniciadoEm": 1795485227015
+  },
   "cooldown": {
    "cam": 1795475247707,
    "eng": 1795383709617,
@@ -4707,7 +4737,7 @@
    "tipo": "odd",
    "chave": "2.02",
    "n": 11,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -6160,7 +6190,7 @@
    "tipo": "coluna",
    "chave": ":02",
    "n": 20,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
