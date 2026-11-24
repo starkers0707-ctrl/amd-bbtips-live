@@ -1098,13 +1098,25 @@
   }
  },
  "o25": {
-  "saldo": -14.6,
-  "ciclos": 70216,
-  "greens": 196,
+  "saldo": -14,
+  "ciclos": 70218,
+  "greens": 197,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 69993,
+  "descartes": 69994,
   "historico": [
+   {
+    "quando": "2026-11-24T05:40:28.372Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ATA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T05:40:28.366Z",
+    "resultado": "GREEN",
+    "unidades": 0.6,
+    "detalhe": "ita · FRO x ATA @1.79 (tiro 2) · gatilho: time ATA"
+   },
    {
     "quando": "2026-11-24T05:38:14.880Z",
     "resultado": "GREEN_OBS",
@@ -4692,66 +4704,17 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T04:27:08.924Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T04:26:44.170Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "eng": 1795498175148
+   "eng": 1795498175148,
+   "ita": 1795498828366
   },
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "02:37",
-     "jogo": "INT x COM",
-     "odd": 1.92
-    },
-    {
-     "h": "02:39",
-     "jogo": "FRO x ATA",
-     "odd": 1.79
-    },
-    {
-     "h": "02:41",
-     "jogo": "JUV x LEC",
-     "odd": 1.87
-    }
-   ],
-   "gatilho": "time ATA",
-   "alvo": {
-    "h": "02:39",
-    "jogo": "FRO x ATA",
-    "odd": 1.79,
-    "unidades": 2,
-    "desde": 1795498711565
-   },
-   "iniciadoEm": 1795498197020,
-   "tiros": [
-    {
-     "h": "02:37",
-     "jogo": "INT x COM",
-     "odd": 1.92,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795487509896,
    "eng": 1795498175148,
-   "ita": 1795494511795,
+   "ita": 1795498828366,
    "spa": 1795489711077,
    "lat": 1795483111301,
    "bra": 1795472158133,
@@ -4763,7 +4726,7 @@
    "tipo": "time",
    "chave": "ATA",
    "n": 9,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -4771,7 +4734,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -4.7
+   "2026-11-24": -4.1
   },
   "_obs": {
    "cam": {
@@ -4930,6 +4893,10 @@
    "mnd": {
     "desde": 1795488687919,
     "gatilho": "coluna :52"
+   },
+   "ita": {
+    "desde": 1795498711574,
+    "gatilho": "time ATA"
    }
   }
  },
@@ -6281,7 +6248,7 @@
    "tipo": "time",
    "chave": "Asuncion",
    "n": 8,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-20": 0,
