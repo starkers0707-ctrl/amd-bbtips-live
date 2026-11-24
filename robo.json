@@ -1411,13 +1411,25 @@
   }
  },
  "o25": {
-  "saldo": -24.1,
-  "ciclos": 91185,
-  "greens": 240,
+  "saldo": -22.6,
+  "ciclos": 91187,
+  "greens": 241,
   "redsCiclo": 35,
   "aborts": 0,
-  "descartes": 90910,
+  "descartes": 90911,
   "historico": [
+   {
+    "quando": "2026-11-24T21:38:04.527Z",
+    "resultado": "GREEN",
+    "unidades": 1.5,
+    "detalhe": "cop · Italy x Portugal @2.47 (tiro 1) · gatilho: odd 2.64"
+   },
+   {
+    "quando": "2026-11-24T21:37:59.963Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho seq GGRRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T21:37:59.959Z",
     "resultado": "GREEN_OBS",
@@ -5005,55 +5017,14 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:12:41.749Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:12:41.745Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795553188916,
-   "eng": 1795555531159
+   "eng": 1795555531159,
+   "cop": 1795556284523
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "18:36",
-     "jogo": "Italy x Portugal",
-     "odd": 2.47
-    },
-    {
-     "h": "18:39",
-     "jogo": "Uruguay x Denmark",
-     "odd": 2.64
-    },
-    {
-     "h": "18:42",
-     "jogo": "England x Germany",
-     "odd": 2.24
-    }
-   ],
-   "gatilho": "odd 2.64",
-   "alvo": {
-    "h": "18:36",
-    "jogo": "Italy x Portugal",
-    "odd": 2.47,
-    "unidades": 1,
-    "desde": 1795555557217
-   },
-   "iniciadoEm": 1795555557217
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795552323084,
    "eng": 1795555531159,
@@ -5063,7 +5034,7 @@
    "bra": 1795522714636,
    "mnd": 1795517012357,
    "ame": 1795552538905,
-   "cop": 1795520988139
+   "cop": 1795556284523
   },
   "_gatilhoAtual": {
    "tipo": "seq",
@@ -5077,7 +5048,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -14.2
+   "2026-11-24": -12.7
   },
   "_obs": {}
  },
@@ -5215,21 +5186,22 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {
-   "cop": {
-    "desde": 1795556279959,
-    "gatilho": "odd 2.64"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
-  "saldo": -24.8,
-  "ciclos": 294,
-  "greens": 119,
+  "saldo": -23.9,
+  "ciclos": 295,
+  "greens": 120,
   "redsCiclo": 16,
   "aborts": 0,
   "descartes": 159,
   "historico": [
+   {
+    "quando": "2026-11-24T21:37:59.990Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "cam · Rome x Barcelona @1.92 (tiro 1) · gatilho: odd 2.1"
+   },
    {
     "quando": "2026-11-24T21:27:13.611Z",
     "resultado": "GREEN_OBS",
@@ -6996,46 +6968,17 @@
    }
   ],
   "consumidas": {
-   "lat": 1795553670204
+   "lat": 1795553670204,
+   "cam": 1795556279980
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "18:36",
-     "jogo": "Rome x Barcelona",
-     "odd": 1.92
-    },
-    {
-     "h": "18:39",
-     "jogo": "Celtic x Chelsea",
-     "odd": 2.1
-    },
-    {
-     "h": "18:42",
-     "jogo": "Munich x Liverpool",
-     "odd": 1.9
-    }
-   ],
-   "gatilho": "odd 2.1",
-   "alvo": {
-    "h": "18:36",
-    "jogo": "Rome x Barcelona",
-    "odd": 1.92,
-    "unidades": 1,
-    "desde": 1795555650550
-   },
-   "iniciadoEm": 1795555650550
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795553670204,
    "eng": 1795524811381,
    "spa": 1795506559992,
    "bra": 1795526496634,
    "mnd": 1795515327438,
-   "cam": 1795549616111,
+   "cam": 1795556279980,
    "cop": 1795551055473,
    "ame": 1795510421878
   },
@@ -7050,7 +6993,7 @@
    "2026-11-21": 2,
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
-   "2026-11-24": -26.2
+   "2026-11-24": -25.3
   },
   "_obs": {}
  }
