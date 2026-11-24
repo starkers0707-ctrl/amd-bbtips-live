@@ -1073,12 +1073,30 @@
  },
  "o25": {
   "saldo": -15.9,
-  "ciclos": 68127,
+  "ciclos": 68130,
   "greens": 187,
   "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 67914,
+  "descartes": 67917,
   "historico": [
+   {
+    "quando": "2026-11-24T00:45:14.410Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:45:07.084Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.78) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:45:07.080Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T00:45:06.399Z",
     "resultado": "GREEN_OBS",
@@ -4660,24 +4678,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:02:08.213Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.78) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:02:08.208Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:02:07.406Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4890,9 +4890,9 @@
     "desde": 1795481023813,
     "gatilho": "coluna :06"
    },
-   "mnd": {
-    "desde": 1795481106399,
-    "gatilho": "odd 1.78"
+   "ita": {
+    "desde": 1795481114410,
+    "gatilho": "coluna :57"
    }
   }
  },
@@ -6100,12 +6100,41 @@
    }
   ],
   "consumidas": {
-   "ame": 1795477489501,
    "mnd": 1795479213322,
    "cam": 1795479758430,
    "cop": 1795480860011
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "22:01",
+     "jogo": "Montevideo x Buenos Aires",
+     "odd": 2.06
+    },
+    {
+     "h": "22:04",
+     "jogo": "Quito x Avellaneda",
+     "odd": 1.84
+    },
+    {
+     "h": "22:07",
+     "jogo": "Belo Horizonte x Santiago",
+     "odd": 2.02
+    }
+   ],
+   "gatilho": "odd 1.84",
+   "alvo": {
+    "h": "22:01",
+    "jogo": "Montevideo x Buenos Aires",
+    "odd": 2.06,
+    "unidades": 1,
+    "desde": 1795481106434
+   },
+   "iniciadoEm": 1795481106434
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
@@ -6118,9 +6147,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "odd",
-   "chave": "1.93",
-   "n": 11,
-   "start": 2
+   "chave": "1.84",
+   "n": 10,
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
