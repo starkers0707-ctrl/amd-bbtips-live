@@ -1121,13 +1121,49 @@
   }
  },
  "o25": {
-  "saldo": -15.5,
-  "ciclos": 70098,
-  "greens": 195,
+  "saldo": -14.6,
+  "ciclos": 70104,
+  "greens": 196,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 69876,
+  "descartes": 69881,
   "historico": [
+   {
+    "quando": "2026-11-24T05:29:35.162Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ATA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T05:29:35.157Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time FUL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T05:29:35.148Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "eng · LIV x FUL @1.94 (tiro 2) · gatilho: time FUL"
+   },
+   {
+    "quando": "2026-11-24T05:29:34.241Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ATA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T05:29:34.237Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho time FUL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T05:29:12.767Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time ATA) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T05:29:12.764Z",
     "resultado": "GREEN_OBS",
@@ -4691,87 +4727,15 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRGRR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T03:00:34.691Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRGRR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T03:00:33.717Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRGRR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T03:00:32.221Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRGRR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T03:00:09.149Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRGRR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T03:00:07.239Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRGRR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T03:00:06.287Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRGRR) — liga REARMADA"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "02:26",
-     "jogo": "CRY x EVE",
-     "odd": 1.94
-    },
-    {
-     "h": "02:28",
-     "jogo": "LIV x FUL",
-     "odd": 1.94
-    },
-    {
-     "h": "02:30",
-     "jogo": "BOU x CHE",
-     "odd": 1.94
-    }
-   ],
-   "gatilho": "time FUL",
-   "alvo": {
-    "h": "02:28",
-    "jogo": "LIV x FUL",
-    "odd": 1.94,
-    "unidades": 2,
-    "desde": 1795498054467
-   },
-   "iniciadoEm": 1795497484179,
-   "tiros": [
-    {
-     "h": "02:26",
-     "jogo": "CRY x EVE",
-     "odd": 1.94,
-     "unidades": 1
-    }
-   ]
+  "consumidas": {
+   "eng": 1795498175148
   },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795487509896,
-   "eng": 1795493867383,
+   "eng": 1795498175148,
    "ita": 1795494511795,
    "spa": 1795489711077,
    "lat": 1795483111301,
@@ -4792,7 +4756,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -5.6
+   "2026-11-24": -4.7
   },
   "_obs": {
    "cam": {
@@ -4952,9 +4916,9 @@
     "desde": 1795488687919,
     "gatilho": "coluna :52"
    },
-   "eng": {
-    "desde": 1795498152763,
-    "gatilho": "time FUL"
+   "ita": {
+    "desde": 1795498175162,
+    "gatilho": "time ATA"
    }
   }
  },
