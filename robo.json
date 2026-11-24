@@ -1079,12 +1079,18 @@
  },
  "o25": {
   "saldo": -14.6,
-  "ciclos": 68627,
+  "ciclos": 68628,
   "greens": 189,
   "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 68412,
+  "descartes": 68413,
   "historico": [
+   {
+    "quando": "2026-11-24T01:34:07.774Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T01:32:32.227Z",
     "resultado": "GREEN",
@@ -4678,19 +4684,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:40:21.730Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
    }
   ],
   "consumidas": {
    "lat": 1795483111301,
    "ita": 1795483952226
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "22:50",
+     "jogo": "FRA x BRA",
+     "odd": 1.95
+    },
+    {
+     "h": "22:52",
+     "jogo": "SWI x ENG",
+     "odd": 1.87
+    },
+    {
+     "h": "22:54",
+     "jogo": "WAL x CHL",
+     "odd": 1.94
+    }
+   ],
+   "gatilho": "coluna :52",
+   "alvo": {
+    "h": "22:50",
+    "jogo": "FRA x BRA",
+    "odd": 1.95,
+    "unidades": 1,
+    "desde": 1795484047765
+   },
+   "iniciadoEm": 1795484047765
+  },
   "cooldown": {
    "cam": 1795475247707,
    "eng": 1795383709617,
@@ -4704,9 +4734,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":33",
+   "chave": ":52",
    "n": 21,
-   "start": 1
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
@@ -4864,6 +4894,10 @@
    "ita": {
     "desde": 1795483861299,
     "gatilho": "coluna :33"
+   },
+   "mnd": {
+    "desde": 1795484047774,
+    "gatilho": "coluna :52"
    }
   }
  },
