@@ -1401,13 +1401,31 @@
   }
  },
  "o25": {
-  "saldo": -20.5,
-  "ciclos": 91873,
+  "saldo": -27.5,
+  "ciclos": 91876,
   "greens": 243,
-  "redsCiclo": 35,
+  "redsCiclo": 36,
   "aborts": 0,
-  "descartes": 91595,
+  "descartes": 91597,
   "historico": [
+   {
+    "quando": "2026-11-24T22:13:44.576Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "cam · ciclo perdido (3 tiros) · gatilho: odd 2.17"
+   },
+   {
+    "quando": "2026-11-24T22:13:34.469Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.2) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T22:13:34.462Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T22:13:34.458Z",
     "resultado": "GREEN_OBS",
@@ -4989,79 +5007,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:42:45.232Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:42:45.224Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:42:45.221Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
    }
   ],
   "consumidas": {
    "eng": 1795555531159,
    "cop": 1795556284523,
    "ame": 1795556523403,
-   "ita": 1795557394497
+   "ita": 1795557394497,
+   "cam": 1795558424565
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "19:06",
-     "jogo": "Munich x Rome",
-     "odd": 2.07
-    },
-    {
-     "h": "19:09",
-     "jogo": "Milan x Madrid",
-     "odd": 2.17
-    },
-    {
-     "h": "19:12",
-     "jogo": "Turin x Liverpool",
-     "odd": 2.11
-    }
-   ],
-   "gatilho": "odd 2.17",
-   "alvo": {
-    "h": "19:12",
-    "jogo": "Turin x Liverpool",
-    "odd": 2.11,
-    "unidades": 4,
-    "desde": 1795558257778
-   },
-   "iniciadoEm": 1795557395220,
-   "tiros": [
-    {
-     "h": "19:06",
-     "jogo": "Munich x Rome",
-     "odd": 2.07,
-     "unidades": 1
-    },
-    {
-     "h": "19:09",
-     "jogo": "Milan x Madrid",
-     "odd": 2.17,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
-   "cam": 1795552323084,
+   "cam": 1795558424565,
    "eng": 1795555531159,
    "ita": 1795557394497,
    "spa": 1795553188916,
@@ -5075,7 +5032,7 @@
    "tipo": "coluna",
    "chave": ":30",
    "n": 19,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -5083,7 +5040,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -10.6
+   "2026-11-24": -17.6
   },
   "_obs": {}
  },
@@ -5229,10 +5186,6 @@
    "cop": {
     "desde": 1795558076691,
     "gatilho": "odd 2.64"
-   },
-   "eng": {
-    "desde": 1795558414458,
-    "gatilho": "coluna :26"
    }
   }
  },
