@@ -1271,12 +1271,54 @@
  },
  "o25": {
   "saldo": -31,
-  "ciclos": 80710,
+  "ciclos": 80717,
   "greens": 219,
   "redsCiclo": 33,
   "aborts": 0,
-  "descartes": 80458,
+  "descartes": 80465,
   "historico": [
+   {
+    "quando": "2026-11-24T14:18:08.433Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T14:18:08.421Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T14:18:08.407Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T14:17:56.830Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :25) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T14:17:56.825Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T14:17:56.817Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T14:17:56.810Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T14:17:56.801Z",
     "resultado": "DESCARTADO",
@@ -4834,48 +4876,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:59:09.626Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:59:09.619Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:59:08.984Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:59:08.981Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:59:08.975Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:59:08.969Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.85) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T13:59:08.152Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4884,35 +4884,35 @@
    "spa": 1795528952027
   },
   "ciclo": {
-   "liga": "ame",
+   "liga": "cam",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "11:22",
-     "jogo": "Guayaquil x Medellin",
-     "odd": 2.3
+     "h": "11:33",
+     "jogo": "Celtic x City",
+     "odd": 2.16
     },
     {
-     "h": "11:25",
-     "jogo": "Quito x Penarol",
-     "odd": 2.17
+     "h": "11:36",
+     "jogo": "Madrid x Chelsea",
+     "odd": 2.34
     },
     {
-     "h": "11:28",
-     "jogo": "Sao Paulo x Montevideo",
-     "odd": 2.25
+     "h": "11:39",
+     "jogo": "Rome x Amsterdam",
+     "odd": 2.38
     }
    ],
-   "gatilho": "coluna :25",
+   "gatilho": "time Madrid",
    "alvo": {
-    "h": "11:22",
-    "jogo": "Guayaquil x Medellin",
-    "odd": 2.3,
+    "h": "11:33",
+    "jogo": "Celtic x City",
+    "odd": 2.16,
     "unidades": 1,
-    "desde": 1795528953079
+    "desde": 1795529888401
    },
-   "iniciadoEm": 1795528953079
+   "iniciadoEm": 1795529888401
   },
   "cooldown": {
    "cam": 1795525685704,
@@ -5088,6 +5088,10 @@
    "lat": {
     "desde": 1795529559045,
     "gatilho": "time COL"
+   },
+   "cam": {
+    "desde": 1795529888433,
+    "gatilho": "time Madrid"
    }
   }
  },
