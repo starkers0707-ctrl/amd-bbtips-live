@@ -1351,12 +1351,30 @@
  },
  "o25": {
   "saldo": -25.7,
-  "ciclos": 85004,
+  "ciclos": 85007,
   "greens": 225,
   "redsCiclo": 33,
   "aborts": 0,
-  "descartes": 84746,
+  "descartes": 84749,
   "historico": [
+   {
+    "quando": "2026-11-24T16:38:09.645Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:38:09.635Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :50) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:38:07.523Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T16:38:07.510Z",
     "resultado": "GREEN_OBS",
@@ -4938,24 +4956,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:14:34.975Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :28) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:14:34.971Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:14:34.966Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5165,9 +5165,9 @@
     "desde": 1795538177967,
     "gatilho": "odd 2.17"
    },
-   "eng": {
-    "desde": 1795538287510,
-    "gatilho": "coluna :50"
+   "lat": {
+    "desde": 1795538289645,
+    "gatilho": "time COL"
    }
   }
  },
@@ -6867,9 +6867,9 @@
    "ame": 1795510421878
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":39",
-   "n": 13,
+   "tipo": "time",
+   "chave": "COL",
+   "n": 26,
    "start": 1
   },
   "dias": {
