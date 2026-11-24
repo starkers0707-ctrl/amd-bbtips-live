@@ -1199,12 +1199,30 @@
  },
  "o25": {
   "saldo": -24.5,
-  "ciclos": 76276,
+  "ciclos": 76279,
   "greens": 211,
   "redsCiclo": 31,
   "aborts": 0,
-  "descartes": 76034,
+  "descartes": 76037,
   "historico": [
+   {
+    "quando": "2026-11-24T11:50:06.888Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:50:06.177Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:49:48.157Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T11:49:48.139Z",
     "resultado": "GREEN",
@@ -4786,24 +4804,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:19:27.999Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:19:27.990Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:19:16.589Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4811,7 +4811,45 @@
    "cam": 1795519195518,
    "cop": 1795520988139
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 1,
+   "apostado": 1,
+   "plano": [
+    {
+     "h": "08:59",
+     "jogo": "PER x BOC",
+     "odd": 1.83
+    },
+    {
+     "h": "09:02",
+     "jogo": "RAC x NAC",
+     "odd": 1.94
+    },
+    {
+     "h": "09:05",
+     "jogo": "BAR x ATL",
+     "odd": 1.8
+    }
+   ],
+   "gatilho": "time RAC",
+   "alvo": {
+    "h": "09:02",
+    "jogo": "RAC x NAC",
+    "odd": 1.94,
+    "unidades": 2,
+    "desde": 1795521006878
+   },
+   "iniciadoEm": 1795521006166,
+   "tiros": [
+    {
+     "h": "08:59",
+     "jogo": "PER x BOC",
+     "odd": 1.83,
+     "unidades": 1
+    }
+   ]
+  },
   "cooldown": {
    "cam": 1795519195518,
    "eng": 1795516294394,
@@ -4986,6 +5024,10 @@
    "cam": {
     "desde": 1795520820337,
     "gatilho": "time Madrid"
+   },
+   "ame": {
+    "desde": 1795521006888,
+    "gatilho": "odd 2.24"
    }
   }
  },
