@@ -1280,12 +1280,18 @@
  },
  "o25": {
   "saldo": -31,
-  "ciclos": 81259,
+  "ciclos": 81260,
   "greens": 219,
   "redsCiclo": 33,
   "aborts": 0,
-  "descartes": 81007,
+  "descartes": 81008,
   "historico": [
+   {
+    "quando": "2026-11-24T14:33:47.923Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T14:33:47.910Z",
     "resultado": "GREEN_OBS",
@@ -4879,19 +4885,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :25) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T14:15:51.579Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
    }
   ],
   "consumidas": {
    "lat": 1795528666614,
    "spa": 1795528952027
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "11:52",
+     "jogo": "Santiago x Guayaquil",
+     "odd": 2.37
+    },
+    {
+     "h": "11:55",
+     "jogo": "Itaquera x Quito",
+     "odd": 2.24
+    },
+    {
+     "h": "11:58",
+     "jogo": "Penarol x Porto Alegre",
+     "odd": 2.46
+    }
+   ],
+   "gatilho": "odd 2.24",
+   "alvo": {
+    "h": "11:52",
+    "jogo": "Santiago x Guayaquil",
+    "odd": 2.37,
+    "unidades": 1,
+    "desde": 1795530830154
+   },
+   "iniciadoEm": 1795530830154
+  },
   "cooldown": {
    "cam": 1795525685704,
    "eng": 1795525806642,
@@ -4919,8 +4949,8 @@
   },
   "_obs": {
    "cam": {
-    "desde": 1795464077757,
-    "gatilho": "coluna :06"
+    "desde": 1795530830152,
+    "gatilho": "time Madrid"
    }
   }
  },
@@ -5066,10 +5096,6 @@
    "cam": {
     "desde": 1795530706670,
     "gatilho": "time Madrid"
-   },
-   "spa": {
-    "desde": 1795530827910,
-    "gatilho": "odd 1.9"
    }
   }
  },
