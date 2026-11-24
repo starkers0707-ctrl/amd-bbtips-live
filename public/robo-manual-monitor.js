@@ -149,14 +149,12 @@
      do mercado da entrada, com os jogos reais da liga. */
   var COMPANION={'Over 0.5':'Over 1.5','Over 1.5':'Ambas Marcam (Sim)','Over 2.5':'Over 1.5','Over 3.5':'Over 2.5','Ambas Marcam (Sim)':'Over 2.5','Under 2.5':'Under 3.5','Under 1.5':'Under 2.5','Under 3.5':'Under 2.5'};
   /* Mesma linha do grafico do site: % acumulada do mercado desde 00h
-     (horario de Brasilia, que a grade grava como UTC). Com poucos jogos no
-     dia, usa as ultimas 6h para nao ficar instavel. */
+     (horario de Brasilia, que a grade grava como UTC). */
   function lineSeries(all,market){
     var done=all.filter(function(g){return g.resultado_ft;}).sort(function(a,b){return orderValue(a)-orderValue(b);});
     if(!done.length)return {line:[],hits:[]};
     var last=new Date(orderValue(done[done.length-1])),dia=Date.UTC(last.getUTCFullYear(),last.getUTCMonth(),last.getUTCDate());
     var hoje=done.filter(function(g){return orderValue(g)>=dia;});
-    if(hoje.length<40)hoje=done.filter(function(g){return orderValue(g)>=orderValue(done[done.length-1])-6*3600000;});
     var hits=hoje.map(function(g){return marketMatches(market,g)?1:0;}),out=[],sum=0;
     for(var i=0;i<hits.length;i++){sum+=hits[i];out.push(sum/(i+1)*100);}
     return {line:out,hits:hits};
@@ -183,7 +181,7 @@
     var rules=(robot.metrics||[]).filter(function(r){return r.use;}),threshold=Number(robot.threshold);
     if(!rules.length||!threshold)return {ok:true,text:''};
     var st=metricState(robot,data,league,market);
-    if(!st)return {ok:true,text:'métricas: poucos jogos'};
+    if(!st)return {ok:false,pct:0,text:'métricas: poucos jogos no dia (gráfico acumulado ainda sem MM21)'};
     var max=0,pts=0,mandatoryFail=false;
     rules.forEach(function(r){max+=Number(r.weight)||0;var hit=!!st[r.key]===!!r.expected;if(hit)pts+=Number(r.weight)||0;else if(r.key==='subida'&&r.expected)mandatoryFail=true;});
     var pct=max?Math.round(pts/max*100):0;
