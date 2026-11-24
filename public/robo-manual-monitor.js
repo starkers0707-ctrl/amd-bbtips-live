@@ -112,6 +112,9 @@
     if(oMin||oMax){var k2=ODD_KEYS[position.oddMarket||position.market],o2=k2&&game.odds&&Number(game.odds[k2]);if(!o2)return false;if(oMin&&o2<oMin)return false;if(oMax&&o2>oMax)return false;}
     return true;
   }
+  /* Avisa assim que o padrao fecha: o gatilho e o ultimo jogo do padrao e a
+     entrada fica "skip" jogos depois dele (os pulos montados no quadro).
+     Assim um +1 sai com 1 jogo de antecedencia, um +6 com 6. */
   function matchingRow(robot, completed) {
     var rows={};(robot.pattern||[]).forEach(function(p){(rows[p.row]||(rows[p.row]=[])).push(p);});
     var ids=Object.keys(rows);
@@ -120,8 +123,11 @@
       var entry=cells.find(function(p){return p.markType==='entry';});
       var patterns=cells.filter(function(p){return p.markType!=='entry'&&(!entry||p.column<entry.column);});
       if(!entry||!patterns.length)continue;
-      var ok=patterns.every(function(p){var distance=entry.column-p.column-1;return distance>=0&&positionMatches(p,completed[distance]);});
-      if(ok)return {row:Number(ids[i]),entry:entry,trigger:completed[0]};
+      var lastCol=Math.max.apply(null,patterns.map(function(p){return p.column;})),d=entry.column-lastCol-1;
+      for(var k=0;k<=d;k++){
+        var ok=patterns.every(function(p){return positionMatches(p,completed[k+lastCol-p.column]);});
+        if(ok)return {row:Number(ids[i]),entry:entry,trigger:completed[k],skip:d};
+      }
     }
     return null;
   }
@@ -184,12 +190,11 @@
     return all.filter(function(game){var slot=slotValue(game);return !game.resultado_ft&&slot>previousTime&&slot>nowTime;})
       .sort(function(a,b){return slotValue(a)-slotValue(b);});
   }
-  function nextGame(all, trigger) {
-    /* A entrada e o jogo logo depois do gatilho (os pulos ja sao contados no
-       quadro). Se esse jogo ja terminou, o sinal ficou velho: nao envia. */
+  function nextGame(all, trigger, skip) {
     var t=slotValue(trigger);
     var after=all.filter(function(game){return slotValue(game)>t;}).sort(function(a,b){return slotValue(a)-slotValue(b);});
-    return after.length&&!after[0].resultado_ft?after[0]:null;
+    var g=after[Math.max(0,Number(skip)||0)];
+    return g&&!g.resultado_ft?g:null;
   }
   function slotValue(game) { return Date.parse(game&&game.slot_em||game&&game.criado_em||'')||0; }
   function nextShotGame(all, previous) {

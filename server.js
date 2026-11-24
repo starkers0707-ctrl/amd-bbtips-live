@@ -649,7 +649,7 @@ async function robosTick() {
           const all = data[liga] || [];
           if (RM.hasOpenCycle(st.signals, robot.id, liga)) continue;
           const match = RM.eligibleMatch(robot, all); if (!match) continue;
-          const up = RM.nextGame(all, match.trigger); if (!up) continue;
+          const up = RM.nextGame(all, match.trigger, match.skip); if (!up) continue;
           const mk = match.entry.entryMarket || robot.entryMarket || match.entry.market || "Over 2.5";
           const mp = RM.metricsPass(robot, data, liga, mk); if (!mp.ok) continue;
           const key = [robot.id, liga, match.row, RM.gameKey(match.trigger), up.id || up.slot_em].join("|");
