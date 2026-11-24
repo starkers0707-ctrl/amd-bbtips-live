@@ -1401,13 +1401,19 @@
   }
  },
  "o25": {
-  "saldo": -21.4,
-  "ciclos": 91566,
-  "greens": 242,
+  "saldo": -20.5,
+  "ciclos": 91567,
+  "greens": 243,
   "redsCiclo": 35,
   "aborts": 0,
   "descartes": 91289,
   "historico": [
+   {
+    "quando": "2026-11-24T21:56:34.513Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "ita · ATA x MIL @1.91 (tiro 1) · gatilho: coluna :57"
+   },
    {
     "quando": "2026-11-24T21:56:21.104Z",
     "resultado": "GREEN_OBS",
@@ -5001,54 +5007,19 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:25:03.840Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.64) — liga REARMADA"
    }
   ],
   "consumidas": {
    "eng": 1795555531159,
    "cop": 1795556284523,
-   "ame": 1795556523403
+   "ame": 1795556523403,
+   "ita": 1795557394497
   },
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "18:55",
-     "jogo": "ATA x MIL",
-     "odd": 1.91
-    },
-    {
-     "h": "18:57",
-     "jogo": "JUV x ROM",
-     "odd": 1.94
-    },
-    {
-     "h": "18:59",
-     "jogo": "GEN x SAS",
-     "odd": 1.92
-    }
-   ],
-   "gatilho": "coluna :57",
-   "alvo": {
-    "h": "18:55",
-    "jogo": "ATA x MIL",
-    "odd": 1.91,
-    "unidades": 1,
-    "desde": 1795556526617
-   },
-   "iniciadoEm": 1795556526617
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795552323084,
    "eng": 1795555531159,
-   "ita": 1795550455039,
+   "ita": 1795557394497,
    "spa": 1795553188916,
    "lat": 1795550799609,
    "bra": 1795522714636,
@@ -5068,7 +5039,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -11.5
+   "2026-11-24": -10.6
   },
   "_obs": {}
  },
@@ -5214,10 +5185,6 @@
    "spa": {
     "desde": 1795557282309,
     "gatilho": "coluna :57"
-   },
-   "cam": {
-    "desde": 1795557381104,
-    "gatilho": "odd 2.17"
    }
   }
  },
