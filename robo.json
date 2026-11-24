@@ -4686,7 +4686,37 @@
    "cop": 1795479931322,
    "spa": 1795480231205
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "21:50",
+     "jogo": "CHL x SWE",
+     "odd": 1.95
+    },
+    {
+     "h": "21:52",
+     "jogo": "COL x GER",
+     "odd": 1.94
+    },
+    {
+     "h": "21:54",
+     "jogo": "ITA x DEN",
+     "odd": 1.95
+    }
+   ],
+   "gatilho": "coluna :52",
+   "alvo": {
+    "h": "21:50",
+    "jogo": "CHL x SWE",
+    "odd": 1.95,
+    "unidades": 1,
+    "desde": 1795480447398
+   },
+   "iniciadoEm": 1795480447398
+  },
   "cooldown": {
    "cam": 1795475247707,
    "eng": 1795383709617,
@@ -4699,10 +4729,10 @@
    "cop": 1795479931322
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "GRRRG",
-   "n": 22,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":52",
+   "n": 20,
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
@@ -4856,10 +4886,6 @@
    "cop": {
     "desde": 1795479598576,
     "gatilho": "odd 2.39"
-   },
-   "ita": {
-    "desde": 1795480366149,
-    "gatilho": "coluna :33"
    }
   }
  },
