@@ -4874,7 +4874,37 @@
    "cam": 1795525685704,
    "eng": 1795525806642
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "10:19",
+     "jogo": "JUV x PAR",
+     "odd": 1.9
+    },
+    {
+     "h": "10:21",
+     "jogo": "FIO x LAZ",
+     "odd": 1.91
+    },
+    {
+     "h": "10:23",
+     "jogo": "BOL x MIL",
+     "odd": 1.9
+    }
+   ],
+   "gatilho": "coluna :21",
+   "alvo": {
+    "h": "10:19",
+    "jogo": "JUV x PAR",
+    "odd": 1.9,
+    "unidades": 1,
+    "desde": 1795526080604
+   },
+   "iniciadoEm": 1795526080604
+  },
   "cooldown": {
    "cam": 1795525685704,
    "eng": 1795525806642,
@@ -4888,9 +4918,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":18",
+   "chave": ":21",
    "n": 9,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -5045,10 +5075,6 @@
    "cop": {
     "desde": 1795523879541,
     "gatilho": "coluna :51"
-   },
-   "ame": {
-    "desde": 1795526069733,
-    "gatilho": "odd 2.24"
    }
   }
  },
