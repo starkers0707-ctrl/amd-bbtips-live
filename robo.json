@@ -1384,12 +1384,18 @@
  },
  "o25": {
   "saldo": -23.4,
-  "ciclos": 88003,
+  "ciclos": 88004,
   "greens": 234,
   "redsCiclo": 34,
   "aborts": 0,
-  "descartes": 87735,
+  "descartes": 87736,
   "historico": [
+   {
+    "quando": "2026-11-24T19:33:37.975Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T19:33:20.493Z",
     "resultado": "GREEN_OBS",
@@ -4983,19 +4989,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:59:05.021Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGGG) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795548154815,
    "ame": 1795548594643
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "16:54",
+     "jogo": "Croatia x Belgium",
+     "odd": 2.38
+    },
+    {
+     "h": "16:57",
+     "jogo": "France x Italy",
+     "odd": 2.49
+    },
+    {
+     "h": "17:00",
+     "jogo": "Wales x Denmark",
+     "odd": 2.46
+    }
+   ],
+   "gatilho": "odd 2.49",
+   "alvo": {
+    "h": "16:54",
+    "jogo": "Croatia x Belgium",
+    "odd": 2.38,
+    "unidades": 1,
+    "desde": 1795548817961
+   },
+   "iniciadoEm": 1795548817961
+  },
   "cooldown": {
    "cam": 1795545089718,
    "eng": 1795544734030,
@@ -5008,10 +5038,10 @@
    "cop": 1795520988139
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "GRRGR",
+   "tipo": "odd",
+   "chave": "2.49",
    "n": 8,
-   "start": 1
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -5163,7 +5193,7 @@
     "gatilho": "coluna :26"
    },
    "spa": {
-    "desde": 1795548800492,
+    "desde": 1795548817975,
     "gatilho": "coluna :39"
    }
   }
