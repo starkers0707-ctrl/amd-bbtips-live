@@ -1079,12 +1079,36 @@
  },
  "o25": {
   "saldo": -14.6,
-  "ciclos": 68867,
+  "ciclos": 68871,
   "greens": 189,
   "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 68652,
+  "descartes": 68656,
   "historico": [
+   {
+    "quando": "2026-11-24T01:50:10.073Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T01:50:10.059Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T01:50:06.335Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T01:50:05.710Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T01:50:04.835Z",
     "resultado": "GREEN_OBS",
@@ -4660,30 +4684,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:55:34.671Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.78) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:55:08.785Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:55:08.776Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:55:07.731Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4733,10 +4733,10 @@
    "cop": 1795479931322
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":52",
-   "n": 21,
-   "start": 1
+   "tipo": "odd",
+   "chave": "2.02",
+   "n": 11,
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -4898,10 +4898,6 @@
    "ame": {
     "desde": 1795484949501,
     "gatilho": "odd 2.02"
-   },
-   "mnd": {
-    "desde": 1795485004835,
-    "gatilho": "coluna :52"
    }
   }
  },
