@@ -1150,12 +1150,18 @@
  },
  "o25": {
   "saldo": -11.8,
-  "ciclos": 70440,
+  "ciclos": 70441,
   "greens": 198,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 70215,
+  "descartes": 70216,
   "historico": [
+   {
+    "quando": "2026-11-24T06:49:24.251Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time United) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T06:49:08.899Z",
     "resultado": "GREEN_OBS",
@@ -4749,12 +4755,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T05:06:02.872Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4943,6 +4943,10 @@
    "mnd": {
     "desde": 1795488687919,
     "gatilho": "coluna :52"
+   },
+   "cam": {
+    "desde": 1795502964251,
+    "gatilho": "time United"
    }
   }
  },
@@ -6297,7 +6301,37 @@
    "ame": 1795499990275,
    "cop": 1795501009716
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:02",
+     "jogo": "ATC x BAH",
+     "odd": 1.68
+    },
+    {
+     "h": "04:05",
+     "jogo": "GAM x VIT",
+     "odd": 1.77
+    },
+    {
+     "h": "04:08",
+     "jogo": "CUI x GTN",
+     "odd": 1.67
+    }
+   ],
+   "gatilho": "odd 1.77",
+   "alvo": {
+    "h": "04:02",
+    "jogo": "ATC x BAH",
+    "odd": 1.68,
+    "unidades": 1,
+    "desde": 1795502948932
+   },
+   "iniciadoEm": 1795502948932
+  },
   "cooldown": {
    "lat": 1795497681687,
    "eng": 1795493011900,
@@ -6321,11 +6355,6 @@
    "2026-11-23": 13.6,
    "2026-11-24": -11.2
   },
-  "_obs": {
-   "cam": {
-    "desde": 1795502948927,
-    "gatilho": "time Rome"
-   }
-  }
+  "_obs": {}
  }
 }
