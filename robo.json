@@ -1073,12 +1073,18 @@
  },
  "o25": {
   "saldo": -15.9,
-  "ciclos": 68493,
+  "ciclos": 68494,
   "greens": 187,
   "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 68280,
+  "descartes": 68281,
   "historico": [
+   {
+    "quando": "2026-11-24T01:09:30.980Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T01:09:13.216Z",
     "resultado": "GREEN_OBS",
@@ -4672,12 +4678,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:21:14.784Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4685,7 +4685,37 @@
    "cop": 1795479931322,
    "spa": 1795480231205
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "22:14",
+     "jogo": "RAC x ATL",
+     "odd": 1.92
+    },
+    {
+     "h": "22:17",
+     "jogo": "OLI x COL",
+     "odd": 1.78
+    },
+    {
+     "h": "22:20",
+     "jogo": "IND x MEN",
+     "odd": 1.93
+    }
+   ],
+   "gatilho": "seq GGRG",
+   "alvo": {
+    "h": "22:14",
+    "jogo": "RAC x ATL",
+    "odd": 1.92,
+    "unidades": 1,
+    "desde": 1795482570975
+   },
+   "iniciadoEm": 1795482570975
+  },
   "cooldown": {
    "cam": 1795475247707,
    "eng": 1795383709617,
@@ -4698,9 +4728,9 @@
    "cop": 1795479931322
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":06",
-   "n": 22,
+   "tipo": "seq",
+   "chave": "GGRG",
+   "n": 18,
    "start": 1
   },
   "dias": {
@@ -4857,7 +4887,7 @@
     "gatilho": "odd 2.39"
    },
    "ita": {
-    "desde": 1795482553215,
+    "desde": 1795482570980,
     "gatilho": "coluna :15"
    }
   }
