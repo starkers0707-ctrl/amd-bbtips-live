@@ -1174,7 +1174,7 @@
    "tipo": "time",
    "chave": "TFG",
    "n": 8,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -1192,12 +1192,54 @@
  },
  "o25": {
   "saldo": -14.2,
-  "ciclos": 74498,
+  "ciclos": 74505,
   "greens": 208,
   "redsCiclo": 29,
   "aborts": 0,
-  "descartes": 74261,
+  "descartes": 74268,
   "historico": [
+   {
+    "quando": "2026-11-24T10:28:05.721Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:28:04.840Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:27:38.562Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:27:37.685Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:27:37.680Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:27:36.941Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:27:36.936Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T10:27:36.175Z",
     "resultado": "GREEN_OBS",
@@ -4755,48 +4797,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:55:24.245Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:55:24.239Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:55:13.358Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:55:13.349Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:55:12.261Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:55:12.255Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:55:01.868Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4807,8 +4807,8 @@
   },
   "ciclo": {
    "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "07:26",
@@ -4828,13 +4828,21 @@
    ],
    "gatilho": "seq RRGR",
    "alvo": {
-    "h": "07:26",
-    "jogo": "BHA x MNC",
-    "odd": 1.85,
-    "unidades": 1,
-    "desde": 1795515808436
+    "h": "07:28",
+    "jogo": "BRE x HUL",
+    "odd": 1.86,
+    "unidades": 2,
+    "desde": 1795516057674
    },
-   "iniciadoEm": 1795515808436
+   "iniciadoEm": 1795515808436,
+   "tiros": [
+    {
+     "h": "07:26",
+     "jogo": "BHA x MNC",
+     "odd": 1.85,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795514859782,
@@ -5012,8 +5020,12 @@
     "gatilho": "time Madrid"
    },
    "mnd": {
-    "desde": 1795516056175,
-    "gatilho": "placar empate 1-1"
+    "desde": 1795516058570,
+    "gatilho": "time MEX"
+   },
+   "ita": {
+    "desde": 1795516085720,
+    "gatilho": "odd 1.95"
    }
   }
  },
@@ -6563,7 +6575,7 @@
    "tipo": "odd",
    "chave": "1.72",
    "n": 13,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
