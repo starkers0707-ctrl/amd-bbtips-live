@@ -1249,12 +1249,18 @@
  },
  "o25": {
   "saldo": -21.8,
-  "ciclos": 77439,
+  "ciclos": 77440,
   "greens": 214,
   "redsCiclo": 31,
   "aborts": 0,
-  "descartes": 77194,
+  "descartes": 77195,
   "historico": [
+   {
+    "quando": "2026-11-24T12:26:36.784Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T12:26:36.780Z",
     "resultado": "GREEN_OBS",
@@ -4848,12 +4854,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T12:12:52.633Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4864,8 +4864,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "09:22",
@@ -4885,11 +4885,11 @@
    ],
    "gatilho": "coluna :25",
    "alvo": {
-    "h": "09:25",
-    "jogo": "Itaquera x Guayaquil",
-    "odd": 2.48,
-    "unidades": 2,
-    "desde": 1795523032846
+    "h": "09:28",
+    "jogo": "Porto Alegre x Montevideo",
+    "odd": 2.55,
+    "unidades": 4,
+    "desde": 1795523213708
    },
    "iniciadoEm": 1795522715328,
    "tiros": [
@@ -4898,6 +4898,12 @@
      "jogo": "Sao Paulo x Belo Horizonte",
      "odd": 2,
      "unidades": 1
+    },
+    {
+     "h": "09:25",
+     "jogo": "Itaquera x Guayaquil",
+     "odd": 2.48,
+     "unidades": 2
     }
    ]
   },
@@ -4914,9 +4920,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":28",
+   "chave": ":40",
    "n": 9,
-   "start": 1
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -5071,10 +5077,6 @@
    "ame": {
     "desde": 1795523032895,
     "gatilho": "coluna :28"
-   },
-   "cam": {
-    "desde": 1795523196780,
-    "gatilho": "coluna :30"
    }
   }
  },
