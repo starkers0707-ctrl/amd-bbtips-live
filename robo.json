@@ -1139,13 +1139,19 @@
   }
  },
  "o25": {
-  "saldo": -14,
-  "ciclos": 70395,
-  "greens": 197,
+  "saldo": -11.8,
+  "ciclos": 70396,
+  "greens": 198,
   "redsCiclo": 27,
   "aborts": 0,
   "descartes": 70171,
   "historico": [
+   {
+    "quando": "2026-11-24T06:34:48.858Z",
+    "resultado": "GREEN",
+    "unidades": 2.2,
+    "detalhe": "cam · Celtic x Barcelona @2.29 (tiro 3) · gatilho: time Madrid"
+   },
    {
     "quando": "2026-11-24T06:34:22.123Z",
     "resultado": "GREEN_OBS",
@@ -4739,64 +4745,15 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T05:01:01.116Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "ita": 1795498828366
+   "ita": 1795498828366,
+   "cam": 1795502088857
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "03:27",
-     "jogo": "Paris x Munich",
-     "odd": 2.01
-    },
-    {
-     "h": "03:30",
-     "jogo": "Madrid x Chelsea",
-     "odd": 2.34
-    },
-    {
-     "h": "03:33",
-     "jogo": "Celtic x Barcelona",
-     "odd": 2.29
-    }
-   ],
-   "gatilho": "time Madrid",
-   "alvo": {
-    "h": "03:33",
-    "jogo": "Celtic x Barcelona",
-    "odd": 2.29,
-    "unidades": 4,
-    "desde": 1795501908131
-   },
-   "iniciadoEm": 1795501369699,
-   "tiros": [
-    {
-     "h": "03:27",
-     "jogo": "Paris x Munich",
-     "odd": 2.01,
-     "unidades": 1
-    },
-    {
-     "h": "03:30",
-     "jogo": "Madrid x Chelsea",
-     "odd": 2.34,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
-   "cam": 1795487509896,
+   "cam": 1795502088857,
    "eng": 1795498175148,
    "ita": 1795498828366,
    "spa": 1795489711077,
@@ -4808,9 +4765,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "United",
-   "n": 8,
-   "start": 5
+   "chave": "Madrid",
+   "n": 9,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -4818,7 +4775,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -4.1
+   "2026-11-24": -1.9
   },
   "_obs": {
    "cam": {
@@ -4977,10 +4934,6 @@
    "mnd": {
     "desde": 1795488687919,
     "gatilho": "coluna :52"
-   },
-   "cam": {
-    "desde": 1795502062123,
-    "gatilho": "time United"
    }
   }
  },
