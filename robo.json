@@ -1079,12 +1079,18 @@
  },
  "o25": {
   "saldo": -12.8,
-  "ciclos": 68921,
+  "ciclos": 68922,
   "greens": 191,
   "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 68704,
+  "descartes": 68705,
   "historico": [
+   {
+    "quando": "2026-11-24T01:56:59.840Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T01:56:33.174Z",
     "resultado": "GREEN_OBS",
@@ -4678,12 +4684,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:57:37.124Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4692,7 +4692,37 @@
    "mnd": 1795485212990,
    "spa": 1795485393162
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "23:01",
+     "jogo": "Itaquera x Bogota",
+     "odd": 2.32
+    },
+    {
+     "h": "23:04",
+     "jogo": "Rio de Janeiro x Agua Branca",
+     "odd": 2.02
+    },
+    {
+     "h": "23:07",
+     "jogo": "Itaquera x Belo Horizonte",
+     "odd": 2.18
+    }
+   ],
+   "gatilho": "odd 2.02",
+   "alvo": {
+    "h": "23:01",
+    "jogo": "Itaquera x Bogota",
+    "odd": 2.32,
+    "unidades": 1,
+    "desde": 1795485419828
+   },
+   "iniciadoEm": 1795485419828
+  },
   "cooldown": {
    "cam": 1795475247707,
    "eng": 1795383709617,
@@ -4708,7 +4738,7 @@
    "tipo": "odd",
    "chave": "2.02",
    "n": 11,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -4868,7 +4898,7 @@
     "gatilho": "coluna :33"
    },
    "ame": {
-    "desde": 1795485393173,
+    "desde": 1795485419840,
     "gatilho": "odd 2.02"
    }
   }
