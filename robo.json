@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 39.3,
-  "ciclos": 208,
-  "greens": 77,
+  "saldo": 43,
+  "ciclos": 209,
+  "greens": 78,
   "redsCiclo": 32,
   "aborts": 0,
   "descartes": 99,
   "historico": [
+   {
+    "quando": "2026-11-24T15:22:00.907Z",
+    "resultado": "GREEN",
+    "unidades": 3.7,
+    "detalhe": "bra · ZEI x NAC @3.35 (tiro 2) · gatilho: odd 3.35"
+   },
    {
     "quando": "2026-11-24T14:47:35.094Z",
     "resultado": "GREEN",
@@ -1258,59 +1264,30 @@
   ],
   "consumidas": {
    "spa": 1795530275591,
-   "mnd": 1795531655094
+   "mnd": 1795531655094,
+   "bra": 1795533720907
   },
-  "ciclo": {
-   "liga": "bra",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "12:20",
-     "jogo": "GOI x GAM",
-     "odd": 3.16
-    },
-    {
-     "h": "12:23",
-     "jogo": "ZEI x NAC",
-     "odd": 3.35
-    },
-    {
-     "h": "12:26",
-     "jogo": "GTN x ATC",
-     "odd": 3.36
-    }
-   ],
-   "gatilho": "odd 3.35",
-   "alvo": {
-    "h": "12:20",
-    "jogo": "GOI x GAM",
-    "odd": 3.16,
-    "unidades": 1,
-    "desde": 1795533186290
-   },
-   "iniciadoEm": 1795533186290
-  },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795531655094,
    "lat": 1795522898324,
    "eng": 1795524337147,
    "spa": 1795530275591,
    "ita": 1795418429136,
-   "bra": 1795529558422
+   "bra": 1795533720907
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "3.35",
-   "n": 9,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":32",
+   "n": 8,
+   "start": 2
   },
   "dias": {
    "2026-11-20": 4.3,
    "2026-11-21": 11.3,
    "2026-11-22": -12.7,
    "2026-11-23": 32.3,
-   "2026-11-24": 4.1
+   "2026-11-24": 7.8
   },
   "_obs": {
    "cam": {
@@ -1320,13 +1297,85 @@
   }
  },
  "o25": {
-  "saldo": -31,
-  "ciclos": 82944,
-  "greens": 219,
+  "saldo": -30.4,
+  "ciclos": 82956,
+  "greens": 220,
   "redsCiclo": 33,
   "aborts": 0,
-  "descartes": 82692,
+  "descartes": 82703,
   "historico": [
+   {
+    "quando": "2026-11-24T15:22:02.219Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T15:22:01.610Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T15:22:01.607Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T15:22:01.601Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T15:22:01.597Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T15:22:01.593Z",
+    "resultado": "GREEN",
+    "unidades": 0.6,
+    "detalhe": "lat · COL x CIO @1.82 (tiro 2) · gatilho: time COL"
+   },
+   {
+    "quando": "2026-11-24T15:22:00.934Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T15:22:00.927Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T15:22:00.923Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T15:22:00.097Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T15:22:00.087Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T15:22:00.083Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T15:21:29.754Z",
     "resultado": "GREEN_OBS",
@@ -4854,126 +4903,48 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T15:06:17.344Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho seq GRRGG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T15:06:15.219Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :25) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T15:06:15.216Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T15:06:15.209Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T15:06:15.203Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho seq GRRGG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T15:06:07.024Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :25) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T15:06:07.021Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T15:06:07.015Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T15:06:07.011Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho seq GRRGG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T15:06:06.328Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :25) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T15:06:06.323Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T15:06:06.314Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :09) — liga REARMADA"
    }
   ],
-  "consumidas": {},
+  "consumidas": {
+   "lat": 1795533721593
+  },
   "ciclo": {
-   "liga": "lat",
-   "degrau": 1,
-   "apostado": 1,
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
    "plano": [
     {
-     "h": "12:17",
-     "jogo": "PAL x PAR",
-     "odd": 1.93
+     "h": "12:24",
+     "jogo": "Liverpool x United",
+     "odd": 2.4
     },
     {
-     "h": "12:20",
-     "jogo": "COL x CIO",
-     "odd": 1.82
+     "h": "12:27",
+     "jogo": "Porto x Madrid",
+     "odd": 2.37
     },
     {
-     "h": "12:23",
-     "jogo": "RAC x BOL",
-     "odd": 1.95
+     "h": "12:30",
+     "jogo": "Rome x Barcelona",
+     "odd": 2.17
     }
    ],
-   "gatilho": "time COL",
+   "gatilho": "time Madrid",
    "alvo": {
-    "h": "12:20",
-    "jogo": "COL x CIO",
-    "odd": 1.82,
-    "unidades": 2,
-    "desde": 1795533594212
+    "h": "12:24",
+    "jogo": "Liverpool x United",
+    "odd": 2.4,
+    "unidades": 1,
+    "desde": 1795533722215
    },
-   "iniciadoEm": 1795532649871,
-   "tiros": [
-    {
-     "h": "12:17",
-     "jogo": "PAL x PAR",
-     "odd": 1.93,
-     "unidades": 1
-    }
-   ]
+   "iniciadoEm": 1795533722215
   },
   "cooldown": {
    "cam": 1795525685704,
    "eng": 1795525806642,
    "ita": 1795526432378,
    "spa": 1795528952027,
-   "lat": 1795528666614,
+   "lat": 1795533721593,
    "bra": 1795522714636,
    "mnd": 1795517012357,
    "ame": 1795523380160,
@@ -4991,7 +4962,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -21.1
+   "2026-11-24": -20.5
   },
   "_obs": {}
  },
@@ -5130,28 +5101,30 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "lat": {
-    "desde": 1795533339054,
-    "gatilho": "time COL"
-   },
    "ame": {
     "desde": 1795533496103,
     "gatilho": "coluna :25"
    },
-   "cam": {
-    "desde": 1795533689754,
-    "gatilho": "time Madrid"
+   "eng": {
+    "desde": 1795533722219,
+    "gatilho": "coluna :26"
    }
   }
  },
  "ambas": {
-  "saldo": -25.6,
-  "ciclos": 271,
-  "greens": 110,
+  "saldo": -24.9,
+  "ciclos": 272,
+  "greens": 111,
   "redsCiclo": 15,
   "aborts": 0,
   "descartes": 146,
   "historico": [
+   {
+    "quando": "2026-11-24T15:22:01.624Z",
+    "resultado": "GREEN",
+    "unidades": 0.7,
+    "detalhe": "lat · COL x CIO @1.67 (tiro 1) · gatilho: time COL"
+   },
    {
     "quando": "2026-11-24T15:17:16.367Z",
     "resultado": "GREEN",
@@ -6780,41 +6753,12 @@
    }
   ],
   "consumidas": {
-   "cop": 1795533436367
+   "cop": 1795533436367,
+   "lat": 1795533721624
   },
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "12:20",
-     "jogo": "COL x CIO",
-     "odd": 1.67
-    },
-    {
-     "h": "12:23",
-     "jogo": "RAC x BOL",
-     "odd": 1.72
-    },
-    {
-     "h": "12:26",
-     "jogo": "THI x NAC",
-     "odd": 1.68
-    }
-   ],
-   "gatilho": "time COL",
-   "alvo": {
-    "h": "12:20",
-    "jogo": "COL x CIO",
-    "odd": 1.67,
-    "unidades": 1,
-    "desde": 1795533453251
-   },
-   "iniciadoEm": 1795533453251
-  },
+  "ciclo": null,
   "cooldown": {
-   "lat": 1795528666648,
+   "lat": 1795533721624,
    "eng": 1795524811381,
    "spa": 1795506559992,
    "bra": 1795526496634,
@@ -6827,14 +6771,14 @@
    "tipo": "time",
    "chave": "COL",
    "n": 21,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
-   "2026-11-24": -27
+   "2026-11-24": -26.3
   },
   "_obs": {}
  }
