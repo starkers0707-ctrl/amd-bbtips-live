@@ -148,26 +148,36 @@
   /* Metricas que somam pontos: calculadas na linha (% de acerto em janela de 20)
      do mercado da entrada, com os jogos reais da liga. */
   var COMPANION={'Over 0.5':'Over 1.5','Over 1.5':'Ambas Marcam (Sim)','Over 2.5':'Over 1.5','Over 3.5':'Over 2.5','Ambas Marcam (Sim)':'Over 2.5','Under 2.5':'Under 3.5','Under 1.5':'Under 2.5','Under 3.5':'Under 2.5'};
-  function lineSeries(all,market,win){
+  /* Mesma linha do grafico do site: % acumulada do mercado desde 00h
+     (horario de Brasilia, que a grade grava como UTC). Com poucos jogos no
+     dia, usa as ultimas 6h para nao ficar instavel. */
+  function lineSeries(all,market){
     var done=all.filter(function(g){return g.resultado_ft;}).sort(function(a,b){return orderValue(a)-orderValue(b);});
-    var hits=done.map(function(g){return marketMatches(market,g)?1:0;}),out=[],sum=0;
-    for(var i=0;i<hits.length;i++){sum+=hits[i];if(i>=win)sum-=hits[i-win];if(i>=win-1)out.push(sum/win*100);}
+    if(!done.length)return {line:[],hits:[]};
+    var last=new Date(orderValue(done[done.length-1])),dia=Date.UTC(last.getUTCFullYear(),last.getUTCMonth(),last.getUTCDate());
+    var hoje=done.filter(function(g){return orderValue(g)>=dia;});
+    if(hoje.length<40)hoje=done.filter(function(g){return orderValue(g)>=orderValue(done[done.length-1])-6*3600000;});
+    var hits=hoje.map(function(g){return marketMatches(market,g)?1:0;}),out=[],sum=0;
+    for(var i=0;i<hits.length;i++){sum+=hits[i];out.push(sum/(i+1)*100);}
     return {line:out,hits:hits};
   }
+  function sma(arr,n){var out=[],s=0;for(var i=0;i<arr.length;i++){s+=arr[i];if(i>=n)s-=arr[i-n];out.push(i>=n-1?s/n:null);}return out;}
   function ema(arr,n){var k=2/(n+1),e=arr[0],res=[];for(var i=0;i<arr.length;i++){e=i?arr[i]*k+e*(1-k):arr[i];res.push(e);}return res;}
   function rising(line,back){var n=line.length;return n>back&&line[n-1]>line[n-1-back];}
   function metricState(robot,data,league,market){
-    var s=lineSeries(data[league]||[],market,20),line=s.line,n=line.length;
-    if(n<12)return null;
-    var avg=s.hits.reduce(function(a,b){return a+b;},0)/s.hits.length*100;
-    var m=ema(line,6),l=ema(line,18),gains=0,losses=0;
+    var s=lineSeries(data[league]||[],market),line=s.line,n=line.length;
+    if(n<25)return null;
+    var m9=sma(line,9),m21=sma(line,21),L=n-1;
+    var e12=ema(line,12),e26=ema(line,26),gains=0,losses=0;
     for(var i=Math.max(1,n-14);i<n;i++){var d=line[i]-line[i-1];if(d>0)gains+=d;else losses-=d;}
     var rsi=gains+losses?100*gains/(gains+losses):50;
-    var up=rising(line,5),others=false;
-    Object.keys(data).forEach(function(other){if(other===league)return;var o=lineSeries(data[other]||[],market,20).line;if(o.length>6&&!rising(o,5))others=true;});
-    var comp=COMPANION[market]||'Over 2.5',cl=lineSeries(data[league]||[],comp,20).line;
-    return {subida:up,media:line[n-1]>avg,macd:m[n-1]-l[n-1]>0,rsi:rsi>=45&&rsi<=70,ligas:up&&others,confirmacao:rising(cl,5),
-      linha:Math.round(line[n-1]),mediaHist:Math.round(avg)};
+    /* subindo = media 9 acima da 21 (depois do Golden e antes do Death) e a 9 nao caindo */
+    var up=m9[L]!=null&&m21[L]!=null&&m9[L]>m21[L]&&m9[L]>=m9[L-1];
+    var others=false;
+    Object.keys(data).forEach(function(other){if(other===league)return;var o=lineSeries(data[other]||[],market).line,k=o.length-1;if(k<25)return;var a9=sma(o,9),a21=sma(o,21);if(a9[k]<a21[k])others=true;});
+    var comp=COMPANION[market]||'Over 2.5',cl=lineSeries(data[league]||[],comp).line,c9=sma(cl,9),c21=sma(cl,21),cL=cl.length-1;
+    return {subida:up,media:line[L]>m21[L],macd:e12[L]-e26[L]>0,rsi:rsi>=45&&rsi<=70,ligas:up&&others,confirmacao:cL>=21&&c9[cL]>c21[cL],
+      linha:Math.round(line[L]*10)/10,mediaHist:Math.round(m21[L]*10)/10};
   }
   function metricsPass(robot,data,league,market){
     var rules=(robot.metrics||[]).filter(function(r){return r.use;}),threshold=Number(robot.threshold);
@@ -177,7 +187,7 @@
     var max=0,pts=0,mandatoryFail=false;
     rules.forEach(function(r){max+=Number(r.weight)||0;var hit=!!st[r.key]===!!r.expected;if(hit)pts+=Number(r.weight)||0;else if(r.key==='subida'&&r.expected)mandatoryFail=true;});
     var pct=max?Math.round(pts/max*100):0;
-    return {ok:!mandatoryFail&&pct>=threshold,pct:pct,text:'métricas '+pct+'/100 · linha '+st.linha+'% (média '+st.mediaHist+'%)'};
+    return {ok:!mandatoryFail&&pct>=threshold,pct:pct,text:'métricas '+pct+'/100 · gráfico '+st.linha+'% (MM21 '+st.mediaHist+'%)'};
   }
   function hasOpenCycle(signals, robotId, league) {
     return signals.some(function(signal){
