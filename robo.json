@@ -1067,7 +1067,37 @@
   "consumidas": {
    "mnd": 1795498531922
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:02",
+     "jogo": "EVE x NOT",
+     "odd": 3.36
+    },
+    {
+     "h": "04:04",
+     "jogo": "ARS x MNC",
+     "odd": 3.38
+    },
+    {
+     "h": "04:06",
+     "jogo": "CRY x FUL",
+     "odd": 3.33
+    }
+   ],
+   "gatilho": "odd 3.36",
+   "alvo": {
+    "h": "04:02",
+    "jogo": "EVE x NOT",
+    "odd": 3.36,
+    "unidades": 1,
+    "desde": 1795500726038
+   },
+   "iniciadoEm": 1795500726038
+  },
   "cooldown": {
    "mnd": 1795498531922,
    "lat": 1795442097655,
@@ -1077,8 +1107,8 @@
    "bra": 1795434720469
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "0-0",
+   "tipo": "odd",
+   "chave": "3.36",
    "n": 10,
    "start": 1
   },
@@ -1098,12 +1128,24 @@
  },
  "o25": {
   "saldo": -14,
-  "ciclos": 70321,
+  "ciclos": 70323,
   "greens": 197,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 70097,
+  "descartes": 70099,
   "historico": [
+   {
+    "quando": "2026-11-24T06:12:06.060Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T06:12:04.246Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T06:12:03.424Z",
     "resultado": "GREEN_OBS",
@@ -4691,18 +4733,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T04:51:16.132Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T04:51:14.036Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4924,7 +4954,7 @@
     "gatilho": "coluna :52"
    },
    "cam": {
-    "desde": 1795500723424,
+    "desde": 1795500726059,
     "gatilho": "time Madrid"
    }
   }
