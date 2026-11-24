@@ -1231,12 +1231,30 @@
  },
  "o25": {
   "saldo": -24.5,
-  "ciclos": 76441,
+  "ciclos": 76444,
   "greens": 211,
   "redsCiclo": 31,
   "aborts": 0,
-  "descartes": 76199,
+  "descartes": 76202,
   "historico": [
+   {
+    "quando": "2026-11-24T11:59:31.644Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:59:31.641Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:59:31.637Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T11:59:13.991Z",
     "resultado": "GREEN_OBS",
@@ -4818,24 +4836,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:30:08.665Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:30:01.839Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:30:01.832Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5050,7 +5050,7 @@
   },
   "_obs": {
    "ame": {
-    "desde": 1795521553990,
+    "desde": 1795521571644,
     "gatilho": "odd 2.24"
    }
   }
@@ -6663,10 +6663,10 @@
    "ame": 1795510421878
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":20",
-   "n": 8,
-   "start": 6
+   "tipo": "time",
+   "chave": "PAR",
+   "n": 15,
+   "start": 8
   },
   "dias": {
    "2026-11-20": 0,
