@@ -4765,7 +4765,37 @@
    "cam": 1795506066906,
    "spa": 1795506270848
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:58",
+     "jogo": "LEE x TOT",
+     "odd": 1.95
+    },
+    {
+     "h": "05:00",
+     "jogo": "COV x MNC",
+     "odd": 1.79
+    },
+    {
+     "h": "05:02",
+     "jogo": "CRY x HUL",
+     "odd": 1.9
+    }
+   ],
+   "gatilho": "time MNC",
+   "alvo": {
+    "h": "04:58",
+    "jogo": "LEE x TOT",
+    "odd": 1.95,
+    "unidades": 1,
+    "desde": 1795506292697
+   },
+   "iniciadoEm": 1795506292697
+  },
   "cooldown": {
    "cam": 1795506066906,
    "eng": 1795498175148,
@@ -4779,9 +4809,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "RAY",
-   "n": 12,
-   "start": 3
+   "chave": "MNC",
+   "n": 9,
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -4948,10 +4978,6 @@
    "ita": {
     "desde": 1795505860230,
     "gatilho": "time LEC"
-   },
-   "cam": {
-    "desde": 1795506270867,
-    "gatilho": "time United"
    }
   }
  },
@@ -6387,7 +6413,7 @@
    "tipo": "time",
    "chave": "VIL",
    "n": 13,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
