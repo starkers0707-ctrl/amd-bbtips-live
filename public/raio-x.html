@@ -79,6 +79,18 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
     };
   }
   var MR=9,ML=21;
+  /* Leitura honesta do dia: anda jogo a jogo e em cada ponto usa SO o que ja tinha
+     acontecido. Compara o sinal com entrar em qualquer momento (o acaso). */
+  function leitura(p,mk,tiros,filtro){
+    var dia=String(p[p.length-1].slot_em).slice(0,10),h=p.filter(function(g){return String(g.slot_em).slice(0,10)===dia;});
+    var off=p.length-h.length,hit=h.map(function(g){return bate(mk,g)?1:0;}),s=0;
+    var dl=hit.map(function(x,i){s+=x;return s/(i+1);}),w1=serieJanela(p,mk,1),w2=serieJanela(p,mk,2);
+    var sinal=filtro==='com'?montaFiltro(p,h,mk,tiros):function(i){return sobeEm(dl,i)&&sobeEm(w1,off+i)&&sobeEm(w2,off+i);};
+    var rapida=function(i){if(i<8)return false;var c=0;for(var k=i-7;k<=i;k++)c+=hit[k];return c/8>dl[i]+.1&&sobeEm(dl,i);};
+    function conta(passa){var c=ciclos(hit,ML+3,hit.length-1,tiros,passa),g=c.filter(function(x){return x.ok;}).length;
+      return {n:c.length,g:g,r:c.length-g,pct:c.length?g/c.length*100:0,lista:c.slice(-5).reverse().map(function(x){return {h:hm(h[x.i]),ok:x.ok,t:x.tiro};})};}
+    return {sinal:conta(sinal),rapida:conta(rapida),base:conta(null)};
+  }
   async function liga(l,mk,tiros,base,filtro){
     var r=await fetch('/api/grade?liga='+l+'&horas=24&compacto=1&_='+Date.now(),{credentials:'same-origin',cache:'no-store'});
     if(!r.ok)return null;
@@ -110,7 +122,8 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
     var acum=hojeArr.map(function(g,i){sd+=bate(mk,g)?1:0;return sd/(i+1);});
     var b1=sobeEm(serieJanela(p,mk,1),p.length-1),b2=sobeEm(serieJanela(p,mk,2),p.length-1),b0=sobeEm(acum,acum.length-1);
     var todas=b1&&b2&&b0;
-    var res={b1:b1,b2:b2,b0:b0,todas:todas,n:n,linha:line[L],m9:m9[L],m21:m21[L],subindo:atual.up,forca:m9[L]>=m9[L-1],desde:hm(h[atual.ini]),jogos:atual.fim-atual.ini+1,subidas:subidas,tot:tot,semRed:semRed};
+    var lt=leitura(p,mk,tiros,filtro);
+    var res={lt:lt,b1:b1,b2:b2,b0:b0,todas:todas,n:n,linha:line[L],m9:m9[L],m21:m21[L],subindo:atual.up,forca:m9[L]>=m9[L-1],desde:hm(h[atual.ini]),jogos:atual.fim-atual.ini+1,subidas:subidas,tot:tot,semRed:semRed};
     if(atual.up){
       var gs=h.slice(atual.ini),times={},cols={},odds=[];
       gs.forEach(function(g){var ok=bate(mk,g);[g.time_a,g.time_b].forEach(function(t){var x=times[t]||(times[t]=[0,0]);x[0]++;if(ok)x[1]++;});
@@ -154,6 +167,11 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
           '<div style="margin-top:6px"><span class="vazio">Colunas 100%: </span><span class="chips">'+(d.cols.length?d.cols.map(function(c){return '<i>'+c+'</i>';}).join(''):'<span class="vazio">—</span>')+'</span></div>'+
           '<div style="margin-top:6px" class="vazio">Odd média dos que pagaram: <b>'+(d.odd?d.odd.toFixed(2):'—')+'</b></div></div>';
       }
+      var lt=d.lt,ln=function(nm,x){return '<tr><td>'+nm+'</td><td>'+x.n+' entr. · <span class="ok">'+x.g+' G</span> <span class="bad">'+x.r+' R</span> · <b>'+Math.round(x.pct)+'%</b></td></tr>';};
+      var dif=lt.sinal.pct-lt.base.pct,ver=lt.sinal.n<8?'<span class="vazio">Poucos sinais hoje para concluir.</span>':dif>=5?'<span class="ok">Hoje a leitura está ajudando: +'+Math.round(dif)+' pontos sobre o acaso.</span>':dif<=-5?'<span class="bad">Hoje a leitura está pior que o acaso ('+Math.round(dif)+' pontos). Não confie nela hoje.</span>':'<span class="warn">Hoje a leitura não está fazendo diferença (igual ao acaso).</span>';
+      h+='<div class="box"><h4>LEITURA DE HOJE · SEM OLHAR O FUTURO</h4><table>'+ln('Sinal SUBINDO (3 bases'+(filtro==='com'?' + filtro':'')+')',lt.sinal)+ln('Leitura rápida (últ. 8 jogos)',lt.rapida)+ln('Qualquer momento (acaso)',lt.base)+'</table>'+
+        '<div style="margin-top:6px">'+ver+'</div>'+
+        (lt.sinal.lista.length?'<div style="margin-top:6px" class="vazio">Últimos sinais: '+lt.sinal.lista.map(function(x){return x.h+' '+(x.ok?'<span class="ok">G'+x.t+'</span>':'<span class="bad">RED</span>');}).join(' · ')+'</div>':'')+'</div>';
       var ult=d.subidas.slice(-4).reverse();
       h+='<div class="box"><h4>ÚLTIMAS SUBIDAS</h4>'+(ult.length?'<table>'+ult.map(function(f,ix){return '<tr><td>'+(ix===0&&d.subindo?'▶ ':'')+f.cic.length+' entradas · '+(f.fim-f.ini+1)+' jogos</td><td><span class="ok">'+f.g+' G</span> · <span class="bad">'+f.r+' R</span></td></tr>';}).join('')+'</table>':'<span class="vazio">nenhuma ainda</span>')+'</div>';
       return h+'</article>';
