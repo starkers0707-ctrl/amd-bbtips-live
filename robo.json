@@ -1079,12 +1079,24 @@
  },
  "o25": {
   "saldo": -14.6,
-  "ciclos": 68721,
+  "ciclos": 68723,
   "greens": 189,
   "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 68506,
+  "descartes": 68508,
   "historico": [
+   {
+    "quando": "2026-11-24T01:40:32.792Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho seq GRGRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T01:40:23.332Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T01:40:23.327Z",
     "resultado": "GREEN_OBS",
@@ -4672,18 +4684,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:44:31.636Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.78) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:44:31.631Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4900,19 +4900,25 @@
     "gatilho": "odd 2.02"
    },
    "spa": {
-    "desde": 1795484423327,
-    "gatilho": "seq RGRGR"
+    "desde": 1795484432792,
+    "gatilho": "seq GRGRG"
    }
   }
  },
  "ambas": {
   "saldo": -1.2,
-  "ciclos": 202,
+  "ciclos": 203,
   "greens": 86,
   "redsCiclo": 9,
   "aborts": 0,
-  "descartes": 107,
+  "descartes": 108,
   "historico": [
+   {
+    "quando": "2026-11-24T01:40:23.351Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "cam · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-24T01:02:28.615Z",
     "resultado": "GREEN",
@@ -6130,37 +6136,7 @@
    "cop": 1795480860011,
    "ame": 1795482148615
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "22:48",
-     "jogo": "Barcelona x Madrid",
-     "odd": 1.92
-    },
-    {
-     "h": "22:51",
-     "jogo": "Rome x Liverpool",
-     "odd": 1.88
-    },
-    {
-     "h": "22:54",
-     "jogo": "Paris x City",
-     "odd": 1.82
-    }
-   ],
-   "gatilho": "odd 1.88",
-   "alvo": {
-    "h": "22:48",
-    "jogo": "Barcelona x Madrid",
-    "odd": 1.92,
-    "unidades": 1,
-    "desde": 1795483516336
-   },
-   "iniciadoEm": 1795483516336
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
