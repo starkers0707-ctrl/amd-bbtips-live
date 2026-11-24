@@ -1212,12 +1212,30 @@
  },
  "o25": {
   "saldo": -26,
-  "ciclos": 76116,
+  "ciclos": 76119,
   "greens": 210,
   "redsCiclo": 31,
   "aborts": 0,
-  "descartes": 75875,
+  "descartes": 75878,
   "historico": [
+   {
+    "quando": "2026-11-24T11:42:17.093Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :58) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:42:17.091Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T11:42:17.089Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T11:42:15.085Z",
     "resultado": "GREEN_OBS",
@@ -4799,24 +4817,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :30) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:11:11.361Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:11:11.353Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho seq RRGG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T11:11:10.428Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5023,7 +5023,7 @@
   },
   "_obs": {
    "ame": {
-    "desde": 1795520535085,
+    "desde": 1795520537093,
     "gatilho": "coluna :58"
    }
   }
@@ -6588,7 +6588,37 @@
   "consumidas": {
    "cop": 1795519905683
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "08:58",
+     "jogo": "BOU x BRE",
+     "odd": 1.7
+    },
+    {
+     "h": "09:00",
+     "jogo": "LIV x CHE",
+     "odd": 1.73
+    },
+    {
+     "h": "09:02",
+     "jogo": "MNU x LEE",
+     "odd": 1.77
+    }
+   ],
+   "gatilho": "odd 1.73",
+   "alvo": {
+    "h": "08:58",
+    "jogo": "BOU x BRE",
+    "odd": 1.7,
+    "unidades": 1,
+    "desde": 1795520535099
+   },
+   "iniciadoEm": 1795520535099
+  },
   "cooldown": {
    "lat": 1795509212287,
    "eng": 1795516789061,
@@ -6600,10 +6630,10 @@
    "ame": 1795510421878
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":36",
-   "n": 8,
-   "start": 1
+   "tipo": "odd",
+   "chave": "1.73",
+   "n": 14,
+   "start": 8
   },
   "dias": {
    "2026-11-20": 0,
