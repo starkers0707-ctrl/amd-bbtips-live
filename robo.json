@@ -1402,12 +1402,30 @@
  },
  "o25": {
   "saldo": -27.5,
-  "ciclos": 91876,
+  "ciclos": 91879,
   "greens": 243,
   "redsCiclo": 36,
   "aborts": 0,
-  "descartes": 91597,
+  "descartes": 91600,
   "historico": [
+   {
+    "quando": "2026-11-24T22:13:44.595Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.2) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T22:13:44.586Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T22:13:44.580Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T22:13:44.576Z",
     "resultado": "RED_CICLO",
@@ -4989,24 +5007,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:43:02.721Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:43:02.714Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:43:02.710Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5016,7 +5016,37 @@
    "ita": 1795557394497,
    "cam": 1795558424565
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "19:17",
+     "jogo": "LEV x GET",
+     "odd": 1.92
+    },
+    {
+     "h": "19:19",
+     "jogo": "SEV x ATM",
+     "odd": 1.84
+    },
+    {
+     "h": "19:21",
+     "jogo": "MLG x VAL",
+     "odd": 1.87
+    }
+   ],
+   "gatilho": "odd 1.84",
+   "alvo": {
+    "h": "19:17",
+    "jogo": "LEV x GET",
+    "odd": 1.92,
+    "unidades": 1,
+    "desde": 1795558440530
+   },
+   "iniciadoEm": 1795558440530
+  },
   "cooldown": {
    "cam": 1795558424565,
    "eng": 1795555531159,
@@ -5029,10 +5059,10 @@
    "cop": 1795556284523
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":30",
-   "n": 19,
-   "start": 4
+   "tipo": "odd",
+   "chave": "1.84",
+   "n": 10,
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
