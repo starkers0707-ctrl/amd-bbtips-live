@@ -1410,12 +1410,24 @@
  },
  "o25": {
   "saldo": -32.6,
-  "ciclos": 92963,
+  "ciclos": 92965,
   "greens": 245,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 92681,
+  "descartes": 92683,
   "historico": [
+   {
+    "quando": "2026-11-24T23:13:52.572Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T23:13:41.105Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :30) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T23:13:41.098Z",
     "resultado": "GREEN_OBS",
@@ -5003,27 +5015,44 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:39:05.005Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:39:04.998Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "cam": 1795558424565,
    "spa": 1795558949660,
    "eng": 1795559254294,
    "ame": 1795561403616
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "20:27",
+     "jogo": "Paris x Milan",
+     "odd": 2.12
+    },
+    {
+     "h": "20:30",
+     "jogo": "Amsterdam x Barcelona",
+     "odd": 2.54
+    },
+    {
+     "h": "20:33",
+     "jogo": "Dortmund x Liverpool",
+     "odd": 2.38
+    }
+   ],
+   "gatilho": "coluna :30",
+   "alvo": {
+    "h": "20:27",
+    "jogo": "Paris x Milan",
+    "odd": 2.12,
+    "unidades": 1,
+    "desde": 1795562032554
+   },
+   "iniciadoEm": 1795562032554
+  },
   "cooldown": {
    "cam": 1795558424565,
    "eng": 1795559254294,
@@ -5036,10 +5065,10 @@
    "cop": 1795556284523
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "GRGRR",
-   "n": 9,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":30",
+   "n": 20,
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -5190,9 +5219,9 @@
     "desde": 1795559174407,
     "gatilho": "odd 2.64"
    },
-   "spa": {
-    "desde": 1795562021098,
-    "gatilho": "coluna :23"
+   "eng": {
+    "desde": 1795562032572,
+    "gatilho": "coluna :26"
    }
   }
  },
