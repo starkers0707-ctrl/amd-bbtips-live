@@ -1152,12 +1152,24 @@
  },
  "o25": {
   "saldo": -15.7,
-  "ciclos": 71861,
+  "ciclos": 71863,
   "greens": 201,
   "redsCiclo": 28,
   "aborts": 0,
-  "descartes": 71632,
+  "descartes": 71634,
   "historico": [
+   {
+    "quando": "2026-11-24T08:12:22.701Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Itaquera) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T08:12:22.698Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time United) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T08:12:11.112Z",
     "resultado": "GREEN_OBS",
@@ -4745,18 +4757,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time GEN) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:48:06.973Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:48:06.966Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time RAY) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4980,19 +4980,25 @@
     "gatilho": "odd 1.95"
    },
    "ame": {
-    "desde": 1795507931112,
+    "desde": 1795507942701,
     "gatilho": "time Itaquera"
    }
   }
  },
  "ambas": {
   "saldo": -6.7,
-  "ciclos": 232,
+  "ciclos": 233,
   "greens": 97,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 124,
+  "descartes": 125,
   "historico": [
+   {
+    "quando": "2026-11-24T08:12:11.127Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "ame · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-24T07:55:51.773Z",
     "resultado": "GREEN",
@@ -6391,37 +6397,7 @@
    "spa": 1795506559992,
    "cop": 1795506951773
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "05:16",
-     "jogo": "Quito x Belo Horizonte",
-     "odd": 1.83
-    },
-    {
-     "h": "05:19",
-     "jogo": "Itaquera x Porto Alegre",
-     "odd": 2.19
-    },
-    {
-     "h": "05:22",
-     "jogo": "La Boca x Montevideo",
-     "odd": 1.98
-    }
-   ],
-   "gatilho": "time Itaquera",
-   "alvo": {
-    "h": "05:16",
-    "jogo": "Quito x Belo Horizonte",
-    "odd": 1.83,
-    "unidades": 1,
-    "desde": 1795507030177
-   },
-   "iniciadoEm": 1795507030177
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795497681687,
    "eng": 1795493011900,
