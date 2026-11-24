@@ -1164,12 +1164,30 @@
  },
  "o25": {
   "saldo": -11,
-  "ciclos": 72666,
+  "ciclos": 72669,
   "greens": 204,
   "redsCiclo": 28,
   "aborts": 0,
-  "descartes": 72434,
+  "descartes": 72437,
   "historico": [
+   {
+    "quando": "2026-11-24T08:54:07.096Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T08:54:07.081Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T08:53:41.856Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T08:53:41.847Z",
     "resultado": "GREEN_OBS",
@@ -4751,24 +4769,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time ALV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T08:22:07.309Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T08:21:41.354Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T08:21:41.345Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time ALV) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4957,20 +4957,30 @@
     "desde": 1795507435340,
     "gatilho": "time MNC"
    },
-   "ita": {
-    "desde": 1795510421847,
-    "gatilho": "odd 1.95"
+   "ame": {
+    "desde": 1795510421860,
+    "gatilho": "time Itaquera"
+   },
+   "cam": {
+    "desde": 1795510447095,
+    "gatilho": "time Madrid"
    }
   }
  },
  "ambas": {
-  "saldo": -5.9,
-  "ciclos": 238,
+  "saldo": -12.9,
+  "ciclos": 239,
   "greens": 98,
-  "redsCiclo": 11,
+  "redsCiclo": 12,
   "aborts": 0,
   "descartes": 129,
   "historico": [
+   {
+    "quando": "2026-11-24T08:53:41.878Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "ame · ciclo perdido (3 tiros) · gatilho: time Asuncion"
+   },
    {
     "quando": "2026-11-24T08:51:32.363Z",
     "resultado": "GREEN_OBS",
@@ -6402,53 +6412,10 @@
   ],
   "consumidas": {
    "cop": 1795506951773,
-   "lat": 1795509212287
+   "lat": 1795509212287,
+   "ame": 1795510421878
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "05:46",
-     "jogo": "Santos x Belo Horizonte",
-     "odd": 1.85
-    },
-    {
-     "h": "05:49",
-     "jogo": "Porto Alegre x Asuncion",
-     "odd": 2.04
-    },
-    {
-     "h": "05:52",
-     "jogo": "Sao Paulo x Medellin",
-     "odd": 1.92
-    }
-   ],
-   "gatilho": "time Asuncion",
-   "alvo": {
-    "h": "05:52",
-    "jogo": "Sao Paulo x Medellin",
-    "odd": 1.92,
-    "unidades": 4,
-    "desde": 1795510253506
-   },
-   "iniciadoEm": 1795509213115,
-   "tiros": [
-    {
-     "h": "05:46",
-     "jogo": "Santos x Belo Horizonte",
-     "odd": 1.85,
-     "unidades": 1
-    },
-    {
-     "h": "05:49",
-     "jogo": "Porto Alegre x Asuncion",
-     "odd": 2.04,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795509212287,
    "eng": 1795493011900,
@@ -6457,7 +6424,7 @@
    "mnd": 1795496979458,
    "cam": 1795505142768,
    "cop": 1795506951773,
-   "ame": 1795499990275
+   "ame": 1795510421878
   },
   "_gatilhoAtual": {
    "tipo": "time",
@@ -6470,7 +6437,7 @@
    "2026-11-21": 2,
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
-   "2026-11-24": -7.3
+   "2026-11-24": -14.3
   },
   "_obs": {}
  }
