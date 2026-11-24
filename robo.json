@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 59.4,
-  "ciclos": 218,
+  "saldo": 52.4,
+  "ciclos": 219,
   "greens": 83,
-  "redsCiclo": 32,
+  "redsCiclo": 33,
   "aborts": 0,
   "descartes": 103,
   "historico": [
+   {
+    "quando": "2026-11-24T18:30:33.980Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "spa · ciclo perdido (3 tiros) · gatilho: seq RRGRG"
+   },
    {
     "quando": "2026-11-24T18:15:48.811Z",
     "resultado": "GREEN",
@@ -1317,58 +1323,15 @@
    }
   ],
   "consumidas": {
-   "bra": 1795544148811
+   "bra": 1795544148811,
+   "spa": 1795545033980
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "15:25",
-     "jogo": "ELC x SEV",
-     "odd": 3.37
-    },
-    {
-     "h": "15:27",
-     "jogo": "DLC x RSO",
-     "odd": 3.35
-    },
-    {
-     "h": "15:29",
-     "jogo": "BAR x RST",
-     "odd": 2.78
-    }
-   ],
-   "gatilho": "seq RRGRG",
-   "alvo": {
-    "h": "15:29",
-    "jogo": "BAR x RST",
-    "odd": 2.78,
-    "unidades": 4,
-    "desde": 1795544914427
-   },
-   "iniciadoEm": 1795544547718,
-   "tiros": [
-    {
-     "h": "15:25",
-     "jogo": "ELC x SEV",
-     "odd": 3.37,
-     "unidades": 1
-    },
-    {
-     "h": "15:27",
-     "jogo": "DLC x RSO",
-     "odd": 3.35,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795536330753,
    "lat": 1795522898324,
    "eng": 1795539214389,
-   "spa": 1795535304783,
+   "spa": 1795545033980,
    "ita": 1795418429136,
    "bra": 1795544148811
   },
@@ -1383,7 +1346,7 @@
    "2026-11-21": 11.3,
    "2026-11-22": -12.7,
    "2026-11-23": 32.3,
-   "2026-11-24": 24.2
+   "2026-11-24": 17.2
   },
   "_obs": {
    "cam": {
@@ -1394,12 +1357,72 @@
  },
  "o25": {
   "saldo": -27.2,
-  "ciclos": 86828,
+  "ciclos": 86838,
   "greens": 231,
   "redsCiclo": 34,
   "aborts": 0,
-  "descartes": 86563,
+  "descartes": 86573,
   "historico": [
+   {
+    "quando": "2026-11-24T18:30:36.495Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :33) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T18:30:36.488Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T18:30:33.998Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :33) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T18:30:33.992Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T18:30:33.429Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :33) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T18:30:33.423Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T18:30:32.747Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :33) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T18:30:32.737Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T18:30:32.131Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :33) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T18:30:32.123Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :39) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T18:30:29.705Z",
     "resultado": "GREEN_OBS",
@@ -4939,66 +4962,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:07:02.641Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:07:02.637Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:07:02.630Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:06:54.829Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:06:54.819Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:06:54.810Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:06:51.245Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:06:51.242Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:06:51.234Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T18:06:44.627Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5205,7 +5168,7 @@
     "gatilho": "coluna :26"
    },
    "cam": {
-    "desde": 1795545029704,
+    "desde": 1795545036495,
     "gatilho": "coluna :33"
    }
   }
