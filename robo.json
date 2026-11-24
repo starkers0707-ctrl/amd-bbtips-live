@@ -1128,12 +1128,18 @@
  },
  "o25": {
   "saldo": -14,
-  "ciclos": 70348,
+  "ciclos": 70349,
   "greens": 197,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 70124,
+  "descartes": 70125,
   "historico": [
+   {
+    "quando": "2026-11-24T06:21:32.619Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T06:21:17.678Z",
     "resultado": "GREEN_OBS",
@@ -4727,12 +4733,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T04:54:32.646Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4952,10 +4952,6 @@
    "mnd": {
     "desde": 1795488687919,
     "gatilho": "coluna :52"
-   },
-   "cam": {
-    "desde": 1795501277677,
-    "gatilho": "time Madrid"
    }
   }
  },
@@ -6283,7 +6279,6 @@
    }
   ],
   "consumidas": {
-   "lat": 1795497681687,
    "ame": 1795499990275,
    "cop": 1795501009716
   },
@@ -6329,10 +6324,10 @@
    "ame": 1795499990275
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "Madrid",
-   "n": 8,
-   "start": 2
+   "tipo": "odd",
+   "chave": "1.77",
+   "n": 11,
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
