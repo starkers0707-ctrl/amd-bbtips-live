@@ -1041,7 +1041,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "22:32",
+     "jogo": "COV x AST",
+     "odd": 3.15
+    },
+    {
+     "h": "22:34",
+     "jogo": "MNU x HUL",
+     "odd": 2.86
+    },
+    {
+     "h": "22:36",
+     "jogo": "CRY x BOU",
+     "odd": 3.3
+    }
+   ],
+   "gatilho": "seq GGRGR",
+   "alvo": {
+    "h": "22:32",
+    "jogo": "COV x AST",
+    "odd": 3.15,
+    "unidades": 1,
+    "desde": 1795483775034
+   },
+   "iniciadoEm": 1795483775034
+  },
   "cooldown": {
    "mnd": 1795479336021,
    "lat": 1795442097655,
@@ -1051,9 +1081,9 @@
    "bra": 1795434720469
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.96",
-   "n": 9,
+   "tipo": "seq",
+   "chave": "GGRGR",
+   "n": 10,
    "start": 1
   },
   "dias": {
@@ -6154,8 +6184,8 @@
   "_gatilhoAtual": {
    "tipo": "odd",
    "chave": "1.88",
-   "n": 14,
-   "start": 8
+   "n": 15,
+   "start": 6
   },
   "dias": {
    "2026-11-20": 0,
