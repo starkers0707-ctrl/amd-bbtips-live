@@ -683,6 +683,16 @@
       return;
     }
     var robots = readJson(ROBOTS_KEY);
+    var assinatura = function (r) {
+      return JSON.stringify([(r.leagues || []).slice().sort(), r.entryMarket, Number(r.shots || 1), r.destino || 'todos',
+        (r.pattern || []).map(function (p) { return [p.row, p.column, p.markType, p.market, p.entryMarket || '', p.scoreA || '', p.scoreB || '', p.teamA || '', p.teamB || '', p.oddMin || '', p.oddMax || '', p.minuteOp || '', p.minuteFrom || '', p.minuteTo || '']; })
+          .sort(function (x, y) { return (x[0] - y[0]) || (x[1] - y[1]); })]);
+    };
+    var repetido = robots.find(function (item) { return item.id !== robot.id && assinatura(item) === assinatura(robot); });
+    if (repetido) {
+      showToast('Já existe um robô igual: "' + (repetido.name || 'sem nome') + '". Edite esse em vez de criar outro.');
+      return;
+    }
     var index = robots.findIndex(function (item) { return item.id === robot.id; });
     if (index >= 0 && robots[index].active && robot.active) robot.activatedAt = robots[index].activatedAt || robots[index].updatedAt;
     if (index >= 0) robots[index] = robot;

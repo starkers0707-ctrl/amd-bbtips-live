@@ -654,6 +654,11 @@ async function robosTick() {
           const mp = RM.metricsPass(robot, data, liga, mk); if (!mp.ok) continue;
           const key = [robot.id, liga, match.row, RM.gameKey(match.trigger), up.id || up.slot_em].join("|");
           if (st.sent.includes(key)) continue;
+          // Robos iguais (mesma liga, mercado, gatilho, jogo e destino) mandam uma vez so.
+          const igual = [liga, mk, RM.gameKey(match.trigger), up.id || up.slot_em, robot.destino || "todos", Number(robot.shots || 1)].join("|");
+          st.iguais = st.iguais || [];
+          if (st.iguais.includes(igual)) { st.sent.unshift(key); continue; }
+          st.iguais.unshift(igual); st.iguais = st.iguais.slice(0, 300);
           st.sent.unshift(key); st.sent = st.sent.slice(0, 300);
           const max = Math.max(1, Number(robot.shots || 1));
           st.signals.unshift({ id: key, key, robotId: robot.id, robotName: robot.name || "Robô manual", league: liga, market: mk, shots: max, currentShot: 1, attempts: [], cycleVersion: 2,
