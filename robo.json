@@ -1191,13 +1191,19 @@
   }
  },
  "o25": {
-  "saldo": -14.2,
-  "ciclos": 74543,
-  "greens": 208,
+  "saldo": -13.5,
+  "ciclos": 74544,
+  "greens": 209,
   "redsCiclo": 29,
   "aborts": 0,
   "descartes": 74306,
   "historico": [
+   {
+    "quando": "2026-11-24T10:31:34.394Z",
+    "resultado": "GREEN",
+    "unidades": 0.7,
+    "detalhe": "eng · NOT x CHE @1.92 (tiro 3) · gatilho: seq RRGR"
+   },
    {
     "quando": "2026-11-24T10:31:31.985Z",
     "resultado": "GREEN_OBS",
@@ -4791,68 +4797,19 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:57:22.721Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ame": 1795512755154,
    "mnd": 1795513053700,
    "ita": 1795513474884,
-   "cam": 1795514859782
+   "cam": 1795514859782,
+   "eng": 1795516294394
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "07:26",
-     "jogo": "BHA x MNC",
-     "odd": 1.85
-    },
-    {
-     "h": "07:28",
-     "jogo": "BRE x HUL",
-     "odd": 1.86
-    },
-    {
-     "h": "07:30",
-     "jogo": "NOT x CHE",
-     "odd": 1.92
-    }
-   ],
-   "gatilho": "seq RRGR",
-   "alvo": {
-    "h": "07:30",
-    "jogo": "NOT x CHE",
-    "odd": 1.92,
-    "unidades": 4,
-    "desde": 1795516169272
-   },
-   "iniciadoEm": 1795515808436,
-   "tiros": [
-    {
-     "h": "07:26",
-     "jogo": "BHA x MNC",
-     "odd": 1.85,
-     "unidades": 1
-    },
-    {
-     "h": "07:28",
-     "jogo": "BRE x HUL",
-     "odd": 1.86,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795514859782,
-   "eng": 1795511612671,
+   "eng": 1795516294394,
    "ita": 1795513474884,
    "spa": 1795506270848,
    "lat": 1795483111301,
@@ -4873,7 +4830,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -4.3
+   "2026-11-24": -3.6
   },
   "_obs": {
    "cam": {
@@ -5024,10 +4981,6 @@
    "cam": {
     "desde": 1795515944372,
     "gatilho": "time Madrid"
-   },
-   "mnd": {
-    "desde": 1795516291984,
-    "gatilho": "time SPA"
    }
   }
  },
