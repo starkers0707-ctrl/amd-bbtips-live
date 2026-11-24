@@ -1086,12 +1086,30 @@
  },
  "o25": {
   "saldo": -15.5,
-  "ciclos": 69772,
+  "ciclos": 69775,
   "greens": 195,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 69550,
+  "descartes": 69553,
   "historico": [
+   {
+    "quando": "2026-11-24T04:58:09.314Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T04:57:34.511Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T04:57:33.861Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T04:57:33.291Z",
     "resultado": "GREEN_OBS",
@@ -4673,24 +4691,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T02:22:46.840Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T02:22:36.632Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T02:22:36.626Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRGRG) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4880,10 +4880,6 @@
    "mnd": {
     "desde": 1795488687919,
     "gatilho": "coluna :52"
-   },
-   "eng": {
-    "desde": 1795496253291,
-    "gatilho": "odd 1.94"
    }
   }
  },
@@ -6177,7 +6173,37 @@
   "consumidas": {
    "eng": 1795493011900
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "02:04",
+     "jogo": "BEL x GER",
+     "odd": 1.84
+    },
+    {
+     "h": "02:06",
+     "jogo": "SWI x NED",
+     "odd": 1.68
+    },
+    {
+     "h": "02:08",
+     "jogo": "POR x ITA",
+     "odd": 1.73
+    }
+   ],
+   "gatilho": "odd 1.68",
+   "alvo": {
+    "h": "02:04",
+    "jogo": "BEL x GER",
+    "odd": 1.84,
+    "unidades": 1,
+    "desde": 1795496289345
+   },
+   "iniciadoEm": 1795496289345
+  },
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795493011900,
@@ -6189,10 +6215,10 @@
    "ame": 1795482148615
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "goleada (3+)",
-   "n": 11,
-   "start": 1
+   "tipo": "odd",
+   "chave": "1.68",
+   "n": 8,
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
