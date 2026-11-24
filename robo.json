@@ -1164,12 +1164,54 @@
  },
  "o25": {
   "saldo": -8.7,
-  "ciclos": 73582,
+  "ciclos": 73589,
   "greens": 206,
   "redsCiclo": 28,
   "aborts": 0,
-  "descartes": 73348,
+  "descartes": 73355,
   "historico": [
+   {
+    "quando": "2026-11-24T09:36:09.535Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time BEL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T09:36:09.530Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T09:35:51.634Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time BEL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T09:35:51.628Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T09:35:50.721Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time BEL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T09:35:50.715Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T09:35:48.822Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time BEL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T09:35:48.813Z",
     "resultado": "GREEN_OBS",
@@ -4727,48 +4769,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:07:43.258Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:07:43.252Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:07:32.152Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Itaquera) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:07:32.148Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:07:32.137Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:07:32.133Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:07:31.243Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Itaquera) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4778,8 +4778,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "06:34",
@@ -4799,13 +4799,21 @@
    ],
    "gatilho": "time BEL",
    "alvo": {
-    "h": "06:34",
-    "jogo": "SPA x WAL",
-    "odd": 1.89,
-    "unidades": 1,
-    "desde": 1795512785036
+    "h": "06:36",
+    "jogo": "COL x BEL",
+    "odd": 1.71,
+    "unidades": 2,
+    "desde": 1795512950709
    },
-   "iniciadoEm": 1795512785036
+   "iniciadoEm": 1795512785036,
+   "tiros": [
+    {
+     "h": "06:34",
+     "jogo": "SPA x WAL",
+     "odd": 1.89,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795509994784,
@@ -4822,7 +4830,7 @@
    "tipo": "time",
    "chave": "BEL",
    "n": 16,
-   "start": 1
+   "start": 6
   },
   "dias": {
    "2026-11-19": -7,
@@ -4978,9 +4986,9 @@
     "desde": 1795479598576,
     "gatilho": "odd 2.39"
    },
-   "ita": {
-    "desde": 1795512948812,
-    "gatilho": "odd 1.9"
+   "mnd": {
+    "desde": 1795512969535,
+    "gatilho": "time BEL"
    }
   }
  },
