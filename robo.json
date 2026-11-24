@@ -1409,13 +1409,19 @@
   }
  },
  "o25": {
-  "saldo": -33.6,
-  "ciclos": 92830,
-  "greens": 244,
+  "saldo": -32.6,
+  "ciclos": 92831,
+  "greens": 245,
   "redsCiclo": 37,
   "aborts": 0,
   "descartes": 92549,
   "historico": [
+   {
+    "quando": "2026-11-24T23:03:23.629Z",
+    "resultado": "GREEN",
+    "unidades": 1,
+    "detalhe": "ame · Belo Horizonte x Lima @2.02 (tiro 1) · gatilho: odd 2.02"
+   },
    {
     "quando": "2026-11-24T23:00:28.924Z",
     "resultado": "GREEN_OBS",
@@ -5009,50 +5015,15 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.2) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T22:23:34.067Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.64) — liga REARMADA"
    }
   ],
   "consumidas": {
    "cam": 1795558424565,
    "spa": 1795558949660,
-   "eng": 1795559254294
+   "eng": 1795559254294,
+   "ame": 1795561403616
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "20:01",
-     "jogo": "Belo Horizonte x Lima",
-     "odd": 2.02
-    },
-    {
-     "h": "20:04",
-     "jogo": "Quito x Santiago",
-     "odd": 2.17
-    },
-    {
-     "h": "20:07",
-     "jogo": "Buenos Aires x Asuncion",
-     "odd": 2.18
-    }
-   ],
-   "gatilho": "odd 2.02",
-   "alvo": {
-    "h": "20:01",
-    "jogo": "Belo Horizonte x Lima",
-    "odd": 2.02,
-    "unidades": 1,
-    "desde": 1795561052679
-   },
-   "iniciadoEm": 1795561052679
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795558424565,
    "eng": 1795559254294,
@@ -5061,7 +5032,7 @@
    "lat": 1795550799609,
    "bra": 1795522714636,
    "mnd": 1795517012357,
-   "ame": 1795556523403,
+   "ame": 1795561403616,
    "cop": 1795556284523
   },
   "_gatilhoAtual": {
@@ -5076,7 +5047,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -23.7
+   "2026-11-24": -22.7
   },
   "_obs": {}
  },
