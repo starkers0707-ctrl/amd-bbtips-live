@@ -1065,12 +1065,36 @@
  },
  "o25": {
   "saldo": -2.6,
-  "ciclos": 67658,
+  "ciclos": 67662,
   "greens": 186,
   "redsCiclo": 24,
   "aborts": 0,
-  "descartes": 67448,
+  "descartes": 67452,
   "historico": [
+   {
+    "quando": "2026-11-24T00:07:46.061Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.39) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:07:46.055Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.78) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:07:46.051Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho seq GRRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T00:07:46.047Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :15) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T00:07:46.041Z",
     "resultado": "DESCARTADO",
@@ -4646,30 +4670,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:36:41.156Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:36:41.144Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:36:38.739Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-23T23:36:38.728Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4678,35 +4678,35 @@
    "ame": 1795477489418
   },
   "ciclo": {
-   "liga": "cop",
+   "liga": "ita",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
+     "h": "21:13",
+     "jogo": "LEC x BOL",
+     "odd": 1.88
+    },
+    {
      "h": "21:15",
-     "jogo": "Denmark x Wales",
-     "odd": 2.46
+     "jogo": "SAS x LAZ",
+     "odd": 1.93
     },
     {
-     "h": "21:18",
-     "jogo": "Spain x France",
-     "odd": 2.39
-    },
-    {
-     "h": "21:21",
-     "jogo": "Croatia x USA",
-     "odd": 2.31
+     "h": "21:17",
+     "jogo": "UDI x ATA",
+     "odd": 1.93
     }
    ],
-   "gatilho": "odd 2.39",
+   "gatilho": "coluna :15",
    "alvo": {
-    "h": "21:15",
-    "jogo": "Denmark x Wales",
-    "odd": 2.46,
+    "h": "21:13",
+    "jogo": "LEC x BOL",
+    "odd": 1.88,
     "unidades": 1,
-    "desde": 1795477961864
+    "desde": 1795478875879
    },
-   "iniciadoEm": 1795477961864
+   "iniciadoEm": 1795478875879
   },
   "cooldown": {
    "cam": 1795475247707,
@@ -6097,7 +6097,7 @@
    "tipo": "odd",
    "chave": "1.95",
    "n": 10,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
