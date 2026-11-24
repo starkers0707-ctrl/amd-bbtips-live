@@ -1390,7 +1390,7 @@
    "tipo": "odd",
    "chave": "3.35",
    "n": 13,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -1412,12 +1412,36 @@
  },
  "o25": {
   "saldo": -24.1,
-  "ciclos": 90996,
+  "ciclos": 91000,
   "greens": 240,
   "redsCiclo": 35,
   "aborts": 0,
-  "descartes": 90721,
+  "descartes": 90725,
   "historico": [
+   {
+    "quando": "2026-11-24T21:27:35.825Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T21:27:32.691Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T21:27:31.952Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T21:27:31.351Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T21:27:30.528Z",
     "resultado": "GREEN_OBS",
@@ -4993,30 +5017,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:01:41.506Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho seq GGRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:01:41.498Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:01:39.263Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho seq GGRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:01:39.257Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5223,7 +5223,7 @@
     "gatilho": "odd 2.64"
    },
    "cam": {
-    "desde": 1795555650528,
+    "desde": 1795555655825,
     "gatilho": "odd 2.17"
    }
   }
@@ -7004,7 +7004,37 @@
   "consumidas": {
    "lat": 1795553670204
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "18:36",
+     "jogo": "Rome x Barcelona",
+     "odd": 1.92
+    },
+    {
+     "h": "18:39",
+     "jogo": "Celtic x Chelsea",
+     "odd": 2.1
+    },
+    {
+     "h": "18:42",
+     "jogo": "Munich x Liverpool",
+     "odd": 1.9
+    }
+   ],
+   "gatilho": "odd 2.1",
+   "alvo": {
+    "h": "18:36",
+    "jogo": "Rome x Barcelona",
+    "odd": 1.92,
+    "unidades": 1,
+    "desde": 1795555650550
+   },
+   "iniciadoEm": 1795555650550
+  },
   "cooldown": {
    "lat": 1795553670204,
    "eng": 1795524811381,
