@@ -159,6 +159,19 @@
     for(var i=0;i<hits.length;i++){sum+=hits[i];out.push(sum/(i+1)*100);}
     return {line:out,hits:hits};
   }
+  /* Grafico em janela movel de X horas (igual ao Raio-X). */
+  function windowLine(all,market,hours){
+    var done=all.filter(function(g){return g.resultado_ft;}).sort(function(a,b){return orderValue(a)-orderValue(b);});
+    var hits=done.map(function(g){return marketMatches(market,g)?1:0;}),ts=done.map(orderValue),W=hours*3600000,s=0,j=0;
+    return hits.map(function(x,i){s+=x;while(ts[j]<=ts[i]-W){s-=hits[j];j++;}return s/(i-j+1)*100;});
+  }
+  function lineUp(line){var n=line.length-1;if(n<25)return null;var a=sma(line,9),b=sma(line,21);return a[n]>b[n]&&a[n]>=a[n-1];}
+  /* Coluna = mesmo minuto do relogio. Ruim = nenhum Over nos ultimos 3 jogos daquele minuto. */
+  function columnBad(all,market,game){
+    if(!game)return false;var mi=Number(game.minuto);
+    var col=all.filter(function(g){return g.resultado_ft&&Number(g.minuto)===mi;}).sort(function(a,b){return orderValue(b)-orderValue(a);}).slice(0,3);
+    return col.length>=3&&!col.some(function(g){return marketMatches(market,g);});
+  }
   function sma(arr,n){var out=[],s=0;for(var i=0;i<arr.length;i++){s+=arr[i];if(i>=n)s-=arr[i-n];out.push(i>=n-1?s/n:null);}return out;}
   function ema(arr,n){var k=2/(n+1),e=arr[0],res=[];for(var i=0;i<arr.length;i++){e=i?arr[i]*k+e*(1-k):arr[i];res.push(e);}return res;}
   function rising(line,back){var n=line.length;return n>back&&line[n-1]>line[n-1-back];}
@@ -177,14 +190,18 @@
     return {subida:up,media:line[L]>m21[L],macd:e12[L]-e26[L]>0,rsi:rsi>=45&&rsi<=70,ligas:up&&others,confirmacao:cL>=21&&c9[cL]>c21[cL],
       linha:Math.round(line[L]*10)/10,mediaHist:Math.round(m21[L]*10)/10};
   }
-  function metricsPass(robot,data,league,market){
+  function metricsPass(robot,data,league,market,entryGame){
     var rules=(robot.metrics||[]).filter(function(r){return r.use;}),threshold=Number(robot.threshold);
     var st=metricState(robot,data,league,market);
     if(!st)return {ok:false,pct:0,text:'métricas: poucos jogos no dia (gráfico acumulado ainda sem MM21)'};
     /* Trava obrigatoria para todo robo: nunca entra com o grafico do mercado da
        entrada caindo (ex.: Over caindo = Under subindo). */
     if(!st.subida)return {ok:false,pct:0,text:'gráfico de '+market+' caindo ('+st.linha+'% · MM21 '+st.mediaHist+'%)'};
-    if(!rules.length||!threshold)return {ok:true,text:'gráfico '+st.linha+'% subindo'};
+    /* As tres bases precisam subir juntas: 1h, 2h e 00h. */
+    var u1=lineUp(windowLine(data[league]||[],market,1)),u2=lineUp(windowLine(data[league]||[],market,2));
+    if(u1===false||u2===false)return {ok:false,pct:0,text:'bases discordam (1h '+(u1?'sobe':'cai')+' · 2h '+(u2?'sobe':'cai')+')'};
+    if(columnBad(data[league]||[],market,entryGame))return {ok:false,pct:0,text:'coluna :'+String(entryGame.minuto).padStart(2,'0')+' ruim (0 de 3)'};
+    if(!rules.length||!threshold)return {ok:true,text:'1h, 2h e 00h subindo'};
     var max=0,pts=0,mandatoryFail=false;
     rules.forEach(function(r){max+=Number(r.weight)||0;var hit=!!st[r.key]===!!r.expected;if(hit)pts+=Number(r.weight)||0;else if(r.key==='subida'&&r.expected)mandatoryFail=true;});
     var pct=max?Math.round(pts/max*100):0;
@@ -314,7 +331,7 @@
     var options={body:body,tag:'amd-manual-'+key,renotify:true,requireInteraction:true,data:{url:'/robos.html'}};
     try{if('serviceWorker' in navigator){var reg=await navigator.serviceWorker.register('/sw-alertas.js');await reg.showNotification(title,options);return;}new Notification(title,options);}catch(_){}
   }
-  var MONITOR_V='20261123-v3';
+  var MONITOR_V='20261123-v4';
   var lastSync='';
   function pullRobots(){
     return fetch('/api/robos/lista?_='+Date.now(),{credentials:'same-origin',cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){
