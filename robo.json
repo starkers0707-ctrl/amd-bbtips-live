@@ -1334,12 +1334,30 @@
  },
  "o25": {
   "saldo": -31.7,
-  "ciclos": 85484,
+  "ciclos": 85487,
   "greens": 226,
   "redsCiclo": 34,
   "aborts": 0,
-  "descartes": 85224,
+  "descartes": 85227,
   "historico": [
+   {
+    "quando": "2026-11-24T16:55:57.958Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:55:57.950Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:55:55.575Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T16:55:55.570Z",
     "resultado": "GREEN_OBS",
@@ -4921,24 +4939,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:29:59.887Z",
-    "resultado": "GREEN",
-    "unidades": 1.2,
-    "detalhe": "ame · Montevideo x Rio de Janeiro @2.16 (tiro 1) · gatilho: coluna :28"
-   },
-   {
-    "quando": "2026-11-24T16:29:30.699Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:29:30.013Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5153,20 +5153,26 @@
     "desde": 1795538979305,
     "gatilho": "odd 2.17"
    },
-   "ita": {
-    "desde": 1795539355569,
-    "gatilho": "coluna :57"
+   "spa": {
+    "desde": 1795539357957,
+    "gatilho": "coluna :13"
    }
   }
  },
  "ambas": {
-  "saldo": -24.2,
-  "ciclos": 275,
+  "saldo": -31.2,
+  "ciclos": 276,
   "greens": 112,
-  "redsCiclo": 15,
+  "redsCiclo": 16,
   "aborts": 0,
   "descartes": 148,
   "historico": [
+   {
+    "quando": "2026-11-24T16:55:55.595Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "cop · ciclo perdido (3 tiros) · gatilho: seq GRRRG"
+   },
    {
     "quando": "2026-11-24T16:42:29.483Z",
     "resultado": "GREEN",
@@ -6819,53 +6825,10 @@
    }
   ],
   "consumidas": {
-   "lat": 1795538549482
+   "lat": 1795538549482,
+   "cop": 1795539355594
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "13:48",
-     "jogo": "Mexico x Wales",
-     "odd": 1.96
-    },
-    {
-     "h": "13:51",
-     "jogo": "Belgium x Spain",
-     "odd": 2.02
-    },
-    {
-     "h": "13:54",
-     "jogo": "USA x Croatia",
-     "odd": 2.01
-    }
-   ],
-   "gatilho": "seq GRRRG",
-   "alvo": {
-    "h": "13:54",
-    "jogo": "USA x Croatia",
-    "odd": 2.01,
-    "unidades": 4,
-    "desde": 1795539175539
-   },
-   "iniciadoEm": 1795538618171,
-   "tiros": [
-    {
-     "h": "13:48",
-     "jogo": "Mexico x Wales",
-     "odd": 1.96,
-     "unidades": 1
-    },
-    {
-     "h": "13:51",
-     "jogo": "Belgium x Spain",
-     "odd": 2.02,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795538549482,
    "eng": 1795524811381,
@@ -6873,21 +6836,21 @@
    "bra": 1795526496634,
    "mnd": 1795515327438,
    "cam": 1795505142768,
-   "cop": 1795533436367,
+   "cop": 1795539355594,
    "ame": 1795510421878
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
    "chave": ":12",
    "n": 14,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
-   "2026-11-24": -25.6
+   "2026-11-24": -32.6
   },
   "_obs": {}
  }
