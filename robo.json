@@ -1162,12 +1162,42 @@
  },
  "o25": {
   "saldo": -14.2,
-  "ciclos": 74348,
+  "ciclos": 74353,
   "greens": 208,
   "redsCiclo": 29,
   "aborts": 0,
-  "descartes": 74111,
+  "descartes": 74116,
   "historico": [
+   {
+    "quando": "2026-11-24T10:15:38.735Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:15:37.850Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:15:29.575Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:15:28.278Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:15:27.420Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T10:15:26.960Z",
     "resultado": "GREEN_OBS",
@@ -4737,36 +4767,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho seq RRGG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:45:30.184Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:45:30.178Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:45:30.170Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho seq RRGG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:45:29.191Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:45:29.184Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4948,19 +4948,25 @@
     "gatilho": "odd 2.39"
    },
    "mnd": {
-    "desde": 1795515326960,
+    "desde": 1795515338735,
     "gatilho": "time MEX"
    }
   }
  },
  "ambas": {
-  "saldo": -10,
-  "ciclos": 247,
+  "saldo": -17,
+  "ciclos": 248,
   "greens": 102,
-  "redsCiclo": 12,
+  "redsCiclo": 13,
   "aborts": 0,
   "descartes": 133,
   "historico": [
+   {
+    "quando": "2026-11-24T10:15:27.438Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "mnd · ciclo perdido (3 tiros) · gatilho: time POR"
+   },
    {
     "quando": "2026-11-24T10:11:07.913Z",
     "resultado": "DESCARTADO",
@@ -6446,53 +6452,16 @@
   ],
   "consumidas": {
    "eng": 1795511854835,
-   "cop": 1795514137921
+   "cop": 1795514137921,
+   "mnd": 1795515327438
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "07:12",
-     "jogo": "SPA x DEN",
-     "odd": 1.72
-    },
-    {
-     "h": "07:14",
-     "jogo": "SWI x POR",
-     "odd": 1.68
-    },
-    {
-     "h": "07:16",
-     "jogo": "NED x ARG",
-     "odd": 1.68
-    }
-   ],
-   "gatilho": "time POR",
-   "alvo": {
-    "h": "07:14",
-    "jogo": "SWI x POR",
-    "odd": 1.68,
-    "unidades": 2,
-    "desde": 1795515215098
-   },
-   "iniciadoEm": 1795515068763,
-   "tiros": [
-    {
-     "h": "07:12",
-     "jogo": "SPA x DEN",
-     "odd": 1.72,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795509212287,
    "eng": 1795511854835,
    "spa": 1795506559992,
    "bra": 1795511380866,
-   "mnd": 1795511038215,
+   "mnd": 1795515327438,
    "cam": 1795505142768,
    "cop": 1795514137921,
    "ame": 1795510421878
@@ -6501,14 +6470,14 @@
    "tipo": "time",
    "chave": "ITA",
    "n": 16,
-   "start": 8
+   "start": 7
   },
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
-   "2026-11-24": -11.4
+   "2026-11-24": -18.4
   },
   "_obs": {}
  }
