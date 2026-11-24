@@ -1079,12 +1079,30 @@
  },
  "o25": {
   "saldo": -11.5,
-  "ciclos": 69234,
+  "ciclos": 69237,
   "greens": 192,
   "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 69016,
+  "descartes": 69019,
   "historico": [
+   {
+    "quando": "2026-11-24T02:28:31.385Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T02:28:31.382Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRGRR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T02:28:30.640Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T02:28:30.636Z",
     "resultado": "GREEN_OBS",
@@ -4666,24 +4684,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T01:35:02.079Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho seq RGRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T01:34:52.255Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :52) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T01:34:52.251Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho seq RGRGR) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4694,8 +4694,8 @@
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "23:24",
@@ -4715,11 +4715,11 @@
    ],
    "gatilho": "seq GRGRG",
    "alvo": {
-    "h": "23:27",
-    "jogo": "Turin x Amsterdam",
-    "odd": 2.39,
-    "unidades": 2,
-    "desde": 1795487162760
+    "h": "23:30",
+    "jogo": "Celtic x Munich",
+    "odd": 2.16,
+    "unidades": 4,
+    "desde": 1795487314848
    },
    "iniciadoEm": 1795486822045,
    "tiros": [
@@ -4728,6 +4728,12 @@
      "jogo": "United x Barcelona",
      "odd": 2.47,
      "unidades": 1
+    },
+    {
+     "h": "23:27",
+     "jogo": "Turin x Amsterdam",
+     "odd": 2.39,
+     "unidades": 2
     }
    ]
   },
@@ -4904,10 +4910,6 @@
    "ita": {
     "desde": 1795483861299,
     "gatilho": "coluna :33"
-   },
-   "cam": {
-    "desde": 1795487310635,
-    "gatilho": "seq GRGRR"
    }
   }
  },
