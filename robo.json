@@ -1153,12 +1153,24 @@
  },
  "o25": {
   "saldo": -11,
-  "ciclos": 71120,
+  "ciclos": 71122,
   "greens": 199,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 70894,
+  "descartes": 70896,
   "historico": [
+   {
+    "quando": "2026-11-24T07:41:03.758Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time United) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T07:41:02.835Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time United) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T07:40:49.359Z",
     "resultado": "GREEN_OBS",
@@ -4746,18 +4758,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:08:03.752Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T07:08:02.831Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4982,19 +4982,25 @@
     "gatilho": "time LEC"
    },
    "cam": {
-    "desde": 1795506049359,
+    "desde": 1795506063757,
     "gatilho": "time United"
    }
   }
  },
  "ambas": {
   "saldo": -8.3,
-  "ciclos": 228,
+  "ciclos": 229,
   "greens": 95,
   "redsCiclo": 11,
   "aborts": 0,
-  "descartes": 122,
+  "descartes": 123,
   "historico": [
+   {
+    "quando": "2026-11-24T07:41:02.852Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "cop · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-24T07:25:42.769Z",
     "resultado": "GREEN",
@@ -6368,37 +6374,7 @@
    "bra": 1795503818021,
    "cam": 1795505142768
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "04:48",
-     "jogo": "Denmark x Colombia",
-     "odd": 2.21
-    },
-    {
-     "h": "04:51",
-     "jogo": "Argentina x Italy",
-     "odd": 2.02
-    },
-    {
-     "h": "04:54",
-     "jogo": "Wales x Portugal",
-     "odd": 2.05
-    }
-   ],
-   "gatilho": "time Argentina",
-   "alvo": {
-    "h": "04:48",
-    "jogo": "Denmark x Colombia",
-    "odd": 2.21,
-    "unidades": 1,
-    "desde": 1795505160182
-   },
-   "iniciadoEm": 1795505160182
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795497681687,
    "eng": 1795493011900,
@@ -6410,10 +6386,10 @@
    "ame": 1795499990275
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "Argentina",
+   "tipo": "seq",
+   "chave": "RRRR",
    "n": 10,
-   "start": 3
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
