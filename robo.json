@@ -1086,12 +1086,24 @@
  },
  "o25": {
   "saldo": -15.5,
-  "ciclos": 69851,
+  "ciclos": 69853,
   "greens": 195,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 69629,
+  "descartes": 69631,
   "historico": [
+   {
+    "quando": "2026-11-24T05:07:33.876Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T05:07:33.214Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.94) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T05:07:15.505Z",
     "resultado": "GREEN_OBS",
@@ -4679,18 +4691,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho seq GRGRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T02:34:34.043Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq GRGRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T02:34:12.087Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq GRGRG) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4886,7 +4886,7 @@
     "gatilho": "odd 1.94"
    },
    "ita": {
-    "desde": 1795496835505,
+    "desde": 1795496853876,
     "gatilho": "odd 1.94"
    }
   }
@@ -6181,8 +6181,8 @@
   "consumidas": {},
   "ciclo": {
    "liga": "mnd",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "02:04",
@@ -6202,11 +6202,11 @@
    ],
    "gatilho": "odd 1.68",
    "alvo": {
-    "h": "02:06",
-    "jogo": "SWI x NED",
-    "odd": 1.68,
-    "unidades": 2,
-    "desde": 1795496735030
+    "h": "02:08",
+    "jogo": "POR x ITA",
+    "odd": 1.73,
+    "unidades": 4,
+    "desde": 1795496853246
    },
    "iniciadoEm": 1795496289345,
    "tiros": [
@@ -6215,6 +6215,12 @@
      "jogo": "BEL x GER",
      "odd": 1.84,
      "unidades": 1
+    },
+    {
+     "h": "02:06",
+     "jogo": "SWI x NED",
+     "odd": 1.68,
+     "unidades": 2
     }
    ]
   },
