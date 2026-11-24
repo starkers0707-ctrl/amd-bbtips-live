@@ -4689,8 +4689,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "00:03",
@@ -4710,13 +4710,21 @@
    ],
    "gatilho": "odd 1.89",
    "alvo": {
-    "h": "00:03",
-    "jogo": "BAR x ESP",
-    "odd": 1.77,
-    "unidades": 1,
-    "desde": 1795488998449
+    "h": "00:05",
+    "jogo": "CEL x MLG",
+    "odd": 1.89,
+    "unidades": 2,
+    "desde": 1795489491137
    },
-   "iniciadoEm": 1795488998449
+   "iniciadoEm": 1795488998449,
+   "tiros": [
+    {
+     "h": "00:03",
+     "jogo": "BAR x ESP",
+     "odd": 1.77,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795487509896,
@@ -4908,13 +4916,19 @@
   }
  },
  "ambas": {
-  "saldo": 1.4,
-  "ciclos": 211,
-  "greens": 89,
+  "saldo": 2.2,
+  "ciclos": 212,
+  "greens": 90,
   "redsCiclo": 9,
   "aborts": 0,
   "descartes": 113,
   "historico": [
+   {
+    "quando": "2026-11-24T03:03:37.039Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "mnd · FRA x SWI @1.84 (tiro 1) · gatilho: coluna :02"
+   },
    {
     "quando": "2026-11-24T02:57:05.882Z",
     "resultado": "GREEN_OBS",
@@ -6183,45 +6197,16 @@
    }
   ],
   "consumidas": {
-   "cop": 1795488040911
+   "cop": 1795488040911,
+   "mnd": 1795489417038
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "00:02",
-     "jogo": "FRA x SWI",
-     "odd": 1.84
-    },
-    {
-     "h": "00:04",
-     "jogo": "MEX x ARG",
-     "odd": 1.68
-    },
-    {
-     "h": "00:06",
-     "jogo": "POL x NED",
-     "odd": 1.69
-    }
-   ],
-   "gatilho": "coluna :02",
-   "alvo": {
-    "h": "00:02",
-    "jogo": "FRA x SWI",
-    "odd": 1.84,
-    "unidades": 1,
-    "desde": 1795489293455
-   },
-   "iniciadoEm": 1795489293455
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795331214015,
    "eng": 1795409882468,
    "spa": 1795417719585,
    "bra": 1795468716738,
-   "mnd": 1795485690167,
+   "mnd": 1795489417038,
    "cam": 1795484997617,
    "cop": 1795488040911,
    "ame": 1795482148615
@@ -6236,7 +6221,8 @@
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
-   "2026-11-23": 13.6
+   "2026-11-23": 13.6,
+   "2026-11-24": 0.8
   },
   "_obs": {
    "ame": {
