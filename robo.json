@@ -1338,13 +1338,31 @@
   }
  },
  "o25": {
-  "saldo": -26.9,
-  "ciclos": 84885,
-  "greens": 224,
+  "saldo": -25.7,
+  "ciclos": 84888,
+  "greens": 225,
   "redsCiclo": 33,
   "aborts": 0,
-  "descartes": 84628,
+  "descartes": 84630,
   "historico": [
+   {
+    "quando": "2026-11-24T16:29:59.909Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T16:29:59.887Z",
+    "resultado": "GREEN",
+    "unidades": 1.2,
+    "detalhe": "ame · Montevideo x Rio de Janeiro @2.16 (tiro 1) · gatilho: coluna :28"
+   },
+   {
+    "quando": "2026-11-24T16:29:30.699Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T16:29:30.013Z",
     "resultado": "GREEN_OBS",
@@ -4926,63 +4944,16 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:11:09.783Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:11:09.097Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :28) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T16:11:09.093Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time COL) — liga REARMADA"
    }
   ],
   "consumidas": {
    "cam": 1795534336119,
    "eng": 1795535156757,
    "ita": 1795536034293,
-   "spa": 1795536512963
+   "spa": 1795536512963,
+   "ame": 1795537799887
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "13:28",
-     "jogo": "Montevideo x Rio de Janeiro",
-     "odd": 2.16
-    },
-    {
-     "h": "13:31",
-     "jogo": "Guayaquil x Avellaneda",
-     "odd": 2.23
-    },
-    {
-     "h": "13:34",
-     "jogo": "Santos x Sao Paulo",
-     "odd": 2.11
-    }
-   ],
-   "gatilho": "coluna :28",
-   "alvo": {
-    "h": "13:28",
-    "jogo": "Montevideo x Rio de Janeiro",
-    "odd": 2.16,
-    "unidades": 1,
-    "desde": 1795537443612
-   },
-   "iniciadoEm": 1795537443612
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795534336119,
    "eng": 1795535156757,
@@ -4991,7 +4962,7 @@
    "lat": 1795533721593,
    "bra": 1795522714636,
    "mnd": 1795517012357,
-   "ame": 1795523380160,
+   "ame": 1795537799887,
    "cop": 1795520988139
   },
   "_gatilhoAtual": {
@@ -5006,7 +4977,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -17
+   "2026-11-24": -15.8
   },
   "_obs": {}
  },
@@ -5154,7 +5125,7 @@
     "gatilho": "time COL"
    },
    "cam": {
-    "desde": 1795537770012,
+    "desde": 1795537799909,
     "gatilho": "time Madrid"
    }
   }
