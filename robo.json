@@ -1402,12 +1402,42 @@
  },
  "o25": {
   "saldo": -27.5,
-  "ciclos": 91879,
+  "ciclos": 91884,
   "greens": 243,
   "redsCiclo": 36,
   "aborts": 0,
-  "descartes": 91600,
+  "descartes": 91605,
   "historico": [
+   {
+    "quando": "2026-11-24T22:14:09.149Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T22:14:00.556Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.2) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T22:14:00.553Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.64) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T22:14:00.545Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.84) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T22:14:00.539Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T22:13:44.595Z",
     "resultado": "GREEN_OBS",
@@ -4977,36 +5007,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:43:06.652Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:43:06.648Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:43:05.790Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:43:05.782Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:43:05.778Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5213,20 +5213,26 @@
     "desde": 1795557893463,
     "gatilho": "odd 2.17"
    },
-   "cop": {
-    "desde": 1795558076691,
-    "gatilho": "odd 2.64"
+   "eng": {
+    "desde": 1795558449148,
+    "gatilho": "coluna :26"
    }
   }
  },
  "ambas": {
-  "saldo": -23.5,
-  "ciclos": 296,
-  "greens": 121,
+  "saldo": -22.4,
+  "ciclos": 297,
+  "greens": 122,
   "redsCiclo": 16,
   "aborts": 0,
   "descartes": 159,
   "historico": [
+   {
+    "quando": "2026-11-24T22:14:00.572Z",
+    "resultado": "GREEN",
+    "unidades": 1.1,
+    "detalhe": "cop · Portugal x Italy @2.11 (tiro 1) · gatilho: seq RRRRR"
+   },
    {
     "quando": "2026-11-24T22:00:31.030Z",
     "resultado": "GREEN",
@@ -7006,39 +7012,10 @@
   ],
   "consumidas": {
    "cam": 1795556279980,
-   "lat": 1795557631018
+   "lat": 1795557631018,
+   "cop": 1795558440569
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "19:12",
-     "jogo": "Portugal x Italy",
-     "odd": 2.11
-    },
-    {
-     "h": "19:15",
-     "jogo": "England x Mexico",
-     "odd": 1.9
-    },
-    {
-     "h": "19:18",
-     "jogo": "Colombia x Belgium",
-     "odd": 2.09
-    }
-   ],
-   "gatilho": "seq RRRRR",
-   "alvo": {
-    "h": "19:12",
-    "jogo": "Portugal x Italy",
-    "odd": 2.11,
-    "unidades": 1,
-    "desde": 1795558076707
-   },
-   "iniciadoEm": 1795558076707
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795557631018,
    "eng": 1795524811381,
@@ -7046,7 +7023,7 @@
    "bra": 1795526496634,
    "mnd": 1795515327438,
    "cam": 1795556279980,
-   "cop": 1795551055473,
+   "cop": 1795558440569,
    "ame": 1795510421878
   },
   "_gatilhoAtual": {
@@ -7060,7 +7037,7 @@
    "2026-11-21": 2,
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
-   "2026-11-24": -24.9
+   "2026-11-24": -23.8
   },
   "_obs": {}
  }
