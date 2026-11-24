@@ -1170,12 +1170,18 @@
  },
  "o25": {
   "saldo": -13.5,
-  "ciclos": 74702,
+  "ciclos": 74703,
   "greens": 209,
   "redsCiclo": 29,
   "aborts": 0,
-  "descartes": 74464,
+  "descartes": 74465,
   "historico": [
+   {
+    "quando": "2026-11-24T10:38:48.940Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T10:38:30.617Z",
     "resultado": "GREEN_OBS",
@@ -4769,12 +4775,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T10:03:34.690Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4825,10 +4825,10 @@
    "cop": 1795479931322
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "MEX",
-   "n": 23,
-   "start": 6
+   "tipo": "odd",
+   "chave": "2.24",
+   "n": 10,
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -4984,9 +4984,9 @@
     "desde": 1795479598576,
     "gatilho": "odd 2.39"
    },
-   "cam": {
-    "desde": 1795516710617,
-    "gatilho": "seq RRGR"
+   "ita": {
+    "desde": 1795516728940,
+    "gatilho": "odd 1.95"
    }
   }
  },
