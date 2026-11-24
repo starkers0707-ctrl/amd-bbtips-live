@@ -1423,13 +1423,37 @@
   }
  },
  "o25": {
-  "saldo": -22.6,
-  "ciclos": 91253,
-  "greens": 241,
+  "saldo": -21.4,
+  "ciclos": 91257,
+  "greens": 242,
   "redsCiclo": 35,
   "aborts": 0,
-  "descartes": 90977,
+  "descartes": 90980,
   "historico": [
+   {
+    "quando": "2026-11-24T21:42:03.415Z",
+    "resultado": "GREEN",
+    "unidades": 1.2,
+    "detalhe": "ame · Quito x Buenos Aires @2.17 (tiro 1) · gatilho: seq GGRRG"
+   },
+   {
+    "quando": "2026-11-24T21:41:31.833Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T21:41:31.830Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T21:41:31.233Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T21:41:31.226Z",
     "resultado": "GREEN_OBS",
@@ -5005,68 +5029,15 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:15:23.472Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:15:23.466Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:15:12.644Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.64) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T21:15:12.641Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795553188916,
    "eng": 1795555531159,
-   "cop": 1795556284523
+   "cop": 1795556284523,
+   "ame": 1795556523403
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "18:40",
-     "jogo": "Quito x Buenos Aires",
-     "odd": 2.17
-    },
-    {
-     "h": "18:43",
-     "jogo": "Penarol x Avellaneda",
-     "odd": 2.16
-    },
-    {
-     "h": "18:46",
-     "jogo": "Agua Branca x Asuncion",
-     "odd": 2.07
-    }
-   ],
-   "gatilho": "seq GGRRG",
-   "alvo": {
-    "h": "18:40",
-    "jogo": "Quito x Buenos Aires",
-    "odd": 2.17,
-    "unidades": 1,
-    "desde": 1795556286676
-   },
-   "iniciadoEm": 1795556286676
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795552323084,
    "eng": 1795555531159,
@@ -5075,7 +5046,7 @@
    "lat": 1795550799609,
    "bra": 1795522714636,
    "mnd": 1795517012357,
-   "ame": 1795552538905,
+   "ame": 1795556523403,
    "cop": 1795556284523
   },
   "_gatilhoAtual": {
@@ -5090,7 +5061,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -12.7
+   "2026-11-24": -11.5
   },
   "_obs": {}
  },
@@ -5232,10 +5203,6 @@
    "spa": {
     "desde": 1795556431394,
     "gatilho": "coluna :57"
-   },
-   "eng": {
-    "desde": 1795556491225,
-    "gatilho": "coluna :54"
    }
   }
  },
