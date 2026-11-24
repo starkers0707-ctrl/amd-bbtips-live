@@ -1140,12 +1140,18 @@
  },
  "o25": {
   "saldo": -11.8,
-  "ciclos": 70526,
+  "ciclos": 70527,
   "greens": 198,
   "redsCiclo": 27,
   "aborts": 0,
-  "descartes": 70301,
+  "descartes": 70302,
   "historico": [
+   {
+    "quando": "2026-11-24T07:08:34.187Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T07:08:33.376Z",
     "resultado": "GREEN_OBS",
@@ -4739,18 +4745,42 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time ATA) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T05:16:11.083Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho time FUL) — liga REARMADA"
    }
   ],
   "consumidas": {
    "cam": 1795502088857
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:11",
+     "jogo": "LEC x TOR",
+     "odd": 1.92
+    },
+    {
+     "h": "04:13",
+     "jogo": "COM x INT",
+     "odd": 1.89
+    },
+    {
+     "h": "04:15",
+     "jogo": "CAG x FRO",
+     "odd": 1.91
+    }
+   ],
+   "gatilho": "time LEC",
+   "alvo": {
+    "h": "04:11",
+    "jogo": "LEC x TOR",
+    "odd": 1.92,
+    "unidades": 1,
+    "desde": 1795504136063
+   },
+   "iniciadoEm": 1795504136063
+  },
   "cooldown": {
    "cam": 1795502088857,
    "eng": 1795498175148,
@@ -4764,8 +4794,8 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "Madrid",
-   "n": 9,
+   "chave": "LEC",
+   "n": 10,
    "start": 1
   },
   "dias": {
@@ -4933,10 +4963,6 @@
    "mnd": {
     "desde": 1795488687919,
     "gatilho": "coluna :52"
-   },
-   "cam": {
-    "desde": 1795504113376,
-    "gatilho": "time Madrid"
    }
   }
  },
