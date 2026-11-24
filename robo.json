@@ -1078,13 +1078,25 @@
   }
  },
  "o25": {
-  "saldo": -14.6,
-  "ciclos": 68888,
-  "greens": 189,
+  "saldo": -13.7,
+  "ciclos": 68890,
+  "greens": 190,
   "redsCiclo": 26,
   "aborts": 0,
-  "descartes": 68673,
+  "descartes": 68674,
   "historico": [
+   {
+    "quando": "2026-11-24T01:53:32.990Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "mnd · SWI x ENG @1.87 (tiro 1) · gatilho: coluna :52"
+   },
+   {
+    "quando": "2026-11-24T01:53:32.263Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho seq GRGRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T01:53:14.023Z",
     "resultado": "GREEN_OBS",
@@ -4672,55 +4684,14 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.78) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:56:11.013Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T00:56:10.231Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
    }
   ],
   "consumidas": {
    "lat": 1795483111301,
-   "ita": 1795483952226
+   "ita": 1795483952226,
+   "mnd": 1795485212990
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "22:52",
-     "jogo": "SWI x ENG",
-     "odd": 1.87
-    },
-    {
-     "h": "22:54",
-     "jogo": "WAL x CHL",
-     "odd": 1.94
-    },
-    {
-     "h": "22:56",
-     "jogo": "BEL x DEN",
-     "odd": 1.76
-    }
-   ],
-   "gatilho": "coluna :52",
-   "alvo": {
-    "h": "22:52",
-    "jogo": "SWI x ENG",
-    "odd": 1.87,
-    "unidades": 1,
-    "desde": 1795484986341
-   },
-   "iniciadoEm": 1795484986341
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795475247707,
    "eng": 1795383709617,
@@ -4728,7 +4699,7 @@
    "spa": 1795480231205,
    "lat": 1795483111301,
    "bra": 1795472158133,
-   "mnd": 1795476452713,
+   "mnd": 1795485212990,
    "ame": 1795477489418,
    "cop": 1795479931322
   },
@@ -4743,7 +4714,7 @@
    "2026-11-20": 19.2,
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
-   "2026-11-23": -42.3
+   "2026-11-23": -41.4
   },
   "_obs": {
    "cam": {
@@ -4898,10 +4869,6 @@
    "ame": {
     "desde": 1795485057900,
     "gatilho": "odd 2.02"
-   },
-   "spa": {
-    "desde": 1795485194023,
-    "gatilho": "seq GRGRG"
    }
   }
  },
