@@ -1192,12 +1192,36 @@
  },
  "o25": {
   "saldo": -14.2,
-  "ciclos": 74516,
+  "ciclos": 74520,
   "greens": 208,
   "redsCiclo": 29,
   "aborts": 0,
-  "descartes": 74279,
+  "descartes": 74283,
   "historico": [
+   {
+    "quando": "2026-11-24T10:29:48.930Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:29:29.284Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time SPA) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:29:29.277Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.95) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T10:29:28.472Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T10:29:28.464Z",
     "resultado": "GREEN_OBS",
@@ -4773,30 +4797,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:56:10.133Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:56:09.104Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:56:09.096Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time MEX) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T09:56:07.965Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Madrid) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -4807,8 +4807,8 @@
   },
   "ciclo": {
    "liga": "eng",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "07:26",
@@ -4828,11 +4828,11 @@
    ],
    "gatilho": "seq RRGR",
    "alvo": {
-    "h": "07:28",
-    "jogo": "BRE x HUL",
-    "odd": 1.86,
-    "unidades": 2,
-    "desde": 1795516057674
+    "h": "07:30",
+    "jogo": "NOT x CHE",
+    "odd": 1.92,
+    "unidades": 4,
+    "desde": 1795516169272
    },
    "iniciadoEm": 1795515808436,
    "tiros": [
@@ -4841,6 +4841,12 @@
      "jogo": "BHA x MNC",
      "odd": 1.85,
      "unidades": 1
+    },
+    {
+     "h": "07:28",
+     "jogo": "BRE x HUL",
+     "odd": 1.86,
+     "unidades": 2
     }
    ]
   },
@@ -5019,12 +5025,8 @@
     "desde": 1795515944372,
     "gatilho": "time Madrid"
    },
-   "mnd": {
-    "desde": 1795516058570,
-    "gatilho": "time MEX"
-   },
    "ita": {
-    "desde": 1795516168464,
+    "desde": 1795516188929,
     "gatilho": "odd 1.95"
    }
   }
@@ -6575,7 +6577,7 @@
    "tipo": "odd",
    "chave": "1.72",
    "n": 13,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-20": 0,
