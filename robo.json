@@ -1410,12 +1410,24 @@
  },
  "o25": {
   "saldo": -32,
-  "ciclos": 93780,
+  "ciclos": 93782,
   "greens": 246,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 93497,
+  "descartes": 93499,
   "historico": [
+   {
+    "quando": "2026-11-24T23:51:39.224Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T23:51:39.220Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "eng · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-24T23:51:29.825Z",
     "resultado": "GREEN_OBS",
@@ -5003,55 +5015,13 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T23:21:05.180Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T23:21:05.176Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho seq GRRGR) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ame": 1795561403616,
    "spa": 1795563392445
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "20:52",
-     "jogo": "SUN x HUL",
-     "odd": 1.86
-    },
-    {
-     "h": "20:54",
-     "jogo": "BRE x NOT",
-     "odd": 1.94
-    },
-    {
-     "h": "20:56",
-     "jogo": "BHA x TOT",
-     "odd": 1.93
-    }
-   ],
-   "gatilho": "coluna :54",
-   "alvo": {
-    "h": "20:52",
-    "jogo": "SUN x HUL",
-    "odd": 1.86,
-    "unidades": 1,
-    "desde": 1795563393046
-   },
-   "iniciadoEm": 1795563393046
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795558424565,
    "eng": 1795559254294,
@@ -5218,9 +5188,9 @@
     "desde": 1795564235967,
     "gatilho": "coluna :57"
    },
-   "ame": {
-    "desde": 1795564289825,
-    "gatilho": "odd 2.02"
+   "eng": {
+    "desde": 1795564299224,
+    "gatilho": "coluna :54"
    }
   }
  },
