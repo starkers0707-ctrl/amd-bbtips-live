@@ -4709,7 +4709,37 @@
    "eng": 1795498175148,
    "ita": 1795498828366
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "03:27",
+     "jogo": "Paris x Munich",
+     "odd": 2.01
+    },
+    {
+     "h": "03:30",
+     "jogo": "Madrid x Chelsea",
+     "odd": 2.34
+    },
+    {
+     "h": "03:33",
+     "jogo": "Celtic x Barcelona",
+     "odd": 2.29
+    }
+   ],
+   "gatilho": "time Madrid",
+   "alvo": {
+    "h": "03:27",
+    "jogo": "Paris x Munich",
+    "odd": 2.01,
+    "unidades": 1,
+    "desde": 1795500467138
+   },
+   "iniciadoEm": 1795500467138
+  },
   "cooldown": {
    "cam": 1795487509896,
    "eng": 1795498175148,
@@ -4723,9 +4753,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "ATA",
-   "n": 9,
-   "start": 4
+   "chave": "Madrid",
+   "n": 8,
+   "start": 6
   },
   "dias": {
    "2026-11-19": -7,
@@ -6262,7 +6292,7 @@
    "tipo": "time",
    "chave": "France",
    "n": 8,
-   "start": 3
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
