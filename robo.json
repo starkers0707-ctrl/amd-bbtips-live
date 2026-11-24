@@ -1374,12 +1374,30 @@
  },
  "o25": {
   "saldo": -18,
-  "ciclos": 89669,
+  "ciclos": 89672,
   "greens": 239,
   "redsCiclo": 34,
   "aborts": 0,
-  "descartes": 89396,
+  "descartes": 89399,
   "historico": [
+   {
+    "quando": "2026-11-24T20:37:34.984Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T20:37:34.980Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.04) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T20:37:34.970Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.86) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T20:37:29.186Z",
     "resultado": "GREEN_OBS",
@@ -4961,24 +4979,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.17) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T20:14:51.176Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T20:14:51.170Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T20:14:28.468Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5181,8 +5181,12 @@
    "2026-11-22": -12.1
   },
   "_obs": {
+   "eng": {
+    "desde": 1795552654966,
+    "gatilho": "coluna :54"
+   },
    "ame": {
-    "desde": 1795552649186,
+    "desde": 1795552654983,
     "gatilho": "odd 2.24"
    }
   }
@@ -6964,6 +6968,11 @@
    "2026-11-23": 13.6,
    "2026-11-24": -26.9
   },
-  "_obs": {}
+  "_obs": {
+   "lat": {
+    "desde": 1795552649200,
+    "gatilho": "coluna :56"
+   }
+  }
  }
 }
