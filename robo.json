@@ -1255,12 +1255,36 @@
  },
  "o25": {
   "saldo": -27.9,
-  "ciclos": 77876,
+  "ciclos": 77880,
   "greens": 215,
   "redsCiclo": 32,
   "aborts": 0,
-  "descartes": 77629,
+  "descartes": 77633,
   "historico": [
+   {
+    "quando": "2026-11-24T12:37:59.525Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho seq GRGRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T12:37:57.415Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :40) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T12:37:57.408Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :51) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-24T12:37:57.397Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-24T12:37:57.386Z",
     "resultado": "GREEN_OBS",
@@ -4836,30 +4860,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :25) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T12:23:04.256Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :30) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T12:23:04.251Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time BOL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T12:23:04.240Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T12:23:04.232Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time RAY) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5038,9 +5038,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "bra": {
-    "desde": 1795523877386,
-    "gatilho": "time ATC"
+   "eng": {
+    "desde": 1795523879524,
+    "gatilho": "seq GRGRG"
    }
   }
  },
@@ -6697,6 +6697,11 @@
    "2026-11-23": 13.6,
    "2026-11-24": -23.1
   },
-  "_obs": {}
+  "_obs": {
+   "eng": {
+    "desde": 1795523877424,
+    "gatilho": "odd 1.77"
+   }
+  }
  }
 }
