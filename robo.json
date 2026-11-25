@@ -1589,12 +1589,36 @@
  },
  "o25": {
   "saldo": -6.9,
-  "ciclos": 104903,
+  "ciclos": 104907,
   "greens": 283,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 104581,
+  "descartes": 104585,
   "historico": [
+   {
+    "quando": "2026-11-25T12:33:30.878Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :35) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:33:04.246Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:33:04.243Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:33:04.237Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :35) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T12:33:03.500Z",
     "resultado": "GREEN_OBS",
@@ -5170,30 +5194,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :21) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:13:14.502Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:13:14.494Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:13:14.490Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:13:08.704Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :16) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5203,8 +5203,8 @@
   },
   "ciclo": {
    "liga": "bra",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "09:32",
@@ -5224,13 +5224,21 @@
    ],
    "gatilho": "time FOR",
    "alvo": {
-    "h": "09:32",
-    "jogo": "CRM x FOR",
+    "h": "09:35",
+    "jogo": "MEN x NAC",
     "odd": 1.91,
-    "unidades": 1,
-    "desde": 1795609749424
+    "unidades": 2,
+    "desde": 1795610010869
    },
-   "iniciadoEm": 1795609749424
+   "iniciadoEm": 1795609749424,
+   "tiros": [
+    {
+     "h": "09:32",
+     "jogo": "CRM x FOR",
+     "odd": 1.91,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795605050850,
@@ -5399,9 +5407,9 @@
     "desde": 1795609924103,
     "gatilho": "odd 2.12"
    },
-   "cam": {
-    "desde": 1795609983500,
-    "gatilho": "odd 2.31"
+   "spa": {
+    "desde": 1795610010878,
+    "gatilho": "coluna :35"
    }
   }
  },
@@ -7611,14 +7619,43 @@
    }
   ],
   "consumidas": {
-   "ame": 1795606376186,
    "bra": 1795606958293,
    "cam": 1795607562309,
    "ita": 1795608751021,
    "cop": 1795609369250,
    "mnd": 1795609534249
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "09:34",
+     "jogo": "Santiago x Rio de Janeiro",
+     "odd": 1.9
+    },
+    {
+     "h": "09:37",
+     "jogo": "Lima x Guayaquil",
+     "odd": 1.96
+    },
+    {
+     "h": "09:40",
+     "jogo": "Santos x Medellin",
+     "odd": 1.95
+    }
+   ],
+   "gatilho": "odd 1.96",
+   "alvo": {
+    "h": "09:34",
+    "jogo": "Santiago x Rio de Janeiro",
+    "odd": 1.9,
+    "unidades": 1,
+    "desde": 1795609983527
+   },
+   "iniciadoEm": 1795609983527
+  },
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795600540122,
@@ -7631,9 +7668,9 @@
    "ita": 1795608751021
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":26",
-   "n": 8,
+   "tipo": "odd",
+   "chave": "1.96",
+   "n": 14,
    "start": 1
   },
   "dias": {
