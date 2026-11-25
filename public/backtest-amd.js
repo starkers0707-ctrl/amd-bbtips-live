@@ -30,6 +30,8 @@
     { id: "ambas", nome: "Ambas Sim" },
     { id: "ambasN", nome: "Ambas Não" },
   ];
+  var modoBt = 'todos';
+  try { modoBt = localStorage.getItem("amd_bt_modo") || 'todos'; } catch (e) {}
   var mktEscolhido = null;
   try { mktEscolhido = localStorage.getItem("amd_bt_mkt"); } catch (e) {}
   if (!MERCADOS_BT.some(function (m) { return m.id === mktEscolhido; })) mktEscolhido = "o25";
@@ -67,6 +69,17 @@
     } else {
       head.appendChild(cx);
     }
+    var modos = document.createElement("span");
+    modos.className = "amd-bt-modo";
+    modos.style.cssText = "display:flex;gap:4px;align-items:center;margin-left:8px";
+    [["todos", "Todos EV+"], ["novos", "Só sinais novos"]].forEach(function (m) {
+      var b = document.createElement("button");
+      b.textContent = m[1]; b.dataset.modo = m[0];
+      b.style.cssText = "cursor:pointer;border-radius:6px;padding:3px 8px;font-size:11px;line-height:1.4;border:1px solid var(--line,#162832);background:transparent;color:var(--muted,#96a5ad)";
+      b.addEventListener("click", function (e) { e.preventDefault(); modoBt = m[0]; try { localStorage.setItem("amd_bt_modo", modoBt); } catch (err) {} pinta(); if (ultimo) desenha(ultimo, ultimaLiga); });
+      modos.appendChild(b);
+    });
+    cx.appendChild(modos);
     head.style.flexWrap = "wrap";
     head.style.rowGap = "6px";
     if (!mktEscolhido) mktEscolhido = "o25";
@@ -75,8 +88,8 @@
   function pinta() {
     var cx = document.querySelector(".amd-bt-mkt");
     if (!cx) return;
-    [].forEach.call(cx.children, function (b) {
-      var on = b.dataset.mkt === mktEscolhido;
+    [].forEach.call(cx.querySelectorAll("button"), function (b) {
+      var on = b.dataset.mkt ? b.dataset.mkt === mktEscolhido : b.dataset.modo === modoBt;
       b.style.borderColor = on ? "var(--blue,#32a4ff)" : "var(--line,#162832)";
       b.style.color = on ? "var(--blue,#32a4ff)" : "var(--muted,#96a5ad)";
       b.style.fontWeight = on ? "700" : "400";
@@ -157,7 +170,7 @@
 
   function buscar(liga) {
     if (buscando[liga]) return buscando[liga];
-    buscando[liga] = fetch(API + liga + "&horas=36&compacto=1", { cache: "no-store" })
+    buscando[liga] = fetch(API + liga + "&horas=48&compacto=1", { cache: "no-store" })
       .then(function (r) { return r.json(); })
       .then(function (j) {
         var out = [], lista = (j && j.partidas) || [];
@@ -259,7 +272,9 @@
   function desenha(bt, liga) {
     var tb = document.getElementById("backtest");
     if (!tb) return;
-    var lista = (bt && bt.ultimos10indicados) || [];
+    var todos = modoBt === 'todos' && bt && bt.todosEv;
+    var lista = (todos ? bt.todosEv.slice(-150) : (bt && bt.ultimos10indicados)) || [];
+    resumoBt(bt, todos);
     if (!lista.length) {
       // passa pelo avisa(), que destranca a escrita - sem isso a proteção bloqueia
       // a mensagem e a tabela fica presa no "calculando" (era exatamente o bug do Under 1.5)
@@ -291,8 +306,8 @@
     escrevendo = false;
     vigiaTabela(tb);
 
-    // resumo honesto, se existir algum lugar para ele (não cria elemento novo)
-    var alvo = document.getElementById("btResumo");
+    return;
+    var alvo = null;
     if (alvo && bt.indicados) {
       alvo.textContent = bt.cincoMaisSemOdd
         ? "sinais estatísticos " + bt.indicados.n + " · acerto " +
@@ -302,6 +317,30 @@
           " · ROI " + (bt.roiIndicados == null ? "—" : bt.roiIndicados + "%") +
           " · base " + bt.baseGeral + "%";
     }
+  }
+
+  /* Resumo honesto embaixo da tabela: acerto e ROI REAIS do EV+ x o necessario para empatar. */
+  function resumoBt(bt, todos) {
+    var tb = document.getElementById("backtest");
+    if (!tb || !bt) return;
+    var box = document.getElementById("btResumo");
+    if (!box) {
+      box = document.createElement("div"); box.id = "btResumo";
+      box.style.cssText = "font-size:12px;color:var(--muted,#96a5ad);padding:8px 4px 2px;line-height:1.5";
+      var tabela = tb.closest("table"); tabela.parentNode.insertBefore(box, tabela.nextSibling);
+    }
+    if (bt.cincoMaisSemOdd) { box.textContent = "5+ sem odd: " + (bt.indicados ? bt.indicados.n : 0) + " sinais · acerto " + (bt.taxaIndicados == null ? "—" : bt.taxaIndicados + "%"); return; }
+    function linha(rot, r) {
+      if (!r || !r.n) return rot + ": nenhum jogo";
+      var acerto = Math.round(r.green / r.n * 1000) / 10, empate = r.oddMedia ? Math.round(1000 / r.oddMedia) / 10 : null;
+      var cor = r.roi > 0 ? "var(--green,#20ef61)" : "var(--red,#ff4d5a)";
+      return rot + ": <b>" + r.n + "</b> jogos · acerto <b>" + acerto + "%</b>" + (empate != null ? " (precisa " + empate + "% p/ empatar na odd média @" + r.oddMedia + ")" : "") +
+        " · ROI <b style=\"color:" + cor + "\">" + (r.roi > 0 ? "+" : "") + r.roi + "%</b>";
+    }
+    var ini = bt.todosEv && bt.todosEv.length ? bt.todosEv[0].horario : "";
+    box.innerHTML = linha("EV+ (todos)", bt.resumoEv) + "<br>" + linha("Todos os jogos (sem filtro)", bt.resumoTodos) + "<br>" +
+      linha("Só sinais novos", bt.indicados ? { n: bt.indicados.n, green: bt.indicados.green, roi: bt.roiIndicados, oddMedia: null } : null) +
+      "<br><span style=\"opacity:.8\">Últimas 24h · cada jogo avaliado só com os jogos anteriores a ele. Se o ROI do EV+ não for melhor que o “sem filtro”, o EV não está acertando.</span>";
   }
 
   // ---- clique na linha -> localiza o jogo na grade ------------------------
@@ -347,7 +386,7 @@
       chaveAtual = chave;
       meuHtml = null;
       poeTitulo("Backtest · " + liga.charAt(0).toUpperCase() + liga.slice(1) + " — " + nomeDoMercado(mkt) +
-        (mkt === "ge5" ? " · probabilidade sem EV" : " · sinais novos"));
+        (mkt === "ge5" ? " · probabilidade sem EV" : " · 24h"));
       avisa("calculando " + nomeDoMercado(mkt) + " · " + liga + "…");
     }
     buscar(liga).then(function (jogos) {
@@ -358,10 +397,10 @@
       }
       var bt;
       try { var temOdd5 = mkt === "ge5" && jogos.filter(function (g) { return g.odds && g.odds.ge5; }).length >= jogos.length * 0.5;
-      bt = (mkt === "ge5" && !temOdd5) ? backtest5Mais(jogos, jogosHora(liga)) : AMD_MOTOR.backtest(jogos, mkt, 12 * jogosHora(liga), { liga: liga }); } catch (e) { return; }
+      bt = (mkt === "ge5" && !temOdd5) ? backtest5Mais(jogos, jogosHora(liga)) : AMD_MOTOR.backtest(jogos, mkt, 24 * jogosHora(liga), { liga: liga }); } catch (e) { return; }
       if (!bt || bt.erro) { avisa("sem base suficiente para o backtest deste mercado agora"); return; }
       poeTitulo("Backtest · " + liga.charAt(0).toUpperCase() + liga.slice(1) + " — " + nomeDoMercado(mkt) +
-        (mkt === "ge5" ? " · probabilidade sem EV" : " · sinais novos"));
+        (mkt === "ge5" ? " · probabilidade sem EV" : " · 24h"));
       ultimo = bt; ultimaLiga = liga;
       desenha(bt, liga);
     });

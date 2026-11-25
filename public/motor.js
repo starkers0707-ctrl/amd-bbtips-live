@@ -574,8 +574,14 @@ function _calculaBacktest(liga, mkt, n, store, jph = 20) {
       ? Math.round(indicados.filter(r => r.green).length / indicados.length * 1000) / 10 : null;
     const roiIndicados = indicados.length
       ? Math.round(lucroIndicados / indicados.length * 1000) / 10 : null;
+    // TODOS os jogos com EV+ (nao so o nascimento) para conferir o EV de verdade
+    const roiDe = arr => arr.length ? Math.round(arr.reduce((s, r) => s + (r.green ? r.odd - 1 : -1), 0) / arr.length * 1000) / 10 : null;
+    const oddMed = arr => arr.length ? Math.round(arr.reduce((s, r) => s + Number(r.odd), 0) / arr.length * 100) / 100 : null;
     const out = {
       liga, mkt, jogosAvaliados: resultados.length, baseGeral,
+      todosEv: evPos.map(r => ({ nome: r.nome, horario: r.horario, odd: r.odd, score: r.score, ev: r.ev, placar: r.placar, resultado: r.green ? "GREEN" : "RED" })),
+      resumoEv: { n: evPos.length, green: evPos.filter(r => r.green).length, roi: roiDe(evPos), oddMedia: oddMed(evPos) },
+      resumoTodos: { n: resultados.length, green: resultados.filter(r => r.green).length, roi: roiDe(resultados), oddMedia: oddMed(resultados) },
       _seqIndicados: indicados.map(r => !!r.green),
       faixas: { forte_60mais: faixa(60, 999), media_30a59: faixa(30, 60), fraca_0a29: faixa(0, 30), negativa: faixa(-999, 0) },
       evPositivo: { n: evPos.length, green: evPos.filter(r => r.green).length, pct: evPos.length ? Math.round(evPos.filter(r => r.green).length / evPos.length * 100) : null },
