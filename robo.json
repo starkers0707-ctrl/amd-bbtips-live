@@ -1539,12 +1539,36 @@
  },
  "o25": {
   "saldo": -14.4,
-  "ciclos": 101822,
+  "ciclos": 101826,
   "greens": 276,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 101507,
+  "descartes": 101511,
   "historico": [
+   {
+    "quando": "2026-11-25T10:39:04.702Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:39:04.693Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:38:37.800Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:38:37.793Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:38:37.783Z",
     "resultado": "GREEN_OBS",
@@ -5120,30 +5144,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:10:02.878Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho seq GRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:10:02.870Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-1)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:10:02.866Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:10:00.524Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho seq GRGR) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5366,9 +5366,9 @@
     "desde": 1795602842794,
     "gatilho": "time FOR"
    },
-   "spa": {
-    "desde": 1795603117783,
-    "gatilho": "time VIL"
+   "cam": {
+    "desde": 1795603144701,
+    "gatilho": "odd 2.31"
    }
   }
  },
@@ -7546,7 +7546,7 @@
    "tipo": "coluna",
    "chave": ":04",
    "n": 8,
-   "start": 8
+   "start": 7
   },
   "dias": {
    "2026-11-20": 0,
