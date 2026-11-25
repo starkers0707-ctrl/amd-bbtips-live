@@ -1418,12 +1418,18 @@
  },
  "o25": {
   "saldo": -29.3,
-  "ciclos": 96261,
+  "ciclos": 96262,
   "greens": 256,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 95967,
+  "descartes": 95968,
   "historico": [
+   {
+    "quando": "2026-11-25T02:53:43.521Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T02:53:38.339Z",
     "resultado": "GREEN_OBS",
@@ -5017,12 +5023,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:08:06.466Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5031,7 +5031,37 @@
    "lat": 1795574739018,
    "eng": 1795575218328
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "00:05",
+     "jogo": "COM x GEN",
+     "odd": 1.87
+    },
+    {
+     "h": "00:07",
+     "jogo": "CAG x INT",
+     "odd": 1.77
+    },
+    {
+     "h": "00:09",
+     "jogo": "ROM x MON",
+     "odd": 1.83
+    }
+   ],
+   "gatilho": "odd 1.77",
+   "alvo": {
+    "h": "00:05",
+    "jogo": "COM x GEN",
+    "odd": 1.87,
+    "unidades": 1,
+    "desde": 1795575223507
+   },
+   "iniciadoEm": 1795575223507
+  },
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5198,9 +5228,9 @@
     "desde": 1795573461005,
     "gatilho": "odd 2.13"
    },
-   "spa": {
-    "desde": 1795575218339,
-    "gatilho": "odd 1.81"
+   "ita": {
+    "desde": 1795575223521,
+    "gatilho": "odd 1.77"
    }
   }
  },
