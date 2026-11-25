@@ -7,6 +7,7 @@
  * ========================================================================== */
 (function () {
   'use strict';
+  var LS_ENSINO = 'amd_ia_ensino', LS_MODO = 'amd_ia_modo', LS_PROF = 'amd_ia_prof';
   var LS_CFG = 'amd_ia_cfg', LS_LIGAS = 'amd_ia_ligas', LS_MK = 'amd_ia_mk', LS_CHAT = 'amd_ia_chat';
   var LIGAS = [['eng', 'Inglaterra'], ['ita', 'Itália'], ['spa', 'Espanha'], ['mnd', 'Mundo'], ['bra', 'Brasil'], ['lat', 'América Latina'], ['cam', 'Liga dos Campeões'], ['cop', 'Copa'], ['ame', 'Américas']];
   var MK = {
@@ -30,6 +31,17 @@
     'Seja honesto: futebol virtual é sorteado, nenhuma análise garante green. Nunca prometa resultado e nunca sugira aumentar valor para recuperar perda.'
   ].join('\n');
 
+  var LIVRE = [
+    'Você é a IA pessoal de um apostador de futebol virtual (Kiron/Vavada), conectada ao site AMD Live. Converse livremente em português do Brasil, como um parceiro de análise: tire dúvidas, discuta estratégia, analise ligas, mercados, times, colunas, odds e gráficos, explique o que está vendo.',
+    'Em cada mensagem você recebe DADOS AO VIVO do site. Use esses dados como fonte da verdade: não invente jogos, odds, horários ou números; se algo não estiver nos dados, diga que não está.',
+    'O usuário pode te ensinar o método dele na seção ENSINO DO USUÁRIO: siga esse método e use o vocabulário dele. Quando ele pedir uma entrada, aplique as regras dele.',
+    'Seja honesto: futebol virtual é sorteado (RNG), nenhuma análise garante green. Se uma ideia dele não tiver apoio nos dados, diga com respeito. Nunca incentive aumentar valor para recuperar perda.'
+  ].join('\n');
+  function sistema() {
+    var ens = ($('ensino') && $('ensino').value.trim()) || '';
+    var base = ($('modo') && $('modo').value === 'regras') ? REGRAS : LIVRE + '\n\nREGRAS DA CASA (referência; o usuário costuma operar assim):\n' + REGRAS.split('REGRAS DA CASA (obrigatórias, sem exceção):')[1].split('COMO RESPONDER')[0];
+    return base + (ens ? '\n\nENSINO DO USUÁRIO (siga isto):\n' + ens : '');
+  }
   function $(id) { return document.getElementById(id); }
   function ler(k, d) { try { var v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }
   function grava(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
@@ -42,7 +54,7 @@
   function mm(line, p, i) { if (i < p - 1) return NaN; var t = 0; for (var k = i - p + 1; k <= i; k++) t += line[k]; return t / p; }
   function pct(n, d) { return d ? Math.round(n / d * 1000) / 10 : 0; }
 
-  function analisaLiga(id, nome, partidas, mkSel) {
+  function analisaLiga(id, nome, partidas, mkSel, completo) {
     var fe = partidas.filter(function (g) { return g.resultado_ft && g.gols_a != null; }).sort(function (a, b) { return Date.parse(a.slot_em) - Date.parse(b.slot_em); });
     var fu = partidas.filter(function (g) { return !g.resultado_ft; }).sort(function (a, b) { return Date.parse(a.slot_em) - Date.parse(b.slot_em); });
     if (!fe.length) return '## ' + nome + '\nsem jogos carregados';
@@ -69,6 +81,10 @@
     function colSeca(min) { var c = fe.filter(function (g) { return Number(g.minuto) === min; }).slice(-3); return { txt: c.filter(function (g) { return M.paga(+g.gols_a, +g.gols_b); }).length + '/' + c.length, seca: c.length >= 3 && !c.some(function (g) { return M.paga(+g.gols_a, +g.gols_b); }) }; }
     function time(t) { var j = fe.filter(function (g) { return g.time_a === t || g.time_b === t; }); var u6 = j.slice(-6), u3 = j.slice(-3);
       return { txt: u6.filter(function (g) { return M.paga(+g.gols_a, +g.gols_b); }).length + '/' + u6.length, frio: u3.length >= 3 && !u3.some(function (g) { return M.paga(+g.gols_a, +g.gols_b); }) }; }
+    if (completo) {
+      linhas.push('Jogos fechados das últimas 3h (hora · casa x fora · placar · odds O2.5/O3.5/Ambas):');
+      fe.slice(-90).forEach(function (g) { var o = g.odds || {}; linhas.push('  ' + hhmm(g) + ' · ' + g.time_a + ' x ' + g.time_b + ' · ' + g.gols_a + '-' + g.gols_b + ' · ' + (o['odd_over_2.5'] || '?') + '/' + (o['odd_over_3.5'] || '?') + '/' + (o['odd_ambas_sim'] || '?')); });
+    }
     linhas.push('Próximos jogos (' + M.nome + '):');
     fu.slice(0, 8).forEach(function (g) {
       var c = colSeca(Number(g.minuto)), ta = time(g.time_a), tb = time(g.time_b), odd = (g.odds || {})[M.odd];
@@ -86,9 +102,19 @@
     return Promise.all(sel.map(function (l) {
       return fetch('/api/grade?liga=' + l[0] + '&horas=24&compacto=1&_=' + Date.now(), { credentials: 'same-origin', cache: 'no-store' })
         .then(function (r) { return r.ok ? r.json() : { partidas: [] }; })
-        .then(function (j) { return analisaLiga(l[0], l[1], j.partidas || [], mkSel); })
+        .then(function (j) { return analisaLiga(l[0], l[1], j.partidas || [], mkSel, $('prof').value === 'completo'); })
         .catch(function () { return '## ' + l[1] + '\nfalha ao carregar'; });
     })).then(function (blocos) {
+      if ($('prof').value !== 'completo') return blocos;
+      return fetch('/api/robo', { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.json() : {}; }).then(function (j) {
+        var nomes = { o35: 'Robô O3.5', o25: 'Robô O2.5 A', o25b: 'Robô O2.5 B', ambas: 'Robô Ambas' };
+        var t = Object.keys(nomes).filter(function (k) { return j[k] && j[k].registro; }).map(function (k) {
+          var r = j[k].registro, e = j[k].empate || {};
+          return '- ' + nomes[k] + ': saldo ' + r.saldo + 'u · hoje ' + r.hoje + 'u · greens ' + r.greens + ' · reds ' + r.redsCiclo + ' · acerto ' + (e.esta == null ? '—' : e.esta + '%') + ' · precisa ' + (e.precisa == null ? '—' : e.precisa + '%') + (j[k].cicloView ? ' · CICLO ABERTO em ' + j[k].cicloView.liga : '');
+        }).join('\n');
+        return blocos.concat(['## Robôs automáticos do site\n' + (t || 'sem dados')]);
+      }).catch(function () { return blocos; });
+    }).then(function (blocos) {
       var agora = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
       return 'DADOS AO VIVO DO AMD LIVE · hora atual (Brasília) ' + agora + ' · mercado principal: ' + MK[mkSel].nome +
         '\nLegenda: G = pagou, r = não pagou. Times: x/6 = quantos dos últimos 6 jogos do time pagaram o mercado; FRIO = 0 nos últimos 3. Coluna: x/3 = últimos 3 jogos daquele minuto; SECA = 0 de 3.\n\n' + blocos.join('\n\n');
@@ -157,21 +183,21 @@
     if (prov === 'gemini') {
       return fetch('https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(modelo) + ':generateContent?key=' + encodeURIComponent(chave), {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ systemInstruction: { parts: [{ text: REGRAS }] }, contents: historico.map(function (m) { return { role: m.r === 'u' ? 'user' : 'model', parts: [{ text: m.t }] }; }), generationConfig: { temperature: 0.2 } })
+        body: JSON.stringify({ systemInstruction: { parts: [{ text: sistema() }] }, contents: historico.map(function (m) { return { role: m.r === 'u' ? 'user' : 'model', parts: [{ text: m.t }] }; }), generationConfig: { temperature: 0.2 } })
       }).then(function (r) { return r.ok ? r.json() : erroHttp(r); })
         .then(function (j) { var c = (j.candidates || [])[0]; return c && c.content ? (c.content.parts || []).map(function (p) { return p.text || ''; }).join('') : ('Sem resposta (' + JSON.stringify(j.promptFeedback || c || {}).slice(0, 200) + ')'); });
     }
     if (prov === 'anthropic') {
       return fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST', headers: { 'Content-Type': 'application/json', 'x-api-key': chave, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-        body: JSON.stringify({ model: modelo, max_tokens: 2000, system: REGRAS, messages: historico.map(function (m) { return { role: m.r === 'u' ? 'user' : 'assistant', content: m.t }; }) })
+        body: JSON.stringify({ model: modelo, max_tokens: 3000, system: sistema(), messages: historico.map(function (m) { return { role: m.r === 'u' ? 'user' : 'assistant', content: m.t }; }) })
       }).then(function (r) { return r.ok ? r.json() : erroHttp(r); })
         .then(function (j) { return (j.content || []).map(function (c) { return c.text || ''; }).join(''); });
     }
     var url = prov === 'openai' ? 'https://api.openai.com/v1/chat/completions' : 'https://openrouter.ai/api/v1/chat/completions';
     return fetch(url, {
       method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + chave },
-      body: JSON.stringify({ model: modelo, messages: [{ role: 'system', content: REGRAS }].concat(historico.map(function (m) { return { role: m.r === 'u' ? 'user' : 'assistant', content: m.t }; })) })
+      body: JSON.stringify({ model: modelo, messages: [{ role: 'system', content: sistema() }].concat(historico.map(function (m) { return { role: m.r === 'u' ? 'user' : 'assistant', content: m.t }; })) })
     }).then(function (r) { return r.ok ? r.json() : erroHttp(r); })
       .then(function (j) { var c = (j.choices || [])[0]; return c && c.message ? (c.message.content || '') : 'Sem resposta'; });
   }
@@ -218,6 +244,7 @@
     if (!texto) return;
     if (!cfg.chave || !cfg.modelo) { status('Conecte a sua IA primeiro (chave + modelo).', 'badt'); return; }
     if (!ligasMarcadas().length) { status('Marque pelo menos uma liga.', 'badt'); return; }
+    grava(LS_ENSINO, $('ensino').value);
     var bt = $('btEnviar'); bt.disabled = true; bt.textContent = 'Lendo o site…';
     contexto().then(function (ctx) {
       $('ctx').textContent = ctx;
@@ -243,6 +270,10 @@
     $('ligas').innerHTML = LIGAS.map(function (l) { return '<label><input type="checkbox" id="lg_' + l[0] + '"' + (marcadas.indexOf(l[0]) >= 0 ? ' checked' : '') + '>' + l[1] + '</label>'; }).join('');
     $('ligas').addEventListener('change', function () { grava(LS_LIGAS, ligasMarcadas().map(function (l) { return l[0]; })); });
     $('mk').value = ler(LS_MK, 'o35');
+    $('modo').value = ler(LS_MODO, 'livre'); $('modo').addEventListener('change', function () { grava(LS_MODO, $('modo').value); });
+    $('prof').value = ler(LS_PROF, 'resumo'); $('prof').addEventListener('change', function () { grava(LS_PROF, $('prof').value); });
+    $('ensino').value = ler(LS_ENSINO, '');
+    $('btEnsino').addEventListener('click', function () { grava(LS_ENSINO, $('ensino').value); var e = $('stEnsino'); e.textContent = 'Ensino salvo · ' + $('ensino').value.length + ' caracteres · vai em toda conversa'; e.className = 'st ok'; });
     $('mk').addEventListener('change', function () { grava(LS_MK, $('mk').value); });
     $('prov').value = cfg.prov || 'gemini';
     $('chave').value = cfg.chave || '';

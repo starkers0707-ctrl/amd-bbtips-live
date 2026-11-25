@@ -64,11 +64,30 @@ pre{white-space:pre-wrap;font-size:11px;color:var(--mut);background:var(--in);bo
     </div>
 
     <div class="card" style="margin-top:14px">
+      <h3>✦ ENSINAR A IA</h3>
+      <label>Seu jeito de operar, suas regras e o que você aprendeu (vai em TODA conversa)
+        <textarea id="ensino" style="min-height:140px" placeholder="Ex.: Só entro com o gráfico acumulado subindo. Coluna zerada eu evito. Prefiro Inglaterra, Itália e Espanha. Quando a liga paga 3 seguidos ela costuma esfriar…"></textarea></label>
+      <div class="row"><button id="btEnsino" class="sec">Salvar ensino</button></div>
+      <div id="stEnsino" class="st"></div>
+      <div class="nota">Isso é a “memória” da sua IA: fica salvo neste navegador e é enviado junto com os dados ao vivo em cada pergunta. Quanto mais claro você escrever, melhor ela segue o seu método. Você também pode dizer no chat “aprenda isso: …” e depois colar aqui.</div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
       <h3>2 · O QUE A IA ENXERGA</h3>
       <div class="ligas" id="ligas"></div>
       <label>Mercado principal
         <select id="mk">
           <option value="o35">Over 3.5</option><option value="o25">Over 2.5</option><option value="ambs">Ambas Marcam</option><option value="ge5">5+ Gols</option>
+        </select></label>
+      <label>Modo
+        <select id="modo">
+          <option value="livre">Livre — conversa aberta com todos os dados</option>
+          <option value="regras">Entrada com regras da casa (rígido)</option>
+        </select></label>
+      <label>Profundidade dos dados
+        <select id="prof">
+          <option value="resumo">Resumo (rápido e barato)</option>
+          <option value="completo">Completo — jogo a jogo das últimas 3h + robôs</option>
         </select></label>
       <div class="row"><button id="btVer" class="sec">Ver dados enviados</button></div>
       <details id="det"><summary>Dados ao vivo (o que vai para a IA)</summary><pre id="ctx">—</pre></details>
@@ -91,5 +110,5 @@ pre{white-space:pre-wrap;font-size:11px;color:var(--mut);background:var(--in);bo
   </div>
 </div>
 </div>
-<script src="ia.js?v=20261125-ia3"></script>
+<script src="ia.js?v=20261125-ia4"></script>
 </body></html>
