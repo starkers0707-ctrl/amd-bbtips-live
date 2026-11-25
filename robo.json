@@ -1566,12 +1566,42 @@
  },
  "o25": {
   "saldo": -6.1,
-  "ciclos": 105026,
+  "ciclos": 105031,
   "greens": 284,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 104703,
+  "descartes": 104708,
   "historico": [
+   {
+    "quando": "2026-11-25T12:39:03.121Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:39:03.117Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:39:03.111Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :41) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:38:51.210Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:38:51.203Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T12:38:51.192Z",
     "resultado": "GREEN_OBS",
@@ -5141,36 +5171,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:17:28.823Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:17:11.220Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :21) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:17:11.217Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:17:11.210Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:17:10.623Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :21) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5377,20 +5377,26 @@
     "desde": 1795610117075,
     "gatilho": "odd 2.3"
    },
-   "spa": {
-    "desde": 1795610331191,
-    "gatilho": "coluna :41"
+   "cop": {
+    "desde": 1795610343121,
+    "gatilho": "odd 2.12"
    }
   }
  },
  "ambas": {
-  "saldo": -32.9,
-  "ciclos": 366,
-  "greens": 156,
+  "saldo": -32,
+  "ciclos": 367,
+  "greens": 157,
   "redsCiclo": 21,
   "aborts": 0,
   "descartes": 189,
   "historico": [
+   {
+    "quando": "2026-11-25T12:38:51.239Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "ame · Lima x Guayaquil @1.96 (tiro 2) · gatilho: odd 1.96"
+   },
    {
     "quando": "2026-11-25T12:25:34.258Z",
     "resultado": "GREEN",
@@ -7593,47 +7599,10 @@
    "cam": 1795607562309,
    "ita": 1795608751021,
    "cop": 1795609369250,
-   "mnd": 1795609534249
+   "mnd": 1795609534249,
+   "ame": 1795610331230
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "09:34",
-     "jogo": "Santiago x Rio de Janeiro",
-     "odd": 1.9
-    },
-    {
-     "h": "09:37",
-     "jogo": "Lima x Guayaquil",
-     "odd": 1.96
-    },
-    {
-     "h": "09:40",
-     "jogo": "Santos x Medellin",
-     "odd": 1.95
-    }
-   ],
-   "gatilho": "odd 1.96",
-   "alvo": {
-    "h": "09:37",
-    "jogo": "Lima x Guayaquil",
-    "odd": 1.96,
-    "unidades": 2,
-    "desde": 1795610166505
-   },
-   "iniciadoEm": 1795609983527,
-   "tiros": [
-    {
-     "h": "09:34",
-     "jogo": "Santiago x Rio de Janeiro",
-     "odd": 1.9,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795600540122,
@@ -7642,14 +7611,14 @@
    "mnd": 1795609534249,
    "cam": 1795607562309,
    "cop": 1795609369250,
-   "ame": 1795606376186,
+   "ame": 1795610331230,
    "ita": 1795608751021
   },
   "_gatilhoAtual": {
    "tipo": "odd",
    "chave": "1.85",
    "n": 8,
-   "start": 7
+   "start": 6
   },
   "dias": {
    "2026-11-20": 0,
@@ -7657,7 +7626,7 @@
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
    "2026-11-24": -32.6,
-   "2026-11-25": -1.7
+   "2026-11-25": -0.8
   },
   "_obs": {}
  }
