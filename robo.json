@@ -1458,12 +1458,24 @@
  },
  "o25": {
   "saldo": -22.7,
-  "ciclos": 97122,
+  "ciclos": 97124,
   "greens": 263,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96821,
+  "descartes": 96823,
   "historico": [
+   {
+    "quando": "2026-11-25T06:27:05.614Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T06:27:05.604Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T06:26:04.203Z",
     "resultado": "GREEN_OBS",
@@ -5051,18 +5063,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:16:07.998Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:16:04.497Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5237,6 +5237,10 @@
    "spa": {
     "desde": 1795587070505,
     "gatilho": "time VIL"
+   },
+   "cop": {
+    "desde": 1795588025614,
+    "gatilho": "time France"
    }
   }
  },
