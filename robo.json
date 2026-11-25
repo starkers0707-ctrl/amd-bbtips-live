@@ -1530,12 +1530,42 @@
  },
  "o25": {
   "saldo": -11.8,
-  "ciclos": 102835,
+  "ciclos": 102840,
   "greens": 279,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 102517,
+  "descartes": 102522,
   "historico": [
+   {
+    "quando": "2026-11-25T11:11:07.483Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :16) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:11:07.480Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:11:07.476Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :18) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:11:07.471Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:10:50.889Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :16) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T11:10:50.883Z",
     "resultado": "GREEN_OBS",
@@ -5105,36 +5135,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :16) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:53:28.548Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:53:28.546Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:53:28.541Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:53:28.535Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:53:10.875Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :16) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5144,7 +5144,37 @@
    "bra": 1795604436334,
    "cam": 1795605050850
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "08:13",
+     "jogo": "Santiago x Santos",
+     "odd": 2.22
+    },
+    {
+     "h": "08:16",
+     "jogo": "Porto Alegre x La Plata",
+     "odd": 2.55
+    },
+    {
+     "h": "08:19",
+     "jogo": "Itaquera x Belo Horizonte",
+     "odd": 2.18
+    }
+   ],
+   "gatilho": "coluna :16",
+   "alvo": {
+    "h": "08:13",
+    "jogo": "Santiago x Santos",
+    "odd": 2.22,
+    "unidades": 1,
+    "desde": 1795605067457
+   },
+   "iniciadoEm": 1795605067457
+  },
   "cooldown": {
    "cam": 1795605050850,
    "eng": 1795575218328,
@@ -5311,25 +5341,23 @@
    "spa": {
     "desde": 1795604436962,
     "gatilho": "time VIL"
-   },
-   "cop": {
-    "desde": 1795604691881,
-    "gatilho": "time Uruguay"
-   },
-   "cam": {
-    "desde": 1795605050883,
-    "gatilho": "coluna :18"
    }
   }
  },
  "ambas": {
-  "saldo": -37.7,
-  "ciclos": 356,
-  "greens": 149,
+  "saldo": -36.5,
+  "ciclos": 357,
+  "greens": 150,
   "redsCiclo": 21,
   "aborts": 0,
   "descartes": 186,
   "historico": [
+   {
+    "quando": "2026-11-25T11:11:07.499Z",
+    "resultado": "GREEN",
+    "unidades": 1.2,
+    "detalhe": "cop · Croatia x Wales @2.19 (tiro 1) · gatilho: seq RRRR"
+   },
    {
     "quando": "2026-11-25T11:05:35.092Z",
     "resultado": "GREEN",
@@ -7470,39 +7498,10 @@
   "consumidas": {
    "ita": 1795602991234,
    "cam": 1795603414518,
-   "mnd": 1795604735083
+   "mnd": 1795604735083,
+   "cop": 1795605067496
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "08:09",
-     "jogo": "Croatia x Wales",
-     "odd": 2.19
-    },
-    {
-     "h": "08:12",
-     "jogo": "Switzerland x Denmark",
-     "odd": 2.28
-    },
-    {
-     "h": "08:15",
-     "jogo": "Italy x Mexico",
-     "odd": 2.04
-    }
-   ],
-   "gatilho": "seq RRRR",
-   "alvo": {
-    "h": "08:09",
-    "jogo": "Croatia x Wales",
-    "odd": 2.19,
-    "unidades": 1,
-    "desde": 1795604753681
-   },
-   "iniciadoEm": 1795604753681
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795600540122,
@@ -7510,7 +7509,7 @@
    "bra": 1795601026409,
    "mnd": 1795604735083,
    "cam": 1795603414518,
-   "cop": 1795599839166,
+   "cop": 1795605067496,
    "ame": 1795598001936,
    "ita": 1795602991234
   },
@@ -7526,7 +7525,7 @@
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
    "2026-11-24": -32.6,
-   "2026-11-25": -6.5
+   "2026-11-25": -5.3
   },
   "_obs": {}
  }
