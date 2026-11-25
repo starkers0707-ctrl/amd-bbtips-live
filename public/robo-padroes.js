@@ -324,8 +324,13 @@
     if (proximas.length < 3) return { mercado: mercado, sinal: false, proximas: proximas };
     var analise = window.RoboPadroesModel.analisarCompleto(
       resolvidos, proximas[0], mercado, CFG.minimo);
-    return { mercado: mercado, sinal: !!(analise.suportado && analise.sinal),
-      analise: analise, proximas: proximas };
+    var sinal = !!(analise.suportado && analise.sinal);
+    /* Trava do acumulado 00h: o R3 nao marca entrada com o grafico do dia caindo. */
+    if (sinal && window.AcumGuard) {
+      var ac = window.AcumGuard.estado(ligaAtual(), mercado);
+      if (ac.conhecido && !ac.ok) sinal = false;
+    }
+    return { mercado: mercado, sinal: sinal, analise: analise, proximas: proximas };
   }
 
   function varrer() {

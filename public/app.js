@@ -158,7 +158,12 @@ function baseMercado(mkt) {
   }
   return (_baseCache[mkt] = +((pag / N) * 100).toFixed(1));
 }
-function normalDe(m) { return NORMAL[m] != null ? NORMAL[m] : baseMercado(m); }
+/* Normal REAL da liga ativa (antes era uma tabela fixa igual para todas as
+   ligas: Over 3.5 = 20,7% fazia a Kiron, que roda perto de 29%, parecer sempre quente). */
+function normalDe(m) {
+  try { const real = window.AcumGuard && window.AcumGuard.normal(state.liga, m); if (real != null) return real; } catch (e) {}
+  return NORMAL[m] != null ? NORMAL[m] : baseMercado(m);
+}
 function serieCompleta() {
   const rng = makeRng(seedOf(state.liga + state.mercado));
   const base = normalDe(state.mercado);
@@ -622,6 +627,11 @@ function renderDirecaoLigas() {
     caixa.textContent = 'Direção: ' + leitura.motivo; return;
   }
   const c = leitura.candidata, atual = leitura.atual;
+  /* PRE-VIRADA so com o acumulado 00h da liga candidata subindo. */
+  if (leitura.alerta && window.AcumGuard) {
+    const acDir = window.AcumGuard.estado(c.id, 'Over 2.5');
+    if (acDir.conhecido && !acDir.ok) { leitura.alerta = false; c.evidencias = (c.evidencias || []).concat(['bloqueado: ' + acDir.txt]); }
+  }
   caixa.hidden = false;
   caixa.className = 'direcao-ligas' + (leitura.alerta ? ' is-alert' : '');
   caixa.style.setProperty('--direcao-cor', c.cor || '#29e8a0');
@@ -1053,7 +1063,9 @@ function processarAlertaMedias(analise, pontos, metas, escopo, mercado, liga) {
     mediaAlerta.ultimoAlerta = chave;
     const detalhes = analise.periodos.map((p, i) => `MM${p} ${analise.medias[i]}%`).join(' · ');
     const nomeLiga = nomeLigaAlerta(liga);
-    mostrarAviso(`📈 MÉDIAS ABAIXO DO GRÁFICO · ${nomeLiga} · ${mercado} ${analise.atual}% · ${detalhes}`);
+    const acMM = window.AcumGuard ? window.AcumGuard.estado(liga, mercado) : null;
+    const notaMM = acMM && acMM.conhecido ? (acMM.ok ? ' · ✅ ' : ' · ⛔ NÃO ENTRAR: ') + acMM.txt : '';
+    mostrarAviso(`📈 MÉDIAS ABAIXO DO GRÁFICO · ${nomeLiga} · ${mercado} ${analise.atual}% · ${detalhes}${notaMM}`);
     notificarAlertaMedias(analise, mercado, liga, ultimaMetaMedia);
     if (somDeAlertaLigado()) bip();
   } else {
@@ -1929,6 +1941,19 @@ function renderHackerGrafico(serie, comparativo, mercadoGrafico, sinaisGrafico) 
   leitura.confluencias = Number(decisao.confluencias) || 0;
   leitura.totalConfluencias = Number(decisao.totalConfluencias) || 0;
   leitura.alvoEstrutural = decisao.alvo;
+  /* TRAVA DO ACUMULADO 00h: nenhuma entrada/oportunidade com o grafico do dia
+     caindo, com a linha abaixo da MM9 ou de madrugada. */
+  if ((leitura.forte || leitura.alertaOportunidade || leitura.classe === 'entrada' || leitura.classe === 'atencao') &&
+      window.AcumGuard) {
+    const ac = window.AcumGuard.estado(state.liga, mercadoGrafico || state.mercado);
+    if (ac.conhecido && !ac.ok) {
+      leitura.sinal = 'AGUARDAR';
+      leitura.classe = 'aguardar';
+      leitura.forte = false;
+      leitura.alertaOportunidade = false;
+      leitura.motivo = 'bloqueado: ' + ac.txt + ' · (antes: ' + decisao.sinal + ')';
+    }
+  }
   const delta = (leitura.projecao >= 0 ? '+' : '') + leitura.projecao.toFixed(1);
   box.className = 'hacker-sinal ' + leitura.classe;
   box.textContent = leitura.totalConfluencias
@@ -3107,7 +3132,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-const APP_VERSAO = '20261123-v3';
+const APP_VERSAO = '20261125-acum';
 function iniciarCanalGDCross() {
   if (!('EventSource' in window) || canalEventosGDCross) return;
   try {
@@ -3139,7 +3164,7 @@ function iniciarCanalGDCross() {
       const alerta = pacote && pacote.tipo === 'radar' ? pacote.alerta : null;
       // Golden/Death seguem o grafico do usuario (aviso local + push do servidor
       // com a mesma conta). O radar antigo usava outra media e outro horario.
-      if (alerta) return; // Golden/Death vem do grafico (aviso local + push com o jogo)
+      if (alerta || !alerta) return; // Golden/Death vem do grafico (aviso local + push com o jogo); sem pacote de radar nao ha o que mostrar (antes quebrava com alerta null)
       const nomesMercado = { o25: 'Over 2.5', o35: 'Over 3.5',
         ge5: '5+ Gols', ambas: 'Ambas Marcam' };
       const horario = alerta.horaFonte || alerta.hora || '';
@@ -3896,37 +3921,42 @@ document.addEventListener('click', function (e) {
 
 
 /* ---------- RELATORIO DIARIO ---------- */
-function dadosDia(off) {
-  const d = new Date(); d.setDate(d.getDate() - off);
-  const chave = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
-  const rng = makeRng(seedOf('dia' + chave));
-  const total = off === 0 ? 40 + Math.floor(rng() * 90) : 200 + Math.floor(rng() * 300);
+/* Relatorio REAL: antes os numeros eram sorteados (makeRng). Agora agrupa os
+   jogos reais da liga por data do relogio do jogo. */
+function dadosDiaReal(data, jogosDia) {
   const nomes = ['madrugada', 'manhã', 'tarde', 'noite'];
   const buckets = { madrugada: [], 'manhã': [], tarde: [], noite: [] };
-  const jogos = [], porBloco = Math.ceil(total / 4);
-  for (let i = 0; i < total; i++) {
-    const gh = poisson(rng), ga = poisson(rng);
-    const j = { gh: gh, ga: ga, hh: Math.min(gh, poisson(rng, 0.55)), ha: Math.min(ga, poisson(rng, 0.55)) };
-    jogos.push(j);
-    buckets[nomes[Math.min(3, Math.floor(i / porBloco))]].push(j);
-  }
+  const jogos = jogosDia.map(function (g) {
+    const j = { gh: Number(g.gols_a), ga: Number(g.gols_b), hh: null, ha: null };
+    buckets[nomes[Math.min(3, Math.floor((Number(g.hora) || 0) / 6))]].push(j);
+    return j;
+  });
+  const total = jogos.length || 1;
   const pct = function (arr, m) { return arr.length ? Math.round(arr.filter(function (j) { return pagou(m, j); }).length / arr.length * 100) : 0; };
   const gols = jogos.reduce(function (a, j) { return a + j.gh + j.ga; }, 0);
-  return { data: d, jogos: total, media: (gols / total).toFixed(2),
+  return { data: new Date(data + 'T12:00:00'), jogos: jogos.length, media: (gols / total).toFixed(2),
     o25: pct(jogos, 'Over 2.5'), o35: pct(jogos, 'Over 3.5'),
     p5: pct(jogos, '5+ Gols'), amb: pct(jogos, 'Ambas Marcam (Sim)'),
     periodos: nomes.map(function (n) { return { nome: n, n: buckets[n].length, pct: pct(buckets[n], 'Over 3.5') }; })
       .filter(function (p) { return p.n; }) };
 }
-function abrirRelatorio() {
+async function abrirRelatorio() {
   const velho = document.getElementById('relBox'); if (velho) { velho.remove(); return; }
-  const dias = []; for (let k = 0; k < 7; k++) dias.push(dadosDia(k));
+  let lista = [];
+  try {
+    const r = await fetch('/api/grade?liga=' + encodeURIComponent(String(state.liga).toLowerCase()) + '&horas=168&compacto=1', { credentials: 'same-origin', cache: 'no-store' });
+    lista = ((await r.json()).partidas || []).filter(function (g) { return g.resultado_ft && g.gols_a != null; });
+  } catch (e) {}
+  const porDia = {};
+  lista.forEach(function (g) { const k = String(g.slot_em || '').slice(0, 10); if (k) (porDia[k] = porDia[k] || []).push(g); });
+  const dias = Object.keys(porDia).sort().reverse().map(function (k) { return dadosDiaReal(k, porDia[k]); });
+  if (!dias.length) { mostrarAviso('Relatório: sem jogos reais carregados para esta liga'); return; }
   const seta = function (a, b) { const d = a - b;
     return d >= 3 ? '<span class="sobe">↗ +' + d + '</span>'
       : d <= -3 ? '<span class="desce">↘ ' + d + '</span>' : '<span class="igual">≈</span>'; };
   const box = document.createElement('div'); box.id = 'relBox'; box.className = 'relbox';
   box.innerHTML = '<div class="relpainel"><div class="relhead">📅 Relatório por data — regime diário do algoritmo'
-    + ' <small>(↗/↘ = comparado ao dia anterior)</small><button id="relFechar">✕</button></div>'
+    + ' <small>(' + String(state.liga).toUpperCase() + ' · jogos reais · ↗/↘ = comparado ao dia anterior · dias incompletos têm menos jogos)</small><button id="relFechar">✕</button></div>'
     + dias.map(function (d, i) {
         const ant = dias[i + 1];
         const cmp = function (v, k) { return ant ? seta(v, ant[k]) : ''; };

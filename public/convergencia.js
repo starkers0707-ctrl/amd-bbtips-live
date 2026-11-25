@@ -23,6 +23,10 @@
   }
   function classe(status) { return String(status || '').toLowerCase(); }
   function statusCliente(status) {
+    if ((status === 'CONFIRMADO' || status === 'OBSERVANDO') && window.AcumGuard) {
+      var ac = window.AcumGuard.estado(liga, mercado);
+      if (ac.conhecido && !ac.ok) return 'NÃO ENTRAR · 00h ' + ac.motivo.toUpperCase();
+    }
     return status === 'CONFIRMADO' ? 'ENTRADA CONFIRMADA' :
       status === 'OBSERVANDO' ? 'OPORTUNIDADE EM FORMAÇÃO' : 'NÃO ENTRAR';
   }

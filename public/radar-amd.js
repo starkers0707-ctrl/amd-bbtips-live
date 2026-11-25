@@ -43,6 +43,7 @@
     var mm = String(p.minuto == null ? 0 : p.minuto).padStart(2, "0");
     var o = p.odds || {};
     return {
+      dia: String(p.slot_em || "").slice(0, 10),
       horario: hh + ":" + mm,
       nome: (p.time_a || "") + " x " + (p.time_b || ""),
       a: a, b: b,
@@ -93,6 +94,21 @@
     if (tipo === "ltb") return "#ff9f1c";
     if (tipo === "pull") return "#b06cff";
     return "#ffffff";
+  }
+
+  /* Grafico ACUMULADO 00h (o mesmo que o usuario olha): % do mercado desde a
+     meia-noite, com MM9 e MM21. Sobe = MM9 acima da MM21, MM9 subindo e a linha
+     acima da MM9. Com menos de 60 jogos no dia (madrugada) nao confirma nada. */
+  function acumulado(jogos, mkt) {
+    if (!jogos.length) return { ok: false, txt: "sem jogos" };
+    var dia = jogos[jogos.length - 1].dia, h = jogos.filter(function (g) { return g.dia === dia; });
+    if (h.length < 60) return { ok: false, txt: "madrugada" };
+    var s = 0, line = h.map(function (g, i) { s += AMD_MOTOR.pays(g, mkt) ? 1 : 0; return s / (i + 1) * 100; });
+    var n = line.length - 1;
+    function mm(p, i) { var t = 0; for (var k = i - p + 1; k <= i; k++) t += line[k]; return t / p; }
+    var m9 = mm(9, n), m21 = mm(21, n), m9a = mm(9, n - 1);
+    var ok = m9 > m21 && m9 >= m9a && line[n] >= m9;
+    return { ok: ok, txt: ok ? "00h ▲" : (m9 > m21 ? "00h virando" : "00h ▼") };
   }
 
   function fitaDe(jogos, mkt) {
@@ -157,8 +173,12 @@
           });
           // mostra o que está ACESO agora (não só o instante em que nasceu)
           var acesos = r.ativos || {};
+          var ac = acumulado(jogos, M.id);
           Object.keys(acesos).forEach(function (tipo) {
             if (!acesos[tipo]) return;
+            /* Subida, rompimento e pullback so valem com o acumulado 00h subindo.
+               Repique curto com o grafico do dia caindo NAO e subida. */
+            if (tipo !== "minima" && !ac.ok) return;
             achados.push({
               tipo: tipo, ligaNome: L.nome, mktNome: M.nome,
               pagando: r.cur, base: r.base,

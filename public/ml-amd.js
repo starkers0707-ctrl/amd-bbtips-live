@@ -60,6 +60,10 @@
       (candidato.nivel || ctx.ml_nivel || 'neutro');
     var forte = pronto && nivel === 'confirmado';
     var oportunidade = pronto && nivel === 'antecipado';
+    /* Trava do acumulado 00h: sem oportunidade com o grafico do dia caindo. */
+    var acML = window.AcumGuard ? window.AcumGuard.estado(ligaAtual, 'Over 3.5') : null;
+    var bloqueado = (forte || oportunidade) && acML && acML.conhecido && !acML.ok;
+    if (bloqueado) { forte = false; oportunidade = false; }
     var box = document.createElement('article');
     box.className = 'ml-card' + (forte ? ' forte' : oportunidade ? ' oportunidade' : '');
 
@@ -67,8 +71,9 @@
     topo.className = 'ml-card-top';
     var selo = document.createElement('span');
     selo.className = 'ml-selo';
-    selo.textContent = forte ? 'PADRÃO CONFIRMADO' : oportunidade
+    selo.textContent = bloqueado ? 'BLOQUEADO · 00h ' + acML.motivo.toUpperCase() : forte ? 'PADRÃO CONFIRMADO' : oportunidade
       ? 'OPORTUNIDADE ML' : (pronto ? 'PADRÃO NEUTRO' : 'APRENDENDO PADRÕES');
+    if (bloqueado) selo.title = acML.txt;
     var hora = document.createElement('span');
     hora.className = 'ml-hora';
     hora.textContent = candidato.horario || '—';
@@ -117,7 +122,9 @@
     var temEntrada = Array.isArray(dados.candidatos) && dados.candidatos.some(function (c) {
       return dados.pronto && c.qualifica;
     });
-    var temOportunidade = Array.isArray(dados.candidatos) && dados.candidatos.some(function (c) {
+    var acB = window.AcumGuard ? window.AcumGuard.estado(ligaAtual, 'Over 3.5') : null;
+    if (acB && acB.conhecido && !acB.ok) temEntrada = false;
+    var temOportunidade = !(acB && acB.conhecido && !acB.ok) && Array.isArray(dados.candidatos) && dados.candidatos.some(function (c) {
       return dados.pronto && !c.qualifica &&
         (c.nivel === 'antecipado' || (c.contexto || {}).ml_nivel === 'antecipado');
     });
