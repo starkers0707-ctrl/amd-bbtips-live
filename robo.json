@@ -1475,12 +1475,24 @@
  },
  "o25": {
   "saldo": -22.9,
-  "ciclos": 99868,
+  "ciclos": 99870,
   "greens": 269,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 99560,
+  "descartes": 99562,
   "historico": [
+   {
+    "quando": "2026-11-25T08:46:02.410Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:46:02.392Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "mnd · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-25T08:45:37.161Z",
     "resultado": "GREEN_OBS",
@@ -5068,18 +5080,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:18:36.913Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:18:36.908Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5087,37 +5087,7 @@
    "ame": 1795595033847,
    "ita": 1795595437825
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "05:46",
-     "jogo": "SWE x DEN",
-     "odd": 1.89
-    },
-    {
-     "h": "05:48",
-     "jogo": "ARG x NED",
-     "odd": 1.94
-    },
-    {
-     "h": "05:50",
-     "jogo": "BEL x ENG",
-     "odd": 1.86
-    }
-   ],
-   "gatilho": "time NED",
-   "alvo": {
-    "h": "05:46",
-    "jogo": "SWE x DEN",
-    "odd": 1.89,
-    "unidades": 1,
-    "desde": 1795595438621
-   },
-   "iniciadoEm": 1795595438621
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5294,7 +5264,7 @@
     "gatilho": "time NED"
    },
    "ame": {
-    "desde": 1795596337161,
+    "desde": 1795596362409,
     "gatilho": "time Guayaquil"
    }
   }
@@ -7422,7 +7392,7 @@
    "tipo": "time",
    "chave": "Belo Horizonte",
    "n": 13,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
