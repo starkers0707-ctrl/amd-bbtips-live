@@ -1461,7 +1461,6 @@
    }
   ],
   "consumidas": {
-   "lat": 1795598391275,
    "spa": 1795598948455
   },
   "ciclo": null,
@@ -1500,12 +1499,36 @@
  },
  "o25": {
   "saldo": -17.9,
-  "ciclos": 101402,
+  "ciclos": 101406,
   "greens": 274,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 101089,
+  "descartes": 101093,
   "historico": [
+   {
+    "quando": "2026-11-25T10:20:03.763Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:20:03.754Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:19:50.162Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:19:50.146Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:19:31.661Z",
     "resultado": "GREEN_OBS",
@@ -5081,30 +5104,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:29:30.232Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.18) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:29:30.227Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:29:30.223Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:29:29.296Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.18) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5154,10 +5153,10 @@
    "cop": 1795597999597
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "empate 1-1",
-   "n": 21,
-   "start": 1
+   "tipo": "time",
+   "chave": "Uruguay",
+   "n": 16,
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -5312,6 +5311,10 @@
    "bra": {
     "desde": 1795601948057,
     "gatilho": "time ATC"
+   },
+   "cop": {
+    "desde": 1795602003763,
+    "gatilho": "time Uruguay"
    }
   }
  },
