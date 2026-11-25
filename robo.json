@@ -1473,7 +1473,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "07:47",
+     "jogo": "OLI x BAR",
+     "odd": 2.67
+    },
+    {
+     "h": "07:50",
+     "jogo": "ATL x FLU",
+     "odd": 3.35
+    },
+    {
+     "h": "07:53",
+     "jogo": "ARG x MEN",
+     "odd": 3.37
+    }
+   ],
+   "gatilho": "odd 3.35",
+   "alvo": {
+    "h": "07:47",
+    "jogo": "OLI x BAR",
+    "odd": 2.67,
+    "unidades": 1,
+    "desde": 1795603111020
+   },
+   "iniciadoEm": 1795603111020
+  },
   "cooldown": {
    "mnd": 1795598373619,
    "lat": 1795598391275,
@@ -1509,12 +1539,36 @@
  },
  "o25": {
   "saldo": -14.4,
-  "ciclos": 101814,
+  "ciclos": 101818,
   "greens": 276,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 101499,
+  "descartes": 101503,
   "historico": [
+   {
+    "quando": "2026-11-25T10:38:31.069Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:38:31.065Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:38:31.057Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:38:13.395Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:38:13.390Z",
     "resultado": "GREEN_OBS",
@@ -5090,30 +5144,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-1)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:09:39.325Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:09:38.494Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho seq GRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:09:38.482Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:09:37.692Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho seq GRGR) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5336,9 +5366,9 @@
     "desde": 1795602842794,
     "gatilho": "time FOR"
    },
-   "cam": {
-    "desde": 1795603093390,
-    "gatilho": "odd 2.31"
+   "cop": {
+    "desde": 1795603111068,
+    "gatilho": "time Uruguay"
    }
   }
  },
