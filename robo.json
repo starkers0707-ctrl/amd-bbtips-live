@@ -1524,12 +1524,24 @@
  },
  "o25": {
   "saldo": -19.7,
-  "ciclos": 100708,
+  "ciclos": 100710,
   "greens": 273,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 100396,
+  "descartes": 100398,
   "historico": [
+   {
+    "quando": "2026-11-25T09:24:46.591Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:24:46.585Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T09:24:24.505Z",
     "resultado": "GREEN_OBS",
@@ -5117,18 +5129,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:58:34.069Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:58:32.171Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5340,9 +5340,9 @@
     "desde": 1795598164061,
     "gatilho": "placar acima de 1-0 (2-0)"
    },
-   "cop": {
-    "desde": 1795598664505,
-    "gatilho": "time Uruguay"
+   "cam": {
+    "desde": 1795598686591,
+    "gatilho": "seq RRGR"
    }
   }
  },
