@@ -1475,12 +1475,42 @@
  },
  "o25": {
   "saldo": -22.9,
-  "ciclos": 99862,
+  "ciclos": 99867,
   "greens": 269,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 99554,
+  "descartes": 99559,
   "historico": [
+   {
+    "quando": "2026-11-25T08:45:35.013Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:45:32.806Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:45:30.984Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:45:30.175Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:45:29.290Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T08:45:28.631Z",
     "resultado": "GREEN_OBS",
@@ -5050,36 +5080,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:18:36.163Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:18:36.155Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:18:36.150Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:18:36.145Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:18:35.294Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5294,19 +5294,25 @@
     "gatilho": "time NED"
    },
    "ame": {
-    "desde": 1795596328631,
+    "desde": 1795596335013,
     "gatilho": "time Guayaquil"
    }
   }
  },
  "ambas": {
-  "saldo": -37.6,
-  "ciclos": 343,
-  "greens": 139,
+  "saldo": -37.2,
+  "ciclos": 344,
+  "greens": 140,
   "redsCiclo": 20,
   "aborts": 0,
   "descartes": 184,
   "historico": [
+   {
+    "quando": "2026-11-25T08:45:30.200Z",
+    "resultado": "GREEN",
+    "unidades": 0.4,
+    "detalhe": "eng · LIV x AST @1.69 (tiro 2) · gatilho: time AST"
+   },
    {
     "quando": "2026-11-25T08:41:48.460Z",
     "resultado": "GREEN_OBS",
@@ -7367,50 +7373,43 @@
    }
   ],
   "consumidas": {
-   "mnd": 1795595976401
+   "mnd": 1795595976401,
+   "eng": 1795596330189
   },
   "ciclo": {
-   "liga": "eng",
-   "degrau": 1,
-   "apostado": 1,
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
    "plano": [
     {
-     "h": "05:42",
-     "jogo": "MNC x TOT",
-     "odd": 1.81
+     "h": "05:58",
+     "jogo": "Agua Branca x Rio de Janeiro",
+     "odd": 1.82
     },
     {
-     "h": "05:44",
-     "jogo": "LIV x AST",
-     "odd": 1.69
+     "h": "06:01",
+     "jogo": "Buenos Aires x Belo Horizonte",
+     "odd": 1.89
     },
     {
-     "h": "05:46",
-     "jogo": "BOU x MNU",
-     "odd": 1.68
+     "h": "06:04",
+     "jogo": "Medellin x Agua Branca",
+     "odd": 1.89
     }
    ],
-   "gatilho": "time AST",
+   "gatilho": "time Belo Horizonte",
    "alvo": {
-    "h": "05:44",
-    "jogo": "LIV x AST",
-    "odd": 1.69,
-    "unidades": 2,
-    "desde": 1795596215498
+    "h": "05:58",
+    "jogo": "Agua Branca x Rio de Janeiro",
+    "odd": 1.82,
+    "unidades": 1,
+    "desde": 1795596331006
    },
-   "iniciadoEm": 1795595977271,
-   "tiros": [
-    {
-     "h": "05:42",
-     "jogo": "MNC x TOT",
-     "odd": 1.81,
-     "unidades": 1
-    }
-   ]
+   "iniciadoEm": 1795596331006
   },
   "cooldown": {
    "lat": 1795590067651,
-   "eng": 1795591897958,
+   "eng": 1795596330189,
    "spa": 1795585949785,
    "bra": 1795526496634,
    "mnd": 1795595976401,
@@ -7431,7 +7430,7 @@
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
    "2026-11-24": -32.6,
-   "2026-11-25": -6.4
+   "2026-11-25": -6
   },
   "_obs": {}
  }
