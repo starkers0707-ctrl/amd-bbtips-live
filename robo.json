@@ -1410,12 +1410,18 @@
  },
  "o25": {
   "saldo": -31.1,
-  "ciclos": 93942,
+  "ciclos": 93943,
   "greens": 247,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 93658,
+  "descartes": 93659,
   "historico": [
+   {
+    "quando": "2026-11-25T00:04:54.091Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T00:04:51.991Z",
     "resultado": "GREEN_OBS",
@@ -5009,12 +5015,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T23:31:29.486Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5219,19 +5219,25 @@
     "gatilho": "coluna :57"
    },
    "ame": {
-    "desde": 1795565091991,
+    "desde": 1795565094091,
     "gatilho": "odd 2.02"
    }
   }
  },
  "ambas": {
-  "saldo": -21.1,
-  "ciclos": 302,
-  "greens": 123,
+  "saldo": -19.9,
+  "ciclos": 303,
+  "greens": 124,
   "redsCiclo": 16,
   "aborts": 0,
   "descartes": 163,
   "historico": [
+   {
+    "quando": "2026-11-25T00:04:52.045Z",
+    "resultado": "GREEN",
+    "unidades": 1.2,
+    "detalhe": "cam · Dortmund x Barcelona @2.1 (tiro 2) · gatilho: odd 2.1"
+   },
    {
     "quando": "2026-11-24T23:50:35.991Z",
     "resultado": "GREEN_OBS",
@@ -7045,53 +7051,17 @@
     "detalhe": "cam · alvo sem fechamento em 15min antes da 1a aposta"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "21:00",
-     "jogo": "Porto x Liverpool",
-     "odd": 2.09
-    },
-    {
-     "h": "21:03",
-     "jogo": "Dortmund x Barcelona",
-     "odd": 2.1
-    },
-    {
-     "h": "21:06",
-     "jogo": "Rome x Amsterdam",
-     "odd": 2.05
-    }
-   ],
-   "gatilho": "odd 2.1",
-   "alvo": {
-    "h": "21:03",
-    "jogo": "Dortmund x Barcelona",
-    "odd": 2.1,
-    "unidades": 2,
-    "desde": 1795564910806
-   },
-   "iniciadoEm": 1795564235997,
-   "tiros": [
-    {
-     "h": "21:00",
-     "jogo": "Porto x Liverpool",
-     "odd": 2.09,
-     "unidades": 1
-    }
-   ]
+  "consumidas": {
+   "cam": 1795565092036
   },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795557631018,
    "eng": 1795524811381,
    "spa": 1795506559992,
    "bra": 1795526496634,
    "mnd": 1795515327438,
-   "cam": 1795560254063,
+   "cam": 1795565092036,
    "cop": 1795558440569,
    "ame": 1795510421878
   },
@@ -7099,14 +7069,14 @@
    "tipo": "odd",
    "chave": "2.1",
    "n": 11,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
    "2026-11-21": 2,
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
-   "2026-11-24": -22.5
+   "2026-11-24": -21.3
   },
   "_obs": {}
  }
