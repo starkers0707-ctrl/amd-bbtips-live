@@ -183,7 +183,7 @@
   function rising(line,back){var n=line.length;return n>back&&line[n-1]>line[n-1-back];}
   function metricState(robot,data,league,market){
     var s=lineSeries(data[league]||[],market),line=s.line,n=line.length;
-    if(n<25)return null;
+    if(n<60)return null;
     var m9=sma(line,9),m21=sma(line,21),L=n-1;
     var e12=ema(line,12),e26=ema(line,26),gains=0,losses=0;
     for(var i=Math.max(1,n-14);i<n;i++){var d=line[i]-line[i-1];if(d>0)gains+=d;else losses-=d;}
@@ -194,15 +194,17 @@
     Object.keys(data).forEach(function(other){if(other===league)return;var o=lineSeries(data[other]||[],market).line,k=o.length-1;if(k<25)return;var a9=sma(o,9),a21=sma(o,21);if(a9[k]<a21[k])others=true;});
     var comp=COMPANION[market]||'Over 2.5',cl=lineSeries(data[league]||[],comp).line,c9=sma(cl,9),c21=sma(cl,21),cL=cl.length-1;
     return {subida:up,media:line[L]>m21[L],macd:e12[L]-e26[L]>0,rsi:rsi>=45&&rsi<=70,ligas:up&&others,confirmacao:cL>=21&&c9[cL]>c21[cL],
-      linha:Math.round(line[L]*10)/10,mediaHist:Math.round(m21[L]*10)/10};
+      acimaM9:line[L]>=m9[L],linha:Math.round(line[L]*10)/10,m9:Math.round(m9[L]*100)/100,mediaHist:Math.round(m21[L]*10)/10};
   }
   function metricsPass(robot,data,league,market,entryGame){
     var rules=(robot.metrics||[]).filter(function(r){return r.use;}),threshold=Number(robot.threshold);
     var st=metricState(robot,data,league,market);
-    if(!st)return {ok:false,pct:0,text:'métricas: poucos jogos no dia (gráfico acumulado ainda sem MM21)'};
+    if(!st)return {ok:false,pct:0,text:'madrugada: menos de 60 jogos no dia, gráfico 00h ainda engana'};
     /* Trava obrigatoria para todo robo: nunca entra com o grafico do mercado da
        entrada caindo (ex.: Over caindo = Under subindo). */
     if(!st.subida)return {ok:false,pct:0,text:'gráfico de '+market+' caindo ('+st.linha+'% · MM21 '+st.mediaHist+'%)'};
+    /* Linha abaixo da MM9 = virando para baixo agora, mesmo com a 9 ainda acima da 21. */
+    if(!st.acimaM9)return {ok:false,pct:0,text:'linha abaixo da MM9 ('+st.linha+'% · MM9 '+st.m9+'%): virando'};
     /* As tres bases precisam subir juntas: 1h, 2h e 00h. */
     var u1=lineUp(windowLine(data[league]||[],market,1)),u2=lineUp(windowLine(data[league]||[],market,2));
     if(u1===false||u2===false)return {ok:false,pct:0,text:'bases discordam (1h '+(u1?'sobe':'cai')+' · 2h '+(u2?'sobe':'cai')+')'};
@@ -302,6 +304,12 @@
         signal.lastResolvedGameSlot=game.slot_em||game.criado_em||'';changed=true;
         if(paid){signal.status='GREEN';signal.winningShot=current;signal.resolvedAt=new Date().toISOString();followUps.resolved.push(signal);break;}
         if(current>=maximum){signal.status='RED';signal.resolvedAt=new Date().toISOString();followUps.resolved.push(signal);break;}
+        /* Trava entre tiros: depois de um red, se o grafico virou (9 abaixo da 21,
+           9 caindo ou linha abaixo da MM9), cancela o resto da sequencia. */
+        var vira=metricState({},data,signal.league||'copa',signal.market);
+        if(vira&&(!vira.subida||!vira.acimaM9)){
+          signal.status='ANULADO';signal.abortado=true;signal.motivoAborto=!vira.subida?'gráfico caindo':'linha abaixo da MM9';
+          signal.resolvedAt=new Date().toISOString();followUps.resolved.push(signal);break;}
         var next=nextShotGame(all,game);
         if(!next){signal.awaitingNext=true;signal.currentShot=current+1;signal.gameId='';signal.gameSlot='';
           signal.timeA='?';signal.timeB='?';signal.score='';break;}
@@ -344,7 +352,7 @@
     var options={body:body,tag:'amd-manual-'+key,renotify:true,requireInteraction:true,data:{url:'/robos.html'}};
     try{if('serviceWorker' in navigator){var reg=await navigator.serviceWorker.register('/sw-alertas.js');await reg.showNotification(title,options);return;}new Notification(title,options);}catch(_){}
   }
-  var MONITOR_V='20261124-v5';
+  var MONITOR_V='20261125-trava';
   var lastSync='';
   function pullRobots(){
     return fetch('/api/robos/lista?_='+Date.now(),{credentials:'same-origin',cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){

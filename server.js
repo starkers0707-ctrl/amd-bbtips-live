@@ -601,7 +601,7 @@ function textoSinal(s, st) {
   const agenda = [];
   for (let n = 1; n <= max; n++) agenda.push(`⏱️ ${tiroNome(n)} <b>${escH(horaDe(n))}</b>`);
   const result = [];
-  const ultimo = s.status === "GREEN" ? Number(s.winningShot || 1) : max;
+  const ultimo = s.status === "GREEN" ? Number(s.winningShot || 1) : s.abortado ? (s.attempts || []).length : max;
   for (let n = 1; n <= ultimo; n++) {
     const a = tent[n];
     if (a) result.push(`${tiroNome(n)} ${escH(horaDe(n))} · ${escH(String(a.score || "").replace("-", "–"))} ${a.status === "GREEN" ? "🟩" : "🟥"}`);
@@ -610,6 +610,7 @@ function textoSinal(s, st) {
   let topo = "";
   if (s.status === "GREEN") topo = `<b>🟩 GREEN no ${tiroNome(s.winningShot || 1)}</b>\n`;
   else if (s.status === "RED") topo = "<b>🟥 RED</b>\n";
+  else if (s.abortado) topo = `<b>🛑 ABORTADO · GRÁFICO VIROU</b>\n<i>${escH(s.motivoAborto || "")} · tiros restantes cancelados</i>\n`;
   const odd = Number(s.odd) > 1 ? " @" + Number(s.odd).toFixed(2).replace(".", ",") : "";
   return `${topo}<b>🤖 ${escH(s.robotName || "Robô")}</b>\n🏆 ${escH(ROBO_LIGA_NOME[s.league] || String(s.league || "").toUpperCase())} · 💚 AMD Live\n\n🎯 <b>${escH(s.market)}</b>${odd}\n\n${agenda.join("\n")}\n\n✅ ${g} ❌ ${r} 🛡️ ${an} 📈 ${pct}%\n\n🔗 https://amdlive.com.br` +
     (result.length ? `\n\n${result.join("\n")}` : "");
