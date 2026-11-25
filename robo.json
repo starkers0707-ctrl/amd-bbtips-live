@@ -1458,12 +1458,24 @@
  },
  "o25": {
   "saldo": -23.6,
-  "ciclos": 97101,
+  "ciclos": 97103,
   "greens": 262,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96801,
+  "descartes": 96803,
   "historico": [
+   {
+    "quando": "2026-11-25T06:23:04.176Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T06:23:04.167Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T06:22:35.774Z",
     "resultado": "GREEN_OBS",
@@ -5051,18 +5063,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:13:10.266Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:13:09.645Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5071,8 +5071,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "04:18",
@@ -5092,13 +5092,21 @@
    ],
    "gatilho": "time NED",
    "alvo": {
-    "h": "04:18",
-    "jogo": "SPA x ITA",
-    "odd": 1.95,
-    "unidades": 1,
-    "desde": 1795587755742
+    "h": "04:20",
+    "jogo": "ARG x NED",
+    "odd": 1.94,
+    "unidades": 2,
+    "desde": 1795587784154
    },
-   "iniciadoEm": 1795587755742
+   "iniciadoEm": 1795587755742,
+   "tiros": [
+    {
+     "h": "04:18",
+     "jogo": "SPA x ITA",
+     "odd": 1.95,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795570666089,
@@ -5266,10 +5274,6 @@
    "spa": {
     "desde": 1795587070505,
     "gatilho": "time VIL"
-   },
-   "cop": {
-    "desde": 1795587755774,
-    "gatilho": "time France"
    }
   }
  },
@@ -7225,8 +7229,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "03:18",
@@ -7246,11 +7250,11 @@
    ],
    "gatilho": "placar 1-0 / 0-1",
    "alvo": {
-    "h": "03:21",
-    "jogo": "Portugal x Switzerland",
-    "odd": 2.24,
-    "unidades": 2,
-    "desde": 1795587573777
+    "h": "03:24",
+    "jogo": "Netherlands x Brazil",
+    "odd": 1.89,
+    "unidades": 4,
+    "desde": 1795587784213
    },
    "iniciadoEm": 1795587349202,
    "tiros": [
@@ -7259,6 +7263,12 @@
      "jogo": "Croatia x Colombia",
      "odd": 2.31,
      "unidades": 1
+    },
+    {
+     "h": "03:21",
+     "jogo": "Portugal x Switzerland",
+     "odd": 2.24,
+     "unidades": 2
     }
    ]
   },
