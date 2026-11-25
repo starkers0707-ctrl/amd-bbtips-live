@@ -1566,12 +1566,24 @@
  },
  "o25": {
   "saldo": -6.9,
-  "ciclos": 104976,
+  "ciclos": 104978,
   "greens": 283,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 104654,
+  "descartes": 104656,
   "historico": [
+   {
+    "quando": "2026-11-25T12:36:17.303Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :41) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:36:06.484Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T12:36:06.478Z",
     "resultado": "GREEN_OBS",
@@ -5159,18 +5171,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:15:33.264Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:15:16.505Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :21) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5389,7 +5389,7 @@
     "gatilho": "odd 2.3"
    },
    "spa": {
-    "desde": 1795610166478,
+    "desde": 1795610177303,
     "gatilho": "coluna :41"
    }
   }
@@ -7608,8 +7608,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "09:34",
@@ -7629,13 +7629,21 @@
    ],
    "gatilho": "odd 1.96",
    "alvo": {
-    "h": "09:34",
-    "jogo": "Santiago x Rio de Janeiro",
-    "odd": 1.9,
-    "unidades": 1,
-    "desde": 1795609983527
+    "h": "09:37",
+    "jogo": "Lima x Guayaquil",
+    "odd": 1.96,
+    "unidades": 2,
+    "desde": 1795610166505
    },
-   "iniciadoEm": 1795609983527
+   "iniciadoEm": 1795609983527,
+   "tiros": [
+    {
+     "h": "09:34",
+     "jogo": "Santiago x Rio de Janeiro",
+     "odd": 1.9,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795590067651,
