@@ -1418,12 +1418,18 @@
  },
  "o25": {
   "saldo": -23.2,
-  "ciclos": 95934,
+  "ciclos": 95935,
   "greens": 255,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 95642,
+  "descartes": 95643,
   "historico": [
+   {
+    "quando": "2026-11-25T02:35:33.632Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho seq RGGRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T02:35:12.656Z",
     "resultado": "GREEN_OBS",
@@ -5017,12 +5023,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:49:06.413Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5226,6 +5226,10 @@
    "ame": {
     "desde": 1795573461005,
     "gatilho": "odd 2.13"
+   },
+   "lat": {
+    "desde": 1795574133631,
+    "gatilho": "seq RGGRG"
    }
   }
  },
@@ -7113,37 +7117,7 @@
   "consumidas": {
    "cop": 1795571201297
   },
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "23:44",
-     "jogo": "ATC x ARG",
-     "odd": 1.69
-    },
-    {
-     "h": "23:47",
-     "jogo": "ATL x RAC",
-     "odd": 1.68
-    },
-    {
-     "h": "23:50",
-     "jogo": "RIV x FLU",
-     "odd": 1.7
-    }
-   ],
-   "gatilho": "coluna :47",
-   "alvo": {
-    "h": "23:44",
-    "jogo": "ATC x ARG",
-    "odd": 1.69,
-    "unidades": 1,
-    "desde": 1795573210801
-   },
-   "iniciadoEm": 1795573210801
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795567528053,
    "eng": 1795524811381,
