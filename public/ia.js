@@ -8,7 +8,7 @@
 (function () {
   'use strict';
   var LS_ENSINO = 'amd_ia_ensino', LS_MODO = 'amd_ia_modo', LS_PROF = 'amd_ia_prof';
-  var LS_CFG = 'amd_ia_cfg', LS_LIGAS = 'amd_ia_ligas', LS_MK = 'amd_ia_mk', LS_CHAT = 'amd_ia_chat';
+  var LS_CFG = 'amd_ia_cfg', LS_LIGAS = 'amd_ia_ligas', LS_MK = 'amd_ia_mk', LS_CHAT = 'amd_ia_chat3';
   var LIGAS = [['eng', 'Inglaterra'], ['ita', 'Itália'], ['spa', 'Espanha'], ['mnd', 'Mundo'], ['bra', 'Brasil'], ['lat', 'América Latina'], ['cam', 'Liga dos Campeões'], ['cop', 'Copa'], ['ame', 'Américas']];
   var MK = {
     o25: { nome: 'Over 2.5', odd: 'odd_over_2.5', paga: function (a, b) { return a + b >= 3; } },
@@ -32,15 +32,14 @@
   ].join('\n');
 
   var LIVRE = [
-    'Você é a IA pessoal de um apostador de futebol virtual (Kiron/Vavada), conectada ao site AMD Live. Converse livremente em português do Brasil, como um parceiro de análise: tire dúvidas, discuta estratégia, analise ligas, mercados, times, colunas, odds e gráficos, explique o que está vendo.',
-    'Em cada mensagem você recebe DADOS AO VIVO do site. Use esses dados como fonte da verdade: não invente jogos, odds, horários ou números; se algo não estiver nos dados, diga que não está.',
-    'O usuário pode te ensinar o método dele na seção ENSINO DO USUÁRIO: siga esse método e use o vocabulário dele. Quando ele pedir uma entrada, aplique as regras dele.',
-    'Seja honesto: futebol virtual é sorteado (RNG), nenhuma análise garante green. Se uma ideia dele não tiver apoio nos dados, diga com respeito. Nunca incentive aumentar valor para recuperar perda.'
+    'Você é uma IA de conversa livre. Responda em português do Brasil, de forma natural, exatamente ao que o usuário perguntar — nada a mais, sem formato fixo, sem "veredito", sem montar entrada se ele não pediu.',
+    'Junto de cada mensagem vêm dados ao vivo do site AMD Live (futebol virtual: gráficos, médias, grade de jogos, colunas, times, odds e robôs). Use-os quando a pergunta tiver a ver com isso; se a pergunta for outra coisa, ignore os dados.',
+    'Não invente números que não estão nos dados.'
   ].join('\n');
   function sistema() {
     var ens = ($('ensino') && $('ensino').value.trim()) || '';
-    var base = ($('modo') && $('modo').value === 'regras') ? REGRAS : LIVRE + '\n\nREGRAS DA CASA (referência; o usuário costuma operar assim):\n' + REGRAS.split('REGRAS DA CASA (obrigatórias, sem exceção):')[1].split('COMO RESPONDER')[0];
-    return base + (ens ? '\n\nENSINO DO USUÁRIO (siga isto):\n' + ens : '');
+    var livre = !($('modo') && $('modo').value === 'regras');
+    return (livre ? LIVRE : REGRAS) + (ens ? '\n\nO QUE O USUÁRIO TE ENSINOU (use quando for relevante):\n' + ens : '');
   }
   function $(id) { return document.getElementById(id); }
   function ler(k, d) { try { var v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }
@@ -248,15 +247,17 @@
     var bt = $('btEnviar'); bt.disabled = true; bt.textContent = 'Lendo o site…';
     contexto().then(function (ctx) {
       $('ctx').textContent = ctx;
-      chat.push({ r: 'u', t: texto + '\n\n---\n' + ctx, vis: texto });
+      var livre = $('modo').value !== 'regras';
+      chat.push({ r: 'u', t: texto + '\n\n---\n' + (livre ? '[dados do site para consulta — use só se a pergunta precisar]\n' : '') + ctx, vis: texto, modo: $('modo').value });
       desenhaChat();
       bt.textContent = 'IA analisando…';
       /* historico curto: as perguntas antigas vao sem os dados antigos (so a ultima leva os dados ao vivo) */
-      var hist = chat.slice(-10).map(function (m, i, arr) { return (m.r === 'u' && i < arr.length - 1) ? { r: 'u', t: m.vis || m.t } : m; })
+      var modoAtual = $('modo').value;
+      var hist = chat.filter(function (m) { return (m.modo || 'regras') === modoAtual; }).slice(-10).map(function (m, i, arr) { return (m.r === 'u' && i < arr.length - 1) ? { r: 'u', t: m.vis || m.t } : m; })
         .filter(function (m) { return m.r !== 'e'; });
       return perguntarComReserva(hist, function (t) { bt.textContent = t; });
     }).then(function (resp) {
-      chat.push({ r: 'a', t: resp || '(vazio)', mod: provNome() + ' · ' + ultimoModelo });
+      chat.push({ r: 'a', t: resp || '(vazio)', mod: provNome() + ' · ' + ultimoModelo, modo: $('modo').value });
     }).catch(function (e) {
       chat.push({ r: 'e', t: 'Erro da IA: ' + e.message });
     }).then(function () {
