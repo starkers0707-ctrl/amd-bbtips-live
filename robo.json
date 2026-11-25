@@ -1475,12 +1475,36 @@
  },
  "o25": {
   "saldo": -25.4,
-  "ciclos": 99353,
+  "ciclos": 99357,
   "greens": 267,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 99047,
+  "descartes": 99051,
   "historico": [
+   {
+    "quando": "2026-11-25T08:20:40.552Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:20:38.393Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:20:38.388Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:20:38.377Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T08:20:38.368Z",
     "resultado": "GREEN_OBS",
@@ -5056,30 +5080,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:02:33.196Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:02:33.188Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RGGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:02:33.182Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:02:32.464Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5089,8 +5089,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "05:19",
@@ -5110,13 +5110,21 @@
    ],
    "gatilho": "time Guayaquil",
    "alvo": {
-    "h": "05:19",
-    "jogo": "Penarol x Belo Horizonte",
-    "odd": 2.1,
-    "unidades": 1,
-    "desde": 1795593949246
+    "h": "05:22",
+    "jogo": "Bogota x Guayaquil",
+    "odd": 2.31,
+    "unidades": 2,
+    "desde": 1795594840537
    },
-   "iniciadoEm": 1795593949246
+   "iniciadoEm": 1795593949246,
+   "tiros": [
+    {
+     "h": "05:19",
+     "jogo": "Penarol x Belo Horizonte",
+     "odd": 2.1,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795570666089,
@@ -5282,7 +5290,7 @@
   },
   "_obs": {
    "ita": {
-    "desde": 1795594838368,
+    "desde": 1795594840552,
     "gatilho": "time SAS"
    }
   }
