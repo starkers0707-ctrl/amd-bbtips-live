@@ -5026,7 +5026,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "01:25",
+     "jogo": "ALV x VAL",
+     "odd": 1.93
+    },
+    {
+     "h": "01:27",
+     "jogo": "ESP x BAR",
+     "odd": 1.73
+    },
+    {
+     "h": "01:29",
+     "jogo": "RSO x MLG",
+     "odd": 1.92
+    }
+   ],
+   "gatilho": "placar 1-0 / 0-1",
+   "alvo": {
+    "h": "01:25",
+    "jogo": "ALV x VAL",
+    "odd": 1.93,
+    "unidades": 1,
+    "desde": 1795580546923
+   },
+   "iniciadoEm": 1795580546923
+  },
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5039,10 +5069,10 @@
    "cop": 1795567414833
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.83",
-   "n": 9,
-   "start": 7
+   "tipo": "placar",
+   "chave": "1-0 / 0-1",
+   "n": 10,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
