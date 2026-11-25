@@ -1585,13 +1585,37 @@
   }
  },
  "o25": {
-  "saldo": -10,
-  "ciclos": 107189,
-  "greens": 287,
+  "saldo": -8.7,
+  "ciclos": 107193,
+  "greens": 288,
   "redsCiclo": 40,
   "aborts": 0,
-  "descartes": 106862,
+  "descartes": 106865,
   "historico": [
+   {
+    "quando": "2026-11-25T14:00:19.444Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:00:19.437Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:00:19.431Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:00:19.422Z",
+    "resultado": "GREEN",
+    "unidades": 1.3,
+    "detalhe": "ame · Buenos Aires x Bogota @2.25 (tiro 1) · gatilho: odd 2.24"
+   },
    {
     "quando": "2026-11-25T14:00:17.155Z",
     "resultado": "GREEN_OBS",
@@ -5167,69 +5191,16 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho seq GGRR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:38:07.014Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:38:07.010Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:38:07.007Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :46) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:38:07.003Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
    }
   ],
   "consumidas": {
    "cam": 1795611867253,
    "cop": 1795612980951,
    "mnd": 1795613130569,
-   "spa": 1795613671525
+   "spa": 1795613671525,
+   "ame": 1795615219413
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "10:58",
-     "jogo": "Buenos Aires x Bogota",
-     "odd": 2.25
-    },
-    {
-     "h": "11:01",
-     "jogo": "La Plata x Quito",
-     "odd": 2.24
-    },
-    {
-     "h": "11:04",
-     "jogo": "Rio de Janeiro x Belo Horizonte",
-     "odd": 1.96
-    }
-   ],
-   "gatilho": "odd 2.24",
-   "alvo": {
-    "h": "10:58",
-    "jogo": "Buenos Aires x Bogota",
-    "odd": 2.25,
-    "unidades": 1,
-    "desde": 1795614722076
-   },
-   "iniciadoEm": 1795614722076
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795611867253,
    "eng": 1795575218328,
@@ -5238,14 +5209,14 @@
    "lat": 1795590752470,
    "bra": 1795610190986,
    "mnd": 1795613130569,
-   "ame": 1795605280265,
+   "ame": 1795615219413,
    "cop": 1795612980951
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.24",
-   "n": 10,
-   "start": 1
+   "tipo": "time",
+   "chave": "FOR",
+   "n": 15,
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -5254,7 +5225,7 @@
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
    "2026-11-24": -19.4,
-   "2026-11-25": 19.3
+   "2026-11-25": 20.6
   },
   "_obs": {}
  },
@@ -5402,7 +5373,7 @@
     "gatilho": "odd 2.31"
    },
    "cop": {
-    "desde": 1795615217155,
+    "desde": 1795615219444,
     "gatilho": "odd 2.12"
    }
   }
