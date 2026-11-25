@@ -1529,12 +1529,24 @@
  },
  "o25": {
   "saldo": -15.4,
-  "ciclos": 101591,
+  "ciclos": 101593,
   "greens": 275,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 101277,
+  "descartes": 101279,
   "historico": [
+   {
+    "quando": "2026-11-25T10:29:06.756Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.18) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:29:06.746Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:29:04.598Z",
     "resultado": "GREEN_OBS",
@@ -5122,24 +5134,42 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:50:08.651Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:50:03.473Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
    }
   ],
   "consumidas": {
    "cop": 1795602544579
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "07:31",
+     "jogo": "CEL x GET",
+     "odd": 1.95
+    },
+    {
+     "h": "07:33",
+     "jogo": "VIL x SEV",
+     "odd": 1.87
+    },
+    {
+     "h": "07:35",
+     "jogo": "ALV x BAR",
+     "odd": 1.71
+    }
+   ],
+   "gatilho": "time VIL",
+   "alvo": {
+    "h": "07:31",
+    "jogo": "CEL x GET",
+    "odd": 1.95,
+    "unidades": 1,
+    "desde": 1795602546736
+   },
+   "iniciadoEm": 1795602546736
+  },
   "cooldown": {
    "cam": 1795598902928,
    "eng": 1795575218328,
@@ -5152,10 +5182,10 @@
    "cop": 1795602544579
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.18",
-   "n": 9,
-   "start": 3
+   "tipo": "time",
+   "chave": "VIL",
+   "n": 18,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -5312,7 +5342,7 @@
     "gatilho": "seq RRRRR"
    },
    "cop": {
-    "desde": 1795602544598,
+    "desde": 1795602546755,
     "gatilho": "odd 2.18"
    }
   }
