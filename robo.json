@@ -1418,12 +1418,18 @@
  },
  "o25": {
   "saldo": -29.3,
-  "ciclos": 96283,
+  "ciclos": 96284,
   "greens": 256,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 95989,
+  "descartes": 95990,
   "historico": [
+   {
+    "quando": "2026-11-25T02:55:56.744Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.74) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T02:55:40.187Z",
     "resultado": "GREEN_OBS",
@@ -5017,12 +5023,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:09:38.865Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5231,10 +5231,6 @@
    "ita": {
     "desde": 1795575275367,
     "gatilho": "odd 1.77"
-   },
-   "spa": {
-    "desde": 1795575340187,
-    "gatilho": "odd 1.74"
    }
   }
  },
@@ -7136,8 +7132,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "23:51",
@@ -7157,11 +7153,11 @@
    ],
    "gatilho": "seq GGGRG",
    "alvo": {
-    "h": "23:54",
-    "jogo": "Spain x Portugal",
-    "odd": 2.07,
-    "unidades": 2,
-    "desde": 1795575175782
+    "h": "23:57",
+    "jogo": "Denmark x Netherlands",
+    "odd": 2,
+    "unidades": 4,
+    "desde": 1795575356766
    },
    "iniciadoEm": 1795574829282,
    "tiros": [
@@ -7170,6 +7166,12 @@
      "jogo": "France x Switzerland",
      "odd": 2.27,
      "unidades": 1
+    },
+    {
+     "h": "23:54",
+     "jogo": "Spain x Portugal",
+     "odd": 2.07,
+     "unidades": 2
     }
    ]
   },
