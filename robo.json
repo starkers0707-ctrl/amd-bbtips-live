@@ -1476,12 +1476,42 @@
  },
  "o25": {
   "saldo": -25.4,
-  "ciclos": 99100,
+  "ciclos": 99105,
   "greens": 267,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 98794,
+  "descartes": 98799,
   "historico": [
+   {
+    "quando": "2026-11-25T08:13:52.391Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:13:52.378Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:13:52.370Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:13:52.365Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:13:50.288Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T08:13:50.279Z",
     "resultado": "GREEN_OBS",
@@ -5051,36 +5081,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:55:04.990Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:55:04.985Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:55:04.981Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time NAP) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:55:03.251Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:55:03.244Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5287,9 +5287,9 @@
     "desde": 1795594147365,
     "gatilho": "time Guayaquil"
    },
-   "mnd": {
-    "desde": 1795594430278,
-    "gatilho": "time NED"
+   "cop": {
+    "desde": 1795594432391,
+    "gatilho": "placar acima de 1-0 (2-0)"
    }
   }
  },
@@ -7374,10 +7374,10 @@
    "ita": 1795591350074
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.73",
-   "n": 8,
-   "start": 1
+   "tipo": "time",
+   "chave": "Itaquera",
+   "n": 12,
+   "start": 6
   },
   "dias": {
    "2026-11-20": 0,
