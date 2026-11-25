@@ -25,7 +25,8 @@
     '4) Os 3 tiros são CONSECUTIVOS na mesma liga e o 1º precisa ter folga de pelo menos 1min30 em relação à hora atual. Nunca jogo já começado.',
     '5) Comportamento de pagamento: olhe se a liga está pagando (sequências de green recentes, última 1h acima do dia) ou secando. Liga secando = não entra.',
     '6) No máximo UMA entrada por resposta. Se qualquer regra falhar em todas as ligas, o veredito é AGUARDAR e você explica em uma linha por liga o que falhou.',
-    'FORMATO quando houver entrada: primeiro mostre as conferências (gráfico, colunas dos 3 tiros, times dos 3 tiros, folga de tempo), depois o veredito ENTRAR, depois os 3 tiros: "Tiro N (HH:MM — coluna :MM): TIME x TIME — @odd (motivo curto)".',
+    'COMO RESPONDER: escreva como um analista conversando com o apostador, com o SEU raciocínio e as suas palavras, não como formulário. Compare as ligas entre si, diga o que te chamou atenção no comportamento de pagamento (sequências, secas, aceleração ou freio da MM9) e aponte os riscos mesmo quando as regras passam (ex.: time com 1/6, coluna 1/3, odd baixa no meio do bloco). Responda exatamente o que foi perguntado; se a pergunta não pede entrada, não force uma.',
+    'Quando houver entrada, termine com os 3 tiros assim: "Tiro N · HH:MM · coluna :MM · TIME x TIME @odd — motivo". Antes deles, diga em uma frase por que essa liga e não as outras.',
     'Seja honesto: futebol virtual é sorteado, nenhuma análise garante green. Nunca prometa resultado e nunca sugira aumentar valor para recuperar perda.'
   ].join('\n');
 
@@ -34,6 +35,7 @@
   function grava(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   var cfg = ler(LS_CFG, { prov: 'gemini', chave: '', modelo: '' });
   var chat = ler(LS_CHAT, []);
+  var ultimoModelo = '';
 
   /* ---------------- dados ao vivo ---------------- */
   function hhmm(g) { return String(g.hora).padStart(2, '0') + ':' + String(g.minuto).padStart(2, '0'); }
@@ -123,7 +125,8 @@
       cfg.modelo = modelo;
       return perguntar(hist).then(function (r) {
         cfg.modelo = original;
-        return modelo !== original ? '(respondido pelo modelo ' + modelo + ' — o ' + original + ' estava ocupado)\n\n' + r : r;
+        ultimoModelo = modelo + (modelo !== original ? ' (o ' + original + ' estava ocupado)' : '');
+        return r;
       }).catch(function (e) {
         cfg.modelo = original;
         var ocupado = [429, 500, 502, 503, 504].indexOf(e.status) >= 0;
@@ -174,13 +177,35 @@
   }
 
   /* ---------------- tela ---------------- */
+  function provNome() { var o = { gemini: 'Gemini', openai: 'ChatGPT', anthropic: 'Claude', openrouter: 'OpenRouter' }; return o[cfg.prov] || cfg.prov; }
   function status(t, cls) { var e = $('stCon'); e.textContent = t; e.className = 'st ' + (cls || ''); }
   function desenhaChat() {
     var box = $('chat');
     box.innerHTML = '';
     if (!chat.length) { var v = document.createElement('div'); v.className = 'nota'; v.textContent = 'Conecte a sua IA, marque as ligas e use um dos botões acima ou escreva sua pergunta.'; box.appendChild(v); }
-    chat.forEach(function (m) { var d = document.createElement('div'); d.className = 'msg ' + m.r; d.textContent = m.r === 'u' ? m.vis || m.t : m.t; box.appendChild(d); });
+    chat.forEach(function (m) {
+      var d = document.createElement('div'); d.className = 'msg ' + m.r;
+      if (m.r === 'a') { d.innerHTML = md(m.t) + (m.mod ? '<div class="mod">✦ ' + esc(m.mod) + '</div>' : ''); }
+      else d.textContent = m.r === 'u' ? m.vis || m.t : m.t;
+      box.appendChild(d);
+    });
     box.scrollTop = box.scrollHeight;
+  }
+  function esc(t) { return String(t == null ? '' : t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  /* Markdown leve: titulos, negrito, italico, listas. Escapa tudo antes (sem HTML da IA). */
+  function md(t) {
+    var linhas = esc(t).split('\n'), out = [], lista = false;
+    linhas.forEach(function (l) {
+      var inl = function (x) { return x.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/(^|[^*])\*(?!\s)(.+?)\*(?!\*)/g, '$1<i>$2</i>').replace(/`([^`]+)`/g, '<code>$1</code>'); };
+      var h = l.match(/^\s*#{1,4}\s+(.*)$/), li = l.match(/^\s*(?:[-*•]|\d+[.)])\s+(.*)$/);
+      if (li) { if (!lista) { out.push('<ul>'); lista = true; } out.push('<li>' + inl(li[1]) + '</li>'); return; }
+      if (lista) { out.push('</ul>'); lista = false; }
+      if (h) out.push('<div class="h">' + inl(h[1]) + '</div>');
+      else if (l.trim() === '') out.push('<div class="sp"></div>');
+      else out.push('<div>' + inl(l) + '</div>');
+    });
+    if (lista) out.push('</ul>');
+    return out.join('');
   }
   function preencheModelos(lista, atual) {
     var s = $('modelo');
@@ -204,7 +229,7 @@
         .filter(function (m) { return m.r !== 'e'; });
       return perguntarComReserva(hist, function (t) { bt.textContent = t; });
     }).then(function (resp) {
-      chat.push({ r: 'a', t: resp || '(vazio)' });
+      chat.push({ r: 'a', t: resp || '(vazio)', mod: provNome() + ' · ' + ultimoModelo });
     }).catch(function (e) {
       chat.push({ r: 'e', t: 'Erro da IA: ' + e.message });
     }).then(function () {
