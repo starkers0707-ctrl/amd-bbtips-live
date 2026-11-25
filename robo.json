@@ -1451,7 +1451,37 @@
   "consumidas": {
    "mnd": 1795598373619
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "06:23",
+     "jogo": "PAR x ATL",
+     "odd": 3.32
+    },
+    {
+     "h": "06:26",
+     "jogo": "IND x CIO",
+     "odd": 3.34
+    },
+    {
+     "h": "06:29",
+     "jogo": "RAC x BOL",
+     "odd": 3.36
+    }
+   ],
+   "gatilho": "seq RRRRR",
+   "alvo": {
+    "h": "06:23",
+    "jogo": "PAR x ATL",
+    "odd": 3.32,
+    "unidades": 1,
+    "desde": 1795598377874
+   },
+   "iniciadoEm": 1795598377874
+  },
   "cooldown": {
    "mnd": 1795598373619,
    "lat": 1795522898324,
@@ -1487,12 +1517,24 @@
  },
  "o25": {
   "saldo": -20.6,
-  "ciclos": 100589,
+  "ciclos": 100591,
   "greens": 272,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 100278,
+  "descartes": 100280,
   "historico": [
+   {
+    "quando": "2026-11-25T09:19:33.646Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:19:33.640Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T09:19:32.840Z",
     "resultado": "GREEN_OBS",
@@ -5077,18 +5119,6 @@
    },
    {
     "quando": "2026-11-25T08:53:09.118Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:53:09.110Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:53:08.240Z",
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
