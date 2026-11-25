@@ -1459,12 +1459,18 @@
  },
  "o25": {
   "saldo": -23.6,
-  "ciclos": 97044,
+  "ciclos": 97045,
   "greens": 262,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96744,
+  "descartes": 96745,
   "historico": [
+   {
+    "quando": "2026-11-25T06:08:04.389Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T06:08:02.299Z",
     "resultado": "GREEN_OBS",
@@ -5058,12 +5064,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho time Dortmund) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T04:39:09.074Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Dortmund) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5236,8 +5236,8 @@
   },
   "_obs": {
    "cop": {
-    "desde": 1795586882298,
-    "gatilho": "time France"
+    "desde": 1795586884388,
+    "gatilho": "placar empate 1-1"
    }
   }
  },
@@ -7218,7 +7218,7 @@
    "tipo": "time",
    "chave": "Paris",
    "n": 10,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
