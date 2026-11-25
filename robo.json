@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 62.8,
-  "ciclos": 236,
-  "greens": 89,
+  "saldo": 66.4,
+  "ciclos": 237,
+  "greens": 90,
   "redsCiclo": 35,
   "aborts": 0,
   "descartes": 112,
   "historico": [
+   {
+    "quando": "2026-11-25T07:20:30.465Z",
+    "resultado": "GREEN",
+    "unidades": 3.6,
+    "detalhe": "spa · MLG x ELC @3.28 (tiro 2) · gatilho: seq GRGR"
+   },
    {
     "quando": "2026-11-25T06:56:05.555Z",
     "resultado": "GREEN",
@@ -1425,52 +1431,15 @@
    }
   ],
   "consumidas": {
-   "mnd": 1795589765552
+   "mnd": 1795589765552,
+   "spa": 1795591230462
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "04:19",
-     "jogo": "GET x VIL",
-     "odd": 3.22
-    },
-    {
-     "h": "04:21",
-     "jogo": "MLG x ELC",
-     "odd": 3.28
-    },
-    {
-     "h": "04:23",
-     "jogo": "RMA x ATH",
-     "odd": 3
-    }
-   ],
-   "gatilho": "seq GRGR",
-   "alvo": {
-    "h": "04:21",
-    "jogo": "MLG x ELC",
-    "odd": 3.28,
-    "unidades": 2,
-    "desde": 1795591229653
-   },
-   "iniciadoEm": 1795590990625,
-   "tiros": [
-    {
-     "h": "04:19",
-     "jogo": "GET x VIL",
-     "odd": 3.22,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795589765552,
    "lat": 1795522898324,
    "eng": 1795539214389,
-   "spa": 1795585231546,
+   "spa": 1795591230462,
    "ita": 1795583561904,
    "bra": 1795556736216
   },
@@ -1486,7 +1455,7 @@
    "2026-11-22": -12.7,
    "2026-11-23": 32.3,
    "2026-11-24": 28,
-   "2026-11-25": -0.4
+   "2026-11-25": 3.2
   },
   "_obs": {
    "cam": {
@@ -1501,12 +1470,24 @@
  },
  "o25": {
   "saldo": -28.8,
-  "ciclos": 97667,
+  "ciclos": 97669,
   "greens": 264,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 97364,
+  "descartes": 97366,
   "historico": [
+   {
+    "quando": "2026-11-25T07:20:39.445Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time RIV) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:20:30.485Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time RIV) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T07:20:29.686Z",
     "resultado": "GREEN_OBS",
@@ -5094,18 +5075,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T06:13:35.847Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T06:13:33.736Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5157,9 +5126,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "SAS",
-   "n": 11,
-   "start": 1
+   "chave": "CAG",
+   "n": 9,
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -5316,7 +5285,7 @@
     "gatilho": "time NED"
    },
    "lat": {
-    "desde": 1795591229685,
+    "desde": 1795591239445,
     "gatilho": "time RIV"
    }
   }
@@ -7324,8 +7293,8 @@
   },
   "ciclo": {
    "liga": "ita",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "04:17",
@@ -7345,11 +7314,11 @@
    ],
    "gatilho": "placar 0-0",
    "alvo": {
-    "h": "04:19",
-    "jogo": "NAP x ATA",
-    "odd": 1.74,
-    "unidades": 2,
-    "desde": 1795591111671
+    "h": "04:21",
+    "jogo": "COM x SAS",
+    "odd": 1.76,
+    "unidades": 4,
+    "desde": 1795591230500
    },
    "iniciadoEm": 1795590990705,
    "tiros": [
@@ -7358,6 +7327,12 @@
      "jogo": "FRO x LAZ",
      "odd": 1.67,
      "unidades": 1
+    },
+    {
+     "h": "04:19",
+     "jogo": "NAP x ATA",
+     "odd": 1.74,
+     "unidades": 2
     }
    ]
   },
