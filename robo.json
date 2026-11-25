@@ -1507,12 +1507,30 @@
  },
  "o25": {
   "saldo": -25.4,
-  "ciclos": 98851,
+  "ciclos": 98854,
   "greens": 267,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 98545,
+  "descartes": 98548,
   "historico": [
+   {
+    "quando": "2026-11-25T08:05:49.261Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:05:49.255Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:05:29.998Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-1)) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T08:05:29.992Z",
     "resultado": "GREEN_OBS",
@@ -5094,24 +5112,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:47:44.410Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:47:44.401Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:47:44.393Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5121,7 +5121,37 @@
    "mnd": 1795591666559,
    "cop": 1795593361290
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "05:19",
+     "jogo": "Penarol x Belo Horizonte",
+     "odd": 2.1
+    },
+    {
+     "h": "05:22",
+     "jogo": "Bogota x Guayaquil",
+     "odd": 2.31
+    },
+    {
+     "h": "05:25",
+     "jogo": "Buenos Aires x Rio de Janeiro",
+     "odd": 2.12
+    }
+   ],
+   "gatilho": "time Guayaquil",
+   "alvo": {
+    "h": "05:19",
+    "jogo": "Penarol x Belo Horizonte",
+    "odd": 2.1,
+    "unidades": 1,
+    "desde": 1795593949246
+   },
+   "iniciadoEm": 1795593949246
+  },
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5135,9 +5165,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "France",
-   "n": 12,
-   "start": 1
+   "chave": "Guayaquil",
+   "n": 8,
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -5290,7 +5320,7 @@
     "gatilho": "placar acima de 1-0 (2-0)"
    },
    "spa": {
-    "desde": 1795593929991,
+    "desde": 1795593949261,
     "gatilho": "time VIL"
    }
   }
