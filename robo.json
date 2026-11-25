@@ -1470,12 +1470,24 @@
  },
  "o25": {
   "saldo": -26.9,
-  "ciclos": 97895,
+  "ciclos": 97897,
   "greens": 266,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 97590,
+  "descartes": 97592,
   "historico": [
+   {
+    "quando": "2026-11-25T07:31:56.791Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:31:37.946Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T07:31:37.938Z",
     "resultado": "GREEN_OBS",
@@ -5063,18 +5075,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:00:32.933Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:00:32.928Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5282,19 +5282,25 @@
     "gatilho": "placar empate 1-1"
    },
    "spa": {
-    "desde": 1795591897938,
+    "desde": 1795591916791,
     "gatilho": "time VIL"
    }
   }
  },
  "ambas": {
-  "saldo": -40.8,
-  "ciclos": 333,
-  "greens": 135,
+  "saldo": -40.4,
+  "ciclos": 334,
+  "greens": 136,
   "redsCiclo": 20,
   "aborts": 0,
   "descartes": 178,
   "historico": [
+   {
+    "quando": "2026-11-25T07:31:37.961Z",
+    "resultado": "GREEN",
+    "unidades": 0.4,
+    "detalhe": "eng · FUL x CHE @1.69 (tiro 2) · gatilho: placar empate 1-1"
+   },
    {
     "quando": "2026-11-25T07:27:46.604Z",
     "resultado": "GREEN",
@@ -7298,50 +7304,13 @@
    "cam": 1795588832207,
    "lat": 1795590067651,
    "ita": 1795591350074,
-   "mnd": 1795591666601
+   "mnd": 1795591666601,
+   "eng": 1795591897958
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "04:30",
-     "jogo": "BOU x TOT",
-     "odd": 1.74
-    },
-    {
-     "h": "04:32",
-     "jogo": "FUL x CHE",
-     "odd": 1.69
-    },
-    {
-     "h": "04:34",
-     "jogo": "SUN x ARS",
-     "odd": 1.67
-    }
-   ],
-   "gatilho": "placar empate 1-1",
-   "alvo": {
-    "h": "04:32",
-    "jogo": "FUL x CHE",
-    "odd": 1.69,
-    "unidades": 2,
-    "desde": 1795591894644
-   },
-   "iniciadoEm": 1795591684283,
-   "tiros": [
-    {
-     "h": "04:30",
-     "jogo": "BOU x TOT",
-     "odd": 1.74,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795590067651,
-   "eng": 1795588037236,
+   "eng": 1795591897958,
    "spa": 1795585949785,
    "bra": 1795526496634,
    "mnd": 1795591666601,
@@ -7362,7 +7331,7 @@
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
    "2026-11-24": -32.6,
-   "2026-11-25": -9.6
+   "2026-11-25": -9.2
   },
   "_obs": {}
  }
