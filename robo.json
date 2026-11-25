@@ -1501,12 +1501,18 @@
  },
  "o25": {
   "saldo": -17.9,
-  "ciclos": 100934,
+  "ciclos": 100935,
   "greens": 274,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 100621,
+  "descartes": 100622,
   "historico": [
+   {
+    "quando": "2026-11-25T09:44:01.818Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T09:43:59.136Z",
     "resultado": "GREEN_OBS",
@@ -5100,12 +5106,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:09:42.340Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5288,19 +5288,25 @@
     "gatilho": "odd 1.9"
    },
    "cop": {
-    "desde": 1795599839136,
+    "desde": 1795599841818,
     "gatilho": "time Uruguay"
    }
   }
  },
  "ambas": {
-  "saldo": -34.5,
-  "ciclos": 347,
-  "greens": 143,
+  "saldo": -33.6,
+  "ciclos": 348,
+  "greens": 144,
   "redsCiclo": 20,
   "aborts": 0,
   "descartes": 184,
   "historico": [
+   {
+    "quando": "2026-11-25T09:43:59.170Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "cop · USA x France @1.93 (tiro 1) · gatilho: seq RRGG"
+   },
    {
     "quando": "2026-11-25T09:28:22.979Z",
     "resultado": "GREEN",
@@ -7388,39 +7394,10 @@
    "eng": 1795596330189,
    "ame": 1795598001936,
    "ita": 1795598327411,
-   "cam": 1795598902975
+   "cam": 1795598902975,
+   "cop": 1795599839166
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "06:42",
-     "jogo": "USA x France",
-     "odd": 1.93
-    },
-    {
-     "h": "06:45",
-     "jogo": "England x Denmark",
-     "odd": 2.02
-    },
-    {
-     "h": "06:48",
-     "jogo": "Mexico x Belgium",
-     "odd": 1.88
-    }
-   ],
-   "gatilho": "seq RRGG",
-   "alvo": {
-    "h": "06:42",
-    "jogo": "USA x France",
-    "odd": 1.93,
-    "unidades": 1,
-    "desde": 1795599465131
-   },
-   "iniciadoEm": 1795599465131
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795596330189,
@@ -7428,7 +7405,7 @@
    "bra": 1795526496634,
    "mnd": 1795595976401,
    "cam": 1795598902975,
-   "cop": 1795592080479,
+   "cop": 1795599839166,
    "ame": 1795598001936,
    "ita": 1795598327411
   },
@@ -7436,7 +7413,7 @@
    "tipo": "odd",
    "chave": "1.97",
    "n": 8,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
@@ -7444,7 +7421,7 @@
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
    "2026-11-24": -32.6,
-   "2026-11-25": -3.3
+   "2026-11-25": -2.4
   },
   "_obs": {}
  }
