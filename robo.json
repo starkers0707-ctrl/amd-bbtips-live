@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 73.1,
-  "ciclos": 257,
+  "saldo": 66.1,
+  "ciclos": 258,
   "greens": 98,
-  "redsCiclo": 39,
+  "redsCiclo": 40,
   "aborts": 0,
   "descartes": 120,
   "historico": [
+   {
+    "quando": "2026-11-25T14:43:53.830Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "mnd · ciclo perdido (3 tiros) · gatilho: seq RGGR"
+   },
    {
     "quando": "2026-11-25T13:51:30.735Z",
     "resultado": "RED_CICLO",
@@ -1551,55 +1557,12 @@
    }
   ],
   "consumidas": {
-   "bra": 1795614690723
+   "bra": 1795614690723,
+   "mnd": 1795617833812
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "11:38",
-     "jogo": "WAL x POR",
-     "odd": 3.12
-    },
-    {
-     "h": "11:40",
-     "jogo": "ITA x COL",
-     "odd": 3.37
-    },
-    {
-     "h": "11:42",
-     "jogo": "CHL x CRO",
-     "odd": 3.28
-    }
-   ],
-   "gatilho": "seq RGGR",
-   "alvo": {
-    "h": "11:42",
-    "jogo": "CHL x CRO",
-    "odd": 3.28,
-    "unidades": 4,
-    "desde": 1795617687912
-   },
-   "iniciadoEm": 1795617334000,
-   "tiros": [
-    {
-     "h": "11:38",
-     "jogo": "WAL x POR",
-     "odd": 3.12,
-     "unidades": 1
-    },
-    {
-     "h": "11:40",
-     "jogo": "ITA x COL",
-     "odd": 3.37,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
-   "mnd": 1795606070098,
+   "mnd": 1795617833812,
    "lat": 1795613616549,
    "eng": 1795611576721,
    "spa": 1795598948455,
@@ -1618,7 +1581,7 @@
    "2026-11-22": -12.7,
    "2026-11-23": 32.3,
    "2026-11-24": 28,
-   "2026-11-25": 9.9
+   "2026-11-25": 2.9
   },
   "_obs": {
    "cam": {
@@ -1629,12 +1592,18 @@
  },
  "o25": {
   "saldo": -13.3,
-  "ciclos": 108590,
+  "ciclos": 108591,
   "greens": 290,
   "redsCiclo": 41,
   "aborts": 0,
-  "descartes": 108259,
+  "descartes": 108260,
   "historico": [
+   {
+    "quando": "2026-11-25T14:43:53.852Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T14:43:50.036Z",
     "resultado": "GREEN_OBS",
@@ -5228,12 +5197,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time BAH) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T14:25:51.919Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5285,9 +5248,9 @@
    "cop": 1795617660495
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":46",
-   "n": 10,
+   "tipo": "seq",
+   "chave": "RRRRR",
+   "n": 13,
    "start": 1
   },
   "dias": {
@@ -5448,9 +5411,9 @@
     "desde": 1795617758991,
     "gatilho": "odd 1.91"
    },
-   "cop": {
-    "desde": 1795617830035,
-    "gatilho": "coluna :03"
+   "spa": {
+    "desde": 1795617833851,
+    "gatilho": "coluna :47"
    }
   }
  },
