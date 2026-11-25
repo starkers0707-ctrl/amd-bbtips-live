@@ -1501,12 +1501,42 @@
  },
  "o25": {
   "saldo": -17.9,
-  "ciclos": 101375,
+  "ciclos": 101380,
   "greens": 274,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 101062,
+  "descartes": 101067,
   "historico": [
+   {
+    "quando": "2026-11-25T10:18:34.123Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:18:34.114Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:18:33.305Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:18:33.292Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:18:16.695Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:18:16.686Z",
     "resultado": "GREEN_OBS",
@@ -5076,43 +5106,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:28:32.854Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:28:27.322Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.18) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:28:27.317Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:28:27.313Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:28:25.133Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.18) — liga REARMADA"
    }
   ],
   "consumidas": {
    "bra": 1795598497327,
    "cam": 1795598902928
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "07:21",
+     "jogo": "France x Germany",
+     "odd": 2.32
+    },
+    {
+     "h": "07:24",
+     "jogo": "Italy x Croatia",
+     "odd": 2.65
+    },
+    {
+     "h": "07:27",
+     "jogo": "Wales x Portugal",
+     "odd": 2.38
+    }
+   ],
+   "gatilho": "placar empate 1-1",
+   "alvo": {
+    "h": "07:21",
+    "jogo": "France x Germany",
+    "odd": 2.32,
+    "unidades": 1,
+    "desde": 1795601913272
+   },
+   "iniciadoEm": 1795601913272
+  },
   "cooldown": {
    "cam": 1795598902928,
    "eng": 1795575218328,
@@ -5280,9 +5310,9 @@
     "desde": 1795596831466,
     "gatilho": "time Guayaquil"
    },
-   "spa": {
-    "desde": 1795601896686,
-    "gatilho": "time VIL"
+   "cop": {
+    "desde": 1795601914122,
+    "gatilho": "placar empate 1-1"
    }
   }
  },
