@@ -1458,13 +1458,25 @@
   }
  },
  "o25": {
-  "saldo": -25.2,
-  "ciclos": 97034,
-  "greens": 261,
+  "saldo": -23.6,
+  "ciclos": 97036,
+  "greens": 262,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96735,
+  "descartes": 96736,
   "historico": [
+   {
+    "quando": "2026-11-25T06:04:34.155Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T06:04:34.134Z",
+    "resultado": "GREEN",
+    "unidades": 1.6,
+    "detalhe": "cop · Wales x Uruguay @2.64 (tiro 1) · gatilho: time France"
+   },
    {
     "quando": "2026-11-25T06:04:32.034Z",
     "resultado": "GREEN_OBS",
@@ -5052,55 +5064,14 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho time Dortmund) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T04:38:02.719Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Dortmund) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T04:38:00.500Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho time Dortmund) — liga REARMADA"
    }
   ],
   "consumidas": {
    "lat": 1795583375979,
-   "spa": 1795585231575
+   "spa": 1795585231575,
+   "cop": 1795586674122
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "03:03",
-     "jogo": "Wales x Uruguay",
-     "odd": 2.64
-    },
-    {
-     "h": "03:06",
-     "jogo": "Netherlands x France",
-     "odd": 2.25
-    },
-    {
-     "h": "03:09",
-     "jogo": "Colombia x Switzerland",
-     "odd": 2.97
-    }
-   ],
-   "gatilho": "time France",
-   "alvo": {
-    "h": "03:03",
-    "jogo": "Wales x Uruguay",
-    "odd": 2.64,
-    "unidades": 1,
-    "desde": 1795586146883
-   },
-   "iniciadoEm": 1795586146883
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5110,13 +5081,13 @@
    "bra": 1795522714636,
    "mnd": 1795581815708,
    "ame": 1795572519317,
-   "cop": 1795567414833
+   "cop": 1795586674122
   },
   "_gatilhoAtual": {
    "tipo": "time",
    "chave": "France",
    "n": 9,
-   "start": 1
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -5125,7 +5096,7 @@
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
    "2026-11-24": -19.4,
-   "2026-11-25": 4.1
+   "2026-11-25": 5.7
   },
   "_obs": {}
  },
@@ -5265,7 +5236,7 @@
   },
   "_obs": {
    "cop": {
-    "desde": 1795586672034,
+    "desde": 1795586674154,
     "gatilho": "time France"
    }
   }
