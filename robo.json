@@ -1458,12 +1458,24 @@
  },
  "o25": {
   "saldo": -23.6,
-  "ciclos": 97099,
+  "ciclos": 97101,
   "greens": 262,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96799,
+  "descartes": 96801,
   "historico": [
+   {
+    "quando": "2026-11-25T06:22:35.774Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T06:22:35.766Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T06:22:31.986Z",
     "resultado": "GREEN_OBS",
@@ -5051,25 +5063,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:13:07.544Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:13:05.391Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795585231575,
    "cop": 1795586674122
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:18",
+     "jogo": "SPA x ITA",
+     "odd": 1.95
+    },
+    {
+     "h": "04:20",
+     "jogo": "ARG x NED",
+     "odd": 1.94
+    },
+    {
+     "h": "04:22",
+     "jogo": "SWE x COL",
+     "odd": 1.9
+    }
+   ],
+   "gatilho": "time NED",
+   "alvo": {
+    "h": "04:18",
+    "jogo": "SPA x ITA",
+    "odd": 1.95,
+    "unidades": 1,
+    "desde": 1795587755742
+   },
+   "iniciadoEm": 1795587755742
+  },
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5083,8 +5113,8 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "France",
-   "n": 9,
+   "chave": "NED",
+   "n": 10,
    "start": 7
   },
   "dias": {
@@ -5238,7 +5268,7 @@
     "gatilho": "time VIL"
    },
    "cop": {
-    "desde": 1795587751985,
+    "desde": 1795587755774,
     "gatilho": "time France"
    }
   }
