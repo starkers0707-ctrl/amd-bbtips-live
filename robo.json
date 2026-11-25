@@ -1574,13 +1574,25 @@
   }
  },
  "o25": {
-  "saldo": -6.1,
-  "ciclos": 105593,
+  "saldo": -13.1,
+  "ciclos": 105595,
   "greens": 284,
-  "redsCiclo": 39,
+  "redsCiclo": 40,
   "aborts": 0,
-  "descartes": 105270,
+  "descartes": 105271,
   "historico": [
+   {
+    "quando": "2026-11-25T13:04:27.265Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T13:04:27.256Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "cam · ciclo perdido (3 tiros) · gatilho: odd 2.3"
+   },
    {
     "quando": "2026-11-25T13:04:16.792Z",
     "resultado": "GREEN_OBS",
@@ -5168,72 +5180,17 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:37:06.647Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:37:04.549Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795608515213,
    "mnd": 1795608832600,
-   "bra": 1795610190986
+   "bra": 1795610190986,
+   "cam": 1795611867253
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "09:57",
-     "jogo": "Madrid x Liverpool",
-     "odd": 2.13
-    },
-    {
-     "h": "10:00",
-     "jogo": "Dortmund x City",
-     "odd": 2.3
-    },
-    {
-     "h": "10:03",
-     "jogo": "Milan x Benfica",
-     "odd": 2.17
-    }
-   ],
-   "gatilho": "odd 2.3",
-   "alvo": {
-    "h": "10:03",
-    "jogo": "Milan x Benfica",
-    "odd": 2.17,
-    "unidades": 4,
-    "desde": 1795611716525
-   },
-   "iniciadoEm": 1795611110314,
-   "tiros": [
-    {
-     "h": "09:57",
-     "jogo": "Madrid x Liverpool",
-     "odd": 2.13,
-     "unidades": 1
-    },
-    {
-     "h": "10:00",
-     "jogo": "Dortmund x City",
-     "odd": 2.3,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
-   "cam": 1795605050850,
+   "cam": 1795611867253,
    "eng": 1795575218328,
    "ita": 1795595437825,
    "spa": 1795608515213,
@@ -5256,7 +5213,7 @@
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
    "2026-11-24": -19.4,
-   "2026-11-25": 23.2
+   "2026-11-25": 16.2
   },
   "_obs": {}
  },
@@ -5407,9 +5364,9 @@
     "desde": 1795611752463,
     "gatilho": "seq GGRRR"
    },
-   "bra": {
-    "desde": 1795611856792,
-    "gatilho": "time GOI"
+   "mnd": {
+    "desde": 1795611867265,
+    "gatilho": "coluna :06"
    }
   }
  },
