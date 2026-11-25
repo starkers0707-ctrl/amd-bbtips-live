@@ -1475,12 +1475,30 @@
  },
  "o25": {
   "saldo": -22.9,
-  "ciclos": 99528,
+  "ciclos": 99531,
   "greens": 269,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 99220,
+  "descartes": 99223,
   "historico": [
+   {
+    "quando": "2026-11-25T08:31:16.647Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:31:13.716Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:31:13.711Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T08:31:13.701Z",
     "resultado": "GREEN_OBS",
@@ -5062,24 +5080,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:08:04.195Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RGGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:08:04.189Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:08:04.183Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5282,19 +5282,25 @@
   },
   "_obs": {
    "mnd": {
-    "desde": 1795595473701,
+    "desde": 1795595476646,
     "gatilho": "time NED"
    }
   }
  },
  "ambas": {
   "saldo": -38.3,
-  "ciclos": 340,
+  "ciclos": 341,
   "greens": 138,
   "redsCiclo": 20,
   "aborts": 0,
-  "descartes": 182,
+  "descartes": 183,
   "historico": [
+   {
+    "quando": "2026-11-25T08:31:13.739Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "ame · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-25T08:22:34.007Z",
     "resultado": "GREEN_OBS",
@@ -7341,37 +7347,7 @@
    "cop": 1795592080479,
    "cam": 1795592637356
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "05:31",
-     "jogo": "Avellaneda x Porto Alegre",
-     "odd": 2.01
-    },
-    {
-     "h": "05:34",
-     "jogo": "Itaquera x Medellin",
-     "odd": 2.07
-    },
-    {
-     "h": "05:37",
-     "jogo": "Montevideo x Quito",
-     "odd": 1.95
-    }
-   ],
-   "gatilho": "time Itaquera",
-   "alvo": {
-    "h": "05:31",
-    "jogo": "Avellaneda x Porto Alegre",
-    "odd": 2.01,
-    "unidades": 1,
-    "desde": 1795594570826
-   },
-   "iniciadoEm": 1795594570826
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795591897958,
