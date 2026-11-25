@@ -1575,12 +1575,18 @@
  },
  "o25": {
   "saldo": -13.1,
-  "ciclos": 105595,
+  "ciclos": 105596,
   "greens": 284,
   "redsCiclo": 40,
   "aborts": 0,
-  "descartes": 105271,
+  "descartes": 105272,
   "historico": [
+   {
+    "quando": "2026-11-25T13:04:27.269Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time GOI) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T13:04:27.265Z",
     "resultado": "GREEN_OBS",
@@ -5174,12 +5180,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:37:06.652Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5188,7 +5188,37 @@
    "bra": 1795610190986,
    "cam": 1795611867253
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "10:21",
+     "jogo": "Portugal x Germany",
+     "odd": 2.32
+    },
+    {
+     "h": "10:24",
+     "jogo": "Netherlands x Brazil",
+     "odd": 2.12
+    },
+    {
+     "h": "10:27",
+     "jogo": "USA x Colombia",
+     "odd": 2.38
+    }
+   ],
+   "gatilho": "odd 2.12",
+   "alvo": {
+    "h": "10:21",
+    "jogo": "Portugal x Germany",
+    "odd": 2.32,
+    "unidades": 1,
+    "desde": 1795611869427
+   },
+   "iniciadoEm": 1795611869427
+  },
   "cooldown": {
    "cam": 1795611867253,
    "eng": 1795575218328,
@@ -5204,7 +5234,7 @@
    "tipo": "odd",
    "chave": "2.12",
    "n": 10,
-   "start": 6
+   "start": 5
   },
   "dias": {
    "2026-11-19": -7,
@@ -5363,10 +5393,6 @@
    "spa": {
     "desde": 1795611752463,
     "gatilho": "seq GGRRR"
-   },
-   "mnd": {
-    "desde": 1795611867265,
-    "gatilho": "coluna :06"
    }
   }
  },
