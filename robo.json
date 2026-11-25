@@ -1385,8 +1385,8 @@
   "consumidas": {},
   "ciclo": {
    "liga": "mnd",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "01:38",
@@ -1406,11 +1406,11 @@
    ],
    "gatilho": "placar 1-0 / 0-1",
    "alvo": {
-    "h": "01:40",
-    "jogo": "BRA x ARG",
-    "odd": 3.18,
-    "unidades": 2,
-    "desde": 1795581567240
+    "h": "01:42",
+    "jogo": "URY x DEN",
+    "odd": 3.36,
+    "unidades": 4,
+    "desde": 1795581577578
    },
    "iniciadoEm": 1795581331208,
    "tiros": [
@@ -1419,6 +1419,12 @@
      "jogo": "POR x SWI",
      "odd": 3.29,
      "unidades": 1
+    },
+    {
+     "h": "01:40",
+     "jogo": "BRA x ARG",
+     "odd": 3.18,
+     "unidades": 2
     }
    ]
   },
@@ -1456,12 +1462,24 @@
  },
  "o25": {
   "saldo": -27.7,
-  "ciclos": 96447,
+  "ciclos": 96449,
   "greens": 258,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96151,
+  "descartes": 96153,
   "historico": [
+   {
+    "quando": "2026-11-25T04:39:37.604Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Dortmund) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T04:39:27.278Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Dortmund) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T04:39:17.887Z",
     "resultado": "GREEN_OBS",
@@ -5049,18 +5067,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:20:36.679Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:20:36.666Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5068,8 +5074,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "01:38",
@@ -5089,11 +5095,11 @@
    ],
    "gatilho": "placar 1-0 / 0-1",
    "alvo": {
-    "h": "01:40",
-    "jogo": "BRA x ARG",
-    "odd": 1.87,
-    "unidades": 2,
-    "desde": 1795581567264
+    "h": "01:42",
+    "jogo": "URY x DEN",
+    "odd": 1.94,
+    "unidades": 4,
+    "desde": 1795581577591
    },
    "iniciadoEm": 1795581331237,
    "tiros": [
@@ -5102,6 +5108,12 @@
      "jogo": "POR x SWI",
      "odd": 1.91,
      "unidades": 1
+    },
+    {
+     "h": "01:40",
+     "jogo": "BRA x ARG",
+     "odd": 1.87,
+     "unidades": 2
     }
    ]
   },
@@ -5271,6 +5283,10 @@
    "spa": {
     "desde": 1795580546940,
     "gatilho": "placar 1-0 / 0-1"
+   },
+   "cam": {
+    "desde": 1795581577603,
+    "gatilho": "time Dortmund"
    }
   }
  },
