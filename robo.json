@@ -1458,12 +1458,24 @@
  },
  "o25": {
   "saldo": -22.7,
-  "ciclos": 97127,
+  "ciclos": 97129,
   "greens": 263,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96826,
+  "descartes": 96828,
   "historico": [
+   {
+    "quando": "2026-11-25T06:27:32.169Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T06:27:19.462Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T06:27:19.454Z",
     "resultado": "GREEN_OBS",
@@ -5051,18 +5063,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:18:23.598Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:16:32.464Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5239,7 +5239,7 @@
     "gatilho": "time VIL"
    },
    "mnd": {
-    "desde": 1795588039453,
+    "desde": 1795588052169,
     "gatilho": "time NED"
    }
   }
@@ -7208,7 +7208,37 @@
    "cop": 1795587964219,
    "eng": 1795588037236
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "03:39",
+     "jogo": "Milan x Munich",
+     "odd": 1.92
+    },
+    {
+     "h": "03:42",
+     "jogo": "United x Porto",
+     "odd": 2.31
+    },
+    {
+     "h": "03:45",
+     "jogo": "Turin x Amsterdam",
+     "odd": 2.07
+    }
+   ],
+   "gatilho": "time Porto",
+   "alvo": {
+    "h": "03:39",
+    "jogo": "Milan x Munich",
+    "odd": 1.92,
+    "unidades": 1,
+    "desde": 1795588039483
+   },
+   "iniciadoEm": 1795588039483
+  },
   "cooldown": {
    "lat": 1795567528053,
    "eng": 1795588037236,
