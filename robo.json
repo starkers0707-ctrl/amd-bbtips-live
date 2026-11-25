@@ -1503,10 +1503,39 @@
    }
   ],
   "consumidas": {
-   "ita": 1795604437533,
    "mnd": 1795606070098
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "09:05",
+     "jogo": "RIV x MEN",
+     "odd": 3.34
+    },
+    {
+     "h": "09:08",
+     "jogo": "ATL x IND",
+     "odd": 3.35
+    },
+    {
+     "h": "09:11",
+     "jogo": "NAC x PER",
+     "odd": 3.26
+    }
+   ],
+   "gatilho": "seq RRGG",
+   "alvo": {
+    "h": "09:05",
+    "jogo": "RIV x MEN",
+    "odd": 3.34,
+    "unidades": 1,
+    "desde": 1795608035585
+   },
+   "iniciadoEm": 1795608035585
+  },
   "cooldown": {
    "mnd": 1795606070098,
    "lat": 1795604072184,
@@ -1517,8 +1546,8 @@
   },
   "_gatilhoAtual": {
    "tipo": "seq",
-   "chave": "RGGR",
-   "n": 11,
+   "chave": "RRGG",
+   "n": 10,
    "start": 1
   },
   "dias": {
@@ -1542,12 +1571,54 @@
  },
  "o25": {
   "saldo": -10.6,
-  "ciclos": 103910,
+  "ciclos": 103917,
   "greens": 280,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 103591,
+  "descartes": 103598,
   "historico": [
+   {
+    "quando": "2026-11-25T12:00:37.003Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:00:36.994Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:00:36.368Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:00:36.361Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:00:35.631Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:00:35.624Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:00:34.714Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T12:00:34.707Z",
     "resultado": "GREEN_OBS",
@@ -5105,52 +5176,9 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:31:26.035Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:31:26.027Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:31:22.248Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:31:22.243Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:31:22.227Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:31:09.322Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:31:09.319Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "bra": 1795604436334,
    "cam": 1795605050850,
    "ame": 1795605280265
   },
@@ -5367,10 +5395,6 @@
    "ame": {
     "desde": 1795607971059,
     "gatilho": "odd 2.24"
-   },
-   "mnd": {
-    "desde": 1795608034706,
-    "gatilho": "coluna :06"
    }
   }
  },
@@ -7622,7 +7646,7 @@
    "tipo": "odd",
    "chave": "1.71",
    "n": 12,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
