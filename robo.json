@@ -1459,12 +1459,24 @@
  },
  "o25": {
   "saldo": -25.2,
-  "ciclos": 96980,
+  "ciclos": 96982,
   "greens": 261,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96681,
+  "descartes": 96683,
   "historico": [
+   {
+    "quando": "2026-11-25T05:55:46.901Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T05:55:44.757Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T05:55:44.745Z",
     "resultado": "DESCARTADO",
@@ -5052,18 +5064,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T03:01:14.538Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T03:01:14.529Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5097,9 +5097,9 @@
     "jogo": "Wales x Uruguay",
     "odd": 2.64,
     "unidades": 1,
-    "desde": 1795585243724
+    "desde": 1795586146883
    },
-   "iniciadoEm": 1795585243724
+   "iniciadoEm": 1795586146883
   },
   "cooldown": {
    "cam": 1795570666089,
@@ -5116,7 +5116,7 @@
    "tipo": "time",
    "chave": "France",
    "n": 9,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -5263,7 +5263,12 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {}
+  "_obs": {
+   "cop": {
+    "desde": 1795586146900,
+    "gatilho": "time France"
+   }
+  }
  },
  "ambas": {
   "saldo": -29.7,
