@@ -1457,12 +1457,18 @@
  },
  "o25": {
   "saldo": -26.9,
-  "ciclos": 96472,
+  "ciclos": 96473,
   "greens": 259,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96175,
+  "descartes": 96176,
   "historico": [
+   {
+    "quando": "2026-11-25T05:05:05.453Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T05:04:37.343Z",
     "resultado": "GREEN_OBS",
@@ -5056,12 +5062,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:22:05.992Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5269,6 +5269,10 @@
    "cam": {
     "desde": 1795581650169,
     "gatilho": "time Dortmund"
+   },
+   "lat": {
+    "desde": 1795583105452,
+    "gatilho": "placar acima de 1-0 (2-0)"
    }
   }
  },
