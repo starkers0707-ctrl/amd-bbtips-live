@@ -1579,12 +1579,36 @@
  },
  "o25": {
   "saldo": -7.7,
-  "ciclos": 104137,
+  "ciclos": 104141,
   "greens": 282,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 103816,
+  "descartes": 103820,
   "historico": [
+   {
+    "quando": "2026-11-25T12:09:28.321Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :10) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:09:28.317Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:09:16.364Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :16) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:09:16.359Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :21) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T12:09:16.354Z",
     "resultado": "GREEN_OBS",
@@ -5160,30 +5184,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:43:30.049Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:43:30.044Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:43:15.859Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:43:15.854Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5244,9 +5244,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":10",
+   "chave": ":20",
    "n": 8,
-   "start": 1
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -5397,10 +5397,6 @@
    "mnd": {
     "desde": 1795608450862,
     "gatilho": "coluna :10"
-   },
-   "cam": {
-    "desde": 1795608556353,
-    "gatilho": "coluna :18"
    }
   }
  },
