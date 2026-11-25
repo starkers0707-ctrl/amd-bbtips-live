@@ -1586,12 +1586,36 @@
  },
  "o25": {
   "saldo": -15.7,
-  "ciclos": 107985,
+  "ciclos": 107989,
   "greens": 288,
   "redsCiclo": 41,
   "aborts": 0,
-  "descartes": 107656,
+  "descartes": 107660,
   "historico": [
+   {
+    "quando": "2026-11-25T14:25:51.909Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time BAH) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:25:35.821Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:25:35.816Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time BAH) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:25:34.870Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T14:25:34.864Z",
     "resultado": "GREEN_OBS",
@@ -5167,30 +5191,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T14:06:27.030Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :08) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T14:06:27.022Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T14:06:18.667Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T14:06:18.663Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5241,10 +5241,10 @@
    "cop": 1795612980951
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "RRRR",
-   "n": 16,
-   "start": 1
+   "tipo": "odd",
+   "chave": "2.31",
+   "n": 8,
+   "start": 5
   },
   "dias": {
    "2026-11-19": -7,
@@ -5405,7 +5405,7 @@
     "gatilho": "coluna :35"
    },
    "bra": {
-    "desde": 1795616734864,
+    "desde": 1795616751909,
     "gatilho": "time BAH"
    }
   }
