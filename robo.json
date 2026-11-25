@@ -5087,7 +5087,37 @@
    "ame": 1795595033847,
    "ita": 1795595437825
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "05:49",
+     "jogo": "ATH x ALV",
+     "odd": 1.95
+    },
+    {
+     "h": "05:51",
+     "jogo": "VIL x RST",
+     "odd": 1.86
+    },
+    {
+     "h": "05:53",
+     "jogo": "CEL x RMA",
+     "odd": 1.82
+    }
+   ],
+   "gatilho": "time VIL",
+   "alvo": {
+    "h": "05:49",
+    "jogo": "ATH x ALV",
+    "odd": 1.95,
+    "unidades": 1,
+    "desde": 1795596365638
+   },
+   "iniciadoEm": 1795596365638
+  },
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5101,9 +5131,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "NED",
+   "chave": "VIL",
    "n": 16,
-   "start": 1
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -5114,7 +5144,12 @@
    "2026-11-24": -19.4,
    "2026-11-25": 6.4
   },
-  "_obs": {}
+  "_obs": {
+   "mnd": {
+    "desde": 1795596365634,
+    "gatilho": "time NED"
+   }
+  }
  },
  "o25b": {
   "saldo": -20.7,
@@ -5262,10 +5297,6 @@
    "mnd": {
     "desde": 1795596328627,
     "gatilho": "time NED"
-   },
-   "ame": {
-    "desde": 1795596362409,
-    "gatilho": "time Guayaquil"
    }
   }
  },
