@@ -1420,12 +1420,30 @@
  },
  "o25": {
   "saldo": -25,
-  "ciclos": 95523,
+  "ciclos": 95526,
   "greens": 253,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 95233,
+  "descartes": 95236,
   "historico": [
+   {
+    "quando": "2026-11-25T01:58:05.542Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T01:57:42.061Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T01:57:42.052Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T01:57:30.525Z",
     "resultado": "GREEN_OBS",
@@ -5007,24 +5025,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:19:05.543Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.2) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:19:05.529Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:19:05.518Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5083,9 +5083,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "odd",
-   "chave": "1.77",
-   "n": 8,
-   "start": 1
+   "chave": "2.02",
+   "n": 12,
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -5231,7 +5231,12 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {}
+  "_obs": {
+   "ita": {
+    "desde": 1795571885542,
+    "gatilho": "odd 1.77"
+   }
+  }
  },
  "ambas": {
   "saldo": -25.4,
