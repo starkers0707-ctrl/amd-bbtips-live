@@ -1475,12 +1475,24 @@
  },
  "o25": {
   "saldo": -22.6,
-  "ciclos": 100114,
+  "ciclos": 100116,
   "greens": 270,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 99805,
+  "descartes": 99807,
   "historico": [
+   {
+    "quando": "2026-11-25T08:59:03.382Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:58:38.249Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T08:58:38.240Z",
     "resultado": "GREEN_OBS",
@@ -5068,18 +5080,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:30:41.156Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:30:40.297Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5140,8 +5140,8 @@
   "_gatilhoAtual": {
    "tipo": "time",
    "chave": "Uruguay",
-   "n": 12,
-   "start": 2
+   "n": 13,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -5294,7 +5294,7 @@
     "gatilho": "time Guayaquil"
    },
    "mnd": {
-    "desde": 1795597118239,
+    "desde": 1795597143381,
     "gatilho": "odd 1.9"
    }
   }
