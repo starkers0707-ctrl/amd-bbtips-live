@@ -1463,12 +1463,24 @@
  },
  "o25": {
   "saldo": -22.7,
-  "ciclos": 97489,
+  "ciclos": 97491,
   "greens": 263,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 97188,
+  "descartes": 97190,
   "historico": [
+   {
+    "quando": "2026-11-25T07:12:13.014Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:12:07.579Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T07:12:07.570Z",
     "resultado": "GREEN_OBS",
@@ -5056,18 +5068,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:50:01.756Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:50:01.747Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5286,7 +5286,7 @@
     "gatilho": "time NED"
    },
    "spa": {
-    "desde": 1795590727570,
+    "desde": 1795590733014,
     "gatilho": "time VIL"
    }
   }
@@ -7322,10 +7322,10 @@
    "ame": 1795510421878
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "Itaquera",
-   "n": 10,
-   "start": 3
+   "tipo": "placar",
+   "chave": "acima de 1-0 (2-1)",
+   "n": 9,
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
