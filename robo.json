@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 66.4,
-  "ciclos": 237,
+  "saldo": 59.4,
+  "ciclos": 238,
   "greens": 90,
-  "redsCiclo": 35,
+  "redsCiclo": 36,
   "aborts": 0,
   "descartes": 112,
   "historico": [
+   {
+    "quando": "2026-11-25T08:07:37.020Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "mnd · ciclo perdido (3 tiros) · gatilho: time NED"
+   },
    {
     "quando": "2026-11-25T07:20:30.465Z",
     "resultado": "GREEN",
@@ -1431,55 +1437,12 @@
    }
   ],
   "consumidas": {
-   "spa": 1795591230462
+   "spa": 1795591230462,
+   "mnd": 1795594057016
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "05:04",
-     "jogo": "FRA x ARG",
-     "odd": 3.13
-    },
-    {
-     "h": "05:06",
-     "jogo": "POL x NED",
-     "odd": 3.28
-    },
-    {
-     "h": "05:08",
-     "jogo": "URY x SPA",
-     "odd": 3.36
-    }
-   ],
-   "gatilho": "time NED",
-   "alvo": {
-    "h": "05:08",
-    "jogo": "URY x SPA",
-    "odd": 3.36,
-    "unidades": 4,
-    "desde": 1795594047483
-   },
-   "iniciadoEm": 1795593367097,
-   "tiros": [
-    {
-     "h": "05:04",
-     "jogo": "FRA x ARG",
-     "odd": 3.13,
-     "unidades": 1
-    },
-    {
-     "h": "05:06",
-     "jogo": "POL x NED",
-     "odd": 3.28,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
-   "mnd": 1795589765552,
+   "mnd": 1795594057016,
    "lat": 1795522898324,
    "eng": 1795539214389,
    "spa": 1795591230462,
@@ -1498,7 +1461,7 @@
    "2026-11-22": -12.7,
    "2026-11-23": 32.3,
    "2026-11-24": 28,
-   "2026-11-25": 3.2
+   "2026-11-25": -3.8
   },
   "_obs": {
    "cam": {
@@ -1513,12 +1476,42 @@
  },
  "o25": {
   "saldo": -25.4,
-  "ciclos": 98908,
+  "ciclos": 98913,
   "greens": 267,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 98602,
+  "descartes": 98607,
   "historico": [
+   {
+    "quando": "2026-11-25T08:07:37.044Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:07:27.525Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:07:27.517Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RGGR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:07:27.512Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:07:27.507Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T08:07:19.145Z",
     "resultado": "GREEN_OBS",
@@ -5088,36 +5081,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:49:08.107Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-1)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:49:08.103Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:49:08.098Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:49:07.216Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:49:07.209Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-1)) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5324,6 +5287,10 @@
    "cop": {
     "desde": 1795593916962,
     "gatilho": "placar acima de 1-0 (2-0)"
+   },
+   "ita": {
+    "desde": 1795594057044,
+    "gatilho": "time SAS"
    }
   }
  },
