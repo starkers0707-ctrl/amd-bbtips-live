@@ -1459,12 +1459,18 @@
  },
  "o25": {
   "saldo": -25.2,
-  "ciclos": 97012,
+  "ciclos": 97013,
   "greens": 261,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96713,
+  "descartes": 96714,
   "historico": [
+   {
+    "quando": "2026-11-25T06:00:31.133Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T06:00:29.407Z",
     "resultado": "GREEN_OBS",
@@ -5058,12 +5064,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T03:02:37.950Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5265,7 +5265,7 @@
   },
   "_obs": {
    "cop": {
-    "desde": 1795586429407,
+    "desde": 1795586431132,
     "gatilho": "time France"
    }
   }
@@ -7200,11 +7200,40 @@
    }
   ],
   "consumidas": {
-   "eng": 1795582778457,
    "cop": 1795583077354,
    "spa": 1795585949785
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:48",
+     "jogo": "LEE x BRE",
+     "odd": 1.69
+    },
+    {
+     "h": "04:54",
+     "jogo": "BOU x LIV",
+     "odd": 1.69
+    },
+    {
+     "h": "04:56",
+     "jogo": "TOT x CHE",
+     "odd": 1.69
+    }
+   ],
+   "gatilho": "time BRE",
+   "alvo": {
+    "h": "04:48",
+    "jogo": "LEE x BRE",
+    "odd": 1.69,
+    "unidades": 1,
+    "desde": 1795586429443
+   },
+   "iniciadoEm": 1795586429443
+  },
   "cooldown": {
    "lat": 1795567528053,
    "eng": 1795582778457,
@@ -7216,9 +7245,9 @@
    "ame": 1795510421878
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.7",
-   "n": 9,
+   "tipo": "time",
+   "chave": "BRE",
+   "n": 11,
    "start": 1
   },
   "dias": {
