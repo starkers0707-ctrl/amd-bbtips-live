@@ -1420,12 +1420,48 @@
  },
  "o25": {
   "saldo": -25,
-  "ciclos": 95502,
+  "ciclos": 95508,
   "greens": 253,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 95212,
+  "descartes": 95218,
   "historico": [
+   {
+    "quando": "2026-11-25T01:56:45.385Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T01:56:35.213Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T01:56:35.201Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T01:56:34.319Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T01:56:34.308Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T01:56:34.302Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T01:56:15.686Z",
     "resultado": "GREEN_OBS",
@@ -4989,42 +5025,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:18:10.342Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.2) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:18:10.332Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:18:10.326Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:18:09.464Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.2) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:18:09.453Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:18:09.447Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5034,8 +5034,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "22:55",
@@ -5055,13 +5055,21 @@
    ],
    "gatilho": "coluna :57",
    "alvo": {
-    "h": "22:55",
-    "jogo": "VAL x VIL",
-    "odd": 1.86,
-    "unidades": 1,
-    "desde": 1795571650961
+    "h": "22:57",
+    "jogo": "RST x MLG",
+    "odd": 1.93,
+    "unidades": 2,
+    "desde": 1795571795182
    },
-   "iniciadoEm": 1795571650961
+   "iniciadoEm": 1795571650961,
+   "tiros": [
+    {
+     "h": "22:55",
+     "jogo": "VAL x VIL",
+     "odd": 1.86,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795570666089,
@@ -5078,7 +5086,7 @@
    "tipo": "odd",
    "chave": "2.02",
    "n": 12,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -5224,7 +5232,12 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {}
+  "_obs": {
+   "ita": {
+    "desde": 1795571805385,
+    "gatilho": "odd 1.77"
+   }
+  }
  },
  "ambas": {
   "saldo": -25.4,
