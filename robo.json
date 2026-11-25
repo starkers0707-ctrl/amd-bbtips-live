@@ -1,12 +1,18 @@
 {
  "o35": {
   "saldo": 49.2,
-  "ciclos": 231,
+  "ciclos": 232,
   "greens": 86,
   "redsCiclo": 35,
   "aborts": 0,
-  "descartes": 110,
+  "descartes": 111,
   "historico": [
+   {
+    "quando": "2026-11-25T05:32:35.519Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho seq RGRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T05:12:41.913Z",
     "resultado": "RED_CICLO",
@@ -1429,17 +1435,45 @@
    "eng": {
     "desde": 1795555399593,
     "gatilho": "odd 3.17"
+   },
+   "spa": {
+    "desde": 1795584755518,
+    "gatilho": "seq RGRG"
    }
   }
  },
  "o25": {
   "saldo": -26.1,
-  "ciclos": 96621,
+  "ciclos": 96625,
   "greens": 260,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96323,
+  "descartes": 96327,
   "historico": [
+   {
+    "quando": "2026-11-25T05:32:34.982Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T05:32:34.973Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T05:32:08.949Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T05:32:08.319Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T05:32:07.500Z",
     "resultado": "GREEN_OBS",
@@ -5015,30 +5049,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:41:08.910Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:41:08.904Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:41:08.261Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho seq GRGGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:41:08.251Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5089,9 +5099,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "VIL",
-   "n": 9,
-   "start": 4
+   "chave": "France",
+   "n": 8,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -5242,10 +5252,6 @@
    "cam": {
     "desde": 1795581650169,
     "gatilho": "time Dortmund"
-   },
-   "spa": {
-    "desde": 1795584727500,
-    "gatilho": "time VIL"
    }
   }
  },
