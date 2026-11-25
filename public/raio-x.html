@@ -121,9 +121,11 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
     var hojeArr=p.filter(function(g){return String(g.slot_em).slice(0,10)===dia;}),sd=0;
     var acum=hojeArr.map(function(g,i){sd+=bate(mk,g)?1:0;return sd/(i+1);});
     var b1=sobeEm(serieJanela(p,mk,1),p.length-1),b2=sobeEm(serieJanela(p,mk,2),p.length-1),b0=sobeEm(acum,acum.length-1);
-    var todas=b1&&b2&&b0;
+    var m9a=sma(acum,MR),abaixo=acum.length&&m9a[acum.length-1]!=null&&acum[acum.length-1]<m9a[acum.length-1];
+    var madrugada=hojeArr.length<60;
+    var todas=b1&&b2&&b0&&!abaixo&&!madrugada;
     var lt=leitura(p,mk,tiros,filtro);
-    var res={lt:lt,b1:b1,b2:b2,b0:b0,todas:todas,n:n,linha:line[L],m9:m9[L],m21:m21[L],subindo:atual.up,forca:m9[L]>=m9[L-1],desde:hm(h[atual.ini]),jogos:atual.fim-atual.ini+1,subidas:subidas,tot:tot,semRed:semRed};
+    var res={madrugada:madrugada,abaixo:abaixo,lt:lt,b1:b1,b2:b2,b0:b0,todas:todas,n:n,linha:line[L],m9:m9[L],m21:m21[L],subindo:atual.up,forca:m9[L]>=m9[L-1],desde:hm(h[atual.ini]),jogos:atual.fim-atual.ini+1,subidas:subidas,tot:tot,semRed:semRed};
     if(atual.up){
       var gs=h.slice(atual.ini),times={},cols={},odds=[];
       gs.forEach(function(g){var ok=bate(mk,g);[g.time_a,g.time_b].forEach(function(t){var x=times[t]||(times[t]=[0,0]);x[0]++;if(ok)x[1]++;});
@@ -149,7 +151,7 @@ table{width:100%;border-collapse:collapse;font-size:11px}td{padding:2px;border-b
       if(d.espera)return '<article class="card down"><div class="top"><b>'+nome+'</b><span class="st wait">AGUARDE</span></div><div class="linha">Só '+d.n+' jogos hoje: o gráfico ainda não formou a MM21.</div></article>';
       var pctDia=d.tot.g+d.tot.r?Math.round(d.tot.g/(d.tot.g+d.tot.r)*100):0;
       var nb=(d.b1?1:0)+(d.b2?1:0)+(d.b0?1:0);
-      var st=d.todas?'<span class="st up">SUBINDO (3 BASES)</span>':nb?'<span class="st wait">DIVERGENTE · ESPERAR</span>':'<span class="st down">CAINDO · ESPERAR</span>';
+      var st=d.madrugada?'<span class="st wait">MADRUGADA · POUCOS JOGOS · ESPERAR</span>':d.abaixo&&nb===3?'<span class="st wait">LINHA ABAIXO DA MM9 · VIRANDO</span>':d.todas?'<span class="st up">SUBINDO (3 BASES)</span>':nb?'<span class="st wait">DIVERGENTE · ESPERAR</span>':'<span class="st down">CAINDO · ESPERAR</span>';
       var bases='<div class="linha">'+[['1h',d.b1],['2h',d.b2],['00h',d.b0]].map(function(b){return '<b class="'+(b[1]?'ok':'bad')+'">'+b[0]+' '+(b[1]?'▲':'▼')+'</b>';}).join(' · ')+'</div>';
       var h='<article class="card '+(d.todas?'up':'down')+'"><div class="top"><b>'+nome+'</b>'+st+'</div>'+bases+
         '<div class="linha">'+nomeMk+' '+d.linha.toFixed(2)+'% · MM'+MR+' '+d.m9.toFixed(2)+' · MM'+ML+' '+d.m21.toFixed(2)+' · '+(d.subindo?'subindo desde <b>'+d.desde+'</b> ('+d.jogos+' j)':'caindo desde '+d.desde)+'</div>';
