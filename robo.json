@@ -1448,12 +1448,30 @@
  },
  "o25": {
   "saldo": -27.7,
-  "ciclos": 96417,
+  "ciclos": 96420,
   "greens": 258,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96121,
+  "descartes": 96124,
   "historico": [
+   {
+    "quando": "2026-11-25T04:35:36.354Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar 1-0 / 0-1) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T04:35:32.030Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar 1-0 / 0-1) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T04:35:31.250Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar 1-0 / 0-1) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T04:30:38.891Z",
     "resultado": "GREEN",
@@ -5035,30 +5053,42 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:18:37.798Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:18:37.132Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:18:37.122Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795581038881
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "01:38",
+     "jogo": "POR x SWI",
+     "odd": 1.91
+    },
+    {
+     "h": "01:40",
+     "jogo": "BRA x ARG",
+     "odd": 1.87
+    },
+    {
+     "h": "01:42",
+     "jogo": "URY x DEN",
+     "odd": 1.94
+    }
+   ],
+   "gatilho": "placar 1-0 / 0-1",
+   "alvo": {
+    "h": "01:38",
+    "jogo": "POR x SWI",
+    "odd": 1.91,
+    "unidades": 1,
+    "desde": 1795581331237
+   },
+   "iniciadoEm": 1795581331237
+  },
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5073,7 +5103,7 @@
   "_gatilhoAtual": {
    "tipo": "placar",
    "chave": "1-0 / 0-1",
-   "n": 10,
+   "n": 8,
    "start": 1
   },
   "dias": {
@@ -5224,6 +5254,10 @@
   "_obs": {
    "spa": {
     "desde": 1795580546940,
+    "gatilho": "placar 1-0 / 0-1"
+   },
+   "mnd": {
+    "desde": 1795581336353,
     "gatilho": "placar 1-0 / 0-1"
    }
   }
