@@ -126,7 +126,8 @@
   function nota(m) {
     var s = 0; m = String(m).toLowerCase();
     if (/flash/.test(m)) s += 3; if (/pro|sonnet|gpt-?\d|4o|opus/.test(m)) s += 2; if (/lite|mini|haiku/.test(m)) s += 1;
-    if (/exp|preview|experimental|hydrogen|test|alpha|beta|tts|image|vision|embed|thinking/.test(m)) s -= 4;
+    if (/exp|preview|experimental|hydrogen|test|alpha|beta|tts|image|vision|embed|thinking|live|audio|native/.test(m)) s -= 4;
+    if (/^gemini-\d+(\.\d+)?-(flash|pro|flash-lite)$/.test(m) || /latest$/.test(m)) s += 4; /* versao estavel (sem sufixo) */
     var v = m.match(/(\d+(?:\.\d+)?)/); if (v) s += Math.min(3, Number(v[1]) / 2);
     return s;
   }
@@ -143,8 +144,8 @@
   }
   function perguntarComReserva2(hist, aviso) {
     var original = cfg.modelo;
-    var reservas = ordena((cfg.lista || []).filter(function (m) { return m !== original; })).slice(0, 3);
-    var fila = [original, original].concat(reservas), i = 0;
+    var reservas = ordena((cfg.lista || []).filter(function (m) { return m !== original; })).slice(0, 6);
+    var fila = [original].concat(reservas).concat([original]), i = 0, tentados = [];
     function tenta() {
       var modelo = fila[i];
       cfg.modelo = modelo;
@@ -154,10 +155,14 @@
         return r;
       }).catch(function (e) {
         cfg.modelo = original;
-        var ocupado = [429, 500, 502, 503, 504].indexOf(e.status) >= 0;
-        if (!ocupado || ++i >= fila.length) throw e;
-        if (aviso) aviso(fila[i] === original ? 'modelo ocupado, tentando de novo…' : 'trocando para ' + fila[i] + '…');
-        return espera(fila[i] === original ? 2500 : 500).then(tenta);
+        tentados.push(modelo);
+        var ocupado = [429, 500, 502, 503, 504].indexOf(e.status) >= 0 || /not found|not supported/i.test(e.message);
+        if (!ocupado || ++i >= fila.length) {
+          if (ocupado) e.message = 'o Google está sobrecarregado agora (erro ' + e.status + '). Tentei ' + tentados.length + ' modelos: ' + tentados.join(', ') + '. Espere 1–2 minutos e tente de novo' + (e.status === 429 ? ' — 429 é limite da sua chave/plano.' : '.');
+          throw e;
+        }
+        if (aviso) aviso(fila[i] === original ? 'tentando de novo…' : 'ocupado · tentando ' + fila[i] + '…');
+        return espera(fila[i] === original ? 5000 : 800).then(tenta);
       });
     }
     return tenta();
