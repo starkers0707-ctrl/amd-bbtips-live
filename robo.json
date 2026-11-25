@@ -1501,12 +1501,24 @@
  },
  "o25": {
   "saldo": -17.9,
-  "ciclos": 100935,
+  "ciclos": 100937,
   "greens": 274,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 100622,
+  "descartes": 100624,
   "historico": [
+   {
+    "quando": "2026-11-25T09:44:11.323Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:44:02.254Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T09:44:01.818Z",
     "resultado": "GREEN_OBS",
@@ -5094,18 +5106,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:09:42.358Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:09:42.347Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5288,7 +5288,7 @@
     "gatilho": "odd 1.9"
    },
    "cop": {
-    "desde": 1795599841818,
+    "desde": 1795599851323,
     "gatilho": "time Uruguay"
    }
   }
@@ -7397,7 +7397,37 @@
    "cam": 1795598902975,
    "cop": 1795599839166
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "06:50",
+     "jogo": "BEL x CHL",
+     "odd": 1.87
+    },
+    {
+     "h": "06:52",
+     "jogo": "CRO x FRA",
+     "odd": 1.67
+    },
+    {
+     "h": "06:54",
+     "jogo": "POR x DEN",
+     "odd": 1.74
+    }
+   ],
+   "gatilho": "time FRA",
+   "alvo": {
+    "h": "06:50",
+    "jogo": "BEL x CHL",
+    "odd": 1.87,
+    "unidades": 1,
+    "desde": 1795599841832
+   },
+   "iniciadoEm": 1795599841832
+  },
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795596330189,
@@ -7410,10 +7440,10 @@
    "ita": 1795598327411
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.97",
-   "n": 8,
-   "start": 1
+   "tipo": "time",
+   "chave": "FRA",
+   "n": 14,
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
