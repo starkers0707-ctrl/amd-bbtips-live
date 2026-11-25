@@ -1539,12 +1539,42 @@
  },
  "o25": {
   "saldo": -13.8,
-  "ciclos": 101999,
+  "ciclos": 102004,
   "greens": 277,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 101683,
+  "descartes": 101688,
   "historico": [
+   {
+    "quando": "2026-11-25T10:44:08.242Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:44:08.238Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:44:08.233Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:44:08.225Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:44:05.972Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:44:05.961Z",
     "resultado": "GREEN_OBS",
@@ -5114,36 +5144,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:19:50.162Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:19:50.146Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:19:31.661Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:19:31.652Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:19:29.952Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5349,9 +5349,9 @@
     "desde": 1795596831466,
     "gatilho": "time Guayaquil"
    },
-   "cam": {
-    "desde": 1795603445961,
-    "gatilho": "odd 2.31"
+   "cop": {
+    "desde": 1795603448242,
+    "gatilho": "time Uruguay"
    }
   }
  },
@@ -7483,14 +7483,43 @@
    }
   ],
   "consumidas": {
-   "cop": 1795599839166,
    "mnd": 1795600294556,
    "eng": 1795600540122,
    "bra": 1795601026409,
    "ita": 1795602991234,
    "cam": 1795603414518
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "08:01",
+     "jogo": "Itaquera x Santiago",
+     "odd": 2.14
+    },
+    {
+     "h": "08:04",
+     "jogo": "Avellaneda x Lima",
+     "odd": 1.89
+    },
+    {
+     "h": "08:07",
+     "jogo": "Guayaquil x Rio de Janeiro",
+     "odd": 1.92
+    }
+   ],
+   "gatilho": "coluna :04",
+   "alvo": {
+    "h": "08:01",
+    "jogo": "Itaquera x Santiago",
+    "odd": 2.14,
+    "unidades": 1,
+    "desde": 1795603446006
+   },
+   "iniciadoEm": 1795603446006
+  },
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795600540122,
