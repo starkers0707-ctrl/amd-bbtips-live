@@ -1419,13 +1419,25 @@
   }
  },
  "o25": {
-  "saldo": -24.4,
-  "ciclos": 95665,
-  "greens": 254,
+  "saldo": -23.2,
+  "ciclos": 95667,
+  "greens": 255,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 95374,
+  "descartes": 95375,
   "historico": [
+   {
+    "quando": "2026-11-25T02:08:39.321Z",
+    "resultado": "GREEN",
+    "unidades": 1.2,
+    "detalhe": "ame · Penarol x Sao Paulo @2.16 (tiro 1) · gatilho: odd 2.02"
+   },
+   {
+    "quando": "2026-11-25T02:08:36.295Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T02:08:36.282Z",
     "resultado": "GREEN_OBS",
@@ -5013,56 +5025,15 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:34:35.409Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RGRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:34:31.178Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RGRRG) — liga REARMADA"
    }
   ],
   "consumidas": {
    "eng": 1795570055197,
    "cam": 1795570666089,
-   "spa": 1795572053041
+   "spa": 1795572053041,
+   "ame": 1795572519317
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "23:07",
-     "jogo": "Penarol x Sao Paulo",
-     "odd": 2.16
-    },
-    {
-     "h": "23:10",
-     "jogo": "Rio de Janeiro x Quito",
-     "odd": 2.02
-    },
-    {
-     "h": "23:13",
-     "jogo": "Porto Alegre x Lima",
-     "odd": 2.3
-    }
-   ],
-   "gatilho": "odd 2.02",
-   "alvo": {
-    "h": "23:07",
-    "jogo": "Penarol x Sao Paulo",
-    "odd": 2.16,
-    "unidades": 1,
-    "desde": 1795572053872
-   },
-   "iniciadoEm": 1795572053872
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795570055197,
@@ -5071,7 +5042,7 @@
    "lat": 1795568253782,
    "bra": 1795522714636,
    "mnd": 1795517012357,
-   "ame": 1795565357683,
+   "ame": 1795572519317,
    "cop": 1795567414833
   },
   "_gatilhoAtual": {
@@ -5086,7 +5057,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -14.5
+   "2026-11-24": -13.3
   },
   "_obs": {}
  },
@@ -5224,12 +5195,7 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {
-   "spa": {
-    "desde": 1795572395093,
-    "gatilho": "coluna :23"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": -25.4,
