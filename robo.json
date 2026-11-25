@@ -1419,7 +1419,45 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 1,
+   "apostado": 1,
+   "plano": [
+    {
+     "h": "04:18",
+     "jogo": "SPA x ITA",
+     "odd": 3.38
+    },
+    {
+     "h": "04:20",
+     "jogo": "ARG x NED",
+     "odd": 3.37
+    },
+    {
+     "h": "04:22",
+     "jogo": "SWE x COL",
+     "odd": 3.29
+    }
+   ],
+   "gatilho": "time NED",
+   "alvo": {
+    "h": "04:20",
+    "jogo": "ARG x NED",
+    "odd": 3.37,
+    "unidades": 2,
+    "desde": 1795589764656
+   },
+   "iniciadoEm": 1795589734246,
+   "tiros": [
+    {
+     "h": "04:18",
+     "jogo": "SPA x ITA",
+     "odd": 3.38,
+     "unidades": 1
+    }
+   ]
+  },
   "cooldown": {
    "mnd": 1795586133165,
    "lat": 1795522898324,
@@ -1431,8 +1469,8 @@
   "_gatilhoAtual": {
    "tipo": "time",
    "chave": "NED",
-   "n": 9,
-   "start": 1
+   "n": 10,
+   "start": 7
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -1455,12 +1493,24 @@
  },
  "o25": {
   "saldo": -22.7,
-  "ciclos": 97248,
+  "ciclos": 97250,
   "greens": 263,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96947,
+  "descartes": 96949,
   "historico": [
+   {
+    "quando": "2026-11-25T06:55:34.284Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T06:55:34.275Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T06:55:32.181Z",
     "resultado": "GREEN_OBS",
@@ -5048,18 +5098,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:34:11.933Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:34:05.149Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5093,7 +5131,12 @@
    "2026-11-24": -19.4,
    "2026-11-25": 6.6
   },
-  "_obs": {}
+  "_obs": {
+   "spa": {
+    "desde": 1795589734265,
+    "gatilho": "time VIL"
+   }
+  }
  },
  "o25b": {
   "saldo": -20.7,
