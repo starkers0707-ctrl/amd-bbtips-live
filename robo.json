@@ -1501,12 +1501,24 @@
  },
  "o25": {
   "saldo": -17.9,
-  "ciclos": 101115,
+  "ciclos": 101117,
   "greens": 274,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 100802,
+  "descartes": 100804,
   "historico": [
+   {
+    "quando": "2026-11-25T10:03:46.384Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:03:45.584Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:03:17.325Z",
     "resultado": "GREEN_OBS",
@@ -5094,18 +5106,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:16:30.632Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:16:30.625Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5310,21 +5310,23 @@
    "ame": {
     "desde": 1795596831466,
     "gatilho": "time Guayaquil"
-   },
-   "spa": {
-    "desde": 1795600997325,
-    "gatilho": "time VIL"
    }
   }
  },
  "ambas": {
-  "saldo": -32,
-  "ciclos": 350,
-  "greens": 146,
+  "saldo": -31.3,
+  "ciclos": 351,
+  "greens": 147,
   "redsCiclo": 20,
   "aborts": 0,
   "descartes": 184,
   "historico": [
+   {
+    "quando": "2026-11-25T10:03:46.413Z",
+    "resultado": "GREEN",
+    "unidades": 0.7,
+    "detalhe": "bra · GTN x PAR @1.68 (tiro 1) · gatilho: placar acima de 1-0 (2-1)"
+   },
    {
     "quando": "2026-11-25T09:55:40.130Z",
     "resultado": "GREEN",
@@ -7432,44 +7434,15 @@
    "cam": 1795598902975,
    "cop": 1795599839166,
    "mnd": 1795600294556,
-   "eng": 1795600540122
+   "eng": 1795600540122,
+   "bra": 1795601026409
   },
-  "ciclo": {
-   "liga": "bra",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "07:02",
-     "jogo": "GTN x PAR",
-     "odd": 1.68
-    },
-    {
-     "h": "07:05",
-     "jogo": "FOR x CRM",
-     "odd": 1.72
-    },
-    {
-     "h": "07:08",
-     "jogo": "NAC x PAU",
-     "odd": 1.68
-    }
-   ],
-   "gatilho": "placar acima de 1-0 (2-1)",
-   "alvo": {
-    "h": "07:02",
-    "jogo": "GTN x PAR",
-    "odd": 1.68,
-    "unidades": 1,
-    "desde": 1795600651992
-   },
-   "iniciadoEm": 1795600651992
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795600540122,
    "spa": 1795585949785,
-   "bra": 1795526496634,
+   "bra": 1795601026409,
    "mnd": 1795600294556,
    "cam": 1795598902975,
    "cop": 1795599839166,
@@ -7488,7 +7461,7 @@
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
    "2026-11-24": -32.6,
-   "2026-11-25": -0.8
+   "2026-11-25": -0.1
   },
   "_obs": {}
  }
