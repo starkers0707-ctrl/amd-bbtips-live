@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 49.2,
-  "ciclos": 232,
-  "greens": 86,
+  "saldo": 55.4,
+  "ciclos": 233,
+  "greens": 87,
   "redsCiclo": 35,
   "aborts": 0,
   "descartes": 111,
   "historico": [
+   {
+    "quando": "2026-11-25T05:40:31.559Z",
+    "resultado": "GREEN",
+    "unidades": 6.2,
+    "detalhe": "spa · RSO x BET @3.29 (tiro 3) · gatilho: seq RGRG"
+   },
    {
     "quando": "2026-11-25T05:32:35.519Z",
     "resultado": "GREEN_OBS",
@@ -1402,58 +1408,15 @@
   ],
   "consumidas": {
    "mnd": 1795581815685,
-   "ita": 1795583561904
+   "ita": 1795583561904,
+   "spa": 1795585231546
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "02:35",
-     "jogo": "CEL x ESP",
-     "odd": 3.37
-    },
-    {
-     "h": "02:37",
-     "jogo": "OSA x RST",
-     "odd": 3.37
-    },
-    {
-     "h": "02:39",
-     "jogo": "RSO x BET",
-     "odd": 3.29
-    }
-   ],
-   "gatilho": "seq RGRG",
-   "alvo": {
-    "h": "02:39",
-    "jogo": "RSO x BET",
-    "odd": 3.29,
-    "unidades": 4,
-    "desde": 1795585114315
-   },
-   "iniciadoEm": 1795584778366,
-   "tiros": [
-    {
-     "h": "02:35",
-     "jogo": "CEL x ESP",
-     "odd": 3.37,
-     "unidades": 1
-    },
-    {
-     "h": "02:37",
-     "jogo": "OSA x RST",
-     "odd": 3.37,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795581815685,
    "lat": 1795522898324,
    "eng": 1795539214389,
-   "spa": 1795545033980,
+   "spa": 1795585231546,
    "ita": 1795583561904,
    "bra": 1795556736216
   },
@@ -1469,7 +1432,7 @@
    "2026-11-22": -12.7,
    "2026-11-23": 32.3,
    "2026-11-24": 28,
-   "2026-11-25": -14
+   "2026-11-25": -7.8
   },
   "_obs": {
    "cam": {
@@ -1483,13 +1446,31 @@
   }
  },
  "o25": {
-  "saldo": -26.1,
-  "ciclos": 96756,
-  "greens": 260,
+  "saldo": -25.2,
+  "ciclos": 96759,
+  "greens": 261,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96458,
+  "descartes": 96460,
   "historico": [
+   {
+    "quando": "2026-11-25T05:40:43.750Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T05:40:31.578Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "spa · RSO x BET @1.9 (tiro 1) · gatilho: time VIL"
+   },
+   {
+    "quando": "2026-11-25T05:40:30.966Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T05:40:30.143Z",
     "resultado": "GREEN_OBS",
@@ -5071,66 +5052,49 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:47:28.833Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:47:10.726Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:47:10.722Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
    }
   ],
   "consumidas": {
    "mnd": 1795581815708,
-   "lat": 1795583375979
+   "lat": 1795583375979,
+   "spa": 1795585231575
   },
   "ciclo": {
-   "liga": "spa",
+   "liga": "cop",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "02:39",
-     "jogo": "RSO x BET",
-     "odd": 1.9
+     "h": "03:03",
+     "jogo": "Wales x Uruguay",
+     "odd": 2.64
     },
     {
-     "h": "02:41",
-     "jogo": "SEV x VIL",
-     "odd": 1.83
+     "h": "03:06",
+     "jogo": "Netherlands x France",
+     "odd": 2.25
     },
     {
-     "h": "02:43",
-     "jogo": "DLC x GET",
-     "odd": 1.92
+     "h": "03:09",
+     "jogo": "Colombia x Switzerland",
+     "odd": 2.97
     }
    ],
-   "gatilho": "time VIL",
+   "gatilho": "time France",
    "alvo": {
-    "h": "02:39",
-    "jogo": "RSO x BET",
-    "odd": 1.9,
+    "h": "03:03",
+    "jogo": "Wales x Uruguay",
+    "odd": 2.64,
     "unidades": 1,
-    "desde": 1795584640054
+    "desde": 1795585243724
    },
-   "iniciadoEm": 1795584640054
+   "iniciadoEm": 1795585243724
   },
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
    "ita": 1795575996704,
-   "spa": 1795581038881,
+   "spa": 1795585231575,
    "lat": 1795583375979,
    "bra": 1795522714636,
    "mnd": 1795581815708,
@@ -5139,9 +5103,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "VIL",
-   "n": 9,
-   "start": 1
+   "chave": "France",
+   "n": 8,
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -5150,7 +5114,7 @@
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
    "2026-11-24": -19.4,
-   "2026-11-25": 3.2
+   "2026-11-25": 4.1
   },
   "_obs": {}
  },
@@ -5297,9 +5261,9 @@
     "desde": 1795585177235,
     "gatilho": "time NED"
    },
-   "spa": {
-    "desde": 1795585230143,
-    "gatilho": "time VIL"
+   "cop": {
+    "desde": 1795585243749,
+    "gatilho": "time France"
    }
   }
  },
