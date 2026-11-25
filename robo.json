@@ -1470,12 +1470,30 @@
  },
  "o25": {
   "saldo": -26.9,
-  "ciclos": 98016,
+  "ciclos": 98019,
   "greens": 266,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 97711,
+  "descartes": 97714,
   "historico": [
+   {
+    "quando": "2026-11-25T07:37:41.220Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:37:41.213Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:37:41.208Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T07:37:39.182Z",
     "resultado": "GREEN_OBS",
@@ -5057,24 +5075,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time OLI) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:07:34.481Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:07:32.427Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time OLI) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:07:32.421Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5126,10 +5126,10 @@
    "cop": 1795586674122
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "France",
+   "tipo": "placar",
+   "chave": "empate 1-1",
    "n": 12,
-   "start": 4
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -5282,8 +5282,8 @@
     "gatilho": "time NED"
    },
    "cop": {
-    "desde": 1795592259182,
-    "gatilho": "time France"
+    "desde": 1795592261220,
+    "gatilho": "placar empate 1-1"
    }
   }
  },
