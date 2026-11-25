@@ -1536,7 +1536,37 @@
    "lat": 1795608761167,
    "ita": 1795610074096
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "09:54",
+     "jogo": "TOT x MNU",
+     "odd": 3.11
+    },
+    {
+     "h": "09:56",
+     "jogo": "LIV x NOT",
+     "odd": 3.34
+    },
+    {
+     "h": "09:58",
+     "jogo": "HUL x CHE",
+     "odd": 3.11
+    }
+   ],
+   "gatilho": "coluna :56",
+   "alvo": {
+    "h": "09:54",
+    "jogo": "TOT x MNU",
+    "odd": 3.11,
+    "unidades": 1,
+    "desde": 1795610524002
+   },
+   "iniciadoEm": 1795610524002
+  },
   "cooldown": {
    "mnd": 1795606070098,
    "lat": 1795608761167,
@@ -1547,9 +1577,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
-   "chave": ":37",
+   "chave": ":56",
    "n": 8,
-   "start": 1
+   "start": 6
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -1568,12 +1598,54 @@
  },
  "o25": {
   "saldo": -6.1,
-  "ciclos": 105085,
+  "ciclos": 105092,
   "greens": 284,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 104762,
+  "descartes": 104769,
   "historico": [
+   {
+    "quando": "2026-11-25T12:42:04.784Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:42:04.776Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :43) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:42:04.048Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:42:04.042Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:42:04.033Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :43) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:41:38.068Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:41:38.063Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T12:41:38.053Z",
     "resultado": "GREEN_OBS",
@@ -5131,48 +5203,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:20:01.899Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:20:01.894Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:19:36.673Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:19:36.670Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:19:36.664Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:19:36.660Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:19:34.502Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5375,9 +5405,13 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "spa": {
-    "desde": 1795610498053,
-    "gatilho": "coluna :43"
+   "mnd": {
+    "desde": 1795610498058,
+    "gatilho": "coluna :46"
+   },
+   "cam": {
+    "desde": 1795610524784,
+    "gatilho": "seq RRRG"
    }
   }
  },
