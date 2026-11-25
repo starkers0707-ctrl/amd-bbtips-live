@@ -1475,12 +1475,18 @@
  },
  "o25": {
   "saldo": -22.9,
-  "ciclos": 99721,
+  "ciclos": 99722,
   "greens": 269,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 99413,
+  "descartes": 99414,
   "historico": [
+   {
+    "quando": "2026-11-25T08:39:36.373Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T08:39:31.437Z",
     "resultado": "GREEN_OBS",
@@ -5074,12 +5080,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:14:13.363Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5130,10 +5130,10 @@
    "cop": 1795593361290
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "acima de 1-0 (2-1)",
-   "n": 13,
-   "start": 1
+   "tipo": "time",
+   "chave": "NED",
+   "n": 16,
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -5289,9 +5289,9 @@
     "desde": 1795595851118,
     "gatilho": "time Uruguay"
    },
-   "mnd": {
-    "desde": 1795595971436,
-    "gatilho": "placar acima de 1-0 (2-1)"
+   "spa": {
+    "desde": 1795595976373,
+    "gatilho": "time VIL"
    }
   }
  },
