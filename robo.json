@@ -1463,12 +1463,18 @@
  },
  "o25": {
   "saldo": -29.7,
-  "ciclos": 97573,
+  "ciclos": 97574,
   "greens": 263,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 97271,
+  "descartes": 97272,
   "historico": [
+   {
+    "quando": "2026-11-25T07:16:03.074Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T07:15:52.761Z",
     "resultado": "GREEN_OBS",
@@ -5062,12 +5068,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:55:07.029Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-1)) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5268,9 +5268,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "lat": {
-    "desde": 1795590952761,
-    "gatilho": "time RIV"
+   "spa": {
+    "desde": 1795590963073,
+    "gatilho": "time VIL"
    }
   }
  },
@@ -7305,9 +7305,9 @@
    "ame": 1795510421878
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "acima de 1-0 (2-1)",
-   "n": 9,
+   "tipo": "time",
+   "chave": "Itaquera",
+   "n": 10,
    "start": 1
   },
   "dias": {
