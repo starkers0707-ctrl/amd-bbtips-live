@@ -5038,37 +5038,7 @@
    "spa": 1795581038881,
    "mnd": 1795581815708
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "02:00",
-     "jogo": "Munich x Amsterdam",
-     "odd": 2.41
-    },
-    {
-     "h": "02:03",
-     "jogo": "Benfica x Dortmund",
-     "odd": 2.3
-    },
-    {
-     "h": "02:06",
-     "jogo": "Barcelona x Turin",
-     "odd": 2.18
-    }
-   ],
-   "gatilho": "time Dortmund",
-   "alvo": {
-    "h": "02:00",
-    "jogo": "Munich x Amsterdam",
-    "odd": 2.41,
-    "unidades": 1,
-    "desde": 1795581816354
-   },
-   "iniciadoEm": 1795581816354
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5244,12 +5214,18 @@
  },
  "ambas": {
   "saldo": -31.2,
-  "ciclos": 316,
+  "ciclos": 317,
   "greens": 128,
   "redsCiclo": 18,
   "aborts": 0,
-  "descartes": 170,
+  "descartes": 171,
   "historico": [
+   {
+    "quando": "2026-11-25T04:59:19.259Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho placar 1-0 / 0-1) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T04:30:38.913Z",
     "resultado": "GREEN",
@@ -7213,6 +7189,11 @@
    "2026-11-24": -32.6,
    "2026-11-25": 0
   },
-  "_obs": {}
+  "_obs": {
+   "cop": {
+    "desde": 1795582759259,
+    "gatilho": "placar 1-0 / 0-1"
+   }
+  }
  }
 }
