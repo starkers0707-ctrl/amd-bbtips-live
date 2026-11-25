@@ -1470,12 +1470,24 @@
  },
  "o25": {
   "saldo": -26.9,
-  "ciclos": 97897,
+  "ciclos": 97899,
   "greens": 266,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 97592,
+  "descartes": 97594,
   "historico": [
+   {
+    "quando": "2026-11-25T07:32:08.835Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:31:56.805Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T07:31:56.791Z",
     "resultado": "GREEN_OBS",
@@ -5063,18 +5075,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:00:33.374Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:00:33.367Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5282,7 +5282,7 @@
     "gatilho": "placar empate 1-1"
    },
    "spa": {
-    "desde": 1795591916791,
+    "desde": 1795591928835,
     "gatilho": "time VIL"
    }
   }
@@ -7307,7 +7307,37 @@
    "mnd": 1795591666601,
    "eng": 1795591897958
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:33",
+     "jogo": "Spain x Croatia",
+     "odd": 2.17
+    },
+    {
+     "h": "04:36",
+     "jogo": "Mexico x Germany",
+     "odd": 1.92
+    },
+    {
+     "h": "04:39",
+     "jogo": "Belgium x Portugal",
+     "odd": 1.98
+    }
+   ],
+   "gatilho": "seq RRRR",
+   "alvo": {
+    "h": "04:33",
+    "jogo": "Spain x Croatia",
+    "odd": 2.17,
+    "unidades": 1,
+    "desde": 1795591916824
+   },
+   "iniciadoEm": 1795591916824
+  },
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795591897958,
