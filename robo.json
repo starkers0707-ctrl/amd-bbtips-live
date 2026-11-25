@@ -1410,12 +1410,18 @@
  },
  "o25": {
   "saldo": -27.1,
-  "ciclos": 94998,
+  "ciclos": 94999,
   "greens": 251,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 94710,
+  "descartes": 94711,
   "historico": [
+   {
+    "quando": "2026-11-25T01:22:44.664Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.2) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T01:22:42.529Z",
     "resultado": "GREEN_OBS",
@@ -5009,12 +5015,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T00:40:32.154Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -7089,7 +7089,37 @@
   "consumidas": {
    "lat": 1795567528053
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "22:27",
+     "jogo": "United x Liverpool",
+     "odd": 2.05
+    },
+    {
+     "h": "22:30",
+     "jogo": "Benfica x Turin",
+     "odd": 1.84
+    },
+    {
+     "h": "22:33",
+     "jogo": "Chelsea x Madrid",
+     "odd": 2.01
+    }
+   ],
+   "gatilho": "odd 1.84",
+   "alvo": {
+    "h": "22:27",
+    "jogo": "United x Liverpool",
+    "odd": 2.05,
+    "unidades": 1,
+    "desde": 1795569764679
+   },
+   "iniciadoEm": 1795569764679
+  },
   "cooldown": {
    "lat": 1795567528053,
    "eng": 1795524811381,
@@ -7104,7 +7134,7 @@
    "tipo": "odd",
    "chave": "1.84",
    "n": 10,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
@@ -7113,11 +7143,6 @@
    "2026-11-23": 13.6,
    "2026-11-24": -20.5
   },
-  "_obs": {
-   "cam": {
-    "desde": 1795569609049,
-    "gatilho": "odd 1.84"
-   }
-  }
+  "_obs": {}
  }
 }
