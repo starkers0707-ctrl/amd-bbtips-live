@@ -1501,12 +1501,54 @@
  },
  "o25": {
   "saldo": -17.9,
-  "ciclos": 101214,
+  "ciclos": 101221,
   "greens": 274,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 100901,
+  "descartes": 100908,
   "historico": [
+   {
+    "quando": "2026-11-25T10:10:00.511Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:09:39.337Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho seq GRGR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:09:39.330Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-1)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:09:39.325Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:09:38.494Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho seq GRGR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:09:38.482Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:09:37.692Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho seq GRGR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:09:37.682Z",
     "resultado": "GREEN_OBS",
@@ -5064,48 +5106,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:21:08.711Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:21:07.801Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:21:07.795Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:21:07.786Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:20:43.215Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:20:43.210Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:20:43.204Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5156,10 +5156,10 @@
    "cop": 1795597999597
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "VIL",
+   "tipo": "placar",
+   "chave": "acima de 1-0 (2-1)",
    "n": 17,
-   "start": 5
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -5312,7 +5312,7 @@
     "gatilho": "time Guayaquil"
    },
    "spa": {
-    "desde": 1795601377682,
+    "desde": 1795601400511,
     "gatilho": "time VIL"
    }
   }
