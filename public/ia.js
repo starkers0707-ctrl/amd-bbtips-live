@@ -20,7 +20,7 @@
     'Você é o analista de futebol virtual do AMD Live. Responda em português do Brasil, direto e curto.',
     'Use SOMENTE os DADOS AO VIVO enviados na mensagem. Não invente jogos, odds, horários ou números. Se faltar dado, diga que falta.',
     'REGRAS DA CASA (obrigatórias, sem exceção):',
-    '1) Gráfico em queda JAMAIS. Só existe entrada se o gráfico ACUMULADO 00h do mercado estiver subindo: MM9 acima da MM21, MM9 subindo e a linha acima da MM9 (campo "acumulado OK = SIM"). Death cross ou linha abaixo da MM9 = não entra.',
+    '1) Gráfico em queda JAMAIS. Só existe entrada se o gráfico ACUMULADO 00h do mercado estiver subindo: MM9 acima da MM21, MM9 subindo e a linha acima da MM9 (campo "acumulado OK = SIM"). Death cross, linha abaixo da MM9 ou linha caindo nos últimos 3 jogos = não entra. A linha ">>> TRAVA DO GRÁFICO" no topo dos dados é calculada pelo site e é a palavra final: entrada SÓ em liga LIBERADA ali.',
     '2) Madrugada: com menos de 60 jogos no dia o gráfico 00h engana — não mande entrada.',
     '3) Nenhum dos 3 tiros pode estar em COLUNA SECA (0 de 3 no mesmo minuto) nem ter TIME FRIO (0 de 3 nos últimos jogos do time).',
     '4) Os 3 tiros são CONSECUTIVOS na mesma liga e o 1º precisa ter folga de pelo menos 1min30 em relação à hora atual. Nunca jogo já começado.',
@@ -36,9 +36,10 @@
     'Junto de cada mensagem vêm dados ao vivo do site AMD Live (futebol virtual: gráficos, médias, grade de jogos, colunas, times, odds e robôs). Use-os quando a pergunta tiver a ver com isso; se a pergunta for outra coisa, ignore os dados.',
     'Não invente números que não estão nos dados.'
   ].join('\n');
+  var pedeEntrada = false;
   function sistema() {
     var ens = ($('ensino') && $('ensino').value.trim()) || '';
-    var livre = !($('modo') && $('modo').value === 'regras');
+    var livre = !($('modo') && $('modo').value === 'regras') && !pedeEntrada;
     return (livre ? LIVRE : REGRAS) + (ens ? '\n\nMÉTODO DO USUÁRIO (aplique SOMENTE quando ele pedir análise ou entrada; em conversa normal, não aplique nem mencione):\n' + ens : '');
   }
   function $(id) { return document.getElementById(id); }
@@ -64,7 +65,9 @@
       var M = MK[k], s = 0;
       var line = hoje.map(function (g, i) { s += M.paga(+g.gols_a, +g.gols_b) ? 1 : 0; return s / (i + 1) * 100; });
       var n = line.length - 1, m9 = mm(line, 9, n), m21 = mm(line, 21, n), m9a = mm(line, 9, n - 3);
-      var ok = hoje.length >= 60 && m9 > m21 && m9 >= mm(line, 9, n - 1) && line[n] >= m9;
+      var caindo3 = n >= 3 && line[n] < line[n - 3];
+      var ok = hoje.length >= 60 && m9 > m21 && m9 >= mm(line, 9, n - 1) && line[n] >= m9 && !caindo3;
+      if (k === mkSel) estadoLigas.push({ nome: nome, ok: ok, motivo: hoje.length < 60 ? 'madrugada' : !(m9 > m21) ? 'MM9 abaixo da MM21 (queda)' : !(m9 >= mm(line, 9, n - 1)) ? 'MM9 virando para baixo' : !(line[n] >= m9) ? 'linha abaixo da MM9' : caindo3 ? 'linha caiu nos últimos 3 jogos' : '' });
       var r1 = fe.slice(-30), r3 = fe.slice(-90);
       var t1 = pct(r1.filter(function (g) { return M.paga(+g.gols_a, +g.gols_b); }).length, r1.length);
       var t3 = pct(r3.filter(function (g) { return M.paga(+g.gols_a, +g.gols_b); }).length, r3.length);
@@ -96,8 +99,10 @@
 
   function ligasMarcadas() { return LIGAS.filter(function (l) { var el = $('lg_' + l[0]); return el && el.checked; }); }
 
+  var estadoLigas = [];
   function contexto() {
     var mkSel = $('mk').value, sel = ligasMarcadas();
+    estadoLigas = [];
     return Promise.all(sel.map(function (l) {
       return fetch('/api/grade?liga=' + l[0] + '&horas=24&compacto=1&_=' + Date.now(), { credentials: 'same-origin', cache: 'no-store' })
         .then(function (r) { return r.ok ? r.json() : { partidas: [] }; })
@@ -115,7 +120,10 @@
       }).catch(function () { return blocos; });
     }).then(function (blocos) {
       var agora = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
-      return 'DADOS AO VIVO DO AMD LIVE · hora atual (Brasília) ' + agora + ' · mercado principal: ' + MK[mkSel].nome +
+      var lib = estadoLigas.filter(function (e) { return e.ok; }).map(function (e) { return e.nome; });
+      var blo = estadoLigas.filter(function (e) { return !e.ok; }).map(function (e) { return e.nome + ' (' + e.motivo + ')'; });
+      var trava = '>>> TRAVA DO GRÁFICO (' + MK[mkSel].nome + ', calculada pelo site): LIBERADAS para entrada: ' + (lib.length ? lib.join(', ') : 'NENHUMA') + ' · PROIBIDAS: ' + (blo.length ? blo.join(', ') : 'nenhuma') + '. Entrada SÓ em liga liberada; se nenhuma estiver liberada, a resposta é AGUARDAR. <<<\n\n';
+      return trava + 'DADOS AO VIVO DO AMD LIVE · hora atual (Brasília) ' + agora + ' · mercado principal: ' + MK[mkSel].nome +
         '\nLegenda: G = pagou, r = não pagou. Times: x/6 = quantos dos últimos 6 jogos do time pagaram o mercado; FRIO = 0 nos últimos 3. Coluna: x/3 = últimos 3 jogos daquele minuto; SECA = 0 de 3.\n\n' + blocos.join('\n\n');
     });
   }
@@ -251,6 +259,7 @@
     grava(LS_ENSINO, $('ensino').value);
     var bt = $('btEnviar'); bt.disabled = true;
     var livreMsg = $('modo').value !== 'regras';
+    pedeEntrada = /entrada|entrar|entro|tiro|sinal|manda (um|uma)|me (d[aá]|passa)|qual jogo|onde (eu )?entr|aposta/i.test(texto);
     var sobreSite = /liga|over|under|ambas|btts|5\+|gol|entrada|entrar|tiro|gr[aá]fico|m[eé]dia|mm9|mm21|coluna|time|odd|grade|jogo|placar|analis|subindo|caindo|queda|pagando|seca|rob[oô]|green|red|inglaterra|it[aá]lia|espanha|mundo|brasil|am[eé]rica|copa|campe|eng|ita|spa|mnd|bra|lat|tend[eê]ncia|sequ[eê]ncia|site|dados/i.test(texto);
     var anexa = !livreMsg || sobreSite;
     bt.textContent = anexa ? 'Lendo o site…' : 'IA pensando…';
