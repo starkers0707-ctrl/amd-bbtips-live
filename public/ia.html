@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Minha IA · AMD Live</title>
+<style>
+:root{--bg:#020d12;--card:#061a22;--in:#021118;--line:#153946;--txt:#f3fbfa;--mut:#83b7c8;--ok:#00f278;--bad:#ff475f;--warn:#ffd21c}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 86% 0,rgba(0,242,120,.07),transparent 28%),var(--bg);color:var(--txt);font:14px/1.45 Inter,system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1200px;margin:0 auto;padding:20px 18px 60px}
+a{color:var(--ok);text-decoration:none;font-weight:700}
+h1{font-size:24px;margin:10px 0 4px}h1 em{font-style:normal;color:var(--ok)}
+.sub{color:var(--mut);font-size:12px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:340px 1fr;gap:14px}@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card h3{margin:0 0 10px;font-size:13px;letter-spacing:.06em;color:var(--mut)}
+label{display:flex;flex-direction:column;gap:5px;color:var(--mut);font-size:12px;font-weight:700;margin-bottom:10px}
+select,input,textarea{background:var(--in);border:1px solid var(--line);color:var(--txt);padding:10px 12px;border-radius:8px;font:inherit;width:100%}
+textarea{resize:vertical;min-height:70px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+button{background:#05291b;color:var(--ok);border:1px solid #0b6b3e;border-radius:8px;padding:9px 14px;font:inherit;font-weight:800;cursor:pointer}
+button.sec{background:var(--in);color:var(--mut);border-color:var(--line)}
+button.bad{background:#2a0c13;color:#ff8a9a;border-color:#6b1b2a}
+button:disabled{opacity:.5;cursor:wait}
+.st{font-size:12px;margin-top:6px}.ok{color:var(--ok)}.badt{color:var(--bad)}.warn{color:var(--warn)}
+.ligas{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.ligas label{flex-direction:row;align-items:center;gap:5px;margin:0;background:var(--in);border:1px solid var(--line);padding:5px 8px;border-radius:7px;color:var(--txt)}
+.ligas input{width:auto}
+.chat{display:flex;flex-direction:column;gap:10px;min-height:360px;max-height:62vh;overflow:auto;padding:4px}
+.msg{padding:10px 12px;border-radius:10px;white-space:pre-wrap;word-wrap:break-word;max-width:92%}
+.msg.u{background:#0b2f3a;align-self:flex-end}
+.msg.a{background:var(--in);border:1px solid var(--line);align-self:flex-start}
+.msg.e{background:#2a0c13;color:#ffb3be;align-self:flex-start}
+.quick{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.quick button{font-size:12px;padding:6px 10px}
+.nota{color:var(--mut);font-size:11px;line-height:1.4;margin-top:8px}
+details{margin-top:10px}summary{cursor:pointer;color:var(--mut);font-size:12px;font-weight:700}
+pre{white-space:pre-wrap;font-size:11px;color:var(--mut);background:var(--in);border:1px solid var(--line);border-radius:8px;padding:8px;max-height:300px;overflow:auto}
+</style></head><body><div class="wrap">
+<a href="index.html">← voltar</a>
+<h1>Minha <em>IA</em></h1>
+<div class="sub">Conecte a <b>sua</b> IA (Gemini, ChatGPT, Claude ou OpenRouter). A cada pergunta ela recebe os dados <b>ao vivo</b> do site — gráfico acumulado 00h, médias, sequências, colunas, times e próximos jogos com odds — e analisa seguindo as regras da casa.</div>
+
+<div class="grid">
+  <div>
+    <div class="card">
+      <h3>1 · CONECTAR</h3>
+      <label>Provedor
+        <select id="prov">
+          <option value="gemini">Google Gemini</option>
+          <option value="openai">OpenAI (ChatGPT)</option>
+          <option value="anthropic">Anthropic (Claude)</option>
+          <option value="openrouter">OpenRouter (vários modelos)</option>
+        </select></label>
+      <label>Chave da API (fica só neste navegador)
+        <input id="chave" type="password" autocomplete="off" placeholder="cole aqui a sua chave"></label>
+      <label>Modelo
+        <select id="modelo"><option value="">— clique em “Conectar” para listar —</option></select></label>
+      <div class="row">
+        <button id="btConectar">Conectar e listar modelos</button>
+        <button id="btSair" class="bad">Desconectar</button>
+      </div>
+      <div id="stCon" class="st"></div>
+      <div class="nota">🔒 A chave é guardada <b>apenas no seu navegador</b> e vai direto do seu navegador para o provedor. O servidor do AMD Live nunca recebe nem guarda a sua chave. Os custos de uso são da sua conta no provedor. Em computador compartilhado, clique em <b>Desconectar</b> ao sair.</div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3>2 · O QUE A IA ENXERGA</h3>
+      <div class="ligas" id="ligas"></div>
+      <label>Mercado principal
+        <select id="mk">
+          <option value="o35">Over 3.5</option><option value="o25">Over 2.5</option><option value="ambs">Ambas Marcam</option><option value="ge5">5+ Gols</option>
+        </select></label>
+      <div class="row"><button id="btVer" class="sec">Ver dados enviados</button></div>
+      <details id="det"><summary>Dados ao vivo (o que vai para a IA)</summary><pre id="ctx">—</pre></details>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3 · CONVERSAR</h3>
+    <div class="quick">
+      <button data-q="Analise o mercado principal agora em todas as ligas marcadas e me diga se existe UMA entrada de 3 tiros que passa em todas as regras. Se não existir, diga AGUARDAR e o motivo de cada liga.">🎯 Entrada agora</button>
+      <button data-q="Quais ligas estão com o gráfico acumulado 00h subindo de verdade no mercado principal? Mostre linha, MM9, MM21 e a tendência da MM9.">📈 Quem está subindo</button>
+      <button data-q="Para cada liga marcada, resuma o comportamento de pagamento das últimas 2 horas no mercado principal: sequências, secas e se a liga está pagando ou secando.">🔍 Comportamento</button>
+      <button data-q="Liste os próximos jogos que caem em coluna seca ou têm time frio no mercado principal, para eu evitar.">⛔ O que evitar</button>
+    </div>
+    <div id="chat" class="chat"></div>
+    <label style="margin-top:10px">Sua pergunta
+      <textarea id="txt" placeholder="Ex.: analisa um Over 3.5 na Inglaterra"></textarea></label>
+    <div class="row"><button id="btEnviar">Enviar</button><button id="btLimpar" class="sec">Limpar conversa</button></div>
+    <div class="nota">A IA analisa dados reais, mas futebol virtual é sorteado: nenhuma análise garante green. As regras da casa (gráfico em queda jamais, coluna seca e time frio nunca, madrugada não) vão junto em toda pergunta.</div>
+  </div>
+</div>
+</div>
+<script src="ia.js?v=20261125-ia"></script>
+</body></html>
