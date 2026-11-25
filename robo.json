@@ -1420,12 +1420,30 @@
  },
  "o25": {
   "saldo": -24.4,
-  "ciclos": 95567,
+  "ciclos": 95570,
   "greens": 254,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 95276,
+  "descartes": 95279,
   "historico": [
+   {
+    "quando": "2026-11-25T02:01:03.442Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T02:00:53.892Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T02:00:53.081Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T02:00:53.064Z",
     "resultado": "GREEN_OBS",
@@ -5007,24 +5025,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:21:05.250Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :26) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:21:04.481Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.2) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:21:04.472Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5032,7 +5032,37 @@
    "cam": 1795570666089,
    "spa": 1795572053041
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "23:07",
+     "jogo": "Penarol x Sao Paulo",
+     "odd": 2.16
+    },
+    {
+     "h": "23:10",
+     "jogo": "Rio de Janeiro x Quito",
+     "odd": 2.02
+    },
+    {
+     "h": "23:13",
+     "jogo": "Porto Alegre x Lima",
+     "odd": 2.3
+    }
+   ],
+   "gatilho": "odd 2.02",
+   "alvo": {
+    "h": "23:07",
+    "jogo": "Penarol x Sao Paulo",
+    "odd": 2.16,
+    "unidades": 1,
+    "desde": 1795572053872
+   },
+   "iniciadoEm": 1795572053872
+  },
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795570055197,
@@ -5195,9 +5225,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "ita": {
-    "desde": 1795572053063,
-    "gatilho": "odd 1.77"
+   "ame": {
+    "desde": 1795572063442,
+    "gatilho": "odd 2.02"
    }
   }
  },
