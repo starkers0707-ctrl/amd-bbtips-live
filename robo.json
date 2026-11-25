@@ -1526,13 +1526,31 @@
   }
  },
  "o25": {
-  "saldo": -15.4,
-  "ciclos": 101658,
-  "greens": 275,
+  "saldo": -14.4,
+  "ciclos": 101661,
+  "greens": 276,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 101344,
+  "descartes": 101346,
   "historico": [
+   {
+    "quando": "2026-11-25T10:32:33.016Z",
+    "resultado": "GREEN",
+    "unidades": 1,
+    "detalhe": "spa · CEL x GET @1.95 (tiro 1) · gatilho: time VIL"
+   },
+   {
+    "quando": "2026-11-25T10:32:15.376Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.18) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:32:15.364Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RGGR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:32:15.359Z",
     "resultado": "GREEN_OBS",
@@ -5114,65 +5132,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RGGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:56:06.210Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:56:06.203Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RGGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:56:03.482Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "cop": 1795602544579
+   "cop": 1795602544579,
+   "spa": 1795602753005
   },
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "07:31",
-     "jogo": "CEL x GET",
-     "odd": 1.95
-    },
-    {
-     "h": "07:33",
-     "jogo": "VIL x SEV",
-     "odd": 1.87
-    },
-    {
-     "h": "07:35",
-     "jogo": "ALV x BAR",
-     "odd": 1.71
-    }
-   ],
-   "gatilho": "time VIL",
-   "alvo": {
-    "h": "07:31",
-    "jogo": "CEL x GET",
-    "odd": 1.95,
-    "unidades": 1,
-    "desde": 1795602546736
-   },
-   "iniciadoEm": 1795602546736
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795598902928,
    "eng": 1795575218328,
    "ita": 1795595437825,
-   "spa": 1795596876430,
+   "spa": 1795602753005,
    "lat": 1795590752470,
    "bra": 1795598497327,
    "mnd": 1795597169653,
@@ -5192,7 +5163,7 @@
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
    "2026-11-24": -19.4,
-   "2026-11-25": 13.9
+   "2026-11-25": 14.9
   },
   "_obs": {}
  },
@@ -5334,10 +5305,6 @@
    "ame": {
     "desde": 1795596831466,
     "gatilho": "time Guayaquil"
-   },
-   "spa": {
-    "desde": 1795602735358,
-    "gatilho": "time VIL"
    }
   }
  },
