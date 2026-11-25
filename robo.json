@@ -1537,12 +1537,24 @@
  },
  "o25": {
   "saldo": -10.6,
-  "ciclos": 103651,
+  "ciclos": 103653,
   "greens": 280,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 103332,
+  "descartes": 103334,
   "historico": [
+   {
+    "quando": "2026-11-25T11:49:58.772Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:49:58.767Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.87) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T11:49:42.138Z",
     "resultado": "GREEN_OBS",
@@ -5130,18 +5142,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:18:08.033Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:18:08.028Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RGGR) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5195,7 +5195,7 @@
    "tipo": "time",
    "chave": "Uruguay",
    "n": 20,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -5343,9 +5343,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "cop": {
-    "desde": 1795607382138,
-    "gatilho": "time Uruguay"
+   "mnd": {
+    "desde": 1795607398772,
+    "gatilho": "coluna :06"
    }
   }
  },
@@ -7532,8 +7532,8 @@
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "08:48",
@@ -7553,13 +7553,21 @@
    ],
    "gatilho": "coluna :48",
    "alvo": {
-    "h": "08:48",
-    "jogo": "Porto x Chelsea",
-    "odd": 2.26,
-    "unidades": 1,
-    "desde": 1795607021599
+    "h": "08:51",
+    "jogo": "Turin x Milan",
+    "odd": 1.93,
+    "unidades": 2,
+    "desde": 1795607382160
    },
-   "iniciadoEm": 1795607021599
+   "iniciadoEm": 1795607021599,
+   "tiros": [
+    {
+     "h": "08:48",
+     "jogo": "Porto x Chelsea",
+     "odd": 2.26,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795590067651,
