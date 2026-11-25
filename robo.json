@@ -1474,13 +1474,19 @@
   }
  },
  "o25": {
-  "saldo": -25.4,
-  "ciclos": 99411,
-  "greens": 267,
+  "saldo": -23.8,
+  "ciclos": 99412,
+  "greens": 268,
   "redsCiclo": 39,
   "aborts": 0,
   "descartes": 99105,
   "historico": [
+   {
+    "quando": "2026-11-25T08:23:53.860Z",
+    "resultado": "GREEN",
+    "unidades": 1.6,
+    "detalhe": "ame · Bogota x Guayaquil @2.31 (tiro 2) · gatilho: time Guayaquil"
+   },
    {
     "quando": "2026-11-25T08:23:31.413Z",
     "resultado": "GREEN_OBS",
@@ -5074,57 +5080,14 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:04:34.300Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
    }
   ],
   "consumidas": {
    "mnd": 1795591666559,
-   "cop": 1795593361290
+   "cop": 1795593361290,
+   "ame": 1795595033847
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "05:19",
-     "jogo": "Penarol x Belo Horizonte",
-     "odd": 2.1
-    },
-    {
-     "h": "05:22",
-     "jogo": "Bogota x Guayaquil",
-     "odd": 2.31
-    },
-    {
-     "h": "05:25",
-     "jogo": "Buenos Aires x Rio de Janeiro",
-     "odd": 2.12
-    }
-   ],
-   "gatilho": "time Guayaquil",
-   "alvo": {
-    "h": "05:22",
-    "jogo": "Bogota x Guayaquil",
-    "odd": 2.31,
-    "unidades": 2,
-    "desde": 1795594840537
-   },
-   "iniciadoEm": 1795593949246,
-   "tiros": [
-    {
-     "h": "05:19",
-     "jogo": "Penarol x Belo Horizonte",
-     "odd": 2.1,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5133,7 +5096,7 @@
    "lat": 1795590752470,
    "bra": 1795522714636,
    "mnd": 1795591666559,
-   "ame": 1795572519317,
+   "ame": 1795595033847,
    "cop": 1795593361290
   },
   "_gatilhoAtual": {
@@ -5149,7 +5112,7 @@
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
    "2026-11-24": -19.4,
-   "2026-11-25": 3.9
+   "2026-11-25": 5.5
   },
   "_obs": {}
  },
@@ -5287,12 +5250,7 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {
-   "cop": {
-    "desde": 1795595011413,
-    "gatilho": "placar acima de 1-0 (2-0)"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": -38.3,
