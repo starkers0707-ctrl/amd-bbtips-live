@@ -1,12 +1,18 @@
 {
  "o35": {
   "saldo": 61.1,
-  "ciclos": 243,
+  "ciclos": 244,
   "greens": 92,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 114,
+  "descartes": 115,
   "historico": [
+   {
+    "quando": "2026-11-25T10:38:13.356Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho odd 3.35) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:38:09.155Z",
     "resultado": "DESCARTADO",
@@ -1503,12 +1509,30 @@
  },
  "o25": {
   "saldo": -14.4,
-  "ciclos": 101811,
+  "ciclos": 101814,
   "greens": 276,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 101496,
+  "descartes": 101499,
   "historico": [
+   {
+    "quando": "2026-11-25T10:38:13.390Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:38:13.381Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:38:09.191Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:38:09.187Z",
     "resultado": "GREEN_OBS",
@@ -5090,24 +5114,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho seq GRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:09:37.682Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:09:34.362Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho seq GRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:09:34.350Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5331,7 +5337,7 @@
     "gatilho": "time FOR"
    },
    "cam": {
-    "desde": 1795603089187,
+    "desde": 1795603093390,
     "gatilho": "odd 2.31"
    }
   }
@@ -7507,10 +7513,10 @@
    "ita": 1795602991234
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.07",
+   "tipo": "coluna",
+   "chave": ":04",
    "n": 8,
-   "start": 5
+   "start": 8
   },
   "dias": {
    "2026-11-20": 0,
