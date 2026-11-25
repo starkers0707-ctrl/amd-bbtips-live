@@ -1501,12 +1501,18 @@
  },
  "o25": {
   "saldo": -17.9,
-  "ciclos": 101112,
+  "ciclos": 101113,
   "greens": 274,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 100799,
+  "descartes": 100800,
   "historico": [
+   {
+    "quando": "2026-11-25T10:03:10.437Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T09:59:12.010Z",
     "resultado": "GREEN_OBS",
@@ -5100,12 +5106,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:16:29.888Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5113,7 +5113,37 @@
    "bra": 1795598497327,
    "cam": 1795598902928
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "07:19",
+     "jogo": "RAY x VAL",
+     "odd": 1.94
+    },
+    {
+     "h": "07:21",
+     "jogo": "VIL x RMA",
+     "odd": 1.9
+    },
+    {
+     "h": "07:23",
+     "jogo": "ATM x SEV",
+     "odd": 1.88
+    }
+   ],
+   "gatilho": "time VIL",
+   "alvo": {
+    "h": "07:19",
+    "jogo": "RAY x VAL",
+    "odd": 1.94,
+    "unidades": 1,
+    "desde": 1795600990412
+   },
+   "iniciadoEm": 1795600990412
+  },
   "cooldown": {
    "cam": 1795598902928,
    "eng": 1795575218328,
@@ -5126,10 +5156,10 @@
    "cop": 1795597999597
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "RRGR",
-   "n": 8,
-   "start": 1
+   "tipo": "time",
+   "chave": "VIL",
+   "n": 17,
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
@@ -5280,6 +5310,10 @@
    "ame": {
     "desde": 1795596831466,
     "gatilho": "time Guayaquil"
+   },
+   "spa": {
+    "desde": 1795600990436,
+    "gatilho": "time VIL"
    }
   }
  },
