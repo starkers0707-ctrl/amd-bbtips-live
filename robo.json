@@ -1441,13 +1441,19 @@
   }
  },
  "o25": {
-  "saldo": -27.1,
-  "ciclos": 95043,
-  "greens": 251,
+  "saldo": -26.3,
+  "ciclos": 95044,
+  "greens": 252,
   "redsCiclo": 37,
   "aborts": 0,
   "descartes": 94755,
   "historico": [
+   {
+    "quando": "2026-11-25T01:27:35.207Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "eng · AST x MNC @1.9 (tiro 2) · gatilho: coluna :26"
+   },
    {
     "quando": "2026-11-25T01:26:32.539Z",
     "resultado": "GREEN_OBS",
@@ -5041,61 +5047,18 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T00:43:34.844Z",
-    "resultado": "GREEN",
-    "unidades": 1.2,
-    "detalhe": "cop · Brazil x Germany @2.19 (tiro 1) · gatilho: seq GRRRG"
    }
   ],
   "consumidas": {
    "cop": 1795567414833,
    "ita": 1795568193960,
-   "lat": 1795568253782
+   "lat": 1795568253782,
+   "eng": 1795570055197
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "22:24",
-     "jogo": "BRE x HUL",
-     "odd": 1.86
-    },
-    {
-     "h": "22:26",
-     "jogo": "AST x MNC",
-     "odd": 1.9
-    },
-    {
-     "h": "22:28",
-     "jogo": "SUN x COV",
-     "odd": 1.93
-    }
-   ],
-   "gatilho": "coluna :26",
-   "alvo": {
-    "h": "22:26",
-    "jogo": "AST x MNC",
-    "odd": 1.9,
-    "unidades": 2,
-    "desde": 1795569609858
-   },
-   "iniciadoEm": 1795569609013,
-   "tiros": [
-    {
-     "h": "22:24",
-     "jogo": "BRE x HUL",
-     "odd": 1.86,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795558424565,
-   "eng": 1795564656759,
+   "eng": 1795570055197,
    "ita": 1795568193960,
    "spa": 1795563392445,
    "lat": 1795568253782,
@@ -5116,7 +5079,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -17.2
+   "2026-11-24": -16.4
   },
   "_obs": {}
  },
@@ -5254,12 +5217,7 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {
-   "ame": {
-    "desde": 1795569992538,
-    "gatilho": "odd 2.2"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": -19.1,
