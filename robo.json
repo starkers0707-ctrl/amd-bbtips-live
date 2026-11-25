@@ -1537,12 +1537,30 @@
  },
  "o25": {
   "saldo": -10.6,
-  "ciclos": 103276,
+  "ciclos": 103279,
   "greens": 280,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 102957,
+  "descartes": 102960,
   "historico": [
+   {
+    "quando": "2026-11-25T11:30:06.971Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:30:06.965Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:30:06.951Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T11:29:40.382Z",
     "resultado": "GREEN_OBS",
@@ -5124,24 +5142,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:05:08.499Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:05:07.837Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :16) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:05:07.833Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5346,7 +5346,7 @@
   },
   "_obs": {
    "cop": {
-    "desde": 1795606180382,
+    "desde": 1795606206970,
     "gatilho": "time Uruguay"
    }
   }
@@ -7522,8 +7522,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "08:28",
@@ -7543,13 +7543,21 @@
    ],
    "gatilho": "odd 1.96",
    "alvo": {
-    "h": "08:28",
-    "jogo": "Rio de Janeiro x Asuncion",
-    "odd": 1.9,
-    "unidades": 1,
-    "desde": 1795605971888
+    "h": "08:31",
+    "jogo": "Quito x La Plata",
+    "odd": 1.96,
+    "unidades": 2,
+    "desde": 1795606180403
    },
-   "iniciadoEm": 1795605971888
+   "iniciadoEm": 1795605971888,
+   "tiros": [
+    {
+     "h": "08:28",
+     "jogo": "Rio de Janeiro x Asuncion",
+     "odd": 1.9,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795590067651,
@@ -7566,7 +7574,7 @@
    "tipo": "odd",
    "chave": "1.96",
    "n": 12,
-   "start": 1
+   "start": 5
   },
   "dias": {
    "2026-11-20": 0,
