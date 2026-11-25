@@ -1537,12 +1537,36 @@
  },
  "o25": {
   "saldo": -10.6,
-  "ciclos": 103348,
+  "ciclos": 103352,
   "greens": 280,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 103029,
+  "descartes": 103033,
   "historico": [
+   {
+    "quando": "2026-11-25T11:33:08.835Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:33:08.832Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:33:08.183Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:33:08.178Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T11:32:56.161Z",
     "resultado": "GREEN_OBS",
@@ -5118,30 +5142,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:08:07.077Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:07:52.253Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :16) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:07:52.249Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:07:52.245Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5343,21 +5343,22 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {
-   "cop": {
-    "desde": 1795606376161,
-    "gatilho": "time Uruguay"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
-  "saldo": -36.5,
-  "ciclos": 359,
-  "greens": 150,
+  "saldo": -35.6,
+  "ciclos": 360,
+  "greens": 151,
   "redsCiclo": 21,
   "aborts": 0,
   "descartes": 188,
   "historico": [
+   {
+    "quando": "2026-11-25T11:32:56.196Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "ame · Quito x La Plata @1.96 (tiro 2) · gatilho: odd 1.96"
+   },
    {
     "quando": "2026-11-25T11:26:11.882Z",
     "resultado": "GREEN_OBS",
@@ -7517,43 +7518,44 @@
    "ita": 1795602991234,
    "cam": 1795603414518,
    "mnd": 1795604735083,
-   "cop": 1795605067496
+   "cop": 1795605067496,
+   "ame": 1795606376186
   },
   "ciclo": {
-   "liga": "ame",
+   "liga": "bra",
    "degrau": 1,
    "apostado": 1,
    "plano": [
     {
-     "h": "08:28",
-     "jogo": "Rio de Janeiro x Asuncion",
-     "odd": 1.9
+     "h": "08:35",
+     "jogo": "FOR x GOI",
+     "odd": 1.78
     },
     {
-     "h": "08:31",
-     "jogo": "Quito x La Plata",
-     "odd": 1.96
+     "h": "08:38",
+     "jogo": "CUI x ZEI",
+     "odd": 1.67
     },
     {
-     "h": "08:34",
-     "jogo": "Agua Branca x Avellaneda",
-     "odd": 1.88
+     "h": "08:41",
+     "jogo": "JUV x MEN",
+     "odd": 1.68
     }
    ],
-   "gatilho": "odd 1.96",
+   "gatilho": "placar acima de 1-0 (2-1)",
    "alvo": {
-    "h": "08:31",
-    "jogo": "Quito x La Plata",
-    "odd": 1.96,
+    "h": "08:38",
+    "jogo": "CUI x ZEI",
+    "odd": 1.67,
     "unidades": 2,
-    "desde": 1795606180403
+    "desde": 1795606388847
    },
-   "iniciadoEm": 1795605971888,
+   "iniciadoEm": 1795606388194,
    "tiros": [
     {
-     "h": "08:28",
-     "jogo": "Rio de Janeiro x Asuncion",
-     "odd": 1.9,
+     "h": "08:35",
+     "jogo": "FOR x GOI",
+     "odd": 1.78,
      "unidades": 1
     }
    ]
@@ -7566,14 +7568,14 @@
    "mnd": 1795604735083,
    "cam": 1795603414518,
    "cop": 1795605067496,
-   "ame": 1795598001936,
+   "ame": 1795606376186,
    "ita": 1795602991234
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.96",
-   "n": 12,
-   "start": 5
+   "tipo": "placar",
+   "chave": "acima de 1-0 (2-1)",
+   "n": 14,
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
@@ -7581,7 +7583,7 @@
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
    "2026-11-24": -32.6,
-   "2026-11-25": -5.3
+   "2026-11-25": -4.4
   },
   "_obs": {}
  }
