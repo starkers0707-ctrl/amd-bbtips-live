@@ -1586,12 +1586,30 @@
  },
  "o25": {
   "saldo": -8.7,
-  "ciclos": 107230,
+  "ciclos": 107233,
   "greens": 288,
   "redsCiclo": 40,
   "aborts": 0,
-  "descartes": 106902,
+  "descartes": 106905,
   "historico": [
+   {
+    "quando": "2026-11-25T14:02:08.001Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:02:03.937Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:02:03.929Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T14:02:03.925Z",
     "resultado": "GREEN_OBS",
@@ -5173,24 +5191,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:39:09.865Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:39:09.861Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:39:09.857Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :46) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5403,7 +5403,7 @@
     "gatilho": "odd 2.31"
    },
    "mnd": {
-    "desde": 1795615323925,
+    "desde": 1795615328001,
     "gatilho": "coluna :06"
    }
   }
@@ -7701,10 +7701,10 @@
    "ita": 1795608751021
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":04",
-   "n": 11,
-   "start": 1
+   "tipo": "odd",
+   "chave": "1.86",
+   "n": 8,
+   "start": 8
   },
   "dias": {
    "2026-11-20": 0,
