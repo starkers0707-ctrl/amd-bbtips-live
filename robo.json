@@ -5038,7 +5038,37 @@
    "spa": 1795581038881,
    "mnd": 1795581815708
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "02:00",
+     "jogo": "Munich x Amsterdam",
+     "odd": 2.41
+    },
+    {
+     "h": "02:03",
+     "jogo": "Benfica x Dortmund",
+     "odd": 2.3
+    },
+    {
+     "h": "02:06",
+     "jogo": "Barcelona x Turin",
+     "odd": 2.18
+    }
+   ],
+   "gatilho": "time Dortmund",
+   "alvo": {
+    "h": "02:00",
+    "jogo": "Munich x Amsterdam",
+    "odd": 2.41,
+    "unidades": 1,
+    "desde": 1795581816354
+   },
+   "iniciadoEm": 1795581816354
+  },
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5054,7 +5084,7 @@
    "tipo": "time",
    "chave": "Dortmund",
    "n": 8,
-   "start": 6
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -7120,7 +7150,37 @@
   "consumidas": {
    "spa": 1795581038910
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "01:56",
+     "jogo": "BHA x TOT",
+     "odd": 1.74
+    },
+    {
+     "h": "01:58",
+     "jogo": "IPS x AST",
+     "odd": 1.67
+    },
+    {
+     "h": "02:00",
+     "jogo": "LEE x BRE",
+     "odd": 1.69
+    }
+   ],
+   "gatilho": "time AST",
+   "alvo": {
+    "h": "01:56",
+    "jogo": "BHA x TOT",
+    "odd": 1.74,
+    "unidades": 1,
+    "desde": 1795582416994
+   },
+   "iniciadoEm": 1795582416994
+  },
   "cooldown": {
    "lat": 1795567528053,
    "eng": 1795524811381,
@@ -7132,9 +7192,9 @@
    "ame": 1795510421878
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "1-0 / 0-1",
-   "n": 11,
+   "tipo": "time",
+   "chave": "AST",
+   "n": 8,
    "start": 1
   },
   "dias": {
