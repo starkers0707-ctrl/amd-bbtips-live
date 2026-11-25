@@ -1610,12 +1610,36 @@
  },
  "o25": {
   "saldo": -10,
-  "ciclos": 106688,
+  "ciclos": 106692,
   "greens": 287,
   "redsCiclo": 40,
   "aborts": 0,
-  "descartes": 106361,
+  "descartes": 106365,
   "historico": [
+   {
+    "quando": "2026-11-25T13:41:03.451Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T13:41:03.447Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :46) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T13:41:03.442Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T13:40:35.092Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T13:40:35.085Z",
     "resultado": "GREEN_OBS",
@@ -5191,30 +5215,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:20:03.610Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho seq GGRR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:20:03.604Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:20:03.596Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:20:00.676Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho seq GGRR) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5426,7 +5426,7 @@
     "gatilho": "odd 2.12"
    },
    "bra": {
-    "desde": 1795614035085,
+    "desde": 1795614063451,
     "gatilho": "placar 0-0"
    }
   }
@@ -7712,10 +7712,10 @@
    "ita": 1795608751021
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.05",
-   "n": 15,
-   "start": 3
+   "tipo": "coluna",
+   "chave": ":04",
+   "n": 11,
+   "start": 7
   },
   "dias": {
    "2026-11-20": 0,
