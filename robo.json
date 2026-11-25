@@ -1529,13 +1529,43 @@
   }
  },
  "o25": {
-  "saldo": -11.8,
-  "ciclos": 102964,
-  "greens": 279,
+  "saldo": -10.6,
+  "ciclos": 102969,
+  "greens": 280,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 102646,
+  "descartes": 102650,
   "historico": [
+   {
+    "quando": "2026-11-25T11:14:40.275Z",
+    "resultado": "GREEN",
+    "unidades": 1.2,
+    "detalhe": "ame · Santiago x Santos @2.22 (tiro 1) · gatilho: coluna :16"
+   },
+   {
+    "quando": "2026-11-25T11:14:30.064Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :16) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:14:30.061Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:14:30.057Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :18) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:14:30.053Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T11:14:29.427Z",
     "resultado": "GREEN_OBS",
@@ -5105,36 +5135,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:56:34.706Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:56:34.702Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:56:34.697Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:56:34.038Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :16) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:56:34.035Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5142,39 +5142,10 @@
    "spa": 1795602753005,
    "mnd": 1795603175815,
    "bra": 1795604436334,
-   "cam": 1795605050850
+   "cam": 1795605050850,
+   "ame": 1795605280265
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "08:13",
-     "jogo": "Santiago x Santos",
-     "odd": 2.22
-    },
-    {
-     "h": "08:16",
-     "jogo": "Porto Alegre x La Plata",
-     "odd": 2.55
-    },
-    {
-     "h": "08:19",
-     "jogo": "Itaquera x Belo Horizonte",
-     "odd": 2.18
-    }
-   ],
-   "gatilho": "coluna :16",
-   "alvo": {
-    "h": "08:13",
-    "jogo": "Santiago x Santos",
-    "odd": 2.22,
-    "unidades": 1,
-    "desde": 1795605067457
-   },
-   "iniciadoEm": 1795605067457
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795605050850,
    "eng": 1795575218328,
@@ -5183,7 +5154,7 @@
    "lat": 1795590752470,
    "bra": 1795604436334,
    "mnd": 1795603175815,
-   "ame": 1795595033847,
+   "ame": 1795605280265,
    "cop": 1795602544579
   },
   "_gatilhoAtual": {
@@ -5199,7 +5170,7 @@
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
    "2026-11-24": -19.4,
-   "2026-11-25": 17.5
+   "2026-11-25": 18.7
   },
   "_obs": {}
  },
@@ -5341,10 +5312,6 @@
    "spa": {
     "desde": 1795604436962,
     "gatilho": "time VIL"
-   },
-   "ame": {
-    "desde": 1795605269427,
-    "gatilho": "coluna :16"
    }
   }
  },
