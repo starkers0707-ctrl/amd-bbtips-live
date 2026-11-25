@@ -1457,12 +1457,24 @@
  },
  "o25": {
   "saldo": -22.7,
-  "ciclos": 97188,
+  "ciclos": 97190,
   "greens": 263,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96887,
+  "descartes": 96889,
   "historico": [
+   {
+    "quando": "2026-11-25T06:40:36.027Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T06:40:32.172Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T06:39:34.356Z",
     "resultado": "GREEN_OBS",
@@ -5050,26 +5062,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:27:32.879Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:27:32.304Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "spa": 1795585231575,
    "cop": 1795586674122,
    "mnd": 1795587830389
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:03",
+     "jogo": "VAL x CEL",
+     "odd": 1.93
+    },
+    {
+     "h": "04:05",
+     "jogo": "VIL x SEV",
+     "odd": 1.87
+    },
+    {
+     "h": "04:07",
+     "jogo": "RSO x DLC",
+     "odd": 1.94
+    }
+   ],
+   "gatilho": "time VIL",
+   "alvo": {
+    "h": "04:03",
+    "jogo": "VAL x CEL",
+    "odd": 1.93,
+    "unidades": 1,
+    "desde": 1795588832142
+   },
+   "iniciadoEm": 1795588832142
+  },
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5083,9 +5112,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "NED",
+   "chave": "VIL",
    "n": 10,
-   "start": 7
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -5240,13 +5269,19 @@
   }
  },
  "ambas": {
-  "saldo": -28.4,
-  "ciclos": 325,
-  "greens": 133,
+  "saldo": -27.5,
+  "ciclos": 326,
+  "greens": 134,
   "redsCiclo": 18,
   "aborts": 0,
   "descartes": 174,
   "historico": [
+   {
+    "quando": "2026-11-25T06:40:32.211Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "cam · Milan x Munich @1.92 (tiro 1) · gatilho: time Porto"
+   },
    {
     "quando": "2026-11-25T06:27:17.240Z",
     "resultado": "GREEN",
@@ -7201,38 +7236,39 @@
   "consumidas": {
    "spa": 1795585949785,
    "cop": 1795587964219,
-   "eng": 1795588037236
+   "eng": 1795588037236,
+   "cam": 1795588832207
   },
   "ciclo": {
-   "liga": "cam",
+   "liga": "ame",
    "degrau": 0,
    "apostado": 0,
    "plano": [
     {
-     "h": "03:39",
-     "jogo": "Milan x Munich",
-     "odd": 1.92
+     "h": "03:55",
+     "jogo": "Agua Branca x Buenos Aires",
+     "odd": 1.93
     },
     {
-     "h": "03:42",
-     "jogo": "United x Porto",
-     "odd": 2.31
+     "h": "03:58",
+     "jogo": "Itaquera x Bogota",
+     "odd": 2.04
     },
     {
-     "h": "03:45",
-     "jogo": "Turin x Amsterdam",
-     "odd": 2.07
+     "h": "04:01",
+     "jogo": "Santos x La Boca",
+     "odd": 1.85
     }
    ],
-   "gatilho": "time Porto",
+   "gatilho": "time Itaquera",
    "alvo": {
-    "h": "03:39",
-    "jogo": "Milan x Munich",
-    "odd": 1.92,
+    "h": "03:55",
+    "jogo": "Agua Branca x Buenos Aires",
+    "odd": 1.93,
     "unidades": 1,
-    "desde": 1795588039483
+    "desde": 1795588836051
    },
-   "iniciadoEm": 1795588039483
+   "iniciadoEm": 1795588836051
   },
   "cooldown": {
    "lat": 1795567528053,
@@ -7240,7 +7276,7 @@
    "spa": 1795585949785,
    "bra": 1795526496634,
    "mnd": 1795515327438,
-   "cam": 1795574798860,
+   "cam": 1795588832207,
    "cop": 1795587964219,
    "ame": 1795510421878
   },
@@ -7256,7 +7292,7 @@
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
    "2026-11-24": -32.6,
-   "2026-11-25": 2.8
+   "2026-11-25": 3.7
   },
   "_obs": {}
  }
