@@ -1586,12 +1586,30 @@
  },
  "o25": {
   "saldo": -8.7,
-  "ciclos": 107317,
+  "ciclos": 107320,
   "greens": 288,
   "redsCiclo": 40,
   "aborts": 0,
-  "descartes": 106989,
+  "descartes": 106992,
   "historico": [
+   {
+    "quando": "2026-11-25T14:04:36.972Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:04:36.966Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:04:27.229Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T14:04:27.222Z",
     "resultado": "GREEN_OBS",
@@ -5173,28 +5191,9 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:41:33.817Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:41:33.247Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:41:33.244Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "cam": 1795611867253,
    "cop": 1795612980951,
    "mnd": 1795613130569,
    "spa": 1795613671525,
@@ -5243,10 +5242,10 @@
    "cop": 1795612980951
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "FOR",
-   "n": 16,
-   "start": 2
+   "tipo": "odd",
+   "chave": "2.31",
+   "n": 13,
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -5398,9 +5397,9 @@
     "desde": 1795613808317,
     "gatilho": "odd 2.24"
    },
-   "cam": {
-    "desde": 1795615467221,
-    "gatilho": "odd 2.31"
+   "bra": {
+    "desde": 1795615476972,
+    "gatilho": "time FOR"
    }
   }
  },
