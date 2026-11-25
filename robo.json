@@ -1587,12 +1587,18 @@
  },
  "o25": {
   "saldo": -10,
-  "ciclos": 106980,
+  "ciclos": 106981,
   "greens": 287,
   "redsCiclo": 40,
   "aborts": 0,
-  "descartes": 106653,
+  "descartes": 106654,
   "historico": [
+   {
+    "quando": "2026-11-25T13:52:47.542Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T13:52:45.340Z",
     "resultado": "GREEN_OBS",
@@ -5186,12 +5192,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:32:14.011Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5407,9 +5407,9 @@
     "desde": 1795614337738,
     "gatilho": "time FOR"
    },
-   "cop": {
-    "desde": 1795614765340,
-    "gatilho": "odd 2.12"
+   "mnd": {
+    "desde": 1795614767542,
+    "gatilho": "coluna :06"
    }
   }
  },
@@ -7659,8 +7659,8 @@
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "10:51",
@@ -7680,13 +7680,21 @@
    ],
    "gatilho": "odd 2.05",
    "alvo": {
-    "h": "10:51",
-    "jogo": "Chelsea x Porto",
-    "odd": 2.31,
-    "unidades": 1,
-    "desde": 1795613976589
+    "h": "10:54",
+    "jogo": "Rome x Amsterdam",
+    "odd": 2.05,
+    "unidades": 2,
+    "desde": 1795614765372
    },
-   "iniciadoEm": 1795613976589
+   "iniciadoEm": 1795613976589,
+   "tiros": [
+    {
+     "h": "10:51",
+     "jogo": "Chelsea x Porto",
+     "odd": 2.31,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795590067651,
