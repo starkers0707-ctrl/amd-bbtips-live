@@ -1571,12 +1571,24 @@
  },
  "o25": {
   "saldo": -8.5,
-  "ciclos": 103931,
+  "ciclos": 103933,
   "greens": 281,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 103611,
+  "descartes": 103613,
   "historico": [
+   {
+    "quando": "2026-11-25T12:01:45.383Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:01:45.380Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T12:01:45.374Z",
     "resultado": "GREEN_OBS",
@@ -5164,18 +5176,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:32:06.726Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:32:06.722Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5183,7 +5183,37 @@
    "ame": 1795605280265,
    "cop": 1795608105364
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "09:03",
+     "jogo": "MLG x VAL",
+     "odd": 1.87
+    },
+    {
+     "h": "09:05",
+     "jogo": "RMA x ALV",
+     "odd": 1.8
+    },
+    {
+     "h": "09:07",
+     "jogo": "LEV x ELC",
+     "odd": 1.94
+    }
+   ],
+   "gatilho": "seq RRRR",
+   "alvo": {
+    "h": "09:03",
+    "jogo": "MLG x VAL",
+    "odd": 1.87,
+    "unidades": 1,
+    "desde": 1795608121539
+   },
+   "iniciadoEm": 1795608121539
+  },
   "cooldown": {
    "cam": 1795605050850,
    "eng": 1795575218328,
@@ -5198,7 +5228,7 @@
   "_gatilhoAtual": {
    "tipo": "coluna",
    "chave": ":06",
-   "n": 9,
+   "n": 8,
    "start": 1
   },
   "dias": {
@@ -5347,10 +5377,6 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "cop": {
-    "desde": 1795607398778,
-    "gatilho": "time Uruguay"
-   },
    "spa": {
     "desde": 1795607910039,
     "gatilho": "odd 1.87"
@@ -5358,10 +5384,6 @@
    "ame": {
     "desde": 1795607971059,
     "gatilho": "odd 2.24"
-   },
-   "mnd": {
-    "desde": 1795608105374,
-    "gatilho": "coluna :06"
    }
   }
  },
