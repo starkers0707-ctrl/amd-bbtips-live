@@ -1475,12 +1475,48 @@
  },
  "o25": {
   "saldo": -22,
-  "ciclos": 100131,
+  "ciclos": 100137,
   "greens": 271,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 99821,
+  "descartes": 99827,
   "historico": [
+   {
+    "quando": "2026-11-25T09:00:31.603Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:00:06.606Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:00:06.599Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:00:05.657Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:00:05.649Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:00:04.764Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T09:00:04.757Z",
     "resultado": "GREEN_OBS",
@@ -5044,42 +5080,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:31:35.842Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:31:26.301Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:31:26.298Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:31:26.291Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:31:16.665Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:31:16.659Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5287,7 +5287,7 @@
     "gatilho": "time Guayaquil"
    },
    "mnd": {
-    "desde": 1795597204756,
+    "desde": 1795597231603,
     "gatilho": "odd 1.9"
    }
   }
@@ -7371,8 +7371,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "05:58",
@@ -7392,13 +7392,21 @@
    ],
    "gatilho": "time Belo Horizonte",
    "alvo": {
-    "h": "05:58",
-    "jogo": "Agua Branca x Rio de Janeiro",
-    "odd": 1.82,
-    "unidades": 1,
-    "desde": 1795596331006
+    "h": "06:01",
+    "jogo": "Buenos Aires x Belo Horizonte",
+    "odd": 1.89,
+    "unidades": 2,
+    "desde": 1795597206618
    },
-   "iniciadoEm": 1795596331006
+   "iniciadoEm": 1795596331006,
+   "tiros": [
+    {
+     "h": "05:58",
+     "jogo": "Agua Branca x Rio de Janeiro",
+     "odd": 1.82,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795590067651,
@@ -7413,8 +7421,8 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "Belo Horizonte",
-   "n": 13,
+   "chave": "Rio de Janeiro",
+   "n": 12,
    "start": 1
   },
   "dias": {
