@@ -1469,13 +1469,37 @@
   }
  },
  "o25": {
-  "saldo": -28.8,
-  "ciclos": 97683,
-  "greens": 264,
+  "saldo": -27.9,
+  "ciclos": 97687,
+  "greens": 265,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 97380,
+  "descartes": 97383,
   "historico": [
+   {
+    "quando": "2026-11-25T07:23:05.332Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:22:30.056Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time RIV) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:22:30.043Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:22:30.035Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "ita · COM x SAS @1.91 (tiro 1) · gatilho: time SAS"
+   },
    {
     "quando": "2026-11-25T07:22:29.076Z",
     "resultado": "GREEN_OBS",
@@ -5051,72 +5075,19 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T06:19:33.752Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T06:19:20.555Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T06:19:05.693Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T06:18:34.032Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
    }
   ],
   "consumidas": {
    "mnd": 1795587830389,
    "lat": 1795590752470,
-   "spa": 1795591110720
+   "spa": 1795591110720,
+   "ita": 1795591350030
   },
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "04:21",
-     "jogo": "COM x SAS",
-     "odd": 1.91
-    },
-    {
-     "h": "04:23",
-     "jogo": "JUV x MIL",
-     "odd": 1.95
-    },
-    {
-     "h": "04:25",
-     "jogo": "FIO x FRO",
-     "odd": 1.91
-    }
-   ],
-   "gatilho": "time SAS",
-   "alvo": {
-    "h": "04:21",
-    "jogo": "COM x SAS",
-    "odd": 1.91,
-    "unidades": 1,
-    "desde": 1795591144868
-   },
-   "iniciadoEm": 1795591144868
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
-   "ita": 1795575996704,
+   "ita": 1795591350030,
    "spa": 1795591110720,
    "lat": 1795590752470,
    "bra": 1795522714636,
@@ -5128,7 +5099,7 @@
    "tipo": "time",
    "chave": "CAG",
    "n": 9,
-   "start": 4
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -5137,7 +5108,7 @@
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
    "2026-11-24": -19.4,
-   "2026-11-25": 0.5
+   "2026-11-25": 1.4
   },
   "_obs": {}
  },
@@ -5276,28 +5247,30 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "ita": {
-    "desde": 1795591144881,
-    "gatilho": "time SAS"
-   },
    "mnd": {
     "desde": 1795591174100,
     "gatilho": "time NED"
    },
-   "lat": {
-    "desde": 1795591349076,
-    "gatilho": "time RIV"
+   "ita": {
+    "desde": 1795591385331,
+    "gatilho": "time CAG"
    }
   }
  },
  "ambas": {
-  "saldo": -34.5,
-  "ciclos": 331,
+  "saldo": -41.5,
+  "ciclos": 332,
   "greens": 134,
-  "redsCiclo": 19,
+  "redsCiclo": 20,
   "aborts": 0,
   "descartes": 178,
   "historico": [
+   {
+    "quando": "2026-11-25T07:22:30.077Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "ita · ciclo perdido (3 tiros) · gatilho: placar 0-0"
+   },
    {
     "quando": "2026-11-25T07:16:30.701Z",
     "resultado": "GREEN_OBS",
@@ -7289,53 +7262,10 @@
    "cop": 1795587964219,
    "eng": 1795588037236,
    "cam": 1795588832207,
-   "lat": 1795590067651
+   "lat": 1795590067651,
+   "ita": 1795591350074
   },
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "04:17",
-     "jogo": "FRO x LAZ",
-     "odd": 1.67
-    },
-    {
-     "h": "04:19",
-     "jogo": "NAP x ATA",
-     "odd": 1.74
-    },
-    {
-     "h": "04:21",
-     "jogo": "COM x SAS",
-     "odd": 1.76
-    }
-   ],
-   "gatilho": "placar 0-0",
-   "alvo": {
-    "h": "04:21",
-    "jogo": "COM x SAS",
-    "odd": 1.76,
-    "unidades": 4,
-    "desde": 1795591230500
-   },
-   "iniciadoEm": 1795590990705,
-   "tiros": [
-    {
-     "h": "04:17",
-     "jogo": "FRO x LAZ",
-     "odd": 1.67,
-     "unidades": 1
-    },
-    {
-     "h": "04:19",
-     "jogo": "NAP x ATA",
-     "odd": 1.74,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795588037236,
@@ -7344,7 +7274,8 @@
    "mnd": 1795515327438,
    "cam": 1795588832207,
    "cop": 1795587964219,
-   "ame": 1795510421878
+   "ame": 1795510421878,
+   "ita": 1795591350074
   },
   "_gatilhoAtual": {
    "tipo": "time",
@@ -7358,7 +7289,7 @@
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
    "2026-11-24": -32.6,
-   "2026-11-25": -3.3
+   "2026-11-25": -10.3
   },
   "_obs": {}
  }
