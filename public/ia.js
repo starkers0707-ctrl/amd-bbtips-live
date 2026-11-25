@@ -133,7 +133,8 @@
   /* Preferencia de modelo: estaveis e rapidos primeiro; experimentais por ultimo. */
   function nota(m) {
     var s = 0; m = String(m).toLowerCase();
-    if (/flash/.test(m)) s += 3; if (/pro|sonnet|gpt-?\d|4o|opus/.test(m)) s += 2; if (/lite|mini|haiku/.test(m)) s += 1;
+    if (/pro|opus|sonnet/.test(m)) s += 3; if (/flash|gpt-?\d|4o/.test(m)) s += 2;
+    if (/lite|mini|nano|haiku|small/.test(m)) s -= 3; /* fracos por ultimo */
     if (/exp|preview|experimental|hydrogen|test|alpha|beta|tts|image|vision|embed|thinking|live|audio|native/.test(m)) s -= 4;
     if (/^gemini-\d+(\.\d+)?-(flash|pro|flash-lite)$/.test(m) || /latest$/.test(m)) s += 4; /* versao estavel (sem sufixo) */
     var v = m.match(/(\d+(?:\.\d+)?)/); if (v) s += Math.min(3, Number(v[1]) / 2);
@@ -151,9 +152,10 @@
     return perguntarComReserva2(hist, aviso);
   }
   function perguntarComReserva2(hist, aviso) {
-    var original = cfg.modelo;
-    var reservas = ordena((cfg.lista || []).filter(function (m) { return m !== original; })).slice(0, 6);
-    var fila = [original].concat(reservas).concat([original]), i = 0, tentados = [];
+    var original = cfg.modelo, trocar = !!($('trocar') && $('trocar').checked);
+    var reservas = trocar ? ordena((cfg.lista || []).filter(function (m) { return m !== original && nota(m) >= nota(original) - 1; })).slice(0, 3) : [];
+    /* 1o: o MESMO modelo, esperando cada vez mais (4s, 10s, 20s). So troca se o usuario marcou. */
+    var fila = [original, original, original, original].concat(reservas), esperas = [0, 4000, 10000, 20000], i = 0, tentados = [];
     function tenta() {
       var modelo = fila[i];
       cfg.modelo = modelo;
@@ -163,14 +165,17 @@
         return r;
       }).catch(function (e) {
         cfg.modelo = original;
-        tentados.push(modelo);
-        var ocupado = [429, 500, 502, 503, 504].indexOf(e.status) >= 0 || /not found|not supported/i.test(e.message);
+        if (tentados.indexOf(modelo) < 0) tentados.push(modelo);
+        var msg = String(e.message || '');
+        var semCredito = /quota|billing|insufficient|credit|exceeded your current|payment|plan/i.test(msg);
+        var ocupado = [429, 500, 502, 503, 504, 529].indexOf(e.status) >= 0;
+        if (semCredito) { e.message = provNome() + ' recusou por LIMITE/CRÉDITO da sua conta (não é o site). Verifique créditos e limites no painel do ' + provNome() + '. Mensagem original: ' + msg; throw e; }
         if (!ocupado || ++i >= fila.length) {
-          if (ocupado) e.message = 'o Google está sobrecarregado agora (erro ' + e.status + '). Tentei ' + tentados.length + ' modelos: ' + tentados.join(', ') + '. Espere 1–2 minutos e tente de novo' + (e.status === 429 ? ' — 429 é limite da sua chave/plano.' : '.');
+          if (ocupado) e.message = provNome() + ' respondeu erro ' + e.status + ' (' + (e.status === 429 ? 'limite de uso por minuto da sua conta — dados “Completo” e textos grandes no Ensinar gastam mais' : 'servidor deles ocupado') + '). Tentei: ' + tentados.join(', ') + '. Mensagem original: ' + msg;
           throw e;
         }
-        if (aviso) aviso(fila[i] === original ? 'tentando de novo…' : 'ocupado · tentando ' + fila[i] + '…');
-        return espera(fila[i] === original ? 5000 : 800).then(tenta);
+        if (aviso) aviso(fila[i] === original ? 'ocupado · tentando de novo em ' + (esperas[i] / 1000) + 's…' : 'trocando para ' + fila[i] + '…');
+        return espera(fila[i] === original ? esperas[i] : 800).then(tenta);
       });
     }
     return tenta();
@@ -289,6 +294,7 @@
     $('ligas').innerHTML = LIGAS.map(function (l) { return '<label><input type="checkbox" id="lg_' + l[0] + '"' + (marcadas.indexOf(l[0]) >= 0 ? ' checked' : '') + '>' + l[1] + '</label>'; }).join('');
     $('ligas').addEventListener('change', function () { grava(LS_LIGAS, ligasMarcadas().map(function (l) { return l[0]; })); });
     $('mk').value = ler(LS_MK, 'o35');
+    $('trocar').checked = !!ler('amd_ia_trocar', false); $('trocar').addEventListener('change', function () { grava('amd_ia_trocar', $('trocar').checked); });
     $('modo').value = ler(LS_MODO, 'livre'); $('modo').addEventListener('change', function () { grava(LS_MODO, $('modo').value); });
     $('prof').value = ler(LS_PROF, 'resumo'); $('prof').addEventListener('change', function () { grava(LS_PROF, $('prof').value); });
     $('ensino').value = ler(LS_ENSINO, '');
