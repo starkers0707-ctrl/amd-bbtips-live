@@ -5184,21 +5184,28 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {
-   "ame": {
-    "desde": 1795566572193,
-    "gatilho": "odd 2.13"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": -19.9,
-  "ciclos": 303,
+  "ciclos": 305,
   "greens": 124,
   "redsCiclo": 16,
   "aborts": 0,
-  "descartes": 163,
+  "descartes": 165,
   "historico": [
+   {
+    "quando": "2026-11-25T00:35:09.821Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T00:35:09.110Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "lat · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-25T00:04:52.045Z",
     "resultado": "GREEN",
@@ -7021,37 +7028,7 @@
   "consumidas": {
    "cam": 1795565092036
   },
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "21:44",
-     "jogo": "BOL x BAR",
-     "odd": 1.83
-    },
-    {
-     "h": "21:47",
-     "jogo": "FLU x PAL",
-     "odd": 1.67
-    },
-    {
-     "h": "21:50",
-     "jogo": "BOC x RAC",
-     "odd": 1.69
-    }
-   ],
-   "gatilho": "coluna :47",
-   "alvo": {
-    "h": "21:44",
-    "jogo": "BOL x BAR",
-    "odd": 1.83,
-    "unidades": 1,
-    "desde": 1795566006490
-   },
-   "iniciadoEm": 1795566006490
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795557631018,
    "eng": 1795524811381,
@@ -7066,7 +7043,7 @@
    "tipo": "coluna",
    "chave": ":47",
    "n": 20,
-   "start": 5
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
@@ -7075,6 +7052,11 @@
    "2026-11-23": 13.6,
    "2026-11-24": -21.3
   },
-  "_obs": {}
+  "_obs": {
+   "lat": {
+    "desde": 1795566909821,
+    "gatilho": "coluna :47"
+   }
+  }
  }
 }
