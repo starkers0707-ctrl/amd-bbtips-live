@@ -1383,7 +1383,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "01:38",
+     "jogo": "POR x SWI",
+     "odd": 3.29
+    },
+    {
+     "h": "01:40",
+     "jogo": "BRA x ARG",
+     "odd": 3.18
+    },
+    {
+     "h": "01:42",
+     "jogo": "URY x DEN",
+     "odd": 3.36
+    }
+   ],
+   "gatilho": "placar 1-0 / 0-1",
+   "alvo": {
+    "h": "01:38",
+    "jogo": "POR x SWI",
+    "odd": 3.29,
+    "unidades": 1,
+    "desde": 1795581331208
+   },
+   "iniciadoEm": 1795581331208
+  },
   "cooldown": {
    "mnd": 1795570201582,
    "lat": 1795522898324,
@@ -1393,8 +1423,8 @@
    "bra": 1795556736216
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "3.17",
+   "tipo": "placar",
+   "chave": "1-0 / 0-1",
    "n": 8,
    "start": 1
   },
@@ -5200,12 +5230,18 @@
  },
  "ambas": {
   "saldo": -31.2,
-  "ciclos": 315,
-  "greens": 127,
+  "ciclos": 316,
+  "greens": 128,
   "redsCiclo": 18,
   "aborts": 0,
   "descartes": 170,
   "historico": [
+   {
+    "quando": "2026-11-25T04:30:38.913Z",
+    "resultado": "GREEN",
+    "unidades": 0,
+    "detalhe": "spa · RSO x MLG @1.75 (tiro 3) · gatilho: placar 1-0 / 0-1"
+   },
    {
     "quando": "2026-11-25T02:58:57.452Z",
     "resultado": "RED_CICLO",
@@ -7097,56 +7133,14 @@
     "detalhe": "cam · alvo sem fechamento em 15min antes da 1a aposta"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "spa",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "01:25",
-     "jogo": "ALV x VAL",
-     "odd": 1.69
-    },
-    {
-     "h": "01:27",
-     "jogo": "ESP x BAR",
-     "odd": 1.67
-    },
-    {
-     "h": "01:29",
-     "jogo": "RSO x MLG",
-     "odd": 1.75
-    }
-   ],
-   "gatilho": "placar 1-0 / 0-1",
-   "alvo": {
-    "h": "01:29",
-    "jogo": "RSO x MLG",
-    "odd": 1.75,
-    "unidades": 4,
-    "desde": 1795580910549
-   },
-   "iniciadoEm": 1795580571187,
-   "tiros": [
-    {
-     "h": "01:25",
-     "jogo": "ALV x VAL",
-     "odd": 1.69,
-     "unidades": 1
-    },
-    {
-     "h": "01:27",
-     "jogo": "ESP x BAR",
-     "odd": 1.67,
-     "unidades": 2
-    }
-   ]
+  "consumidas": {
+   "spa": 1795581038910
   },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795567528053,
    "eng": 1795524811381,
-   "spa": 1795506559992,
+   "spa": 1795581038910,
    "bra": 1795526496634,
    "mnd": 1795515327438,
    "cam": 1795574798860,
@@ -7164,7 +7158,8 @@
    "2026-11-21": 2,
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
-   "2026-11-24": -32.6
+   "2026-11-24": -32.6,
+   "2026-11-25": 0
   },
   "_obs": {}
  }
