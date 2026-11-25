@@ -1470,12 +1470,36 @@
  },
  "o25": {
   "saldo": -26.9,
-  "ciclos": 97823,
+  "ciclos": 97827,
   "greens": 266,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 97518,
+  "descartes": 97522,
   "historico": [
+   {
+    "quando": "2026-11-25T07:28:07.983Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:28:07.979Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:28:05.543Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:28:05.536Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T07:28:04.258Z",
     "resultado": "GREEN_OBS",
@@ -5051,30 +5075,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T06:52:49.187Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T06:52:49.181Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T06:52:47.086Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T06:52:21.143Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5282,7 +5282,7 @@
     "gatilho": "placar acima de 1-0 (2-0)"
    },
    "spa": {
-    "desde": 1795591684258,
+    "desde": 1795591687983,
     "gatilho": "time VIL"
    }
   }
@@ -7300,7 +7300,37 @@
    "ita": 1795591350074,
    "mnd": 1795591666601
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "eng",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:30",
+     "jogo": "BOU x TOT",
+     "odd": 1.74
+    },
+    {
+     "h": "04:32",
+     "jogo": "FUL x CHE",
+     "odd": 1.69
+    },
+    {
+     "h": "04:34",
+     "jogo": "SUN x ARS",
+     "odd": 1.67
+    }
+   ],
+   "gatilho": "placar empate 1-1",
+   "alvo": {
+    "h": "04:30",
+    "jogo": "BOU x TOT",
+    "odd": 1.74,
+    "unidades": 1,
+    "desde": 1795591684283
+   },
+   "iniciadoEm": 1795591684283
+  },
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795588037236,
@@ -7313,10 +7343,10 @@
    "ita": 1795591350074
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "Itaquera",
-   "n": 10,
-   "start": 4
+   "tipo": "seq",
+   "chave": "RRRR",
+   "n": 8,
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
