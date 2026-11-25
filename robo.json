@@ -1563,7 +1563,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "16:15",
+     "jogo": "MIL x GEN",
+     "odd": 3.21
+    },
+    {
+     "h": "16:17",
+     "jogo": "BOL x CAG",
+     "odd": 3.35
+    },
+    {
+     "h": "16:19",
+     "jogo": "SAS x LAZ",
+     "odd": 3.35
+    }
+   ],
+   "gatilho": "seq GGGR",
+   "alvo": {
+    "h": "16:15",
+    "jogo": "MIL x GEN",
+    "odd": 3.21,
+    "unidades": 1,
+    "desde": 1795633969289
+   },
+   "iniciadoEm": 1795633969289
+  },
   "cooldown": {
    "mnd": 1795617833812,
    "lat": 1795613616549,
@@ -1573,8 +1603,8 @@
    "bra": 1795614690723
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "0-0",
+   "tipo": "seq",
+   "chave": "GGGR",
    "n": 10,
    "start": 1
   },
@@ -5202,9 +5232,7 @@
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
    }
   ],
-  "consumidas": {
-   "mnd": 1795618054726
-  },
+  "consumidas": {},
   "ciclo": null,
   "cooldown": {
    "cam": 1795617456601,
@@ -5218,10 +5246,10 @@
    "cop": 1795617660495
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "RRRRR",
-   "n": 13,
-   "start": 1
+   "tipo": "odd",
+   "chave": "2.24",
+   "n": 12,
+   "start": 5
   },
   "dias": {
    "2026-11-19": -7,
@@ -5358,10 +5386,10 @@
    "ame": 1795388932755
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":18",
+   "tipo": "odd",
+   "chave": "2.24",
    "n": 12,
-   "start": 1
+   "start": 5
   },
   "dias": {
    "2026-11-19": -7,
