@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 63.2,
-  "ciclos": 229,
+  "saldo": 56.2,
+  "ciclos": 230,
   "greens": 86,
-  "redsCiclo": 33,
+  "redsCiclo": 34,
   "aborts": 0,
   "descartes": 110,
   "historico": [
+   {
+    "quando": "2026-11-25T04:43:35.697Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "mnd · ciclo perdido (3 tiros) · gatilho: placar 1-0 / 0-1"
+   },
    {
     "quando": "2026-11-25T01:30:01.586Z",
     "resultado": "GREEN",
@@ -1382,54 +1388,12 @@
     "detalhe": "mnd · POL x ENG @3.07 (tiro 2) · gatilho: placar 1-0 / 0-1"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "01:38",
-     "jogo": "POR x SWI",
-     "odd": 3.29
-    },
-    {
-     "h": "01:40",
-     "jogo": "BRA x ARG",
-     "odd": 3.18
-    },
-    {
-     "h": "01:42",
-     "jogo": "URY x DEN",
-     "odd": 3.36
-    }
-   ],
-   "gatilho": "placar 1-0 / 0-1",
-   "alvo": {
-    "h": "01:42",
-    "jogo": "URY x DEN",
-    "odd": 3.36,
-    "unidades": 4,
-    "desde": 1795581577578
-   },
-   "iniciadoEm": 1795581331208,
-   "tiros": [
-    {
-     "h": "01:38",
-     "jogo": "POR x SWI",
-     "odd": 3.29,
-     "unidades": 1
-    },
-    {
-     "h": "01:40",
-     "jogo": "BRA x ARG",
-     "odd": 3.18,
-     "unidades": 2
-    }
-   ]
+  "consumidas": {
+   "mnd": 1795581815685
   },
+  "ciclo": null,
   "cooldown": {
-   "mnd": 1795570201582,
+   "mnd": 1795581815685,
    "lat": 1795522898324,
    "eng": 1795539214389,
    "spa": 1795545033980,
@@ -1437,17 +1401,18 @@
    "bra": 1795556736216
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "RRRR",
-   "n": 10,
-   "start": 1
+   "tipo": "odd",
+   "chave": "3.37",
+   "n": 8,
+   "start": 7
   },
   "dias": {
    "2026-11-20": 4.3,
    "2026-11-21": 11.3,
    "2026-11-22": -12.7,
    "2026-11-23": 32.3,
-   "2026-11-24": 28
+   "2026-11-24": 28,
+   "2026-11-25": -7
   },
   "_obs": {
    "cam": {
@@ -1461,13 +1426,25 @@
   }
  },
  "o25": {
-  "saldo": -27.7,
-  "ciclos": 96456,
-  "greens": 258,
+  "saldo": -26.9,
+  "ciclos": 96458,
+  "greens": 259,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96160,
+  "descartes": 96161,
   "historico": [
+   {
+    "quando": "2026-11-25T04:43:35.711Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "mnd · URY x DEN @1.94 (tiro 3) · gatilho: placar 1-0 / 0-1"
+   },
+   {
+    "quando": "2026-11-25T04:40:32.455Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Dortmund) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T04:40:31.774Z",
     "resultado": "GREEN_OBS",
@@ -5055,68 +5032,13 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:21:33.784Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:21:13.419Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "spa": 1795581038881
+   "spa": 1795581038881,
+   "mnd": 1795581815708
   },
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "01:38",
-     "jogo": "POR x SWI",
-     "odd": 1.91
-    },
-    {
-     "h": "01:40",
-     "jogo": "BRA x ARG",
-     "odd": 1.87
-    },
-    {
-     "h": "01:42",
-     "jogo": "URY x DEN",
-     "odd": 1.94
-    }
-   ],
-   "gatilho": "placar 1-0 / 0-1",
-   "alvo": {
-    "h": "01:42",
-    "jogo": "URY x DEN",
-    "odd": 1.94,
-    "unidades": 4,
-    "desde": 1795581577591
-   },
-   "iniciadoEm": 1795581331237,
-   "tiros": [
-    {
-     "h": "01:38",
-     "jogo": "POR x SWI",
-     "odd": 1.91,
-     "unidades": 1
-    },
-    {
-     "h": "01:40",
-     "jogo": "BRA x ARG",
-     "odd": 1.87,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5124,7 +5046,7 @@
    "spa": 1795581038881,
    "lat": 1795574739018,
    "bra": 1795522714636,
-   "mnd": 1795517012357,
+   "mnd": 1795581815708,
    "ame": 1795572519317,
    "cop": 1795567414833
   },
@@ -5132,7 +5054,7 @@
    "tipo": "time",
    "chave": "Dortmund",
    "n": 8,
-   "start": 1
+   "start": 6
   },
   "dias": {
    "2026-11-19": -7,
@@ -5141,7 +5063,7 @@
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
    "2026-11-24": -19.4,
-   "2026-11-25": 1.6
+   "2026-11-25": 2.4
   },
   "_obs": {}
  },
@@ -5285,7 +5207,7 @@
     "gatilho": "placar 1-0 / 0-1"
    },
    "cam": {
-    "desde": 1795581631774,
+    "desde": 1795581650169,
     "gatilho": "time Dortmund"
    }
   }
