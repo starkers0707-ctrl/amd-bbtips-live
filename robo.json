@@ -1427,12 +1427,24 @@
  },
  "o25": {
   "saldo": -26.9,
-  "ciclos": 96459,
+  "ciclos": 96461,
   "greens": 259,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96162,
+  "descartes": 96164,
   "historico": [
+   {
+    "quando": "2026-11-25T05:03:35.350Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T05:03:35.336Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T04:58:38.087Z",
     "resultado": "DESCARTADO",
@@ -5020,25 +5032,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:21:34.446Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:21:34.432Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795581038881,
    "mnd": 1795581815708
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "02:08",
+     "jogo": "RAC x COL",
+     "odd": 1.8
+    },
+    {
+     "h": "02:11",
+     "jogo": "PAR x VAL",
+     "odd": 1.94
+    },
+    {
+     "h": "02:14",
+     "jogo": "FLU x PER",
+     "odd": 1.94
+    }
+   ],
+   "gatilho": "placar acima de 1-0 (2-0)",
+   "alvo": {
+    "h": "02:08",
+    "jogo": "RAC x COL",
+    "odd": 1.8,
+    "unidades": 1,
+    "desde": 1795583015981
+   },
+   "iniciadoEm": 1795583015981
+  },
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5051,10 +5081,10 @@
    "cop": 1795567414833
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "Dortmund",
+   "tipo": "placar",
+   "chave": "acima de 1-0 (2-0)",
    "n": 8,
-   "start": 4
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
