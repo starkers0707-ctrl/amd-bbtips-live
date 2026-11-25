@@ -1475,12 +1475,24 @@
  },
  "o25": {
   "saldo": -22.6,
-  "ciclos": 100036,
+  "ciclos": 100038,
   "greens": 270,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 99727,
+  "descartes": 99729,
   "historico": [
+   {
+    "quando": "2026-11-25T08:56:01.441Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time CAG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:55:41.261Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T08:55:41.251Z",
     "resultado": "GREEN_OBS",
@@ -5068,22 +5080,9 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time NAP) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:25:11.769Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:25:11.760Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time NAP) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "cop": 1795593361290,
    "ame": 1795595033847,
    "ita": 1795595437825,
    "spa": 1795596876430
@@ -5131,10 +5130,10 @@
    "cop": 1795593361290
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "RGGR",
+   "tipo": "time",
+   "chave": "Uruguay",
    "n": 12,
-   "start": 1
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -5286,9 +5285,9 @@
     "desde": 1795596831466,
     "gatilho": "time Guayaquil"
    },
-   "mnd": {
-    "desde": 1795596941251,
-    "gatilho": "seq RGGR"
+   "ita": {
+    "desde": 1795596961440,
+    "gatilho": "time CAG"
    }
   }
  },
