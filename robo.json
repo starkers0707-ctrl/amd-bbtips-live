@@ -1501,12 +1501,24 @@
  },
  "o25": {
   "saldo": -17.9,
-  "ciclos": 101053,
+  "ciclos": 101055,
   "greens": 274,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 100740,
+  "descartes": 100742,
   "historico": [
+   {
+    "quando": "2026-11-25T09:55:47.040Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:55:47.031Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RGGR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T09:55:40.111Z",
     "resultado": "GREEN_OBS",
@@ -5094,18 +5106,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:14:06.512Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:14:05.664Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5283,19 +5283,25 @@
     "gatilho": "time Guayaquil"
    },
    "cop": {
-    "desde": 1795600540111,
+    "desde": 1795600547040,
     "gatilho": "time Uruguay"
    }
   }
  },
  "ambas": {
-  "saldo": -32.7,
-  "ciclos": 349,
-  "greens": 145,
+  "saldo": -32,
+  "ciclos": 350,
+  "greens": 146,
   "redsCiclo": 20,
   "aborts": 0,
   "descartes": 184,
   "historico": [
+   {
+    "quando": "2026-11-25T09:55:40.130Z",
+    "resultado": "GREEN",
+    "unidades": 0.7,
+    "detalhe": "eng · CRY x FUL @1.69 (tiro 1) · gatilho: time FUL"
+   },
    {
     "quando": "2026-11-25T09:51:34.569Z",
     "resultado": "GREEN",
@@ -7396,42 +7402,13 @@
    "ita": 1795598327411,
    "cam": 1795598902975,
    "cop": 1795599839166,
-   "mnd": 1795600294556
+   "mnd": 1795600294556,
+   "eng": 1795600540122
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "06:54",
-     "jogo": "CRY x FUL",
-     "odd": 1.69
-    },
-    {
-     "h": "06:56",
-     "jogo": "IPS x LIV",
-     "odd": 1.67
-    },
-    {
-     "h": "06:58",
-     "jogo": "BHA x NEW",
-     "odd": 1.71
-    }
-   ],
-   "gatilho": "time FUL",
-   "alvo": {
-    "h": "06:54",
-    "jogo": "CRY x FUL",
-    "odd": 1.69,
-    "unidades": 1,
-    "desde": 1795600305873
-   },
-   "iniciadoEm": 1795600305873
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795590067651,
-   "eng": 1795596330189,
+   "eng": 1795600540122,
    "spa": 1795585949785,
    "bra": 1795526496634,
    "mnd": 1795600294556,
@@ -7444,7 +7421,7 @@
    "tipo": "time",
    "chave": "FUL",
    "n": 17,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-20": 0,
@@ -7452,7 +7429,7 @@
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
    "2026-11-24": -32.6,
-   "2026-11-25": -1.5
+   "2026-11-25": -0.8
   },
   "_obs": {}
  }
