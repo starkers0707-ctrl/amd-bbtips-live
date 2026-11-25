@@ -1470,12 +1470,30 @@
  },
  "o25": {
   "saldo": -26.9,
-  "ciclos": 98169,
+  "ciclos": 98172,
   "greens": 266,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 97864,
+  "descartes": 97867,
   "historico": [
+   {
+    "quando": "2026-11-25T07:43:59.493Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-1)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:43:59.489Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:43:59.484Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T07:43:57.328Z",
     "resultado": "GREEN_OBS",
@@ -5057,24 +5075,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho time RIV) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:15:52.755Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:15:52.751Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:15:50.702Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho time RIV) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5126,10 +5126,10 @@
    "cop": 1795586674122
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "France",
-   "n": 12,
-   "start": 2
+   "tipo": "placar",
+   "chave": "acima de 1-0 (2-0)",
+   "n": 11,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -5276,7 +5276,12 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {}
+  "_obs": {
+   "mnd": {
+    "desde": 1795592639493,
+    "gatilho": "placar acima de 1-0 (2-1)"
+   }
+  }
  },
  "ambas": {
   "saldo": -38.3,
