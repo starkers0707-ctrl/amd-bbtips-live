@@ -1475,12 +1475,42 @@
  },
  "o25": {
   "saldo": -22.9,
-  "ciclos": 99684,
+  "ciclos": 99689,
   "greens": 269,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 99376,
+  "descartes": 99381,
   "historico": [
+   {
+    "quando": "2026-11-25T08:37:26.692Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:37:26.682Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-1)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:37:26.677Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:37:14.234Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:37:14.224Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T08:37:14.219Z",
     "resultado": "GREEN_OBS",
@@ -5050,36 +5080,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:13:23.780Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:13:23.774Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:13:23.770Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:13:23.765Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:13:08.878Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5130,10 +5130,10 @@
    "cop": 1795593361290
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "NED",
-   "n": 16,
-   "start": 5
+   "tipo": "placar",
+   "chave": "acima de 1-0 (2-1)",
+   "n": 13,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -5285,9 +5285,9 @@
     "desde": 1795595748347,
     "gatilho": "time Guayaquil"
    },
-   "spa": {
-    "desde": 1795595834218,
-    "gatilho": "time VIL"
+   "cop": {
+    "desde": 1795595846692,
+    "gatilho": "time Uruguay"
    }
   }
  },
