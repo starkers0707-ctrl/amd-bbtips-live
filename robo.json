@@ -1409,13 +1409,31 @@
   }
  },
  "o25": {
-  "saldo": -27.9,
-  "ciclos": 94651,
-  "greens": 250,
+  "saldo": -27.1,
+  "ciclos": 94654,
+  "greens": 251,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 94364,
+  "descartes": 94366,
   "historico": [
+   {
+    "quando": "2026-11-25T00:57:33.795Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho seq GRGRR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T00:57:33.785Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "lat · BOL x BAR @1.77 (tiro 1) · gatilho: seq GRGRR"
+   },
+   {
+    "quando": "2026-11-25T00:57:33.101Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho seq GRGRR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T00:56:33.977Z",
     "resultado": "GREEN_OBS",
@@ -4997,31 +5015,14 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T00:12:11.326Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T00:12:11.317Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T00:12:10.442Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
    }
   ],
   "consumidas": {
    "eng": 1795564656759,
    "ame": 1795565357683,
    "cop": 1795567414833,
-   "ita": 1795568193960
+   "ita": 1795568193960,
+   "lat": 1795568253782
   },
   "ciclo": null,
   "cooldown": {
@@ -5029,16 +5030,16 @@
    "eng": 1795564656759,
    "ita": 1795568193960,
    "spa": 1795563392445,
-   "lat": 1795550799609,
+   "lat": 1795568253782,
    "bra": 1795522714636,
    "mnd": 1795517012357,
    "ame": 1795565357683,
    "cop": 1795567414833
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":57",
-   "n": 20,
+   "tipo": "seq",
+   "chave": "GRGRR",
+   "n": 11,
    "start": 1
   },
   "dias": {
@@ -5047,7 +5048,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -18
+   "2026-11-24": -17.2
   },
   "_obs": {}
  },
@@ -5186,9 +5187,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "spa": {
-    "desde": 1795568193977,
-    "gatilho": "coluna :57"
+   "lat": {
+    "desde": 1795568253795,
+    "gatilho": "seq GRGRR"
    }
   }
  },
