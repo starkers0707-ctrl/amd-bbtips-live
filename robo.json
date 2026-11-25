@@ -1604,12 +1604,30 @@
  },
  "o25": {
   "saldo": -11,
-  "ciclos": 106245,
+  "ciclos": 106248,
   "greens": 286,
   "redsCiclo": 40,
   "aborts": 0,
-  "descartes": 105919,
+  "descartes": 105922,
   "historico": [
+   {
+    "quando": "2026-11-25T13:27:01.949Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T13:26:35.892Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :35) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T13:26:34.961Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :35) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T13:26:34.014Z",
     "resultado": "GREEN_OBS",
@@ -5191,24 +5209,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:06:12.191Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :08) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:06:12.180Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:06:05.268Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5260,10 +5260,10 @@
    "cop": 1795612980951
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":35",
-   "n": 9,
-   "start": 4
+   "tipo": "odd",
+   "chave": "1.76",
+   "n": 10,
+   "start": 8
   },
   "dias": {
    "2026-11-19": -7,
@@ -5420,8 +5420,8 @@
     "gatilho": "time FOR"
    },
    "spa": {
-    "desde": 1795613194014,
-    "gatilho": "coluna :35"
+    "desde": 1795613221949,
+    "gatilho": "odd 1.76"
    }
   }
  },
