@@ -1420,12 +1420,18 @@
  },
  "o25": {
   "saldo": -26.3,
-  "ciclos": 95044,
+  "ciclos": 95045,
   "greens": 252,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 94755,
+  "descartes": 94756,
   "historico": [
+   {
+    "quando": "2026-11-25T01:31:45.011Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RGRRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T01:27:35.207Z",
     "resultado": "GREEN",
@@ -5019,12 +5025,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T00:43:34.856Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5033,7 +5033,37 @@
    "lat": 1795568253782,
    "eng": 1795570055197
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "22:36",
+     "jogo": "Liverpool x Milan",
+     "odd": 2.25
+    },
+    {
+     "h": "22:39",
+     "jogo": "Dortmund x Munich",
+     "odd": 2.3
+    },
+    {
+     "h": "22:42",
+     "jogo": "City x Rome",
+     "odd": 2.06
+    }
+   ],
+   "gatilho": "seq RGRRG",
+   "alvo": {
+    "h": "22:36",
+    "jogo": "Liverpool x Milan",
+    "odd": 2.25,
+    "unidades": 1,
+    "desde": 1795570304989
+   },
+   "iniciadoEm": 1795570304989
+  },
   "cooldown": {
    "cam": 1795558424565,
    "eng": 1795570055197,
@@ -5046,9 +5076,9 @@
    "cop": 1795567414833
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.2",
-   "n": 9,
+   "tipo": "seq",
+   "chave": "RGRRG",
+   "n": 10,
    "start": 1
   },
   "dias": {
@@ -7059,8 +7089,8 @@
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "22:27",
@@ -7080,11 +7110,11 @@
    ],
    "gatilho": "odd 1.84",
    "alvo": {
-    "h": "22:30",
-    "jogo": "Benfica x Turin",
-    "odd": 1.84,
-    "unidades": 2,
-    "desde": 1795570123928
+    "h": "22:33",
+    "jogo": "Chelsea x Madrid",
+    "odd": 2.01,
+    "unidades": 4,
+    "desde": 1795570305029
    },
    "iniciadoEm": 1795569764679,
    "tiros": [
@@ -7093,6 +7123,12 @@
      "jogo": "United x Liverpool",
      "odd": 2.05,
      "unidades": 1
+    },
+    {
+     "h": "22:30",
+     "jogo": "Benfica x Turin",
+     "odd": 1.84,
+     "unidades": 2
     }
    ]
   },
