@@ -5211,8 +5211,8 @@
   "consumidas": {},
   "ciclo": {
    "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "19:30",
@@ -5232,13 +5232,21 @@
    ],
    "gatilho": "odd 2.16",
    "alvo": {
-    "h": "19:30",
-    "jogo": "Celtic x Madrid",
-    "odd": 2.16,
-    "unidades": 1,
-    "desde": 1795645518773
+    "h": "19:33",
+    "jogo": "Munich x Liverpool",
+    "odd": 2.12,
+    "unidades": 2,
+    "desde": 1795645912294
    },
-   "iniciadoEm": 1795645518773
+   "iniciadoEm": 1795645518773,
+   "tiros": [
+    {
+     "h": "19:30",
+     "jogo": "Celtic x Madrid",
+     "odd": 2.16,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795617456601,
@@ -5380,7 +5388,45 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 1,
+   "apostado": 1,
+   "plano": [
+    {
+     "h": "19:30",
+     "jogo": "Celtic x Madrid",
+     "odd": 2.16
+    },
+    {
+     "h": "19:33",
+     "jogo": "Munich x Liverpool",
+     "odd": 2.12
+    },
+    {
+     "h": "19:36",
+     "jogo": "Rome x Paris",
+     "odd": 1.99
+    }
+   ],
+   "gatilho": "odd 2.16",
+   "alvo": {
+    "h": "19:33",
+    "jogo": "Munich x Liverpool",
+    "odd": 2.12,
+    "unidades": 2,
+    "desde": 1795645912318
+   },
+   "iniciadoEm": 1795645518792,
+   "tiros": [
+    {
+     "h": "19:30",
+     "jogo": "Celtic x Madrid",
+     "odd": 2.16,
+     "unidades": 1
+    }
+   ]
+  },
   "cooldown": {
    "cam": 1795142462862,
    "eng": 1795148138958,
@@ -5393,9 +5439,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "odd",
-   "chave": "2.24",
-   "n": 12,
-   "start": 5
+   "chave": "2.16",
+   "n": 14,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
