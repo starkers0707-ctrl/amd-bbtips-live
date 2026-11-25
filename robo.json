@@ -1586,12 +1586,36 @@
  },
  "o25": {
   "saldo": -8.7,
-  "ciclos": 107609,
+  "ciclos": 107613,
   "greens": 288,
   "redsCiclo": 40,
   "aborts": 0,
-  "descartes": 107281,
+  "descartes": 107285,
   "historico": [
+   {
+    "quando": "2026-11-25T14:12:09.278Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:12:09.272Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:12:06.940Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:12:06.934Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T14:12:06.930Z",
     "resultado": "GREEN_OBS",
@@ -5167,30 +5191,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:54:07.119Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:54:07.113Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:54:07.105Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:53:48.834Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5402,7 +5402,7 @@
     "gatilho": "odd 2.31"
    },
    "mnd": {
-    "desde": 1795615926930,
+    "desde": 1795615929277,
     "gatilho": "coluna :20"
    }
   }
@@ -7666,8 +7666,8 @@
   },
   "ciclo": {
    "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "11:10",
@@ -7687,13 +7687,21 @@
    ],
    "gatilho": "seq RGRG",
    "alvo": {
-    "h": "11:10",
-    "jogo": "Santos x Bogota",
-    "odd": 1.94,
-    "unidades": 1,
-    "desde": 1795615550280
+    "h": "11:13",
+    "jogo": "Itaquera x La Boca",
+    "odd": 1.93,
+    "unidades": 2,
+    "desde": 1795615926956
    },
-   "iniciadoEm": 1795615550280
+   "iniciadoEm": 1795615550280,
+   "tiros": [
+    {
+     "h": "11:10",
+     "jogo": "Santos x Bogota",
+     "odd": 1.94,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795590067651,
@@ -7707,10 +7715,10 @@
    "ita": 1795608751021
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "GRGG",
-   "n": 10,
-   "start": 1
+   "tipo": "odd",
+   "chave": "1.86",
+   "n": 8,
+   "start": 4
   },
   "dias": {
    "2026-11-20": 0,
