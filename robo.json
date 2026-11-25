@@ -1481,8 +1481,8 @@
   "consumidas": {},
   "ciclo": {
    "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "07:47",
@@ -1502,13 +1502,21 @@
    ],
    "gatilho": "odd 3.35",
    "alvo": {
-    "h": "07:47",
-    "jogo": "OLI x BAR",
-    "odd": 2.67,
-    "unidades": 1,
-    "desde": 1795603111020
+    "h": "07:50",
+    "jogo": "ATL x FLU",
+    "odd": 3.35,
+    "unidades": 2,
+    "desde": 1795603737322
    },
-   "iniciadoEm": 1795603111020
+   "iniciadoEm": 1795603111020,
+   "tiros": [
+    {
+     "h": "07:47",
+     "jogo": "OLI x BAR",
+     "odd": 2.67,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795598373619,
@@ -1520,9 +1528,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "odd",
-   "chave": "3.35",
+   "chave": "3.27",
    "n": 8,
-   "start": 1
+   "start": 3
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -1545,12 +1553,48 @@
  },
  "o25": {
   "saldo": -13.8,
-  "ciclos": 102108,
+  "ciclos": 102114,
   "greens": 277,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 101792,
+  "descartes": 101798,
   "historico": [
+   {
+    "quando": "2026-11-25T10:48:57.348Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:48:57.343Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:48:56.789Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:48:56.784Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:48:56.230Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:48:55.683Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:48:36.283Z",
     "resultado": "GREEN_OBS",
@@ -5114,42 +5158,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:25:03.187Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:25:03.181Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:24:43.221Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:24:43.215Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:24:43.209Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:24:42.373Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5355,10 +5363,6 @@
     "desde": 1795596831466,
     "gatilho": "time Guayaquil"
    },
-   "spa": {
-    "desde": 1795603593817,
-    "gatilho": "time VIL"
-   },
    "cop": {
     "desde": 1795603597186,
     "gatilho": "time Uruguay"
@@ -5368,7 +5372,7 @@
     "gatilho": "odd 2.31"
    },
    "bra": {
-    "desde": 1795603716283,
+    "desde": 1795603737348,
     "gatilho": "time FOR"
    }
   }
