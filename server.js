@@ -3979,7 +3979,9 @@ function montaRobo(mkt, rotulo) {
     let gatilho = null;
     try {
       const pad = calculaPadroes(liga, mkt) || {};
-      const cem = arr => (arr || []).filter(p => p.prox === "G" && p.taxa === 100 && p.n >= 8); // robo atira so com 8+ provas (6/6 por sorte e comum demais)
+      // REGRA DO USUARIO: padrao com 90%+ (8+ provas) e SO depois que o MESMO padrao tomou 1 red
+      // (a ocorrencia completa mais recente dele foi red). Antes: 100% e entrava apos green da liga.
+      const cem = arr => (arr || []).filter(p => p.prox === "G" && p.taxa >= 90 && p.n >= 8 && p.ultimoRed);
       const evsF = (d.upcoming && d.upcoming[mkt]) || [];
       const fila = evsF.map((p, i) => ({ ...p, _i: i })).filter(p => p.odd != null);
       const porIdx = {}; for (const p of fila) porIdx[p._i] = p;
@@ -4035,28 +4037,20 @@ function montaRobo(mkt, rotulo) {
       roboTrace[tk].gatilho = gatilho ? (gatilho.tipo + " " + gatilho.chave + " (" + gatilho.n + "x)") : null;
     } catch (e) { roboTrace[mkt + "|" + liga] = { erro: e.message }; }
     if (!gatilho) continue;
-    // ===== PORTAO DE MOMENTUM (estudo 224 casos: apos GREEN 48% x apos RED 33%) =====
-    // o quente continua quente: so atira se o ultimo ciclo FECHADO desta liga neste mercado foi GREEN.
-    // Liga fria fica em observacao: gatilhos dela rodam NO PAPEL (0u) e um green observado rearma.
-    const ultimoDaLiga = (L.historico || []).find(h => (h.detalhe || "").startsWith(liga + " ") || (h.detalhe || "").startsWith(liga + " ·"));
-    const ligaFria = ultimoDaLiga && ultimoDaLiga.resultado !== "GREEN" && ultimoDaLiga.resultado !== "GREEN_OBS";
-    if (ligaFria) {
-      // observacao de graca: o trio do gatilho teria pago? conferimos nos jogos ja fechados depois
-      L._obs = L._obs || {};
-      const obsKey = liga;
-      if (!L._obs[obsKey] || Date.now() - L._obs[obsKey].desde > 40 * 60000) {
-        L._obs[obsKey] = { desde: Date.now(), gatilho: gatilho.tipo + " " + gatilho.chave };
-      }
-      // confere se desde o inicio da observacao saiu um green no mercado (basta 1 nos fechados recentes)
-      const gaObs = listaCheia(d).slice(-3);
-      if (gaObs.some(g => pays(g, mkt))) {
-        registraCiclo(mkt, "GREEN_OBS", 0, `${liga} · green OBSERVADO no papel (gatilho ${L._obs[obsKey].gatilho}) — liga REARMADA`);
-        delete L._obs[obsKey];
-      }
-      roboTrace[mkt + "|" + liga].momentum = "FRIA (ultimo ciclo red) — observando no papel";
-      continue;
+    // (o antigo PORTAO DE MOMENTUM por liga saiu: a regra agora e por PADRAO, apos 1 red dele)
+    roboTrace[mkt + "|" + liga].momentum = "padrao apos red";
+    // TRAVA DO ACUMULADO 00h (regra do usuario: grafico em queda jamais)
+    {
+      const gaC = listaCheia(d);
+      let iD = 0;
+      for (let i2 = 1; i2 < gaC.length; i2++) { const h1 = parseInt((gaC[i2].horario || "").split(":")[0]), h0 = parseInt((gaC[i2 - 1].horario || "").split(":")[0]); if (!isNaN(h1) && !isNaN(h0) && h1 < h0 - 12) iD = i2; }
+      const hojeC = gaC.slice(iD);
+      if (hojeC.length < 60) { roboTrace[mkt + "|" + liga].bloqueio = "madrugada (" + hojeC.length + " jogos)"; continue; }
+      let sC = 0; const lineC = hojeC.map((g, k) => (sC += pays(g, mkt) ? 1 : 0) / (k + 1) * 100);
+      const nC = lineC.length - 1, mmC = (p2, k) => { let t = 0; for (let q = k - p2 + 1; q <= k; q++) t += lineC[q]; return t / p2; };
+      const m9C = mmC(9, nC), m21C = mmC(21, nC), m9aC = mmC(9, nC - 1);
+      if (!(m9C > m21C && m9C >= m9aC && lineC[nC] >= m9C)) { roboTrace[mkt + "|" + liga].bloqueio = "acumulado 00h caindo (" + lineC[nC].toFixed(1) + " · MM9 " + m9C.toFixed(2) + " · MM21 " + m21C.toFixed(2) + ")"; continue; }
     }
-    roboTrace[mkt + "|" + liga].momentum = ultimoDaLiga ? "QUENTE (ultimo green)" : "NOVA (liberada)";
     const noBolsao = true; L._gatilhoAtual = gatilho;
     const evs = (d.upcoming && d.upcoming[mkt]) || [];
     const degraus = [], pulados = [];
@@ -4087,6 +4081,14 @@ function montaRobo(mkt, rotulo) {
     for (let dgi = 0; dgi < 3; dgi++) {
       const p = porIdx[melhorStart + dgi];
       degraus.push({ papel: papeis[dgi], unidades: [1, 2, 4][dgi], h: p.horario || "", jogo: p.nome, odd: p.odd, justa: p.justa, ev: p.ev, evAlto: p.ev > 10, ancora: ancDoJogo(p) != null ? Math.round(ancDoJogo(p)) : null, col: colunaPct(listaCheia(d, games), p.horario, mkt) });
+    }
+    // COLUNA SECA e TIME FRIO em qualquer um dos 3 tiros -> nao entra
+    {
+      const gaT = listaCheia(d, games);
+      const seca = h => { const mi = (h || "").split(":")[1]; if (!mi) return false; const col = gaT.filter(g => (g.horario || "").split(":")[1] === mi).slice(-3); return col.length >= 3 && !col.some(g => pays(g, mkt)); };
+      const frio = t => { if (!t) return false; const js = gaT.filter(g => g.casa === t || g.fora === t).slice(-3); return js.length >= 3 && !js.some(g => pays(g, mkt)); };
+      const ruim = degraus.find(dg => seca(dg.h) || (dg.jogo || "").split(" x ").some(t => frio(t.trim())));
+      if (ruim) { roboTrace[mkt + "|" + liga].bloqueio = "tiro " + ruim.h + " em coluna seca ou time frio"; continue; }
     }
     let ancoraDia = 0;
     try { let soma = 0, nA = 0; for (const dg of degraus) { if (dg.ancora != null) { soma += dg.ancora; nA++; } } ancoraDia = nA ? Math.round(soma / nA) : 0; } catch (e) {}
@@ -4338,6 +4340,7 @@ function calculaPadroes(liga, mkt) {
         const pagouCiclo = tres.includes("G");
         const g = grupos[chave] || (grupos[chave] = { n: 0, G3: 0, horas: new Set() });
         g.n++; if (pagouCiclo) g.G3++; if (horas[i + L]) g.horas.add(horas[i + L]);
+        g.ultimo = pagouCiclo; // ocorrencia completa mais recente (loop crescente)
       }
     }
     // regua do CICLO: em qualquer trecho de 3 jogos, quantos % tem pelo menos 1 green?
@@ -4355,7 +4358,7 @@ function calculaPadroes(liga, mkt) {
       if (edgeG >= 15) { prox = "G"; taxa = taxa3; edge = edgeG; }
       else if (edgeR >= 15) { prox = "R"; taxa = 100 - taxa3; edge = edgeR; }
       else continue;
-      out.push({ seq: chave, prox, taxa, regua: prox === "G" ? regua3 : 100 - regua3, edge, n: g.n, acertos: prox === "G" ? g.G3 : g.n - g.G3, horas: [...g.horas].sort().slice(0, 6) });
+      out.push({ seq: chave, prox, taxa, regua: prox === "G" ? regua3 : 100 - regua3, edge, n: g.n, acertos: prox === "G" ? g.G3 : g.n - g.G3, horas: [...g.horas].sort().slice(0, 6), ultimoRed: g.ultimo === false });
     }
     out.sort((a, b) => b.edge - a.edge || b.n - a.n);
     // ===== CACA PADRAO DE ODD E TIMES (desfecho no ciclo de 3 tiros, vs regua do ciclo) =====
@@ -4367,16 +4370,16 @@ function calculaPadroes(liga, mkt) {
     for (let i = 1; i + 1 < games.length; i++) {
       const g = games[i]; const pago = ciclo3(i);
       const ov = g.odds && g.odds[okey] != null ? String(g.odds[okey]) : null;
-      if (ov) { (porOdd[ov] = porOdd[ov] || [0, 0])[0]++; if (pago) porOdd[ov][1]++; }
-      for (const t of [g.casa, g.fora]) { if (!t) continue; (porTime[t] = porTime[t] || [0, 0])[0]++; if (pago) porTime[t][1]++; }
+      if (ov) { (porOdd[ov] = porOdd[ov] || [0, 0])[0]++; if (pago) porOdd[ov][1]++; porOdd[ov][2] = pago; }
+      for (const t of [g.casa, g.fora]) { if (!t) continue; (porTime[t] = porTime[t] || [0, 0])[0]++; if (pago) porTime[t][1]++; porTime[t][2] = pago; }
     }
     const garimpa = (obj, minN) => {
       const arr = [];
-      for (const [k, [n, h]] of Object.entries(obj)) {
+      for (const [k, [n, h, ult]] of Object.entries(obj)) {
         if (n < minN) continue;
         const taxaG = Math.round(h / n * 100);
         const eG = taxaG - regua3, eR = regua3 - taxaG;
-        if (eG >= 12) arr.push({ chave: k, prox: "G", taxa: taxaG, regua: regua3, edge: eG, n, acertos: h });
+        if (eG >= 12) arr.push({ chave: k, prox: "G", taxa: taxaG, regua: regua3, edge: eG, n, acertos: h, ultimoRed: ult === false });
         else if (eR >= 12) arr.push({ chave: k, prox: "R", taxa: 100 - taxaG, regua: 100 - regua3, edge: eR, n, acertos: n - h });
       }
       arr.sort((a, b) => b.edge - a.edge || b.n - a.n);
@@ -4393,16 +4396,16 @@ function calculaPadroes(liga, mkt) {
       return "acima de 1-0 (" + Math.max(a, b) + "-" + Math.min(a, b) + ")";
     };
     const porPlacar = {};
-    for (let i = 0; i + 1 < games.length; i++) {
+    for (let i = 0; i + 3 < games.length; i++) { // so ciclos COMPLETOS (3 jogos depois ja fechados)
       const cat = catPlacar(games[i]); const pago = ciclo3Depois(i);
-      (porPlacar[cat] = porPlacar[cat] || [0, 0])[0]++; if (pago) porPlacar[cat][1]++;
+      (porPlacar[cat] = porPlacar[cat] || [0, 0])[0]++; if (pago) porPlacar[cat][1]++; porPlacar[cat][2] = pago;
     }
     // ===== FAMILIA 2: PADRAO DE COLUNA (minuto do relogio) =====
     const porColuna = {};
-    for (let i = 1; i + 1 < games.length; i++) {
+    for (let i = 1; i + 3 < games.length; i++) { // so ciclos COMPLETOS
       const min = (games[i].horario || "").split(":")[1]; if (!min) continue;
       const pago = ciclo3Depois(i);
-      (porColuna[":" + min] = porColuna[":" + min] || [0, 0])[0]++; if (pago) porColuna[":" + min][1]++;
+      (porColuna[":" + min] = porColuna[":" + min] || [0, 0])[0]++; if (pago) porColuna[":" + min][1]++; porColuna[":" + min][2] = pago;
     }
     // ===== FAMILIA 3: PADRAO DE PULO (distancia entre greens: 5, 6, 10 casas...) =====
     // ===== CACA-PADROES AUTOMATICO: varre DEZENAS de eventos e acha sozinho os que se repetem como metronomo =====
