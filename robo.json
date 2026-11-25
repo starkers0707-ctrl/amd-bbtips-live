@@ -1410,12 +1410,30 @@
  },
  "o25": {
   "saldo": -30,
-  "ciclos": 94406,
+  "ciclos": 94409,
   "greens": 248,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 94121,
+  "descartes": 94124,
   "historico": [
+   {
+    "quando": "2026-11-25T00:41:05.127Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T00:41:05.122Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T00:41:02.960Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho seq GRRRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T00:41:02.951Z",
     "resultado": "GREEN_OBS",
@@ -4997,24 +5015,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T23:52:52.594Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T23:52:52.589Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T23:52:33.759Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5064,10 +5064,10 @@
    "cop": 1795556284523
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "GRRRG",
-   "n": 9,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":57",
+   "n": 20,
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -5219,7 +5219,7 @@
     "gatilho": "coluna :54"
    },
    "spa": {
-    "desde": 1795567262950,
+    "desde": 1795567265126,
     "gatilho": "coluna :57"
    }
   }
