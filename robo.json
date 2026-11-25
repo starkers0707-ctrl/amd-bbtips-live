@@ -1524,12 +1524,18 @@
  },
  "o25": {
   "saldo": -19.7,
-  "ciclos": 100736,
+  "ciclos": 100737,
   "greens": 273,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 100424,
+  "descartes": 100425,
   "historico": [
+   {
+    "quando": "2026-11-25T09:26:07.376Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.18) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T09:26:03.798Z",
     "resultado": "GREEN_OBS",
@@ -5123,12 +5129,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:00:31.603Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5140,8 +5140,8 @@
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "06:24",
@@ -5161,13 +5161,21 @@
    ],
    "gatilho": "seq RRRG",
    "alvo": {
-    "h": "06:24",
-    "jogo": "Amsterdam x Chelsea",
-    "odd": 2.74,
-    "unidades": 1,
-    "desde": 1795598523892
+    "h": "06:27",
+    "jogo": "Liverpool x Dortmund",
+    "odd": 2.4,
+    "unidades": 2,
+    "desde": 1795598767340
    },
-   "iniciadoEm": 1795598523892
+   "iniciadoEm": 1795598523892,
+   "tiros": [
+    {
+     "h": "06:24",
+     "jogo": "Amsterdam x Chelsea",
+     "odd": 2.74,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795570666089,
@@ -5343,10 +5351,6 @@
    "mnd": {
     "desde": 1795598735823,
     "gatilho": "odd 1.9"
-   },
-   "cam": {
-    "desde": 1795598763798,
-    "gatilho": "seq RRGR"
    }
   }
  },
@@ -7443,8 +7447,8 @@
   },
   "ciclo": {
    "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "06:24",
@@ -7464,13 +7468,21 @@
    ],
    "gatilho": "time Liverpool",
    "alvo": {
-    "h": "06:24",
-    "jogo": "Amsterdam x Chelsea",
-    "odd": 2.26,
-    "unidades": 1,
-    "desde": 1795598328169
+    "h": "06:27",
+    "jogo": "Liverpool x Dortmund",
+    "odd": 2.09,
+    "unidades": 2,
+    "desde": 1795598767396
    },
-   "iniciadoEm": 1795598328169
+   "iniciadoEm": 1795598328169,
+   "tiros": [
+    {
+     "h": "06:24",
+     "jogo": "Amsterdam x Chelsea",
+     "odd": 2.26,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795590067651,
