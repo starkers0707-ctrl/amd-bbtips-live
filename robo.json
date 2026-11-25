@@ -1435,8 +1435,8 @@
   },
   "ciclo": {
    "liga": "mnd",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "05:04",
@@ -1456,11 +1456,11 @@
    ],
    "gatilho": "time NED",
    "alvo": {
-    "h": "05:06",
-    "jogo": "POL x NED",
-    "odd": 3.28,
-    "unidades": 2,
-    "desde": 1795593929136
+    "h": "05:08",
+    "jogo": "URY x SPA",
+    "odd": 3.36,
+    "unidades": 4,
+    "desde": 1795594047483
    },
    "iniciadoEm": 1795593367097,
    "tiros": [
@@ -1469,6 +1469,12 @@
      "jogo": "FRA x ARG",
      "odd": 3.13,
      "unidades": 1
+    },
+    {
+     "h": "05:06",
+     "jogo": "POL x NED",
+     "odd": 3.28,
+     "unidades": 2
     }
    ]
   },
@@ -1484,7 +1490,7 @@
    "tipo": "time",
    "chave": "NED",
    "n": 13,
-   "start": 3
+   "start": 2
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -1507,12 +1513,18 @@
  },
  "o25": {
   "saldo": -25.4,
-  "ciclos": 98907,
+  "ciclos": 98908,
   "greens": 267,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 98601,
+  "descartes": 98602,
   "historico": [
+   {
+    "quando": "2026-11-25T08:07:19.145Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T08:07:19.137Z",
     "resultado": "GREEN_OBS",
@@ -5106,12 +5118,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-1)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:49:07.204Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5318,10 +5324,6 @@
    "cop": {
     "desde": 1795593916962,
     "gatilho": "placar acima de 1-0 (2-0)"
-   },
-   "mnd": {
-    "desde": 1795594039136,
-    "gatilho": "placar acima de 1-0 (2-1)"
    }
   }
  },
