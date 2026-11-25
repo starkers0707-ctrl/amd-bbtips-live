@@ -1458,12 +1458,24 @@
  },
  "o25": {
   "saldo": -22.7,
-  "ciclos": 97120,
+  "ciclos": 97122,
   "greens": 263,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96819,
+  "descartes": 96821,
   "historico": [
+   {
+    "quando": "2026-11-25T06:26:04.203Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T06:26:04.196Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T06:25:47.094Z",
     "resultado": "GREEN_OBS",
@@ -5051,18 +5063,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:15:51.052Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:15:37.460Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5237,21 +5237,23 @@
    "spa": {
     "desde": 1795587070505,
     "gatilho": "time VIL"
-   },
-   "cop": {
-    "desde": 1795587947093,
-    "gatilho": "time France"
    }
   }
  },
  "ambas": {
-  "saldo": -29.7,
-  "ciclos": 323,
-  "greens": 131,
+  "saldo": -29.1,
+  "ciclos": 324,
+  "greens": 132,
   "redsCiclo": 18,
   "aborts": 0,
   "descartes": 174,
   "historico": [
+   {
+    "quando": "2026-11-25T06:26:04.228Z",
+    "resultado": "GREEN",
+    "unidades": 0.6,
+    "detalhe": "cop · Netherlands x Brazil @1.89 (tiro 3) · gatilho: placar 1-0 / 0-1"
+   },
    {
     "quando": "2026-11-25T06:18:05.801Z",
     "resultado": "GREEN_OBS",
@@ -7192,53 +7194,10 @@
    }
   ],
   "consumidas": {
-   "spa": 1795585949785
+   "spa": 1795585949785,
+   "cop": 1795587964219
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "03:18",
-     "jogo": "Croatia x Colombia",
-     "odd": 2.31
-    },
-    {
-     "h": "03:21",
-     "jogo": "Portugal x Switzerland",
-     "odd": 2.24
-    },
-    {
-     "h": "03:24",
-     "jogo": "Netherlands x Brazil",
-     "odd": 1.89
-    }
-   ],
-   "gatilho": "placar 1-0 / 0-1",
-   "alvo": {
-    "h": "03:24",
-    "jogo": "Netherlands x Brazil",
-    "odd": 1.89,
-    "unidades": 4,
-    "desde": 1795587784213
-   },
-   "iniciadoEm": 1795587349202,
-   "tiros": [
-    {
-     "h": "03:18",
-     "jogo": "Croatia x Colombia",
-     "odd": 2.31,
-     "unidades": 1
-    },
-    {
-     "h": "03:21",
-     "jogo": "Portugal x Switzerland",
-     "odd": 2.24,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795567528053,
    "eng": 1795582778457,
@@ -7246,7 +7205,7 @@
    "bra": 1795526496634,
    "mnd": 1795515327438,
    "cam": 1795574798860,
-   "cop": 1795583077354,
+   "cop": 1795587964219,
    "ame": 1795510421878
   },
   "_gatilhoAtual": {
@@ -7261,7 +7220,7 @@
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
    "2026-11-24": -32.6,
-   "2026-11-25": 1.5
+   "2026-11-25": 2.1
   },
   "_obs": {}
  }
