@@ -1508,13 +1508,37 @@
   }
  },
  "o25": {
-  "saldo": -22,
-  "ciclos": 100423,
-  "greens": 271,
+  "saldo": -20.6,
+  "ciclos": 100427,
+  "greens": 272,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 100113,
+  "descartes": 100116,
   "historico": [
+   {
+    "quando": "2026-11-25T09:13:19.609Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:13:19.602Z",
+    "resultado": "GREEN",
+    "unidades": 1.4,
+    "detalhe": "cop · France x Denmark @2.4 (tiro 1) · gatilho: time Uruguay"
+   },
+   {
+    "quando": "2026-11-25T09:13:17.441Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:13:17.431Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-1)) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T09:13:17.424Z",
     "resultado": "GREEN_OBS",
@@ -5090,69 +5114,16 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:43:36.093Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:43:36.090Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:43:35.471Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:43:35.464Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ame": 1795595033847,
    "ita": 1795595437825,
    "spa": 1795596876430,
-   "mnd": 1795597169653
+   "mnd": 1795597169653,
+   "cop": 1795597999597
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "06:03",
-     "jogo": "France x Denmark",
-     "odd": 2.4
-    },
-    {
-     "h": "06:06",
-     "jogo": "Spain x Uruguay",
-     "odd": 2.66
-    },
-    {
-     "h": "06:09",
-     "jogo": "Netherlands x USA",
-     "odd": 2.12
-    }
-   ],
-   "gatilho": "time Uruguay",
-   "alvo": {
-    "h": "06:03",
-    "jogo": "France x Denmark",
-    "odd": 2.4,
-    "unidades": 1,
-    "desde": 1795597170521
-   },
-   "iniciadoEm": 1795597170521
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5162,13 +5133,13 @@
    "bra": 1795522714636,
    "mnd": 1795597169653,
    "ame": 1795595033847,
-   "cop": 1795593361290
+   "cop": 1795597999597
   },
   "_gatilhoAtual": {
    "tipo": "time",
    "chave": "Uruguay",
    "n": 13,
-   "start": 1
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -5177,7 +5148,7 @@
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
    "2026-11-24": -19.4,
-   "2026-11-25": 7.3
+   "2026-11-25": 8.7
   },
   "_obs": {}
  },
@@ -5320,9 +5291,9 @@
     "desde": 1795596831466,
     "gatilho": "time Guayaquil"
    },
-   "spa": {
-    "desde": 1795597997423,
-    "gatilho": "odd 1.76"
+   "ita": {
+    "desde": 1795597999609,
+    "gatilho": "time SAS"
    }
   }
  },
