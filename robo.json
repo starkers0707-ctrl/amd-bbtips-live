@@ -1393,8 +1393,8 @@
   },
   "ciclo": {
    "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "02:07",
@@ -1414,13 +1414,21 @@
    ],
    "gatilho": "seq RRRR",
    "alvo": {
-    "h": "02:07",
-    "jogo": "COM x INT",
-    "odd": 3.28,
-    "unidades": 1,
-    "desde": 1795583070101
+    "h": "02:09",
+    "jogo": "MIL x MON",
+    "odd": 3.12,
+    "unidades": 2,
+    "desde": 1795583338280
    },
-   "iniciadoEm": 1795583070101
+   "iniciadoEm": 1795583070101,
+   "tiros": [
+    {
+     "h": "02:07",
+     "jogo": "COM x INT",
+     "odd": 3.28,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "mnd": 1795581815685,
@@ -5269,10 +5277,6 @@
    "cam": {
     "desde": 1795581650169,
     "gatilho": "time Dortmund"
-   },
-   "lat": {
-    "desde": 1795583180403,
-    "gatilho": "placar acima de 1-0 (2-0)"
    }
   }
  },
