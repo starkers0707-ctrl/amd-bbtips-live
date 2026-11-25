@@ -1417,13 +1417,25 @@
   }
  },
  "o25": {
-  "saldo": -29.3,
-  "ciclos": 96414,
-  "greens": 256,
+  "saldo": -28.4,
+  "ciclos": 96416,
+  "greens": 257,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96120,
+  "descartes": 96121,
   "historico": [
+   {
+    "quando": "2026-11-25T03:06:36.714Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "ita · COM x GEN @1.87 (tiro 1) · gatilho: odd 1.77"
+   },
+   {
+    "quando": "2026-11-25T03:02:38.544Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.83) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T03:02:38.540Z",
     "resultado": "GREEN_OBS",
@@ -5011,60 +5023,19 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:18:35.661Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:18:18.287Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
    }
   ],
   "consumidas": {
    "ame": 1795572519317,
    "lat": 1795574739018,
-   "eng": 1795575218328
+   "eng": 1795575218328,
+   "ita": 1795575996704
   },
-  "ciclo": {
-   "liga": "ita",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "00:05",
-     "jogo": "COM x GEN",
-     "odd": 1.87
-    },
-    {
-     "h": "00:07",
-     "jogo": "CAG x INT",
-     "odd": 1.77
-    },
-    {
-     "h": "00:09",
-     "jogo": "ROM x MON",
-     "odd": 1.83
-    }
-   ],
-   "gatilho": "odd 1.77",
-   "alvo": {
-    "h": "00:05",
-    "jogo": "COM x GEN",
-    "odd": 1.87,
-    "unidades": 1,
-    "desde": 1795575223507
-   },
-   "iniciadoEm": 1795575223507
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
-   "ita": 1795568193960,
+   "ita": 1795575996704,
    "spa": 1795572053041,
    "lat": 1795574739018,
    "bra": 1795522714636,
@@ -5085,7 +5056,7 @@
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
    "2026-11-24": -19.4,
-   "2026-11-25": 0
+   "2026-11-25": 0.9
   },
   "_obs": {}
  },
@@ -5223,12 +5194,7 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {
-   "ita": {
-    "desde": 1795575758540,
-    "gatilho": "odd 1.77"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": -31.2,
