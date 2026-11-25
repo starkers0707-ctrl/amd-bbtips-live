@@ -1604,12 +1604,36 @@
  },
  "o25": {
   "saldo": -13.1,
-  "ciclos": 106006,
+  "ciclos": 106010,
   "greens": 284,
   "redsCiclo": 40,
   "aborts": 0,
-  "descartes": 105682,
+  "descartes": 105686,
   "historico": [
+   {
+    "quando": "2026-11-25T13:17:08.831Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T13:17:08.825Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T13:17:08.820Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T13:17:02.645Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T13:17:02.635Z",
     "resultado": "GREEN_OBS",
@@ -5185,30 +5209,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:56:47.251Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:56:47.243Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RGGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:56:47.238Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T12:56:46.439Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :03) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5417,9 +5417,9 @@
     "desde": 1795612594468,
     "gatilho": "seq GGRRR"
    },
-   "bra": {
-    "desde": 1795612622634,
-    "gatilho": "time FOR"
+   "cop": {
+    "desde": 1795612628830,
+    "gatilho": "odd 2.12"
    }
   }
  },
