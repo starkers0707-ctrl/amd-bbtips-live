@@ -327,6 +327,8 @@
 
   /* Resumo honesto embaixo da tabela: acerto e ROI REAIS do EV+ x o necessario para empatar. */
   function resumoBt(bt, todos) {
+    var velho = document.getElementById("btResumo"); if (velho) velho.remove();
+    return; /* resumo removido a pedido do usuario */
     var tb = document.getElementById("backtest");
     if (!tb || !bt) return;
     var box = document.getElementById("btResumo");
