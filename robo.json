@@ -1537,12 +1537,54 @@
  },
  "o25": {
   "saldo": -10.6,
-  "ciclos": 103256,
+  "ciclos": 103263,
   "greens": 280,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 102937,
+  "descartes": 102944,
   "historico": [
+   {
+    "quando": "2026-11-25T11:29:10.546Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:29:10.532Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:29:04.558Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:29:04.551Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:29:03.964Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:29:03.957Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T11:29:03.362Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T11:29:03.355Z",
     "resultado": "GREEN_OBS",
@@ -5100,59 +5142,46 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:04:31.864Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :16) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:04:31.861Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:04:31.858Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:04:31.854Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:04:31.187Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :16) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:04:31.183Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:04:31.179Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "cop": 1795602544579,
    "spa": 1795602753005,
    "mnd": 1795603175815,
    "bra": 1795604436334,
    "cam": 1795605050850,
    "ame": 1795605280265
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "08:42",
+     "jogo": "Switzerland x Wales",
+     "odd": 2.74
+    },
+    {
+     "h": "08:45",
+     "jogo": "Croatia x Uruguay",
+     "odd": 2.76
+    },
+    {
+     "h": "08:48",
+     "jogo": "Germany x Portugal",
+     "odd": 2.32
+    }
+   ],
+   "gatilho": "time Uruguay",
+   "alvo": {
+    "h": "08:42",
+    "jogo": "Switzerland x Wales",
+    "odd": 2.74,
+    "unidades": 1,
+    "desde": 1795606150508
+   },
+   "iniciadoEm": 1795606150508
+  },
   "cooldown": {
    "cam": 1795605050850,
    "eng": 1795575218328,
@@ -5165,10 +5194,10 @@
    "cop": 1795602544579
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":16",
-   "n": 8,
-   "start": 1
+   "tipo": "time",
+   "chave": "Uruguay",
+   "n": 19,
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -5316,9 +5345,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "spa": {
-    "desde": 1795606143355,
-    "gatilho": "time VIL"
+   "cam": {
+    "desde": 1795606150546,
+    "gatilho": "odd 2.3"
    }
   }
  },
