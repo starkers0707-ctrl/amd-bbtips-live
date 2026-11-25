@@ -1509,12 +1509,24 @@
  },
  "o25": {
   "saldo": -20.6,
-  "ciclos": 100434,
+  "ciclos": 100436,
   "greens": 272,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 100123,
+  "descartes": 100125,
   "historico": [
+   {
+    "quando": "2026-11-25T09:13:29.867Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:13:29.863Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T09:13:21.919Z",
     "resultado": "GREEN_OBS",
@@ -5102,18 +5114,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:44:03.309Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:43:53.335Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5291,20 +5291,26 @@
     "desde": 1795596831466,
     "gatilho": "time Guayaquil"
    },
-   "cop": {
-    "desde": 1795598001919,
-    "gatilho": "time Uruguay"
+   "spa": {
+    "desde": 1795598009866,
+    "gatilho": "odd 1.76"
    }
   }
  },
  "ambas": {
-  "saldo": -37.2,
-  "ciclos": 344,
-  "greens": 140,
+  "saldo": -36.4,
+  "ciclos": 345,
+  "greens": 141,
   "redsCiclo": 20,
   "aborts": 0,
   "descartes": 184,
   "historico": [
+   {
+    "quando": "2026-11-25T09:13:21.939Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "ame · Buenos Aires x Belo Horizonte @1.89 (tiro 2) · gatilho: time Belo Horizonte"
+   },
    {
     "quando": "2026-11-25T08:45:30.200Z",
     "resultado": "GREEN",
@@ -7372,47 +7378,10 @@
   ],
   "consumidas": {
    "mnd": 1795595976401,
-   "eng": 1795596330189
+   "eng": 1795596330189,
+   "ame": 1795598001936
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "05:58",
-     "jogo": "Agua Branca x Rio de Janeiro",
-     "odd": 1.82
-    },
-    {
-     "h": "06:01",
-     "jogo": "Buenos Aires x Belo Horizonte",
-     "odd": 1.89
-    },
-    {
-     "h": "06:04",
-     "jogo": "Medellin x Agua Branca",
-     "odd": 1.89
-    }
-   ],
-   "gatilho": "time Belo Horizonte",
-   "alvo": {
-    "h": "06:01",
-    "jogo": "Buenos Aires x Belo Horizonte",
-    "odd": 1.89,
-    "unidades": 2,
-    "desde": 1795597206618
-   },
-   "iniciadoEm": 1795596331006,
-   "tiros": [
-    {
-     "h": "05:58",
-     "jogo": "Agua Branca x Rio de Janeiro",
-     "odd": 1.82,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795596330189,
@@ -7421,13 +7390,13 @@
    "mnd": 1795595976401,
    "cam": 1795592637356,
    "cop": 1795592080479,
-   "ame": 1795510421878,
+   "ame": 1795598001936,
    "ita": 1795591350074
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "Rio de Janeiro",
-   "n": 12,
+   "chave": "Penarol",
+   "n": 11,
    "start": 1
   },
   "dias": {
@@ -7436,7 +7405,7 @@
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
    "2026-11-24": -32.6,
-   "2026-11-25": -6
+   "2026-11-25": -5.2
   },
   "_obs": {}
  }
