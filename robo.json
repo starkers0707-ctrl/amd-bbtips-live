@@ -1475,12 +1475,30 @@
  },
  "o25": {
   "saldo": -22.9,
-  "ciclos": 99531,
+  "ciclos": 99534,
   "greens": 269,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 99223,
+  "descartes": 99226,
   "historico": [
+   {
+    "quando": "2026-11-25T08:31:26.291Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:31:16.665Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:31:16.659Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T08:31:16.647Z",
     "resultado": "GREEN_OBS",
@@ -5062,24 +5080,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RGGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:08:13.951Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:08:13.942Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:08:04.208Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5133,7 +5133,7 @@
    "tipo": "time",
    "chave": "NED",
    "n": 16,
-   "start": 8
+   "start": 7
   },
   "dias": {
    "2026-11-19": -7,
@@ -5282,7 +5282,7 @@
   },
   "_obs": {
    "mnd": {
-    "desde": 1795595476646,
+    "desde": 1795595486290,
     "gatilho": "time NED"
    }
   }
@@ -7347,7 +7347,37 @@
    "cop": 1795592080479,
    "cam": 1795592637356
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "05:38",
+     "jogo": "CHL x DEN",
+     "odd": 1.68
+    },
+    {
+     "h": "05:40",
+     "jogo": "FRA x ARG",
+     "odd": 1.8
+    },
+    {
+     "h": "05:42",
+     "jogo": "ITA x WAL",
+     "odd": 1.75
+    }
+   ],
+   "gatilho": "time FRA",
+   "alvo": {
+    "h": "05:38",
+    "jogo": "CHL x DEN",
+    "odd": 1.68,
+    "unidades": 1,
+    "desde": 1795595476685
+   },
+   "iniciadoEm": 1795595476685
+  },
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795591897958,
