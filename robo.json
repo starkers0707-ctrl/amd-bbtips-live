@@ -1469,13 +1469,43 @@
   }
  },
  "o25": {
-  "saldo": -26.9,
-  "ciclos": 98528,
-  "greens": 266,
+  "saldo": -25.4,
+  "ciclos": 98533,
+  "greens": 267,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 98223,
+  "descartes": 98227,
   "historico": [
+   {
+    "quando": "2026-11-25T07:56:01.310Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:56:01.305Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:56:01.300Z",
+    "resultado": "GREEN",
+    "unidades": 1.5,
+    "detalhe": "cop · Belgium x Argentina @2.12 (tiro 3) · gatilho: time France"
+   },
+   {
+    "quando": "2026-11-25T07:55:59.210Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:55:59.198Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T07:55:59.190Z",
     "resultado": "GREEN_OBS",
@@ -5045,89 +5075,16 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:34:37.447Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:34:27.977Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:34:27.970Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:34:27.963Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:34:26.772Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
    }
   ],
   "consumidas": {
    "lat": 1795590752470,
    "spa": 1795591110720,
    "ita": 1795591350030,
-   "mnd": 1795591666559
+   "mnd": 1795591666559,
+   "cop": 1795593361290
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "04:48",
-     "jogo": "Spain x Mexico",
-     "odd": 2.24
-    },
-    {
-     "h": "04:51",
-     "jogo": "England x France",
-     "odd": 2.24
-    },
-    {
-     "h": "04:54",
-     "jogo": "Belgium x Argentina",
-     "odd": 2.12
-    }
-   ],
-   "gatilho": "time France",
-   "alvo": {
-    "h": "04:54",
-    "jogo": "Belgium x Argentina",
-    "odd": 2.12,
-    "unidades": 4,
-    "desde": 1795593181172
-   },
-   "iniciadoEm": 1795592585619,
-   "tiros": [
-    {
-     "h": "04:48",
-     "jogo": "Spain x Mexico",
-     "odd": 2.24,
-     "unidades": 1
-    },
-    {
-     "h": "04:51",
-     "jogo": "England x France",
-     "odd": 2.24,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5137,13 +5094,13 @@
    "bra": 1795522714636,
    "mnd": 1795591666559,
    "ame": 1795572519317,
-   "cop": 1795586674122
+   "cop": 1795593361290
   },
   "_gatilhoAtual": {
    "tipo": "time",
    "chave": "France",
    "n": 12,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -5152,7 +5109,7 @@
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
    "2026-11-24": -19.4,
-   "2026-11-25": 2.4
+   "2026-11-25": 3.9
   },
   "_obs": {}
  },
@@ -5292,7 +5249,7 @@
   },
   "_obs": {
    "spa": {
-    "desde": 1795593359189,
+    "desde": 1795593361310,
     "gatilho": "time VIL"
    }
   }
