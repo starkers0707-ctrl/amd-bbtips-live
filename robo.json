@@ -1482,12 +1482,24 @@
  },
  "o25": {
   "saldo": -25.2,
-  "ciclos": 96873,
+  "ciclos": 96875,
   "greens": 261,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96574,
+  "descartes": 96576,
   "historico": [
+   {
+    "quando": "2026-11-25T05:49:04.332Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T05:49:04.323Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T05:49:00.902Z",
     "resultado": "GREEN_OBS",
@@ -5075,18 +5087,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.74) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:54:39.833Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.74) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:54:35.368Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.74) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5292,7 +5292,7 @@
     "gatilho": "time Dortmund"
    },
    "cop": {
-    "desde": 1795585740902,
+    "desde": 1795585744332,
     "gatilho": "time France"
    }
   }
@@ -7224,7 +7224,37 @@
    "eng": 1795582778457,
    "cop": 1795583077354
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "02:51",
+     "jogo": "GET x RMA",
+     "odd": 1.67
+    },
+    {
+     "h": "02:53",
+     "jogo": "BET x BAR",
+     "odd": 1.67
+    },
+    {
+     "h": "02:55",
+     "jogo": "VAL x RSO",
+     "odd": 1.7
+    }
+   ],
+   "gatilho": "time BET",
+   "alvo": {
+    "h": "02:51",
+    "jogo": "GET x RMA",
+    "odd": 1.67,
+    "unidades": 1,
+    "desde": 1795585740928
+   },
+   "iniciadoEm": 1795585740928
+  },
   "cooldown": {
    "lat": 1795567528053,
    "eng": 1795582778457,
@@ -7236,9 +7266,9 @@
    "ame": 1795510421878
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "1-0 / 0-1",
-   "n": 8,
+   "tipo": "time",
+   "chave": "BET",
+   "n": 9,
    "start": 1
   },
   "dias": {
