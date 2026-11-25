@@ -1458,12 +1458,18 @@
  },
  "o25": {
   "saldo": -22.7,
-  "ciclos": 97126,
+  "ciclos": 97127,
   "greens": 263,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96825,
+  "descartes": 96826,
   "historico": [
+   {
+    "quando": "2026-11-25T06:27:19.454Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T06:27:17.213Z",
     "resultado": "GREEN_OBS",
@@ -5057,12 +5063,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:16:14.698Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5238,20 +5238,26 @@
     "desde": 1795587070505,
     "gatilho": "time VIL"
    },
-   "cop": {
-    "desde": 1795588037212,
-    "gatilho": "time France"
+   "mnd": {
+    "desde": 1795588039453,
+    "gatilho": "time NED"
    }
   }
  },
  "ambas": {
-  "saldo": -29.1,
-  "ciclos": 324,
-  "greens": 132,
+  "saldo": -28.4,
+  "ciclos": 325,
+  "greens": 133,
   "redsCiclo": 18,
   "aborts": 0,
   "descartes": 174,
   "historico": [
+   {
+    "quando": "2026-11-25T06:27:17.240Z",
+    "resultado": "GREEN",
+    "unidades": 0.7,
+    "detalhe": "eng · SUN x MNU @1.68 (tiro 1) · gatilho: time BRE"
+   },
    {
     "quando": "2026-11-25T06:26:04.228Z",
     "resultado": "GREEN",
@@ -7199,42 +7205,13 @@
   ],
   "consumidas": {
    "spa": 1795585949785,
-   "cop": 1795587964219
+   "cop": 1795587964219,
+   "eng": 1795588037236
   },
-  "ciclo": {
-   "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "04:04",
-     "jogo": "SUN x MNU",
-     "odd": 1.68
-    },
-    {
-     "h": "04:06",
-     "jogo": "BRE x IPS",
-     "odd": 1.78
-    },
-    {
-     "h": "04:08",
-     "jogo": "BHA x EVE",
-     "odd": 1.71
-    }
-   ],
-   "gatilho": "time BRE",
-   "alvo": {
-    "h": "04:04",
-    "jogo": "SUN x MNU",
-    "odd": 1.68,
-    "unidades": 1,
-    "desde": 1795588025646
-   },
-   "iniciadoEm": 1795588025646
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795567528053,
-   "eng": 1795582778457,
+   "eng": 1795588037236,
    "spa": 1795585949785,
    "bra": 1795526496634,
    "mnd": 1795515327438,
@@ -7254,7 +7231,7 @@
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
    "2026-11-24": -32.6,
-   "2026-11-25": 2.1
+   "2026-11-25": 2.8
   },
   "_obs": {}
  }
