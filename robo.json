@@ -1545,10 +1545,10 @@
    "bra": 1795556736216
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "RRGG",
-   "n": 10,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":29",
+   "n": 8,
+   "start": 7
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -1571,12 +1571,36 @@
  },
  "o25": {
   "saldo": -8.5,
-  "ciclos": 103972,
+  "ciclos": 103976,
   "greens": 281,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 103652,
+  "descartes": 103656,
   "historico": [
+   {
+    "quando": "2026-11-25T12:03:43.269Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RGGR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:03:37.573Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:03:37.570Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:03:37.565Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RGGR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T12:03:36.900Z",
     "resultado": "GREEN_OBS",
@@ -5152,30 +5176,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:34:30.610Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:34:30.607Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:34:30.039Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:34:30.035Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5385,9 +5385,9 @@
     "desde": 1795607971059,
     "gatilho": "odd 2.24"
    },
-   "cop": {
-    "desde": 1795608216900,
-    "gatilho": "coluna :06"
+   "mnd": {
+    "desde": 1795608223268,
+    "gatilho": "seq RGGR"
    }
   }
  },
