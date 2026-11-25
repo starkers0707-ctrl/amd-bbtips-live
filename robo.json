@@ -1470,12 +1470,60 @@
  },
  "o25": {
   "saldo": -26.9,
-  "ciclos": 98086,
+  "ciclos": 98094,
   "greens": 266,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 97781,
+  "descartes": 97789,
   "historico": [
+   {
+    "quando": "2026-11-25T07:40:41.850Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:40:41.842Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:40:41.838Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:40:37.295Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:40:37.285Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:40:37.280Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:40:36.529Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:40:36.520Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T07:40:36.514Z",
     "resultado": "GREEN_OBS",
@@ -5027,54 +5075,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:12:19.448Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:12:19.439Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:12:13.021Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:12:13.014Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:12:07.579Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:12:07.570Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:12:03.490Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:12:03.484Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5126,10 +5126,10 @@
    "cop": 1795586674122
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "empate 1-1",
+   "tipo": "time",
+   "chave": "France",
    "n": 12,
-   "start": 1
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -5281,9 +5281,9 @@
     "desde": 1795592253229,
     "gatilho": "time NED"
    },
-   "ita": {
-    "desde": 1795592436514,
-    "gatilho": "time SAS"
+   "cop": {
+    "desde": 1795592441850,
+    "gatilho": "time France"
    }
   }
  },
@@ -7307,14 +7307,43 @@
    }
   ],
   "consumidas": {
-   "cam": 1795588832207,
    "lat": 1795590067651,
    "ita": 1795591350074,
    "mnd": 1795591666601,
    "eng": 1795591897958,
    "cop": 1795592080479
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "04:42",
+     "jogo": "Paris x Rome",
+     "odd": 1.85
+    },
+    {
+     "h": "04:45",
+     "jogo": "Benfica x Porto",
+     "odd": 2.05
+    },
+    {
+     "h": "04:48",
+     "jogo": "Turin x Dortmund",
+     "odd": 2.01
+    }
+   ],
+   "gatilho": "time Porto",
+   "alvo": {
+    "h": "04:42",
+    "jogo": "Paris x Rome",
+    "odd": 1.85,
+    "unidades": 1,
+    "desde": 1795592436548
+   },
+   "iniciadoEm": 1795592436548
+  },
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795591897958,
@@ -7328,9 +7357,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "Brazil",
-   "n": 8,
-   "start": 7
+   "chave": "Porto",
+   "n": 12,
+   "start": 1
   },
   "dias": {
    "2026-11-20": 0,
