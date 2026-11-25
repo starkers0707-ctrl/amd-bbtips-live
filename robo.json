@@ -1580,12 +1580,30 @@
  },
  "o25": {
   "saldo": -10,
-  "ciclos": 106511,
+  "ciclos": 106514,
   "greens": 287,
   "redsCiclo": 40,
   "aborts": 0,
-  "descartes": 106184,
+  "descartes": 106187,
   "historico": [
+   {
+    "quando": "2026-11-25T13:36:29.812Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho seq GGRR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T13:36:29.809Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T13:36:29.805Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T13:36:29.801Z",
     "resultado": "GREEN_OBS",
@@ -5167,34 +5185,45 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:14:04.270Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:14:04.263Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:14:04.258Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "bra": 1795610190986,
    "cam": 1795611867253,
    "cop": 1795612980951,
    "mnd": 1795613130569,
    "spa": 1795613671525
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "10:53",
+     "jogo": "VIT x THI",
+     "odd": 1.88
+    },
+    {
+     "h": "10:56",
+     "jogo": "FOR x ATC",
+     "odd": 1.92
+    },
+    {
+     "h": "10:59",
+     "jogo": "PAR x MEN",
+     "odd": 1.94
+    }
+   ],
+   "gatilho": "time FOR",
+   "alvo": {
+    "h": "10:53",
+    "jogo": "VIT x THI",
+    "odd": 1.88,
+    "unidades": 1,
+    "desde": 1795613791857
+   },
+   "iniciadoEm": 1795613791857
+  },
   "cooldown": {
    "cam": 1795611867253,
    "eng": 1795575218328,
@@ -5207,10 +5236,10 @@
    "cop": 1795612980951
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.76",
-   "n": 10,
-   "start": 4
+   "tipo": "time",
+   "chave": "FOR",
+   "n": 14,
+   "start": 6
   },
   "dias": {
    "2026-11-19": -7,
@@ -5357,12 +5386,7 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {
-   "mnd": {
-    "desde": 1795613789801,
-    "gatilho": "coluna :46"
-   }
-  }
+  "_obs": {}
  },
  "ambas": {
   "saldo": -39,
