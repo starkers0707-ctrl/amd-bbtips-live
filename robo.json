@@ -1410,12 +1410,18 @@
  },
  "o25": {
   "saldo": -30,
-  "ciclos": 94341,
+  "ciclos": 94342,
   "greens": 248,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 94056,
+  "descartes": 94057,
   "historico": [
+   {
+    "quando": "2026-11-25T00:37:47.375Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T00:37:45.308Z",
     "resultado": "GREEN_OBS",
@@ -5009,19 +5015,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T23:50:09.133Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
    }
   ],
   "consumidas": {
    "eng": 1795564656759,
    "ame": 1795565357683
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "21:42",
+     "jogo": "Brazil x Germany",
+     "odd": 2.19
+    },
+    {
+     "h": "21:45",
+     "jogo": "Belgium x Croatia",
+     "odd": 2.4
+    },
+    {
+     "h": "21:48",
+     "jogo": "Mexico x USA",
+     "odd": 2.05
+    }
+   ],
+   "gatilho": "seq GRRRG",
+   "alvo": {
+    "h": "21:42",
+    "jogo": "Brazil x Germany",
+    "odd": 2.19,
+    "unidades": 1,
+    "desde": 1795567067359
+   },
+   "iniciadoEm": 1795567067359
+  },
   "cooldown": {
    "cam": 1795558424565,
    "eng": 1795564656759,
@@ -5034,10 +5064,10 @@
    "cop": 1795556284523
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.13",
-   "n": 8,
-   "start": 6
+   "tipo": "seq",
+   "chave": "GRRRG",
+   "n": 9,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -5185,7 +5215,7 @@
   },
   "_obs": {
    "eng": {
-    "desde": 1795567065308,
+    "desde": 1795567067375,
     "gatilho": "coluna :54"
    }
   }
