@@ -39,7 +39,7 @@
   function sistema() {
     var ens = ($('ensino') && $('ensino').value.trim()) || '';
     var livre = !($('modo') && $('modo').value === 'regras');
-    return (livre ? LIVRE : REGRAS) + (ens ? '\n\nO QUE O USUÁRIO TE ENSINOU (use quando for relevante):\n' + ens : '');
+    return (livre ? LIVRE : REGRAS) + (ens ? '\n\nMÉTODO DO USUÁRIO (aplique SOMENTE quando ele pedir análise ou entrada; em conversa normal, não aplique nem mencione):\n' + ens : '');
   }
   function $(id) { return document.getElementById(id); }
   function ler(k, d) { try { var v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }
@@ -244,11 +244,15 @@
     if (!cfg.chave || !cfg.modelo) { status('Conecte a sua IA primeiro (chave + modelo).', 'badt'); return; }
     if (!ligasMarcadas().length) { status('Marque pelo menos uma liga.', 'badt'); return; }
     grava(LS_ENSINO, $('ensino').value);
-    var bt = $('btEnviar'); bt.disabled = true; bt.textContent = 'Lendo o site…';
-    contexto().then(function (ctx) {
-      $('ctx').textContent = ctx;
+    var bt = $('btEnviar'); bt.disabled = true;
+    var livreMsg = $('modo').value !== 'regras';
+    var sobreSite = /liga|over|under|ambas|btts|5\+|gol|entrada|entrar|tiro|gr[aá]fico|m[eé]dia|mm9|mm21|coluna|time|odd|grade|jogo|placar|analis|subindo|caindo|queda|pagando|seca|rob[oô]|green|red|inglaterra|it[aá]lia|espanha|mundo|brasil|am[eé]rica|copa|campe|eng|ita|spa|mnd|bra|lat|tend[eê]ncia|sequ[eê]ncia|site|dados/i.test(texto);
+    var anexa = !livreMsg || sobreSite;
+    bt.textContent = anexa ? 'Lendo o site…' : 'IA pensando…';
+    (anexa ? contexto() : Promise.resolve('')).then(function (ctx) {
+      if (ctx) $('ctx').textContent = ctx;
       var livre = $('modo').value !== 'regras';
-      chat.push({ r: 'u', t: texto + '\n\n---\n' + (livre ? '[dados do site para consulta — use só se a pergunta precisar]\n' : '') + ctx, vis: texto, modo: $('modo').value });
+      chat.push({ r: 'u', t: ctx ? texto + '\n\n---\n' + (livre ? '[dados ao vivo do site, só para consulta — responda apenas o que foi perguntado acima]\n' : '') + ctx : texto, vis: texto, modo: $('modo').value });
       desenhaChat();
       bt.textContent = 'IA analisando…';
       /* historico curto: as perguntas antigas vao sem os dados antigos (so a ultima leva os dados ao vivo) */
