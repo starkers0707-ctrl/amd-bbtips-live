@@ -1458,12 +1458,18 @@
  },
  "o25": {
   "saldo": -23.6,
-  "ciclos": 97087,
+  "ciclos": 97088,
   "greens": 262,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96787,
+  "descartes": 96788,
   "historico": [
+   {
+    "quando": "2026-11-25T06:20:02.167Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T06:19:33.752Z",
     "resultado": "GREEN_OBS",
@@ -5057,12 +5063,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:11:07.187Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5238,7 +5238,7 @@
     "gatilho": "time VIL"
    },
    "cop": {
-    "desde": 1795587573751,
+    "desde": 1795587602166,
     "gatilho": "time France"
    }
   }
@@ -7195,8 +7195,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "03:18",
@@ -7216,13 +7216,21 @@
    ],
    "gatilho": "placar 1-0 / 0-1",
    "alvo": {
-    "h": "03:18",
-    "jogo": "Croatia x Colombia",
-    "odd": 2.31,
-    "unidades": 1,
-    "desde": 1795587349202
+    "h": "03:21",
+    "jogo": "Portugal x Switzerland",
+    "odd": 2.24,
+    "unidades": 2,
+    "desde": 1795587573777
    },
-   "iniciadoEm": 1795587349202
+   "iniciadoEm": 1795587349202,
+   "tiros": [
+    {
+     "h": "03:18",
+     "jogo": "Croatia x Colombia",
+     "odd": 2.31,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795567528053,
