@@ -1391,7 +1391,37 @@
   "consumidas": {
    "mnd": 1795581815685
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "02:07",
+     "jogo": "COM x INT",
+     "odd": 3.28
+    },
+    {
+     "h": "02:09",
+     "jogo": "MIL x MON",
+     "odd": 3.12
+    },
+    {
+     "h": "02:11",
+     "jogo": "PAR x FRO",
+     "odd": 3.28
+    }
+   ],
+   "gatilho": "seq RRRR",
+   "alvo": {
+    "h": "02:07",
+    "jogo": "COM x INT",
+    "odd": 3.28,
+    "unidades": 1,
+    "desde": 1795583070101
+   },
+   "iniciadoEm": 1795583070101
+  },
   "cooldown": {
    "mnd": 1795581815685,
    "lat": 1795522898324,
@@ -1401,10 +1431,10 @@
    "bra": 1795556736216
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "3.37",
-   "n": 8,
-   "start": 7
+   "tipo": "seq",
+   "chave": "RRRR",
+   "n": 13,
+   "start": 1
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -1427,12 +1457,24 @@
  },
  "o25": {
   "saldo": -26.9,
-  "ciclos": 96468,
+  "ciclos": 96470,
   "greens": 259,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96171,
+  "descartes": 96173,
   "historico": [
+   {
+    "quando": "2026-11-25T05:04:30.820Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T05:04:30.124Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T05:04:21.312Z",
     "resultado": "GREEN_OBS",
@@ -5020,18 +5062,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:22:03.691Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:22:01.581Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5241,7 +5271,7 @@
     "gatilho": "time Dortmund"
    },
    "lat": {
-    "desde": 1795583061312,
+    "desde": 1795583070819,
     "gatilho": "placar acima de 1-0 (2-0)"
    }
   }
