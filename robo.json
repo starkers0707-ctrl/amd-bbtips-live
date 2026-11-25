@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 80.1,
-  "ciclos": 256,
+  "saldo": 73.1,
+  "ciclos": 257,
   "greens": 98,
-  "redsCiclo": 38,
+  "redsCiclo": 39,
   "aborts": 0,
   "descartes": 120,
   "historico": [
+   {
+    "quando": "2026-11-25T13:51:30.735Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "bra · ciclo perdido (3 tiros) · gatilho: placar 0-0"
+   },
    {
     "quando": "2026-11-25T13:33:36.561Z",
     "resultado": "GREEN",
@@ -1546,60 +1552,17 @@
   ],
   "consumidas": {
    "eng": 1795611576721,
-   "lat": 1795613616549
+   "lat": 1795613616549,
+   "bra": 1795614690723
   },
-  "ciclo": {
-   "liga": "bra",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "10:44",
-     "jogo": "PAR x JUV",
-     "odd": 3.02
-    },
-    {
-     "h": "10:47",
-     "jogo": "PAL x NAC",
-     "odd": 3.37
-    },
-    {
-     "h": "10:50",
-     "jogo": "ZEI x FLU",
-     "odd": 3.25
-    }
-   ],
-   "gatilho": "placar 0-0",
-   "alvo": {
-    "h": "10:50",
-    "jogo": "ZEI x FLU",
-    "odd": 3.25,
-    "unidades": 4,
-    "desde": 1795614517659
-   },
-   "iniciadoEm": 1795613976528,
-   "tiros": [
-    {
-     "h": "10:44",
-     "jogo": "PAR x JUV",
-     "odd": 3.02,
-     "unidades": 1
-    },
-    {
-     "h": "10:47",
-     "jogo": "PAL x NAC",
-     "odd": 3.37,
-     "unidades": 2
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "mnd": 1795606070098,
    "lat": 1795613616549,
    "eng": 1795611576721,
    "spa": 1795598948455,
    "ita": 1795610074096,
-   "bra": 1795556736216
+   "bra": 1795614690723
   },
   "_gatilhoAtual": {
    "tipo": "placar",
@@ -1613,7 +1576,7 @@
    "2026-11-22": -12.7,
    "2026-11-23": 32.3,
    "2026-11-24": 28,
-   "2026-11-25": 16.9
+   "2026-11-25": 9.9
   },
   "_obs": {
    "cam": {
@@ -1624,12 +1587,42 @@
  },
  "o25": {
   "saldo": -10,
-  "ciclos": 106945,
+  "ciclos": 106950,
   "greens": 287,
   "redsCiclo": 40,
   "aborts": 0,
-  "descartes": 106618,
+  "descartes": 106623,
   "historico": [
+   {
+    "quando": "2026-11-25T13:51:30.758Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T13:51:30.012Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T13:51:30.008Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T13:51:30.002Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T13:51:17.652Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T13:51:17.648Z",
     "resultado": "GREEN_OBS",
@@ -5199,36 +5192,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:31:31.538Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:31:31.533Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:31:31.528Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RGGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:31:31.524Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:31:27.427Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRRG) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5439,9 +5402,9 @@
     "desde": 1795614337738,
     "gatilho": "time FOR"
    },
-   "cam": {
-    "desde": 1795614677648,
-    "gatilho": "seq RRRG"
+   "mnd": {
+    "desde": 1795614690758,
+    "gatilho": "coluna :06"
    }
   }
  },
