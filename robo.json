@@ -1571,12 +1571,36 @@
  },
  "o25": {
   "saldo": -8.5,
-  "ciclos": 103997,
+  "ciclos": 104001,
   "greens": 281,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 103677,
+  "descartes": 103681,
   "historico": [
+   {
+    "quando": "2026-11-25T12:04:30.236Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :18) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:04:30.230Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RGGR) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:04:28.203Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:04:28.200Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :18) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T12:04:28.194Z",
     "resultado": "GREEN_OBS",
@@ -5152,30 +5176,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:36:08.322Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:35:42.338Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:35:42.334Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:35:42.327Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5185,8 +5185,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "09:03",
@@ -5206,13 +5206,21 @@
    ],
    "gatilho": "seq RRRR",
    "alvo": {
-    "h": "09:03",
-    "jogo": "MLG x VAL",
-    "odd": 1.87,
-    "unidades": 1,
-    "desde": 1795608121539
+    "h": "09:05",
+    "jogo": "RMA x ALV",
+    "odd": 1.8,
+    "unidades": 2,
+    "desde": 1795608270213
    },
-   "iniciadoEm": 1795608121539
+   "iniciadoEm": 1795608121539,
+   "tiros": [
+    {
+     "h": "09:03",
+     "jogo": "MLG x VAL",
+     "odd": 1.87,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795605050850,
@@ -5385,9 +5393,9 @@
     "desde": 1795607971059,
     "gatilho": "odd 2.24"
    },
-   "mnd": {
-    "desde": 1795608268194,
-    "gatilho": "seq RGGR"
+   "cam": {
+    "desde": 1795608270236,
+    "gatilho": "coluna :18"
    }
   }
  },
