@@ -1457,12 +1457,18 @@
  },
  "o25": {
   "saldo": -26.9,
-  "ciclos": 96471,
+  "ciclos": 96472,
   "greens": 259,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96174,
+  "descartes": 96175,
   "historico": [
+   {
+    "quando": "2026-11-25T05:04:37.343Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T05:04:35.368Z",
     "resultado": "GREEN_OBS",
@@ -5056,12 +5062,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:22:05.982Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5269,21 +5269,23 @@
    "cam": {
     "desde": 1795581650169,
     "gatilho": "time Dortmund"
-   },
-   "lat": {
-    "desde": 1795583075368,
-    "gatilho": "placar acima de 1-0 (2-0)"
    }
   }
  },
  "ambas": {
-  "saldo": -30.9,
-  "ciclos": 318,
-  "greens": 129,
+  "saldo": -30,
+  "ciclos": 319,
+  "greens": 130,
   "redsCiclo": 18,
   "aborts": 0,
   "descartes": 171,
   "historico": [
+   {
+    "quando": "2026-11-25T05:04:37.356Z",
+    "resultado": "GREEN",
+    "unidades": 0.9,
+    "detalhe": "cop · England x Belgium @1.92 (tiro 1) · gatilho: placar 1-0 / 0-1"
+   },
    {
     "quando": "2026-11-25T04:59:38.460Z",
     "resultado": "GREEN",
@@ -7195,39 +7197,10 @@
   ],
   "consumidas": {
    "spa": 1795581038910,
-   "eng": 1795582778457
+   "eng": 1795582778457,
+   "cop": 1795583077354
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "02:03",
-     "jogo": "England x Belgium",
-     "odd": 1.92
-    },
-    {
-     "h": "02:06",
-     "jogo": "Portugal x Italy",
-     "odd": 2.11
-    },
-    {
-     "h": "02:09",
-     "jogo": "Argentina x Croatia",
-     "odd": 2.02
-    }
-   ],
-   "gatilho": "placar 1-0 / 0-1",
-   "alvo": {
-    "h": "02:03",
-    "jogo": "England x Belgium",
-    "odd": 1.92,
-    "unidades": 1,
-    "desde": 1795582804322
-   },
-   "iniciadoEm": 1795582804322
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795567528053,
    "eng": 1795582778457,
@@ -7235,7 +7208,7 @@
    "bra": 1795526496634,
    "mnd": 1795515327438,
    "cam": 1795574798860,
-   "cop": 1795575537437,
+   "cop": 1795583077354,
    "ame": 1795510421878
   },
   "_gatilhoAtual": {
@@ -7250,7 +7223,7 @@
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
    "2026-11-24": -32.6,
-   "2026-11-25": 0.3
+   "2026-11-25": 1.2
   },
   "_obs": {}
  }
