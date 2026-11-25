@@ -1,12 +1,18 @@
 {
  "o35": {
   "saldo": 59.4,
-  "ciclos": 238,
+  "ciclos": 239,
   "greens": 90,
   "redsCiclo": 36,
   "aborts": 0,
-  "descartes": 112,
+  "descartes": 113,
   "historico": [
+   {
+    "quando": "2026-11-25T09:11:31.879Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho seq RGGR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T08:07:37.020Z",
     "resultado": "RED_CICLO",
@@ -1437,7 +1443,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "06:14",
+     "jogo": "CRO x SWE",
+     "odd": 3.32
+    },
+    {
+     "h": "06:16",
+     "jogo": "ENG x FRA",
+     "odd": 3.18
+    },
+    {
+     "h": "06:18",
+     "jogo": "DEN x WAL",
+     "odd": 3.34
+    }
+   ],
+   "gatilho": "seq RGGR",
+   "alvo": {
+    "h": "06:14",
+    "jogo": "CRO x SWE",
+    "odd": 3.32,
+    "unidades": 1,
+    "desde": 1795597892738
+   },
+   "iniciadoEm": 1795597892738
+  },
   "cooldown": {
    "mnd": 1795594057016,
    "lat": 1795522898324,
@@ -1447,10 +1483,10 @@
    "bra": 1795556736216
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "NED",
-   "n": 13,
-   "start": 2
+   "tipo": "seq",
+   "chave": "RGGR",
+   "n": 8,
+   "start": 1
   },
   "dias": {
    "2026-11-20": 4.3,
@@ -1473,12 +1509,48 @@
  },
  "o25": {
   "saldo": -22,
-  "ciclos": 100367,
+  "ciclos": 100373,
   "greens": 271,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 100057,
+  "descartes": 100063,
   "historico": [
+   {
+    "quando": "2026-11-25T09:11:31.914Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:11:31.907Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-1)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:11:31.901Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.76) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:11:31.897Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:11:14.193Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:11:14.185Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T09:11:14.178Z",
     "resultado": "GREEN_OBS",
@@ -5042,42 +5114,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:41:48.436Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho time Guayaquil) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:41:48.429Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:41:48.422Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:41:48.416Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:41:37.438Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:41:37.430Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5283,10 +5319,6 @@
    "ame": {
     "desde": 1795596831466,
     "gatilho": "time Guayaquil"
-   },
-   "spa": {
-    "desde": 1795597874177,
-    "gatilho": "odd 1.76"
    }
   }
  },
