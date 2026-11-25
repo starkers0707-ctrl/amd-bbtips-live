@@ -1475,12 +1475,30 @@
  },
  "o25": {
   "saldo": -23.8,
-  "ciclos": 99412,
+  "ciclos": 99415,
   "greens": 268,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 99105,
+  "descartes": 99108,
   "historico": [
+   {
+    "quando": "2026-11-25T08:24:05.815Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time NAP) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:23:53.885Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T08:23:53.869Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho time NAP) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T08:23:53.860Z",
     "resultado": "GREEN",
@@ -5062,24 +5080,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:04:34.320Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:04:34.312Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:04:34.306Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5087,7 +5087,37 @@
    "cop": 1795593361290,
    "ame": 1795595033847
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "05:29",
+     "jogo": "LAZ x LEC",
+     "odd": 1.93
+    },
+    {
+     "h": "05:31",
+     "jogo": "NAP x MIL",
+     "odd": 1.94
+    },
+    {
+     "h": "05:33",
+     "jogo": "VEN x ROM",
+     "odd": 1.71
+    }
+   ],
+   "gatilho": "time NAP",
+   "alvo": {
+    "h": "05:29",
+    "jogo": "LAZ x LEC",
+    "odd": 1.93,
+    "unidades": 1,
+    "desde": 1795595045803
+   },
+   "iniciadoEm": 1795595045803
+  },
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5250,7 +5280,12 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {}
+  "_obs": {
+   "ita": {
+    "desde": 1795595045814,
+    "gatilho": "time NAP"
+   }
+  }
  },
  "ambas": {
   "saldo": -38.3,
