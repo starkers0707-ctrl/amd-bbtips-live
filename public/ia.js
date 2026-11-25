@@ -94,7 +94,46 @@
   }
 
   /* ---------------- provedores ---------------- */
-  function erroHttp(r) { return r.text().then(function (t) { var m = t; try { var j = JSON.parse(t); m = (j.error && (j.error.message || j.error)) || j.message || t; } catch (e) {} throw new Error('HTTP ' + r.status + ': ' + String(m).slice(0, 300)); }); }
+  function erroHttp(r) { return r.text().then(function (t) { var m = t; try { var j = JSON.parse(t); m = (j.error && (j.error.message || j.error)) || j.message || t; } catch (e) {} var er = new Error('HTTP ' + r.status + ': ' + String(m).slice(0, 300)); er.status = r.status; throw er; }); }
+  /* Preferencia de modelo: estaveis e rapidos primeiro; experimentais por ultimo. */
+  function nota(m) {
+    var s = 0; m = String(m).toLowerCase();
+    if (/flash/.test(m)) s += 3; if (/pro|sonnet|gpt-?\d|4o|opus/.test(m)) s += 2; if (/lite|mini|haiku/.test(m)) s += 1;
+    if (/exp|preview|experimental|hydrogen|test|alpha|beta|tts|image|vision|embed|thinking/.test(m)) s -= 4;
+    var v = m.match(/(\d+(?:\.\d+)?)/); if (v) s += Math.min(3, Number(v[1]) / 2);
+    return s;
+  }
+  function ordena(lista) { return lista.slice().sort(function (a, b) { return nota(b) - nota(a) || a.localeCompare(b); }); }
+  function espera(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+  /* Ocupado (429/500/502/503/504): tenta de novo e depois troca de modelo sozinho. */
+  function perguntarComReserva(hist, aviso) {
+    if (!cfg.lista || !cfg.lista.length) {
+      /* conexao antiga sem lista de modelos: busca agora para ter reserva */
+      return listarModelos(cfg.prov, cfg.chave).then(function (l) { cfg.lista = ordena(l).slice(0, 40); grava(LS_CFG, cfg); }, function () { cfg.lista = []; })
+        .then(function () { return perguntarComReserva2(hist, aviso); });
+    }
+    return perguntarComReserva2(hist, aviso);
+  }
+  function perguntarComReserva2(hist, aviso) {
+    var original = cfg.modelo;
+    var reservas = ordena((cfg.lista || []).filter(function (m) { return m !== original; })).slice(0, 3);
+    var fila = [original, original].concat(reservas), i = 0;
+    function tenta() {
+      var modelo = fila[i];
+      cfg.modelo = modelo;
+      return perguntar(hist).then(function (r) {
+        cfg.modelo = original;
+        return modelo !== original ? '(respondido pelo modelo ' + modelo + ' — o ' + original + ' estava ocupado)\n\n' + r : r;
+      }).catch(function (e) {
+        cfg.modelo = original;
+        var ocupado = [429, 500, 502, 503, 504].indexOf(e.status) >= 0;
+        if (!ocupado || ++i >= fila.length) throw e;
+        if (aviso) aviso(fila[i] === original ? 'modelo ocupado, tentando de novo…' : 'trocando para ' + fila[i] + '…');
+        return espera(fila[i] === original ? 2500 : 500).then(tenta);
+      });
+    }
+    return tenta();
+  }
 
   function listarModelos(prov, chave) {
     if (prov === 'gemini') return fetch('https://generativelanguage.googleapis.com/v1beta/models?pageSize=200&key=' + encodeURIComponent(chave))
@@ -163,7 +202,7 @@
       /* historico curto: as perguntas antigas vao sem os dados antigos (so a ultima leva os dados ao vivo) */
       var hist = chat.slice(-10).map(function (m, i, arr) { return (m.r === 'u' && i < arr.length - 1) ? { r: 'u', t: m.vis || m.t } : m; })
         .filter(function (m) { return m.r !== 'e'; });
-      return perguntar(hist);
+      return perguntarComReserva(hist, function (t) { bt.textContent = t; });
     }).then(function (resp) {
       chat.push({ r: 'a', t: resp || '(vazio)' });
     }).catch(function (e) {
@@ -182,7 +221,7 @@
     $('mk').addEventListener('change', function () { grava(LS_MK, $('mk').value); });
     $('prov').value = cfg.prov || 'gemini';
     $('chave').value = cfg.chave || '';
-    if (cfg.modelo) preencheModelos([cfg.modelo], cfg.modelo);
+    if (cfg.modelo) preencheModelos(cfg.lista && cfg.lista.length ? cfg.lista : [cfg.modelo], cfg.modelo);
     if (cfg.chave && cfg.modelo) status('Conectado · ' + $('prov').selectedOptions[0].textContent + ' · ' + cfg.modelo, 'ok');
     $('prov').addEventListener('change', function () { $('modelo').innerHTML = '<option value="">— clique em “Conectar” para listar —</option>'; cfg.modelo = ''; });
     $('modelo').addEventListener('change', function () { cfg.modelo = $('modelo').value; grava(LS_CFG, cfg); status('Conectado · ' + cfg.modelo, 'ok'); });
@@ -191,8 +230,8 @@
       if (!chave) { status('Cole a sua chave da API.', 'badt'); return; }
       status('Conectando…', 'warn');
       listarModelos(prov, chave).then(function (lista) {
-        lista.sort();
-        cfg = { prov: prov, chave: chave, modelo: '' };
+        lista = ordena(lista);
+        cfg = { prov: prov, chave: chave, modelo: '', lista: lista.slice(0, 40) };
         preencheModelos(lista, null);
         cfg.modelo = $('modelo').value; grava(LS_CFG, cfg);
         status(lista.length ? 'Conectado · ' + lista.length + ' modelos · escolha o modelo na lista' : 'Chave aceita, mas nenhum modelo de texto encontrado.', lista.length ? 'ok' : 'warn');
