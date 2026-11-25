@@ -1418,12 +1418,24 @@
  },
  "o25": {
   "saldo": -23.2,
-  "ciclos": 95908,
+  "ciclos": 95910,
   "greens": 255,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 95616,
+  "descartes": 95618,
   "historico": [
+   {
+    "quando": "2026-11-25T02:33:36.163Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho seq RGGRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T02:33:35.508Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RGRRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T02:33:24.255Z",
     "resultado": "GREEN_OBS",
@@ -5011,18 +5023,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:48:10.405Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:47:35.572Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5030,7 +5030,37 @@
    "spa": 1795572053041,
    "ame": 1795572519317
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "lat",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "23:38",
+     "jogo": "PAR x OLI",
+     "odd": 1.93
+    },
+    {
+     "h": "23:41",
+     "jogo": "COL x VAL",
+     "odd": 1.8
+    },
+    {
+     "h": "23:44",
+     "jogo": "ATC x ARG",
+     "odd": 1.93
+    }
+   ],
+   "gatilho": "seq RGGRG",
+   "alvo": {
+    "h": "23:38",
+    "jogo": "PAR x OLI",
+    "odd": 1.93,
+    "unidades": 1,
+    "desde": 1795574016139
+   },
+   "iniciadoEm": 1795574016139
+  },
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795570055197,
@@ -5043,9 +5073,9 @@
    "cop": 1795567414833
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.02",
-   "n": 12,
+   "tipo": "seq",
+   "chave": "RGGRG",
+   "n": 8,
    "start": 1
   },
   "dias": {
@@ -5197,9 +5227,9 @@
     "desde": 1795573461005,
     "gatilho": "odd 2.13"
    },
-   "cam": {
-    "desde": 1795574004255,
-    "gatilho": "seq RGRRG"
+   "lat": {
+    "desde": 1795574016162,
+    "gatilho": "seq RGGRG"
    }
   }
  },
