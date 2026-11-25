@@ -1464,13 +1464,19 @@
   }
  },
  "o25": {
-  "saldo": -26.9,
-  "ciclos": 96483,
-  "greens": 259,
+  "saldo": -26.1,
+  "ciclos": 96484,
+  "greens": 260,
   "redsCiclo": 38,
   "aborts": 0,
   "descartes": 96186,
   "historico": [
+   {
+    "quando": "2026-11-25T05:09:35.984Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "lat · RAC x COL @1.8 (tiro 1) · gatilho: placar acima de 1-0 (2-0)"
+   },
    {
     "quando": "2026-11-25T05:06:20.404Z",
     "resultado": "GREEN_OBS",
@@ -5064,55 +5070,20 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:23:04.952Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795581038881,
-   "mnd": 1795581815708
+   "mnd": 1795581815708,
+   "lat": 1795583375979
   },
-  "ciclo": {
-   "liga": "lat",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "02:08",
-     "jogo": "RAC x COL",
-     "odd": 1.8
-    },
-    {
-     "h": "02:11",
-     "jogo": "PAR x VAL",
-     "odd": 1.94
-    },
-    {
-     "h": "02:14",
-     "jogo": "FLU x PER",
-     "odd": 1.94
-    }
-   ],
-   "gatilho": "placar acima de 1-0 (2-0)",
-   "alvo": {
-    "h": "02:08",
-    "jogo": "RAC x COL",
-    "odd": 1.8,
-    "unidades": 1,
-    "desde": 1795583015981
-   },
-   "iniciadoEm": 1795583015981
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
    "ita": 1795575996704,
    "spa": 1795581038881,
-   "lat": 1795574739018,
+   "lat": 1795583375979,
    "bra": 1795522714636,
    "mnd": 1795581815708,
    "ame": 1795572519317,
@@ -5131,7 +5102,7 @@
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
    "2026-11-24": -19.4,
-   "2026-11-25": 2.4
+   "2026-11-25": 3.2
   },
   "_obs": {}
  },
