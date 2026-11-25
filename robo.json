@@ -1586,12 +1586,30 @@
  },
  "o25": {
   "saldo": -15.7,
-  "ciclos": 108118,
+  "ciclos": 108121,
   "greens": 288,
   "redsCiclo": 41,
   "aborts": 0,
-  "descartes": 107789,
+  "descartes": 107792,
   "historico": [
+   {
+    "quando": "2026-11-25T14:30:46.553Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :35) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:30:36.110Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:30:36.103Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time BAH) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T14:30:36.095Z",
     "resultado": "GREEN_OBS",
@@ -5173,24 +5191,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T14:09:30.875Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGRR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T14:09:30.870Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time FOR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T14:09:30.867Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :20) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5405,19 +5405,25 @@
     "gatilho": "odd 2.31"
    },
    "spa": {
-    "desde": 1795617036095,
+    "desde": 1795617046552,
     "gatilho": "coluna :35"
    }
   }
  },
  "ambas": {
   "saldo": -44.3,
-  "ciclos": 375,
+  "ciclos": 376,
   "greens": 159,
   "redsCiclo": 23,
   "aborts": 0,
-  "descartes": 193,
+  "descartes": 194,
   "historico": [
+   {
+    "quando": "2026-11-25T14:30:36.131Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "cop · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-25T14:15:08.817Z",
     "resultado": "GREEN",
@@ -7674,37 +7680,7 @@
    "mnd": 1795615533128,
    "ame": 1795616108806
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "11:36",
-     "jogo": "Argentina x Brazil",
-     "odd": 1.85
-    },
-    {
-     "h": "11:39",
-     "jogo": "Mexico x Germany",
-     "odd": 1.92
-    },
-    {
-     "h": "11:42",
-     "jogo": "France x Netherlands",
-     "odd": 1.98
-    }
-   ],
-   "gatilho": "odd 1.92",
-   "alvo": {
-    "h": "11:36",
-    "jogo": "Argentina x Brazil",
-    "odd": 1.85,
-    "unidades": 1,
-    "desde": 1795616133321
-   },
-   "iniciadoEm": 1795616133321
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795600540122,
