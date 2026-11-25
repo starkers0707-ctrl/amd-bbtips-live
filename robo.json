@@ -1418,12 +1418,30 @@
  },
  "o25": {
   "saldo": -30.2,
-  "ciclos": 96149,
+  "ciclos": 96152,
   "greens": 255,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 95856,
+  "descartes": 95859,
   "historico": [
+   {
+    "quando": "2026-11-25T02:46:40.898Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T02:46:40.893Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T02:46:38.839Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T02:46:38.834Z",
     "resultado": "GREEN_OBS",
@@ -5005,24 +5023,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:59:35.742Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:59:34.856Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:59:34.839Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho odd 1.77) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5227,20 +5227,26 @@
     "desde": 1795573461005,
     "gatilho": "odd 2.13"
    },
-   "eng": {
-    "desde": 1795574798833,
-    "gatilho": "coluna :54"
+   "ita": {
+    "desde": 1795574800897,
+    "gatilho": "coluna :57"
    }
   }
  },
  "ambas": {
-  "saldo": -25.4,
-  "ciclos": 313,
-  "greens": 126,
+  "saldo": -24.2,
+  "ciclos": 314,
+  "greens": 127,
   "redsCiclo": 17,
   "aborts": 0,
   "descartes": 170,
   "historico": [
+   {
+    "quando": "2026-11-25T02:46:38.864Z",
+    "resultado": "GREEN",
+    "unidades": 1.2,
+    "detalhe": "cam · City x Amsterdam @2.09 (tiro 2) · gatilho: odd 2.09"
+   },
    {
     "quando": "2026-11-25T02:35:33.646Z",
     "resultado": "GREEN_OBS",
@@ -7121,54 +7127,17 @@
    }
   ],
   "consumidas": {
-   "cop": 1795571201297
+   "cop": 1795571201297,
+   "cam": 1795574798860
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "23:42",
-     "jogo": "Turin x Benfica",
-     "odd": 1.87
-    },
-    {
-     "h": "23:45",
-     "jogo": "City x Amsterdam",
-     "odd": 2.09
-    },
-    {
-     "h": "23:48",
-     "jogo": "Milan x Porto",
-     "odd": 2.17
-    }
-   ],
-   "gatilho": "odd 2.09",
-   "alvo": {
-    "h": "23:45",
-    "jogo": "City x Amsterdam",
-    "odd": 2.09,
-    "unidades": 2,
-    "desde": 1795574648644
-   },
-   "iniciadoEm": 1795574133653,
-   "tiros": [
-    {
-     "h": "23:42",
-     "jogo": "Turin x Benfica",
-     "odd": 1.87,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795567528053,
    "eng": 1795524811381,
    "spa": 1795506559992,
    "bra": 1795526496634,
    "mnd": 1795515327438,
-   "cam": 1795570485439,
+   "cam": 1795574798860,
    "cop": 1795571201297,
    "ame": 1795510421878
   },
@@ -7183,7 +7152,7 @@
    "2026-11-21": 2,
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
-   "2026-11-24": -26.8
+   "2026-11-24": -25.6
   },
   "_obs": {}
  }
