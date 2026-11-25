@@ -1406,8 +1406,8 @@
   },
   "ciclo": {
    "liga": "spa",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "02:35",
@@ -1427,11 +1427,11 @@
    ],
    "gatilho": "seq RGRG",
    "alvo": {
-    "h": "02:37",
-    "jogo": "OSA x RST",
-    "odd": 3.37,
-    "unidades": 2,
-    "desde": 1795584999467
+    "h": "02:39",
+    "jogo": "RSO x BET",
+    "odd": 3.29,
+    "unidades": 4,
+    "desde": 1795585114315
    },
    "iniciadoEm": 1795584778366,
    "tiros": [
@@ -1440,6 +1440,12 @@
      "jogo": "CEL x ESP",
      "odd": 3.37,
      "unidades": 1
+    },
+    {
+     "h": "02:37",
+     "jogo": "OSA x RST",
+     "odd": 3.37,
+     "unidades": 2
     }
    ]
   },
@@ -1478,12 +1484,18 @@
  },
  "o25": {
   "saldo": -26.1,
-  "ciclos": 96729,
+  "ciclos": 96730,
   "greens": 260,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96431,
+  "descartes": 96432,
   "historico": [
+   {
+    "quando": "2026-11-25T05:38:14.587Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T05:38:14.579Z",
     "resultado": "GREEN_OBS",
@@ -5077,12 +5089,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:45:28.755Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5286,10 +5292,6 @@
    "cam": {
     "desde": 1795581650169,
     "gatilho": "time Dortmund"
-   },
-   "spa": {
-    "desde": 1795585094578,
-    "gatilho": "time VIL"
    }
   }
  },
