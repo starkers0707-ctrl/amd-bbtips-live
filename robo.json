@@ -5219,7 +5219,12 @@
    "2026-11-20": -1.6,
    "2026-11-22": -12.1
   },
-  "_obs": {}
+  "_obs": {
+   "spa": {
+    "desde": 1795580546940,
+    "gatilho": "placar 1-0 / 0-1"
+   }
+  }
  },
  "ambas": {
   "saldo": -31.2,
@@ -7121,7 +7126,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "01:25",
+     "jogo": "ALV x VAL",
+     "odd": 1.69
+    },
+    {
+     "h": "01:27",
+     "jogo": "ESP x BAR",
+     "odd": 1.67
+    },
+    {
+     "h": "01:29",
+     "jogo": "RSO x MLG",
+     "odd": 1.75
+    }
+   ],
+   "gatilho": "placar 1-0 / 0-1",
+   "alvo": {
+    "h": "01:25",
+    "jogo": "ALV x VAL",
+    "odd": 1.69,
+    "unidades": 1,
+    "desde": 1795580571187
+   },
+   "iniciadoEm": 1795580571187
+  },
   "cooldown": {
    "lat": 1795567528053,
    "eng": 1795524811381,
@@ -7133,8 +7168,8 @@
    "ame": 1795510421878
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "GGGRG",
+   "tipo": "placar",
+   "chave": "1-0 / 0-1",
    "n": 10,
    "start": 1
   },
