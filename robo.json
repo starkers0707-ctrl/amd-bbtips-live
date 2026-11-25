@@ -1623,12 +1623,30 @@
  },
  "o25": {
   "saldo": -13.3,
-  "ciclos": 108529,
+  "ciclos": 108532,
   "greens": 290,
   "redsCiclo": 41,
   "aborts": 0,
-  "descartes": 108198,
+  "descartes": 108201,
   "historico": [
+   {
+    "quando": "2026-11-25T14:41:02.649Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:41:02.646Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:41:02.641Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho odd 1.91) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T14:41:00.516Z",
     "resultado": "GREEN_OBS",
@@ -5210,24 +5228,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :35) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T14:23:05.281Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T14:23:05.275Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho time BAH) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T14:23:05.264Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :35) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5236,7 +5236,37 @@
    "cam": 1795617456601,
    "cop": 1795617660495
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "11:43",
+     "jogo": "RMA x ATM",
+     "odd": 1.92
+    },
+    {
+     "h": "11:45",
+     "jogo": "ATH x VIL",
+     "odd": 1.84
+    },
+    {
+     "h": "11:47",
+     "jogo": "ALV x CEL",
+     "odd": 1.9
+    }
+   ],
+   "gatilho": "coluna :43",
+   "alvo": {
+    "h": "11:43",
+    "jogo": "RMA x ATM",
+    "odd": 1.92,
+    "unidades": 1,
+    "desde": 1795617662629
+   },
+   "iniciadoEm": 1795617662629
+  },
   "cooldown": {
    "cam": 1795617456601,
    "eng": 1795575218328,
@@ -5249,10 +5279,10 @@
    "cop": 1795617660495
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.31",
-   "n": 8,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":46",
+   "n": 10,
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -5413,7 +5443,7 @@
     "gatilho": "coluna :43"
    },
    "cop": {
-    "desde": 1795617660516,
+    "desde": 1795617662649,
     "gatilho": "odd 2.31"
    }
   }
