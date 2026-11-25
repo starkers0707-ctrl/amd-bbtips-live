@@ -1501,12 +1501,24 @@
  },
  "o25": {
   "saldo": -17.9,
-  "ciclos": 101350,
+  "ciclos": 101352,
   "greens": 274,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 101037,
+  "descartes": 101039,
   "historico": [
+   {
+    "quando": "2026-11-25T10:17:03.975Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:17:01.701Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:17:01.693Z",
     "resultado": "GREEN_OBS",
@@ -5094,18 +5106,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "bra · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:27:45.626Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:27:36.141Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.18) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5155,10 +5155,10 @@
    "cop": 1795597999597
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "Uruguay",
-   "n": 16,
-   "start": 4
+   "tipo": "placar",
+   "chave": "empate 1-1",
+   "n": 21,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -5311,7 +5311,7 @@
     "gatilho": "time Guayaquil"
    },
    "spa": {
-    "desde": 1795601821692,
+    "desde": 1795601823974,
     "gatilho": "time VIL"
    }
   }
