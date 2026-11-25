@@ -1586,12 +1586,30 @@
  },
  "o25": {
   "saldo": -8.7,
-  "ciclos": 107320,
+  "ciclos": 107323,
   "greens": 288,
   "redsCiclo": 40,
   "aborts": 0,
-  "descartes": 106992,
+  "descartes": 106995,
   "historico": [
+   {
+    "quando": "2026-11-25T14:04:46.212Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:04:36.984Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T14:04:36.979Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T14:04:36.972Z",
     "resultado": "GREEN_OBS",
@@ -5173,24 +5191,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.12) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:41:33.827Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.31) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:41:33.823Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T13:41:33.820Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar 0-0) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5242,10 +5242,10 @@
    "cop": 1795612980951
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.31",
-   "n": 13,
-   "start": 3
+   "tipo": "seq",
+   "chave": "RRGR",
+   "n": 15,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -5397,9 +5397,9 @@
     "desde": 1795613808317,
     "gatilho": "odd 2.24"
    },
-   "bra": {
-    "desde": 1795615476972,
-    "gatilho": "time FOR"
+   "mnd": {
+    "desde": 1795615486211,
+    "gatilho": "coluna :06"
    }
   }
  },
