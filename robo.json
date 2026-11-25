@@ -1,12 +1,18 @@
 {
  "o35": {
-  "saldo": 59.4,
-  "ciclos": 239,
-  "greens": 90,
+  "saldo": 65.8,
+  "ciclos": 240,
+  "greens": 91,
   "redsCiclo": 36,
   "aborts": 0,
   "descartes": 113,
   "historico": [
+   {
+    "quando": "2026-11-25T09:19:33.623Z",
+    "resultado": "GREEN",
+    "unidades": 6.4,
+    "detalhe": "mnd · DEN x WAL @3.34 (tiro 3) · gatilho: seq RGGR"
+   },
    {
     "quando": "2026-11-25T09:11:31.879Z",
     "resultado": "GREEN_OBS",
@@ -1442,54 +1448,12 @@
     "detalhe": "mnd · POL x ENG @3.07 (tiro 2) · gatilho: placar 1-0 / 0-1"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "mnd",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "06:14",
-     "jogo": "CRO x SWE",
-     "odd": 3.32
-    },
-    {
-     "h": "06:16",
-     "jogo": "ENG x FRA",
-     "odd": 3.18
-    },
-    {
-     "h": "06:18",
-     "jogo": "DEN x WAL",
-     "odd": 3.34
-    }
-   ],
-   "gatilho": "seq RGGR",
-   "alvo": {
-    "h": "06:18",
-    "jogo": "DEN x WAL",
-    "odd": 3.34,
-    "unidades": 4,
-    "desde": 1795598254175
-   },
-   "iniciadoEm": 1795597892738,
-   "tiros": [
-    {
-     "h": "06:14",
-     "jogo": "CRO x SWE",
-     "odd": 3.32,
-     "unidades": 1
-    },
-    {
-     "h": "06:16",
-     "jogo": "ENG x FRA",
-     "odd": 3.18,
-     "unidades": 2
-    }
-   ]
+  "consumidas": {
+   "mnd": 1795598373619
   },
+  "ciclo": null,
   "cooldown": {
-   "mnd": 1795594057016,
+   "mnd": 1795598373619,
    "lat": 1795522898324,
    "eng": 1795539214389,
    "spa": 1795591230462,
@@ -1508,7 +1472,7 @@
    "2026-11-22": -12.7,
    "2026-11-23": 32.3,
    "2026-11-24": 28,
-   "2026-11-25": -3.8
+   "2026-11-25": 2.6
   },
   "_obs": {
    "cam": {
@@ -1523,12 +1487,24 @@
  },
  "o25": {
   "saldo": -20.6,
-  "ciclos": 100587,
+  "ciclos": 100589,
   "greens": 272,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 100276,
+  "descartes": 100278,
   "historico": [
+   {
+    "quando": "2026-11-25T09:19:32.840Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:19:32.832Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-1)) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T09:19:24.321Z",
     "resultado": "GREEN_OBS",
@@ -5116,18 +5092,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:53:08.233Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T08:53:07.405Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5338,10 +5302,6 @@
    "bra": {
     "desde": 1795598164061,
     "gatilho": "placar acima de 1-0 (2-0)"
-   },
-   "cop": {
-    "desde": 1795598364321,
-    "gatilho": "time Uruguay"
    }
   }
  },
