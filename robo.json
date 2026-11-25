@@ -1585,12 +1585,36 @@
  },
  "o25": {
   "saldo": -7.7,
-  "ciclos": 104161,
+  "ciclos": 104165,
   "greens": 282,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 103840,
+  "descartes": 103844,
   "historico": [
+   {
+    "quando": "2026-11-25T12:10:04.846Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:10:00.888Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho coluna :16) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:10:00.883Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :21) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:10:00.878Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :18) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T12:10:00.871Z",
     "resultado": "GREEN_OBS",
@@ -5166,30 +5190,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:45:31.122Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.87) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:45:30.582Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:45:30.574Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.87) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:45:29.195Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5400,9 +5400,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "mnd": {
-    "desde": 1795608600871,
-    "gatilho": "coluna :20"
+   "spa": {
+    "desde": 1795608604846,
+    "gatilho": "coluna :23"
    }
   }
  },
@@ -7650,10 +7650,10 @@
    "ita": 1795602991234
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "1.71",
-   "n": 12,
-   "start": 1
+   "tipo": "coluna",
+   "chave": ":22",
+   "n": 8,
+   "start": 5
   },
   "dias": {
    "2026-11-20": 0,
