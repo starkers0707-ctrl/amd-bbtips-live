@@ -5151,7 +5151,37 @@
    "spa": 1795602753005,
    "mnd": 1795603175815
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "bra",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "07:53",
+     "jogo": "VIT x NAC",
+     "odd": 1.83
+    },
+    {
+     "h": "07:56",
+     "jogo": "FOR x GOI",
+     "odd": 1.87
+    },
+    {
+     "h": "07:59",
+     "jogo": "BAH x ZEI",
+     "odd": 1.92
+    }
+   ],
+   "gatilho": "time FOR",
+   "alvo": {
+    "h": "07:53",
+    "jogo": "VIT x NAC",
+    "odd": 1.83,
+    "unidades": 1,
+    "desde": 1795603203036
+   },
+   "iniciadoEm": 1795603203036
+  },
   "cooldown": {
    "cam": 1795598902928,
    "eng": 1795575218328,
@@ -5318,10 +5348,6 @@
    "ame": {
     "desde": 1795596831466,
     "gatilho": "time Guayaquil"
-   },
-   "cop": {
-    "desde": 1795603175851,
-    "gatilho": "time Uruguay"
    }
   }
  },
