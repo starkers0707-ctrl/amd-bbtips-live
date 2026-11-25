@@ -1418,12 +1418,24 @@
  },
  "o25": {
   "saldo": -23.2,
-  "ciclos": 95935,
+  "ciclos": 95937,
   "greens": 255,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 95643,
+  "descartes": 95645,
   "historico": [
+   {
+    "quando": "2026-11-25T02:36:06.855Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho seq RGGRG) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T02:35:34.428Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho seq RGGRG) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T02:35:33.632Z",
     "resultado": "GREEN_OBS",
@@ -5011,18 +5023,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:49:09.690Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T01:49:06.418Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5228,19 +5228,25 @@
     "gatilho": "odd 2.13"
    },
    "lat": {
-    "desde": 1795574133631,
+    "desde": 1795574166855,
     "gatilho": "seq RGGRG"
    }
   }
  },
  "ambas": {
   "saldo": -25.4,
-  "ciclos": 312,
+  "ciclos": 313,
   "greens": 126,
   "redsCiclo": 17,
   "aborts": 0,
-  "descartes": 169,
+  "descartes": 170,
   "historico": [
+   {
+    "quando": "2026-11-25T02:35:33.646Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho coluna :47) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T02:35:12.678Z",
     "resultado": "DESCARTADO",
@@ -7117,7 +7123,37 @@
   "consumidas": {
    "cop": 1795571201297
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "23:42",
+     "jogo": "Turin x Benfica",
+     "odd": 1.87
+    },
+    {
+     "h": "23:45",
+     "jogo": "City x Amsterdam",
+     "odd": 2.09
+    },
+    {
+     "h": "23:48",
+     "jogo": "Milan x Porto",
+     "odd": 2.17
+    }
+   ],
+   "gatilho": "odd 2.09",
+   "alvo": {
+    "h": "23:42",
+    "jogo": "Turin x Benfica",
+    "odd": 1.87,
+    "unidades": 1,
+    "desde": 1795574133653
+   },
+   "iniciadoEm": 1795574133653
+  },
   "cooldown": {
    "lat": 1795567528053,
    "eng": 1795524811381,
