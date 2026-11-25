@@ -1528,13 +1528,37 @@
   }
  },
  "o25": {
-  "saldo": -17.9,
-  "ciclos": 101587,
-  "greens": 274,
+  "saldo": -15.4,
+  "ciclos": 101591,
+  "greens": 275,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 101274,
+  "descartes": 101277,
   "historico": [
+   {
+    "quando": "2026-11-25T10:29:04.598Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.18) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:29:04.590Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:29:04.583Z",
+    "resultado": "GREEN",
+    "unidades": 2.5,
+    "detalhe": "cop · Wales x Portugal @2.38 (tiro 3) · gatilho: placar empate 1-1"
+   },
+   {
+    "quando": "2026-11-25T10:28:47.415Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:28:47.405Z",
     "resultado": "GREEN_OBS",
@@ -5110,78 +5134,12 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:50:03.463Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:49:34.192Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:49:34.187Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "bra · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:49:33.428Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
    }
   ],
-  "consumidas": {},
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 2,
-   "apostado": 3,
-   "plano": [
-    {
-     "h": "07:21",
-     "jogo": "France x Germany",
-     "odd": 2.32
-    },
-    {
-     "h": "07:24",
-     "jogo": "Italy x Croatia",
-     "odd": 2.65
-    },
-    {
-     "h": "07:27",
-     "jogo": "Wales x Portugal",
-     "odd": 2.38
-    }
-   ],
-   "gatilho": "placar empate 1-1",
-   "alvo": {
-    "h": "07:27",
-    "jogo": "Wales x Portugal",
-    "odd": 2.38,
-    "unidades": 4,
-    "desde": 1795602349993
-   },
-   "iniciadoEm": 1795601913272,
-   "tiros": [
-    {
-     "h": "07:21",
-     "jogo": "France x Germany",
-     "odd": 2.32,
-     "unidades": 1
-    },
-    {
-     "h": "07:24",
-     "jogo": "Italy x Croatia",
-     "odd": 2.65,
-     "unidades": 2
-    }
-   ]
+  "consumidas": {
+   "cop": 1795602544579
   },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795598902928,
    "eng": 1795575218328,
@@ -5191,13 +5149,13 @@
    "bra": 1795598497327,
    "mnd": 1795597169653,
    "ame": 1795595033847,
-   "cop": 1795597999597
+   "cop": 1795602544579
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "empate 1-1",
-   "n": 22,
-   "start": 1
+   "tipo": "odd",
+   "chave": "2.18",
+   "n": 9,
+   "start": 3
   },
   "dias": {
    "2026-11-19": -7,
@@ -5206,7 +5164,7 @@
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
    "2026-11-24": -19.4,
-   "2026-11-25": 11.4
+   "2026-11-25": 13.9
   },
   "_obs": {}
  },
@@ -5353,9 +5311,9 @@
     "desde": 1795602328136,
     "gatilho": "seq RRRRR"
    },
-   "spa": {
-    "desde": 1795602527405,
-    "gatilho": "time VIL"
+   "cop": {
+    "desde": 1795602544598,
+    "gatilho": "odd 2.18"
    }
   }
  },
