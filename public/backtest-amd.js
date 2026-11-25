@@ -274,6 +274,12 @@
     if (!tb) return;
     var todos = modoBt === 'todos' && bt && bt.todosEv;
     var lista = (todos ? bt.todosEv.slice(-150) : (bt && bt.ultimos10indicados)) || [];
+    if (todos) {
+      /* ⚠️ igual ao modo antigo: o MAIOR EV+ da lista que deu RED (EV alto nao e garantia) */
+      var iMax = -1, evMax = -Infinity;
+      lista = lista.map(function (u, ix) { if (u.resultado !== "GREEN" && typeof u.ev === "number" && u.ev > evMax) { evMax = u.ev; iMax = ix; } return u; })
+        .map(function (u, ix) { var c = {}; for (var k in u) c[k] = u[k]; c.alerta = ix === iMax; return c; });
+    }
     resumoBt(bt, todos);
     if (!lista.length) {
       // passa pelo avisa(), que destranca a escrita - sem isso a proteção bloqueia
