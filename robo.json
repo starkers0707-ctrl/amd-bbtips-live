@@ -1578,13 +1578,43 @@
   }
  },
  "o25": {
-  "saldo": -8.5,
-  "ciclos": 104114,
-  "greens": 281,
+  "saldo": -7.7,
+  "ciclos": 104119,
+  "greens": 282,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 103794,
+  "descartes": 103798,
   "historico": [
+   {
+    "quando": "2026-11-25T12:08:35.248Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.24) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:08:35.245Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho coluna :21) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:08:35.242Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho coluna :18) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:08:35.234Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.87) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:08:35.226Z",
+    "resultado": "GREEN",
+    "unidades": 0.8,
+    "detalhe": "spa · LEV x ELC @1.94 (tiro 3) · gatilho: seq RRRR"
+   },
    {
     "quando": "2026-11-25T12:08:34.554Z",
     "resultado": "GREEN_OBS",
@@ -5154,93 +5184,50 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:42:10.736Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:42:10.729Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:42:08.292Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:42:08.289Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:42:07.662Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
    }
   ],
   "consumidas": {
    "cam": 1795605050850,
    "ame": 1795605280265,
-   "cop": 1795608105364
+   "cop": 1795608105364,
+   "spa": 1795608515213
   },
   "ciclo": {
-   "liga": "spa",
-   "degrau": 2,
-   "apostado": 3,
+   "liga": "mnd",
+   "degrau": 0,
+   "apostado": 0,
    "plano": [
     {
-     "h": "09:03",
-     "jogo": "MLG x VAL",
-     "odd": 1.87
-    },
-    {
-     "h": "09:05",
-     "jogo": "RMA x ALV",
-     "odd": 1.8
-    },
-    {
-     "h": "09:07",
-     "jogo": "LEV x ELC",
+     "h": "09:10",
+     "jogo": "SPA x DEN",
      "odd": 1.94
+    },
+    {
+     "h": "09:12",
+     "jogo": "POR x CHL",
+     "odd": 1.88
+    },
+    {
+     "h": "09:14",
+     "jogo": "BEL x CRO",
+     "odd": 1.77
     }
    ],
-   "gatilho": "seq RRRR",
+   "gatilho": "coluna :10",
    "alvo": {
-    "h": "09:07",
-    "jogo": "LEV x ELC",
+    "h": "09:10",
+    "jogo": "SPA x DEN",
     "odd": 1.94,
-    "unidades": 4,
-    "desde": 1795608396241
+    "unidades": 1,
+    "desde": 1795608527464
    },
-   "iniciadoEm": 1795608121539,
-   "tiros": [
-    {
-     "h": "09:03",
-     "jogo": "MLG x VAL",
-     "odd": 1.87,
-     "unidades": 1
-    },
-    {
-     "h": "09:05",
-     "jogo": "RMA x ALV",
-     "odd": 1.8,
-     "unidades": 2
-    }
-   ]
+   "iniciadoEm": 1795608527464
   },
   "cooldown": {
    "cam": 1795605050850,
    "eng": 1795575218328,
    "ita": 1795595437825,
-   "spa": 1795602753005,
+   "spa": 1795608515213,
    "lat": 1795590752470,
    "bra": 1795604436334,
    "mnd": 1795603175815,
@@ -5260,7 +5247,7 @@
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
    "2026-11-24": -19.4,
-   "2026-11-25": 20.8
+   "2026-11-25": 21.6
   },
   "_obs": {}
  },
@@ -5399,17 +5386,9 @@
    "2026-11-22": -12.1
   },
   "_obs": {
-   "spa": {
-    "desde": 1795607910039,
-    "gatilho": "odd 1.87"
-   },
    "mnd": {
     "desde": 1795608450862,
     "gatilho": "coluna :10"
-   },
-   "ame": {
-    "desde": 1795608514554,
-    "gatilho": "odd 2.24"
    }
   }
  },
@@ -7633,7 +7612,7 @@
     "jogo": "UDI x PAR",
     "odd": 1.71,
     "unidades": 2,
-    "desde": 1795607612130
+    "desde": 1795608514585
    },
    "iniciadoEm": 1795607611466,
    "tiros": [
