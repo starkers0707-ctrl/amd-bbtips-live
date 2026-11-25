@@ -1462,13 +1462,55 @@
   }
  },
  "o25": {
-  "saldo": -22.7,
-  "ciclos": 97498,
+  "saldo": -29.7,
+  "ciclos": 97505,
   "greens": 263,
-  "redsCiclo": 38,
+  "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 97197,
+  "descartes": 97203,
   "historico": [
+   {
+    "quando": "2026-11-25T07:13:03.338Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho time RIV) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:13:03.325Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:12:33.317Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:12:33.309Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:12:32.505Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:12:32.494Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:12:32.485Z",
+    "resultado": "RED_CICLO",
+    "unidades": -7,
+    "detalhe": "lat · ciclo perdido (3 tiros) · gatilho: placar acima de 1-0 (2-0)"
+   },
    {
     "quando": "2026-11-25T07:12:31.649Z",
     "resultado": "GREEN_OBS",
@@ -5026,114 +5068,59 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:51:08.623Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:51:08.617Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:51:08.115Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:51:08.103Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:50:32.641Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:50:32.632Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:50:09.279Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
    }
   ],
   "consumidas": {
-   "mnd": 1795587830389
+   "mnd": 1795587830389,
+   "lat": 1795590752470
   },
   "ciclo": {
-   "liga": "lat",
-   "degrau": 2,
-   "apostado": 3,
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
    "plano": [
     {
-     "h": "04:05",
-     "jogo": "RIV x PER",
-     "odd": 1.93
-    },
-    {
-     "h": "04:08",
-     "jogo": "FLU x VAL",
+     "h": "04:17",
+     "jogo": "ATM x VAL",
      "odd": 1.91
     },
     {
-     "h": "04:11",
-     "jogo": "THI x BAR",
-     "odd": 1.91
+     "h": "04:19",
+     "jogo": "GET x VIL",
+     "odd": 1.87
+    },
+    {
+     "h": "04:21",
+     "jogo": "MLG x ELC",
+     "odd": 1.9
     }
    ],
-   "gatilho": "placar acima de 1-0 (2-0)",
+   "gatilho": "time VIL",
    "alvo": {
-    "h": "04:11",
-    "jogo": "THI x BAR",
+    "h": "04:17",
+    "jogo": "ATM x VAL",
     "odd": 1.91,
-    "unidades": 4,
-    "desde": 1795590067595
+    "unidades": 1,
+    "desde": 1795590753294
    },
-   "iniciadoEm": 1795590032892,
-   "tiros": [
-    {
-     "h": "04:05",
-     "jogo": "RIV x PER",
-     "odd": 1.93,
-     "unidades": 1
-    },
-    {
-     "h": "04:08",
-     "jogo": "FLU x VAL",
-     "odd": 1.91,
-     "unidades": 2
-    }
-   ]
+   "iniciadoEm": 1795590753294
   },
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
    "ita": 1795575996704,
    "spa": 1795585231575,
-   "lat": 1795583375979,
+   "lat": 1795590752470,
    "bra": 1795522714636,
    "mnd": 1795587830389,
    "ame": 1795572519317,
    "cop": 1795586674122
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "acima de 1-0 (2-0)",
-   "n": 10,
-   "start": 1
+   "tipo": "time",
+   "chave": "VIL",
+   "n": 11,
+   "start": 2
   },
   "dias": {
    "2026-11-19": -7,
@@ -5142,7 +5129,7 @@
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
    "2026-11-24": -19.4,
-   "2026-11-25": 6.6
+   "2026-11-25": -0.4
   },
   "_obs": {}
  },
@@ -5286,8 +5273,8 @@
     "gatilho": "time NED"
    },
    "lat": {
-    "desde": 1795590751648,
-    "gatilho": "placar acima de 1-0 (2-0)"
+    "desde": 1795590783337,
+    "gatilho": "time RIV"
    }
   }
  },
