@@ -7094,7 +7094,37 @@
    "lat": 1795567528053,
    "cam": 1795570485439
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "22:39",
+     "jogo": "Brazil x Spain",
+     "odd": 1.98
+    },
+    {
+     "h": "22:42",
+     "jogo": "Italy x Colombia",
+     "odd": 2.31
+    },
+    {
+     "h": "22:45",
+     "jogo": "Netherlands x Mexico",
+     "odd": 1.92
+    }
+   ],
+   "gatilho": "seq RRRRR",
+   "alvo": {
+    "h": "22:39",
+    "jogo": "Brazil x Spain",
+    "odd": 1.98,
+    "unidades": 1,
+    "desde": 1795570502121
+   },
+   "iniciadoEm": 1795570502121
+  },
   "cooldown": {
    "lat": 1795567528053,
    "eng": 1795524811381,
@@ -7106,9 +7136,9 @@
    "ame": 1795510421878
   },
   "_gatilhoAtual": {
-   "tipo": "coluna",
-   "chave": ":39",
-   "n": 22,
+   "tipo": "seq",
+   "chave": "RRRRR",
+   "n": 23,
    "start": 1
   },
   "dias": {
