@@ -1570,13 +1570,31 @@
   }
  },
  "o25": {
-  "saldo": -10.6,
-  "ciclos": 103928,
-  "greens": 280,
+  "saldo": -8.5,
+  "ciclos": 103931,
+  "greens": 281,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 103609,
+  "descartes": 103611,
   "historico": [
+   {
+    "quando": "2026-11-25T12:01:45.374Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho coluna :06) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T12:01:45.368Z",
+    "resultado": "GREEN",
+    "unidades": 2.1,
+    "detalhe": "cop · Uruguay x Germany @2.55 (tiro 2) · gatilho: time Uruguay"
+   },
+   {
+    "quando": "2026-11-25T12:01:43.329Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T12:01:43.321Z",
     "resultado": "GREEN_OBS",
@@ -5158,69 +5176,14 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:32:06.715Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:32:06.047Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T11:32:06.043Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho odd 2.3) — liga REARMADA"
    }
   ],
   "consumidas": {
    "cam": 1795605050850,
-   "ame": 1795605280265
+   "ame": 1795605280265,
+   "cop": 1795608105364
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "08:57",
-     "jogo": "Italy x Wales",
-     "odd": 2.56
-    },
-    {
-     "h": "09:00",
-     "jogo": "Uruguay x Germany",
-     "odd": 2.55
-    },
-    {
-     "h": "09:03",
-     "jogo": "Denmark x Mexico",
-     "odd": 2.23
-    }
-   ],
-   "gatilho": "time Uruguay",
-   "alvo": {
-    "h": "09:00",
-    "jogo": "Uruguay x Germany",
-    "odd": 2.55,
-    "unidades": 2,
-    "desde": 1795607939535
-   },
-   "iniciadoEm": 1795607067498,
-   "tiros": [
-    {
-     "h": "08:57",
-     "jogo": "Italy x Wales",
-     "odd": 2.56,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795605050850,
    "eng": 1795575218328,
@@ -5230,12 +5193,12 @@
    "bra": 1795604436334,
    "mnd": 1795603175815,
    "ame": 1795605280265,
-   "cop": 1795602544579
+   "cop": 1795608105364
   },
   "_gatilhoAtual": {
-   "tipo": "seq",
-   "chave": "RRRR",
-   "n": 12,
+   "tipo": "coluna",
+   "chave": ":06",
+   "n": 9,
    "start": 1
   },
   "dias": {
@@ -5245,7 +5208,7 @@
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
    "2026-11-24": -19.4,
-   "2026-11-25": 18.7
+   "2026-11-25": 20.8
   },
   "_obs": {}
  },
@@ -5397,7 +5360,7 @@
     "gatilho": "odd 2.24"
    },
    "mnd": {
-    "desde": 1795608103321,
+    "desde": 1795608105374,
     "gatilho": "coluna :06"
    }
   }
