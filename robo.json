@@ -1409,13 +1409,49 @@
   }
  },
  "o25": {
-  "saldo": -31.1,
-  "ciclos": 94002,
-  "greens": 247,
+  "saldo": -30,
+  "ciclos": 94008,
+  "greens": 248,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 93718,
+  "descartes": 93723,
   "historico": [
+   {
+    "quando": "2026-11-25T00:09:17.704Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T00:09:17.695Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T00:09:17.686Z",
+    "resultado": "GREEN",
+    "unidades": 1.1,
+    "detalhe": "ame · Santos x Quito @2.11 (tiro 1) · gatilho: odd 2.02"
+   },
+   {
+    "quando": "2026-11-25T00:09:15.695Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T00:09:15.686Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T00:09:03.588Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T00:09:03.577Z",
     "resultado": "GREEN_OBS",
@@ -4979,79 +5015,14 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho seq GRRGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T23:39:43.273Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T23:39:43.267Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T23:39:43.263Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T23:39:42.489Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T23:39:42.485Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T23:39:42.479Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
    }
   ],
   "consumidas": {
    "spa": 1795563392445,
-   "eng": 1795564656759
+   "eng": 1795564656759,
+   "ame": 1795565357683
   },
-  "ciclo": {
-   "liga": "ame",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "21:07",
-     "jogo": "Santos x Quito",
-     "odd": 2.11
-    },
-    {
-     "h": "21:10",
-     "jogo": "Belo Horizonte x Asuncion",
-     "odd": 2.02
-    },
-    {
-     "h": "21:13",
-     "jogo": "Medellin x Avellaneda",
-     "odd": 2.1
-    }
-   ],
-   "gatilho": "odd 2.02",
-   "alvo": {
-    "h": "21:07",
-    "jogo": "Santos x Quito",
-    "odd": 2.11,
-    "unidades": 1,
-    "desde": 1795565009973
-   },
-   "iniciadoEm": 1795565009973
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795558424565,
    "eng": 1795564656759,
@@ -5060,14 +5031,14 @@
    "lat": 1795550799609,
    "bra": 1795522714636,
    "mnd": 1795517012357,
-   "ame": 1795561403616,
+   "ame": 1795565357683,
    "cop": 1795556284523
   },
   "_gatilhoAtual": {
    "tipo": "odd",
-   "chave": "2.02",
-   "n": 11,
-   "start": 1
+   "chave": "2.13",
+   "n": 8,
+   "start": 6
   },
   "dias": {
    "2026-11-19": -7,
@@ -5075,7 +5046,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -21.2
+   "2026-11-24": -20.1
   },
   "_obs": {}
  },
@@ -5218,9 +5189,9 @@
     "desde": 1795565289599,
     "gatilho": "coluna :26"
    },
-   "spa": {
-    "desde": 1795565343576,
-    "gatilho": "coluna :23"
+   "ame": {
+    "desde": 1795565357704,
+    "gatilho": "odd 2.13"
    }
   }
  },
