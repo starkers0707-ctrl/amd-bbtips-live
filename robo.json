@@ -1529,12 +1529,30 @@
  },
  "o25": {
   "saldo": -17.9,
-  "ciclos": 101535,
+  "ciclos": 101538,
   "greens": 274,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 101222,
+  "descartes": 101225,
   "historico": [
+   {
+    "quando": "2026-11-25T10:25:50.013Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:25:50.006Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:25:47.855Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:25:47.842Z",
     "resultado": "GREEN_OBS",
@@ -5116,24 +5134,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:44:12.251Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:44:11.323Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:44:02.254Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5141,8 +5141,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 1,
-   "apostado": 1,
+   "degrau": 2,
+   "apostado": 3,
    "plano": [
     {
      "h": "07:21",
@@ -5162,11 +5162,11 @@
    ],
    "gatilho": "placar empate 1-1",
    "alvo": {
-    "h": "07:24",
-    "jogo": "Italy x Croatia",
-    "odd": 2.65,
-    "unidades": 2,
-    "desde": 1795602170170
+    "h": "07:27",
+    "jogo": "Wales x Portugal",
+    "odd": 2.38,
+    "unidades": 4,
+    "desde": 1795602349993
    },
    "iniciadoEm": 1795601913272,
    "tiros": [
@@ -5175,6 +5175,12 @@
      "jogo": "France x Germany",
      "odd": 2.32,
      "unidades": 1
+    },
+    {
+     "h": "07:24",
+     "jogo": "Italy x Croatia",
+     "odd": 2.65,
+     "unidades": 2
     }
    ]
   },
@@ -5190,9 +5196,9 @@
    "cop": 1795597999597
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "Uruguay",
-   "n": 16,
+   "tipo": "placar",
+   "chave": "empate 1-1",
+   "n": 22,
    "start": 1
   },
   "dias": {
@@ -5350,7 +5356,7 @@
     "gatilho": "seq RRRRR"
    },
    "bra": {
-    "desde": 1795602347841,
+    "desde": 1795602350012,
     "gatilho": "time ATC"
    }
   }
