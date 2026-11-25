@@ -1410,12 +1410,24 @@
  },
  "o25": {
   "saldo": -31.1,
-  "ciclos": 93921,
+  "ciclos": 93923,
   "greens": 247,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 93637,
+  "descartes": 93639,
   "historico": [
+   {
+    "quando": "2026-11-25T00:01:52.887Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T00:01:50.789Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T00:01:42.603Z",
     "resultado": "GREEN_OBS",
@@ -5003,18 +5015,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T23:28:55.907Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T23:28:55.900Z",
-    "resultado": "DESCARTADO",
-    "unidades": 0,
-    "detalhe": "cam · alvo sem fechamento em 15min antes da 1a aposta"
    }
   ],
   "consumidas": {
@@ -5190,7 +5190,7 @@
     "gatilho": "coluna :57"
    },
    "ame": {
-    "desde": 1795564902602,
+    "desde": 1795564912886,
     "gatilho": "odd 2.02"
    }
   }
@@ -7019,8 +7019,8 @@
   "consumidas": {},
   "ciclo": {
    "liga": "cam",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "21:00",
@@ -7040,13 +7040,21 @@
    ],
    "gatilho": "odd 2.1",
    "alvo": {
-    "h": "21:00",
-    "jogo": "Porto x Liverpool",
-    "odd": 2.09,
-    "unidades": 1,
-    "desde": 1795564235997
+    "h": "21:03",
+    "jogo": "Dortmund x Barcelona",
+    "odd": 2.1,
+    "unidades": 2,
+    "desde": 1795564910806
    },
-   "iniciadoEm": 1795564235997
+   "iniciadoEm": 1795564235997,
+   "tiros": [
+    {
+     "h": "21:00",
+     "jogo": "Porto x Liverpool",
+     "odd": 2.09,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795557631018,
@@ -7062,7 +7070,7 @@
    "tipo": "odd",
    "chave": "2.1",
    "n": 11,
-   "start": 1
+   "start": 5
   },
   "dias": {
    "2026-11-20": 0,
