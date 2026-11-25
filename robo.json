@@ -5288,8 +5288,8 @@
     "gatilho": "odd 1.9"
    },
    "cop": {
-    "desde": 1795599280439,
-    "gatilho": "odd 2.18"
+    "desde": 1795599282536,
+    "gatilho": "placar empate 1-1"
    }
   }
  },
@@ -7391,7 +7391,37 @@
    "ita": 1795598327411,
    "cam": 1795598902975
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cop",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "06:42",
+     "jogo": "USA x France",
+     "odd": 1.93
+    },
+    {
+     "h": "06:45",
+     "jogo": "England x Denmark",
+     "odd": 2.02
+    },
+    {
+     "h": "06:48",
+     "jogo": "Mexico x Belgium",
+     "odd": 1.88
+    }
+   ],
+   "gatilho": "seq RRGG",
+   "alvo": {
+    "h": "06:42",
+    "jogo": "USA x France",
+    "odd": 1.93,
+    "unidades": 1,
+    "desde": 1795599465131
+   },
+   "iniciadoEm": 1795599465131
+  },
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795596330189,
@@ -7404,9 +7434,9 @@
    "ita": 1795598327411
   },
   "_gatilhoAtual": {
-   "tipo": "time",
-   "chave": "Liverpool",
-   "n": 12,
+   "tipo": "seq",
+   "chave": "RRGG",
+   "n": 9,
    "start": 1
   },
   "dias": {
