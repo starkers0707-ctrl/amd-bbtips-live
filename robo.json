@@ -1434,12 +1434,30 @@
  },
  "o25": {
   "saldo": -26.1,
-  "ciclos": 96609,
+  "ciclos": 96612,
   "greens": 260,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96311,
+  "descartes": 96314,
   "historico": [
+   {
+    "quando": "2026-11-25T05:31:07.344Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T05:31:06.770Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T05:30:40.075Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T05:30:31.998Z",
     "resultado": "GREEN_OBS",
@@ -5021,31 +5039,43 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:40:33.175Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:40:32.607Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "lat · green OBSERVADO no papel (gatilho seq GRGGR) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:40:32.601Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho odd 1.81) — liga REARMADA"
    }
   ],
   "consumidas": {
    "mnd": 1795581815708,
    "lat": 1795583375979
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "spa",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "02:39",
+     "jogo": "RSO x BET",
+     "odd": 1.9
+    },
+    {
+     "h": "02:41",
+     "jogo": "SEV x VIL",
+     "odd": 1.83
+    },
+    {
+     "h": "02:43",
+     "jogo": "DLC x GET",
+     "odd": 1.92
+    }
+   ],
+   "gatilho": "time VIL",
+   "alvo": {
+    "h": "02:39",
+    "jogo": "RSO x BET",
+    "odd": 1.9,
+    "unidades": 1,
+    "desde": 1795584640054
+   },
+   "iniciadoEm": 1795584640054
+  },
   "cooldown": {
    "cam": 1795570666089,
    "eng": 1795575218328,
@@ -5058,10 +5088,10 @@
    "cop": 1795567414833
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "acima de 1-0 (2-0)",
-   "n": 8,
-   "start": 1
+   "tipo": "time",
+   "chave": "VIL",
+   "n": 9,
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -5212,6 +5242,10 @@
    "cam": {
     "desde": 1795581650169,
     "gatilho": "time Dortmund"
+   },
+   "spa": {
+    "desde": 1795584667344,
+    "gatilho": "time VIL"
    }
   }
  },
@@ -7139,7 +7173,6 @@
    }
   ],
   "consumidas": {
-   "spa": 1795581038910,
    "eng": 1795582778457,
    "cop": 1795583077354
   },
