@@ -1457,12 +1457,18 @@
  },
  "o25": {
   "saldo": -22.7,
-  "ciclos": 97245,
+  "ciclos": 97246,
   "greens": 263,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96944,
+  "descartes": 96945,
   "historico": [
+   {
+    "quando": "2026-11-25T06:55:32.162Z",
+    "resultado": "DESCARTADO",
+    "unidades": 0,
+    "detalhe": "spa · alvo sem fechamento em 15min antes da 1a aposta"
+   },
    {
     "quando": "2026-11-25T06:55:20.691Z",
     "resultado": "GREEN_OBS",
@@ -5056,12 +5062,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T05:34:04.487Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5265,10 +5265,6 @@
    "spa": {
     "desde": 1795589477058,
     "gatilho": "time VIL"
-   },
-   "cop": {
-    "desde": 1795589720690,
-    "gatilho": "time France"
    }
   }
  },
@@ -7285,9 +7281,9 @@
   },
   "_gatilhoAtual": {
    "tipo": "time",
-   "chave": "Itaquera",
+   "chave": "Belo Horizonte",
    "n": 9,
-   "start": 1
+   "start": 7
   },
   "dias": {
    "2026-11-20": 0,
