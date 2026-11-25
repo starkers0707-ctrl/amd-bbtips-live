@@ -1409,13 +1409,19 @@
   }
  },
  "o25": {
-  "saldo": -30,
-  "ciclos": 94443,
-  "greens": 248,
+  "saldo": -28.8,
+  "ciclos": 94444,
+  "greens": 249,
   "redsCiclo": 37,
   "aborts": 0,
   "descartes": 94158,
   "historico": [
+   {
+    "quando": "2026-11-25T00:43:34.844Z",
+    "resultado": "GREEN",
+    "unidades": 1.2,
+    "detalhe": "cop · Brazil x Germany @2.19 (tiro 1) · gatilho: seq GRRRG"
+   },
    {
     "quando": "2026-11-25T00:43:32.681Z",
     "resultado": "GREEN_OBS",
@@ -5009,49 +5015,14 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-24T23:54:04.631Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.02) — liga REARMADA"
    }
   ],
   "consumidas": {
    "eng": 1795564656759,
-   "ame": 1795565357683
+   "ame": 1795565357683,
+   "cop": 1795567414833
   },
-  "ciclo": {
-   "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
-   "plano": [
-    {
-     "h": "21:42",
-     "jogo": "Brazil x Germany",
-     "odd": 2.19
-    },
-    {
-     "h": "21:45",
-     "jogo": "Belgium x Croatia",
-     "odd": 2.4
-    },
-    {
-     "h": "21:48",
-     "jogo": "Mexico x USA",
-     "odd": 2.05
-    }
-   ],
-   "gatilho": "seq GRRRG",
-   "alvo": {
-    "h": "21:42",
-    "jogo": "Brazil x Germany",
-    "odd": 2.19,
-    "unidades": 1,
-    "desde": 1795567067359
-   },
-   "iniciadoEm": 1795567067359
-  },
+  "ciclo": null,
   "cooldown": {
    "cam": 1795558424565,
    "eng": 1795564656759,
@@ -5061,7 +5032,7 @@
    "bra": 1795522714636,
    "mnd": 1795517012357,
    "ame": 1795565357683,
-   "cop": 1795556284523
+   "cop": 1795567414833
   },
   "_gatilhoAtual": {
    "tipo": "coluna",
@@ -5075,7 +5046,7 @@
    "2026-11-21": -5.2,
    "2026-11-22": 20.7,
    "2026-11-23": -37.6,
-   "2026-11-24": -20.1
+   "2026-11-24": -18.9
   },
   "_obs": {}
  },
@@ -5220,10 +5191,6 @@
    },
    "ita": {
     "desde": 1795567351848,
-    "gatilho": "coluna :57"
-   },
-   "spa": {
-    "desde": 1795567412680,
     "gatilho": "coluna :57"
    }
   }
