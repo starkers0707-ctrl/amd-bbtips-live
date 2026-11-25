@@ -1499,12 +1499,24 @@
  },
  "o25": {
   "saldo": -17.9,
-  "ciclos": 101457,
+  "ciclos": 101459,
   "greens": 274,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 101144,
+  "descartes": 101146,
   "historico": [
+   {
+    "quando": "2026-11-25T10:22:50.197Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:22:48.027Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:22:48.021Z",
     "resultado": "GREEN_OBS",
@@ -5092,18 +5104,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:32:06.872Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.18) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:32:06.866Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cam · green OBSERVADO no papel (gatilho seq RRGR) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5111,8 +5111,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "07:21",
@@ -5132,13 +5132,21 @@
    ],
    "gatilho": "placar empate 1-1",
    "alvo": {
-    "h": "07:21",
-    "jogo": "France x Germany",
-    "odd": 2.32,
-    "unidades": 1,
-    "desde": 1795601913272
+    "h": "07:24",
+    "jogo": "Italy x Croatia",
+    "odd": 2.65,
+    "unidades": 2,
+    "desde": 1795602170170
    },
-   "iniciadoEm": 1795601913272
+   "iniciadoEm": 1795601913272,
+   "tiros": [
+    {
+     "h": "07:21",
+     "jogo": "France x Germany",
+     "odd": 2.32,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "cam": 1795598902928,
@@ -5155,7 +5163,7 @@
    "tipo": "time",
    "chave": "Uruguay",
    "n": 16,
-   "start": 2
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
@@ -5307,9 +5315,9 @@
     "desde": 1795596831466,
     "gatilho": "time Guayaquil"
    },
-   "bra": {
-    "desde": 1795602168021,
-    "gatilho": "time ATC"
+   "spa": {
+    "desde": 1795602170197,
+    "gatilho": "time VIL"
    }
   }
  },
