@@ -1420,12 +1420,30 @@
  },
  "o25": {
   "saldo": -25,
-  "ciclos": 95133,
+  "ciclos": 95136,
   "greens": 253,
   "redsCiclo": 37,
   "aborts": 0,
-  "descartes": 94843,
+  "descartes": 94846,
   "historico": [
+   {
+    "quando": "2026-11-25T01:41:09.858Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T01:41:09.851Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "eng · green OBSERVADO no papel (gatilho coluna :54) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T01:41:04.887Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T01:41:04.881Z",
     "resultado": "GREEN_OBS",
@@ -5007,24 +5025,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T00:49:37.424Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T00:49:35.311Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T00:49:34.221Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho coluna :57) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5231,9 +5231,9 @@
     "desde": 1795570834124,
     "gatilho": "coluna :57"
    },
-   "eng": {
-    "desde": 1795570864880,
-    "gatilho": "coluna :54"
+   "ita": {
+    "desde": 1795570869857,
+    "gatilho": "coluna :57"
    }
   }
  },
@@ -7106,8 +7106,8 @@
   },
   "ciclo": {
    "liga": "cop",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "22:39",
@@ -7127,13 +7127,21 @@
    ],
    "gatilho": "seq RRRRR",
    "alvo": {
-    "h": "22:39",
-    "jogo": "Brazil x Spain",
-    "odd": 1.98,
-    "unidades": 1,
-    "desde": 1795570502121
+    "h": "22:42",
+    "jogo": "Italy x Colombia",
+    "odd": 2.31,
+    "unidades": 2,
+    "desde": 1795570864919
    },
-   "iniciadoEm": 1795570502121
+   "iniciadoEm": 1795570502121,
+   "tiros": [
+    {
+     "h": "22:39",
+     "jogo": "Brazil x Spain",
+     "odd": 1.98,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795567528053,
