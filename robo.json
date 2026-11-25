@@ -1532,12 +1532,30 @@
  },
  "o25": {
   "saldo": -17.9,
-  "ciclos": 100772,
+  "ciclos": 100775,
   "greens": 274,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 100459,
+  "descartes": 100462,
   "historico": [
+   {
+    "quando": "2026-11-25T09:28:25.127Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:28:25.123Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho odd 1.9) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T09:28:22.962Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho odd 2.18) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T09:28:22.956Z",
     "resultado": "GREEN_OBS",
@@ -5119,24 +5137,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:01:28.014Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-1)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:01:28.010Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho seq GRRG) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:01:28.006Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ita · green OBSERVADO no papel (gatilho time SAS) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5316,19 +5316,25 @@
     "gatilho": "time Guayaquil"
    },
    "bra": {
-    "desde": 1795598902955,
+    "desde": 1795598905127,
     "gatilho": "placar acima de 1-0 (2-0)"
    }
   }
  },
  "ambas": {
-  "saldo": -35.7,
-  "ciclos": 346,
-  "greens": 142,
+  "saldo": -34.5,
+  "ciclos": 347,
+  "greens": 143,
   "redsCiclo": 20,
   "aborts": 0,
   "descartes": 184,
   "historico": [
+   {
+    "quando": "2026-11-25T09:28:22.979Z",
+    "resultado": "GREEN",
+    "unidades": 1.2,
+    "detalhe": "cam · Liverpool x Dortmund @2.09 (tiro 2) · gatilho: time Liverpool"
+   },
    {
     "quando": "2026-11-25T09:18:47.414Z",
     "resultado": "GREEN",
@@ -7410,54 +7416,17 @@
    "mnd": 1795595976401,
    "eng": 1795596330189,
    "ame": 1795598001936,
-   "ita": 1795598327411
+   "ita": 1795598327411,
+   "cam": 1795598902975
   },
-  "ciclo": {
-   "liga": "cam",
-   "degrau": 1,
-   "apostado": 1,
-   "plano": [
-    {
-     "h": "06:24",
-     "jogo": "Amsterdam x Chelsea",
-     "odd": 2.26
-    },
-    {
-     "h": "06:27",
-     "jogo": "Liverpool x Dortmund",
-     "odd": 2.09
-    },
-    {
-     "h": "06:30",
-     "jogo": "Munich x Rome",
-     "odd": 1.9
-    }
-   ],
-   "gatilho": "time Liverpool",
-   "alvo": {
-    "h": "06:27",
-    "jogo": "Liverpool x Dortmund",
-    "odd": 2.09,
-    "unidades": 2,
-    "desde": 1795598767396
-   },
-   "iniciadoEm": 1795598328169,
-   "tiros": [
-    {
-     "h": "06:24",
-     "jogo": "Amsterdam x Chelsea",
-     "odd": 2.26,
-     "unidades": 1
-    }
-   ]
-  },
+  "ciclo": null,
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795596330189,
    "spa": 1795585949785,
    "bra": 1795526496634,
    "mnd": 1795595976401,
-   "cam": 1795592637356,
+   "cam": 1795598902975,
    "cop": 1795592080479,
    "ame": 1795598001936,
    "ita": 1795598327411
@@ -7474,7 +7443,7 @@
    "2026-11-22": -14.2,
    "2026-11-23": 13.6,
    "2026-11-24": -32.6,
-   "2026-11-25": -4.5
+   "2026-11-25": -3.3
   },
   "_obs": {}
  }
