@@ -1501,12 +1501,18 @@
  },
  "o25": {
   "saldo": -17.9,
-  "ciclos": 101019,
+  "ciclos": 101020,
   "greens": 274,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 100706,
+  "descartes": 100707,
   "historico": [
+   {
+    "quando": "2026-11-25T09:51:47.963Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T09:51:45.856Z",
     "resultado": "GREEN_OBS",
@@ -5100,12 +5106,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:13:06.288Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-1)) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5286,6 +5286,10 @@
    "mnd": {
     "desde": 1795599216952,
     "gatilho": "odd 1.9"
+   },
+   "cop": {
+    "desde": 1795600307963,
+    "gatilho": "placar empate 1-1"
    }
   }
  },
