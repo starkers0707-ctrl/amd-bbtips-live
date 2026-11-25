@@ -1539,12 +1539,30 @@
  },
  "o25": {
   "saldo": -13.8,
-  "ciclos": 101893,
+  "ciclos": 101896,
   "greens": 277,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 101577,
+  "descartes": 101580,
   "historico": [
+   {
+    "quando": "2026-11-25T10:40:49.349Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "mnd · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-1)) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:40:49.344Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:40:36.071Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:40:36.065Z",
     "resultado": "GREEN_OBS",
@@ -5126,24 +5144,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:13:28.741Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:13:18.981Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:13:18.971Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5197,7 +5197,7 @@
    "tipo": "odd",
    "chave": "2.31",
    "n": 9,
-   "start": 5
+   "start": 4
   },
   "dias": {
    "2026-11-19": -7,
@@ -5349,9 +5349,9 @@
     "desde": 1795596831466,
     "gatilho": "time Guayaquil"
    },
-   "cam": {
-    "desde": 1795603236065,
-    "gatilho": "odd 2.31"
+   "mnd": {
+    "desde": 1795603249349,
+    "gatilho": "placar acima de 1-0 (2-1)"
    }
   }
  },
