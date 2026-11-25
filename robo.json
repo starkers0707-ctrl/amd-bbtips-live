@@ -1423,9 +1423,9 @@
    "bra": 1795556736216
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "1-0 / 0-1",
-   "n": 8,
+   "tipo": "seq",
+   "chave": "RRRR",
+   "n": 10,
    "start": 1
   },
   "dias": {
@@ -1448,12 +1448,18 @@
  },
  "o25": {
   "saldo": -27.7,
-  "ciclos": 96434,
+  "ciclos": 96435,
   "greens": 258,
   "redsCiclo": 38,
   "aborts": 0,
-  "descartes": 96138,
+  "descartes": 96139,
   "historico": [
+   {
+    "quando": "2026-11-25T04:38:00.500Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cam · green OBSERVADO no papel (gatilho time Dortmund) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T04:37:29.883Z",
     "resultado": "GREEN_OBS",
@@ -5047,12 +5053,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "spa · green OBSERVADO no papel (gatilho coluna :23) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T02:19:35.145Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "ame · green OBSERVADO no papel (gatilho odd 2.13) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5101,8 +5101,8 @@
    "cop": 1795567414833
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "1-0 / 0-1",
+   "tipo": "time",
+   "chave": "Dortmund",
    "n": 8,
    "start": 1
   },
@@ -5256,9 +5256,9 @@
     "desde": 1795580546940,
     "gatilho": "placar 1-0 / 0-1"
    },
-   "mnd": {
-    "desde": 1795581449882,
-    "gatilho": "placar 1-0 / 0-1"
+   "cam": {
+    "desde": 1795581480500,
+    "gatilho": "time Dortmund"
    }
   }
  },
