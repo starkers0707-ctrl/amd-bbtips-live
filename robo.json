@@ -1527,12 +1527,18 @@
  },
  "o25": {
   "saldo": -14.4,
-  "ciclos": 101773,
+  "ciclos": 101774,
   "greens": 276,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 101458,
+  "descartes": 101459,
   "historico": [
+   {
+    "quando": "2026-11-25T10:37:03.790Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:36:40.707Z",
     "resultado": "GREEN_OBS",
@@ -5126,12 +5132,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T10:07:08.688Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5354,9 +5354,9 @@
     "desde": 1795602842794,
     "gatilho": "time FOR"
    },
-   "cop": {
-    "desde": 1795603000706,
-    "gatilho": "time Uruguay"
+   "spa": {
+    "desde": 1795603023790,
+    "gatilho": "time VIL"
    }
   }
  },
@@ -7488,7 +7488,37 @@
    "bra": 1795601026409,
    "ita": 1795602991234
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "cam",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "07:39",
+     "jogo": "Barcelona x Celtic",
+     "odd": 2.07
+    },
+    {
+     "h": "07:42",
+     "jogo": "Liverpool x Turin",
+     "odd": 1.91
+    },
+    {
+     "h": "07:45",
+     "jogo": "Dortmund x Amsterdam",
+     "odd": 2.28
+    }
+   ],
+   "gatilho": "odd 2.07",
+   "alvo": {
+    "h": "07:39",
+    "jogo": "Barcelona x Celtic",
+    "odd": 2.07,
+    "unidades": 1,
+    "desde": 1795603000725
+   },
+   "iniciadoEm": 1795603000725
+  },
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795600540122,
