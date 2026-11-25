@@ -1470,12 +1470,24 @@
  },
  "o25": {
   "saldo": -26.9,
-  "ciclos": 97893,
+  "ciclos": 97895,
   "greens": 266,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 97588,
+  "descartes": 97590,
   "historico": [
+   {
+    "quando": "2026-11-25T07:31:37.938Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T07:31:34.632Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time France) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T07:31:34.624Z",
     "resultado": "GREEN_OBS",
@@ -5063,18 +5075,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "lat · green OBSERVADO no papel (gatilho placar acima de 1-0 (2-0)) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:00:32.920Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "mnd · green OBSERVADO no papel (gatilho time NED) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T07:00:31.926Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho placar empate 1-1) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5282,7 +5282,7 @@
     "gatilho": "placar empate 1-1"
    },
    "spa": {
-    "desde": 1795591894623,
+    "desde": 1795591897938,
     "gatilho": "time VIL"
    }
   }
@@ -7302,8 +7302,8 @@
   },
   "ciclo": {
    "liga": "eng",
-   "degrau": 0,
-   "apostado": 0,
+   "degrau": 1,
+   "apostado": 1,
    "plano": [
     {
      "h": "04:30",
@@ -7323,13 +7323,21 @@
    ],
    "gatilho": "placar empate 1-1",
    "alvo": {
-    "h": "04:30",
-    "jogo": "BOU x TOT",
-    "odd": 1.74,
-    "unidades": 1,
-    "desde": 1795591684283
+    "h": "04:32",
+    "jogo": "FUL x CHE",
+    "odd": 1.69,
+    "unidades": 2,
+    "desde": 1795591894644
    },
-   "iniciadoEm": 1795591684283
+   "iniciadoEm": 1795591684283,
+   "tiros": [
+    {
+     "h": "04:30",
+     "jogo": "BOU x TOT",
+     "odd": 1.74,
+     "unidades": 1
+    }
+   ]
   },
   "cooldown": {
    "lat": 1795590067651,
