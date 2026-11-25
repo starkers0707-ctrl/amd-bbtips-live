@@ -1529,12 +1529,30 @@
  },
  "o25": {
   "saldo": -17.9,
-  "ciclos": 101512,
+  "ciclos": 101515,
   "greens": 274,
   "redsCiclo": 39,
   "aborts": 0,
-  "descartes": 101199,
+  "descartes": 101202,
   "historico": [
+   {
+    "quando": "2026-11-25T10:25:03.195Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:25:03.187Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "bra · green OBSERVADO no papel (gatilho time ATC) — liga REARMADA"
+   },
+   {
+    "quando": "2026-11-25T10:25:03.181Z",
+    "resultado": "GREEN_OBS",
+    "unidades": 0,
+    "detalhe": "spa · green OBSERVADO no papel (gatilho time VIL) — liga REARMADA"
+   },
    {
     "quando": "2026-11-25T10:24:43.221Z",
     "resultado": "GREEN_OBS",
@@ -5116,24 +5134,6 @@
     "resultado": "GREEN_OBS",
     "unidades": 0,
     "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:41:06.292Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:41:05.377Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
-   },
-   {
-    "quando": "2026-11-25T09:41:04.633Z",
-    "resultado": "GREEN_OBS",
-    "unidades": 0,
-    "detalhe": "cop · green OBSERVADO no papel (gatilho time Uruguay) — liga REARMADA"
    }
   ],
   "consumidas": {
@@ -5344,10 +5344,6 @@
    "ame": {
     "desde": 1795596831466,
     "gatilho": "time Guayaquil"
-   },
-   "cop": {
-    "desde": 1795602283220,
-    "gatilho": "time Uruguay"
    }
   }
  },
@@ -7473,7 +7469,37 @@
    "eng": 1795600540122,
    "bra": 1795601026409
   },
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ita",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "07:31",
+     "jogo": "FIO x VEN",
+     "odd": 1.76
+    },
+    {
+     "h": "07:33",
+     "jogo": "SAS x TOR",
+     "odd": 1.7
+    },
+    {
+     "h": "07:35",
+     "jogo": "PAR x NAP",
+     "odd": 1.68
+    }
+   ],
+   "gatilho": "time SAS",
+   "alvo": {
+    "h": "07:31",
+    "jogo": "FIO x VEN",
+    "odd": 1.76,
+    "unidades": 1,
+    "desde": 1795602303219
+   },
+   "iniciadoEm": 1795602303219
+  },
   "cooldown": {
    "lat": 1795590067651,
    "eng": 1795600540122,
@@ -7486,10 +7512,10 @@
    "ita": 1795598327411
   },
   "_gatilhoAtual": {
-   "tipo": "placar",
-   "chave": "acima de 1-0 (2-1)",
-   "n": 8,
-   "start": 1
+   "tipo": "time",
+   "chave": "SAS",
+   "n": 19,
+   "start": 3
   },
   "dias": {
    "2026-11-20": 0,
