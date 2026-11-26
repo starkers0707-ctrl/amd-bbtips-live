@@ -384,7 +384,9 @@ function fullEvalUpcoming(upcoming, games, mkt, opts = {}) {
     const oddBase = oddPayPct(games, odd, mkt);
     const teamBase = teamPayPct(games, u.nome, mkt);
     const dist = odd ? scoreDistribution(games, odd, mkt) : null;
-    const pk = probKiron(games, u, mkt);
+    /* modoEv 'historico' (como era na Bet365): probabilidade pelo historico da
+       mesma odd + base do mercado, sem ancorar no preco justo da Kiron. */
+    const pk = opts.modoEv === "historico" ? null : probKiron(games, u, mkt);
     let prob = baseGeral;
     if (pk) prob = pk.pEst * 100;
     else if (oddBase.j >= 5) prob = (oddBase.p * 2 + baseGeral) / 3;
@@ -537,7 +539,7 @@ function _calculaBacktest(liga, mkt, n, store, jph = 20, opts = {}) {
       const g = games[i];
       if (!g.odds || !g.odds[oddKey(mkt)]) continue;
       const hist = games.slice(0, i).slice(-20 * jph); // 20h anteriores da liga
-      const ev = fullEvalUpcoming([{ nome: g.nome, horario: "", casa: g.casa, fora: g.fora, odds: g.odds }], hist, mkt, { jogosHora: jph })[0] || {};
+      const ev = fullEvalUpcoming([{ nome: g.nome, horario: "", casa: g.casa, fora: g.fora, odds: g.odds }], hist, mkt, { jogosHora: jph, modoEv: opts.modoEv })[0] || {};
       resultados.push({
         nome: g.nome, horario: g.horario || "", odd: g.odds[oddKey(mkt)],
         score: ev.score ?? null, ev: ev.ev ?? null, ready: ev.ready === true,

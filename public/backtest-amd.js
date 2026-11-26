@@ -30,6 +30,8 @@
     { id: "ambas", nome: "Ambas Sim" },
     { id: "ambasN", nome: "Ambas Não" },
   ];
+  var modoEv = 'historico';
+  try { modoEv = localStorage.getItem("amd_bt_ev") || 'historico'; } catch (e) {}
   var modoBt = 'todos';
   try { modoBt = localStorage.getItem("amd_bt_modo") || 'todos'; } catch (e) {}
   var mktEscolhido = null;
@@ -80,6 +82,17 @@
       modos.appendChild(b);
     });
     cx.appendChild(modos);
+    var evs = document.createElement("span");
+    evs.style.cssText = "display:flex;gap:4px;align-items:center;margin-left:8px";
+    [["historico", "EV histórico (Bet365)"], ["kiron", "EV justo Kiron"]].forEach(function (m) {
+      var b = document.createElement("button");
+      b.textContent = m[1]; b.dataset.ev = m[0];
+      b.title = m[0] === "historico" ? "Probabilidade pelo histórico dos jogos com a mesma odd + média do mercado (como era na Bet365)" : "Probabilidade ancorada no preço justo que a Kiron envia (mais rígido, quase nunca dá EV+)";
+      b.style.cssText = "cursor:pointer;border-radius:6px;padding:3px 8px;font-size:11px;line-height:1.4;border:1px solid var(--line,#162832);background:transparent;color:var(--muted,#96a5ad)";
+      b.addEventListener("click", function (e) { e.preventDefault(); modoEv = m[0]; try { localStorage.setItem("amd_bt_ev", modoEv); } catch (err) {} pinta(); chaveAtual = null; roda(); });
+      evs.appendChild(b);
+    });
+    cx.appendChild(evs);
     head.style.flexWrap = "wrap";
     head.style.rowGap = "6px";
     if (!mktEscolhido) mktEscolhido = "o25";
@@ -89,7 +102,7 @@
     var cx = document.querySelector(".amd-bt-mkt");
     if (!cx) return;
     [].forEach.call(cx.querySelectorAll("button"), function (b) {
-      var on = b.dataset.mkt ? b.dataset.mkt === mktEscolhido : b.dataset.modo === modoBt;
+      var on = b.dataset.mkt ? b.dataset.mkt === mktEscolhido : b.dataset.ev ? b.dataset.ev === modoEv : b.dataset.modo === modoBt;
       b.style.borderColor = on ? "var(--blue,#32a4ff)" : "var(--line,#162832)";
       b.style.color = on ? "var(--blue,#32a4ff)" : "var(--muted,#96a5ad)";
       b.style.fontWeight = on ? "700" : "400";
@@ -419,7 +432,7 @@
       }
       var bt;
       try { var temOdd5 = mkt === "ge5" && jogos.filter(function (g) { return g.odds && g.odds.ge5; }).length >= jogos.length * 0.5;
-      bt = (mkt === "ge5" && !temOdd5) ? backtest5Mais(jogos, jogosHora(liga)) : AMD_MOTOR.backtest(jogos, mkt, jogosDeHoje(jogos), { liga: liga, semJanela: true }); } catch (e) { return; }
+      bt = (mkt === "ge5" && !temOdd5) ? backtest5Mais(jogos, jogosHora(liga)) : AMD_MOTOR.backtest(jogos, mkt, jogosDeHoje(jogos), { liga: liga, semJanela: true, modoEv: modoEv }); } catch (e) { return; }
       if (!bt || bt.erro) { avisa("sem base suficiente para o backtest deste mercado agora"); return; }
       poeTitulo("Backtest · " + liga.charAt(0).toUpperCase() + liga.slice(1) + " — " + nomeDoMercado(mkt) +
         (mkt === "ge5" ? " · probabilidade sem EV" : " · hoje 00h–23:59"));
