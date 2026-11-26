@@ -609,6 +609,7 @@
   }
 
   function renderPreview() {
+    try { document.dispatchEvent(new CustomEvent('amd:robo-preview')); } catch (e) {}
     var result = scoreResult();
     var name = q('#rbName').value.trim();
     q('#previewName').textContent = name || 'Robô sem nome';
@@ -1006,6 +1007,7 @@
 
   /* Usado pelo Buscador de padroes para montar o quadro com um resultado. */
   window.AMDManualBuilder = {
+    config: function () { return collectConfig(); },
     applyPattern: function (cfg) {
       patternCells = {};
       (cfg.cells || []).forEach(function (cell) {

@@ -2,8 +2,8 @@
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Minha IA · AMD Live</title>
 <style>
-:root{--bg:#020d12;--card:#061a22;--in:#021118;--line:#153946;--txt:#f3fbfa;--mut:#83b7c8;--ok:#00f278;--bad:#ff475f;--warn:#ffd21c}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 86% 0,rgba(0,242,120,.07),transparent 28%),var(--bg);color:var(--txt);font:14px/1.45 Inter,system-ui,Segoe UI,Roboto,sans-serif}
+:root{--bg:#030a0f;--card:#061119;--in:#07151e;--line:#162832;--txt:#e7edf1;--mut:#96a5ad;--ok:#18e34d;--bad:#ff343d;--warn:#ff9d00}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.45 Inter,system-ui,Segoe UI,Roboto,sans-serif}
 .wrap{max-width:1200px;margin:0 auto;padding:20px 18px 60px}
 a{color:var(--ok);text-decoration:none;font-weight:700}
 h1{font-size:24px;margin:10px 0 4px}h1 em{font-style:normal;color:var(--ok)}
@@ -15,9 +15,9 @@ label{display:flex;flex-direction:column;gap:5px;color:var(--mut);font-size:12px
 select,input,textarea{background:var(--in);border:1px solid var(--line);color:var(--txt);padding:10px 12px;border-radius:8px;font:inherit;width:100%}
 textarea{resize:vertical;min-height:70px}
 .row{display:flex;gap:8px;flex-wrap:wrap}
-button{background:#05291b;color:var(--ok);border:1px solid #0b6b3e;border-radius:8px;padding:9px 14px;font:inherit;font-weight:800;cursor:pointer}
+button{background:#0a2a14;color:var(--ok);border:1px solid #12602a;border-radius:8px;padding:9px 14px;font:inherit;font-weight:800;cursor:pointer}
 button.sec{background:var(--in);color:var(--mut);border-color:var(--line)}
-button.bad{background:#2a0c13;color:#ff8a9a;border-color:#6b1b2a}
+button.bad{background:#2a0c10;color:#ff8a9a;border-color:#6b1b20}
 button:disabled{opacity:.5;cursor:wait}
 .st{font-size:12px;margin-top:6px}.ok{color:var(--ok)}.badt{color:var(--bad)}.warn{color:var(--warn)}
 .ligas{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
@@ -25,11 +25,11 @@ button:disabled{opacity:.5;cursor:wait}
 .ligas input{width:auto}
 .chat{display:flex;flex-direction:column;gap:10px;min-height:360px;max-height:62vh;overflow:auto;padding:4px}
 .msg{padding:10px 12px;border-radius:10px;white-space:pre-wrap;word-wrap:break-word;max-width:92%}
-.msg.a{white-space:normal;line-height:1.55}.msg.a ul{margin:4px 0 4px 18px;padding:0}.msg.a li{margin:2px 0}.msg.a .h{font-weight:900;color:var(--ok);margin:6px 0 2px}.msg.a .sp{height:6px}.msg.a b{color:#fff}.msg.a code{background:#0b2f3a;padding:0 4px;border-radius:4px}
+.msg.a{white-space:normal;line-height:1.55}.msg.a ul{margin:4px 0 4px 18px;padding:0}.msg.a li{margin:2px 0}.msg.a .h{font-weight:900;color:var(--ok);margin:6px 0 2px}.msg.a .sp{height:6px}.msg.a b{color:#fff}.msg.a code{background:#0c2230;padding:0 4px;border-radius:4px}
 .mod{margin-top:8px;font-size:11px;color:var(--mut);border-top:1px solid var(--line);padding-top:5px}
-.msg.u{background:#0b2f3a;align-self:flex-end}
+.msg.u{background:#0c2230;align-self:flex-end}
 .msg.a{background:var(--in);border:1px solid var(--line);align-self:flex-start}
-.msg.e{background:#2a0c13;color:#ffb3be;align-self:flex-start}
+.msg.e{background:#2a0c10;color:#ffb3be;align-self:flex-start}
 .quick{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
 .quick button{font-size:12px;padding:6px 10px}
 .nota{color:var(--mut);font-size:11px;line-height:1.4;margin-top:8px}
