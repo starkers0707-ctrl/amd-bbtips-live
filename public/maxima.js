@@ -540,14 +540,20 @@
     return rotulo && valor != null ? rotulo + '|' + valor.toFixed(2) : '';
   }
 
+  /* CORES DA MARCACAO: cada time/odd marcado ganha uma cor propria, na ordem
+     em que foi marcado (amarelo, ciano, rosa, laranja, roxo, verde-limao…). */
+  var CORES_SEL = ['#ffd400', '#00d9ff', '#ff4fd8', '#ff8a00', '#a98bff', '#b6ff3b', '#ff5a5a', '#3dffc5'];
+  function corDaSelecao(selecao) { return CORES_SEL[(selecao.cor || 0) % CORES_SEL.length]; }
   function limparMarcacoesDom() {
     [].slice.call(document.querySelectorAll(
       '#grade .tm.sel,#grade .od.sel,#grade .score.sel,#grade .htline.sel'
-    )).forEach(function (el) { el.classList.remove('sel'); });
+    )).forEach(function (el) { el.classList.remove('sel'); el.style.removeProperty('background'); el.style.removeProperty('color'); });
     [].slice.call(document.querySelectorAll('#grade .match.hit,#grade .match.sel'))
       .forEach(function (el) {
         el.classList.remove('hit');
         el.classList.remove('sel');
+        el.style.removeProperty('outline-color');
+        el.style.removeProperty('box-shadow');
       });
   }
 
@@ -709,7 +715,7 @@
             st.pendentes + (st.pendentes === 1 ? ' pendente)' : ' pendentes)');
         }
       }
-      partes.push({ classe: 'sel-item', texto: texto });
+      partes.push({ classe: 'sel-item', texto: texto, cor: corDaSelecao(selecao) });
     });
 
     if (colunasSelecionadas.size) {
@@ -742,6 +748,7 @@
       var item = document.createElement('span');
       item.className = parte.classe;
       item.textContent = parte.texto;
+      if (parte.cor) { item.style.borderLeft = '4px solid ' + parte.cor; item.style.paddingLeft = '6px'; item.style.color = parte.cor; }
       label.appendChild(item);
     });
     bar.appendChild(label);
@@ -763,14 +770,24 @@
     limparMarcacoesDom();
 
     matchesDoPeriodo().forEach(function (match) {
-      var marcou = false;
+      var cores = [];
       selecoesAtuais.forEach(function (selecao) {
         var alvos = alvosDaSelecao(match, selecao);
         if (!alvos.length) return;
-        marcou = true;
-        alvos.forEach(function (alvo) { alvo.classList.add('sel'); });
+        var cor = corDaSelecao(selecao);
+        cores.push(cor);
+        alvos.forEach(function (alvo) {
+          alvo.classList.add('sel');
+          alvo.style.setProperty('background', cor, 'important');
+          alvo.style.setProperty('color', '#07151e', 'important');
+        });
       });
-      if (marcou) match.classList.add('hit');
+      if (cores.length) {
+        match.classList.add('hit');
+        match.style.setProperty('outline-color', cores[0], 'important');
+        /* jogo com dois marcados: segunda cor por dentro da borda */
+        if (cores.length > 1) match.style.setProperty('box-shadow', 'inset 0 0 0 3px ' + cores[1], 'important');
+      }
     });
 
     aplicarColunasSelecionadas();
@@ -783,7 +800,12 @@
     if (!valor) return;
     var chave = chaveSelecao(tipo, valor);
     if (selecoesAtuais.has(chave)) selecoesAtuais.delete(chave);
-    else selecoesAtuais.set(chave, { tipo: tipo, valor: valor });
+    else {
+      /* proxima cor livre, na ordem */
+      var usadas = {}; selecoesAtuais.forEach(function (s2) { usadas[s2.cor || 0] = 1; });
+      var cor = 0; while (usadas[cor] && cor < CORES_SEL.length) cor++;
+      selecoesAtuais.set(chave, { tipo: tipo, valor: valor, cor: cor });
+    }
     aplicarMarcacao();
   }
 
