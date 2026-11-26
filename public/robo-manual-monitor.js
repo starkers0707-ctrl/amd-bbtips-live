@@ -304,12 +304,9 @@
         signal.lastResolvedGameSlot=game.slot_em||game.criado_em||'';changed=true;
         if(paid){signal.status='GREEN';signal.winningShot=current;signal.resolvedAt=new Date().toISOString();followUps.resolved.push(signal);break;}
         if(current>=maximum){signal.status='RED';signal.resolvedAt=new Date().toISOString();followUps.resolved.push(signal);break;}
-        /* Trava entre tiros: depois de um red, se o grafico virou (9 abaixo da 21,
-           9 caindo ou linha abaixo da MM9), cancela o resto da sequencia. */
-        var vira=metricState({},data,signal.league||'copa',signal.market);
-        if(vira&&(!vira.subida||!vira.acimaM9)){
-          signal.status='ANULADO';signal.abortado=true;signal.motivoAborto=!vira.subida?'gráfico caindo':'linha abaixo da MM9';
-          signal.resolvedAt=new Date().toISOString();followUps.resolved.push(signal);break;}
+        /* Sem abortar no meio do ciclo: com gale, cancelar depois de um red so
+           trava o prejuizo e corta o tiro que recupera. A trava do grafico vale
+           ANTES da entrada (metricsPass); comecou, vai ate o fim. */
         var next=nextShotGame(all,game);
         if(!next){signal.awaitingNext=true;signal.currentShot=current+1;signal.gameId='';signal.gameSlot='';
           signal.timeA='?';signal.timeB='?';signal.score='';break;}
@@ -352,7 +349,7 @@
     var options={body:body,tag:'amd-manual-'+key,renotify:true,requireInteraction:true,data:{url:'/robos.html'}};
     try{if('serviceWorker' in navigator){var reg=await navigator.serviceWorker.register('/sw-alertas.js');await reg.showNotification(title,options);return;}new Notification(title,options);}catch(_){}
   }
-  var MONITOR_V='20261125-trava';
+  var MONITOR_V='20261126-semaborto';
   var lastSync='';
   function pullRobots(){
     return fetch('/api/robos/lista?_='+Date.now(),{credentials:'same-origin',cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){

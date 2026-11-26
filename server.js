@@ -592,8 +592,10 @@ const hhmm = (h, m) => (Number.isFinite(Number(h)) && Number.isFinite(Number(m))
 const escH = v => String(v == null ? "" : v).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
 function textoSinal(s, st) {
   const res = (st.signals || []).filter(x => x.robotId === s.robotId && x.status !== "PENDENTE");
-  const g = res.filter(x => x.status === "GREEN").length, r = res.filter(x => x.status === "RED").length;
-  const an = res.filter(x => x.status === "ANULADO").length;
+  /* aborto antigo que ja tinha tiro perdido conta como RED (perdeu dinheiro) */
+  const perdeuAbortado = x => x.status === "ANULADO" && x.abortado && (x.attempts || []).length > 0;
+  const g = res.filter(x => x.status === "GREEN").length, r = res.filter(x => x.status === "RED" || perdeuAbortado(x)).length;
+  const an = res.filter(x => x.status === "ANULADO" && !perdeuAbortado(x)).length;
   const pct = g + r ? Math.round(g / (g + r) * 100) : 0;
   const max = Math.max(1, Number(s.shots || 1)), plano = Array.isArray(s.plano) ? s.plano : [];
   const tent = {}; (s.attempts || []).forEach(a => { tent[a.number] = a; });
