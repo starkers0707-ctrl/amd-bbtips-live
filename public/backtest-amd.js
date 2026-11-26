@@ -152,6 +152,7 @@
     var o = p.odds || {};
     return {
       id: p.id != null ? String(p.id) : null,     // casa com data-game-id da grade
+      ts: Date.parse(p.slot_em || p.criado_em || "") || 0,
       horario: String(p.hora == null ? 0 : p.hora).padStart(2, "0") + ":" +
                String(p.minuto == null ? 0 : p.minuto).padStart(2, "0"),
       nome: (p.time_a || "") + " x " + (p.time_b || ""),
@@ -175,6 +176,10 @@
       .then(function (j) {
         var out = [], lista = (j && j.partidas) || [];
         for (var i = 0; i < lista.length; i++) { var g = adapta(lista[i]); if (g) out.push(g); }
+        /* ordem real de horario (a fonte pode misturar a ordem); jogos sem horario ficam onde estavam */
+        out = out.map(function (g, ix) { return { g: g, ix: ix }; })
+          .sort(function (a, b) { return (a.g.ts && b.g.ts) ? (a.g.ts - b.g.ts) || (a.ix - b.ix) : a.ix - b.ix; })
+          .map(function (x) { return x.g; });
         mapaId = {};
         for (var k = 0; k < out.length; k++) {
           if (out[k].id) mapaId[out[k].horario + "|" + out[k].nome] = out[k].id;
