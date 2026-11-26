@@ -19,7 +19,7 @@
   var cache = {}, buscando = {}, futuros = {};
   /* ALERTA DE BACKTEST: quando um novo jogo entra no backtest (ja passou),
      vigia os dois times dele e avisa quando um deles aparece de novo na grade. */
-  var alertaOn = false, vigia = null, ultimoVisto = null, avisados = {};
+  var alertaOn = false, vigia = null, ultimoVisto = null, avisados = {}, manual = false, listaAtual = [], ligaListaAtual = null;
   try { alertaOn = localStorage.getItem("amd_bt_alerta") === "1"; } catch (e) {}
   var mapaId = {};
   var meuHtml = null, escrevendo = false, observando = false;
@@ -108,6 +108,13 @@
       pintaAlerta(); if (ultimo) desenha(ultimo, ultimaLiga);
     });
     cx.appendChild(al);
+    var volta = document.createElement("button");
+    volta.className = "amd-bt-alerta-ultimo";
+    volta.textContent = "↺ seguir o último";
+    volta.title = "Volta a vigiar sempre o jogo mais recente do backtest";
+    volta.style.cssText = "cursor:pointer;border-radius:6px;padding:3px 8px;font-size:11px;line-height:1.4;margin-left:4px;border:1px solid var(--line,#162832);background:transparent;color:var(--muted,#96a5ad);display:none";
+    volta.addEventListener("click", function (e) { e.preventDefault(); manual = false; ultimoVisto = null; pintaAlerta(); if (ultimo) desenha(ultimo, ultimaLiga); });
+    cx.appendChild(volta);
     pintaAlerta();
     head.style.flexWrap = "wrap";
     head.style.rowGap = "6px";
@@ -128,7 +135,8 @@
   function pintaAlerta() {
     var b = document.querySelector(".amd-bt-alerta");
     if (!b) return;
-    b.textContent = alertaOn ? "🔔 Alerta ligado" + (vigia ? " · " + vigia.times.join(" / ") : "") : "🔕 Alerta desligado";
+    b.textContent = alertaOn ? "🔔 " + (manual ? "Escolhido" : "Último") + (vigia ? ": " + vigia.times.join(" / ") + " (" + vigia.horario + ")" : "") : "🔕 Alerta desligado";
+    var v = document.querySelector(".amd-bt-alerta-ultimo"); if (v) v.style.display = alertaOn && manual ? "" : "none";
     b.style.borderColor = alertaOn ? "var(--green,#18e34d)" : "var(--line,#162832)";
     b.style.color = alertaOn ? "var(--green,#18e34d)" : "var(--muted,#96a5ad)";
     b.style.fontWeight = alertaOn ? "700" : "400";
@@ -141,7 +149,7 @@
     if (!alertaOn || !lista || !lista.length) return;
     var ult = lista[lista.length - 1];                    /* jogo mais recente do backtest */
     var chave = liga + "|" + ult.horario + "|" + ult.nome;
-    if (chave !== ultimoVisto) {
+    if (!manual && chave !== ultimoVisto) {
       ultimoVisto = chave;
       vigia = { liga: liga, jogo: ult.nome, horario: ult.horario, resultado: ult.resultado, ev: ult.ev,
         times: String(ult.nome || "").split(" x ").map(function (t) { return t.trim(); }).filter(Boolean) };
@@ -150,13 +158,22 @@
     if (!vigia || vigia.liga !== liga) return;
     var agora = agoraSlot();
     var prox = (futuros[liga] || []).filter(function (f) { return f.ts > agora; });
+    /* jogos ja fechados depois do jogo vigiado: se o time ja voltou, a 1a volta passou */
+    var fechados = cache[liga] || [], iv = -1;
+    for (var q = fechados.length - 1; q >= 0; q--) { if (fechados[q].horario === vigia.horario && fechados[q].nome === vigia.jogo) { iv = q; break; } }
     vigia.times.forEach(function (t) {
+      var kPass = vigia.liga + "|" + vigia.horario + "|" + vigia.jogo + "|" + t;
+      if (iv >= 0 && fechados.slice(iv + 1).some(function (g) { return String(g.nome).split(" x ").indexOf(t) >= 0; })) { avisados[kPass] = 1; return; }
       var f = prox.find(function (x) { return x.a === t || x.b === t; });
       if (!f) return;
-      var k = t + "|" + f.ts;
+      /* SO A PRIMEIRA VOLTA de cada time depois do jogo vigiado */
+      var k = vigia.liga + "|" + vigia.horario + "|" + vigia.jogo + "|" + t;
       if (avisados[k]) return;
       avisados[k] = 1;
-      var txt = "🔔 BACKTEST · " + t + " volta às " + f.horario + " (" + f.a + " x " + f.b + ") · " + liga.toUpperCase() +
+      var iF = prox.indexOf(f), antes = (futuros[liga] || []).filter(function (x) { return x.ts < f.ts; }).slice(-1)[0], depois = prox[iF + 1];
+      if (!antes && fechados.length) antes = fechados[fechados.length - 1];   /* o jogo de antes ja terminou */
+      var tiros = " · entrada: " + (antes ? antes.horario + " (antes) → " : "") + f.horario + " (nele)" + (depois ? " → " + depois.horario + " (depois)" : "");
+      var txt = "🔔 BACKTEST · 1ª volta de " + t + " às " + f.horario + " (" + f.a + " x " + f.b + ") · " + liga.toUpperCase() + tiros +
         " · último: " + vigia.horario + " " + vigia.jogo + " " + (vigia.resultado === "GREEN" ? "✓" : "✗") +
         (typeof vigia.ev === "number" ? " EV " + (vigia.ev > 0 ? "+" : "") + vigia.ev + "%" : "");
       try { if (typeof window.mostrarAviso === "function") window.mostrarAviso(txt); } catch (e) {}
@@ -369,6 +386,7 @@
         .map(function (u, ix) { var c = {}; for (var k in u) c[k] = u[k]; c.alerta = ix === iMax; return c; });
     }
     resumoBt(bt, todos);
+    listaAtual = lista; ligaListaAtual = liga;
     try { confereAlerta(lista, liga); } catch (e) {}
     if (!lista.length) {
       // passa pelo avisa(), que destranca a escrita - sem isso a proteção bloqueia
@@ -387,7 +405,7 @@
       return '<tr data-gid="' + gid + '" style="cursor:' + (gid ? "pointer" : "default") + '" title="' +
         (gid ? "clique para localizar na grade" : "") + '">' +
         "<td>" + esc(u.horario) + "</td>" +
-        "<td>" + (u.alerta ? "⚠️ " : "") + esc(u.nome) + "</td>" +
+        "<td>" + (u.alerta ? "⚠️ " : "") + esc(u.nome) + ' <span class="bt-sino" data-sino="' + esc(u.horario + "|" + u.nome) + '" title="Vigiar este confronto: avisa na 1ª volta de cada time" style="cursor:pointer;opacity:' + (alertaOn && manual && vigia && vigia.horario === u.horario && vigia.jogo === u.nome ? "1" : ".45") + '">🔔</span></td>' +
         "<td>" + esc(u.placar) + "</td>" +
         "<td>" + esc(u.score) + "</td>" +
         '<td class="' + (temEv ? (u.ev > 0 ? "bt-pos" : "bt-neg") : "") + '">' + evTxt + "</td>" +
@@ -469,6 +487,20 @@
     setTimeout(function () { poeTitulo(antes); }, 3500);
   }
   document.addEventListener("click", function (e) {
+    var sino = e.target && e.target.closest ? e.target.closest("#backtest .bt-sino") : null;
+    if (sino) {
+      e.stopPropagation();
+      var partes = String(sino.getAttribute("data-sino") || "").split("|");
+      var u = listaAtual.find(function (x) { return x.horario === partes[0] && x.nome === partes.slice(1).join("|"); });
+      if (!u) return;
+      alertaOn = true; manual = true;
+      try { localStorage.setItem("amd_bt_alerta", "1"); if (window.Notification && Notification.permission === "default") Notification.requestPermission(); } catch (err) {}
+      vigia = { liga: ligaListaAtual, jogo: u.nome, horario: u.horario, resultado: u.resultado, ev: u.ev,
+        times: String(u.nome || "").split(" x ").map(function (t) { return t.trim(); }).filter(Boolean) };
+      pintaAlerta(); if (ultimo) desenha(ultimo, ultimaLiga);
+      try { if (typeof window.mostrarAviso === "function") window.mostrarAviso("🔔 Vigiando " + u.nome + " (" + u.horario + ") · aviso na 1ª volta de cada time"); } catch (err) {}
+      return;
+    }
     var tr = e.target && e.target.closest ? e.target.closest("#backtest tr[data-gid]") : null;
     if (!tr) return;
     var gid = tr.getAttribute("data-gid");
