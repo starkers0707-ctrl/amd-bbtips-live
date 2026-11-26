@@ -523,7 +523,7 @@ function radar(games, mkt, opts = {}) {
 // ---------------------------------------------------------------------------
 // (motor interno do backtest — original, adaptado para receber `store`)
 // ---------------------------------------------------------------------------
-function _calculaBacktest(liga, mkt, n, store, jph = 20) {
+function _calculaBacktest(liga, mkt, n, store, jph = 20, opts = {}) {
     const key = liga + "|" + mkt + "|" + n;
     const d = store[liga];
     if (!d || !d.games || d.games.length < Math.max(150, 6 * jph + 30)) return { erro: "historico insuficiente" };
@@ -591,7 +591,7 @@ function _calculaBacktest(liga, mkt, n, store, jph = 20) {
         // JANELA DE 12 HORAS do relogio do jogo.
         const hm = h => { const m = /^(\d{1,2}):(\d{1,2})/.exec(h || ""); return m ? (+m[1]) * 60 + (+m[2]) : null; };
         const agoraJogo = (() => { for (let k = resultados.length - 1; k >= 0; k--) { const v = hm(resultados[k].horario); if (v != null) return v; } return null; })();
-        const dentro12h = r => { const v = hm(r.horario); if (v == null || agoraJogo == null) return true; const diff = (agoraJogo - v + 1440) % 1440; return diff <= 720; };
+        const dentro12h = r => { if (opts.semJanela) return true; const v = hm(r.horario); if (v == null || agoraJogo == null) return true; const diff = (agoraJogo - v + 1440) % 1440; return diff <= 720; };
         const janela = indicados.filter(dentro12h);
         // ⚠️ TRIANGULO: o MAIOR EV+ que deu RED na janela (aviso: EV alto nao e garantia)
         let idxAlerta = -1, maiorEv = -1;
@@ -621,7 +621,7 @@ const btCache = {};
 function backtest(games, mkt, n = 100, opts = {}) {
   const store = { _: { games: games || [] } };   // adaptador: a função original lê de store[liga]
   const jph = opts.jogosHora || (opts.liga ? jogosPorHora(opts.liga) : 20);
-  return _calculaBacktest("_", mkt, n, store, jph);
+  return _calculaBacktest("_", mkt, n, store, jph, opts);
 }
 
 

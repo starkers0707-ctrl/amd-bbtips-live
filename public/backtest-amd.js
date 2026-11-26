@@ -153,6 +153,7 @@
     return {
       id: p.id != null ? String(p.id) : null,     // casa com data-game-id da grade
       ts: Date.parse(p.slot_em || p.criado_em || "") || 0,
+      dia: String(p.slot_em || "").slice(0, 10),   // dia do relogio do jogo
       horario: String(p.hora == null ? 0 : p.hora).padStart(2, "0") + ":" +
                String(p.minuto == null ? 0 : p.minuto).padStart(2, "0"),
       nome: (p.time_a || "") + " x " + (p.time_b || ""),
@@ -222,6 +223,14 @@
     // continua limitada a ate 12h pelo proprio motor.
     return Math.max(150, 6 * jogosHora(liga) + 30);
   }
+  /* BACKTEST DO DIA: das 00:00 ate 23:59 do relogio do jogo; na virada zera.
+     Os jogos de ontem continuam servindo so de historico para o calculo. */
+  function jogosDeHoje(jogos) {
+    if (!jogos.length) return 0;
+    var hoje = jogos[jogos.length - 1].dia, n = 0;
+    for (var i = jogos.length - 1; i >= 0 && jogos[i].dia === hoje; i--) n++;
+    return n;
+  }
   function nomeDoMercado(id) {
     for (var i = 0; i < MERCADOS_BT.length; i++) if (MERCADOS_BT[i].id === id) return MERCADOS_BT[i].nome;
     return id;
@@ -278,7 +287,7 @@
     var tb = document.getElementById("backtest");
     if (!tb) return;
     var todos = modoBt === 'todos' && bt && bt.todosEv;
-    var lista = (todos ? bt.todosEv.slice(-150) : (bt && bt.ultimos10indicados)) || [];
+    var lista = (todos ? bt.todosEv.slice(-500) : (bt && bt.ultimos10indicados)) || [];
     if (todos) {
       /* ⚠️ igual ao modo antigo: o MAIOR EV+ da lista que deu RED (EV alto nao e garantia) */
       var iMax = -1, evMax = -Infinity;
@@ -290,8 +299,8 @@
       // passa pelo avisa(), que destranca a escrita - sem isso a proteção bloqueia
       // a mensagem e a tabela fica presa no "calculando" (era exatamente o bug do Under 1.5)
       avisa(bt && bt.cincoMaisSemOdd
-        ? "nenhum novo sinal estatístico de 5+ nas últimas 12 horas — frequência calculada sem odd/EV"
-        : "nenhum sinal novo nas últimas 12 horas — uma condição já ativa não é repetida em todos os jogos");
+        ? "nenhum sinal estatístico de 5+ hoje (desde 00h) — frequência calculada sem odd/EV"
+        : "nenhum jogo EV+ hoje ainda (o backtest zera às 00h)");
       return;
     }
     var linhas = lista.slice().reverse().map(function (u) {
@@ -399,7 +408,7 @@
       chaveAtual = chave;
       meuHtml = null;
       poeTitulo("Backtest · " + liga.charAt(0).toUpperCase() + liga.slice(1) + " — " + nomeDoMercado(mkt) +
-        (mkt === "ge5" ? " · probabilidade sem EV" : " · 24h"));
+        (mkt === "ge5" ? " · probabilidade sem EV" : " · hoje 00h–23:59"));
       avisa("calculando " + nomeDoMercado(mkt) + " · " + liga + "…");
     }
     buscar(liga).then(function (jogos) {
@@ -410,10 +419,10 @@
       }
       var bt;
       try { var temOdd5 = mkt === "ge5" && jogos.filter(function (g) { return g.odds && g.odds.ge5; }).length >= jogos.length * 0.5;
-      bt = (mkt === "ge5" && !temOdd5) ? backtest5Mais(jogos, jogosHora(liga)) : AMD_MOTOR.backtest(jogos, mkt, 24 * jogosHora(liga), { liga: liga }); } catch (e) { return; }
+      bt = (mkt === "ge5" && !temOdd5) ? backtest5Mais(jogos, jogosHora(liga)) : AMD_MOTOR.backtest(jogos, mkt, jogosDeHoje(jogos), { liga: liga, semJanela: true }); } catch (e) { return; }
       if (!bt || bt.erro) { avisa("sem base suficiente para o backtest deste mercado agora"); return; }
       poeTitulo("Backtest · " + liga.charAt(0).toUpperCase() + liga.slice(1) + " — " + nomeDoMercado(mkt) +
-        (mkt === "ge5" ? " · probabilidade sem EV" : " · 24h"));
+        (mkt === "ge5" ? " · probabilidade sem EV" : " · hoje 00h–23:59"));
       ultimo = bt; ultimaLiga = liga;
       desenha(bt, liga);
     });
