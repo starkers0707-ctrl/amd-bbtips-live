@@ -1467,11 +1467,20 @@ function renderChart() {
     return;
   }
   const n = pts.length;
+  const fonteMedias = Array.isArray(pontosFonte) ? pontosFonte : pts;
+  const mediaVisivel = per => {
+    const ini = Number(viewport.inicio), fim = Number(viewport.fim);
+    if (!Number.isFinite(ini) || !Number.isFinite(fim) || fim - ini !== n) return sma(pts, per);
+    return sma(fonteMedias, per).slice(ini, fim);
+  };
   const mediasGrafico = ligado('Médias')
     ? [
-        { periodo: cfg.mm1, cor: '#32a4ff', valores: sma(pts, cfg.mm1) },
-        { periodo: cfg.mm2, cor: '#ffb000', valores: sma(pts, cfg.mm2) },
-        { periodo: cfg.mm3, cor: '#ff4fd8', valores: sma(pts, cfg.mm3) }
+        /* Medias calculadas na serie INTEIRA e depois recortadas na area visivel:
+           com zoom, a media continua aparecendo desde o 1o ponto da tela
+           (antes era calculada so nos pontos visiveis e sumia no zoom). */
+        { periodo: cfg.mm1, cor: '#32a4ff', valores: mediaVisivel(cfg.mm1) },
+        { periodo: cfg.mm2, cor: '#ffb000', valores: mediaVisivel(cfg.mm2) },
+        { periodo: cfg.mm3, cor: '#ff4fd8', valores: mediaVisivel(cfg.mm3) }
       ]
     : metricaGrafico === '% pagamento' && ligado('GDCROSS') && gdCrossAnalise
       ? [
@@ -3132,7 +3141,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-const APP_VERSAO = '20261126-agora';
+const APP_VERSAO = '20261126-mm';
 function iniciarCanalGDCross() {
   if (!('EventSource' in window) || canalEventosGDCross) return;
   try {
