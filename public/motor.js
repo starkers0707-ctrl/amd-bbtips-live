@@ -370,6 +370,36 @@ function probKiron(games, u, mkt) {
   const z = j >= 20 ? (hits / j - pF) / Math.sqrt(Math.max(1e-6, pF * (1 - pF) / j)) : 0;
   return { pF, pEst, j, hits, real: j ? hits / j : null, z };
 }
+/* CALCULO NOVO (teste): parte do preco justo da Kiron e soma ajustes, cada um
+   encolhido pelo tamanho da amostra (amostra pequena quase nao mexe):
+     odds parecidas  -> quanto esses jogos pagaram acima/abaixo do justo
+     times           -> ultimos 10 jogos de cada time no mercado x base da liga
+     coluna (minuto) -> ultimos 10 jogos daquele minuto x base
+     momento         -> ultima hora da liga x base
+   Sem preco justo, parte da base do mercado. */
+function probNova(games, u, mkt, base) {
+  const pF0 = probJusta(u, mkt);
+  const pF = pF0 != null ? pF0 : base;
+  const enc = (taxa, n, k) => (n ? (taxa - base) * n / (n + k) : 0);
+  let ajuste = 0;
+  if (pF0 != null) {
+    const sim = games.filter(g => { const p = probJusta(g, mkt); return p != null && Math.abs(p - pF0) <= 0.03; });
+    if (sim.length) ajuste += (sim.filter(g => pays(g, mkt)).length / sim.length - pF0) * sim.length / (sim.length + 40);
+  }
+  const times = [u.casa, u.fora].filter(Boolean);
+  times.forEach(t => {
+    const js = games.filter(g => g.casa === t || g.fora === t).slice(-10);
+    if (js.length) ajuste += enc(js.filter(g => pays(g, mkt)).length / js.length, js.length, 30) / Math.max(1, times.length);
+  });
+  const min = String(u.horario || "").split(":")[1];
+  if (min) {
+    const col = games.filter(g => String(g.horario || "").split(":")[1] === min).slice(-10);
+    if (col.length) ajuste += enc(col.filter(g => pays(g, mkt)).length / col.length, col.length, 30);
+  }
+  const ult = games.slice(-30);
+  if (ult.length) ajuste += enc(ult.filter(g => pays(g, mkt)).length / ult.length, ult.length, 60);
+  return Math.max(0.01, Math.min(0.99, pF + ajuste));
+}
 function fullEvalUpcoming(upcoming, games, mkt, opts = {}) {
   const jph = opts.jogosHora || 20;
   const baseGeral = pct(games.filter(g => pays(g, mkt)).length, games.length);
@@ -388,7 +418,8 @@ function fullEvalUpcoming(upcoming, games, mkt, opts = {}) {
        mesma odd + base do mercado, sem ancorar no preco justo da Kiron. */
     const pk = opts.modoEv === "historico" ? null : probKiron(games, u, mkt);
     let prob = baseGeral;
-    if (pk) prob = pk.pEst * 100;
+    if (opts.modoEv === "novo") prob = probNova(games, u, mkt, baseGeral / 100) * 100;
+    else if (pk) prob = pk.pEst * 100;
     else if (oddBase.j >= 5) prob = (oddBase.p * 2 + baseGeral) / 3;
     prob = Math.round(prob * 10) / 10;
     const justa = prob > 0 ? +(100 / prob).toFixed(2) : null;
@@ -539,7 +570,7 @@ function _calculaBacktest(liga, mkt, n, store, jph = 20, opts = {}) {
       const g = games[i];
       if (!g.odds || !g.odds[oddKey(mkt)]) continue;
       const hist = games.slice(0, i).slice(-20 * jph); // 20h anteriores da liga
-      const ev = fullEvalUpcoming([{ nome: g.nome, horario: "", casa: g.casa, fora: g.fora, odds: g.odds }], hist, mkt, { jogosHora: jph, modoEv: opts.modoEv })[0] || {};
+      const ev = fullEvalUpcoming([{ nome: g.nome, horario: g.horario || "", casa: g.casa, fora: g.fora, odds: g.odds }], hist, mkt, { jogosHora: jph, modoEv: opts.modoEv })[0] || {};
       resultados.push({
         nome: g.nome, horario: g.horario || "", odd: g.odds[oddKey(mkt)],
         score: ev.score ?? null, ev: ev.ev ?? null, ready: ev.ready === true,

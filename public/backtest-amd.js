@@ -84,10 +84,10 @@
     cx.appendChild(modos);
     var evs = document.createElement("span");
     evs.style.cssText = "display:flex;gap:4px;align-items:center;margin-left:8px";
-    [["historico", "EV histórico (Bet365)"], ["kiron", "EV justo Kiron"]].forEach(function (m) {
+    [["novo", "EV novo (teste)"], ["historico", "EV histórico (Bet365)"], ["kiron", "EV antigo (justo Kiron)"]].forEach(function (m) {
       var b = document.createElement("button");
       b.textContent = m[1]; b.dataset.ev = m[0];
-      b.title = m[0] === "historico" ? "Probabilidade pelo histórico dos jogos com a mesma odd + média do mercado (como era na Bet365)" : "Probabilidade ancorada no preço justo que a Kiron envia (mais rígido, quase nunca dá EV+)";
+      b.title = m[0] === "novo" ? "TESTE: preço justo da Kiron + ajuste por odds parecidas, times (últimos 10), coluna do minuto e momento da liga" : m[0] === "historico" ? "Probabilidade pelo histórico dos jogos com a mesma odd + média do mercado (como era na Bet365)" : "Probabilidade ancorada no preço justo que a Kiron envia (mais rígido, quase nunca dá EV+)";
       b.style.cssText = "cursor:pointer;border-radius:6px;padding:3px 8px;font-size:11px;line-height:1.4;border:1px solid var(--line,#162832);background:transparent;color:var(--muted,#96a5ad)";
       b.addEventListener("click", function (e) { e.preventDefault(); modoEv = m[0]; try { localStorage.setItem("amd_bt_ev", modoEv); } catch (err) {} pinta(); chaveAtual = null; roda(); });
       evs.appendChild(b);
@@ -170,6 +170,7 @@
       horario: String(p.hora == null ? 0 : p.hora).padStart(2, "0") + ":" +
                String(p.minuto == null ? 0 : p.minuto).padStart(2, "0"),
       nome: (p.time_a || "") + " x " + (p.time_b || ""),
+      casa: p.time_a || "", fora: p.time_b || "",
       a: a, b: b, total: a + b,
       odds: {
         o25: o["odd_over_2.5"] || null, o35: o["odd_over_3.5"] || null,
