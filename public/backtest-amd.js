@@ -16,7 +16,11 @@
 
   var API = "/api/grade?liga=";
   var INTERVALO = 90000;
-  var cache = {}, buscando = {};
+  var cache = {}, buscando = {}, futuros = {};
+  /* ALERTA DE BACKTEST: quando um novo jogo entra no backtest (ja passou),
+     vigia os dois times dele e avisa quando um deles aparece de novo na grade. */
+  var alertaOn = false, vigia = null, ultimoVisto = null, avisados = {};
+  try { alertaOn = localStorage.getItem("amd_bt_alerta") === "1"; } catch (e) {}
   var mapaId = {};
   var meuHtml = null, escrevendo = false, observando = false;
   var chaveAtual = null;   // liga|mercado desenhado por ultimo
@@ -93,6 +97,18 @@
       evs.appendChild(b);
     });
     cx.appendChild(evs);
+    var al = document.createElement("button");
+    al.className = "amd-bt-alerta";
+    al.title = "Quando um jogo novo entra no backtest, avisa quando os times dele aparecerem de novo na grade";
+    al.style.cssText = "cursor:pointer;border-radius:6px;padding:3px 8px;font-size:11px;line-height:1.4;margin-left:8px;border:1px solid var(--line,#162832);background:transparent";
+    al.addEventListener("click", function (e) {
+      e.preventDefault(); alertaOn = !alertaOn;
+      try { localStorage.setItem("amd_bt_alerta", alertaOn ? "1" : "0"); } catch (err) {}
+      if (alertaOn) { ultimoVisto = null; try { if (window.Notification && Notification.permission === "default") Notification.requestPermission(); } catch (err) {} }
+      pintaAlerta(); if (ultimo) desenha(ultimo, ultimaLiga);
+    });
+    cx.appendChild(al);
+    pintaAlerta();
     head.style.flexWrap = "wrap";
     head.style.rowGap = "6px";
     if (!mktEscolhido) mktEscolhido = "o25";
@@ -106,6 +122,46 @@
       b.style.borderColor = on ? "var(--blue,#32a4ff)" : "var(--line,#162832)";
       b.style.color = on ? "var(--blue,#32a4ff)" : "var(--muted,#96a5ad)";
       b.style.fontWeight = on ? "700" : "400";
+    });
+  }
+
+  function pintaAlerta() {
+    var b = document.querySelector(".amd-bt-alerta");
+    if (!b) return;
+    b.textContent = alertaOn ? "🔔 Alerta ligado" + (vigia ? " · " + vigia.times.join(" / ") : "") : "🔕 Alerta desligado";
+    b.style.borderColor = alertaOn ? "var(--green,#18e34d)" : "var(--line,#162832)";
+    b.style.color = alertaOn ? "var(--green,#18e34d)" : "var(--muted,#96a5ad)";
+    b.style.fontWeight = alertaOn ? "700" : "400";
+  }
+  function agoraSlot() {
+    /* os horarios da grade sao Brasilia gravados como UTC */
+    return Date.now() - 3 * 3600000;
+  }
+  function confereAlerta(lista, liga) {
+    if (!alertaOn || !lista || !lista.length) return;
+    var ult = lista[lista.length - 1];                    /* jogo mais recente do backtest */
+    var chave = liga + "|" + ult.horario + "|" + ult.nome;
+    if (chave !== ultimoVisto) {
+      ultimoVisto = chave;
+      vigia = { liga: liga, jogo: ult.nome, horario: ult.horario, resultado: ult.resultado, ev: ult.ev,
+        times: String(ult.nome || "").split(" x ").map(function (t) { return t.trim(); }).filter(Boolean) };
+      pintaAlerta();
+    }
+    if (!vigia || vigia.liga !== liga) return;
+    var agora = agoraSlot();
+    var prox = (futuros[liga] || []).filter(function (f) { return f.ts > agora; });
+    vigia.times.forEach(function (t) {
+      var f = prox.find(function (x) { return x.a === t || x.b === t; });
+      if (!f) return;
+      var k = t + "|" + f.ts;
+      if (avisados[k]) return;
+      avisados[k] = 1;
+      var txt = "🔔 BACKTEST · " + t + " volta às " + f.horario + " (" + f.a + " x " + f.b + ") · " + liga.toUpperCase() +
+        " · último: " + vigia.horario + " " + vigia.jogo + " " + (vigia.resultado === "GREEN" ? "✓" : "✗") +
+        (typeof vigia.ev === "number" ? " EV " + (vigia.ev > 0 ? "+" : "") + vigia.ev + "%" : "");
+      try { if (typeof window.mostrarAviso === "function") window.mostrarAviso(txt); } catch (e) {}
+      try { if (typeof window.bip === "function") window.bip(); } catch (e) {}
+      try { if (window.Notification && Notification.permission === "granted") new Notification("🔔 Backtest · " + t + " às " + f.horario, { body: txt, tag: "bt-" + k }); } catch (e) {}
     });
   }
 
@@ -190,6 +246,10 @@
       .then(function (r) { return r.json(); })
       .then(function (j) {
         var out = [], lista = (j && j.partidas) || [];
+        futuros[liga] = lista.filter(function (p) { return p.gols_a == null || p.gols_b == null; })
+          .map(function (p) { return { a: p.time_a || "", b: p.time_b || "", ts: Date.parse(p.slot_em || "") || 0,
+            horario: String(p.hora == null ? 0 : p.hora).padStart(2, "0") + ":" + String(p.minuto == null ? 0 : p.minuto).padStart(2, "0") }; })
+          .sort(function (x, y) { return x.ts - y.ts; });
         for (var i = 0; i < lista.length; i++) { var g = adapta(lista[i]); if (g) out.push(g); }
         /* ordem real de horario (a fonte pode misturar a ordem); jogos sem horario ficam onde estavam */
         out = out.map(function (g, ix) { return { g: g, ix: ix }; })
@@ -309,6 +369,7 @@
         .map(function (u, ix) { var c = {}; for (var k in u) c[k] = u[k]; c.alerta = ix === iMax; return c; });
     }
     resumoBt(bt, todos);
+    try { confereAlerta(lista, liga); } catch (e) {}
     if (!lista.length) {
       // passa pelo avisa(), que destranca a escrita - sem isso a proteção bloqueia
       // a mensagem e a tabela fica presa no "calculando" (era exatamente o bug do Under 1.5)
