@@ -318,7 +318,7 @@
     var ultimoResolvido = -1;
     sequencia.forEach(function (c, i) { if (c.real && c.resolvido) ultimoResolvido = i; });
     var proximas = sequencia.slice(ultimoResolvido + 1).filter(function (c) {
-      var agora = window.Real && typeof window.Real.agoraSlot === 'function' ? Number(window.Real.agoraSlot()) : null;
+      var agora = window.Real && typeof window.Real.agoraReal === 'function' ? Number(window.Real.agoraReal()) : null;
       return c.pendente && c.real && (!isFinite(agora) || !isFinite(Number(c.slot)) || Number(c.slot) > agora);
     }).slice(0, 3);
     if (proximas.length < 3) return { mercado: mercado, sinal: false, proximas: proximas };

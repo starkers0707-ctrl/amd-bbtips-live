@@ -2598,7 +2598,7 @@ function jogoAindaNaoComecou(jogo) {
   if (!jogo || jogo.resolvido) return false;
   const slot = Number(jogo.slot);
   let agora = null;
-  try { agora = window.Real && typeof window.Real.agoraSlot === 'function' ? Number(window.Real.agoraSlot()) : null; } catch (e) {}
+  try { agora = window.Real && typeof window.Real.agoraReal === 'function' ? Number(window.Real.agoraReal()) : null; } catch (e) {}
   return !Number.isFinite(slot) || !Number.isFinite(agora) || slot >= agora;
 }
 window.AMDAlertaPodeDisparar = alertaPodeDispararAgora;
@@ -3132,7 +3132,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-const APP_VERSAO = '20261125-acum';
+const APP_VERSAO = '20261126-agora';
 function iniciarCanalGDCross() {
   if (!('EventSource' in window) || canalEventosGDCross) return;
   try {

@@ -1418,6 +1418,16 @@
       gradeJogos: function () { return jogosDaGrade.slice(); },
       horaAtual: horaDoJogoAgora,
       agoraSlot: function () { var a = ancoraDoRelogio(); return a ? Number(a.slot) : null; },
+      /* "Agora" de verdade na escala dos slots (o agoraSlot acima e a ANCORA da
+         grade = ultimo futuro do bloco, ~20 min a frente). Os slots gravam o
+         horario de Brasilia como UTC: detecta isso pelo ultimo jogo fechado. */
+      agoraReal: function () {
+        var maxRes = 0;
+        (jogos || []).forEach(function (j) { if (j && j.resolvido && Number(j.slot) > maxRes) maxRes = Number(j.slot); });
+        if (!maxRes) return null;
+        var desloc = Date.now() - maxRes > 90 * 60000 ? 3 * 3600000 : 0;
+        return Date.now() - desloc;
+      },
       liga: function () { return liga; },
       trocarLiga: trocarLiga,
       normalizarPartidas: normalizarPartidas,
