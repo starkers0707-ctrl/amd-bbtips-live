@@ -236,7 +236,8 @@
       if (!melhor || (p.inf > r.prova[melhor.id].inf)) melhor = st;
     });
     var veredito, classe, plano;
-    var pr = r.prova.regra, regraBoa = pr.n >= 20 && pr.taxa >= r.base3;
+    /* suas regras valem ate a prova mostrar que perdem (n>=20 e abaixo do normal) */
+    var pr = r.prova.regra, regraBoa = !(pr.n >= 20 && pr.taxa < r.base3);
     var tirosTxt = r.futuros.length ? r.futuros.map(function (g) { return g.hora + ' ' + g.ta + 'x' + g.tb; }).join(' · ') : '';
     var setupPerde = melhor && r.prova[melhor.id].perdedor;
     if (!a.gate) {
@@ -258,7 +259,7 @@
         ' · invalida se a linha fechar abaixo da MM9 ' + f(melhor ? Math.max(melhor.inval, a.m9 - 1) : a.m9) + '%' + (acima ? ' · alvo ' + f(acima.v) + '%' : '');
     } else {
       veredito = 'AGUARDAR'; classe = 'aguardar';
-      plano = 'regras ok, mas nesta liga elas ' + (pr.n < 20 ? 'ainda têm pouca amostra (' + pr.n + ')' : 'pagaram ' + (pr.taxa * 100).toFixed(0) + '%, abaixo do normal ' + (r.base3 * 100).toFixed(0) + '%');
+      plano = 'regras ok, mas nesta liga elas pagaram ' + (pr.taxa * 100).toFixed(0) + '% (' + pr.ok + '/' + pr.n + '), abaixo do normal ' + (r.base3 * 100).toFixed(0) + '% · esperar';
     }
     ultimoVeredito[lg + '|' + merc] = { v: veredito, ts: Date.now() };
 
