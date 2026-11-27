@@ -1964,25 +1964,34 @@ function renderHackerGrafico(serie, comparativo, mercadoGrafico, sinaisGrafico) 
     }
   }
   const delta = (leitura.projecao >= 0 ? '+' : '') + leitura.projecao.toFixed(1);
-  /* TEXTO SIMPLES: primeiro o grafico 00h (regra principal), depois o padrao
-     em portugues claro. Detalhes tecnicos ficam no tooltip. */
+  /* HACKER: veredito com conviccao matematica. p = acerto do padrao,
+     base = taxa do mercado, z = (p-base)/sqrt(base(1-base)/n),
+     conviccao = Phi(|z|), EV contra a odd justa da base = p/base - 1. */
   const acH = window.AcumGuard ? window.AcumGuard.estado(state.liga, mercadoGrafico || state.mercado) : { conhecido: false };
-  const graficoTxt = !acH.conhecido ? 'gráfico 00h: carregando'
-    : acH.motivo === 'madrugada' ? 'gráfico 00h: madrugada (poucos jogos)'
-    : acH.ok ? `gráfico 00h ▲ subindo (${acH.linha}% · MM9 ${acH.m9})`
-    : `gráfico 00h ▼ ${acH.motivo} (${acH.linha}% · MM9 ${acH.m9})`;
-  const vant = Number(leitura.vantagemPadrao);
-  const padraoTxt = `padrão ${vant >= 1.5 ? 'bom' : vant > -1.5 ? 'neutro' : 'fraco'}: em situações parecidas acertou ${leitura.confianca}%` +
-    ` (${vant >= 0 ? '+' : ''}${vant} pp vs média)`;
-  const projTxt = `próximos 1–3 jogos ${delta} pp`;
-  const sinalTxt = leitura.classe === 'entrada' ? 'ENTRADA' : leitura.sinal;
-  const motivoTxt = leitura.motivo && !/^padrões semelhantes/.test(leitura.motivo) && !/^bloqueado:/.test(leitura.motivo)
-    ? ` · ${leitura.motivo}` : '';
-  box.className = 'hacker-sinal ' + leitura.classe;
-  box.textContent = leitura.totalConfluencias
-    ? `Hacker IA · ${leitura.sinal} · ${graficoTxt} · ${leitura.motivo}` +
-      ` · confluência ${leitura.confluencias}/${leitura.totalConfluencias}`
-    : `Hacker IA · ${sinalTxt} · ${graficoTxt}${motivoTxt} · ${padraoTxt} · ${projTxt}`;
+  const pP = Math.max(.001, Math.min(.999, Number(leitura.confianca) / 100));
+  const baseP = Math.max(.01, Math.min(.99, (Number(leitura.confianca) - Number(leitura.vantagemPadrao)) / 100));
+  const nEf = Math.max(1, Number(leitura.amostraEfetiva) || 1);
+  const zH = (pP - baseP) / Math.sqrt(baseP * (1 - baseP) / nEf);
+  const phi = x => { const t = 1 / (1 + .2316419 * Math.abs(x)); const d = .3989423 * Math.exp(-x * x / 2);
+    const q = d * t * (.3193815 + t * (-.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274)))); return x >= 0 ? 1 - q : q; };
+  const graficoOk = acH.conhecido && acH.ok;
+  const entra = leitura.classe === 'entrada' && graficoOk;
+  const prepara = !entra && leitura.classe === 'atencao' && graficoOk;
+  /* conviccao: na entrada = prob. do padrao estar acima da base; fora = prob. de nao estar */
+  let conv = entra || prepara ? phi(zH) : 1 - phi(zH);
+  if (!graficoOk && acH.conhecido && acH.motivo !== 'madrugada') conv = Math.max(conv, .9);
+  const veredito = entra ? 'ENTRA' : prepara ? 'PREPARA' : 'NÃO ENTRA';
+  const lo = Number(leitura.limiteInferior), hi = Math.min(99.9, 2 * Number(leitura.confianca) - lo);
+  const ev = (pP / baseP - 1) * 100;
+  const chk = v => v ? '✓' : '✗';
+  const graficoTxt = acH.conhecido && acH.motivo !== 'madrugada' && Number.isFinite(acH.linha)
+    ? ` · 00h: linha ${acH.linha} ${acH.linha >= acH.m9 ? '≥' : '<'} MM9 ${acH.m9} ${chk(acH.linha >= acH.m9)} · MM9 ${acH.m9 > acH.m21 ? '>' : '<'} MM21 ${acH.m21} ${chk(acH.m9 > acH.m21)}`
+    : '';
+  box.className = 'hacker-sinal ' + (entra ? 'entrada' : prepara ? 'atencao' : 'sem-entrada');
+  box.textContent = `Hacker IA · ${veredito} · convicção ${(conv * 100).toFixed(0)}%` +
+    ` · P(green) ${(pP * 100).toFixed(1)}% [IC ${lo.toFixed(0)}–${hi.toFixed(0)}] vs base ${(baseP * 100).toFixed(1)}%` +
+    ` · z ${zH >= 0 ? '+' : ''}${zH.toFixed(2)} · EV ${ev >= 0 ? '+' : ''}${ev.toFixed(1)}%` +
+    graficoTxt + ` · Δ1–3 ${delta}pp · n ${Math.round(nEf)}`;
   const estrutura = leitura.fundoDuplo && leitura.fundoDuplo.encontrado
     ? ` Fundo duplo ${leitura.fundoDuplo.fundo1}/${leitura.fundoDuplo.fundo2}%` +
       ` · linha de confirmação ${leitura.fundoDuplo.linha}%.`
@@ -3150,7 +3159,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-const APP_VERSAO = '20261127-hk';
+const APP_VERSAO = '20261127-hk2';
 function iniciarCanalGDCross() {
   if (!('EventSource' in window) || canalEventosGDCross) return;
   try {
