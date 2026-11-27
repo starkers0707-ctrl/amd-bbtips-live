@@ -1999,7 +1999,7 @@ function renderHackerGrafico(serie, comparativo, mercadoGrafico, sinaisGrafico) 
     ? ` · 00h: linha ${acH.linha} ${acH.linha >= acH.m9 ? '≥' : '<'} MM9 ${acH.m9} ${chk(acH.linha >= acH.m9)} · MM9 ${acH.m9 > acH.m21 ? '>' : '<'} MM21 ${acH.m21} ${chk(acH.m9 > acH.m21)}`
     : '';
   box.className = 'hacker-sinal ' + (entra ? 'entrada' : prepara ? 'atencao' : 'sem-entrada');
-  box.textContent = `Hacker IA · ${veredito} · convicção ${(conv * 100).toFixed(0)}%` +
+  box.textContent = `Hacker IA · ${veredito} · ${entra ? 'certeza da entrada' : prepara ? 'certeza do preparo' : 'certeza de NÃO entrar'} ${(conv * 100).toFixed(0)}%` +
     ` · P(green) ${(pP * 100).toFixed(1)}% [IC ${lo.toFixed(0)}–${hi.toFixed(0)}] vs base ${(baseP * 100).toFixed(1)}%` +
     ` · z ${zH >= 0 ? '+' : ''}${zH.toFixed(2)} · EV ${ev >= 0 ? '+' : ''}${ev.toFixed(1)}%` +
     (rep ? ` · movimento ${rep.mov} repetiu ${rep.n}x: pagou ${rep.n - rep.red}/${rep.n}` +
@@ -3173,7 +3173,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-const APP_VERSAO = '20261127-hk5';
+const APP_VERSAO = '20261127-hk6';
 function iniciarCanalGDCross() {
   if (!('EventSource' in window) || canalEventosGDCross) return;
   try {
