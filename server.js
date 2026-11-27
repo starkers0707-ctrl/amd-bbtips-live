@@ -594,9 +594,19 @@ function textoSinal(s, st) {
   const res = (st.signals || []).filter(x => x.robotId === s.robotId && x.status !== "PENDENTE");
   /* aborto antigo que ja tinha tiro perdido conta como RED (perdeu dinheiro) */
   const perdeuAbortado = x => x.status === "ANULADO" && x.abortado && (x.attempts || []).length > 0;
-  const g = res.filter(x => x.status === "GREEN").length, r = res.filter(x => x.status === "RED" || perdeuAbortado(x)).length;
-  const an = res.filter(x => x.status === "ANULADO" && !perdeuAbortado(x)).length;
-  const pct = g + r ? Math.round(g / (g + r) * 100) : 0;
+  /* dia e semana no horario de Brasilia (zera 00h; semana comeca na segunda) */
+  const diaBR = iso => { const t = Date.parse(iso || ""); return t ? new Date(t - 3 * 3600000).toISOString().slice(0, 10) : ""; };
+  const semanaBR = iso => { const t = Date.parse(iso || ""); if (!t) return ""; const d = new Date(t - 3 * 3600000); const dw = (d.getUTCDay() + 6) % 7; d.setUTCDate(d.getUTCDate() - dw); return d.toISOString().slice(0, 10); };
+  const agoraIso = new Date().toISOString(), hojeK = diaBR(agoraIso), semK = semanaBR(agoraIso);
+  const conta = lista => {
+    const g = lista.filter(x => x.status === "GREEN"), r = lista.filter(x => x.status === "RED" || perdeuAbortado(x)).length;
+    const an = lista.filter(x => x.status === "ANULADO" && !perdeuAbortado(x)).length;
+    const gales = {}; g.forEach(x => { const n = Math.max(1, Number(x.winningShot || 1)); gales[n] = (gales[n] || 0) + 1; });
+    return { g: g.length, r, an, pct: g.length + r ? Math.round(g.length / (g.length + r) * 100) : 0, gales };
+  };
+  const hoje = conta(res.filter(x => diaBR(x.sentAt) === hojeK));
+  const semana = conta(res.filter(x => semanaBR(x.sentAt) === semK));
+  const galesTxt = (c, maxT) => { const out = []; for (let n = 1; n <= maxT; n++) out.push(`${tiroNome(n)} ${c.gales[n] || 0}`); return out.join(" · "); };
   const max = Math.max(1, Number(s.shots || 1)), plano = Array.isArray(s.plano) ? s.plano : [];
   const tent = {}; (s.attempts || []).forEach(a => { tent[a.number] = a; });
   const horaDe = n => (tent[n] && tent[n].gameHour) || plano[n - 1] || (n === Number(s.currentShot) ? hhmm(s.gameHour, s.gameMinute) : "--:--");
@@ -614,7 +624,7 @@ function textoSinal(s, st) {
   else if (s.status === "RED") topo = "<b>🟥 RED</b>\n";
   else if (s.abortado) topo = `<b>🛑 ABORTADO · GRÁFICO VIROU</b>\n<i>${escH(s.motivoAborto || "")} · tiros restantes cancelados</i>\n`;
   const odd = Number(s.odd) > 1 ? " @" + Number(s.odd).toFixed(2).replace(".", ",") : "";
-  return `${topo}<b>🤖 ${escH(s.robotName || "Robô")}</b>\n🏆 ${escH(ROBO_LIGA_NOME[s.league] || String(s.league || "").toUpperCase())} · 💚 AMD Live\n\n🎯 <b>${escH(s.market)}</b>${odd}\n\n${agenda.join("\n")}\n\n✅ ${g} ❌ ${r} 🛡️ ${an} 📈 ${pct}%\n\n🔗 https://amdlive.com.br` +
+  return `${topo}<b>🤖 ${escH(s.robotName || "Robô")}</b>\n🏆 ${escH(ROBO_LIGA_NOME[s.league] || String(s.league || "").toUpperCase())} · 💚 AMD Live\n\n🎯 <b>${escH(s.market)}</b>${odd}\n\n${agenda.join("\n")}\n\n📅 <b>Dia</b>: ✅ ${hoje.g} (${galesTxt(hoje, max)}) ❌ ${hoje.r}${hoje.an ? ' 🛡️ ' + hoje.an : ''} · ${hoje.pct}%\n🗓️ <b>Semana</b>: ✅ ${semana.g} (${galesTxt(semana, max)}) ❌ ${semana.r} · ${semana.pct}%\n\n🔗 https://amdlive.com.br` +
     (result.length ? `\n\n${result.join("\n")}` : "");
 }
 function alvosDono(dono, destino) {
@@ -680,7 +690,7 @@ async function robosTick() {
             odd: Number((up.odds || {})[ROBO_ODD[mk]]) || null,
             plano: (() => { const t0 = Date.parse(up.slot_em || "") || 0; return all.filter(x => (Date.parse(x.slot_em || "") || 0) >= t0)
               .sort((x, y) => Date.parse(x.slot_em) - Date.parse(y.slot_em)).slice(0, max).map(x => hhmm(x.hora, x.minuto)); })() });
-          st.signals = st.signals.slice(0, 200);
+          st.signals = st.signals.slice(0, 1500); // guarda a semana inteira para o placar semanal
           robosSujo = true;
           await sinalTelegram(dono, robot.destino, st.signals[0], st);
           console.log(`[robos] entrada ${robot.name} ${liga} ${mk} ${up.time_a} x ${up.time_b}`);
