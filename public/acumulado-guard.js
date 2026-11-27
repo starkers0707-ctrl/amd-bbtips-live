@@ -34,7 +34,8 @@
         if (!j) return;
         jogos[liga] = (j.partidas || []).filter(function (g) { return g.resultado_ft && g.gols_a != null && g.gols_b != null; })
           .sort(function (a, b) { return Date.parse(a.slot_em) - Date.parse(b.slot_em); })
-          .map(function (g) { return { a: Number(g.gols_a), b: Number(g.gols_b), dia: String(g.slot_em || '').slice(0, 10) }; });
+          .map(function (g) { return { a: Number(g.gols_a), b: Number(g.gols_b), dia: String(g.slot_em || '').slice(0, 10),
+            hora: String(g.slot_em || '').slice(11, 16), ta: g.time_a || '', tb: g.time_b || '' }; });
         carregado[liga] = Date.now();
       }).catch(function () {});
   }
@@ -98,7 +99,17 @@
     }
     return null;
   }
-  root.AcumGuard = { estado: estado, atualiza: atualiza, regra: regra, normal: normal, repeticao: repeticao };
+
+  /* linha do acumulado 00h de hoje + jogos (para alertas que leem o grafico 00h) */
+  function serieHoje(liga, mercado) {
+    liga = String(liga || '').toLowerCase().slice(0, 3);
+    var paga = regra(mercado), lista = jogos[liga];
+    if (!paga || !lista || !lista.length) return null;
+    var dia = lista[lista.length - 1].dia, h = lista.filter(function (g) { return g.dia === dia; });
+    var s = 0, line = h.map(function (g, i) { s += paga(g) ? 1 : 0; return s / (i + 1) * 100; });
+    return { line: line, jogos: h, dia: dia };
+  }
+  root.AcumGuard = { estado: estado, atualiza: atualiza, regra: regra, normal: normal, repeticao: repeticao, serieHoje: serieHoje, ligas: LIGAS, atualizaLiga: carrega };
   atualiza();
   setInterval(atualiza, INTERVALO);
 })(typeof window !== 'undefined' ? window : this);
