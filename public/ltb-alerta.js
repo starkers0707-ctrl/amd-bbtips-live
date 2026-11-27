@@ -10,7 +10,8 @@
 (function () {
   'use strict';
   var LS = 'amd_alerta_ltb00', MIN_DIA = 60, INTERVALO = 45000;
-  var avisados = {}, ultimoMerc = null;
+  var avisados = {}, ultimoMerc = null, grafico = { liga: '', merc: '', ts: 0 }, graficoIni = {};
+  function chaveLTB(lg, merc, l) { return lg + '|' + merc + '|' + l.a.v.toFixed(2) + '|' + l.b.v.toFixed(2); }
   var NOMES = { eng: 'ENG', ita: 'ITA', spa: 'SPA', mnd: 'MND', bra: 'BRA', lat: 'LAT', cam: 'CAM', cop: 'COP', ame: 'AME' };
 
   function ligado() { try { return localStorage.getItem(LS) !== '0'; } catch (e) { return true; } }
@@ -85,7 +86,8 @@
       /* cruzou nos ultimos 3 jogos (ciclo de 30s pode pegar 2 jogos de uma vez) */
       var cruzou = false;
       for (var k = Math.max(l.b.i + 1, n - 3); k < n; k++) if (line[k] > valorLTB(l, k) + tol && line[k - 1] <= valorLTB(l, k - 1) + tol) cruzou = true;
-      var chave = lg + '|' + merc + '|' + s.dia + '|' + l.a.i + '-' + l.b.i;
+      var chave = chaveLTB(lg, merc, l);
+      if (grafico.liga === lg && grafico.merc === merc && Date.now() - grafico.ts < 60000) { if (agora) rompidas.push(NOMES[lg]); return; }
       if (agora) rompidas.push(NOMES[lg]);
       if (agora && cruzou && !avisados[chave]) {
         avisados[chave] = 1;
@@ -95,6 +97,30 @@
     pinta(rompidas.length ? 'acima da LTB agora: ' + rompidas.join(', ') : null);
   }
 
+
+  /* chamado pelo proprio grafico (renderChart) a cada desenho: mesma LTB que
+     o usuario ve. So no modo acumulado (00h) e com o grafico no jogo atual. */
+  function doGrafico(o) {
+    if (!ligado() || !o || o.modo !== 'acum' || !Array.isArray(o.pts) || o.pts.length < 12) return;
+    var lg = String(o.liga || '').toLowerCase().slice(0, 3), merc = o.mercado || mercado();
+    var line = o.pts.map(Number), n = line.length, l = ltbDe(line);
+    grafico = { liga: lg, merc: merc, ts: Date.now() };
+    if (!l || l.b.i >= n - 1) return;
+    var s = window.AcumGuard && window.AcumGuard.serieHoje ? window.AcumGuard.serieHoje(lg, merc) : null;
+    if (s && s.line.length < MIN_DIA) return;
+    var agora = line[n - 1] > valorLTB(l, n - 1), cruzou = false;
+    for (var k = Math.max(l.b.i + 1, n - 3); k < n; k++) if (line[k] > valorLTB(l, k) && line[k - 1] <= valorLTB(l, k - 1)) cruzou = true;
+    var chave = chaveLTB(lg, merc, l);
+    var primeira = !graficoIni[lg + '|' + merc]; graficoIni[lg + '|' + merc] = 1;
+    if (agora && cruzou && !avisados[chave]) {
+      avisados[chave] = 1;
+      if (primeira) return; /* acabou de abrir/trocar: nao avisa quebra antiga */
+      var m = o.meta || {};
+      var hora = m.rotulo || (m.hora != null && m.minuto != null ? String(m.hora).padStart(2, '0') + ':' + String(m.minuto).padStart(2, '0') : '');
+      avisa(lg, merc, { hora: hora, ta: m.timeA || '', tb: m.timeB || '', a: (m.ft || '').split('-')[0] || '', b: (m.ft || '').split('-')[1] || '' },
+        l, line, window.AcumGuard ? window.AcumGuard.estado(lg, merc) : null);
+    }
+  }
   function ciclo() {
     if (!ligado()) { pinta(); return; }
     if (window.AcumGuard && window.AcumGuard.atualizaLiga) (window.AcumGuard.ligas || []).forEach(window.AcumGuard.atualizaLiga);
@@ -119,7 +145,7 @@
     setTimeout(function () { verifica(true); }, 3000);
     setInterval(ciclo, INTERVALO);
   }
-  window.AlertaLTB00 = { verifica: verifica, ligado: ligado };
+  window.AlertaLTB00 = { verifica: verifica, ligado: ligado, doGrafico: doGrafico };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(init, 2000); });
   else setTimeout(init, 2000);
 })();

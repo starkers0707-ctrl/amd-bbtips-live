@@ -1393,6 +1393,12 @@ function renderChart() {
     Array.isArray(pontosFonte) ? pontosFonte : [], metaFonte, modoGrafico);
   const pts = viewport.pontos;
   const metaGrafico = viewport.meta;
+  /* alerta de quebra de LTB: usa a MESMA LTB desenhada neste grafico (00h) */
+  if (metricaGrafico === '% pagamento' && viewport.fim === viewport.total &&
+      window.AlertaLTB00 && typeof window.AlertaLTB00.doGrafico === 'function') {
+    try { window.AlertaLTB00.doGrafico({ liga: ligaGrafico, mercado: mercadoGrafico, modo: modoGrafico,
+      pts: pts, meta: Array.isArray(metaGrafico) ? metaGrafico[metaGrafico.length - 1] : null }); } catch (e) {}
+  }
   const viewportPagamento = montarViewportGrafico(
     Array.isArray(pontosPagamentoFonte) ? pontosPagamentoFonte : [], metaFonte, modoGrafico);
   const ptsPagamento = viewportPagamento.pontos;
@@ -3176,7 +3182,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-const APP_VERSAO = '20261127-gd1';
+const APP_VERSAO = '20261127-ltb3';
 function iniciarCanalGDCross() {
   if (!('EventSource' in window) || canalEventosGDCross) return;
   try {
