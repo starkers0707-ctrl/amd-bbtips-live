@@ -1910,6 +1910,7 @@ function avaliarSinalHacker(leitura, zona, passoMercado, sinaisGrafico) {
 }
 
 let alertaHackerAtivo = '';
+function ligaGrafHk() { try { if (window.Real && typeof window.Real.liga === 'function' && window.Real.liga()) return window.Real.liga(); } catch (e) {} return state.liga; }
 
 function renderHackerGrafico(serie, comparativo, mercadoGrafico, sinaisGrafico) {
   const box = document.getElementById('hackerSinal');
@@ -1989,7 +1990,9 @@ function renderHackerGrafico(serie, comparativo, mercadoGrafico, sinaisGrafico) 
     return (p + z * z / (2 * n) - z * Math.sqrt(p * (1 - p) / n + z * z / (4 * n * n))) / (1 + z * z / n); })() : 0;
   const repPaga = !!(rep && rep.n >= 20 && wil >= rep.base3);
   const repRuim = !!(rep && rep.n >= 12 && (rep.z <= -1 || rep.taxa < .75));
-  const entra = graficoOk && !repRuim && (leitura.classe === 'entrada' || repPaga);
+  const traderEntra = window.TraderLeitura && typeof window.TraderLeitura.veredito === 'function' &&
+    window.TraderLeitura.veredito(ligaGrafHk(), mercadoGrafico || state.mercado) === 'ENTRA';
+  const entra = graficoOk && !repRuim && (leitura.classe === 'entrada' || repPaga || traderEntra);
   const prepara = !entra && graficoOk && !repRuim && leitura.classe === 'atencao';
   /* conviccao: na entrada = prob. do padrao estar acima da base; fora = prob. de nao estar */
   /* conviccao combina padrao (zH) e repeticao do movimento (rep.z) */
@@ -3182,7 +3185,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-const APP_VERSAO = '20261127-ltb3';
+const APP_VERSAO = '20261127-tr2';
 function iniciarCanalGDCross() {
   if (!('EventSource' in window) || canalEventosGDCross) return;
   try {

@@ -16,7 +16,7 @@
 (function () {
   'use strict';
   var MIN_DIA = 60, PIVO = 3, CACHE_MS = 60000, LS_VISTO = 'amd_trader_visto';
-  var cache = {}, buscando = {}, ultimoTxt = '';
+  var cache = {}, buscando = {}, ultimoTxt = '', ultimoVeredito = {};
 
   function chip() {
     return [].slice.call(document.querySelectorAll('#overlays .chip'))
@@ -38,10 +38,14 @@
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (j) {
         if (!j) return;
-        var lista = (j.partidas || []).filter(function (g) { return g.resultado_ft && g.gols_a != null && g.gols_b != null; })
-          .sort(function (a, b) { return Date.parse(a.slot_em) - Date.parse(b.slot_em); })
-          .map(function (g) { return { a: +g.gols_a, b: +g.gols_b, dia: String(g.slot_em || '').slice(0, 10) }; });
-        cache[lg] = { ts: Date.now(), lista: lista };
+        var todos = (j.partidas || []).slice().sort(function (a, b) { return Date.parse(a.slot_em) - Date.parse(b.slot_em); });
+        var map = function (g) { return { a: +g.gols_a, b: +g.gols_b, dia: String(g.slot_em || '').slice(0, 10),
+          hora: String(g.slot_em || '').slice(11, 16), min: String(g.slot_em || '').slice(14, 16), ta: g.time_a || '', tb: g.time_b || '' }; };
+        var lista = todos.filter(function (g) { return g.resultado_ft && g.gols_a != null && g.gols_b != null; }).map(map);
+        var ultimoT = lista.length ? lista[lista.length - 1].dia + lista[lista.length - 1].hora : '';
+        var futuros = todos.filter(function (g) { return !g.resultado_ft; }).map(map)
+          .filter(function (g) { return g.dia + g.hora > ultimoT; }).slice(0, 3);
+        cache[lg] = { ts: Date.now(), lista: lista, futuros: futuros };
         desenha();
       }).catch(function () {}).then(function () { buscando[lg] = false; });
   }
@@ -136,11 +140,32 @@
     var c = cache[lg];
     var paga = window.AcumGuard && window.AcumGuard.regra ? window.AcumGuard.regra(merc) : null;
     if (!c || !paga) return null;
-    var dias = {}, ordem = [];
-    c.lista.forEach(function (g) { if (!dias[g.dia]) { dias[g.dia] = []; ordem.push(g.dia); } dias[g.dia].push(paga(g) ? 1 : 0); });
+    var dias = {}, ordem = [], inicioDia = {};
+    c.lista.forEach(function (g, gi) { if (!dias[g.dia]) { dias[g.dia] = []; ordem.push(g.dia); inicioDia[g.dia] = gi; } dias[g.dia].push(paga(g) ? 1 : 0); });
+    /* COLUNA SECA / TIME FRIO (regra do usuario): apos o jogo gi, os 3 proximos
+       tiros nao podem cair em coluna (minuto) com 3 ultimos sem pagar, nem ter
+       time com 3 ultimos sem pagar. Calculado so com o passado. */
+    var L = c.lista, colU = {}, timeU = {}, limpo = [];
+    var push3 = function (m, k, b) { var a = m[k] || (m[k] = []); a.push(b); if (a.length > 3) a.shift(); };
+    var seco = function (a) { return a && a.length >= 3 && !a[0] && !a[1] && !a[2]; };
+    var limpoProx = function (prox) {
+      for (var q = 0; q < prox.length; q++) {
+        var g = prox[q];
+        if (seco(colU[g.min])) return 'coluna :' + g.min + ' seca';
+        if (seco(timeU[g.ta])) return 'time ' + g.ta + ' frio';
+        if (seco(timeU[g.tb])) return 'time ' + g.tb + ' frio';
+      }
+      return '';
+    };
+    for (var gi = 0; gi < L.length; gi++) {
+      var bt = paga(L[gi]) ? 1 : 0;
+      push3(colU, L[gi].min, bt); if (L[gi].ta) push3(timeU, L[gi].ta, bt); if (L[gi].tb) push3(timeU, L[gi].tb, bt);
+      limpo[gi] = gi + 3 < L.length ? !limpoProx(L.slice(gi + 1, gi + 4)) : null;
+    }
+    var motivoSujo = c.futuros && c.futuros.length ? limpoProx(c.futuros) : 'próximos jogos ainda não chegaram';
     var hoje = ordem[ordem.length - 1];
     var totalG = 0, totalN = 0, prova = {}, base3ok = 0, base3n = 0;
-    ['reteste', 'pullback', 'armadilha'].forEach(function (k) { prova[k] = { n: 0, ok: 0, t1: 0, t2: 0, t3: 0 }; });
+    ['reteste', 'pullback', 'armadilha', 'regra'].forEach(function (k) { prova[k] = { n: 0, ok: 0, t1: 0, t2: 0, t3: 0 }; });
     var passoDia = function (n) { return 100 / Math.max(10, n); };
     var atual = null, lineHoje = null;
     ordem.forEach(function (dia) {
@@ -153,6 +178,7 @@
         base3n++; if (pagou) base3ok++;
         var a = analisaPonto(line, i, passoDia(i + 1));
         if (!a.gate || a.exaustao) continue;
+        if (limpo[inicioDia[dia] + i]) { var pr = prova.regra; pr.n++; if (pagou) { pr.ok++; pr['t' + pagou]++; } }
         var vistos = {};
         a.setups.forEach(function (st) {
           if (vistos[st.id]) return; vistos[st.id] = 1;
@@ -166,7 +192,7 @@
       var p = prova[k]; p.taxa = p.n ? p.ok / p.n : 0; p.inf = wilsonInf(p.ok, p.n);
       p.provado = p.n >= 20 && p.inf >= base3; p.perdedor = p.n >= 20 && p.taxa < base3;
     });
-    return { atual: atual, line: lineHoje, prova: prova, base3: base3, dias: ordem.length, hoje: hoje };
+    return { atual: atual, line: lineHoje, prova: prova, base3: base3, dias: ordem.length, hoje: hoje, sujo: motivoSujo, futuros: c.futuros || [] };
   }
 
   /* ---------- tela ---------- */
@@ -210,29 +236,34 @@
       if (!melhor || (p.inf > r.prova[melhor.id].inf)) melhor = st;
     });
     var veredito, classe, plano;
+    var pr = r.prova.regra, regraBoa = pr.n >= 20 && pr.taxa >= r.base3;
+    var tirosTxt = r.futuros.length ? r.futuros.map(function (g) { return g.hora + ' ' + g.ta + 'x' + g.tb; }).join(' · ') : '';
+    var setupPerde = melhor && r.prova[melhor.id].perdedor;
     if (!a.gate) {
       veredito = 'NÃO ENTRA'; classe = 'sem-entrada';
-      plano = 'regra do gráfico 00h não liberou (' + regraTxt + ')';
+      plano = 'gráfico 00h não liberou (' + regraTxt + ')';
     } else if (a.exaustao) {
       veredito = 'NÃO ENTRA'; classe = 'sem-entrada';
       plano = 'exaustão: ' + (a.seq >= 5 ? a.seq + ' altas seguidas' : 'linha esticada longe da MM21') + ' · esperar respiro até perto da MM9 ' + f(a.m9);
-    } else if (melhor && r.prova[melhor.id].provado) {
-      veredito = 'ENTRA'; classe = 'entrada';
-      plano = melhor.nome + ' em ' + f(melhor.nivel) + '% · entrada: próximo jogo, 3 tiros · invalida se a linha fechar abaixo de ' +
-        f(melhor.inval) + '%' + (acima ? ' · alvo ' + f(acima.v) + '%' : '');
-    } else if (melhor) {
+    } else if (r.sujo) {
+      veredito = 'NÃO ENTRA'; classe = 'sem-entrada';
+      plano = 'gráfico ok, mas ' + r.sujo + ' nos próximos 3 tiros' + (tirosTxt ? ' (' + tirosTxt + ')' : '');
+    } else if (setupPerde) {
       veredito = 'AGUARDAR'; classe = 'aguardar';
-      plano = melhor.nome + ' em ' + f(melhor.nivel) + '% apareceu, mas ' +
-        (r.prova[melhor.id].perdedor ? 'esse setup PERDE da média nesta liga' : 'ainda sem prova suficiente') + ' · não operar';
+      plano = melhor.nome + ' em ' + f(melhor.nivel) + '% — esse gatilho PERDE da média nesta liga · esperar o próximo';
+    } else if (regraBoa || (melhor && r.prova[melhor.id].provado)) {
+      veredito = 'ENTRA'; classe = 'entrada';
+      plano = (melhor ? melhor.nome + ' em ' + f(melhor.nivel) + '% · ' : 'gráfico 00h subindo, coluna e times limpos · ') +
+        'entrada: próximo jogo, 3 tiros' + (tirosTxt ? ' (' + tirosTxt + ')' : '') +
+        ' · invalida se a linha fechar abaixo da MM9 ' + f(melhor ? Math.max(melhor.inval, a.m9 - 1) : a.m9) + '%' + (acima ? ' · alvo ' + f(acima.v) + '%' : '');
     } else {
       veredito = 'AGUARDAR'; classe = 'aguardar';
-      plano = est.tipo === 'ALTA'
-        ? 'tendência ok, sem gatilho · esperar pullback na MM9 ' + f(a.m9) + '%' + (acima ? ' ou rompimento + reteste de ' + f(acima.v) + '%' : '')
-        : 'sem gatilho · ' + (acima ? 'resistência ' + f(acima.v) + '%' : '') + (abaixo ? ' · suporte ' + f(abaixo.v) + '%' : '');
+      plano = 'regras ok, mas nesta liga elas ' + (pr.n < 20 ? 'ainda têm pouca amostra (' + pr.n + ')' : 'pagaram ' + (pr.taxa * 100).toFixed(0) + '%, abaixo do normal ' + (r.base3 * 100).toFixed(0) + '%');
     }
+    ultimoVeredito[lg + '|' + merc] = { v: veredito, ts: Date.now() };
 
-    var provaTxt = ['reteste', 'pullback', 'armadilha'].map(function (k) {
-      var p = r.prova[k], nome = { reteste: 'Reteste', pullback: 'Pullback MM9', armadilha: 'Armadilha' }[k];
+    var provaTxt = ['regra', 'reteste', 'pullback', 'armadilha'].map(function (k) {
+      var p = r.prova[k], nome = { regra: 'Suas regras (00h+coluna+time)', reteste: 'Reteste', pullback: 'Pullback MM9', armadilha: 'Armadilha' }[k];
       if (!p.n) return nome + ': sem ocorrência';
       return nome + ': ' + p.ok + '/' + p.n + ' (1º ' + p.t1 + ' · 2º ' + p.t2 + ' · 3º ' + p.t3 + ') pior caso ' + (p.inf * 100).toFixed(0) + '% ' +
         (p.provado ? '✓ PROVADO' : p.perdedor ? '✗ PERDE' : p.n < 20 ? '· amostra curta' : '· sem vantagem');
@@ -259,7 +290,8 @@
     desenha();
     setInterval(desenha, 5000);
   }
-  window.TraderLeitura = { desenha: desenha, calcula: calcula };
+  function veredito(lg, merc) { var v = ultimoVeredito[String(lg || '').toLowerCase().slice(0, 3) + '|' + merc]; return v && Date.now() - v.ts < 30000 ? v.v : null; }
+  window.TraderLeitura = { desenha: desenha, calcula: calcula, veredito: veredito };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(init, 1500); });
   else setTimeout(init, 1500);
 })();
