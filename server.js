@@ -5654,6 +5654,9 @@ function avaliaPushGrafico(liga) {
   for (const s of pushData.subs) {
     const p0 = s.prefs;
     if (!p0 || !p0.gd) continue;
+    // aparelho sem sinal de vida ha 15 min (pagina fechada ou inscricao velha
+    // de outro navegador): nao apita. A pagina aberta renova a cada 4 min.
+    if (!p0.ts || Date.now() - p0.ts > 15 * 60000) continue;
     // So a liga e o mercado abertos no grafico do aparelho (24 graficos davam
     // alerta demais). Com p0.todas = true volta a monitorar todos.
     if (!p0.todas && p0.liga !== liga) continue;

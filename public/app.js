@@ -2906,6 +2906,7 @@ async function descobrirEndpointPush() {
   } catch (e) {}
   return meuEndpointPush;
 }
+let prefsPushEnviadasTs = 0;
 async function enviarPrefsPush() {
   try {
     if (!('serviceWorker' in navigator) || !('PushManager' in window)) return;
@@ -2929,10 +2930,12 @@ async function enviarPrefsPush() {
       janela, mm1: cfg.mm1, mm2: cfg.mm2
     };
     const chave = JSON.stringify(prefs);
-    if (chave === prefsPushEnviadas) return;
+    /* reenvia a cada 4 min mesmo sem mudanca: o servidor so manda push para
+       aparelhos que deram sinal de vida (inscricao velha esquecida nao apita) */
+    if (chave === prefsPushEnviadas && Date.now() - prefsPushEnviadasTs < 4 * 60000) return;
     const r = await fetch('/api/push/prefs', { method: 'POST', credentials: 'same-origin',
       headers: { 'Content-Type': 'application/json' }, body: chave });
-    if (r.ok) prefsPushEnviadas = chave;
+    if (r.ok) { prefsPushEnviadas = chave; prefsPushEnviadasTs = Date.now(); }
   } catch (e) {}
 }
 setInterval(enviarPrefsPush, 5000);
@@ -3173,7 +3176,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-const APP_VERSAO = '20261127-hk6';
+const APP_VERSAO = '20261127-gd1';
 function iniciarCanalGDCross() {
   if (!('EventSource' in window) || canalEventosGDCross) return;
   try {
