@@ -775,3 +775,11 @@ td.num{font-family:var(--mono)}
 .ml-vazio{grid-column:1/-1;padding:12px;text-align:center;color:var(--muted);font-size:10px;border:1px dashed var(--line);border-radius:8px}
 .ml-rodape{padding:8px 13px;border-top:1px solid var(--line);background:rgba(3,10,15,.24)}
 @media(max-width:640px){.ml-resumo{align-items:flex-start;flex-direction:column}.ml-candidatos{grid-template-columns:1fr}}
+
+.trader-box{margin:6px 0;padding:8px 10px;border:1px solid var(--line,#162832);border-radius:8px;background:rgba(50,164,255,.05);font:12px/1.55 var(--mono,monospace);color:var(--text,#dfe8ee)}
+.trader-box .tb-top{font-size:13px;margin-bottom:2px}
+.trader-box .tb-k{display:inline-block;min-width:92px;color:var(--muted,#7d8f99)}
+.trader-box .tb-prova{color:var(--muted,#7d8f99);font-size:11px}
+.trader-box.entrada{border-color:rgba(24,227,77,.55);background:rgba(24,227,77,.07)}.trader-box.entrada .tb-v{color:#18e34d;font-weight:800}
+.trader-box.sem-entrada{border-color:rgba(255,52,61,.45)}.trader-box.sem-entrada .tb-v{color:#ff5a62;font-weight:800}
+.trader-box.aguardar .tb-v{color:#ff9d00;font-weight:800}
