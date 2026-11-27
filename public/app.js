@@ -1964,16 +1964,25 @@ function renderHackerGrafico(serie, comparativo, mercadoGrafico, sinaisGrafico) 
     }
   }
   const delta = (leitura.projecao >= 0 ? '+' : '') + leitura.projecao.toFixed(1);
+  /* TEXTO SIMPLES: primeiro o grafico 00h (regra principal), depois o padrao
+     em portugues claro. Detalhes tecnicos ficam no tooltip. */
+  const acH = window.AcumGuard ? window.AcumGuard.estado(state.liga, mercadoGrafico || state.mercado) : { conhecido: false };
+  const graficoTxt = !acH.conhecido ? 'gráfico 00h: carregando'
+    : acH.motivo === 'madrugada' ? 'gráfico 00h: madrugada (poucos jogos)'
+    : acH.ok ? `gráfico 00h ▲ subindo (${acH.linha}% · MM9 ${acH.m9})`
+    : `gráfico 00h ▼ ${acH.motivo} (${acH.linha}% · MM9 ${acH.m9})`;
+  const vant = Number(leitura.vantagemPadrao);
+  const padraoTxt = `padrão ${vant >= 1.5 ? 'bom' : vant > -1.5 ? 'neutro' : 'fraco'}: em situações parecidas acertou ${leitura.confianca}%` +
+    ` (${vant >= 0 ? '+' : ''}${vant} pp vs média)`;
+  const projTxt = `próximos 1–3 jogos ${delta} pp`;
+  const sinalTxt = leitura.classe === 'entrada' ? 'ENTRADA' : leitura.sinal;
+  const motivoTxt = leitura.motivo && !/^padrões semelhantes/.test(leitura.motivo) && !/^bloqueado:/.test(leitura.motivo)
+    ? ` · ${leitura.motivo}` : '';
   box.className = 'hacker-sinal ' + leitura.classe;
   box.textContent = leitura.totalConfluencias
-    ? `Hacker IA · ${leitura.sinal} · ${leitura.motivo}` +
-      ` · confluência ${leitura.confluencias}/${leitura.totalConfluencias}` +
-      ` · médias ${zona.mm1}/${zona.mm2} · MACD ${zona.macd}`
-    : `Hacker IA · ${leitura.sinal} · ${leitura.motivo} · ${leitura.confianca}%` +
-      ` · vantagem do padrão ${leitura.vantagemPadrao >= 0 ? '+' : ''}${leitura.vantagemPadrao} pp` +
-      ` · acerto conservador ${leitura.limiteInferior}%` +
-      ` · níveis aprendidos ${zona.limiarAtivacao}/${zona.limiarConfirmacao}%` +
-      ` · ${leitura.amostraEfetiva} padrões efetivos · projeção 1–3 jogos ${delta} pp`;
+    ? `Hacker IA · ${leitura.sinal} · ${graficoTxt} · ${leitura.motivo}` +
+      ` · confluência ${leitura.confluencias}/${leitura.totalConfluencias}`
+    : `Hacker IA · ${sinalTxt} · ${graficoTxt}${motivoTxt} · ${padraoTxt} · ${projTxt}`;
   const estrutura = leitura.fundoDuplo && leitura.fundoDuplo.encontrado
     ? ` Fundo duplo ${leitura.fundoDuplo.fundo1}/${leitura.fundoDuplo.fundo2}%` +
       ` · linha de confirmação ${leitura.fundoDuplo.linha}%.`
@@ -1982,7 +1991,7 @@ function renderHackerGrafico(serie, comparativo, mercadoGrafico, sinaisGrafico) 
         `${leitura.tendenciaDefinida.pontos} pontos · eficiência ` +
         `${leitura.tendenciaDefinida.eficiencia}%.`
       : '';
-  box.title = `Semelhança média ${leitura.similaridade}%. Consistência entre 1, 2 e 3 jogos: ` +
+  box.title = `Acerto conservador ${leitura.limiteInferior}% · níveis aprendidos ${zona.limiarAtivacao}/${zona.limiarConfirmacao}% · ${leitura.amostraEfetiva} padrões efetivos · médias ${zona.mm1}/${zona.mm2} · MACD ${zona.macd}. Semelhança média ${leitura.similaridade}%. Consistência entre 1, 2 e 3 jogos: ` +
     `${leitura.consistencia}%. Janelas rápidas/confirmadas: ${leitura.janelas}. ` +
     `Base direcional do gráfico: ${leitura.taxaBase}%. Limites aprendidos: ` +
     `${zona.limiarAtivacao}% / ${zona.limiarConfirmacao}% ` +
@@ -3141,7 +3150,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-const APP_VERSAO = '20261126-mm';
+const APP_VERSAO = '20261127-hk';
 function iniciarCanalGDCross() {
   if (!('EventSource' in window) || canalEventosGDCross) return;
   try {
