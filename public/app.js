@@ -1975,10 +1975,16 @@ function renderHackerGrafico(serie, comparativo, mercadoGrafico, sinaisGrafico) 
   const phi = x => { const t = 1 / (1 + .2316419 * Math.abs(x)); const d = .3989423 * Math.exp(-x * x / 2);
     const q = d * t * (.3193815 + t * (-.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274)))); return x >= 0 ? 1 - q : q; };
   const graficoOk = acH.conhecido && acH.ok;
-  const entra = leitura.classe === 'entrada' && graficoOk;
-  const prepara = !entra && leitura.classe === 'atencao' && graficoOk;
+  const rep = window.AcumGuard && window.AcumGuard.repeticao ? window.AcumGuard.repeticao(state.liga, mercadoGrafico || state.mercado) : null;
+  /* movimento pagante: repetiu >= 12x, pagou nos 3 tiros >= 85% e acima da base (z >= 1) */
+  const repPaga = !!(rep && rep.n >= 12 && rep.taxa >= .85 && rep.z >= 1);
+  const repRuim = !!(rep && rep.n >= 12 && (rep.z <= -1 || rep.taxa < .75));
+  const entra = graficoOk && !repRuim && (leitura.classe === 'entrada' || repPaga);
+  const prepara = !entra && graficoOk && !repRuim && leitura.classe === 'atencao';
   /* conviccao: na entrada = prob. do padrao estar acima da base; fora = prob. de nao estar */
-  let conv = entra || prepara ? phi(zH) : 1 - phi(zH);
+  /* conviccao combina padrao (zH) e repeticao do movimento (rep.z) */
+  const zComb = rep && rep.n >= 12 ? (zH + rep.z) / Math.SQRT2 : zH;
+  let conv = entra || prepara ? phi(zComb) : 1 - phi(zComb);
   if (!graficoOk && acH.conhecido && acH.motivo !== 'madrugada') conv = Math.max(conv, .9);
   const veredito = entra ? 'ENTRA' : prepara ? 'PREPARA' : 'NÃO ENTRA';
   const lo = Number(leitura.limiteInferior), hi = Math.min(99.9, 2 * Number(leitura.confianca) - lo);
@@ -1991,6 +1997,8 @@ function renderHackerGrafico(serie, comparativo, mercadoGrafico, sinaisGrafico) 
   box.textContent = `Hacker IA · ${veredito} · convicção ${(conv * 100).toFixed(0)}%` +
     ` · P(green) ${(pP * 100).toFixed(1)}% [IC ${lo.toFixed(0)}–${hi.toFixed(0)}] vs base ${(baseP * 100).toFixed(1)}%` +
     ` · z ${zH >= 0 ? '+' : ''}${zH.toFixed(2)} · EV ${ev >= 0 ? '+' : ''}${ev.toFixed(1)}%` +
+    (rep ? ` · movimento ${rep.mov} repetiu ${rep.n}x: pagou ${rep.n - rep.red}/${rep.n} (${(rep.taxa * 100).toFixed(0)}%` +
+      ` · 1º ${rep.t1} · 2º ${rep.t2} · 3º ${rep.t3} · red ${rep.red}) vs base ${(rep.base3 * 100).toFixed(0)}% · z ${rep.z >= 0 ? '+' : ''}${rep.z.toFixed(2)}` : '') +
     graficoTxt + ` · Δ1–3 ${delta}pp · n ${Math.round(nEf)}`;
   const estrutura = leitura.fundoDuplo && leitura.fundoDuplo.encontrado
     ? ` Fundo duplo ${leitura.fundoDuplo.fundo1}/${leitura.fundoDuplo.fundo2}%` +
@@ -3159,7 +3167,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-const APP_VERSAO = '20261127-hk2';
+const APP_VERSAO = '20261127-hk3';
 function iniciarCanalGDCross() {
   if (!('EventSource' in window) || canalEventosGDCross) return;
   try {

@@ -66,7 +66,39 @@
     var c = 0; lista.forEach(function (g) { if (paga(g)) c++; });
     return Math.round(c / lista.length * 1000) / 10;
   }
-  root.AcumGuard = { estado: estado, atualiza: atualiza, regra: regra, normal: normal };
+
+  /* REPETICAO DE MOVIMENTO: pega os ultimos k resultados (▲ pagou / ▼ nao
+     pagou) e procura o MESMO movimento nas ultimas 24h. Para cada vez que ele
+     apareceu, olha os 3 jogos seguintes (ciclo de 3 tiros): pagou em qual tiro?
+     k e escolhido do maior para o menor (8..3) ate ter >= 12 repeticoes. */
+  function repeticao(liga, mercado) {
+    liga = String(liga || '').toLowerCase().slice(0, 3);
+    var paga = regra(mercado), lista = jogos[liga];
+    if (!paga || !lista || lista.length < 120) return null;
+    var bits = lista.map(function (g) { return paga(g) ? 1 : 0; });
+    var N = bits.length, base = bits.reduce(function (a, b) { return a + b; }, 0) / N;
+    var base3 = 1 - Math.pow(1 - base, 3);
+    for (var k = 8; k >= 3; k--) {
+      var alvo = bits.slice(N - k).join('');
+      var occ = 0, t1 = 0, t2 = 0, t3 = 0, red = 0;
+      for (var i = k - 1; i + 3 < N; i++) {
+        var ok = true;
+        for (var j = 0; j < k; j++) if (bits[i - k + 1 + j] !== +alvo[j]) { ok = false; break; }
+        if (!ok) continue;
+        occ++;
+        if (bits[i + 1]) t1++; else if (bits[i + 2]) t2++; else if (bits[i + 3]) t3++; else red++;
+      }
+      if (occ >= 12 || k === 3) {
+        if (!occ) return null;
+        var taxa = (occ - red) / occ;
+        var z = (taxa - base3) / Math.sqrt(base3 * (1 - base3) / occ);
+        return { k: k, mov: alvo.replace(/1/g, '▲').replace(/0/g, '▼'), n: occ, t1: t1, t2: t2, t3: t3, red: red,
+          taxa: taxa, taxa1: t1 / occ, base: base, base3: base3, z: z };
+      }
+    }
+    return null;
+  }
+  root.AcumGuard = { estado: estado, atualiza: atualiza, regra: regra, normal: normal, repeticao: repeticao };
   atualiza();
   setInterval(atualiza, INTERVALO);
 })(typeof window !== 'undefined' ? window : this);
