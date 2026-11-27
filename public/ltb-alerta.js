@@ -9,7 +9,7 @@
  * ========================================================================== */
 (function () {
   'use strict';
-  var LS = 'amd_alerta_ltb00', MIN_DIA = 60, INTERVALO = 30000;
+  var LS = 'amd_alerta_ltb00', MIN_DIA = 60, INTERVALO = 45000;
   var avisados = {}, ultimoMerc = null;
   var NOMES = { eng: 'ENG', ita: 'ITA', spa: 'SPA', mnd: 'MND', bra: 'BRA', lat: 'LAT', cam: 'CAM', cop: 'COP', ame: 'AME' };
 
@@ -79,8 +79,8 @@
       if (!s || s.line.length < MIN_DIA) return;
       var line = s.line, n = line.length, l = ltbDe(line);
       if (!l || l.b.i >= n - 1) return;
-      /* folga de 1/4 de jogo para nao avisar por milimetro */
-      var tol = Math.max(.1, 25 / n);
+      /* sem folga: mesmo criterio do 'QUEBROU A LTB' do grafico (a folga atrasava 1 jogo) */
+      var tol = 0;
       var agora = line[n - 1] > valorLTB(l, n - 1) + tol;
       /* cruzou nos ultimos 3 jogos (ciclo de 30s pode pegar 2 jogos de uma vez) */
       var cruzou = false;
@@ -98,10 +98,24 @@
   function ciclo() {
     if (!ligado()) { pinta(); return; }
     if (window.AcumGuard && window.AcumGuard.atualizaLiga) (window.AcumGuard.ligas || []).forEach(window.AcumGuard.atualizaLiga);
-    setTimeout(function () { verifica(false); }, 4000);
+    setTimeout(function () { verifica(false); }, 2500);
+  }
+  /* tempo real: o servidor avisa (SSE) quando entra jogo novo numa liga;
+     recarrega so essa liga e confere na hora, sem esperar o ciclo */
+  function escutaServidor() {
+    if (!('EventSource' in window)) return;
+    var es;
+    try { es = new EventSource('/api/eventos'); } catch (e) { return; }
+    es.onmessage = function (ev) {
+      var p; try { p = JSON.parse(ev.data || '{}'); } catch (e) { return; }
+      if (!p || p.tipo !== 'liga' || !ligado() || !window.AcumGuard || !window.AcumGuard.atualizaLiga) return;
+      var lg = String(p.liga || '').toLowerCase().slice(0, 3);
+      Promise.resolve(window.AcumGuard.atualizaLiga(lg)).then(function () { verifica(false); });
+    };
   }
   function init() {
     pinta();
+    escutaServidor();
     setTimeout(function () { verifica(true); }, 3000);
     setInterval(ciclo, INTERVALO);
   }
