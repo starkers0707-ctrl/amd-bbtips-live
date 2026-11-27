@@ -1977,7 +1977,11 @@ function renderHackerGrafico(serie, comparativo, mercadoGrafico, sinaisGrafico) 
   const graficoOk = acH.conhecido && acH.ok;
   const rep = window.AcumGuard && window.AcumGuard.repeticao ? window.AcumGuard.repeticao(state.liga, mercadoGrafico || state.mercado) : null;
   /* movimento pagante: repetiu >= 12x, pagou nos 3 tiros >= 85% e acima da base (z >= 1) */
-  const repPaga = !!(rep && rep.n >= 12 && rep.taxa >= .85 && rep.z >= 1);
+  /* limite inferior de Wilson (95%): so conta como pagante se ate o pior
+     caso estatistico ficar acima da taxa normal de 3 tiros */
+  const wil = rep ? (() => { const z = 1.96, n = rep.n, p = rep.taxa;
+    return (p + z * z / (2 * n) - z * Math.sqrt(p * (1 - p) / n + z * z / (4 * n * n))) / (1 + z * z / n); })() : 0;
+  const repPaga = !!(rep && rep.n >= 20 && wil >= rep.base3);
   const repRuim = !!(rep && rep.n >= 12 && (rep.z <= -1 || rep.taxa < .75));
   const entra = graficoOk && !repRuim && (leitura.classe === 'entrada' || repPaga);
   const prepara = !entra && graficoOk && !repRuim && leitura.classe === 'atencao';
@@ -1985,7 +1989,8 @@ function renderHackerGrafico(serie, comparativo, mercadoGrafico, sinaisGrafico) 
   /* conviccao combina padrao (zH) e repeticao do movimento (rep.z) */
   const zComb = rep && rep.n >= 12 ? (zH + rep.z) / Math.SQRT2 : zH;
   let conv = entra || prepara ? phi(zComb) : 1 - phi(zComb);
-  if (!graficoOk && acH.conhecido && acH.motivo !== 'madrugada') conv = Math.max(conv, .9);
+  /* bloqueio do grafico 00h (queda ou dia com < 60 jogos) = NAO ENTRA convicto */
+  if (!entra && !prepara && (!graficoOk || repRuim)) conv = Math.max(conv, .9);
   const veredito = entra ? 'ENTRA' : prepara ? 'PREPARA' : 'NÃO ENTRA';
   const lo = Number(leitura.limiteInferior), hi = Math.min(99.9, 2 * Number(leitura.confianca) - lo);
   const ev = (pP / baseP - 1) * 100;
@@ -1997,8 +2002,9 @@ function renderHackerGrafico(serie, comparativo, mercadoGrafico, sinaisGrafico) 
   box.textContent = `Hacker IA · ${veredito} · convicção ${(conv * 100).toFixed(0)}%` +
     ` · P(green) ${(pP * 100).toFixed(1)}% [IC ${lo.toFixed(0)}–${hi.toFixed(0)}] vs base ${(baseP * 100).toFixed(1)}%` +
     ` · z ${zH >= 0 ? '+' : ''}${zH.toFixed(2)} · EV ${ev >= 0 ? '+' : ''}${ev.toFixed(1)}%` +
-    (rep ? ` · movimento ${rep.mov} repetiu ${rep.n}x: pagou ${rep.n - rep.red}/${rep.n} (${(rep.taxa * 100).toFixed(0)}%` +
-      ` · 1º ${rep.t1} · 2º ${rep.t2} · 3º ${rep.t3} · red ${rep.red}) vs base ${(rep.base3 * 100).toFixed(0)}% · z ${rep.z >= 0 ? '+' : ''}${rep.z.toFixed(2)}` : '') +
+    (rep ? ` · movimento ${rep.mov} repetiu ${rep.n}x: pagou ${rep.n - rep.red}/${rep.n}` +
+      ` (1º ${rep.t1} · 2º ${rep.t2} · 3º ${rep.t3} · red ${rep.red}) · pior caso ${(wil * 100).toFixed(0)}% vs normal ${(rep.base3 * 100).toFixed(0)}%` +
+      ` → ${repPaga ? 'VANTAGEM REAL' : repRuim ? 'PERDEDOR' : rep.n < 20 ? 'amostra curta' : 'sem vantagem'}` : '') +
     graficoTxt + ` · Δ1–3 ${delta}pp · n ${Math.round(nEf)}`;
   const estrutura = leitura.fundoDuplo && leitura.fundoDuplo.encontrado
     ? ` Fundo duplo ${leitura.fundoDuplo.fundo1}/${leitura.fundoDuplo.fundo2}%` +
@@ -3167,7 +3173,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-const APP_VERSAO = '20261127-hk3';
+const APP_VERSAO = '20261127-hk5';
 function iniciarCanalGDCross() {
   if (!('EventSource' in window) || canalEventosGDCross) return;
   try {
