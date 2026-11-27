@@ -5209,7 +5209,37 @@
    }
   ],
   "consumidas": {},
-  "ciclo": null,
+  "ciclo": {
+   "liga": "ame",
+   "degrau": 0,
+   "apostado": 0,
+   "plano": [
+    {
+     "h": "10:13",
+     "jogo": "Bogota x Itaquera",
+     "odd": 2.31
+    },
+    {
+     "h": "10:16",
+     "jogo": "Asuncion x Avellaneda",
+     "odd": 2.04
+    },
+    {
+     "h": "10:19",
+     "jogo": "Belo Horizonte x Bogota",
+     "odd": 2.08
+    }
+   ],
+   "gatilho": "coluna :16",
+   "alvo": {
+    "h": "10:13",
+    "jogo": "Bogota x Itaquera",
+    "odd": 2.31,
+    "unidades": 1,
+    "desde": 1795784915482
+   },
+   "iniciadoEm": 1795784915482
+  },
   "cooldown": {
    "cam": 1795646110190,
    "eng": 1795575218328,
@@ -5222,10 +5252,10 @@
    "cop": 1795617660495
   },
   "_gatilhoAtual": {
-   "tipo": "odd",
-   "chave": "2.57",
-   "n": 12,
-   "start": 2
+   "tipo": "coluna",
+   "chave": ":16",
+   "n": 10,
+   "start": 1
   },
   "dias": {
    "2026-11-19": -7,
